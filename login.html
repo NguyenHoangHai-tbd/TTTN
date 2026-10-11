@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập Tài Khoản - OtoMarket</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-custom">
+    <div class="container justify-content-between">
+      <a class="brand-logo" href="index.html">
+        <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+        <span>Oto<span class="logo-tag">Market</span></span>
+      </a>
+      <a href="index.html" class="btn btn-outline-custom btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Quay lại trang chủ
+      </a>
+    </div>
+  </nav>
+
+  <!-- Login Main -->
+  <main class="py-5 d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          
+          <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm">
+            <div class="text-center mb-4">
+              <div class="logo-icon mx-auto mb-3" style="width: 52px; height: 52px; font-size: 1.6rem; border-radius: 12px; background: linear-gradient(135deg, var(--teal-color), #14B8A6); display: flex; align-items: center; justify-content: center; color: white;">
+                <i class="bi bi-person-fill-lock"></i>
+              </div>
+              <h1 class="h4 fw-bold mb-1">Đăng nhập OtoMarket</h1>
+              <p class="text-muted small">Truy cập tài khoản để đăng tin và quản lý danh sách xe</p>
+            </div>
+
+            <!-- Form đăng nhập -->
+            <form id="login-form" onsubmit="handleLoginSubmit(event)">
+              <div class="mb-3">
+                <label class="form-label small fw-bold">Địa chỉ Email</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                  <input type="email" class="form-control" id="login-email" placeholder="name@example.com" value="nam.nguyen@otomarket.vn" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label small fw-bold">Mật khẩu</label>
+                  <a href="#" class="small text-teal text-decoration-none" onclick="showToast('Đây là phiên bản demo tĩnh!', 'info'); return false;">Quên mật khẩu?</a>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                  <input type="password" class="form-control" id="login-password" value="12345678" required>
+                  <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                    <i class="bi bi-eye" id="pwd-toggle-icon"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="remember-me" checked>
+                <label class="form-check-label small text-muted" for="remember-me">
+                  Ghi nhớ đăng nhập trên trình duyệt này
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-teal w-100 py-2 fw-semibold mb-3">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Đăng nhập ngay
+              </button>
+            </form>
+
+            <!-- Khối 1-Click Demo Accounts -->
+            <div class="p-3 bg-light rounded-3 border mt-4">
+              <span class="small fw-bold text-dark d-block mb-2">
+                <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Đăng nhập nhanh 1-Click (Tài khoản mẫu):
+              </span>
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('user')">
+                  <i class="bi bi-person-circle me-1 text-teal"></i> <strong>Chủ xe / Khách hàng:</strong> Nguyễn Hoàng Nam
+                </button>
+                <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('admin')">
+                  <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong>Quản trị viên (Admin):</strong> Ban Kiểm Duyệt
+                </button>
+              </div>
+            </div>
+
+            <div class="text-center mt-4 small text-muted">
+              Chưa có tài khoản? <a href="#" class="text-teal fw-semibold" onclick="showToast('Bạn có thể bấm Đăng nhập ngay với bất kỳ thông tin nào trong bản demo này!', 'info'); return false;">Đăng ký miễn phí</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('login-password');
+      const icon = document.getElementById('pwd-toggle-icon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        pwdInput.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    }
+
+    function quickFillLogin(role) {
+      if (role === 'admin') {
+        document.getElementById('login-email').value = 'admin@otomarket.vn';
+        document.getElementById('login-password').value = 'admin123';
+        handleDoLogin({
+          name: "Ban Quản Trị OtoMarket",
+          email: "admin@otomarket.vn",
+          phone: "1900 6868",
+          role: "admin",
+          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+        });
+      } else {
+        document.getElementById('login-email').value = 'nam.nguyen@otomarket.vn';
+        document.getElementById('login-password').value = '12345678';
+        handleDoLogin({
+          name: "Nguyễn Hoàng Nam",
+          email: "nam.nguyen@otomarket.vn",
+          phone: "0912 345 678",
+          role: "user",
+          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        });
+      }
+    }
+
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const name = email.split('@')[0].replace('.', ' ').toUpperCase();
+
+      const user = {
+        name: name || "Người Dùng Mẫu",
+        email: email,
+        phone: "0988 888 999",
+        role: email.includes('admin') ? "admin" : "user",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+      };
+
+      handleDoLogin(user);
+    }
+
+    function handleDoLogin(user) {
+      setLoggedInUser(user);
+      showToast(`Đăng nhập thành công! Chào mừng ${user.name}`, "success");
+
+      setTimeout(() => {
+        if (user.role === 'admin') {
+          window.location.href = 'admin.html';
+        } else {
+          window.location.href = 'my-listings.html';
+        }
+      }, 700);
+    }
+  </script>
+</body>
+</html>

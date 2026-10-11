@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Bán Xe Ô Tô Miễn Phí - OtoMarket</title>
+  <meta name="description" content="Đăng tin bán xe ô tô cũ và mới dễ dàng, tiếp cận hàng triệu khách hàng tiềm năng tại OtoMarket. Miễn phí đăng tin, hỗ trợ duyệt nhanh." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-header-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-4">
+        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hỗ trợ đăng tin: <strong>1900 6868</strong></span>
+        <span><i class="bi bi-patch-check me-1 text-teal"></i> Tiếp cận 500.000+ người mua ô tô tiềm năng</span>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="about.html">Về chúng tôi</a>
+        <a href="about.html#faq">Hỏi đáp</a>
+        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+        <span>Oto<span class="logo-tag">Market</span></span>
+      </a>
+
+      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="cars.html">Mua xe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="post-car.html">Đăng bán</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
+            <i class="bi bi-heart text-danger"></i>
+            <span class="d-none d-xl-inline">Yêu thích</span>
+            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
+          </a>
+
+          <div id="navbar-auth-section">
+            <a href="login.html" class="btn btn-outline-custom">
+              <i class="bi bi-person"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="my-listings.html" class="btn btn-teal">
+            <i class="bi bi-card-checklist"></i>
+            <span>Tin của tôi</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-white border-bottom py-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Đăng tin bán xe</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Form Đăng Tin Bán Xe -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+          <!-- Header Form -->
+          <div class="text-center mb-4">
+            <span class="badge bg-teal text-white px-3 py-1 mb-2">MIỄN PHÍ 100%</span>
+            <h1 class="h3 fw-bold mb-2">Tạo tin đăng bán xe ô tô</h1>
+            <p class="text-muted small">Vui lòng cung cấp thông tin chính xác để tin đăng được phê duyệt nhanh chóng nhất</p>
+          </div>
+
+          <form id="post-car-form" onsubmit="handlePostCarSubmit(event)" novalidate>
+
+            <!-- 1. Thông tin cơ bản của xe -->
+            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
+              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <i class="bi bi-1-circle-fill text-teal me-2"></i> 1. Thông tin cơ bản
+              </h5>
+
+              <div class="row g-3">
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold small">Tiêu đề tin đăng / Tên xe <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="car-title" placeholder="Ví dụ: Toyota Corolla Cross 1.8V 2023 trắng ngọc trai" required>
+                  <div class="form-text small">Nên bao gồm Tên hãng + Dòng xe + Phiên bản + Năm sản xuất.</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Hãng xe <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-brand" required onchange="handleBrandChange()">
+                    <option value="">-- Chọn hãng sản xuất --</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="VinFast">VinFast</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Khác">Hãng khác</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Dòng xe (Model) <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="car-model" placeholder="Ví dụ: Corolla Cross, CX-5, Everest..." required>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold small">Năm sản xuất <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-year" required>
+                    <option value="2024">2024</option>
+                    <option value="2023" selected>2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold small">Kiểu dáng (Body Type) <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-body" required>
+                    <option value="SUV" selected>SUV Gầm cao</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Xe gia đình">Xe gia đình (MPV)</option>
+                    <option value="Xe đô thị">Xe đô thị</option>
+                    <option value="Bán tải">Bán tải (Pick-up)</option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold small">Tình trạng xe <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-condition" required>
+                    <option value="used" selected>Đã qua sử dụng</option>
+                    <option value="new">Xe mới 100%</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Thông số kỹ thuật & Vận hành -->
+            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
+              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <i class="bi bi-2-circle-fill text-teal me-2"></i> 2. Thông số kỹ thuật & Tình trạng
+              </h5>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Giá bán mong muốn (VNĐ) <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="car-price" placeholder="Ví dụ: 750000000" min="10000000" step="1000000" required oninput="previewPriceText(this.value)">
+                    <span class="input-group-text">VNĐ</span>
+                  </div>
+                  <div class="form-text text-teal fw-bold" id="price-preview-label">Quy đổi: --</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Số km đã đi (ODO) <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="car-mileage" placeholder="Ví dụ: 25000" min="0" required>
+                    <span class="input-group-text">km</span>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold small">Hộp số <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-transmission" required>
+                    <option value="Tự động" selected>Tự động</option>
+                    <option value="Số sàn">Số sàn</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold small">Nhiên liệu <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-fuel" required>
+                    <option value="Xăng" selected>Xăng</option>
+                    <option value="Dầu">Dầu (Diesel)</option>
+                    <option value="Điện">Điện</option>
+                    <option value="Hybrid">Hybrid</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold small">Số chỗ ngồi <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-seats" required>
+                    <option value="5" selected>5 chỗ</option>
+                    <option value="7">7 chỗ</option>
+                    <option value="4">4 chỗ</option>
+                    <option value="8">8 chỗ</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold small">Màu ngoại thất <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="car-color" placeholder="Trắng, Đen, Đỏ..." required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Xuất xứ</label>
+                  <select class="form-select" id="car-origin">
+                    <option value="Lắp ráp trong nước" selected>Lắp ráp trong nước</option>
+                    <option value="Nhập khẩu Thái Lan">Nhập khẩu Thái Lan</option>
+                    <option value="Nhập khẩu Indonesia">Nhập khẩu Indonesia</option>
+                    <option value="Nhập khẩu Nhật Bản">Nhập khẩu Nhật Bản</option>
+                    <option value="Nhập khẩu Mỹ">Nhập khẩu Mỹ</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Khu vực xem xe <span class="text-danger">*</span></label>
+                  <select class="form-select" id="car-location" required>
+                    <option value="Hà Nội" selected>Hà Nội</option>
+                    <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                    <option value="Đà Nẵng">Đà Nẵng</option>
+                    <option value="Hải Phòng">Hải Phòng</option>
+                    <option value="Bình Dương">Bình Dương</option>
+                    <option value="Cần Thơ">Cần Thơ</option>
+                    <option value="Đồng Nai">Đồng Nai</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Hình ảnh xe -->
+            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
+              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <i class="bi bi-3-circle-fill text-teal me-2"></i> 3. Hình ảnh xe
+              </h5>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold small">Tải lên hình ảnh từ thiết bị của bạn hoặc chọn ảnh mẫu</label>
+                <div class="p-4 border-2 border-dashed rounded-3 text-center bg-light" style="border: 2px dashed #CBD5E1;">
+                  <i class="bi bi-cloud-arrow-up-fill text-teal fs-1 mb-2 d-block"></i>
+                  <p class="mb-2 fw-semibold">Kéo thả ảnh vào đây hoặc nhấp để chọn tệp</p>
+                  <p class="text-muted small mb-3">Hỗ trợ JPG, PNG, WEBP (Khuyến nghị 800x600px trở lên)</p>
+                  <input type="file" id="car-image-upload" class="d-none" accept="image/*" onchange="handleImageFileSelect(event)">
+                  <button type="button" class="btn btn-teal btn-sm px-3" onclick="document.getElementById('car-image-upload').click()">
+                    <i class="bi bi-folder2-open me-1"></i> Chọn tệp ảnh
+                  </button>
+                </div>
+              </div>
+
+              <!-- Hoặc chọn ảnh mẫu nhanh -->
+              <div class="mb-3">
+                <span class="small fw-semibold text-muted d-block mb-2">Hoặc chọn nhanh ảnh mẫu có sẵn nếu chưa chụp:</span>
+                <div class="d-flex flex-wrap gap-2" id="preset-image-selector">
+                  <button type="button" class="btn btn-outline-secondary btn-sm active" onclick="selectPresetImage(0, this)">
+                    Mẫu SUV Trắng
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="selectPresetImage(1, this)">
+                    Mẫu SUV Đen
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="selectPresetImage(2, this)">
+                    Mẫu Sedan Đỏ
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="selectPresetImage(3, this)">
+                    Mẫu Bán tải Cam
+                  </button>
+                </div>
+              </div>
+
+              <!-- Preview ảnh -->
+              <div class="row align-items-center mt-3 pt-3 border-top">
+                <div class="col-sm-4">
+                  <div class="rounded-3 overflow-hidden border" style="height: 140px; background-color: #F1F5F9;">
+                    <img id="image-preview" src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80" alt="Preview ảnh xe" class="w-100 h-100 object-fit-cover">
+                  </div>
+                </div>
+                <div class="col-sm-8 mt-2 mt-sm-0">
+                  <div class="small text-muted">
+                    <strong class="text-dark">Ảnh đại diện chính</strong> của tin đăng sẽ hiển thị như khung bên cạnh. Hình ảnh rõ nét sẽ giúp tin đăng thu hút hơn 300% lượt liên hệ!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Mô tả chi tiết & Liên hệ -->
+            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
+              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <i class="bi bi-4-circle-fill text-teal me-2"></i> 4. Mô tả chi tiết & Thông tin người bán
+              </h5>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold small">Mô tả tình trạng xe <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="car-description" rows="5" placeholder="Mô tả chi tiết lịch sử bảo dưỡng, tình trạng lốp, các phụ kiện độ thêm (camera 360, dán kính, lót sàn...), cam kết xe không đâm đụng ngập nước..." required></textarea>
+                <div class="form-text small">Tối thiểu 30 ký tự để người mua có cái nhìn đầy đủ nhất.</div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Họ và tên người bán <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="seller-name" placeholder="Nguyễn Văn A" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold small">Số điện thoại liên hệ <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control" id="seller-phone" placeholder="0988 123 456" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nút gửi form -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+              <a href="cars.html" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Quay lại
+              </a>
+              <button type="submit" class="btn-cta-orange px-5 py-3 fs-6">
+                <i class="bi bi-check2-circle me-1"></i> Hoàn tất & Gửi tin đăng
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Chúc Mừng Sau Khi Đăng Tin -->
+  <div class="modal fade" id="successPostModal" tabindex="-1" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-body text-center p-4">
+          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 72px; height: 72px; background-color: var(--teal-color);">
+            <i class="bi bi-check-lg fs-1"></i>
+          </div>
+          <h4 class="fw-bold mb-2">Đăng tin thành công!</h4>
+          <div class="alert alert-warning py-2 px-3 small mb-3 border-0" style="background-color: #FEF3C7; color: #92400E;">
+            <i class="bi bi-hourglass-split me-1"></i> Tin đăng đã được lưu ở trạng thái <strong>Chờ duyệt</strong>.
+          </div>
+          <p class="text-muted small mb-4">
+            Tin đăng xe của bạn đã được ghi nhận vào hệ thống. Bạn có thể theo dõi tình trạng tại trang <strong>Quản lý tin đăng</strong> hoặc thử nghiệm phê duyệt tại <strong>Trang quản trị (Admin)</strong>.
+          </p>
+          <div class="d-grid gap-2">
+            <a href="my-listings.html" class="btn btn-teal py-2">
+              <i class="bi bi-card-checklist me-1"></i> Đến trang Quản lý tin đăng
+            </a>
+            <a href="admin.html" class="btn btn-outline-dark py-2">
+              <i class="bi bi-shield-check me-1"></i> Đến trang Quản trị (Duyệt demo)
+            </a>
+            <button type="button" class="btn btn-link text-muted text-decoration-none small" onclick="window.location.reload()">
+              Đăng thêm tin xe khác
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container text-center small text-secondary">
+      © 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến Hàng Đầu.
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const PRESET_IMAGES = [
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80"
+    ];
+
+    let selectedImageUrl = PRESET_IMAGES[0];
+
+    function selectPresetImage(index, btnElement) {
+      selectedImageUrl = PRESET_IMAGES[index];
+      document.getElementById('image-preview').src = selectedImageUrl;
+      document.querySelectorAll('#preset-image-selector button').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+    }
+
+    function handleImageFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          selectedImageUrl = e.target.result;
+          document.getElementById('image-preview').src = selectedImageUrl;
+          document.querySelectorAll('#preset-image-selector button').forEach(b => b.classList.remove('active'));
+          showToast("Đã tải ảnh lên thành công!", "success");
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function previewPriceText(val) {
+      const amount = parseInt(val);
+      const label = document.getElementById('price-preview-label');
+      if (!amount || isNaN(amount)) {
+        label.textContent = "Quy đổi: --";
+        return;
+      }
+      label.textContent = `Quy đổi: ${formatCurrency(amount)}`;
+    }
+
+    function handleBrandChange() {
+      const brand = document.getElementById('car-brand').value;
+      const modelInput = document.getElementById('car-model');
+      if (brand && !modelInput.value) {
+        if (brand === 'Toyota') modelInput.value = 'Corolla Cross';
+        if (brand === 'Hyundai') modelInput.value = 'Santa Fe';
+        if (brand === 'Mazda') modelInput.value = 'CX-5';
+        if (brand === 'Ford') modelInput.value = 'Everest';
+        if (brand === 'VinFast') modelInput.value = 'VF 8';
+      }
+    }
+
+    function handlePostCarSubmit(event) {
+      event.preventDefault();
+
+      const title = document.getElementById('car-title').value.trim();
+      const brand = document.getElementById('car-brand').value;
+      const model = document.getElementById('car-model').value.trim();
+      const year = parseInt(document.getElementById('car-year').value);
+      const body = document.getElementById('car-body').value;
+      const price = parseInt(document.getElementById('car-price').value);
+      const mileage = parseInt(document.getElementById('car-mileage').value);
+      const transmission = document.getElementById('car-transmission').value;
+      const fuel = document.getElementById('car-fuel').value;
+      const seats = parseInt(document.getElementById('car-seats').value);
+      const color = document.getElementById('car-color').value.trim();
+      const origin = document.getElementById('car-origin').value;
+      const location = document.getElementById('car-location').value;
+      const description = document.getElementById('car-description').value.trim();
+      const sellerName = document.getElementById('seller-name').value.trim();
+      const sellerPhone = document.getElementById('seller-phone').value.trim();
+
+      // Kiểm tra validation
+      if (!title || !brand || !model || !price || isNaN(price) || isNaN(mileage) || !color || !description || !sellerName || !sellerPhone) {
+        showToast("Vui lòng điền đầy đủ các trường bắt buộc!", "error");
+        return;
+      }
+
+      if (description.length < 20) {
+        showToast("Vui lòng nhập mô tả chi tiết hơn (ít nhất 20 ký tự)", "warning");
+        return;
+      }
+
+      // Tạo object tin đăng mới
+      const newListing = {
+        id: `custom-${Date.now()}`,
+        title: title,
+        brand: brand,
+        model: model,
+        year: year,
+        price: price,
+        priceDisplay: formatCurrency(price),
+        mileage: mileage,
+        mileageDisplay: `${mileage.toLocaleString()} km`,
+        fuel: fuel,
+        transmission: transmission,
+        bodyType: body,
+        seats: seats,
+        color: color,
+        interiorColor: "Tiêu chuẩn",
+        origin: origin,
+        location: location,
+        sellerType: "Chính chủ",
+        sellerName: sellerName,
+        sellerPhone: sellerPhone,
+        sellerAddress: location,
+        image: selectedImageUrl,
+        images: [selectedImageUrl],
+        isFeatured: false,
+        isNew: false,
+        postedDate: new Date().toLocaleDateString('vi-VN'),
+        viewCount: 1,
+        status: "pending", // Chờ duyệt
+        description: description,
+        specifications: {
+          engine: "Động cơ tiêu chuẩn",
+          power: "Tiêu chuẩn nhà sản xuất",
+          torque: "Tiêu chuẩn nhà sản xuất",
+          drivetrain: "Cầu trước",
+          fuelConsumption: "6.5L / 100km",
+          registrationExpiry: "Còn hiệu lực",
+          warranty: "Cam kết từ người bán"
+        }
+      };
+
+      // Lưu vào localStorage
+      saveCustomListing(newListing);
+
+      // Hiển thị thông báo chính xác như yêu cầu
+      showToast("Tin đăng đã được lưu ở trạng thái chờ duyệt", "success");
+
+      // Mở modal chúc mừng
+      const modal = new bootstrap.Modal(document.getElementById('successPostModal'));
+      modal.show();
+    }
+
+    // Tự điền thông tin người dùng nếu đã đăng nhập
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = getLoggedInUser();
+      if (user) {
+        if (user.name) document.getElementById('seller-name').value = user.name;
+        if (user.phone) document.getElementById('seller-phone').value = user.phone;
+      }
+    });
+  </script>
+</body>
+</html>

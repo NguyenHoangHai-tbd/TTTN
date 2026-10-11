@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Xe - OtoMarket</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-header-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-4">
+        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hotline tư vấn: <strong>1900 6868</strong></span>
+        <span><i class="bi bi-shield-check me-1 text-teal"></i> Xe đã qua kiểm định 160 bước kỹ thuật</span>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="about.html">Về chúng tôi</a>
+        <a href="about.html#faq">Hỏi đáp</a>
+        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+        <span>Oto<span class="logo-tag">Market</span></span>
+      </a>
+
+      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="cars.html">Mua xe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
+            <i class="bi bi-heart text-danger"></i>
+            <span class="d-none d-xl-inline">Yêu thích</span>
+            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
+          </a>
+
+          <div id="navbar-auth-section">
+            <a href="login.html" class="btn btn-outline-custom">
+              <i class="bi bi-person"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="post-car.html" class="btn-cta-orange">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-white border-bottom py-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="cars.html" class="text-decoration-none text-muted">Mua xe</a></li>
+          <li class="breadcrumb-item active text-dark fw-semibold" id="breadcrumb-car-title">Chi tiết xe</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Details Content -->
+  <main class="py-4">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Cột bên trái: Ảnh, Tiêu đề, Thông số, Mô tả -->
+        <div class="col-lg-8">
+          
+          <!-- Thư viện hình ảnh -->
+          <div class="bg-white p-3 rounded-4 border mb-4">
+            <div class="detail-gallery-main">
+              <img id="detail-main-img" src="" alt="Hình ảnh ô tô" class="w-100 h-100 object-fit-cover">
+              <span class="position-absolute bottom-0 end-0 bg-dark bg-opacity-75 text-white px-3 py-1 m-3 rounded-2 small" id="gallery-counter">
+                <i class="bi bi-camera me-1"></i> Xem ảnh
+              </span>
+            </div>
+
+            <!-- Thumbnail row -->
+            <div class="gallery-thumb-row" id="gallery-thumbs-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Thông tin tiêu đề & Giá bán -->
+          <div class="bg-white p-4 rounded-4 border mb-4">
+            <div class="d-flex justify-content-between align-items-start gap-3 mb-2">
+              <div>
+                <span class="badge bg-teal text-white mb-2" id="detail-badge">Xe kiểm định</span>
+                <h1 class="h3 fw-bold mb-1" id="detail-title">Đang tải...</h1>
+                <div class="text-muted small d-flex flex-wrap gap-3">
+                  <span><i class="bi bi-clock me-1"></i> Ngày đăng: <strong id="detail-posted-date">--</strong></span>
+                  <span><i class="bi bi-eye me-1"></i> <span id="detail-views">0</span> lượt xem</span>
+                  <span><i class="bi bi-upc me-1"></i> Mã tin: <strong id="detail-car-id">--</strong></span>
+                </div>
+              </div>
+              <button class="btn btn-outline-danger btn-sm d-flex align-items-center gap-2 rounded-3 px-3 py-2" id="btn-toggle-fav" onclick="handleDetailFavClick()">
+                <i class="bi bi-heart" id="fav-icon"></i>
+                <span id="fav-text">Lưu tin</span>
+              </button>
+            </div>
+
+            <div class="p-3 bg-light rounded-3 d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
+              <div>
+                <span class="text-muted small d-block">Giá chào bán công khai</span>
+                <span class="h2 fw-extrabold text-orange mb-0" id="detail-price" style="color: var(--orange-color); font-weight: 800;">--</span>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary btn-sm" onclick="showLoanCalculator()">
+                  <i class="bi bi-calculator me-1"></i> Tính trả góp
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="shareCarListing()">
+                  <i class="bi bi-share me-1"></i> Chia sẻ
+                </button>
+              </div>
+            </div>
+
+            <!-- Các chỉ số nhanh -->
+            <div class="row row-cols-2 row-cols-sm-4 g-2 mt-3 pt-3 border-top text-center">
+              <div class="col">
+                <div class="p-2 border rounded-2 bg-white">
+                  <div class="text-muted small"><i class="bi bi-calendar3 text-teal"></i> Năm SX</div>
+                  <div class="fw-bold mt-1" id="spec-quick-year">--</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="p-2 border rounded-2 bg-white">
+                  <div class="text-muted small"><i class="bi bi-speedometer2 text-teal"></i> Số ODO</div>
+                  <div class="fw-bold mt-1" id="spec-quick-mileage">--</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="p-2 border rounded-2 bg-white">
+                  <div class="text-muted small"><i class="bi bi-gear text-teal"></i> Hộp số</div>
+                  <div class="fw-bold mt-1" id="spec-quick-trans">--</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="p-2 border rounded-2 bg-white">
+                  <div class="text-muted small"><i class="bi bi-fuel-pump text-teal"></i> Nhiên liệu</div>
+                  <div class="fw-bold mt-1" id="spec-quick-fuel">--</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thông số kỹ thuật chi tiết -->
+          <div class="bg-white p-4 rounded-4 border mb-4">
+            <h4 class="h5 fw-bold mb-3 border-bottom pb-2">
+              <i class="bi bi-sliders text-teal me-2"></i> Thông số kỹ thuật chi tiết
+            </h4>
+            <div class="row">
+              <div class="col-md-6">
+                <table class="spec-table">
+                  <tbody>
+                    <tr><td>Hãng sản xuất</td><td id="spec-brand">--</td></tr>
+                    <tr><td>Dòng xe (Model)</td><td id="spec-model">--</td></tr>
+                    <tr><td>Năm sản xuất</td><td id="spec-year">--</td></tr>
+                    <tr><td>Kiểu dáng</td><td id="spec-body">--</td></tr>
+                    <tr><td>Số chỗ ngồi</td><td id="spec-seats">-- chỗ</td></tr>
+                    <tr><td>Xuất xứ</td><td id="spec-origin">--</td></tr>
+                    <tr><td>Màu ngoại thất</td><td id="spec-color">--</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-6">
+                <table class="spec-table">
+                  <tbody>
+                    <tr><td>Màu nội thất</td><td id="spec-interior">--</td></tr>
+                    <tr><td>Hộp số</td><td id="spec-transmission">--</td></tr>
+                    <tr><td>Nhiên liệu</td><td id="spec-fuel">--</td></tr>
+                    <tr><td>Động cơ</td><td id="spec-engine">--</td></tr>
+                    <tr><td>Công suất cực đại</td><td id="spec-power">--</td></tr>
+                    <tr><td>Dẫn động</td><td id="spec-drivetrain">--</td></tr>
+                    <tr><td>Hạn đăng kiểm</td><td id="spec-expiry">--</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mô tả tình trạng xe -->
+          <div class="bg-white p-4 rounded-4 border mb-4">
+            <h4 class="h5 fw-bold mb-3 border-bottom pb-2">
+              <i class="bi bi-file-text text-teal me-2"></i> Mô tả tình trạng xe từ người bán
+            </h4>
+            <div class="text-secondary lh-lg" id="detail-description">
+              Đang tải nội dung mô tả...
+            </div>
+
+            <!-- Cam kết chất lượng OtoMarket -->
+            <div class="mt-4 p-3 rounded-3" style="background-color: var(--teal-light); border: 1px solid var(--teal-border);">
+              <h6 class="fw-bold text-dark mb-2 d-flex align-items-center gap-2">
+                <i class="bi bi-shield-fill-check fs-5" style="color: var(--teal-color);"></i>
+                Cam kết vàng khi giao dịch qua OtoMarket
+              </h6>
+              <ul class="mb-0 small text-secondary ps-3">
+                <li>Xe không đâm đụng ảnh hưởng kết cấu khung gầm chịu lực.</li>
+                <li>Động cơ và hộp số nguyên bản, không thủy kích, không ngập nước.</li>
+                <li>Hồ sơ pháp lý minh bạch, không tranh chấp, không thế chấp phạt nguội.</li>
+                <li>Bảo hành 12 tháng động cơ và hộp số sau khi mua.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Khu vực xe tương tự -->
+          <div class="mt-5">
+            <h4 class="h5 fw-bold mb-3">
+              <i class="bi bi-grid-fill text-teal me-2"></i> Xe tương tự bạn có thể thích
+            </h4>
+            <div class="row" id="similar-cars-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cột bên phải: Thông tin người bán & Nút liên hệ -->
+        <div class="col-lg-4">
+          <div class="seller-box sticky-top" style="top: 85px;">
+            <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+              <div class="rounded-circle bg-light d-flex align-items-center justify-content-center text-teal fs-3" style="width: 58px; height: 58px; background-color: var(--teal-light);">
+                <i class="bi bi-shop"></i>
+              </div>
+              <div>
+                <span class="badge bg-light text-muted border mb-1" id="seller-badge">Chính chủ</span>
+                <h5 class="fw-bold mb-0 fs-6 text-dark" id="seller-name">Đang tải...</h5>
+                <span class="small text-muted"><i class="bi bi-star-fill text-warning"></i> 4.9/5 (128 đánh giá)</span>
+              </div>
+            </div>
+
+            <div class="mb-3 small">
+              <div class="d-flex gap-2 text-muted mb-2">
+                <i class="bi bi-geo-alt-fill text-teal mt-1"></i>
+                <span id="seller-address">Đang tải địa chỉ...</span>
+              </div>
+              <div class="d-flex gap-2 text-muted">
+                <i class="bi bi-shield-shaded text-teal mt-1"></i>
+                <span>Tài khoản đã xác minh căn cước & giấy phép kinh doanh</span>
+              </div>
+            </div>
+
+            <!-- Nút gọi điện demo -->
+            <button class="btn-cta-orange w-100 justify-content-center py-3 fs-6 mb-2" onclick="triggerCallDemo()">
+              <i class="bi bi-telephone-fill"></i>
+              <span id="seller-btn-phone">0988 123 *** (Bấm để gọi)</span>
+            </button>
+
+            <!-- Nút nhắn tin Zalo demo -->
+            <button class="btn btn-outline-dark w-100 fw-semibold py-2 mb-3" onclick="triggerZaloDemo()">
+              <i class="bi bi-chat-dots me-1"></i> Nhắn tin tư vấn xe
+            </button>
+
+            <div class="p-3 bg-light rounded-3 small text-muted">
+              <div class="fw-semibold text-dark mb-1"><i class="bi bi-shield-lock-fill text-success me-1"></i> Lưu ý an toàn:</div>
+              Không chuyển tiền đặt cọc trước khi đến xem trực tiếp và kiểm tra giấy tờ xe thực tế.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Gọi Điện Thoại Demo -->
+  <div class="modal fade" id="callModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">Liên hệ người bán</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center py-4">
+          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 70px; height: 70px; background-color: var(--orange-color);">
+            <i class="bi bi-telephone-outbound-fill fs-2"></i>
+          </div>
+          <h5 class="fw-bold mb-1" id="modal-seller-name">Người bán</h5>
+          <p class="text-muted small mb-3">Số hotline liên hệ xem xe:</p>
+          <div class="h2 fw-bold text-dark py-2 px-3 bg-light rounded-3 d-inline-block border" id="modal-seller-phone">
+            0988 123 456
+          </div>
+          <div class="mt-4 d-flex justify-content-center gap-2">
+            <button class="btn btn-teal px-4" onclick="copyPhoneToClipboard()">
+              <i class="bi bi-clipboard me-1"></i> Sao chép số điện thoại
+            </button>
+            <button class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Đóng</button>
+          </div>
+          <p class="small text-muted mt-3 mb-0"><i class="bi bi-info-circle"></i> Đây là chức năng mô phỏng liên hệ demo của OtoMarket.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tính Trả Góp Demo -->
+  <div class="modal fade" id="loanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold"><i class="bi bi-calculator text-teal me-2"></i>Bảng tính vay mua xe trả góp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body py-3">
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Giá xe</label>
+            <input type="text" class="form-control" id="loan-car-price" readonly>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Tỷ lệ vay ngân hàng</label>
+            <select class="form-select" id="loan-percent" onchange="calculateLoan()">
+              <option value="0.5">50% giá trị xe</option>
+              <option value="0.7" selected>70% giá trị xe (Phổ biến)</option>
+              <option value="0.8">80% giá trị xe</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-bold">Thời hạn vay</label>
+            <select class="form-select" id="loan-term" onchange="calculateLoan()">
+              <option value="36">3 năm (36 tháng)</option>
+              <option value="60" selected>5 năm (60 tháng)</option>
+              <option value="84">7 năm (84 tháng)</option>
+            </select>
+          </div>
+          <div class="p-3 bg-light rounded-3 border">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted small">Cần trả trước (vốn tự có):</span>
+              <strong id="loan-downpayment">--</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted small">Số tiền vay ngân hàng:</span>
+              <strong id="loan-borrowed">--</strong>
+            </div>
+            <hr class="my-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold">Ước tính trả tháng đầu:</span>
+              <span class="h4 text-orange fw-bold mb-0" id="loan-monthly" style="color: var(--orange-color);">--</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-teal w-100" data-bs-dismiss="modal">Đã hiểu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container text-center small text-secondary">
+      © 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    let currentCar = null;
+
+    function loadCarDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const carId = urlParams.get('id') || 'car-1';
+      currentCar = getCarById(carId);
+
+      // Nếu không tìm thấy, fallback sang xe đầu tiên
+      if (!currentCar) {
+        currentCar = getAllCars()[0];
+      }
+
+      document.title = `${currentCar.title} - OtoMarket`;
+      document.getElementById('breadcrumb-car-title').textContent = currentCar.title;
+      document.getElementById('detail-title').textContent = currentCar.title;
+      document.getElementById('detail-price').textContent = currentCar.priceDisplay || formatCurrency(currentCar.price);
+      document.getElementById('detail-car-id').textContent = currentCar.id.toUpperCase();
+      document.getElementById('detail-posted-date').textContent = currentCar.postedDate || "08/10/2026";
+      document.getElementById('detail-views').textContent = currentCar.viewCount || "312";
+      document.getElementById('detail-description').textContent = currentCar.description;
+
+      // Gallery Images
+      const mainImg = document.getElementById('detail-main-img');
+      mainImg.src = currentCar.image;
+
+      const thumbsContainer = document.getElementById('gallery-thumbs-container');
+      const allImages = currentCar.images && currentCar.images.length > 0 ? currentCar.images : [currentCar.image];
+      
+      document.getElementById('gallery-counter').innerHTML = `<i class="bi bi-camera me-1"></i> ${allImages.length} ảnh`;
+
+      thumbsContainer.innerHTML = allImages.map((imgUrl, idx) => `
+        <div class="gallery-thumb ${idx === 0 ? 'active' : ''}" onclick="switchGalleryImage('${imgUrl}', this)">
+          <img src="${imgUrl}" alt="Hình ${idx + 1}" onerror="this.src='${currentCar.image}'">
+        </div>
+      `).join('');
+
+      // Quick Specs
+      document.getElementById('spec-quick-year').textContent = currentCar.year;
+      document.getElementById('spec-quick-mileage').textContent = currentCar.mileageDisplay || (currentCar.mileage.toLocaleString() + ' km');
+      document.getElementById('spec-quick-trans').textContent = currentCar.transmission;
+      document.getElementById('spec-quick-fuel').textContent = currentCar.fuel;
+
+      // Specs Table
+      document.getElementById('spec-brand').textContent = currentCar.brand;
+      document.getElementById('spec-model').textContent = currentCar.model || currentCar.title;
+      document.getElementById('spec-year').textContent = currentCar.year;
+      document.getElementById('spec-body').textContent = currentCar.bodyType || "SUV";
+      document.getElementById('spec-seats').textContent = currentCar.seats || 5;
+      document.getElementById('spec-origin').textContent = currentCar.origin || "Lắp ráp trong nước";
+      document.getElementById('spec-color').textContent = currentCar.color || "Trắng";
+      document.getElementById('spec-interior').textContent = currentCar.interiorColor || "Đen";
+      document.getElementById('spec-transmission').textContent = currentCar.transmission;
+      document.getElementById('spec-fuel').textContent = currentCar.fuel;
+
+      const specs = currentCar.specifications || {};
+      document.getElementById('spec-engine').textContent = specs.engine || "Động cơ tiêu chuẩn";
+      document.getElementById('spec-power').textContent = specs.power || "150 mã lực";
+      document.getElementById('spec-drivetrain').textContent = specs.drivetrain || "Cầu trước";
+      document.getElementById('spec-expiry').textContent = specs.registrationExpiry || "2027";
+
+      // Seller Info
+      document.getElementById('seller-name').textContent = currentCar.sellerName || "Chủ xe";
+      document.getElementById('seller-badge').textContent = currentCar.sellerType || "Chính chủ";
+      document.getElementById('seller-address').textContent = currentCar.sellerAddress || currentCar.location;
+      document.getElementById('seller-btn-phone').textContent = `${currentCar.sellerPhone} (Bấm để gọi)`;
+
+      // Favorite state
+      updateDetailFavUI();
+
+      // Render xe tương tự
+      renderSimilarCars();
+    }
+
+    function switchGalleryImage(url, thumbElement) {
+      document.getElementById('detail-main-img').src = url;
+      document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+      thumbElement.classList.add('active');
+    }
+
+    function updateDetailFavUI() {
+      if (!currentCar) return;
+      const isFav = isFavorite(currentCar.id);
+      const icon = document.getElementById('fav-icon');
+      const text = document.getElementById('fav-text');
+      const btn = document.getElementById('btn-toggle-fav');
+
+      if (isFav) {
+        icon.className = 'bi bi-heart-fill text-danger';
+        text.textContent = 'Đã lưu yêu thích';
+        btn.classList.add('btn-danger');
+        btn.classList.remove('btn-outline-danger');
+        btn.classList.add('text-white');
+      } else {
+        icon.className = 'bi bi-heart';
+        text.textContent = 'Lưu tin';
+        btn.classList.remove('btn-danger', 'text-white');
+        btn.classList.add('btn-outline-danger');
+      }
+    }
+
+    function handleDetailFavClick() {
+      if (!currentCar) return;
+      toggleFavorite(currentCar.id);
+      updateDetailFavUI();
+    }
+
+    function triggerCallDemo() {
+      if (!currentCar) return;
+      document.getElementById('modal-seller-name').textContent = currentCar.sellerName;
+      document.getElementById('modal-seller-phone').textContent = currentCar.sellerPhone;
+      const modal = new bootstrap.Modal(document.getElementById('callModal'));
+      modal.show();
+    }
+
+    function copyPhoneToClipboard() {
+      if (!currentCar) return;
+      navigator.clipboard.writeText(currentCar.sellerPhone);
+      showToast(`Đã sao chép số điện thoại ${currentCar.sellerPhone} vào clipboard!`, "success");
+    }
+
+    function triggerZaloDemo() {
+      showToast("Đang mở ứng dụng chat với người bán...", "info");
+    }
+
+    function shareCarListing() {
+      if (navigator.share) {
+        navigator.share({
+          title: currentCar.title,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showToast("Đã sao chép liên kết tin đăng!", "success");
+      }
+    }
+
+    function showLoanCalculator() {
+      if (!currentCar) return;
+      document.getElementById('loan-car-price').value = currentCar.priceDisplay || formatCurrency(currentCar.price);
+      calculateLoan();
+      const modal = new bootstrap.Modal(document.getElementById('loanModal'));
+      modal.show();
+    }
+
+    function calculateLoan() {
+      if (!currentCar) return;
+      const price = currentCar.price;
+      const percent = parseFloat(document.getElementById('loan-percent').value);
+      const months = parseInt(document.getElementById('loan-term').value);
+
+      const borrowed = price * percent;
+      const downpayment = price - borrowed;
+
+      // Ước tính lãi 8.5%/năm
+      const monthlyPrincipal = borrowed / months;
+      const monthlyInterest = (borrowed * 0.085) / 12;
+      const firstMonthPayment = monthlyPrincipal + monthlyInterest;
+
+      document.getElementById('loan-downpayment').textContent = formatCurrency(downpayment);
+      document.getElementById('loan-borrowed').textContent = formatCurrency(borrowed);
+      document.getElementById('loan-monthly').textContent = `${formatCurrency(Math.round(firstMonthPayment))} / tháng`;
+    }
+
+    function renderSimilarCars() {
+      const container = document.getElementById('similar-cars-container');
+      if (!container || !currentCar) return;
+
+      const all = getAllCars();
+      const similar = all.filter(c => c.id !== currentCar.id && (c.brand === currentCar.brand || c.bodyType === currentCar.bodyType)).slice(0, 3);
+      
+      if (similar.length === 0) {
+        container.innerHTML = all.filter(c => c.id !== currentCar.id).slice(0, 3).map(c => createCarCardHTML(c)).join('');
+      } else {
+        container.innerHTML = similar.map(c => createCarCardHTML(c)).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCarDetails();
+    });
+  </script>
+</body>
+</html>

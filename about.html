@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới Thiệu & Trung Tâm Hỗ Trợ - OtoMarket</title>
+  <meta name="description" content="Tìm hiểu về OtoMarket - Nền tảng mua bán ô tô uy tín hàng đầu với quy trình kiểm định 160 bước nghiêm ngặt, minh bạch giá cả và hỗ trợ thủ tục pháp lý trọn gói." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-header-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-4">
+        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Tổng đài CSKH: <strong>1900 6868</strong></span>
+        <span><i class="bi bi-clock me-1 text-teal"></i> Giờ làm việc: 8:00 - 20:00 (Thứ 2 - Chủ Nhật)</span>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="about.html" class="text-white">Về chúng tôi</a>
+        <a href="#faq">Hỏi đáp</a>
+        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+        <span>Oto<span class="logo-tag">Market</span></span>
+      </a>
+
+      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="cars.html">Mua xe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#contact">Hỗ trợ</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
+            <i class="bi bi-heart text-danger"></i>
+            <span class="d-none d-xl-inline">Yêu thích</span>
+            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
+          </a>
+
+          <div id="navbar-auth-section">
+            <a href="login.html" class="btn btn-outline-custom">
+              <i class="bi bi-person"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="post-car.html" class="btn-cta-orange">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <section class="py-5 text-white position-relative" style="background: linear-gradient(135deg, #090E17 0%, #0F172A 60%, #16243A 100%);">
+    <div class="container text-center py-4">
+      <span class="badge bg-teal text-white px-3 py-1 mb-2">VỀ CHÚNG TÔI</span>
+      <h1 class="display-6 fw-bold mb-3">OtoMarket — Nền Tảng Giao Dịch Ô Tô Minh Bạch</h1>
+      <p class="text-secondary max-w-700 mx-auto fs-5 mb-0" style="max-width: 650px;">
+        Chúng tôi xây dựng hệ sinh thái mua bán ô tô thông minh, giải quyết nỗi lo xe đâm đụng ngập nước và mập mờ pháp lý.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container">
+
+      <!-- 3 Trụ Cột Giá Trị -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 border text-center h-100 shadow-sm">
+            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-teal fs-2" style="width: 64px; height: 64px; background-color: var(--teal-light);">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Kiểm định 160 bước</h4>
+            <p class="text-muted small mb-0">
+              Mọi chiếc xe có chứng chỉ OtoMarket Certified đều phải vượt qua bài kiểm tra khung gầm, động cơ, hộp số và hệ thống điện tử của chuyên gia độc lập.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 border text-center h-100 shadow-sm">
+            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-orange fs-2" style="width: 64px; height: 64px; background-color: var(--orange-light); color: var(--orange-color);">
+              <i class="bi bi-tag-fill"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Minh bạch giá bán</h4>
+            <p class="text-muted small mb-0">
+              Giá niêm yết công khai rõ ràng, không kênh giá, không phí ẩn. Cung cấp dữ liệu định giá thị trường thực tế để người mua và người bán luôn nhận giá tốt nhất.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 border text-center h-100 shadow-sm">
+            <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-primary fs-2" style="width: 64px; height: 64px; background-color: #EFF6FF;">
+              <i class="bi bi-file-earmark-lock2-fill"></i>
+            </div>
+            <h4 class="h5 fw-bold mb-2">Bảo đảm pháp lý 100%</h4>
+            <p class="text-muted small mb-0">
+              Kiểm tra lịch sử phạt nguội, tranh chấp thế chấp ngân hàng. Hỗ trợ trọn gói thủ tục rút hồ sơ gốc và sang tên đổi chủ trong vòng 24 giờ làm việc.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bảng So Sánh -->
+      <section class="bg-white p-4 p-md-5 rounded-4 border mb-5 shadow-sm" id="inspect">
+        <div class="text-center mb-4">
+          <span class="text-teal fw-bold text-uppercase small">Sự khác biệt vượt trội</span>
+          <h2 class="h4 fw-bold mt-1">So sánh mua xe tại OtoMarket vs Thị trường trôi nổi</h2>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th style="width: 40%;">Tiêu chí đánh giá</th>
+                <th style="width: 30%; background-color: #0F172A;" class="text-teal">OtoMarket Certified</th>
+                <th style="width: 30%;">Mua bán tự do bên ngoài</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-semibold">Kiểm tra đâm đụng, thủy kích</td>
+                <td class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Cam kết văn bản, bồi hoàn 100%</td>
+                <td class="text-danger"><i class="bi bi-x-circle-fill me-1"></i> Tự chịu rủi ro nhìn mắt thường</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Xác minh số km (ODO thật)</td>
+                <td class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Tra cứu lịch sử bảo dưỡng hãng</td>
+                <td class="text-warning"><i class="bi bi-exclamation-triangle-fill me-1"></i> Thường bị tua lại công tơ mét</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Bảo hành sau bán hàng</td>
+                <td class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Bảo hành 12 tháng động cơ & hộp số</td>
+                <td class="text-danger"><i class="bi bi-x-circle-fill me-1"></i> Bán xong hết trách nhiệm</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Hỗ trợ vay ngân hàng</td>
+                <td class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Vay đến 80%, giải ngân trong ngày</td>
+                <td class="text-muted"><i class="bi bi-dash-circle me-1"></i> Phải tự đi tìm ngân hàng</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Thủ tục sang tên xe</td>
+                <td class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Nhân viên hỗ trợ tận nơi</td>
+                <td class="text-muted"><i class="bi bi-dash-circle me-1"></i> Tự đi làm giấy tờ phức tạp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section class="mb-5" id="faq">
+        <div class="text-center mb-4">
+          <span class="text-teal fw-bold text-uppercase small">Giải đáp thắc mắc</span>
+          <h2 class="h4 fw-bold mt-1">Câu hỏi thường gặp của khách hàng</h2>
+        </div>
+
+        <div class="accordion accordion-flush bg-white rounded-4 border p-3 shadow-sm" id="accordionFaq">
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Làm thế nào để biết xe đã qua kiểm định của OtoMarket?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
+              <div class="accordion-body text-secondary small">
+                Những chiếc xe đã kiểm định sẽ có huy hiệu <strong>"OtoMarket Certified"</strong> hoặc <strong>"Kiểm định"</strong> màu xanh teal trên ảnh đại diện tin đăng. Khi bấm vào xem chi tiết, bạn sẽ thấy đầy đủ biên bản kiểm tra 160 hạng mục gồm động cơ, khung sườn và hồ sơ gốc.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Đăng tin bán xe trên OtoMarket có mất phí không?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body text-secondary small">
+                Việc đăng tin bán xe thông thường hoàn toàn <strong>miễn phí 100%</strong> dành cho cả khách hàng cá nhân và chủ xe. Bạn chỉ cần điền thông tin và tải ảnh là tin xe sẽ được duyệt hiển thị tiếp cận hàng nghìn khách hàng.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Thủ tục mua xe trả góp cần những giấy tờ gì?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body text-secondary small">
+                Khách hàng cá nhân chỉ cần chuẩn bị: Căn cước công dân gắn chip, Giấy xác nhận tình trạng hôn nhân (hoặc đăng ký kết hôn) và Chứng minh thu nhập (bảng lương sao kê ngân hàng 6 tháng gần nhất). OtoMarket liên kết với hơn 10 ngân hàng lớn để duyệt hồ sơ trong vòng 2-4 giờ.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Nếu phát hiện xe đã bị đâm đụng hoặc thủy kích sau khi mua thì sao?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+              <div class="accordion-body text-secondary small">
+                Đối với các xe có cam kết từ OtoMarket, nếu trong vòng 7 ngày kể từ lúc nhận xe bạn mang xe vào hãng kiểm tra và phát hiện lỗi đâm đụng nặng hoặc thủy kích trái với cam kết, chúng tôi cam kết thu hồi xe và hoàn trả 100% số tiền đã thanh toán cộng thêm chi phí kiểm tra.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Form Liên Hệ & Trụ Sở -->
+      <section class="bg-white p-4 p-md-5 rounded-4 border shadow-sm" id="contact">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h3 class="h4 fw-bold mb-3">Liên hệ với đội ngũ OtoMarket</h3>
+            <p class="text-muted small mb-4">
+              Bạn có câu hỏi, đề xuất hợp tác hoặc cần khiếu nại chất lượng dịch vụ? Hãy gửi tin nhắn cho chúng tôi, đội ngũ hỗ trợ sẽ phản hồi trong 15 phút.
+            </p>
+
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Họ và tên <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="contact-name" required placeholder="Nguyễn Văn A">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-bold">Số điện thoại <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control" id="contact-phone" required placeholder="0988 123 456">
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold">Email</label>
+                  <input type="email" class="form-control" id="contact-email" placeholder="email@domain.com">
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold">Nội dung tin nhắn <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="contact-message" rows="4" placeholder="Nhập nội dung cần hỗ trợ..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-teal px-4 py-2 fw-semibold">
+                    <i class="bi bi-send-fill me-1"></i> Gửi yêu cầu hỗ trợ
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="bg-light p-4 rounded-4 h-100 border">
+              <h4 class="h5 fw-bold mb-3 text-dark">Hệ thống văn phòng giao dịch</h4>
+
+              <div class="d-flex gap-3 mb-3">
+                <div class="rounded-circle p-2 text-teal bg-white border flex-shrink-0" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Trụ sở chính — Hà Nội</h6>
+                  <p class="small text-muted mb-0">Tầng 8, Tòa nhà Keangnam Landmark 72, Đường Phạm Hùng, Nam Từ Liêm, Hà Nội.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-3">
+                <div class="rounded-circle p-2 text-teal bg-white border flex-shrink-0" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Chi nhánh miền Nam — TP. Hồ Chí Minh</h6>
+                  <p class="small text-muted mb-0">Tầng 12, Landmark 81, Vinhomes Central Park, 720A Điện Biên Phủ, P.22, Q. Bình Thạnh, TP.HCM.</p>
+                </div>
+              </div>
+
+              <div class="d-flex gap-3 mb-4">
+                <div class="rounded-circle p-2 text-teal bg-white border flex-shrink-0" style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-building"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Chi nhánh miền Trung — Đà Nẵng</h6>
+                  <p class="small text-muted mb-0">Số 257 Đường Nguyễn Văn Linh, Quận Hải Châu, TP. Đà Nẵng.</p>
+                </div>
+              </div>
+
+              <div class="p-3 bg-white rounded-3 border">
+                <div class="small fw-bold text-dark mb-1"><i class="bi bi-telephone-inbound-fill text-teal me-2"></i> Đường dây nóng khẩn cấp:</div>
+                <div class="h4 fw-bold text-orange mb-0" style="color: var(--orange-color);">1900 6868</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container text-center small text-secondary">
+      © 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const phone = document.getElementById('contact-phone').value;
+      
+      showToast(`Cảm ơn ${name}! Chúng tôi đã tiếp nhận yêu cầu và sẽ liên hệ lại qua SĐT ${phone} trong giây lát.`, "success");
+      document.getElementById('contact-form').reset();
+    }
+  </script>
+</body>
+</html>

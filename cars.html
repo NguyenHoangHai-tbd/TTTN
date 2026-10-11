@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mua Bán Ô Tô Cũ & Mới Chất Lượng - OtoMarket</title>
+  <meta name="description" content="Khám phá danh sách hơn 2.500+ xe ô tô chất lượng, đa dạng thương hiệu Toyota, Mazda, Hyundai, Ford, Mercedes... Lọc theo giá, đời xe và khu vực dễ dàng." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-header-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-4">
+        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hotline: <strong>1900 6868</strong></span>
+        <span><i class="bi bi-shield-check me-1 text-teal"></i> Cam kết 100% xe đúng mô tả</span>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="about.html">Về chúng tôi</a>
+        <a href="about.html#faq">Hỏi đáp</a>
+        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="brand-logo" href="index.html">
+        <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+        <span>Oto<span class="logo-tag">Market</span></span>
+      </a>
+
+      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2 text-white"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="cars.html">Mua xe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
+            <i class="bi bi-heart text-danger"></i>
+            <span class="d-none d-xl-inline">Yêu thích</span>
+            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
+          </a>
+
+          <div id="navbar-auth-section">
+            <a href="login.html" class="btn btn-outline-custom">
+              <i class="bi bi-person"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="post-car.html" class="btn-cta-orange">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header Breadcrumb -->
+  <div class="bg-white border-bottom py-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Danh sách xe đang bán</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="py-4">
+    <div class="container">
+      <div class="row">
+
+        <!-- Sidebar Bộ lọc bên trái -->
+        <div class="col-lg-3 mb-4">
+          <div class="filter-card">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+              <h5 class="fw-bold mb-0 fs-6"><i class="bi bi-funnel-fill text-teal me-1"></i> Bộ lọc tìm kiếm</h5>
+              <button class="btn btn-link btn-sm text-decoration-none text-muted p-0" onclick="resetFilters()">
+                Đặt lại
+              </button>
+            </div>
+
+            <!-- Từ khóa -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Từ khóa</label>
+              <div class="input-group input-group-sm">
+                <input type="text" id="filter-keyword" class="form-control" placeholder="Tên xe, mẫu xe..." oninput="applyFilters()">
+                <button class="btn btn-outline-secondary" type="button" onclick="applyFilters()"><i class="bi bi-search"></i></button>
+              </div>
+            </div>
+
+            <!-- Hãng xe -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Hãng xe</label>
+              <select id="filter-brand" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả hãng xe</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Kia">Kia</option>
+                <option value="Honda">Honda</option>
+                <option value="Ford">Ford</option>
+                <option value="Mazda">Mazda</option>
+                <option value="VinFast">VinFast</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+              </select>
+            </div>
+
+            <!-- Khoảng giá -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Mức giá</label>
+              <select id="filter-price" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả mức giá</option>
+                <option value="under500">Dưới 500 triệu</option>
+                <option value="500-800">500 - 800 triệu</option>
+                <option value="800-1000">800 triệu - 1 tỷ</option>
+                <option value="1000-1500">1 - 1.5 tỷ</option>
+                <option value="above1500">Trên 1.5 tỷ</option>
+              </select>
+            </div>
+
+            <!-- Năm sản xuất -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Năm sản xuất</label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <select id="filter-year-from" class="form-select form-select-sm" onchange="applyFilters()">
+                    <option value="">Từ năm</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <select id="filter-year-to" class="form-select form-select-sm" onchange="applyFilters()">
+                    <option value="">Đến năm</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Khu vực -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Khu vực</label>
+              <select id="filter-location" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Toàn quốc</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Hải Phòng">Hải Phòng</option>
+                <option value="Bình Dương">Bình Dương</option>
+              </select>
+            </div>
+
+            <!-- Kiểu dáng / Phân khúc -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Kiểu dáng</label>
+              <select id="filter-body-type" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả kiểu dáng</option>
+                <option value="SUV">SUV Gầm cao</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Xe gia đình">Xe gia đình (MPV)</option>
+                <option value="Xe đô thị">Xe đô thị</option>
+                <option value="Bán tải">Bán tải (Pick-up)</option>
+              </select>
+            </div>
+
+            <!-- Nhiên liệu -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Nhiên liệu</label>
+              <select id="filter-fuel" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả nhiên liệu</option>
+                <option value="Xăng">Xăng</option>
+                <option value="Dầu">Dầu (Diesel)</option>
+                <option value="Điện">Điện</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+
+            <!-- Hộp số -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Hộp số</label>
+              <select id="filter-transmission" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả hộp số</option>
+                <option value="Tự động">Tự động</option>
+                <option value="Số sàn">Số sàn</option>
+              </select>
+            </div>
+
+            <button class="btn btn-teal w-100 btn-sm fw-semibold" onclick="applyFilters()">
+              <i class="bi bi-check2-circle"></i> Áp dụng bộ lọc
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Cars Grid bên phải -->
+        <div class="col-lg-9">
+          <!-- Thanh điều khiển trên cùng -->
+          <div class="bg-white p-3 rounded-3 border mb-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+              <span class="fw-bold fs-6" id="results-count">Đang tải danh sách xe...</span>
+            </div>
+
+            <!-- Bộ sắp xếp -->
+            <div class="d-flex align-items-center gap-2">
+              <label class="small text-muted fw-semibold text-nowrap">Sắp xếp theo:</label>
+              <select id="filter-sort" class="form-select form-select-sm" style="width: auto;" onchange="applyFilters()">
+                <option value="newest">Mới đăng nhất</option>
+                <option value="price-asc">Giá: Thấp đến cao</option>
+                <option value="price-desc">Giá: Cao đến thấp</option>
+                <option value="year-desc">Năm sản xuất mới nhất</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Grid xe -->
+          <div class="row" id="cars-grid-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Empty State khi không tìm thấy xe -->
+          <div id="cars-empty-state" class="empty-state-box" style="display: none;">
+            <div class="empty-state-icon">
+              <i class="bi bi-search"></i>
+            </div>
+            <h4 class="fw-bold h5 mb-2">Không tìm thấy xe phù hợp</h4>
+            <p class="text-muted small mb-4">Hãy thử nới lỏng các tiêu chí bộ lọc hoặc tìm kiếm với từ khóa khác.</p>
+            <button class="btn btn-teal fw-semibold" onclick="resetFilters()">
+              <i class="bi bi-arrow-counterclockwise me-1"></i> Xóa tất cả bộ lọc
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row gy-4 mb-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="brand-logo mb-3">
+            <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
+            <span>Oto<span class="logo-tag">Market</span></span>
+          </div>
+          <p class="small text-secondary">
+            Sàn giao dịch mua bán ô tô trực tuyến chất lượng cao. Khám phá hàng ngàn xe đã qua sử dụng và xe mới từ chính chủ và salon uy tín.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Khám phá</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html">Tất cả xe</a></li>
+            <li><a href="post-car.html">Đăng bán xe</a></li>
+            <li><a href="favorites.html">Xe đã lưu</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Thông tin</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">Quy trình kiểm định</a></li>
+            <li><a href="about.html#faq">Hỏi đáp mua bán xe</a></li>
+            <li><a href="about.html#contact">Liên hệ hỗ trợ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Hỗ trợ khách hàng</h5>
+          <p class="small mb-1"><i class="bi bi-telephone-fill text-teal me-2"></i> Hotline: 1900 6868</p>
+          <p class="small mb-1"><i class="bi bi-envelope-fill text-teal me-2"></i> Email: support@otomarket.vn</p>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-3 text-center small text-secondary">
+        © 2026 OtoMarket. Tất cả các quyền được bảo lưu.
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Đọc URL search params khi load trang
+    function initFiltersFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('brand')) {
+        document.getElementById('filter-brand').value = params.get('brand');
+      }
+      if (params.get('bodyType')) {
+        document.getElementById('filter-body-type').value = params.get('bodyType');
+      }
+      if (params.get('location')) {
+        document.getElementById('filter-location').value = params.get('location');
+      }
+      if (params.get('keyword')) {
+        document.getElementById('filter-keyword').value = params.get('keyword');
+      }
+      if (params.get('priceRange')) {
+        document.getElementById('filter-price').value = params.get('priceRange');
+      }
+      if (params.get('sort')) {
+        document.getElementById('filter-sort').value = params.get('sort');
+      }
+    }
+
+    // Lọc và render danh sách xe
+    function applyFilters() {
+      const keyword = document.getElementById('filter-keyword').value.trim().toLowerCase();
+      const brand = document.getElementById('filter-brand').value;
+      const priceRange = document.getElementById('filter-price').value;
+      const yearFrom = parseInt(document.getElementById('filter-year-from').value) || 0;
+      const yearTo = parseInt(document.getElementById('filter-year-to').value) || 9999;
+      const location = document.getElementById('filter-location').value;
+      const bodyType = document.getElementById('filter-body-type').value;
+      const fuel = document.getElementById('filter-fuel').value;
+      const transmission = document.getElementById('filter-transmission').value;
+      const sortBy = document.getElementById('filter-sort').value;
+
+      const allCars = getAllCars();
+
+      let filtered = allCars.filter(car => {
+        // Keyword
+        if (keyword) {
+          const matchTitle = car.title.toLowerCase().includes(keyword);
+          const matchBrand = car.brand.toLowerCase().includes(keyword);
+          const matchModel = car.model ? car.model.toLowerCase().includes(keyword) : false;
+          if (!matchTitle && !matchBrand && !matchModel) return false;
+        }
+
+        // Brand
+        if (brand && car.brand !== brand) return false;
+
+        // Location
+        if (location && !car.location.includes(location)) return false;
+
+        // Body Type
+        if (bodyType && car.bodyType !== bodyType) return false;
+
+        // Fuel
+        if (fuel && car.fuel !== fuel) return false;
+
+        // Transmission
+        if (transmission && car.transmission !== transmission) return false;
+
+        // Year
+        if (car.year < yearFrom || car.year > yearTo) return false;
+
+        // Price range
+        if (priceRange) {
+          if (priceRange === 'under500' && car.price >= 500000000) return false;
+          if (priceRange === '500-800' && (car.price < 500000000 || car.price > 800000000)) return false;
+          if (priceRange === '800-1000' && (car.price < 800000000 || car.price > 1000000000)) return false;
+          if (priceRange === '1000-1500' && (car.price < 1000000000 || car.price > 1500000000)) return false;
+          if (priceRange === 'above1500' && car.price <= 1500000000) return false;
+        }
+
+        return true;
+      });
+
+      // Sorting
+      if (sortBy === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortBy === 'year-desc') {
+        filtered.sort((a, b) => b.year - a.year);
+      } else {
+        // newest: prioritize featured or id order
+        filtered.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
+      }
+
+      // Render
+      const container = document.getElementById('cars-grid-container');
+      const emptyState = document.getElementById('cars-empty-state');
+      const countEl = document.getElementById('results-count');
+
+      countEl.innerHTML = `Tìm thấy <strong class="text-teal">${filtered.length}</strong> xe phù hợp`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+        container.innerHTML = filtered.map(car => createCarCardHTML(car)).join('');
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-keyword').value = '';
+      document.getElementById('filter-brand').value = '';
+      document.getElementById('filter-price').value = '';
+      document.getElementById('filter-year-from').value = '';
+      document.getElementById('filter-year-to').value = '';
+      document.getElementById('filter-location').value = '';
+      document.getElementById('filter-body-type').value = '';
+      document.getElementById('filter-fuel').value = '';
+      document.getElementById('filter-transmission').value = '';
+      document.getElementById('filter-sort').value = 'newest';
+      applyFilters();
+      showToast("Đã đặt lại tất cả bộ lọc", "info");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initFiltersFromURL();
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "OtoMarket - Mua Bán Ô Tô Trực Tuyến",
+  "description": "Nền tảng mua bán ô tô trực tuyến chuyên nghiệp OtoMarket, tìm kiếm xe đã qua sử dụng và xe mới, so sánh giá, đăng tin bán xe và quản lý tin đăng.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
