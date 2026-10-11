@@ -764,7 +764,15 @@ function enhanceBuyCarNavigation() {
 // Đồng bộ mục Hỗ trợ trên navbar của mọi trang.
 function ensureSupportNavigation() {
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    if (nav.querySelector('a[href="about.html#contact"]')) return;
+    const supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
+      const href = link.getAttribute('href') || '';
+      return link.textContent.trim().toLowerCase() === 'hỗ trợ' || href.endsWith('#contact');
+    });
+
+    if (supportLinks.length > 0) {
+      supportLinks.slice(1).forEach(link => link.closest('.nav-item')?.remove());
+      return;
+    }
 
     const aboutLink = nav.querySelector('a[href="about.html"]');
     if (!aboutLink) return;
