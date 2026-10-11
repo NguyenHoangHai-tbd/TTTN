@@ -761,6 +761,21 @@ function enhanceBuyCarNavigation() {
   });
 }
 
+// Đồng bộ mục Hỗ trợ trên navbar của mọi trang.
+function ensureSupportNavigation() {
+  document.querySelectorAll('.navbar-nav').forEach(nav => {
+    if (nav.querySelector('a[href="about.html#contact"]')) return;
+
+    const aboutLink = nav.querySelector('a[href="about.html"]');
+    if (!aboutLink) return;
+
+    const supportItem = document.createElement('li');
+    supportItem.className = 'nav-item';
+    supportItem.innerHTML = '<a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>';
+    aboutLink.closest('.nav-item').insertAdjacentElement('afterend', supportItem);
+  });
+}
+
 // Định dạng tiền tệ VNĐ
 function formatCurrency(amount) {
   if (!amount || isNaN(amount)) return "0 đ";
@@ -878,6 +893,7 @@ function resetDemoData() {
 document.addEventListener('DOMContentLoaded', () => {
   initializeStorage();
   enhanceBuyCarNavigation();
+  ensureSupportNavigation();
   updateFavoritesCountBadge();
   syncHeaderUserUI();
   syncAdminLinksVisibility();
