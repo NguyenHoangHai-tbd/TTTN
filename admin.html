@@ -347,7 +347,7 @@
               <div class="d-flex align-items-center gap-2">
                 <img src="${car.image}" class="rounded-2 object-fit-cover" width="60" height="42" onerror="this.src='https://via.placeholder.com/60x42'">
                 <div>
-                  <a href="car-detail.html?id=${car.id}" target="_blank" class="fw-bold text-dark text-decoration-none small d-block">
+                  <a href="car-detail.html?id=${car.id}" class="fw-bold text-dark text-decoration-none small d-block">
                     ${car.title}
                   </a>
                   <span class="text-muted" style="font-size: 0.75rem;">${car.year} · ${car.transmission} · ${car.fuel}</span>
@@ -421,7 +421,7 @@
       document.getElementById('all-cars-count').textContent = displayCars.length;
       const allTbody = document.getElementById('all-cars-table-body');
       allTbody.innerHTML = displayCars.map(car => {
-        let actionBtn = `<a href="car-detail.html?id=${car.id}" target="_blank" class="btn btn-outline-dark btn-sm py-0 px-2" style="font-size: 0.75rem;">Xem</a>`;
+        let actionBtn = `<a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm py-0 px-2" style="font-size: 0.75rem;">Xem</a>`;
         if (car.status === 'active') {
           actionBtn += ` <button class="btn btn-outline-secondary btn-sm py-0 px-2" onclick="adminHideListing('${car.id}')" style="font-size: 0.75rem;">Ẩn</button>`;
         }
