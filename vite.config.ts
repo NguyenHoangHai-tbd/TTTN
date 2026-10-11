@@ -21,6 +21,8 @@ export default defineConfig(() => {
           myListings: path.resolve(__dirname, 'my-listings.html'),
           favorites: path.resolve(__dirname, 'favorites.html'),
           login: path.resolve(__dirname, 'login.html'),
+          register: path.resolve(__dirname, 'register.html'),
+          profile: path.resolve(__dirname, 'profile.html'),
           admin: path.resolve(__dirname, 'admin.html'),
           about: path.resolve(__dirname, 'about.html'),
         },

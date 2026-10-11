@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mua Bán Ô Tô Cũ & Mới Chất Lượng - OtoMarket</title>
-  <meta name="description" content="Khám phá danh sách hơn 2.500+ xe ô tô chất lượng, đa dạng thương hiệu Toyota, Mazda, Hyundai, Ford, Mercedes... Lọc theo giá, đời xe và khu vực dễ dàng." />
+  <meta name="description" content="Khám phá danh sách hàng ngàn xe ô tô chất lượng, đa dạng thương hiệu Toyota, Mazda, Hyundai, Ford, Mercedes... Lọc theo giá, đời xe và khu vực dễ dàng." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +21,12 @@
     <div class="container d-flex justify-content-between align-items-center">
       <div class="d-flex gap-4">
         <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hotline: <strong>1900 6868</strong></span>
-        <span><i class="bi bi-shield-check me-1 text-teal"></i> Cam kết 100% xe đúng mô tả</span>
+        <span><i class="bi bi-shield-check me-1 text-teal"></i> Sàn giao dịch ô tô minh bạch</span>
       </div>
       <div class="d-flex gap-3">
         <a href="about.html">Về chúng tôi</a>
         <a href="about.html#faq">Hỏi đáp</a>
-        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+        <a href="admin.html" class="text-warning admin-only"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
       </div>
     </div>
   </div>
@@ -49,16 +49,19 @@
             <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom active" href="cars.html">Mua xe</a>
+            <a class="nav-link nav-link-custom" href="cars.html">Mua xe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="cars.html?condition=new">Ô tô mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="cars.html?condition=used">Ô tô cũ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>
           </li>
         </ul>
 
@@ -119,6 +122,16 @@
                 <input type="text" id="filter-keyword" class="form-control" placeholder="Tên xe, mẫu xe..." oninput="applyFilters()">
                 <button class="btn btn-outline-secondary" type="button" onclick="applyFilters()"><i class="bi bi-search"></i></button>
               </div>
+            </div>
+
+            <!-- Tình trạng xe (Mới / Cũ) -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Tình trạng</label>
+              <select id="filter-condition" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả (Mới & Cũ)</option>
+                <option value="new">Xe mới 100%</option>
+                <option value="used">Đã qua sử dụng</option>
+              </select>
             </div>
 
             <!-- Hãng xe -->
@@ -190,7 +203,7 @@
               </select>
             </div>
 
-            <!-- Kiểu dáng / Phân khúc -->
+            <!-- Kiểu dáng -->
             <div class="mb-3">
               <label class="form-label small fw-bold text-muted">Kiểu dáng</label>
               <select id="filter-body-type" class="form-select form-select-sm" onchange="applyFilters()">
@@ -256,6 +269,11 @@
             <!-- Rendered by JS -->
           </div>
 
+          <!-- Pagination container -->
+          <nav aria-label="Pagination" class="mt-4">
+            <ul class="pagination justify-content-center" id="pagination-container"></ul>
+          </nav>
+
           <!-- Empty State khi không tìm thấy xe -->
           <div id="cars-empty-state" class="empty-state-box" style="display: none;">
             <div class="empty-state-icon">
@@ -297,7 +315,7 @@
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Thông tin</h5>
           <ul class="footer-links">
-            <li><a href="about.html">Quy trình kiểm định</a></li>
+            <li><a href="about.html">Quy trình kiểm duyệt</a></li>
             <li><a href="about.html#faq">Hỏi đáp mua bán xe</a></li>
             <li><a href="about.html#contact">Liên hệ hỗ trợ</a></li>
           </ul>
@@ -321,11 +339,16 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
-    // Đọc URL search params khi load trang
+    let currentPage = 1;
+    const pageSize = 9;
+
     function initFiltersFromURL() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('brand')) {
         document.getElementById('filter-brand').value = params.get('brand');
+      }
+      if (params.get('condition')) {
+        document.getElementById('filter-condition').value = params.get('condition');
       }
       if (params.get('bodyType')) {
         document.getElementById('filter-body-type').value = params.get('bodyType');
@@ -344,10 +367,10 @@
       }
     }
 
-    // Lọc và render danh sách xe
     function applyFilters() {
       const keyword = document.getElementById('filter-keyword').value.trim().toLowerCase();
       const brand = document.getElementById('filter-brand').value;
+      const condition = document.getElementById('filter-condition').value;
       const priceRange = document.getElementById('filter-price').value;
       const yearFrom = parseInt(document.getElementById('filter-year-from').value) || 0;
       const yearTo = parseInt(document.getElementById('filter-year-to').value) || 9999;
@@ -357,10 +380,9 @@
       const transmission = document.getElementById('filter-transmission').value;
       const sortBy = document.getElementById('filter-sort').value;
 
-      const allCars = getAllCars();
+      const allCars = getPublicCars();
 
       let filtered = allCars.filter(car => {
-        // Keyword
         if (keyword) {
           const matchTitle = car.title.toLowerCase().includes(keyword);
           const matchBrand = car.brand.toLowerCase().includes(keyword);
@@ -368,25 +390,23 @@
           if (!matchTitle && !matchBrand && !matchModel) return false;
         }
 
-        // Brand
         if (brand && car.brand !== brand) return false;
 
-        // Location
+        if (condition) {
+          const carCond = car.condition || (car.isNew ? 'new' : 'used');
+          if (carCond !== condition) return false;
+        }
+
         if (location && !car.location.includes(location)) return false;
 
-        // Body Type
         if (bodyType && car.bodyType !== bodyType) return false;
 
-        // Fuel
         if (fuel && car.fuel !== fuel) return false;
 
-        // Transmission
         if (transmission && car.transmission !== transmission) return false;
 
-        // Year
         if (car.year < yearFrom || car.year > yearTo) return false;
 
-        // Price range
         if (priceRange) {
           if (priceRange === 'under500' && car.price >= 500000000) return false;
           if (priceRange === '500-800' && (car.price < 500000000 || car.price > 800000000)) return false;
@@ -398,37 +418,75 @@
         return true;
       });
 
-      // Sorting
+      // Sorting without mutating original array
+      let sorted = [...filtered];
       if (sortBy === 'price-asc') {
-        filtered.sort((a, b) => a.price - b.price);
+        sorted.sort((a, b) => a.price - b.price);
       } else if (sortBy === 'price-desc') {
-        filtered.sort((a, b) => b.price - a.price);
+        sorted.sort((a, b) => b.price - a.price);
       } else if (sortBy === 'year-desc') {
-        filtered.sort((a, b) => b.year - a.year);
+        sorted.sort((a, b) => b.year - a.year);
       } else {
-        // newest: prioritize featured or id order
-        filtered.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
+        sorted.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
       }
 
-      // Render
+      renderCarsWithPagination(sorted);
+    }
+
+    function renderCarsWithPagination(filteredList) {
       const container = document.getElementById('cars-grid-container');
       const emptyState = document.getElementById('cars-empty-state');
       const countEl = document.getElementById('results-count');
 
-      countEl.innerHTML = `Tìm thấy <strong class="text-teal">${filtered.length}</strong> xe phù hợp`;
+      countEl.innerHTML = `Tìm thấy <strong class="text-teal">${filteredList.length}</strong> xe phù hợp`;
 
-      if (filtered.length === 0) {
+      if (filteredList.length === 0) {
         container.innerHTML = '';
         emptyState.style.display = 'block';
-      } else {
-        emptyState.style.display = 'none';
-        container.innerHTML = filtered.map(car => createCarCardHTML(car)).join('');
+        renderPagination(0, 1);
+        return;
       }
+
+      emptyState.style.display = 'none';
+
+      const totalPages = Math.ceil(filteredList.length / pageSize);
+      if (currentPage > totalPages) currentPage = 1;
+
+      const start = (currentPage - 1) * pageSize;
+      const paginatedItems = filteredList.slice(start, start + pageSize);
+
+      container.innerHTML = paginatedItems.map(car => createCarCardHTML(car)).join('');
+      renderPagination(totalPages, currentPage);
+    }
+
+    function renderPagination(totalPages, page) {
+      const pagContainer = document.getElementById('pagination-container');
+      if (!pagContainer) return;
+
+      if (totalPages <= 1) {
+        pagContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      html += `<li class="page-item ${page === 1 ? 'disabled' : ''}"><button class="page-link" onclick="changePage(${page - 1})">Trước</button></li>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<li class="page-item ${i === page ? 'active' : ''}"><button class="page-link" onclick="changePage(${i})">${i}</button></li>`;
+      }
+      html += `<li class="page-item ${page === totalPages ? 'disabled' : ''}"><button class="page-link" onclick="changePage(${page + 1})">Sau</button></li>`;
+      pagContainer.innerHTML = html;
+    }
+
+    function changePage(p) {
+      currentPage = p;
+      applyFilters();
+      window.scrollTo({ top: 150, behavior: 'smooth' });
     }
 
     function resetFilters() {
       document.getElementById('filter-keyword').value = '';
       document.getElementById('filter-brand').value = '';
+      document.getElementById('filter-condition').value = '';
       document.getElementById('filter-price').value = '';
       document.getElementById('filter-year-from').value = '';
       document.getElementById('filter-year-to').value = '';
@@ -437,6 +495,7 @@
       document.getElementById('filter-fuel').value = '';
       document.getElementById('filter-transmission').value = '';
       document.getElementById('filter-sort').value = 'newest';
+      currentPage = 1;
       applyFilters();
       showToast("Đã đặt lại tất cả bộ lọc", "info");
     }

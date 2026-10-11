@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản Lý Tin Đăng Xe - OtoMarket</title>
+  <title>Quản Lý Tin Đăng - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="bg-light">
 
   <!-- Top bar -->
   <div class="top-header-bar d-none d-md-block">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="d-flex gap-4">
-        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hỗ trợ quản lý tin: <strong>1900 6868</strong></span>
-        <span><i class="bi bi-person-check me-1 text-teal"></i> Tài khoản đã định danh</span>
+        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hỗ trợ đăng tin: <strong>1900 6868</strong></span>
+        <span><i class="bi bi-shield-check me-1 text-teal"></i> Quản lý tin đăng minh bạch và nhanh chóng</span>
       </div>
       <div class="d-flex gap-3">
         <a href="about.html">Về chúng tôi</a>
-        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+        <a href="about.html#faq">Hỏi đáp</a>
+        <a href="admin.html" class="text-warning admin-only"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
       </div>
     </div>
   </div>
@@ -50,10 +51,13 @@
             <a class="nav-link nav-link-custom" href="cars.html">Mua xe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+            <a class="nav-link nav-link-custom" href="cars.html?condition=new">Ô tô mới</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+            <a class="nav-link nav-link-custom" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
           </li>
         </ul>
 
@@ -68,7 +72,7 @@
 
           <a href="post-car.html" class="btn-cta-orange">
             <i class="bi bi-plus-circle-fill"></i>
-            <span>Đăng bán xe mới</span>
+            <span>Đăng bán xe</span>
           </a>
         </div>
       </div>
@@ -81,68 +85,73 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0 small">
           <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
-          <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Quản lý tin đăng</li>
+          <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Quản lý tin đăng của tôi</li>
         </ol>
       </nav>
     </div>
   </div>
 
   <!-- Main Content -->
-  <main class="py-5">
+  <main class="py-4">
     <div class="container">
       
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
-          <h1 class="h3 fw-bold mb-1">Danh sách tin đăng của bạn</h1>
-          <p class="text-muted small mb-0">Theo dõi trạng thái, lượt xem và thao tác cập nhật tin bán xe</p>
+          <h1 class="h3 fw-bold mb-1">Quản lý tin đăng</h1>
+          <p class="text-muted small mb-0">Theo dõi trạng thái, chỉnh sửa và quản lý các tin đăng bán xe của bạn</p>
         </div>
-        <div class="d-flex gap-2">
+        <div>
           <a href="post-car.html" class="btn btn-teal">
-            <i class="bi bi-plus-lg me-1"></i> Tạo tin đăng mới
-          </a>
-          <a href="admin.html" class="btn btn-outline-secondary">
-            <i class="bi bi-shield-check me-1"></i> Sang trang duyệt tin (Admin)
+            <i class="bi bi-plus-circle me-1"></i> Đăng bán xe mới
           </a>
         </div>
       </div>
 
-      <!-- Tabs Lọc Trạng Thái -->
-      <div class="bg-white p-2 rounded-4 border mb-4">
-        <ul class="nav nav-pills gap-1" id="listing-status-tabs">
-          <li class="nav-item">
-            <button class="nav-link active rounded-3 px-3 py-2 fw-semibold" onclick="filterByStatus('all', this)">
-              Tất cả <span class="badge bg-secondary ms-1" id="tab-count-all">0</span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link rounded-3 px-3 py-2 fw-semibold" onclick="filterByStatus('pending', this)">
-              <i class="bi bi-hourglass-split text-warning me-1"></i> Chờ duyệt <span class="badge bg-warning text-dark ms-1" id="tab-count-pending">0</span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link rounded-3 px-3 py-2 fw-semibold" onclick="filterByStatus('active', this)">
-              <i class="bi bi-check-circle-fill text-success me-1"></i> Đang bán <span class="badge bg-success ms-1" id="tab-count-active">0</span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link rounded-3 px-3 py-2 fw-semibold" onclick="filterByStatus('sold', this)">
-              <i class="bi bi-bag-check-fill text-secondary me-1"></i> Đã bán <span class="badge bg-secondary ms-1" id="tab-count-sold">0</span>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link rounded-3 px-3 py-2 fw-semibold" onclick="filterByStatus('rejected', this)">
-              <i class="bi bi-x-circle-fill text-danger me-1"></i> Bị từ chối <span class="badge bg-danger ms-1" id="tab-count-rejected">0</span>
-            </button>
-          </li>
-        </ul>
-      </div>
+      <!-- Trạng thái Tabs -->
+      <ul class="nav nav-pills gap-2 mb-4" id="listing-status-tabs">
+        <li class="nav-item">
+          <button class="nav-link active px-3 py-2 small fw-semibold" onclick="filterByStatus('all', this)">
+            Tất cả (<span id="tab-count-all">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('draft', this)">
+            Bản nháp (<span id="tab-count-draft">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('pending', this)">
+            Chờ duyệt (<span id="tab-count-pending">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('active', this)">
+            Đang hiển thị (<span id="tab-count-active">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('rejected', this)">
+            Bị từ chối (<span id="tab-count-rejected">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('hidden', this)">
+            Đã ẩn (<span id="tab-count-hidden">0</span>)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('sold', this)">
+            Đã bán (<span id="tab-count-sold">0</span>)
+          </button>
+        </li>
+      </ul>
 
       <!-- Danh sách tin đăng -->
       <div id="listings-list-container">
         <!-- Rendered via JS -->
       </div>
 
-      <!-- Empty state -->
+      <!-- Empty State -->
       <div id="listings-empty-state" class="empty-state-box" style="display: none;">
         <div class="empty-state-icon">
           <i class="bi bi-card-checklist"></i>
@@ -207,24 +216,32 @@
     let currentFilterStatus = 'all';
 
     function renderListings() {
-      const listings = getCustomListings();
+      const currentUser = getLoggedInUser();
+      if (!currentUser) {
+        window.location.href = 'login.html';
+        return;
+      }
+      const userId = currentUser.id || currentUser.email;
+      const listings = getCustomListings().filter(c => c.ownerId === userId || !c.ownerId);
       const container = document.getElementById('listings-list-container');
       const emptyState = document.getElementById('listings-empty-state');
 
-      // Cập nhật số đếm badge
       const countAll = listings.length;
+      const countDraft = listings.filter(c => c.status === 'draft').length;
       const countPending = listings.filter(c => c.status === 'pending').length;
       const countActive = listings.filter(c => c.status === 'active').length;
-      const countSold = listings.filter(c => c.status === 'sold').length;
       const countRejected = listings.filter(c => c.status === 'rejected').length;
+      const countHidden = listings.filter(c => c.status === 'hidden').length;
+      const countSold = listings.filter(c => c.status === 'sold').length;
 
       document.getElementById('tab-count-all').textContent = countAll;
+      document.getElementById('tab-count-draft').textContent = countDraft;
       document.getElementById('tab-count-pending').textContent = countPending;
       document.getElementById('tab-count-active').textContent = countActive;
-      document.getElementById('tab-count-sold').textContent = countSold;
       document.getElementById('tab-count-rejected').textContent = countRejected;
+      document.getElementById('tab-count-hidden').textContent = countHidden;
+      document.getElementById('tab-count-sold').textContent = countSold;
 
-      // Lọc theo tab hiện tại
       let filtered = listings;
       if (currentFilterStatus !== 'all') {
         filtered = listings.filter(c => c.status === currentFilterStatus);
@@ -239,36 +256,51 @@
       emptyState.style.display = 'none';
 
       container.innerHTML = filtered.map(car => {
-        let badgeHtml = '';
-        if (car.status === 'pending') {
-          badgeHtml = `<span class="status-badge status-pending"><i class="bi bi-hourglass-split"></i> Chờ duyệt</span>`;
-        } else if (car.status === 'active') {
-          badgeHtml = `<span class="status-badge status-active"><i class="bi bi-check-circle-fill"></i> Đang bán</span>`;
-        } else if (car.status === 'sold') {
-          badgeHtml = `<span class="status-badge status-sold"><i class="bi bi-bag-check-fill"></i> Đã bán</span>`;
-        } else if (car.status === 'rejected') {
-          badgeHtml = `<span class="status-badge status-rejected"><i class="bi bi-x-circle-fill"></i> Bị từ chối</span>`;
-        }
-
+        const badgeHtml = getStatusBadgeHtml(car.status);
         const rejectReasonHtml = car.status === 'rejected' && car.rejectReason 
-          ? `<div class="mt-2 small text-danger"><i class="bi bi-exclamation-octagon me-1"></i> Lý do: ${car.rejectReason}</div>` 
+          ? `<div class="mt-2 small text-danger"><i class="bi bi-exclamation-octagon me-1"></i> Lý do từ chối: ${car.rejectReason}</div>` 
           : '';
+
+        let actionsHtml = '';
+        if (car.status === 'draft') {
+          actionsHtml = `
+            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
+            <button class="btn btn-teal btn-sm text-white" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check"></i> Gửi duyệt</button>
+          `;
+        } else if (car.status === 'pending') {
+          actionsHtml = `
+            <span class="text-muted small fst-italic">Đang chờ xét duyệt</span>
+          `;
+        } else if (car.status === 'rejected') {
+          actionsHtml = `
+            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
+            <button class="btn btn-teal btn-sm text-white" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check"></i> Gửi lại duyệt</button>
+          `;
+        } else if (car.status === 'active') {
+          actionsHtml = `
+            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
+            <button class="btn btn-outline-secondary btn-sm" onclick="hideListing('${car.id}')"><i class="bi bi-eye-slash"></i> Ẩn tin</button>
+            <button class="btn btn-outline-dark btn-sm" onclick="markSold('${car.id}')"><i class="bi bi-bag-check"></i> Đã bán</button>
+          `;
+        } else if (car.status === 'hidden' || car.status === 'sold') {
+          actionsHtml = `
+            <button class="btn btn-teal btn-sm text-white" onclick="reopenListing('${car.id}')"><i class="bi bi-arrow-clockwise"></i> Mở bán lại</button>
+          `;
+        }
 
         return `
           <div class="bg-white p-3 p-md-4 rounded-4 border mb-3 shadow-sm">
             <div class="row align-items-center gy-3">
-              <!-- Cột Ảnh -->
               <div class="col-md-3 col-sm-4">
                 <div class="rounded-3 overflow-hidden position-relative" style="height: 140px;">
                   <img src="${car.image}" alt="${car.title}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
                 </div>
               </div>
 
-              <!-- Cột Thông tin -->
               <div class="col-md-6 col-sm-8">
                 <div class="d-flex align-items-center gap-2 mb-1">
                   ${badgeHtml}
-                  <span class="small text-muted"><i class="bi bi-calendar3"></i> Đăng ngày: ${car.postedDate}</span>
+                  <span class="small text-muted"><i class="bi bi-calendar3"></i> Ngày tạo: ${car.postedDate}</span>
                 </div>
                 <h5 class="fw-bold mb-1">
                   <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>
@@ -279,39 +311,19 @@
                   <span><i class="bi bi-speedometer2"></i> ${car.mileageDisplay || (car.mileage + ' km')}</span>
                   <span><i class="bi bi-gear"></i> ${car.transmission}</span>
                   <span><i class="bi bi-fuel-pump"></i> ${car.fuel}</span>
-                  <span><i class="bi bi-eye"></i> ${car.viewCount || 0} lượt xem</span>
+                  <span><i class="bi bi-eye"></i> ${car.viewCount || 1} lượt xem</span>
                 </div>
                 ${rejectReasonHtml}
               </div>
 
-              <!-- Cột Hành động -->
               <div class="col-md-3 text-md-end">
                 <div class="d-flex flex-column flex-sm-row flex-md-column gap-2 justify-content-end">
                   <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm">
-                    <i class="bi bi-eye"></i> Xem tin
+                    <i class="bi bi-eye"></i> Xem chi tiết
                   </a>
-                  
-                  <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')">
-                    <i class="bi bi-pencil"></i> Sửa tin
-                  </button>
-
-                  ${car.status === 'active' ? `
-                    <button class="btn btn-outline-success btn-sm" onclick="markAsSold('${car.id}')">
-                      <i class="bi bi-check2-all"></i> Đã bán
-                    </button>
-                    <button class="btn btn-outline-secondary btn-sm" onclick="toggleHideListing('${car.id}')">
-                      <i class="bi bi-eye-slash"></i> Ẩn tin
-                    </button>
-                  ` : ''}
-
-                  ${car.status === 'sold' ? `
-                    <button class="btn btn-outline-success btn-sm" onclick="reOpenListing('${car.id}')">
-                      <i class="bi bi-arrow-clockwise"></i> Mở bán lại
-                    </button>
-                  ` : ''}
-
+                  ${actionsHtml}
                   <button class="btn btn-outline-danger btn-sm" onclick="handleDeleteListing('${car.id}')">
-                    <i class="bi bi-trash"></i> Xóa tin
+                    <i class="bi bi-trash"></i> Xóa
                   </button>
                 </div>
               </div>
@@ -328,26 +340,34 @@
       renderListings();
     }
 
-    function markAsSold(id) {
-      if (confirm("Đánh dấu xe này là ĐÃ BÁN?")) {
-        updateListingStatus(id, 'sold');
-        showToast("Đã cập nhật trạng thái: Đã bán xe thành công!", "success");
-        renderListings();
-      }
-    }
-
-    function toggleHideListing(id) {
-      if (confirm("Bạn muốn tạm ẩn tin đăng này khỏi sàn?")) {
-        updateListingStatus(id, 'pending');
-        showToast("Đã tạm ẩn tin đăng khỏi trang tìm kiếm", "info");
-        renderListings();
-      }
-    }
-
-    function reOpenListing(id) {
-      updateListingStatus(id, 'active');
-      showToast("Đã mở bán lại tin đăng!", "success");
+    function submitForReview(id) {
+      updateListingStatus(id, 'pending');
+      showToast("Đã gửi yêu cầu xét duyệt tin đăng!", "success");
       renderListings();
+    }
+
+    function hideListing(id) {
+      if (confirm("Bạn muốn ẩn tin đăng này?")) {
+        updateListingStatus(id, 'hidden');
+        showToast("Đã ẩn tin đăng thành công", "info");
+        renderListings();
+      }
+    }
+
+    function markSold(id) {
+      if (confirm("Đánh dấu xe này đã bán?")) {
+        updateListingStatus(id, 'sold');
+        showToast("Đã đánh dấu xe đã bán", "success");
+        renderListings();
+      }
+    }
+
+    function reopenListing(id) {
+      if (confirm("Gửi yêu cầu mở bán lại tin này để Admin duyệt?")) {
+        updateListingStatus(id, 'pending');
+        showToast("Đã gửi yêu cầu mở bán lại (chờ duyệt)", "success");
+        renderListings();
+      }
     }
 
     function handleDeleteListing(id) {

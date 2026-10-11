@@ -731,3 +731,8 @@ a {
     height: 300px;
   }
 }
+
+/* Admin only links (ẩn mặc định nếu không phải Admin) */
+.admin-only:not(.is-admin-visible) {
+  display: none !important;
+}

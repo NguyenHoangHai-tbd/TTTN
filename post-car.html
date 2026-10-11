@@ -26,7 +26,7 @@
       <div class="d-flex gap-3">
         <a href="about.html">Về chúng tôi</a>
         <a href="about.html#faq">Hỏi đáp</a>
-        <a href="admin.html" class="text-warning"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
+        <a href="admin.html" class="text-warning admin-only"><i class="bi bi-gear-wide-connected me-1"></i>Quản trị demo</a>
       </div>
     </div>
   </div>
@@ -172,7 +172,7 @@
 
                 <div class="col-md-4">
                   <label class="form-label fw-semibold small">Tình trạng xe <span class="text-danger">*</span></label>
-                  <select class="form-select" id="car-condition" required>
+                  <select class="form-select" id="car-condition" required onchange="handleConditionChange()">
                     <option value="used" selected>Đã qua sử dụng</option>
                     <option value="new">Xe mới 100%</option>
                   </select>
@@ -346,9 +346,14 @@
               <a href="cars.html" class="btn btn-outline-secondary">
                 <i class="bi bi-arrow-left"></i> Quay lại
               </a>
-              <button type="submit" class="btn-cta-orange px-5 py-3 fs-6">
-                <i class="bi bi-check2-circle me-1"></i> Hoàn tất & Gửi tin đăng
-              </button>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary px-4 py-3" onclick="submitCarForm('draft')">
+                  <i class="bi bi-file-earmark-text me-1"></i> Lưu bản nháp
+                </button>
+                <button type="button" class="btn-cta-orange px-5 py-3 fs-6" onclick="submitCarForm('pending')">
+                  <i class="bi bi-send-check me-1"></i> Gửi xét duyệt
+                </button>
+              </div>
             </div>
 
           </form>
@@ -377,7 +382,7 @@
             <a href="my-listings.html" class="btn btn-teal py-2">
               <i class="bi bi-card-checklist me-1"></i> Đến trang Quản lý tin đăng
             </a>
-            <a href="admin.html" class="btn btn-outline-dark py-2">
+            <a href="admin.html" class="btn btn-outline-dark py-2 admin-only">
               <i class="bi bi-shield-check me-1"></i> Đến trang Quản trị (Duyệt demo)
             </a>
             <button type="button" class="btn btn-link text-muted text-decoration-none small" onclick="window.location.reload()">
@@ -455,8 +460,24 @@
       }
     }
 
-    function handlePostCarSubmit(event) {
-      event.preventDefault();
+    function handleConditionChange() {
+      const condition = document.getElementById('car-condition').value;
+      const mileageInput = document.getElementById('car-mileage');
+      if (condition === 'new') {
+        mileageInput.value = 0;
+        mileageInput.disabled = true;
+      } else {
+        mileageInput.disabled = false;
+        if (mileageInput.value == 0) mileageInput.value = '';
+      }
+    }
+
+    function submitCarForm(status) {
+      const user = getLoggedInUser();
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
 
       const title = document.getElementById('car-title').value.trim();
       const brand = document.getElementById('car-brand').value;
@@ -464,7 +485,9 @@
       const year = parseInt(document.getElementById('car-year').value);
       const body = document.getElementById('car-body').value;
       const price = parseInt(document.getElementById('car-price').value);
-      const mileage = parseInt(document.getElementById('car-mileage').value);
+      const condition = document.getElementById('car-condition').value;
+      const isNew = condition === 'new';
+      const mileage = isNew ? 0 : (parseInt(document.getElementById('car-mileage').value) || 0);
       const transmission = document.getElementById('car-transmission').value;
       const fuel = document.getElementById('car-fuel').value;
       const seats = parseInt(document.getElementById('car-seats').value);
@@ -476,7 +499,7 @@
       const sellerPhone = document.getElementById('seller-phone').value.trim();
 
       // Kiểm tra validation
-      if (!title || !brand || !model || !price || isNaN(price) || isNaN(mileage) || !color || !description || !sellerName || !sellerPhone) {
+      if (!title || !brand || !model || !price || isNaN(price) || (!isNew && isNaN(mileage)) || !color || !description || !sellerName || !sellerPhone) {
         showToast("Vui lòng điền đầy đủ các trường bắt buộc!", "error");
         return;
       }
@@ -489,6 +512,7 @@
       // Tạo object tin đăng mới
       const newListing = {
         id: `custom-${Date.now()}`,
+        ownerId: user.id || user.email,
         title: title,
         brand: brand,
         model: model,
@@ -496,7 +520,7 @@
         price: price,
         priceDisplay: formatCurrency(price),
         mileage: mileage,
-        mileageDisplay: `${mileage.toLocaleString()} km`,
+        mileageDisplay: isNew ? "0 km" : `${mileage.toLocaleString()} km`,
         fuel: fuel,
         transmission: transmission,
         bodyType: body,
@@ -512,10 +536,10 @@
         image: selectedImageUrl,
         images: [selectedImageUrl],
         isFeatured: false,
-        isNew: false,
+        isNew: isNew,
         postedDate: new Date().toLocaleDateString('vi-VN'),
         viewCount: 1,
-        status: "pending", // Chờ duyệt
+        status: status, // 'draft' hoặc 'pending'
         description: description,
         specifications: {
           engine: "Động cơ tiêu chuẩn",
@@ -531,21 +555,26 @@
       // Lưu vào localStorage
       saveCustomListing(newListing);
 
-      // Hiển thị thông báo chính xác như yêu cầu
-      showToast("Tin đăng đã được lưu ở trạng thái chờ duyệt", "success");
+      if (status === 'pending') {
+        showToast("Tin đang chờ duyệt", "success");
+      } else {
+        showToast("Đã lưu bản nháp thành công", "success");
+      }
 
-      // Mở modal chúc mừng
-      const modal = new bootstrap.Modal(document.getElementById('successPostModal'));
-      modal.show();
+      setTimeout(() => {
+        window.location.href = 'my-listings.html';
+      }, 1000);
     }
 
-    // Tự điền thông tin người dùng nếu đã đăng nhập
+    // Kiểm tra đăng nhập và tự điền thông tin người dùng
     document.addEventListener('DOMContentLoaded', () => {
       const user = getLoggedInUser();
-      if (user) {
-        if (user.name) document.getElementById('seller-name').value = user.name;
-        if (user.phone) document.getElementById('seller-phone').value = user.phone;
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
       }
+      if (user.name) document.getElementById('seller-name').value = user.name;
+      if (user.phone) document.getElementById('seller-phone').value = user.phone;
     });
   </script>
 </body>

@@ -43,6 +43,12 @@
               <p class="text-muted small">Truy cập tài khoản để đăng tin và quản lý danh sách xe</p>
             </div>
 
+            <!-- Thông báo khi chuyển hướng do chưa đăng nhập hoặc sai quyền -->
+            <div id="auth-alert-box" class="alert alert-warning d-flex align-items-center gap-2 mb-3 py-2 px-3 small border-0" style="display: none; background-color: #FEF3C7; color: #92400E;">
+              <i class="bi bi-shield-exclamation fs-5 flex-shrink-0"></i>
+              <span id="auth-alert-text"></span>
+            </div>
+
             <!-- Form đăng nhập -->
             <form id="login-form" onsubmit="handleLoginSubmit(event)">
               <div class="mb-3">
@@ -86,16 +92,16 @@
               </span>
               <div class="d-grid gap-2">
                 <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('user')">
-                  <i class="bi bi-person-circle me-1 text-teal"></i> <strong>Chủ xe / Khách hàng:</strong> Nguyễn Hoàng Nam
+                  <i class="bi bi-person-circle me-1 text-teal"></i> <strong>Chủ xe / Khách hàng:</strong> Nguyễn Hoàng Nam (User thường)
                 </button>
                 <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('admin')">
-                  <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong>Quản trị viên (Admin):</strong> Ban Kiểm Duyệt
+                  <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong>Quản trị viên (Admin):</strong> Ban Kiểm Duyệt (Toàn quyền)
                 </button>
               </div>
             </div>
 
             <div class="text-center mt-4 small text-muted">
-              Chưa có tài khoản? <a href="#" class="text-teal fw-semibold" onclick="showToast('Bạn có thể bấm Đăng nhập ngay với bất kỳ thông tin nào trong bản demo này!', 'info'); return false;">Đăng ký miễn phí</a>
+              Chưa có tài khoản? <a href="register.html" class="text-teal fw-semibold">Đăng ký tài khoản mới</a>
             </div>
 
           </div>
@@ -112,6 +118,21 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Kiểm tra thông báo phân quyền được lưu từ sessionStorage
+      const authMessage = sessionStorage.getItem('otomarket_auth_message');
+      if (authMessage) {
+        const alertBox = document.getElementById('auth-alert-box');
+        const alertText = document.getElementById('auth-alert-text');
+        if (alertBox && alertText) {
+          alertText.textContent = authMessage;
+          alertBox.style.display = 'flex';
+        }
+        showToast(authMessage, 'warning');
+        sessionStorage.removeItem('otomarket_auth_message');
+      }
+    });
+
     function togglePasswordVisibility() {
       const pwdInput = document.getElementById('login-password');
       const icon = document.getElementById('pwd-toggle-icon');
@@ -157,7 +178,7 @@
         name: name || "Người Dùng Mẫu",
         email: email,
         phone: "0988 888 999",
-        role: email.includes('admin') ? "admin" : "user",
+        role: email.toLowerCase().includes('admin') ? "admin" : "user",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
       };
 
@@ -166,9 +187,25 @@
 
     function handleDoLogin(user) {
       setLoggedInUser(user);
-      showToast(`Đăng nhập thành công! Chào mừng ${user.name}`, "success");
+      showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Quản trị viên' : 'Thành viên'})`, "success");
+
+      const savedRedirect = localStorage.getItem('otomarket_redirect_after_login');
+      localStorage.removeItem('otomarket_redirect_after_login');
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectTarget = urlParams.get('redirect') || savedRedirect;
 
       setTimeout(() => {
+        if (redirectTarget) {
+          // Nếu trang đích là admin nhưng người dùng không phải admin
+          if (redirectTarget.toLowerCase().includes('admin') && user.role !== 'admin') {
+            showToast("Tài khoản thành viên không thể vào trang Quản trị. Đang chuyển về Quản lý tin đăng...", "warning");
+            window.location.href = 'my-listings.html';
+            return;
+          }
+          window.location.href = redirectTarget;
+          return;
+        }
+
         if (user.role === 'admin') {
           window.location.href = 'admin.html';
         } else {
