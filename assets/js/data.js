@@ -127,7 +127,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "06/10/2026",
     viewCount: 289,
-    description: "Màu đỏ Soul Red Crystal sang trọng đặc trưng của Mazda. Xe bảo dưỡng mốc định kỳ tại Mazda Lê Văn Lương. Trang bị công nghệ GVC Plus, đèn LED thích ứng thông minh, cốp điện, nhớ ghế 2 vị trí, phanh tay điện tử kèm Auto Hold. Salon tặng gói kiểm tra 160 bước và gói làm đẹp xe cao cấp.",
+    description: "Màu đỏ Soul Red Crystal sang trọng đặc trưng của Mazda. Xe bảo dưỡng mốc định kỳ tại Mazda Lê Văn Lương. Trang bị công nghệ GVC Plus, đèn LED thích ứng thông minh, cốp điện, nhớ ghế 2 vị trí, phanh tay điện tử kèm Auto Hold. Người mua cần trực tiếp kiểm tra xe và giấy tờ trước khi giao dịch.",
     specifications: {
       engine: "SkyActiv-G 2.0L",
       power: "154 mã lực / 6.000 rpm",
@@ -331,7 +331,7 @@ const SAMPLE_CARS = [
     origin: "Lắp ráp trong nước",
     location: "Hà Nội",
     sellerType: "Salon uy tín",
-    sellerName: "Haxaco Mercedes Certified",
+    sellerName: "Haxaco Mercedes",
     sellerPhone: "0968 888 999",
     sellerAddress: "Láng Hạ, Đống Đa, Hà Nội",
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",

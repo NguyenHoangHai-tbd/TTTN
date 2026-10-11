@@ -416,22 +416,11 @@ function getCurrentUserId() {
 
 function getFavorites() {
   const userId = getCurrentUserId();
-  if (!userId) {
-    try {
-      const data = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-      return data ? JSON.parse(data) : [];
-    } catch(e) { return []; }
-  }
+  if (!userId) return [];
   const key = `otomarket_favorites_${userId}`;
   try {
     const data = localStorage.getItem(key);
-    if (!data) {
-      const legacy = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-      const favs = legacy ? JSON.parse(legacy) : [];
-      localStorage.setItem(key, JSON.stringify(favs));
-      return favs;
-    }
-    return JSON.parse(data);
+    return data ? JSON.parse(data) : [];
   } catch (e) {
     return [];
   }
@@ -439,10 +428,7 @@ function getFavorites() {
 
 function saveFavorites(favs) {
   const userId = getCurrentUserId();
-  if (!userId) {
-    localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favs));
-    return;
-  }
+  if (!userId) return;
   const key = `otomarket_favorites_${userId}`;
   localStorage.setItem(key, JSON.stringify(favs));
 }
@@ -518,8 +504,9 @@ function updateReportStatus(reportId, status, adminName = 'Admin') {
   const report = reports.find(r => r.id === reportId);
   if (report) {
     report.status = status;
-    report.resolvedAt = new Date().toISOString();
-    report.resolvedBy = adminName;
+    const isResolved = status === 'resolved';
+    report.resolvedAt = isResolved ? new Date().toISOString() : null;
+    report.resolvedBy = isResolved ? adminName : null;
     localStorage.setItem(STORAGE_KEYS.REPORTS, JSON.stringify(reports));
   }
 }
@@ -538,6 +525,66 @@ function getStatusBadgeHtml(status) {
 }
 
 // Quản lý User đăng nhập
+function getRegisteredUsers() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.REGISTERED_USERS);
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function registerUser(userData) {
+  const email = String(userData.email || '').trim().toLowerCase();
+  if (!email || email === 'admin@otomarket.vn') {
+    return { success: false, message: 'Email không hợp lệ hoặc đã được sử dụng.' };
+  }
+
+  const users = getRegisteredUsers();
+  if (users.some(user => String(user.email).toLowerCase() === email)) {
+    return { success: false, message: 'Email này đã được đăng ký.' };
+  }
+
+  const user = {
+    id: `user-${Date.now()}`,
+    name: String(userData.name || '').trim(),
+    email,
+    phone: String(userData.phone || '').trim(),
+    password: String(userData.password || ''),
+    role: 'user',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+    createdAt: new Date().toISOString()
+  };
+  users.push(user);
+  localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
+
+  const { password, ...safeUser } = user;
+  return { success: true, user: safeUser };
+}
+
+function updateUserProfile(profileData) {
+  const currentUser = getLoggedInUser();
+  if (!currentUser) return false;
+
+  const updatedUser = {
+    ...currentUser,
+    name: String(profileData.name || currentUser.name || '').trim(),
+    phone: String(profileData.phone || currentUser.phone || '').trim()
+  };
+  setLoggedInUser(updatedUser);
+
+  const users = getRegisteredUsers();
+  const index = users.findIndex(user =>
+    (currentUser.id && user.id === currentUser.id) ||
+    String(user.email).toLowerCase() === String(currentUser.email).toLowerCase()
+  );
+  if (index >= 0) {
+    users[index] = { ...users[index], name: updatedUser.name, phone: updatedUser.phone };
+    localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
+  }
+  return true;
+}
+
 function getLoggedInUser() {
   try {
     const data = localStorage.getItem(STORAGE_KEYS.AUTH_USER);
@@ -548,7 +595,12 @@ function getLoggedInUser() {
 }
 
 function setLoggedInUser(user) {
-  localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(user));
+  const normalizedUser = {
+    ...user,
+    email: String(user.email || '').trim().toLowerCase(),
+    role: String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn' ? 'admin' : 'user'
+  };
+  localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(normalizedUser));
 }
 
 function logoutUser() {
@@ -619,7 +671,7 @@ function syncHeaderUserUI() {
 
   const user = getLoggedInUser();
   if (user) {
-    const isAdmin = user.role === 'admin' || user.email === 'admin@otomarket.vn';
+    const isAdmin = user.role === 'admin' && user.email === 'admin@otomarket.vn';
     authSection.innerHTML = `
       <div class="dropdown">
         <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
@@ -647,7 +699,7 @@ function syncHeaderUserUI() {
 
 function syncAdminLinksVisibility() {
   const user = getLoggedInUser();
-  const isAdmin = user && (user.role === 'admin' || user.email === 'admin@otomarket.vn');
+  const isAdmin = user && user.role === 'admin' && user.email === 'admin@otomarket.vn';
   document.querySelectorAll('.admin-only').forEach(el => {
     el.style.display = isAdmin ? '' : 'none';
   });
@@ -656,7 +708,7 @@ function syncAdminLinksVisibility() {
 function enforcePagePermissions() {
   const path = window.location.pathname;
   const user = getLoggedInUser();
-  const isAdmin = user && (user.role === 'admin' || user.email === 'admin@otomarket.vn');
+  const isAdmin = user && user.role === 'admin' && user.email === 'admin@otomarket.vn';
 
   if (path.includes('post-car.html') || path.includes('my-listings.html')) {
     if (!user) {

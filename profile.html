@@ -234,7 +234,8 @@
       document.getElementById('profile-email-input').value = user.email || "";
 
       // Thống kê nhanh
-      const myListings = getCustomListings();
+      const userId = user.id || user.email;
+      const myListings = getCustomListings().filter(listing => listing.ownerId === userId);
       const myFavs = getFavorites();
       document.getElementById('stat-my-listings').textContent = myListings.length;
       document.getElementById('stat-my-favs').textContent = myFavs.length;

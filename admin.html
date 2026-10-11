@@ -404,6 +404,12 @@
       const id = document.getElementById('reject-car-id').value;
       const reason = document.getElementById('reject-reason-custom').value.trim();
 
+      if (!reason) {
+        showToast("Vui lòng nhập lý do từ chối tin đăng.", "error");
+        document.getElementById('reject-reason-custom').focus();
+        return;
+      }
+
       updateListingStatus(id, 'rejected', reason);
       bootstrap.Modal.getInstance(document.getElementById('rejectModal')).hide();
       showToast("Đã từ chối tin đăng và cập nhật lý do!", "warning");

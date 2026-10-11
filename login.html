@@ -178,7 +178,7 @@
         name: name || "Người Dùng Mẫu",
         email: email,
         phone: "0988 888 999",
-        role: email.toLowerCase().includes('admin') ? "admin" : "user",
+        role: email.toLowerCase() === 'admin@otomarket.vn' ? "admin" : "user",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
       };
 
