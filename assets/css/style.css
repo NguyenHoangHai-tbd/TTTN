@@ -737,6 +737,40 @@ a {
   display: none !important;
 }
 
+/* Menu Mua xe xổ xuống */
+.buy-car-dropdown { position: relative; }
+.buy-car-main-link { display: flex !important; align-items: center; gap: 7px; }
+.buy-car-chevron { font-size: .68rem; transition: transform .2s ease; }
+.buy-car-menu {
+  position: absolute;
+  z-index: 1050;
+  top: calc(100% + 10px);
+  left: 50%;
+  width: 310px;
+  padding: 9px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  border: 1px solid #e3e8ef;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(15,23,42,.2);
+}
+.buy-car-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -13px; height: 14px; }
+.buy-car-dropdown:hover .buy-car-menu,
+.buy-car-dropdown:focus-within .buy-car-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.buy-car-dropdown:hover .buy-car-chevron { transform: rotate(180deg); }
+.buy-car-menu > a:not(.buy-car-menu-all) { display: flex; gap: 12px; align-items: center; padding: 11px; border-radius: 11px; color: #172033; }
+.buy-car-menu > a:not(.buy-car-menu-all):hover { background: #f0fdfa; color: #0f766e; }
+.buy-car-menu strong, .buy-car-menu small { display: block; }
+.buy-car-menu strong { margin-bottom: 2px; font-size: .88rem; }
+.buy-car-menu small { color: #7b899d; font-size: .72rem; }
+.buy-car-menu-icon { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border-radius: 10px; }
+.buy-car-menu-icon.new { color: #0f766e; background: #ccfbf1; }
+.buy-car-menu-icon.used { color: #c2410c; background: #ffedd5; }
+.buy-car-menu-all { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; padding: 10px 12px; border-top: 1px solid #edf1f5; color: #0f766e; font-size: .78rem; font-weight: 700; }
+
 /* Admin dashboard */
 .admin-page {
   background: #f4f7fb;
@@ -790,7 +824,7 @@ a {
   padding: 38px 42px;
   overflow: hidden;
   border-radius: 26px;
-  background: linear-gradient(120deg, #0b1324 0%, #13233b 58%, #0f766e 140%);
+  background: linear-gradient(120deg, #0b1324 0%, #101d32 68%, #0f4c4a 140%);
   box-shadow: 0 22px 55px rgba(15,23,42,.16);
   color: #fff;
 }
@@ -888,6 +922,11 @@ a {
 .admin-panel .form-select { border-color: #dbe3ec; border-radius: 9px; }
 
 @media (max-width: 991.98px) {
+  .buy-car-menu { position: static; width: 100%; margin: 5px 0 8px; opacity: 1; visibility: visible; transform: none; box-shadow: none; border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
+  .buy-car-dropdown:hover .buy-car-menu, .buy-car-dropdown:focus-within .buy-car-menu { transform: none; }
+  .buy-car-menu > a:not(.buy-car-menu-all), .buy-car-menu-all { color: #e2e8f0; }
+  .buy-car-menu > a:not(.buy-car-menu-all):hover { background: rgba(20,184,166,.12); color: #5eead4; }
+  .buy-car-menu small { color: #94a3b8; }
   .admin-welcome-art { opacity: .35; right: 20px; }
   .admin-layout { grid-template-columns: 1fr; }
   .admin-sidebar { position: static; display: flex; gap: 5px; overflow-x: auto; padding: 9px; }

@@ -725,6 +725,42 @@ function enforcePagePermissions() {
   }
 }
 
+// Menu Mua xe dùng chung: rê chuột để chọn xe mới/xe cũ, nhấn để xem tất cả.
+function enhanceBuyCarNavigation() {
+  document.querySelectorAll('.navbar-nav').forEach(nav => {
+    const buyLink = Array.from(nav.querySelectorAll('a')).find(link => {
+      const href = link.getAttribute('href');
+      return href === 'cars.html' && link.closest('.nav-item');
+    });
+    if (!buyLink) return;
+
+    nav.querySelectorAll('a[href="cars.html?condition=new"], a[href="cars.html?condition=used"]').forEach(link => {
+      const item = link.closest('.nav-item');
+      if (item) item.remove();
+    });
+
+    const item = buyLink.closest('.nav-item');
+    item.classList.add('buy-car-dropdown');
+    buyLink.classList.add('buy-car-main-link');
+    buyLink.insertAdjacentHTML('beforeend', '<i class="bi bi-chevron-down buy-car-chevron"></i>');
+    item.insertAdjacentHTML('beforeend', `
+      <div class="buy-car-menu" role="menu">
+        <a href="cars.html?condition=new" role="menuitem">
+          <span class="buy-car-menu-icon new"><i class="bi bi-stars"></i></span>
+          <span><strong>Xe mới</strong><small>Xe mới 100% từ đại lý</small></span>
+        </a>
+        <a href="cars.html?condition=used" role="menuitem">
+          <span class="buy-car-menu-icon used"><i class="bi bi-car-front"></i></span>
+          <span><strong>Xe đã qua sử dụng</strong><small>Tin xe cũ đang được rao bán</small></span>
+        </a>
+        <a class="buy-car-menu-all" href="cars.html" role="menuitem">
+          Xem tất cả xe <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    `);
+  });
+}
+
 // Định dạng tiền tệ VNĐ
 function formatCurrency(amount) {
   if (!amount || isNaN(amount)) return "0 đ";
@@ -841,6 +877,7 @@ function resetDemoData() {
 // Tự động khởi tạo khi tải trang
 document.addEventListener('DOMContentLoaded', () => {
   initializeStorage();
+  enhanceBuyCarNavigation();
   updateFavoritesCountBadge();
   syncHeaderUserUI();
   syncAdminLinksVisibility();
