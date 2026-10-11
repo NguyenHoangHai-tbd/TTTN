@@ -761,21 +761,36 @@ function enhanceBuyCarNavigation() {
   });
 }
 
-// Đồng bộ mục Hỗ trợ trên navbar của mọi trang.
+// Đồng bộ các mục Giới thiệu và Hỗ trợ trên navbar của mọi trang.
 function ensureSupportNavigation() {
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    const supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
+    let supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
       const href = link.getAttribute('href') || '';
       return link.textContent.trim().toLowerCase() === 'hỗ trợ' || href.endsWith('#contact');
     });
+
+    let aboutLink = nav.querySelector('a[href="about.html"]');
+    if (!aboutLink) {
+      const aboutItem = document.createElement('li');
+      aboutItem.className = 'nav-item';
+      aboutItem.innerHTML = '<a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>';
+
+      const firstSupportItem = supportLinks[0]?.closest('.nav-item');
+      const postItem = nav.querySelector('a[href="post-car.html"]')?.closest('.nav-item');
+      if (firstSupportItem) {
+        firstSupportItem.insertAdjacentElement('beforebegin', aboutItem);
+      } else if (postItem) {
+        postItem.insertAdjacentElement('afterend', aboutItem);
+      } else {
+        nav.appendChild(aboutItem);
+      }
+      aboutLink = aboutItem.querySelector('a');
+    }
 
     if (supportLinks.length > 0) {
       supportLinks.slice(1).forEach(link => link.closest('.nav-item')?.remove());
       return;
     }
-
-    const aboutLink = nav.querySelector('a[href="about.html"]');
-    if (!aboutLink) return;
 
     const supportItem = document.createElement('li');
     supportItem.className = 'nav-item';
