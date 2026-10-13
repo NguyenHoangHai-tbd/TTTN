@@ -678,11 +678,16 @@ function syncHeaderUserUI() {
           <i class="bi bi-person-circle text-teal"></i>
           <span class="d-none d-xl-inline">${user.name || user.email}</span>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 py-2">
+        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
+          <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
+            <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || 'Thành viên'}</div>
+            <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
+          </li>
+          <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
           <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2 text-teal"></i>Quản lý tin đăng</a></li>
           <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
           ${isAdmin ? '<li><a class="dropdown-item py-2" href="admin.html"><i class="bi bi-shield-lock me-2 text-warning"></i>Trang quản trị (Admin)</a></li>' : ''}
-          <li><hr class="dropdown-divider"></li>
+          <li><hr class="dropdown-divider my-1"></li>
           <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
         </ul>
       </div>

@@ -86,16 +86,22 @@
             </form>
 
             <!-- Khối 1-Click Demo Accounts -->
-            <div class="p-3 bg-light rounded-3 border mt-4">
-              <span class="small fw-bold text-dark d-block mb-2">
+            <div class="p-3 rounded-4 border mt-4" style="background-color: #F8FAFC;">
+              <span class="small fw-bold text-dark d-flex align-items-center mb-2">
                 <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Đăng nhập nhanh 1-Click (Tài khoản mẫu):
               </span>
               <div class="d-grid gap-2">
-                <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('user')">
-                  <i class="bi bi-person-circle me-1 text-teal"></i> <strong>Chủ xe / Khách hàng:</strong> Nguyễn Hoàng Nam (User thường)
+                <button type="button" class="btn btn-sm text-start p-2 rounded-3 border d-flex align-items-center justify-content-between" style="background: #FFFFFF; border-color: #E2E8F0;" onclick="quickFillLogin('user')">
+                  <div>
+                    <i class="bi bi-person-circle me-1 text-teal"></i> <strong class="text-dark">Chủ xe:</strong> <span class="text-muted">Nguyễn Hoàng Nam</span>
+                  </div>
+                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle" style="font-size: 0.68rem;">User thường</span>
                 </button>
-                <button type="button" class="btn btn-outline-dark btn-sm text-start" onclick="quickFillLogin('admin')">
-                  <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong>Quản trị viên (Admin):</strong> Ban Kiểm Duyệt (Toàn quyền)
+                <button type="button" class="btn btn-sm text-start p-2 rounded-3 border d-flex align-items-center justify-content-between" style="background: #FFFFFF; border-color: #E2E8F0;" onclick="quickFillLogin('admin')">
+                  <div>
+                    <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong class="text-dark">Quản trị viên:</strong> <span class="text-muted">Ban Kiểm Duyệt</span>
+                  </div>
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size: 0.68rem;">Admin Demo</span>
                 </button>
               </div>
             </div>

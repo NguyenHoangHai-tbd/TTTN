@@ -258,41 +258,41 @@
       container.innerHTML = filtered.map(car => {
         const badgeHtml = getStatusBadgeHtml(car.status);
         const rejectReasonHtml = car.status === 'rejected' && car.rejectReason 
-          ? `<div class="mt-2 small text-danger"><i class="bi bi-exclamation-octagon me-1"></i> Lý do từ chối: ${car.rejectReason}</div>` 
+          ? `<div class="alert alert-danger py-2 px-3 mt-2 mb-0 d-flex align-items-center gap-2 small rounded-3 border-danger-subtle"><i class="bi bi-exclamation-octagon-fill text-danger fs-6 flex-shrink-0"></i> <div><strong>Lý do từ chối:</strong> ${car.rejectReason}. <span class="d-block text-muted" style="font-size: 0.76rem;">Vui lòng bấm "Sửa" để điều chỉnh thông tin và bấm "Gửi lại duyệt".</span></div></div>` 
           : '';
 
         let actionsHtml = '';
         if (car.status === 'draft') {
           actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
-            <button class="btn btn-teal btn-sm text-white" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check"></i> Gửi duyệt</button>
+            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
+            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check me-1"></i> Gửi duyệt</button>
           `;
         } else if (car.status === 'pending') {
           actionsHtml = `
-            <span class="text-muted small fst-italic">Đang chờ xét duyệt</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle py-2 px-3 small"><i class="bi bi-hourglass-split me-1"></i> Đang chờ BQT xét duyệt</span>
           `;
         } else if (car.status === 'rejected') {
           actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
-            <button class="btn btn-teal btn-sm text-white" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check"></i> Gửi lại duyệt</button>
+            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
+            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check-fill me-1"></i> Gửi lại duyệt</button>
           `;
         } else if (car.status === 'active') {
           actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil"></i> Sửa</button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="hideListing('${car.id}')"><i class="bi bi-eye-slash"></i> Ẩn tin</button>
-            <button class="btn btn-outline-dark btn-sm" onclick="markSold('${car.id}')"><i class="bi bi-bag-check"></i> Đã bán</button>
+            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="hideListing('${car.id}')"><i class="bi bi-eye-slash me-1"></i> Ẩn tin</button>
+            <button class="btn btn-outline-dark btn-sm rounded-2" onclick="markSold('${car.id}')"><i class="bi bi-bag-check me-1"></i> Đã bán</button>
           `;
         } else if (car.status === 'hidden' || car.status === 'sold') {
           actionsHtml = `
-            <button class="btn btn-teal btn-sm text-white" onclick="reopenListing('${car.id}')"><i class="bi bi-arrow-clockwise"></i> Mở bán lại</button>
+            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="reopenListing('${car.id}')"><i class="bi bi-arrow-clockwise me-1"></i> Mở bán lại</button>
           `;
         }
 
         return `
-          <div class="bg-white p-3 p-md-4 rounded-4 border mb-3 shadow-sm">
+          <div class="bg-white p-3 p-md-4 rounded-4 border mb-3 shadow-sm hover-shadow transition-all">
             <div class="row align-items-center gy-3">
               <div class="col-md-3 col-sm-4">
-                <div class="rounded-3 overflow-hidden position-relative" style="height: 140px;">
+                <div class="rounded-3 overflow-hidden position-relative shadow-xs" style="height: 145px;">
                   <img src="${car.image}" alt="${car.title}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
                 </div>
               </div>
@@ -300,30 +300,30 @@
               <div class="col-md-6 col-sm-8">
                 <div class="d-flex align-items-center gap-2 mb-1">
                   ${badgeHtml}
-                  <span class="small text-muted"><i class="bi bi-calendar3"></i> Ngày tạo: ${car.postedDate}</span>
+                  <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>${car.postedDate}</span>
                 </div>
                 <h5 class="fw-bold mb-1">
-                  <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>
+                  <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none hover-teal">${car.title}</a>
                 </h5>
                 <div class="h5 fw-bold text-orange mb-2" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</div>
                 
                 <div class="d-flex flex-wrap gap-3 small text-muted">
-                  <span><i class="bi bi-speedometer2"></i> ${car.mileageDisplay || (car.mileage + ' km')}</span>
-                  <span><i class="bi bi-gear"></i> ${car.transmission}</span>
-                  <span><i class="bi bi-fuel-pump"></i> ${car.fuel}</span>
-                  <span><i class="bi bi-eye"></i> ${car.viewCount || 1} lượt xem</span>
+                  <span><i class="bi bi-speedometer2 text-teal me-1"></i>${car.mileageDisplay || (car.mileage + ' km')}</span>
+                  <span><i class="bi bi-gear text-teal me-1"></i>${car.transmission}</span>
+                  <span><i class="bi bi-fuel-pump text-teal me-1"></i>${car.fuel}</span>
+                  <span><i class="bi bi-eye text-teal me-1"></i>${car.viewCount || 1} lượt xem</span>
                 </div>
                 ${rejectReasonHtml}
               </div>
 
               <div class="col-md-3 text-md-end">
                 <div class="d-flex flex-column flex-sm-row flex-md-column gap-2 justify-content-end">
-                  <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm">
-                    <i class="bi bi-eye"></i> Xem chi tiết
+                  <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm rounded-2">
+                    <i class="bi bi-box-arrow-up-right me-1"></i> Xem tin
                   </a>
                   ${actionsHtml}
-                  <button class="btn btn-outline-danger btn-sm" onclick="handleDeleteListing('${car.id}')">
-                    <i class="bi bi-trash"></i> Xóa
+                  <button class="btn btn-outline-danger btn-sm rounded-2" onclick="handleDeleteListing('${car.id}')">
+                    <i class="bi bi-trash3 me-1"></i> Xóa
                   </button>
                 </div>
               </div>

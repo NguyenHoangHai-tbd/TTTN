@@ -1,62 +1,99 @@
 /* ==========================================================================
-   OtoMarket - Sàn Mua Bán Ô Tô Trực Tuyến
-   Design System & Custom Stylesheet
-   Palette:
-   - Primary: #0F172A (Xanh đen / Slate 900)
-   - Secondary: #1E293B (Slate 800)
-   - Interactive: #0D9488 (Teal 600)
-   - Accent / CTA: #EA580C (Cam / Orange 600)
-   - Background: #F8FAFC (Trắng xám / Slate 50)
+   OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến
+   Design System & Professional Stylesheet
+   Modern Automotive Marketplace (Guest, User & Admin Experiences)
    ========================================================================== */
 
 :root {
-  --primary-color: #0F172A;
-  --primary-light: #1E293B;
-  --primary-dark: #020617;
+  /* Core Brand Palette */
+  --primary-color: #0B132B;
+  --primary-light: #1C2541;
+  --primary-dark: #070B19;
   
   --teal-color: #0D9488;
   --teal-hover: #0F766E;
+  --teal-active: #115E59;
   --teal-light: #F0FDFA;
   --teal-border: #99F6E4;
+  --teal-glow: rgba(13, 148, 136, 0.25);
 
   --orange-color: #EA580C;
   --orange-hover: #C2410C;
   --orange-light: #FFF7ED;
   --orange-border: #FED7AA;
+  --orange-glow: rgba(234, 88, 12, 0.3);
 
+  /* Neutrals & Surfaces */
   --bg-main: #F8FAFC;
   --bg-card: #FFFFFF;
+  --bg-card-alt: #F1F5F9;
+  --bg-elevated: #FFFFFF;
+
   --border-color: #E2E8F0;
-  --border-light: #F1F5F9;
+  --border-subtle: #F1F5F9;
+  --border-focus: #0D9488;
 
   --text-main: #0F172A;
   --text-muted: #64748B;
   --text-light: #94A3B8;
 
-  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  /* Semantic Feedback */
+  --success-color: #10B981;
+  --success-bg: #ECFDF5;
+  --success-border: #A7F3D0;
+  --success-text: #065F46;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --warning-color: #F59E0B;
+  --warning-bg: #FFFBEB;
+  --warning-border: #FDE68A;
+  --warning-text: #92400E;
+
+  --danger-color: #EF4444;
+  --danger-bg: #FEF2F2;
+  --danger-border: #FECACA;
+  --danger-text: #991B1B;
+
+  --info-color: #3B82F6;
+  --info-bg: #EFF6FF;
+  --info-border: #BFDBFE;
+  --info-text: #1E40AF;
+
+  /* Shadows (Multi-layered smooth elevation) */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 6px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 20px 36px -6px rgba(15, 23, 42, 0.14), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+
+  /* Radius Scale */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
 }
 
-/* Base Reset & Typography */
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -69,146 +106,364 @@ main {
 a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Top bar */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background-color: rgba(13, 148, 136, 0.2);
+  color: var(--primary-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 999px;
+  border: 2px solid #F1F5F9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ==========================================================================
+   Header & Navigation (Vãng lai & Người dùng)
+   ========================================================================== */
+
+/* Top header bar */
 .top-header-bar {
-  display: none !important;
-  background-color: #0B1120;
+  display: block !important;
+  background-color: #070D18;
   color: #94A3B8;
-  font-size: 0.825rem;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.815rem;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.top-header-bar a {
+  color: #94A3B8;
+  transition: color 0.2s ease;
 }
 .top-header-bar a:hover {
   color: #FFFFFF;
 }
+.top-header-bar .text-teal {
+  color: #2DD4BF !important;
+}
 
-/* Main Navigation */
+/* Main Navbar */
 .navbar-custom {
-  background-color: var(--primary-color);
-  padding: 12px 0;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.15);
+  background: rgba(11, 19, 43, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
   z-index: 1020;
 }
 
+/* Brand Logo */
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: #FFFFFF;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.6px;
+}
+.brand-logo:hover {
+  color: #FFFFFF;
+  opacity: 0.95;
 }
 .brand-logo .logo-icon {
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, var(--teal-color), #14B8A6);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.35);
+  font-size: 1.25rem;
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .brand-logo .logo-tag {
-  color: var(--teal-color);
+  background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
 
+/* Navigation Links */
 .nav-link-custom {
   color: #CBD5E1 !important;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 14px !important;
+  font-weight: 600;
+  font-size: 0.94rem;
+  padding: 9px 16px !important;
   border-radius: var(--radius-sm);
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
-.nav-link-custom:hover,
-.nav-link-custom.active {
+.nav-link-custom:hover {
   color: #FFFFFF !important;
   background-color: rgba(255, 255, 255, 0.08);
 }
-
-/* Buttons */
-.btn-cta-orange {
-  background-color: var(--orange-color);
+.nav-link-custom.active {
   color: #FFFFFF !important;
-  font-weight: 600;
-  padding: 9px 18px;
+  background-color: rgba(20, 184, 166, 0.16);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+
+/* Dropdown Mua Xe */
+.buy-car-dropdown {
+  position: relative;
+}
+.buy-car-main-link {
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+}
+.buy-car-chevron {
+  font-size: 0.68rem;
+  transition: transform 0.25s ease;
+}
+.buy-car-dropdown:hover .buy-car-chevron {
+  transform: rotate(180deg);
+}
+.buy-car-menu {
+  position: absolute;
+  z-index: 1050;
+  top: calc(100% + 10px);
+  left: 50%;
+  width: 320px;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  box-shadow: 0 20px 48px -8px rgba(15, 23, 42, 0.22);
+}
+.buy-car-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 15px;
+}
+.buy-car-dropdown:hover .buy-car-menu,
+.buy-car-dropdown:focus-within .buy-car-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.buy-car-menu > a:not(.buy-car-menu-all) {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 13px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--orange-color);
+  color: #1E293B;
+  transition: background 0.18s ease;
+}
+.buy-car-menu > a:not(.buy-car-menu-all):hover {
+  background: #F0FDFA;
+  color: #0F766E;
+}
+.buy-car-menu strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.buy-car-menu small {
+  display: block;
+  color: #64748B;
+  font-size: 0.74rem;
+}
+.buy-car-menu-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  font-size: 1.15rem;
+}
+.buy-car-menu-icon.new {
+  color: #0F766E;
+  background: #CCFBF1;
+}
+.buy-car-menu-icon.used {
+  color: #C2410C;
+  background: #FFEDD5;
+}
+.buy-car-menu-all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-top: 1px solid #EDF2F7;
+  color: #0D9488;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+.buy-car-menu-all:hover {
+  background: #F8FAFC;
+  color: #0F766E;
+}
+
+/* ==========================================================================
+   Buttons & CTAs
+   ========================================================================== */
+
+.btn-cta-orange {
+  background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.35);
 }
 .btn-cta-orange:hover {
-  background-color: var(--orange-hover);
-  border-color: var(--orange-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.35);
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.45);
+}
+.btn-cta-orange:active {
+  transform: translateY(0);
 }
 
 .btn-teal {
-  background-color: var(--teal-color);
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
   color: #FFFFFF !important;
-  font-weight: 600;
-  padding: 9px 18px;
+  font-weight: 700;
+  padding: 9px 20px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--teal-color);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.3);
 }
 .btn-teal:hover {
-  background-color: var(--teal-hover);
-  border-color: var(--teal-hover);
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+  background: linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(13, 148, 136, 0.4);
+}
+.btn-teal:active {
+  transform: translateY(0);
 }
 
 .btn-outline-custom {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
   color: #E2E8F0 !important;
-  font-weight: 500;
-  padding: 8px 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s ease;
+}
+.btn-outline-custom:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-outline-teal {
+  border: 1.5px solid var(--teal-color);
+  color: var(--teal-color) !important;
+  font-weight: 600;
+  padding: 8px 16px;
   border-radius: var(--radius-md);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s;
+  background: transparent;
+  transition: all 0.2s ease;
 }
-.btn-outline-custom:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.btn-outline-teal:hover {
+  background: var(--teal-color);
   color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25);
 }
 
 .badge-fav-count {
   background-color: #EF4444;
   color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  border-radius: 9999px;
-  padding: 2px 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  padding: 2px 7px;
   position: absolute;
-  top: -4px;
-  right: -6px;
+  top: -5px;
+  right: -7px;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.5);
+  border: 2px solid #0B132B;
 }
 
-/* Hero Section */
+/* User Menu Dropdown in Navbar */
+#navbar-auth-section .dropdown-menu {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+  min-width: 230px;
+  padding: 8px;
+}
+#navbar-auth-section .dropdown-item {
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 9px 12px;
+  color: #334155;
+  transition: background 0.18s ease;
+}
+#navbar-auth-section .dropdown-item:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+/* ==========================================================================
+   Hero Section (Trang chủ - Khách Vãng Lai)
+   ========================================================================== */
+
 .hero-section {
   position: relative;
-  background: linear-gradient(135deg, #090E17 0%, #0F172A 50%, #16243A 100%);
+  background: linear-gradient(135deg, #070B19 0%, #0B132B 45%, #16243E 100%);
   color: #FFFFFF;
-  padding: 60px 0 90px;
+  padding: 70px 0 100px;
   overflow: hidden;
 }
 .hero-section::before {
@@ -218,110 +473,134 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(rgba(13, 148, 136, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(13, 148, 136, 0.15) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.hero-section::after {
+  content: '';
+  position: absolute;
+  right: -10%;
+  top: -15%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.22) 0%, rgba(234, 88, 12, 0.08) 60%, transparent 80%);
+  filter: blur(60px);
   pointer-events: none;
 }
 .hero-title {
-  font-size: 2.75rem;
+  font-size: 3.1rem;
   font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.8px;
+  line-height: 1.18;
+  letter-spacing: -1.2px;
 }
 .hero-subtitle {
   color: #94A3B8;
   font-size: 1.15rem;
-  max-width: 600px;
+  line-height: 1.65;
+  max-width: 620px;
 }
 
-/* Quick Search Box */
+/* Quick Search Card (Hero) */
 .search-card-hero {
-  background-color: #FFFFFF;
+  background: #FFFFFF;
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
-  margin-top: -45px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.28);
+  margin-top: -55px;
   position: relative;
   z-index: 10;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(226, 232, 240, 0.95);
 }
 .search-card-hero .form-label {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+  color: #475569;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
 }
 .search-card-hero .form-select,
 .search-card-hero .form-control {
-  border: 1px solid var(--border-color);
+  border: 1.5px solid #E2E8F0;
   border-radius: var(--radius-md);
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 0.95rem;
   color: var(--text-main);
-  background-color: #FFFFFF;
+  background-color: #F8FAFC;
+  transition: all 0.2s ease;
 }
 .search-card-hero .form-select:focus,
 .search-card-hero .form-control:focus {
   border-color: var(--teal-color);
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
 }
 
-/* Brand Grid */
+/* ==========================================================================
+   Brand Grid Components
+   ========================================================================== */
+
 .brand-item {
   background-color: #FFFFFF;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 16px 12px;
+  padding: 18px 12px;
   text-align: center;
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
+  box-shadow: var(--shadow-xs);
 }
 .brand-item:hover {
   border-color: var(--teal-color);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+  transform: translateY(-4px);
 }
 .brand-item .brand-logo-img {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
-  margin: 0 auto 8px;
+  margin: 0 auto 10px;
   display: block;
 }
 .brand-logo-mark {
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   display: grid;
   place-items: center;
-  margin: 0 auto 8px;
+  margin: 0 auto 10px;
   border-radius: 50%;
-  background: #f8fafc;
+  background: #F8FAFC;
   border: 2px solid currentColor;
   color: #334155;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -.08em;
-  transition: transform .2s ease, box-shadow .2s ease;
+  letter-spacing: -0.06em;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.brand-item:hover .brand-logo-mark { transform: scale(1.08); box-shadow: 0 7px 18px rgba(15,23,42,.12); }
-.brand-toyota { color: #eb0a1e; }
-.brand-hyundai { color: #002c5f; font-style: italic; }
-.brand-kia { color: #bb162b; border-radius: 16px 16px 12px 12px; font-size: .8rem; }
-.brand-honda { color: #cc0000; border-radius: 11px; }
-.brand-ford { color: #003478; border-radius: 50%; font-family: Georgia, serif; font-size: .84rem; font-style: italic; }
-.brand-mazda { color: #101f8c; }
-.brand-vinfast { color: #00a99d; clip-path: polygon(50% 0, 100% 20%, 88% 100%, 50% 82%, 12% 100%, 0 20%); border-radius: 0; }
-.brand-mercedesbenz { color: #111827; font-size: 1.45rem; }
+.brand-item:hover .brand-logo-mark {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+.brand-toyota { color: #EB0A1E; }
+.brand-hyundai { color: #002C5F; font-style: italic; }
+.brand-kia { color: #BB162B; border-radius: 14px; font-size: 0.85rem; }
+.brand-honda { color: #CC0000; border-radius: 12px; }
+.brand-ford { color: #003478; font-family: Georgia, serif; font-size: 0.88rem; font-style: italic; }
+.brand-mazda { color: #101F8C; }
+.brand-vinfast { color: #00A99D; clip-path: polygon(50% 0, 100% 20%, 88% 100%, 50% 82%, 12% 100%, 0 20%); border-radius: 0; }
+.brand-mercedesbenz { color: #111827; font-size: 1.5rem; }
 .brand-item .brand-name {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-main);
+  margin-bottom: 2px;
 }
 .brand-item .brand-count {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
 }
 
@@ -330,11 +609,12 @@ a {
   background-color: #FFFFFF;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 16px;
   transition: all 0.25s ease;
+  box-shadow: var(--shadow-xs);
 }
 .category-card:hover {
   border-color: var(--teal-color);
@@ -342,39 +622,45 @@ a {
   transform: translateY(-2px);
 }
 .category-icon {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   background-color: var(--teal-light);
   color: var(--teal-color);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
+  border: 1px solid var(--teal-border);
 }
 
-/* Car Card Component */
+/* ==========================================================================
+   Car Card Component (Trang Chủ, Mua Xe, Yêu Thích)
+   ========================================================================== */
+
 .car-card {
   background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1px solid #E2E8F0;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
 }
 .car-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px -6px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
   border-color: #CBD5E1;
 }
+
 .car-card-img-wrapper {
   position: relative;
   width: 100%;
-  height: 210px;
+  height: 220px;
   background-color: #E2E8F0;
   overflow: hidden;
 }
@@ -382,41 +668,51 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .car-card:hover .car-card-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
+/* Card Badges */
 .car-card-badge {
   position: absolute;
   top: 12px;
   left: 12px;
-  background-color: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(4px);
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
-  font-size: 0.725rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  letter-spacing: 0.3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 .car-card-badge.badge-hot {
-  background-color: var(--orange-color);
+  background: linear-gradient(135deg, #FF6B00, #EA580C);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
 }
 .car-card-badge.badge-certified {
-  background-color: var(--teal-color);
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
 }
 
+/* Card Favorite Heart Button */
 .car-fav-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 36px;
-  height: 36px;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: none;
   display: flex;
   align-items: center;
@@ -424,20 +720,23 @@ a {
   color: #94A3B8;
   font-size: 1.15rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
 }
 .car-fav-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
   color: #EF4444;
+  background-color: #FFFFFF;
 }
 .car-fav-btn.active {
   color: #EF4444;
   background-color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
 }
 
+/* Card Body & Specs */
 .car-card-body {
-  padding: 16px 18px 18px;
+  padding: 18px 20px 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -447,35 +746,42 @@ a {
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 6px;
-  line-height: 1.35;
+  line-height: 1.38;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 2.7rem;
+  height: 2.85rem;
+  transition: color 0.2s ease;
+}
+.car-card-title:hover {
+  color: var(--teal-color);
 }
 .car-card-price {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--orange-color);
   margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
 .car-spec-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px 12px;
-  padding: 10px 0;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  padding: 12px 14px;
+  background-color: #F8FAFC;
+  border-radius: var(--radius-md);
+  border: 1px solid #EDF2F7;
   margin-bottom: 14px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
 }
 .car-spec-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  font-size: 0.815rem;
+  font-weight: 600;
+  color: #475569;
 }
 .car-spec-item i {
   color: var(--teal-color);
@@ -487,13 +793,16 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 0.815rem;
   color: var(--text-muted);
 }
 .car-seller-info {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-weight: 500;
 }
 .car-location {
   display: flex;
@@ -501,44 +810,93 @@ a {
   gap: 4px;
 }
 
-/* Detail Page Components */
+/* Card Action Button */
+.car-card .btn-outline-dark {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+  color: #1E293B;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+.car-card:hover .btn-outline-dark {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
+}
+
+/* ==========================================================================
+   Bộ Lọc Tìm Kiếm (Cars Page - `cars.html`)
+   ========================================================================== */
+
+.filter-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+.filter-card .form-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+}
+.filter-card .form-select,
+.filter-card .form-control {
+  border-radius: var(--radius-sm);
+  border-color: #E2E8F0;
+  font-size: 0.88rem;
+}
+.filter-card .form-select:focus,
+.filter-card .form-control:focus {
+  border-color: var(--teal-color);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* ==========================================================================
+   Trang Chi Tiết Xe (`car-detail.html`)
+   ========================================================================== */
+
 .detail-gallery-main {
   width: 100%;
-  height: 480px;
+  height: 490px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: #0F172A;
   position: relative;
   box-shadow: var(--shadow-md);
+  border: 1px solid #E2E8F0;
 }
 .detail-gallery-main img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
 }
 .gallery-thumb-row {
   display: flex;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 14px;
   overflow-x: auto;
   padding-bottom: 6px;
 }
 .gallery-thumb {
-  width: 90px;
-  height: 65px;
+  width: 96px;
+  height: 70px;
   border-radius: var(--radius-sm);
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
   flex-shrink: 0;
-  opacity: 0.7;
-  transition: all 0.2s;
+  opacity: 0.65;
+  transition: all 0.2s ease;
 }
 .gallery-thumb.active,
 .gallery-thumb:hover {
   border-color: var(--teal-color);
   opacity: 1;
+  transform: translateY(-2px);
 }
 .gallery-thumb img {
   width: 100%;
@@ -550,8 +908,8 @@ a {
   background-color: #FFFFFF;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
+  padding: 26px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
 }
 
 .spec-table {
@@ -562,44 +920,455 @@ a {
   border-bottom: 1px solid var(--border-light);
 }
 .spec-table td {
-  padding: 10px 8px;
-  font-size: 0.9rem;
+  padding: 12px 10px;
+  font-size: 0.92rem;
 }
 .spec-table td:first-child {
   color: var(--text-muted);
   width: 42%;
 }
 .spec-table td:last-child {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-main);
 }
 
-/* Step Card (How to sell) */
+/* ==========================================================================
+   Trang Quản Lý Tin Đăng (`my-listings.html` - Giao diện Người dùng)
+   ========================================================================== */
+
+#listing-status-tabs {
+  background: #FFFFFF;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+#listing-status-tabs .nav-link {
+  color: #475569;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+#listing-status-tabs .nav-link:hover {
+  background-color: #F1F5F9;
+  color: #0F172A;
+}
+#listing-status-tabs .nav-link.active {
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+/* ==========================================================================
+   Trang Đăng Tin Bán Xe (`post-car.html` - Giao diện Người dùng)
+   ========================================================================== */
+
+.post-car-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid #F1F5F9;
+  margin-bottom: 20px;
+}
+.post-car-section-badge {
+  width: 32px;
+  height: 32px;
+  background: var(--teal-light);
+  color: var(--teal-color);
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--teal-border);
+}
+
+/* Upload Dropzone Preview */
+.upload-dropzone {
+  border: 2px dashed #CBD5E1;
+  background: #F8FAFC;
+  border-radius: var(--radius-md);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.upload-dropzone:hover {
+  border-color: var(--teal-color);
+  background: #F0FDFA;
+}
+
+/* Step Card (How it works) */
 .step-card {
   background-color: #FFFFFF;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 28px 20px;
+  padding: 30px 22px;
   text-align: center;
   position: relative;
   height: 100%;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 .step-number {
-  width: 44px;
-  height: 44px;
-  background: var(--teal-color);
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
   color: #FFFFFF;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+  box-shadow: 0 6px 14px rgba(13, 148, 136, 0.35);
 }
 
-/* Toast Notification */
+/* ==========================================================================
+   Trang Quản Trị Hệ Thống (`admin.html` - Giao diện Quản trị viên)
+   ========================================================================== */
+
+.admin-page {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.admin-main {
+  min-height: calc(100vh - 76px);
+}
+
+/* Welcome Center */
+.admin-welcome {
+  position: relative;
+  min-height: 220px;
+  padding: 36px 42px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #070B19 0%, #0F172A 60%, #133E46 120%);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.18);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.admin-welcome-content {
+  position: relative;
+  z-index: 2;
+  max-width: 660px;
+}
+.admin-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: var(--radius-full);
+  background: rgba(20, 184, 166, 0.15);
+  color: #5EEAD4;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.admin-welcome h1 {
+  margin: 16px 0 8px;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.admin-welcome p {
+  margin: 0;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+.admin-primary-btn {
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.admin-primary-btn:hover {
+  background: linear-gradient(135deg, #0F766E, #0D9488);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+.admin-ghost-btn {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+}
+.admin-ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+.admin-welcome-art {
+  position: absolute;
+  right: 50px;
+  top: 30px;
+  width: 170px;
+  height: 170px;
+  display: grid;
+  place-items: center;
+  color: #5EEAD4;
+  font-size: 4rem;
+}
+.admin-welcome-art::before {
+  content: '';
+  position: absolute;
+  inset: 24px;
+  border-radius: 50%;
+  background: rgba(20, 184, 166, 0.14);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+}
+.admin-welcome-art i {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 12px 18px rgba(20, 184, 166, 0.35));
+}
+.admin-orbit {
+  position: absolute;
+  border: 1px solid rgba(94, 234, 212, 0.14);
+  border-radius: 50%;
+}
+.admin-orbit-one { inset: 0; }
+.admin-orbit-two { inset: 16px; }
+
+/* Admin Layout Grid */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.admin-sidebar {
+  position: sticky;
+  top: 96px;
+  padding: 18px 12px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+}
+.admin-sidebar-label {
+  padding: 4px 12px 10px;
+  color: #94A3B8;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.admin-side-link {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  margin: 2px 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: #64748B;
+  background: transparent;
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-align: left;
+  transition: all 0.18s ease;
+}
+.admin-side-link:hover {
+  color: var(--teal-hover);
+  background: #F0FDFA;
+}
+.admin-side-link.active {
+  color: var(--teal-color);
+  background: #CCFBF1;
+  font-weight: 700;
+}
+.admin-side-link i {
+  font-size: 1.05rem;
+}
+.admin-side-count {
+  min-width: 22px;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: #FEF3C7;
+  color: #92400E;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+}
+.admin-side-count.danger {
+  background: #FEE2E2;
+  color: #B91C1C;
+}
+.admin-sidebar-divider {
+  height: 1px;
+  margin: 12px 8px;
+  background: #EDF2F7;
+}
+.admin-side-button {
+  cursor: pointer;
+}
+.admin-help-card {
+  margin: 16px 4px 0;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, #F0FDFA, #ECFEFF);
+  border: 1px solid #CCFBF1;
+  color: #334155;
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+.admin-help-card i {
+  display: block;
+  margin-bottom: 6px;
+  color: #0D9488;
+  font-size: 1.35rem;
+}
+.admin-help-card strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #134E4A;
+}
+
+/* Admin KPI Cards */
+.admin-kpi-card {
+  position: relative;
+  height: 100%;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+.admin-kpi-card .rounded-3 {
+  border-radius: var(--radius-md) !important;
+}
+
+/* Admin Panels & Tables */
+.admin-panel {
+  padding: 24px;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  scroll-margin-top: 100px;
+}
+.admin-panel .table thead th {
+  padding: 13px 14px;
+  background: #F8FAFC;
+  border-bottom: 1.5px solid #E2E8F0;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.admin-panel .table tbody td {
+  padding: 14px;
+  border-color: #EDF2F7;
+}
+
+/* ==========================================================================
+   Universal Status Badges (User, Admin, Public)
+   ========================================================================== */
+
+.badge {
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+}
+
+.badge.bg-success,
+.status-badge.status-active {
+  background-color: var(--success-bg) !important;
+  color: var(--success-text) !important;
+  border: 1px solid var(--success-border) !important;
+}
+
+.badge.bg-warning,
+.status-badge.status-pending {
+  background-color: var(--warning-bg) !important;
+  color: var(--warning-text) !important;
+  border: 1px solid var(--warning-border) !important;
+}
+
+.badge.bg-danger,
+.status-badge.status-rejected {
+  background-color: var(--danger-bg) !important;
+  color: var(--danger-text) !important;
+  border: 1px solid var(--danger-border) !important;
+}
+
+.badge.bg-info,
+.status-badge.status-hidden {
+  background-color: var(--info-bg) !important;
+  color: var(--info-text) !important;
+  border: 1px solid var(--info-border) !important;
+}
+
+.badge.bg-secondary,
+.status-badge.status-draft {
+  background-color: #F1F5F9 !important;
+  color: #475569 !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
+.badge.bg-dark,
+.status-badge.status-sold {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border: 1px solid #334155 !important;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Empty State Component
+   ========================================================================== */
+
+.empty-state-box {
+  background-color: #FFFFFF;
+  border: 2px dashed #CBD5E1;
+  border-radius: var(--radius-lg);
+  padding: 60px 24px;
+  text-align: center;
+}
+.empty-state-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: var(--teal-light);
+  color: var(--teal-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 18px;
+  border: 1px solid var(--teal-border);
+}
+
+/* ==========================================================================
+   Toast Notifications
+   ========================================================================== */
+
 #toast-container {
   position: fixed;
   bottom: 24px;
@@ -611,31 +1380,27 @@ a {
   pointer-events: none;
 }
 .custom-toast {
-  background-color: #0F172A;
+  background-color: #0B132B;
   color: #FFFFFF;
   padding: 14px 20px;
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.925rem;
-  font-weight: 500;
-  min-width: 300px;
-  max-width: 450px;
+  font-weight: 600;
+  min-width: 310px;
+  max-width: 460px;
   pointer-events: auto;
-  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  border-left: 4px solid var(--teal-color);
+  animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border-left: 5px solid var(--teal-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
-.custom-toast.toast-success {
-  border-left-color: #10B981;
-}
-.custom-toast.toast-error {
-  border-left-color: #EF4444;
-}
-.custom-toast.toast-warning {
-  border-left-color: #F59E0B;
-}
+.custom-toast.toast-success { border-left-color: #10B981; }
+.custom-toast.toast-error { border-left-color: #EF4444; }
+.custom-toast.toast-warning { border-left-color: #F59E0B; }
+.custom-toast.toast-info { border-left-color: #0D9488; }
 
 @keyframes toastSlideIn {
   from {
@@ -648,35 +1413,20 @@ a {
   }
 }
 
-/* Filter Sidebar */
-.filter-card {
-  background-color: #FFFFFF;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  margin-bottom: 24px;
-}
-.filter-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+/* ==========================================================================
+   Footer Component
+   ========================================================================== */
 
-/* Footer */
 .footer-custom {
-  background-color: #0B1120;
+  background-color: #070D18;
   color: #94A3B8;
-  padding: 60px 0 24px;
-  margin-top: 60px;
+  padding: 65px 0 28px;
+  margin-top: 70px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .footer-title {
   color: #FFFFFF;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 18px;
 }
@@ -692,278 +1442,84 @@ a {
   font-size: 0.9rem;
 }
 .footer-links a:hover {
-  color: var(--teal-color);
+  color: #2DD4BF;
   padding-left: 4px;
 }
 
-/* Status Badges */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.status-pending {
-  background-color: #FEF3C7;
-  color: #92400E;
-}
-.status-active {
-  background-color: #D1FAE5;
-  color: #065F46;
-}
-.status-rejected {
-  background-color: #FEE2E2;
-  color: #991B1B;
-}
-.status-sold {
-  background-color: #E2E8F0;
-  color: #475569;
-}
-
-/* Empty State */
-.empty-state-box {
-  background-color: #FFFFFF;
-  border: 1px dashed #CBD5E1;
-  border-radius: var(--radius-lg);
-  padding: 60px 24px;
-  text-align: center;
-}
-.empty-state-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background-color: var(--teal-light);
-  color: var(--teal-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  margin: 0 auto 16px;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  .search-card-hero {
-    margin-top: 20px;
-    padding: 16px;
-  }
-  .detail-gallery-main {
-    height: 300px;
-  }
-}
-
-/* Admin only links (ẩn mặc định nếu không phải Admin) */
-.admin-only:not(.is-admin-visible) {
-  display: none !important;
-}
-
-/* Menu Mua xe xổ xuống */
-.buy-car-dropdown { position: relative; }
-.buy-car-main-link { display: flex !important; align-items: center; gap: 7px; }
-.buy-car-chevron { font-size: .68rem; transition: transform .2s ease; }
-.buy-car-menu {
-  position: absolute;
-  z-index: 1050;
-  top: calc(100% + 10px);
-  left: 50%;
-  width: 310px;
-  padding: 9px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, 8px);
-  transition: opacity .18s ease, transform .18s ease, visibility .18s;
-  border: 1px solid #e3e8ef;
-  border-radius: 15px;
-  background: #fff;
-  box-shadow: 0 18px 48px rgba(15,23,42,.2);
-}
-.buy-car-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -13px; height: 14px; }
-.buy-car-dropdown:hover .buy-car-menu,
-.buy-car-dropdown:focus-within .buy-car-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.buy-car-dropdown:hover .buy-car-chevron { transform: rotate(180deg); }
-.buy-car-menu > a:not(.buy-car-menu-all) { display: flex; gap: 12px; align-items: center; padding: 11px; border-radius: 11px; color: #172033; }
-.buy-car-menu > a:not(.buy-car-menu-all):hover { background: #f0fdfa; color: #0f766e; }
-.buy-car-menu strong, .buy-car-menu small { display: block; }
-.buy-car-menu strong { margin-bottom: 2px; font-size: .88rem; }
-.buy-car-menu small { color: #7b899d; font-size: .72rem; }
-.buy-car-menu-icon { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border-radius: 10px; }
-.buy-car-menu-icon.new { color: #0f766e; background: #ccfbf1; }
-.buy-car-menu-icon.used { color: #c2410c; background: #ffedd5; }
-.buy-car-menu-all { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; padding: 10px 12px; border-top: 1px solid #edf1f5; color: #0f766e; font-size: .78rem; font-weight: 700; }
-
-/* Admin dashboard */
-.admin-page {
-  background: #f4f7fb;
-  color: #172033;
-}
-.admin-navbar {
-  min-height: 76px;
-  background: rgba(10, 20, 38, .97);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 8px 28px rgba(15,23,42,.12);
-  backdrop-filter: blur(14px);
-}
-.admin-brand-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(20,184,166,.14);
-  border: 1px solid rgba(45,212,191,.28);
-  color: #99f6e4;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-}
-.admin-nav-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 13px;
-  color: #cbd5e1;
-  border-radius: 10px;
-  font-size: .85rem;
-  font-weight: 600;
-}
-.admin-nav-link:hover { color: #fff; background: rgba(255,255,255,.08); }
-.admin-avatar {
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 12px;
-  color: #0f172a;
-  background: linear-gradient(135deg, #fbbf24, #fb923c);
-  font-size: 1.1rem;
-}
-.admin-main { min-height: calc(100vh - 76px); }
-.admin-welcome {
-  position: relative;
-  min-height: 245px;
-  padding: 38px 42px;
-  overflow: hidden;
-  border-radius: 26px;
-  background: linear-gradient(120deg, #0b1324 0%, #101d32 68%, #0f4c4a 140%);
-  box-shadow: 0 22px 55px rgba(15,23,42,.16);
-  color: #fff;
-}
-.admin-welcome-content { position: relative; z-index: 2; max-width: 660px; }
-.admin-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 11px;
-  border: 1px solid rgba(94,234,212,.24);
-  border-radius: 999px;
-  background: rgba(20,184,166,.13);
-  color: #99f6e4;
-  font-size: .75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-.admin-welcome h1 { margin: 18px 0 10px; font-size: clamp(1.65rem, 3vw, 2.35rem); font-weight: 800; letter-spacing: -.04em; }
-.admin-welcome p { margin: 0; color: #b8c4d6; line-height: 1.7; }
-.admin-primary-btn { background: #14b8a6; color: #fff; border-radius: 11px; padding: 10px 16px; font-weight: 700; }
-.admin-primary-btn:hover { background: #0d9488; color: #fff; transform: translateY(-1px); }
-.admin-ghost-btn { border: 1px solid rgba(255,255,255,.2); color: #fff; border-radius: 11px; padding: 10px 16px; font-weight: 700; }
-.admin-ghost-btn:hover { background: rgba(255,255,255,.09); color: #fff; }
-.admin-welcome-art { position: absolute; right: 65px; top: 36px; width: 180px; height: 180px; display: grid; place-items: center; color: #5eead4; font-size: 4rem; }
-.admin-welcome-art::before { content: ''; position: absolute; inset: 28px; border-radius: 50%; background: rgba(20,184,166,.14); border: 1px solid rgba(94,234,212,.25); }
-.admin-welcome-art i { position: relative; z-index: 2; filter: drop-shadow(0 12px 18px rgba(20,184,166,.28)); }
-.admin-orbit { position: absolute; border: 1px solid rgba(94,234,212,.14); border-radius: 50%; }
-.admin-orbit-one { inset: 0; }
-.admin-orbit-two { inset: 16px; }
-.admin-layout { display: grid; grid-template-columns: 225px minmax(0, 1fr); gap: 24px; align-items: start; }
-.admin-sidebar {
-  position: sticky;
-  top: 98px;
-  padding: 18px 12px;
-  background: #fff;
-  border: 1px solid #e5eaf1;
-  border-radius: 18px;
-  box-shadow: 0 10px 35px rgba(15,23,42,.06);
-}
-.admin-sidebar-label { padding: 3px 12px 11px; color: #94a3b8; font-size: .68rem; font-weight: 800; letter-spacing: .1em; }
-.admin-side-link {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 22px 1fr auto;
-  align-items: center;
-  gap: 9px;
-  padding: 11px 12px;
-  margin: 2px 0;
-  border: 0;
-  border-radius: 10px;
-  color: #64748b;
-  background: transparent;
-  font-size: .84rem;
-  font-weight: 650;
-  text-align: left;
-}
-.admin-side-link:hover { color: #0f766e; background: #f0fdfa; }
-.admin-side-link.active { color: #0f766e; background: #ccfbf1; }
-.admin-side-link i { font-size: 1rem; }
-.admin-side-count { min-width: 22px; padding: 2px 6px; border-radius: 999px; background: #fef3c7; color: #92400e; font-size: .68rem; text-align: center; }
-.admin-side-count.danger { background: #fee2e2; color: #b91c1c; }
-.admin-sidebar-divider { height: 1px; margin: 12px; background: #edf0f4; }
-.admin-side-button { cursor: pointer; }
-.admin-help-card { margin: 16px 4px 0; padding: 15px; border-radius: 13px; background: linear-gradient(145deg,#f0fdfa,#ecfeff); color: #476276; font-size: .72rem; line-height: 1.5; }
-.admin-help-card i { display: block; margin-bottom: 7px; color: #0d9488; font-size: 1.35rem; }
-.admin-help-card strong { display: block; margin-bottom: 3px; color: #134e4a; }
-.admin-content { min-width: 0; scroll-margin-top: 100px; }
-.admin-kpi-card {
-  position: relative;
-  height: 100%;
-  padding: 20px;
-  overflow: hidden;
-  border: 1px solid #e7ecf2;
-  border-radius: 17px;
-  background: #fff;
-  box-shadow: 0 10px 28px rgba(15,23,42,.055);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.admin-kpi-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(15,23,42,.09); }
-.admin-kpi-card::after { content: ''; position: absolute; right: -26px; top: -30px; width: 90px; height: 90px; border-radius: 50%; opacity: .09; background: currentColor; }
-.admin-kpi-card .rounded-3 { border-radius: 13px !important; }
-.admin-panel {
-  padding: 22px;
-  border: 1px solid #e4eaf1;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 12px 36px rgba(15,23,42,.055);
-  scroll-margin-top: 100px;
-}
-.admin-panel .table { --bs-table-hover-bg: #f8fafc; }
-.admin-panel .table thead th { padding: 13px 12px; border-bottom: 1px solid #e6ebf1; color: #64748b; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
-.admin-panel .table tbody td { padding: 14px 12px; border-color: #edf1f5; }
-.admin-panel .table tbody tr:last-child td { border-bottom: 0; }
-.admin-panel .form-select { border-color: #dbe3ec; border-radius: 9px; }
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
 
 @media (max-width: 991.98px) {
-  .buy-car-menu { position: static; width: 100%; margin: 5px 0 8px; opacity: 1; visibility: visible; transform: none; box-shadow: none; border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
-  .buy-car-dropdown:hover .buy-car-menu, .buy-car-dropdown:focus-within .buy-car-menu { transform: none; }
-  .buy-car-menu > a:not(.buy-car-menu-all), .buy-car-menu-all { color: #e2e8f0; }
-  .buy-car-menu > a:not(.buy-car-menu-all):hover { background: rgba(20,184,166,.12); color: #5eead4; }
-  .buy-car-menu small { color: #94a3b8; }
-  .admin-welcome-art { opacity: .35; right: 20px; }
-  .admin-layout { grid-template-columns: 1fr; }
-  .admin-sidebar { position: static; display: flex; gap: 5px; overflow-x: auto; padding: 9px; }
-  .admin-sidebar-label, .admin-sidebar-divider, .admin-help-card { display: none; }
-  .admin-side-link { width: auto; min-width: max-content; grid-template-columns: 20px auto auto; margin: 0; }
+  .hero-title {
+    font-size: 2.3rem;
+  }
+  .search-card-hero {
+    margin-top: 15px;
+    padding: 20px;
+  }
+  .detail-gallery-main {
+    height: 340px;
+  }
+  .buy-car-menu {
+    position: static;
+    width: 100%;
+    margin: 5px 0 8px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .buy-car-dropdown:hover .buy-car-menu,
+  .buy-car-dropdown:focus-within .buy-car-menu {
+    transform: none;
+  }
+  .buy-car-menu > a:not(.buy-car-menu-all),
+  .buy-car-menu-all {
+    color: #E2E8F0;
+  }
+  .buy-car-menu > a:not(.buy-car-menu-all):hover {
+    background: rgba(20, 184, 166, 0.12);
+    color: #5EEAD4;
+  }
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    position: static;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  .admin-sidebar-label,
+  .admin-sidebar-divider,
+  .admin-help-card {
+    display: none;
+  }
+  .admin-side-link {
+    width: auto;
+    min-width: max-content;
+    grid-template-columns: 20px auto auto;
+    margin: 0;
+  }
 }
+
 @media (max-width: 575.98px) {
-  .admin-navbar { min-height: 68px; }
-  .admin-brand-badge, .admin-top-actions .admin-nav-link span { display: none; }
-  .admin-nav-link { padding: 8px; }
-  .admin-welcome { min-height: 270px; padding: 28px 22px; border-radius: 19px; }
-  .admin-welcome-art { display: none; }
-  .admin-panel { padding: 16px; border-radius: 15px; }
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .admin-welcome {
+    min-height: 250px;
+    padding: 26px 20px;
+    border-radius: var(--radius-lg);
+  }
+  .admin-welcome-art {
+    display: none;
+  }
+  .admin-panel {
+    padding: 16px;
+  }
 }
