@@ -658,14 +658,10 @@ img {
 .brand-vinfast { color: #00A99D; clip-path: polygon(50% 0, 100% 20%, 88% 100%, 50% 82%, 12% 100%, 0 20%); border-radius: 0; }
 .brand-mercedesbenz { color: #111827; font-size: 1.45rem; }
 .brand-item .brand-name {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 2px;
-}
-.brand-item .brand-count {
-  font-size: 0.74rem;
-  color: var(--text-muted);
+  margin-bottom: 0;
 }
 
 /* ==========================================================================
