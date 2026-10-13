@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Quản Trị Hệ Thống (Demo) - OtoMarket</title>
+  <title>Bảng Quản Trị Hệ Thống - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,23 +15,9 @@
 </head>
 <body class="admin-page">
 
-  <!-- Top bar đồng bộ với giao diện người dùng -->
-  <div class="top-header-bar d-none d-md-block">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="d-flex gap-4">
-        <span><i class="bi bi-telephone-fill me-1 text-teal"></i> Hotline: <strong>1900 6868</strong> (8:00 - 20:00)</span>
-        <span><i class="bi bi-shield-check me-1 text-teal"></i> Tin đăng được duyệt nội dung</span>
-      </div>
-      <div class="d-flex gap-3">
-        <a href="about.html"><i class="bi bi-info-circle me-1"></i>Về chúng tôi</a>
-        <a href="about.html#faq"><i class="bi bi-question-circle me-1"></i>Hỏi đáp</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navbar đồng bộ giao diện người dùng -->
+  <!-- Navbar đồng bộ cấu trúc chung hệ thống -->
   <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container">
+    <div class="container-fluid px-3 px-xl-5">
       <a class="brand-logo" href="index.html">
         <div class="logo-icon"><i class="bi bi-car-front-fill"></i></div>
         <span>Oto<span class="logo-tag">Market</span></span>
@@ -40,6 +26,7 @@
       <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin">
         <i class="bi bi-list fs-2 text-white"></i>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarAdmin">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Trang chủ</a></li>
@@ -61,56 +48,52 @@
     </div>
   </nav>
 
+  <!-- Breadcrumb đồng bộ với các trang khác -->
+  <div class="bg-white border-bottom py-3">
+    <div class="container-fluid px-3 px-xl-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Bảng quản trị hệ thống</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
   <!-- Main Content -->
-  <main class="admin-main py-4 py-lg-5">
-    <div class="container">
-      <section class="admin-welcome mb-4">
-        <div class="admin-welcome-content">
-          <span class="admin-eyebrow"><i class="bi bi-stars"></i> Trung tâm vận hành</span>
-          <h1>Chào buổi làm việc, Quản trị viên</h1>
-          <p>Kiểm soát chất lượng nội dung, xử lý báo cáo và theo dõi hoạt động của OtoMarket tại một nơi.</p>
-          <div class="d-flex flex-wrap gap-2 mt-4">
-            <a href="#pending-section" class="btn admin-primary-btn"><i class="bi bi-inbox me-2"></i>Xử lý tin chờ duyệt</a>
-            <a href="#reports-section" class="btn admin-ghost-btn"><i class="bi bi-flag me-2"></i>Xem báo cáo</a>
+  <main class="py-4 py-lg-5">
+    <div class="container-fluid px-3 px-xl-5">
+      
+      <!-- Tiêu đề trang rộng rãi & Phím tắt tác vụ -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <h1 class="h3 fw-bold mb-0 text-dark">Bảng Quản Trị Hệ Thống</h1>
+            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Admin Workspace</span>
           </div>
+          <p class="text-muted small mb-0">Kiểm soát chất lượng tin đăng, xử lý báo cáo vi phạm và theo dõi vận hành sàn OtoMarket</p>
         </div>
-        <div class="admin-welcome-art" aria-hidden="true">
-          <div class="admin-orbit admin-orbit-one"></div>
-          <div class="admin-orbit admin-orbit-two"></div>
-          <i class="bi bi-car-front-fill"></i>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Khôi phục demo
+          </button>
+          <a href="post-car.html" class="btn btn-teal btn-sm text-white rounded-2">
+            <i class="bi bi-plus-circle me-1"></i> Đăng tin thử nghiệm
+          </a>
         </div>
-      </section>
+      </div>
 
-      <div class="admin-layout">
-        <aside class="admin-sidebar">
-          <div class="admin-sidebar-label">MENU QUẢN TRỊ</div>
-          <a class="admin-side-link active" href="#overview"><i class="bi bi-grid-1x2-fill"></i><span>Tổng quan</span></a>
-          <a class="admin-side-link" href="#pending-section"><i class="bi bi-hourglass-split"></i><span>Duyệt tin đăng</span><span class="admin-side-count" id="sidebar-pending-count">0</span></a>
-          <a class="admin-side-link" href="#reports-section"><i class="bi bi-flag-fill"></i><span>Báo cáo</span><span class="admin-side-count danger" id="sidebar-reports-count">0</span></a>
-          <a class="admin-side-link" href="#inventory-section"><i class="bi bi-car-front-fill"></i><span>Kho tin xe</span></a>
-          <div class="admin-sidebar-divider"></div>
-          <a class="admin-side-link" href="profile.html"><i class="bi bi-person-circle"></i><span>Hồ sơ</span></a>
-          <button class="admin-side-link admin-side-button" onclick="resetDemoData()"><i class="bi bi-arrow-counterclockwise"></i><span>Khôi phục demo</span></button>
-          <div class="admin-help-card">
-            <i class="bi bi-shield-check"></i>
-            <strong>Duyệt nội dung</strong>
-            <span>Không đồng nghĩa xác nhận chất lượng hoặc pháp lý của xe.</span>
-          </div>
-        </aside>
-
-        <div class="admin-content" id="overview">
-
-      <!-- Thống kê KPIs -->
+      <!-- Thống kê KPIs toàn màn hình (Full Width 4 cột thoáng đãng) -->
       <div class="row g-3 mb-4">
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-card kpi-blue">
             <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-primary bg-primary-subtle fs-3">
+              <div class="rounded-3 p-3 text-primary bg-primary-subtle fs-4">
                 <i class="bi bi-people-fill"></i>
               </div>
               <div>
                 <span class="text-muted small d-block">Tổng người dùng</span>
-                <span class="h4 fw-bold mb-0" id="kpi-users-count">2</span>
+                <span class="h4 fw-bold mb-0 text-dark" id="kpi-users-count">2</span>
               </div>
             </div>
           </div>
@@ -119,7 +102,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-card kpi-amber">
             <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-warning bg-warning-subtle fs-3">
+              <div class="rounded-3 p-3 text-warning bg-warning-subtle fs-4">
                 <i class="bi bi-hourglass-split"></i>
               </div>
               <div>
@@ -133,7 +116,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-card kpi-green">
             <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-success bg-success-subtle fs-3">
+              <div class="rounded-3 p-3 text-success bg-success-subtle fs-4">
                 <i class="bi bi-check-circle-fill"></i>
               </div>
               <div>
@@ -147,7 +130,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-card kpi-red">
             <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-danger bg-danger-subtle fs-3">
+              <div class="rounded-3 p-3 text-danger bg-danger-subtle fs-4">
                 <i class="bi bi-flag-fill"></i>
               </div>
               <div>
@@ -159,25 +142,46 @@
         </div>
       </div>
 
-      <!-- Danh sách tin chờ duyệt -->
+      <!-- Sync hidden elements for JS compatibility -->
+      <span id="sidebar-pending-count" style="display:none;">0</span>
+      <span id="sidebar-reports-count" style="display:none;">0</span>
+
+      <!-- Thanh chuyển nhanh các khu vực tác vụ Admin -->
+      <div class="d-flex flex-wrap gap-2 mb-4 p-2 bg-white rounded-3 border shadow-xs">
+        <a href="#pending-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
+          <i class="bi bi-inbox-fill text-warning"></i>
+          <span>Duyệt tin đăng</span>
+          <span class="badge bg-warning text-dark" id="nav-pending-badge">Cần xử lý</span>
+        </a>
+        <a href="#reports-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
+          <i class="bi bi-flag-fill text-danger"></i>
+          <span>Báo cáo vi phạm</span>
+        </a>
+        <a href="#inventory-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
+          <i class="bi bi-collection-fill text-teal"></i>
+          <span>Kho xe toàn hệ thống</span>
+        </a>
+      </div>
+
+      <!-- 1. Danh sách tin chờ duyệt (Full width, thoáng đãng) -->
       <section class="admin-panel mb-4" id="pending-section">
         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
           <h2 class="h5 fw-bold mb-0 text-dark">
             <i class="bi bi-inbox-fill text-warning me-2"></i> Danh sách tin đăng chờ duyệt (<span id="pending-table-count">0</span>)
           </h2>
-          <span class="badge bg-warning text-dark">Cần xử lý</span>
+          <span class="badge bg-warning text-dark">Kiểm duyệt chất lượng</span>
         </div>
 
         <div class="table-responsive">
           <table class="table table-hover align-middle mb-0">
             <thead class="table-light small">
               <tr>
-                <th>Ảnh & Xe</th>
-                <th>Người đăng & SĐT</th>
-                <th>Giá & Khu vực</th>
-                <th>Ngày tạo</th>
-                <th>Trạng thái</th>
-                <th class="text-end">Hành động</th>
+                <th style="min-width: 280px;">Ảnh & Xe</th>
+                <th style="min-width: 170px;">Người đăng & SĐT</th>
+                <th style="min-width: 160px;">Giá & Khu vực</th>
+                <th style="min-width: 120px;">Ngày tạo</th>
+                <th style="min-width: 120px;">Trạng thái</th>
+                <th class="text-end" style="min-width: 170px;">Hành động</th>
               </tr>
             </thead>
             <tbody id="pending-table-body">
@@ -189,14 +193,14 @@
         <div id="no-pending-message" class="text-center py-5" style="display: none;">
           <i class="bi bi-check2-circle text-success fs-1 mb-2 d-block"></i>
           <h5 class="fw-bold">Hiện không có tin nào chờ duyệt!</h5>
-          <p class="text-muted small mb-3">Tất cả các tin đăng từ người dùng đã được phê duyệt.</p>
+          <p class="text-muted small mb-3">Tất cả các tin đăng từ người dùng đã được xử lý phê duyệt.</p>
           <a href="post-car.html" class="btn btn-outline-teal btn-sm">
             <i class="bi bi-plus-circle me-1"></i> Đăng thử 1 tin xe mới để kiểm tra
           </a>
         </div>
       </section>
 
-      <!-- Danh sách Báo cáo vi phạm -->
+      <!-- 2. Danh sách Báo cáo vi phạm (Full width) -->
       <section class="admin-panel mb-4" id="reports-section">
         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
           <h2 class="h5 fw-bold mb-0 text-dark">
@@ -209,12 +213,12 @@
           <table class="table table-hover align-middle mb-0">
             <thead class="table-light small">
               <tr>
-                <th>Mã báo cáo</th>
-                <th>Tin bị báo cáo</th>
-                <th>Lý do</th>
-                <th>Mô tả</th>
-                <th>Trạng thái</th>
-                <th class="text-end">Hành động</th>
+                <th style="width: 120px;">Mã báo cáo</th>
+                <th style="min-width: 200px;">Tin bị báo cáo</th>
+                <th style="min-width: 150px;">Lý do</th>
+                <th>Mô tả chi tiết</th>
+                <th style="width: 130px;">Trạng thái</th>
+                <th class="text-end" style="min-width: 220px;">Hành động</th>
               </tr>
             </thead>
             <tbody id="reports-table-body">
@@ -228,7 +232,7 @@
         </div>
       </section>
 
-      <!-- Danh sách tất cả xe hệ thống (Lọc theo trạng thái) -->
+      <!-- 3. Danh sách tất cả xe hệ thống (Lọc theo trạng thái) -->
       <section class="admin-panel" id="inventory-section">
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 pb-2 border-bottom gap-3">
           <h2 class="h5 fw-bold mb-0 text-dark">
@@ -252,14 +256,14 @@
           <table class="table table-sm table-hover align-middle mb-0">
             <thead class="table-light small">
               <tr>
-                <th>ID</th>
-                <th>Tên xe</th>
-                <th>Hãng</th>
-                <th>Năm</th>
-                <th>Giá</th>
-                <th>Người bán</th>
-                <th>Trạng thái</th>
-                <th class="text-end">Hành động</th>
+                <th style="width: 100px;">ID</th>
+                <th style="min-width: 240px;">Tên xe</th>
+                <th style="width: 110px;">Hãng</th>
+                <th style="width: 80px;">Năm</th>
+                <th style="width: 140px;">Giá</th>
+                <th style="min-width: 140px;">Người bán</th>
+                <th style="width: 130px;">Trạng thái</th>
+                <th class="text-end" style="width: 130px;">Hành động</th>
               </tr>
             </thead>
             <tbody id="all-cars-table-body">
@@ -269,8 +273,6 @@
         </div>
       </section>
 
-        </div>
-      </div>
     </div>
   </main>
 
@@ -307,6 +309,13 @@
     </div>
   </div>
 
+  <!-- Footer đồng bộ -->
+  <footer class="footer-custom">
+    <div class="container text-center small text-secondary">
+      © 2026 OtoMarket - Bảng Điều Hành Quản Trị Hệ Thống.
+    </div>
+  </footer>
+
   <div id="toast-container"></div>
 
   <!-- Scripts -->
@@ -327,8 +336,13 @@
       document.getElementById('kpi-active-count').textContent = activeListings.length;
       document.getElementById('kpi-reports-count').textContent = reports.length;
       document.getElementById('kpi-users-count').textContent = getRegisteredUsers().length + 2;
-      document.getElementById('sidebar-pending-count').textContent = pendingListings.length;
-      document.getElementById('sidebar-reports-count').textContent = reports.filter(r => r.status !== 'resolved').length;
+      
+      const sidebarPending = document.getElementById('sidebar-pending-count');
+      if (sidebarPending) sidebarPending.textContent = pendingListings.length;
+      
+      const sidebarReports = document.getElementById('sidebar-reports-count');
+      if (sidebarReports) sidebarReports.textContent = reports.filter(r => r.status !== 'resolved').length;
+      
       document.getElementById('pending-table-count').textContent = pendingListings.length;
       document.getElementById('reports-table-count').textContent = reports.length;
 

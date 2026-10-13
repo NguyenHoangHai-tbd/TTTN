@@ -674,9 +674,9 @@ function syncHeaderUserUI() {
     const isAdmin = user.role === 'admin' && user.email === 'admin@otomarket.vn';
     authSection.innerHTML = `
       <div class="dropdown">
-        <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+        <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" style="white-space: nowrap !important;">
           <i class="bi bi-person-circle text-teal"></i>
-          <span class="d-none d-xl-inline">${user.name || user.email}</span>
+          <span class="d-none d-xl-inline text-truncate" style="max-width: 140px; vertical-align: middle; white-space: nowrap !important;">${user.name || user.email}</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
           <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
