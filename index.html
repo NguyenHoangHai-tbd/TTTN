@@ -83,28 +83,95 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container position-relative">
-      <div class="row align-items-center gy-4">
+      <div class="row align-items-center gy-5">
         <div class="col-lg-7">
+          <!-- Live Status Tag (Tinh tế, chuyên nghiệp) -->
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 hero-pill-tag">
+            <span class="hero-pulse-dot"></span>
+            <span>Sàn Mua Bán Ô Tô Trực Tuyến Xác Thực</span>
+          </div>
+
+          <!-- Tiêu đề ấn tượng với hiệu ứng gradient -->
           <h1 class="hero-title mb-3">
-            Tìm chiếc xe phù hợp với bạn
+            Tìm Chiếc Xe Phù Hợp <br>
+            <span class="hero-highlight">Với Phong Cách Của Bạn</span>
           </h1>
+
+          <!-- Mô tả sắc nét -->
           <p class="hero-subtitle mb-4">
-            Khám phá tin xe từ người bán cá nhân và salon. Hãy trực tiếp kiểm tra xe, giấy tờ và thỏa thuận giao dịch với người bán.
+            Khám phá hàng ngàn mẫu xe từ chính chủ và salon uy tín trên toàn quốc. Thông tin kiểm định rõ ràng, giá bán công khai, an tâm giao dịch.
           </p>
-          <div class="d-flex flex-wrap gap-3">
-            <a href="cars.html" class="btn-cta-orange px-4 py-2">
-              <i class="bi bi-search"></i> Khám phá tất cả xe
+
+          <!-- Nút hành động nổi bật -->
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <a href="cars.html" class="btn-cta-orange px-4 py-2 fs-6">
+              <i class="bi bi-search"></i> Khám phá xe ngay
             </a>
-            <a href="about.html" class="btn btn-outline-custom px-4 py-2">
-              <i class="bi bi-shield-check"></i> Quy trình duyệt tin
+            <a href="post-car.html" class="btn btn-outline-custom px-4 py-2 fs-6">
+              <i class="bi bi-plus-circle"></i> Đăng bán miễn phí
             </a>
           </div>
+
+          <!-- Các chỉ số tin cậy giúp trang chủ tràn đầy sức sống -->
+          <div class="d-flex flex-wrap align-items-center gap-4 pt-3 border-top border-white border-opacity-10">
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(45, 212, 191, 0.15); width: 36px; height: 36px;">
+                <i class="bi bi-patch-check-fill text-teal"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-white small lh-1">100% Minh bạch</div>
+                <span class="text-secondary" style="font-size: 0.74rem;">Kiểm duyệt thông tin</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(45, 212, 191, 0.15); width: 36px; height: 36px;">
+                <i class="bi bi-shield-lock-fill text-teal"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-white small lh-1">0đ Phí đăng tin</div>
+                <span class="text-secondary" style="font-size: 0.74rem;">Tiếp cận người mua</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(45, 212, 191, 0.15); width: 36px; height: 36px;">
+                <i class="bi bi-people-fill text-teal"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-white small lh-1">500.000+</div>
+                <span class="text-secondary" style="font-size: 0.74rem;">Lượt xem mỗi tháng</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-5 text-center d-none d-lg-block">
-          <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=900&q=80" 
-               alt="OtoMarket Hero Car" 
-               class="img-fluid rounded-4 shadow-lg border border-secondary" 
-               style="max-height: 380px; object-fit: cover; width: 100%;">
+
+        <!-- Khối ảnh xe trực quan sang trọng bên phải -->
+        <div class="col-lg-5 text-center d-none d-lg-block position-relative">
+          <div class="hero-image-frame">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=900&q=80" 
+                 alt="OtoMarket Hero Car" 
+                 class="img-fluid w-100 object-fit-cover" 
+                 style="max-height: 390px;">
+            
+            <!-- Huy hiệu đánh giá nổi góc trên -->
+            <div class="position-absolute top-0 end-0 m-3 px-3 py-1 rounded-pill hero-floating-badge d-flex align-items-center gap-1">
+              <i class="bi bi-star-fill text-warning" style="font-size: 0.78rem;"></i>
+              <span class="small fw-bold text-white" style="font-size: 0.8rem;">4.9 / 5</span>
+              <span class="text-muted" style="font-size: 0.72rem;">(3.5k đánh giá)</span>
+            </div>
+
+            <!-- Thẻ kính cam kết an toàn góc dưới -->
+            <div class="position-absolute bottom-0 start-0 m-3 p-3 rounded-3 hero-floating-badge d-flex align-items-center gap-3 text-start" style="max-width: 280px;">
+              <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px; background: linear-gradient(135deg, #0D9488, #14B8A6); flex-shrink: 0;">
+                <i class="bi bi-shield-check fs-5"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-white small mb-0">Cam kết an toàn</div>
+                <span class="text-secondary" style="font-size: 0.72rem;">Đồng hành cùng chủ xe 24/7</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -113,6 +180,14 @@
   <!-- Quick Search Box -->
   <div class="container">
     <div class="search-card-hero">
+      <!-- Tabs phân loại tìm nhanh: Tất cả / Xe cũ / Xe mới -->
+      <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+        <span class="small fw-bold text-muted text-uppercase me-2" style="font-size: 0.75rem; letter-spacing: 0.5px;">Tìm nhanh:</span>
+        <button type="button" class="search-tab-pill active" onclick="setHeroCondition('', this)">Tất cả xe</button>
+        <button type="button" class="search-tab-pill" onclick="setHeroCondition('used', this)">Ô tô cũ / Lướt</button>
+        <button type="button" class="search-tab-pill" onclick="setHeroCondition('new', this)">Ô tô mới 100%</button>
+      </div>
+
       <form id="hero-search-form" onsubmit="handleHeroSearch(event)">
         <div class="row g-3 align-items-end">
           <div class="col-md-3">
@@ -151,6 +226,7 @@
               <option value="Đà Nẵng">Đà Nẵng</option>
               <option value="Hải Phòng">Hải Phòng</option>
               <option value="Bình Dương">Bình Dương</option>
+              <option value="Khánh Hòa">Khánh Hòa</option>
             </select>
           </div>
 
@@ -402,6 +478,13 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
+    let heroCondition = '';
+    function setHeroCondition(cond, btn) {
+      heroCondition = cond;
+      document.querySelectorAll('.search-tab-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
     // Xử lý tìm kiếm từ Hero
     function handleHeroSearch(event) {
       event.preventDefault();
@@ -415,6 +498,7 @@
       if (price) params.set('priceRange', price);
       if (location) params.set('location', location);
       if (keyword) params.set('keyword', keyword);
+      if (heroCondition) params.set('condition', heroCondition);
 
       window.location.href = `cars.html?${params.toString()}`;
     }
