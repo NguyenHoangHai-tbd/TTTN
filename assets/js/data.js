@@ -714,14 +714,14 @@ const SAMPLE_CARS = [
 
 // Danh sách các thương hiệu phổ biến
 const POPULAR_BRANDS = [
-  { name: "Toyota", logo: "https://www.carlogos.org/car-logos/toyota-logo-2020-europe-640.png", count: 184 },
-  { name: "Hyundai", logo: "https://www.carlogos.org/car-logos/hyundai-logo-2011-640.png", count: 142 },
-  { name: "Kia", logo: "https://www.carlogos.org/car-logos/kia-logo-2021-640.png", count: 119 },
-  { name: "Honda", logo: "https://www.carlogos.org/car-logos/honda-logo-2000-640.png", count: 96 },
-  { name: "Ford", logo: "https://www.carlogos.org/car-logos/ford-logo-2017-640.png", count: 88 },
-  { name: "Mazda", logo: "https://www.carlogos.org/car-logos/mazda-logo-2018-640.png", count: 75 },
-  { name: "VinFast", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/VinFast_logo.svg/320px-VinFast_logo.svg.png", count: 64 },
-  { name: "Mercedes-Benz", logo: "https://www.carlogos.org/car-logos/mercedes-benz-logo-2011-640.png", count: 52 }
+  { name: "Toyota", logo: "assets/images/brands/toyota.svg", count: 184 },
+  { name: "Hyundai", logo: "assets/images/brands/hyundai.svg", count: 142 },
+  { name: "Kia", logo: "assets/images/brands/kia.svg", count: 119 },
+  { name: "Honda", logo: "assets/images/brands/honda.svg", count: 96 },
+  { name: "Ford", logo: "assets/images/brands/ford.svg", count: 88 },
+  { name: "Mazda", logo: "assets/images/brands/mazda.svg", count: 75 },
+  { name: "VinFast", logo: "assets/images/brands/vinfast.svg", count: 64 },
+  { name: "Mercedes-Benz", logo: "assets/images/brands/mercedes-benz.svg", count: 52 }
 ];
 
 // Danh sách khu vực

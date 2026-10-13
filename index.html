@@ -184,7 +184,7 @@
       <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
         <span class="small fw-bold text-muted text-uppercase me-2" style="font-size: 0.75rem; letter-spacing: 0.5px;">Tìm nhanh:</span>
         <button type="button" class="search-tab-pill active" onclick="setHeroCondition('', this)">Tất cả xe</button>
-        <button type="button" class="search-tab-pill" onclick="setHeroCondition('used', this)">Ô tô cũ / Lướt</button>
+        <button type="button" class="search-tab-pill" onclick="setHeroCondition('used', this)">Ô tô cũ</button>
         <button type="button" class="search-tab-pill" onclick="setHeroCondition('new', this)">Ô tô mới 100%</button>
       </div>
 
@@ -508,21 +508,11 @@
       const container = document.getElementById('brand-list-container');
       if (!container) return;
 
-      const brandMarks = {
-        'Toyota': 'T',
-        'Hyundai': 'H',
-        'Kia': 'KIA',
-        'Honda': 'H',
-        'Ford': 'Ford',
-        'Mazda': 'M',
-        'VinFast': 'V',
-        'Mercedes-Benz': '★'
-      };
       container.innerHTML = POPULAR_BRANDS.map(brand => `
         <div class="col">
-          <a href="cars.html?brand=${encodeURIComponent(brand.name)}" class="brand-item">
-            <div class="brand-logo-mark brand-${brand.name.toLowerCase().replace(/[^a-z]/g, '')}" aria-label="Logo ${brand.name}">
-              <span>${brandMarks[brand.name] || brand.name.charAt(0)}</span>
+          <a href="cars.html?brand=${encodeURIComponent(brand.name)}" class="brand-item" title="Xem xe ${brand.name}">
+            <div class="brand-logo-img-wrapper">
+              <img src="${brand.logo}" alt="Logo ${brand.name}" class="brand-logo-img" loading="lazy">
             </div>
             <div class="brand-name">${brand.name}</div>
             <div class="brand-count">${brand.count} xe</div>
