@@ -612,10 +612,12 @@ function getLoggedInUser() {
 }
 
 function setLoggedInUser(user) {
+  const email = String(user.email || '').trim().toLowerCase();
+  const isAdmin = email === 'admin@otomarket.vn' || user.role === 'admin' || user.role === 'staff';
   const normalizedUser = {
     ...user,
-    email: String(user.email || '').trim().toLowerCase(),
-    role: String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn' ? 'admin' : 'user'
+    email: email,
+    role: isAdmin ? 'admin' : 'user'
   };
   localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(normalizedUser));
 }
@@ -682,98 +684,11 @@ function updateFavoritesCountBadge() {
   });
 }
 
-// Helper kiểm tra quyền Admin / Nhân viên Showroom
-function isUserAdmin() {
-  const user = getLoggedInUser();
+function isUserAdmin(user) {
+  if (window.IS_WP_ADMIN === true) return true;
+  if (!user) user = getLoggedInUser();
   if (!user) return false;
-  if (window.IS_WP_ADMIN) return true;
-  return user.role === 'admin' || user.email === 'admin@otomarket.vn';
-}
-
-// Render Thanh Topbar riêng biệt cho Nhân viên (Admin)
-function renderAdminTopbar() {
-  const isAdmin = isUserAdmin();
-  let topbar = document.getElementById('otomarket-admin-topbar');
-
-  // Nếu là người dùng thường: tuyệt đối không hiển thị Topbar quản trị
-  if (!isAdmin) {
-    if (topbar) topbar.remove();
-    return;
-  }
-
-  const user = getLoggedInUser();
-  const cars = typeof getStoredCars === 'function' ? getStoredCars() : [];
-  const pendingCount = cars.filter(c => c.status === 'pending').length;
-  const isCurrentAdminPage = window.location.pathname.includes('admin.html');
-
-  const html = `
-    <div id="otomarket-admin-topbar" class="admin-topbar-strip">
-      <div class="container-fluid px-3 px-xl-5 d-flex align-items-center justify-content-between">
-        <div class="d-flex align-items-center gap-2 gap-md-3">
-          <span class="admin-badge-pill">
-            <i class="bi bi-shield-fill-check"></i> NHÂN VIÊN SHOWROOM
-          </span>
-          <span class="d-none d-md-inline" style="font-size: 0.8rem; color: #E2E8F0;">
-            Xin chào, <strong>${user ? (user.name || 'Ban Quản Trị') : 'Ban Quản Trị'}</strong>
-          </span>
-          ${!isCurrentAdminPage ? `
-          <a href="admin.html" class="btn-admin-topbar-action" title="Mở Bảng Điều Hành Quản Trị Showroom">
-            <i class="bi bi-speedometer2"></i> Vào Bảng Quản Trị
-          </a>
-          ` : `
-          <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1" style="font-size: 0.72rem;">
-            <i class="bi bi-circle-fill me-1" style="font-size: 6px;"></i> Đang ở Bảng Quản Trị
-          </span>
-          `}
-          <a href="admin.html#tab-pending" class="admin-topbar-quick-link d-none d-sm-inline-flex" title="Xem danh sách xe ký gửi chờ duyệt">
-            <i class="bi bi-clock-history text-warning"></i> Duyệt xe ký gửi
-            <span class="badge bg-danger rounded-pill ms-1">${pendingCount}</span>
-          </a>
-        </div>
-        <div class="d-flex align-items-center gap-2 gap-md-3">
-          <a href="post-car.html?source=showroom" class="admin-topbar-quick-link d-none d-lg-inline-flex">
-            <i class="bi bi-plus-circle text-teal"></i> Đăng xe Showroom
-          </a>
-          <a href="/wp-admin" class="admin-topbar-quick-link text-warning-subtle d-none d-xl-inline-flex" title="SuperAdmin Console kỹ thuật trên WordPress">
-            <i class="bi bi-gear-wide-connected"></i> Bảo trì WP
-          </a>
-          <button type="button" class="btn-topbar-dismiss" onclick="document.getElementById('otomarket-admin-topbar').style.display='none'" title="Ẩn tạm thời">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-
-  if (topbar) {
-    topbar.outerHTML = html;
-  } else {
-    const nav = document.querySelector('.navbar-custom');
-    if (nav) {
-      nav.insertAdjacentHTML('beforebegin', html);
-    }
-  }
-}
-
-// Bổ sung mục Quản trị Showroom vào menu Navbar khi là Admin
-function syncAdminNavbarMenuItem() {
-  const isAdmin = isUserAdmin();
-  document.querySelectorAll('.navbar-nav').forEach(nav => {
-    let adminItem = nav.querySelector('.admin-nav-item');
-    if (isAdmin) {
-      const isCurrentAdmin = window.location.pathname.includes('admin.html');
-      if (!adminItem) {
-        const li = document.createElement('li');
-        li.className = 'nav-item admin-nav-item admin-only';
-        li.innerHTML = `<a class="nav-link nav-link-custom ${isCurrentAdmin ? 'active' : ''} text-warning fw-semibold" href="admin.html"><i class="bi bi-shield-check me-1"></i>Quản trị</a>`;
-        nav.appendChild(li);
-      } else {
-        adminItem.style.display = '';
-      }
-    } else {
-      if (adminItem) adminItem.remove();
-    }
-  });
+  return user.role === 'admin' || user.role === 'staff' || String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn';
 }
 
 function syncHeaderUserUI() {
@@ -782,40 +697,25 @@ function syncHeaderUserUI() {
 
   const user = getLoggedInUser();
   if (user) {
-    const isAdmin = isUserAdmin();
-
-    // Nút Bảng Quản Trị trực tiếp trên Navbar cho Nhân viên / Admin
-    const adminQuickButton = isAdmin ? `
-      <a href="admin.html" class="btn-navbar-admin-quick me-1 admin-only" title="Mở Bảng Quản Trị Showroom">
-        <i class="bi bi-shield-lock-fill"></i>
-        <span class="d-none d-md-inline">Bảng Quản Trị</span>
-      </a>
-    ` : '';
-
+    const isAdmin = isUserAdmin(user);
     authSection.innerHTML = `
-      <div class="d-flex align-items-center gap-2">
-        ${adminQuickButton}
-        <div class="dropdown">
-          <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" style="white-space: nowrap !important;">
-            <i class="bi ${isAdmin ? 'bi-shield-shaded text-warning' : 'bi-person-circle text-teal'}"></i>
-            <span class="d-none d-xl-inline text-truncate" style="max-width: 140px; vertical-align: middle; white-space: nowrap !important;">${user.name || user.email}</span>
-            ${isAdmin ? '<span class="badge bg-warning text-dark px-1 py-0 d-none d-sm-inline" style="font-size: 0.65rem; font-weight: 800;">ADMIN</span>' : ''}
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
-            <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
-              <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">
-                ${user.name || (isAdmin ? 'Ban Quản Trị Showroom' : 'Thành viên')}
-              </div>
-              <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
-            </li>
-            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
-            <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2 text-teal"></i>Quản lý tin đăng</a></li>
-            <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
-            ${isAdmin ? '<li><a class="dropdown-item py-2 text-warning fw-semibold" href="admin.html"><i class="bi bi-speedometer2 me-2"></i>Bảng quản trị Showroom</a></li>' : ''}
-            <li><hr class="dropdown-divider my-1"></li>
-            <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
-          </ul>
-        </div>
+      <div class="dropdown">
+        <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" style="white-space: nowrap !important;">
+          <i class="bi bi-person-circle text-teal"></i>
+          <span class="d-none d-xl-inline text-truncate" style="max-width: 140px; vertical-align: middle; white-space: nowrap !important;">${user.name || user.email}</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
+          <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
+            <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Ban Quản Trị OtoMarket' : 'Thành viên')}</div>
+            <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
+          </li>
+          <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
+          <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2 text-teal"></i>Quản lý tin đăng</a></li>
+          <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
+          ${isAdmin ? '<li><a class="dropdown-item py-2" href="admin.html"><i class="bi bi-shield-lock me-2 text-warning"></i>Trang quản trị (Admin)</a></li>' : ''}
+          <li><hr class="dropdown-divider my-1"></li>
+          <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+        </ul>
       </div>
     `;
   } else {
@@ -830,15 +730,80 @@ function syncHeaderUserUI() {
 
 function syncAdminLinksVisibility() {
   const isAdmin = isUserAdmin();
-  document.querySelectorAll('.admin-only').forEach(el => {
-    el.style.display = isAdmin ? '' : 'none';
+
+  document.querySelectorAll('.navbar-nav').forEach(nav => {
+    // Tìm mục "Hỗ trợ"
+    let supportItem = null;
+    nav.querySelectorAll('li.nav-item').forEach(li => {
+      const link = li.querySelector('a');
+      if (link) {
+        const text = link.textContent.trim().toLowerCase();
+        const href = (link.getAttribute('href') || '').toLowerCase();
+        if (text === 'hỗ trợ' || href.includes('#contact')) {
+          supportItem = li;
+        }
+      }
+    });
+
+    let adminItem = nav.querySelector('li.admin-nav-item, li.admin-only');
+
+    if (isAdmin) {
+      if (!adminItem) {
+        adminItem = document.createElement('li');
+        adminItem.className = 'nav-item admin-only admin-nav-item';
+        const isCurrentAdminPage = window.location.pathname.includes('admin.html');
+        adminItem.innerHTML = `
+          <a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên / Showroom Admin">
+            <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin (Admin)
+            <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+          </a>
+        `;
+        if (supportItem) {
+          supportItem.insertAdjacentElement('afterend', adminItem);
+        } else {
+          nav.appendChild(adminItem);
+        }
+      }
+      adminItem.classList.add('is-admin-visible');
+      adminItem.style.display = '';
+
+      // Cập nhật số lượng tin chờ duyệt vào badge
+      const allCars = typeof getStoredCars === 'function' ? getStoredCars() : [];
+      const pendingCount = allCars.filter(c => c.status === 'pending').length;
+      const badge = adminItem.querySelector('.nav-pending-count');
+      if (badge) {
+        if (pendingCount > 0) {
+          badge.textContent = pendingCount;
+          badge.style.display = 'inline-block';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+    } else {
+      // Dạng người dùng thông thường hoặc khách: Ẩn hoàn toàn mục Duyệt tin
+      if (adminItem) {
+        adminItem.classList.remove('is-admin-visible');
+        adminItem.style.display = 'none';
+      }
+    }
+  });
+
+  // Đồng bộ các phần tử admin-only khác trên trang
+  document.querySelectorAll('.admin-only:not(.admin-nav-item)').forEach(el => {
+    if (isAdmin) {
+      el.classList.add('is-admin-visible');
+      el.style.display = '';
+    } else {
+      el.classList.remove('is-admin-visible');
+      el.style.display = 'none';
+    }
   });
 }
 
 function enforcePagePermissions() {
   const path = window.location.pathname;
   const user = getLoggedInUser();
-  const isAdmin = isUserAdmin();
+  const isAdmin = isUserAdmin(user);
 
   if (path.includes('post-car.html') || path.includes('my-listings.html')) {
     if (!user) {
@@ -854,6 +819,7 @@ function enforcePagePermissions() {
     }
   }
 }
+
 
 // Menu Mua xe dùng chung: rê chuột để chọn xe mới/xe cũ, nhấn để xem tất cả.
 function enhanceBuyCarNavigation() {
@@ -1052,10 +1018,7 @@ document.addEventListener('DOMContentLoaded', () => {
   enhanceBuyCarNavigation();
   ensureSupportNavigation();
   updateFavoritesCountBadge();
-  renderAdminTopbar();
-  syncAdminNavbarMenuItem();
   syncHeaderUserUI();
   syncAdminLinksVisibility();
   enforcePagePermissions();
 });
-
