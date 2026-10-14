@@ -176,12 +176,25 @@ img {
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.5px;
+  text-decoration: none;
   white-space: nowrap !important;
   flex-shrink: 0;
 }
 .brand-logo:hover {
   color: #FFFFFF;
-  opacity: 0.95;
+  opacity: 0.98;
+}
+.brand-logo .site-logo {
+  height: 38px;
+  max-height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.brand-logo:hover .site-logo {
+  transform: scale(1.02);
+  filter: drop-shadow(0 4px 12px rgba(13, 148, 136, 0.35));
 }
 .brand-logo .logo-icon {
   width: 36px;
@@ -202,6 +215,7 @@ img {
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
+
 
 /* Navigation Links (Tuyệt đối không bị ngắt dòng chữ - Zero Wrap) */
 @media (min-width: 992px) {
@@ -1094,3 +1108,10 @@ img {
     transform: none;
   }
 }
+
+@media (max-width: 767.98px) {
+  .brand-logo .site-logo {
+    height: 32px;
+  }
+}
+

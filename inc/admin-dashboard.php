@@ -161,7 +161,11 @@ function otomarket_render_superadmin_maintenance_view() {
         <!-- Tiêu đề trang SuperAdmin -->
         <div class="super-header">
             <div class="super-title">
-                <h1>Trung Tâm Kỹ Thuật & Bảo Trì <span class="super-badge">SuperAdmin Technical Console</span></h1>
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px;">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-light.png" alt="OtoMarket" style="height: 38px; width: auto; object-fit: contain;">
+                    <span class="super-badge">SuperAdmin Technical Console</span>
+                </div>
+                <h1 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0;">Trung Tâm Kỹ Thuật & Bảo Trì Hệ Thống</h1>
                 <p class="super-desc">Dành riêng cho đơn vị phát triển kỹ thuật: Quản trị hạ tầng, sao lưu CSDL, cấu hình Showroom và bảo trì vận hành.</p>
             </div>
             <div>
