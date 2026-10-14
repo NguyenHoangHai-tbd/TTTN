@@ -562,7 +562,8 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const user = getLoggedInUser();
-      if (!user || (user.role !== 'admin' && user.email !== 'admin@otomarket.vn')) {
+      const isWpAdmin = (typeof window.IS_WP_ADMIN !== 'undefined' && window.IS_WP_ADMIN === true) || (user && user.role === 'admin');
+      if (!isWpAdmin && (!user || user.email !== 'admin@otomarket.vn')) {
         showToast("Bạn không có quyền truy cập trang quản trị", "error");
         setTimeout(() => { window.location.href = 'index.html'; }, 500);
         return;
