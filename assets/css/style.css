@@ -143,6 +143,113 @@ img {
 }
 
 /* ==========================================================================
+   Admin Topbar: Thanh công cụ quản trị riêng biệt cho Nhân viên (Admin)
+   ========================================================================== */
+.admin-topbar-strip {
+  background: #070D18;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 6px 0;
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  position: relative;
+  z-index: 1030;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-badge-pill {
+  background: rgba(245, 158, 11, 0.15);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap !important;
+}
+
+.btn-admin-topbar-action {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #0F172A !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 4px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap !important;
+}
+.btn-admin-topbar-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.5);
+  color: #000000 !important;
+}
+
+.admin-topbar-quick-link {
+  color: #94A3B8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap !important;
+}
+.admin-topbar-quick-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-topbar-dismiss {
+  background: transparent;
+  border: none;
+  color: #64748B;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+.btn-topbar-dismiss:hover {
+  color: #EF4444;
+}
+
+/* Nút Quick Admin trên Navbar */
+.btn-navbar-admin-quick {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #0F172A !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+  text-decoration: none;
+  white-space: nowrap !important;
+  transition: all 0.2s ease;
+}
+.btn-navbar-admin-quick:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.5);
+  color: #000000 !important;
+}
+
+
+/* ==========================================================================
    Header & Navigation (Chống lỗi ngắt dòng chữ - Zero Wrap)
    ========================================================================== */
 
