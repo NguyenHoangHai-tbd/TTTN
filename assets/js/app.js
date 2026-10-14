@@ -95,12 +95,20 @@ function normalizeListing(item) {
     }
   }
 
+  const isShowroom = (item.sourceType === 'showroom') || 
+                     (item.sellerType && (item.sellerType.includes('Đại lý') || item.sellerType.includes('Showroom') || item.sellerType.includes('Salon')));
+  const sourceType = isShowroom ? 'showroom' : 'external';
+  const sellerType = isShowroom ? 'Xe Showroom' : 'Người bán cá nhân';
+
   return {
     ...item,
     ownerId: item.ownerId || 'user-demo-1',
     status: status,
     condition: condition,
     isNew: isNew,
+    sourceType: sourceType,
+    sellerType: sellerType,
+    isShowroom: isShowroom,
     mileage: mileage,
     mileageDisplay: mileageDisplay,
     rejectReason: rejectReason,
@@ -826,16 +834,20 @@ function formatCurrency(amount) {
   return `${amount.toLocaleString('vi-VN')} đ`;
 }
 
-// Render thẻ xe chung
 function createCarCardHTML(car) {
   const isFav = isFavorite(car.id);
   const heartClass = isFav ? 'bi-heart-fill active' : 'bi-heart';
   const isNewCar = car.condition === 'new' || car.isNew;
-  const badgeHtml = isNewCar
-    ? `<span class="car-card-badge bg-primary text-white"><i class="bi bi-stars me-1"></i>Xe mới</span>`
-    : (car.isFeatured 
-        ? `<span class="car-card-badge badge-hot"><i class="bi bi-fire me-1"></i>Nổi bật</span>`
-        : `<span class="car-card-badge"><i class="bi bi-shield-check me-1"></i>Kiểm duyệt</span>`);
+  const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
+
+  let badgeHtml = '';
+  if (isShowroom) {
+    badgeHtml = isNewCar
+      ? `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom • Xe mới</span>`
+      : `<span class="car-card-badge badge-source-showroom"><i class="bi bi-shield-check me-1"></i>Xe Showroom</span>`;
+  } else {
+    badgeHtml = `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Người bán cá nhân</span>`;
+  }
 
   const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
 
@@ -874,8 +886,8 @@ function createCarCardHTML(car) {
 
           <div class="car-card-footer">
             <div class="car-seller-info">
-              <i class="bi bi-person-circle"></i>
-              <span>${car.sellerType}</span>
+              <i class="bi ${isShowroom ? 'bi-building text-teal' : 'bi-person-circle text-muted'}"></i>
+              <span class="${isShowroom ? 'fw-bold text-teal' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
             </div>
             <div class="car-location">
               <i class="bi bi-geo-alt"></i>

@@ -723,6 +723,16 @@ img {
 .car-card-badge.badge-certified {
   background: linear-gradient(135deg, #0D9488, #14B8A6);
 }
+.car-card-badge.badge-source-showroom {
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.35);
+}
+.car-card-badge.badge-source-external {
+  background: rgba(30, 41, 59, 0.88);
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 .car-fav-btn {
   position: absolute;

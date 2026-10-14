@@ -56,10 +56,10 @@
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
           <div class="d-flex align-items-center gap-2 mb-1">
-            <h1 class="h3 fw-bold mb-0 text-dark">Bảng Quản Trị Hệ Thống</h1>
-            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Admin Workspace</span>
+            <h1 class="h3 fw-bold mb-0 text-dark">Bảng Quản Trị Showroom</h1>
+            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Showroom Admin</span>
           </div>
-          <p class="text-muted small mb-0">Kiểm soát chất lượng tin đăng, xử lý báo cáo vi phạm và theo dõi vận hành sàn OtoMarket</p>
+          <p class="text-muted small mb-0">Quản lý kho xe Showroom, xét duyệt tin đăng xe cũ của người bán bên ngoài và xử lý báo cáo vi phạm</p>
         </div>
         <div class="d-flex flex-wrap gap-2">
           <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="resetDemoData()">
@@ -244,14 +244,15 @@
           <table class="table table-sm table-hover align-middle mb-0">
             <thead class="table-light small">
               <tr>
-                <th style="width: 100px;">ID</th>
-                <th style="min-width: 240px;">Tên xe</th>
-                <th style="width: 110px;">Hãng</th>
-                <th style="width: 80px;">Năm</th>
-                <th style="width: 140px;">Giá</th>
-                <th style="min-width: 140px;">Người bán</th>
-                <th style="width: 130px;">Trạng thái</th>
-                <th class="text-end" style="width: 130px;">Hành động</th>
+                <th style="width: 90px;">ID</th>
+                <th style="min-width: 220px;">Tên xe</th>
+                <th style="width: 100px;">Hãng</th>
+                <th style="width: 70px;">Năm</th>
+                <th style="width: 130px;">Giá</th>
+                <th style="width: 120px;">Nguồn xe</th>
+                <th style="min-width: 130px;">Người bán</th>
+                <th style="width: 120px;">Trạng thái</th>
+                <th class="text-end" style="width: 120px;">Hành động</th>
               </tr>
             </thead>
             <tbody id="all-cars-table-body">
@@ -497,6 +498,11 @@
             <td class="small">${car.brand}</td>
             <td class="small">${car.year}</td>
             <td class="small fw-bold text-orange" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</td>
+            <td class="small">
+              ${(car.sourceType === 'showroom' || car.isShowroom)
+                ? '<span class="badge bg-teal-subtle text-teal border border-teal-subtle"><i class="bi bi-shield-check me-1"></i>Showroom</span>'
+                : '<span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-person me-1"></i>Cá nhân</span>'}
+            </td>
             <td class="small text-muted">${car.sellerName}</td>
             <td>${getStatusBadgeHtml(car.status)}</td>
             <td class="text-end">

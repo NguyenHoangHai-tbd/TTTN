@@ -97,6 +97,16 @@
               </div>
             </div>
 
+            <!-- Nguồn đăng xe (Showroom / Người bán cá nhân) -->
+            <div class="mb-3">
+              <label class="form-label small fw-bold text-muted">Nguồn xe</label>
+              <select id="filter-source" class="form-select form-select-sm" onchange="applyFilters()">
+                <option value="">Tất cả nguồn xe</option>
+                <option value="showroom">Xe Showroom chính hãng</option>
+                <option value="external">Xe người bán bên ngoài</option>
+              </select>
+            </div>
+
             <!-- Tình trạng xe (Mới / Cũ) -->
             <div class="mb-3">
               <label class="form-label small fw-bold text-muted">Tình trạng</label>
@@ -337,6 +347,9 @@
 
     function initFiltersFromURL() {
       const params = new URLSearchParams(window.location.search);
+      if (params.get('source') && document.getElementById('filter-source')) {
+        document.getElementById('filter-source').value = params.get('source');
+      }
       if (params.get('brand')) {
         document.getElementById('filter-brand').value = params.get('brand');
       }
@@ -362,6 +375,7 @@
 
     function applyFilters() {
       const keyword = document.getElementById('filter-keyword').value.trim().toLowerCase();
+      const source = document.getElementById('filter-source') ? document.getElementById('filter-source').value : '';
       const brand = document.getElementById('filter-brand').value;
       const condition = document.getElementById('filter-condition').value;
       const priceRange = document.getElementById('filter-price').value;
@@ -376,6 +390,12 @@
       const allCars = getPublicCars();
 
       let filtered = allCars.filter(car => {
+        if (source) {
+          const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
+          if (source === 'showroom' && !isShowroom) return false;
+          if (source === 'external' && isShowroom) return false;
+        }
+
         if (keyword) {
           const matchTitle = car.title.toLowerCase().includes(keyword);
           const matchBrand = car.brand.toLowerCase().includes(keyword);
@@ -478,6 +498,7 @@
 
     function resetFilters() {
       document.getElementById('filter-keyword').value = '';
+      if (document.getElementById('filter-source')) document.getElementById('filter-source').value = '';
       document.getElementById('filter-brand').value = '';
       document.getElementById('filter-condition').value = '';
       document.getElementById('filter-price').value = '';
