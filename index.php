@@ -21,19 +21,20 @@ ob_start();
 include $static_home;
 $html = ob_get_clean();
 
-$head_injection = sprintf(
-    "\n  <base href=\"%s/\">\n",
+$base_tag = sprintf(
+    "\n  <base href=\"%s/\">",
     esc_url(get_template_directory_uri())
 );
 
 ob_start();
 wp_head();
-$head_injection .= ob_get_clean();
+$head_injection = ob_get_clean();
 
 ob_start();
 wp_footer();
 $footer_injection = ob_get_clean();
 
+$html = preg_replace('/<head([^>]*)>/i', '<head$1>' . $base_tag, $html, 1);
 $html = preg_replace('/<\/head>/i', $head_injection . '</head>', $html, 1);
 $html = preg_replace('/<\/body>/i', $footer_injection . '</body>', $html, 1);
 
