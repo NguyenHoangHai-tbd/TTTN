@@ -20,3 +20,17 @@ function otomarket_theme_setup()
     );
 }
 add_action('after_setup_theme', 'otomarket_theme_setup');
+
+// Nạp Custom Post Type và Meta Boxes cho Quản lý Xe Ô tô
+require_once get_template_directory() . '/inc/car-cpt.php';
+
+// Đổ dữ liệu xe từ WordPress Database ra biến window.WP_CARS cho frontend
+function otomarket_inject_frontend_cars() {
+    if (function_exists('otomarket_get_all_cars_data')) {
+        $cars = otomarket_get_all_cars_data();
+        if (!empty($cars)) {
+            echo '<script id="otomarket-wp-cars-data">window.WP_CARS = ' . json_encode($cars, JSON_UNESCAPED_UNICODE) . ';</script>' . "\n";
+        }
+    }
+}
+add_action('wp_head', 'otomarket_inject_frontend_cars', 5);

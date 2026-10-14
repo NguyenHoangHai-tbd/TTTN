@@ -208,11 +208,19 @@ function initializeStorage() {
   }
 }
 
+function getRawSampleCars() {
+  if (window.WP_CARS && Array.isArray(window.WP_CARS) && window.WP_CARS.length > 0) {
+    return window.WP_CARS;
+  }
+  return typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS : [];
+}
+
 // 1. Hàm getPublicCars() chỉ trả về xe mẫu hợp lệ và tin user có status=active
 function getPublicCars() {
   const customListings = getCustomListings();
   const activeCustom = customListings.filter(c => c.status === LISTING_STATUS.ACTIVE);
-  const normalizedSamples = SAMPLE_CARS.map(car => normalizeListing({
+  const rawList = getRawSampleCars();
+  const normalizedSamples = rawList.map(car => normalizeListing({
     ...car,
     status: LISTING_STATUS.ACTIVE,
     condition: car.condition || (car.isNew ? 'new' : 'used')
@@ -226,7 +234,8 @@ function getAllCars(includePending = false) {
   if (!includePending) {
     availableCustom = customListings.filter(c => c.status === LISTING_STATUS.ACTIVE);
   }
-  const normalizedSamples = SAMPLE_CARS.map(car => normalizeListing({
+  const rawList = getRawSampleCars();
+  const normalizedSamples = rawList.map(car => normalizeListing({
     ...car,
     status: LISTING_STATUS.ACTIVE,
     condition: car.condition || (car.isNew ? 'new' : 'used')
@@ -236,7 +245,7 @@ function getAllCars(includePending = false) {
 
 function getCarById(id) {
   const all = getAllCars(true);
-  return all.find(c => c.id === id) || null;
+  return all.find(c => c.id === id || String(c.wp_id) === String(id) || String(c.id) === `wp-${id}`) || null;
 }
 
 function getCustomListings() {
