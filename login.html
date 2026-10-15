@@ -93,15 +93,15 @@
               <div class="d-grid gap-2">
                 <button type="button" class="btn btn-sm text-start p-2 rounded-3 border d-flex align-items-center justify-content-between" style="background: #FFFFFF; border-color: #E2E8F0;" onclick="quickFillLogin('user')">
                   <div>
-                    <i class="bi bi-person-circle me-1 text-teal"></i> <strong class="text-dark">Chủ xe:</strong> <span class="text-muted">Nguyễn Hoàng Nam</span>
+                    <i class="bi bi-person-circle me-1 text-teal"></i> <strong class="text-dark">Khách bán xe:</strong> <span class="text-muted">Nguyễn Hoàng Nam</span>
                   </div>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle" style="font-size: 0.68rem;">User thường</span>
+                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle" style="font-size: 0.68rem;">Khách cá nhân / Môi giới</span>
                 </button>
                 <button type="button" class="btn btn-sm text-start p-2 rounded-3 border d-flex align-items-center justify-content-between" style="background: #FFFFFF; border-color: #E2E8F0;" onclick="quickFillLogin('admin')">
                   <div>
-                    <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong class="text-dark">Quản trị viên:</strong> <span class="text-muted">Ban Kiểm Duyệt</span>
+                    <i class="bi bi-shield-shaded me-1 text-primary"></i> <strong class="text-dark">Nhân viên Showroom:</strong> <span class="text-muted">Quản lý Showroom</span>
                   </div>
-                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size: 0.68rem;">Admin Demo</span>
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size: 0.68rem;">Nhân viên Showroom</span>
                 </button>
               </div>
             </div>
@@ -156,7 +156,7 @@
         document.getElementById('login-email').value = 'admin@otomarket.vn';
         document.getElementById('login-password').value = 'admin123';
         handleDoLogin({
-          name: "Ban Quản Trị OtoMarket",
+          name: "Quản lý Showroom",
           email: "admin@otomarket.vn",
           phone: "1900 6868",
           role: "admin",

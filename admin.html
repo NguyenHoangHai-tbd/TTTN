@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Quản Trị Hệ Thống - OtoMarket</title>
+  <title>Bảng Quản Trị Showroom - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
             <a class="nav-link nav-link-custom active" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-              <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin (Admin)
+              <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin Showroom
               <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
             </a>
           </li>
@@ -75,16 +75,16 @@
         <div>
           <div class="d-flex align-items-center gap-2 mb-1">
             <h1 class="h3 fw-bold mb-0 text-dark">Bảng Quản Trị Showroom</h1>
-            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Showroom Admin</span>
+            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Quản Trị Showroom</span>
           </div>
           <p class="text-muted small mb-0">Quản lý kho xe Showroom, xét duyệt tin đăng xe cũ của người bán bên ngoài và xử lý báo cáo vi phạm</p>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="resetDemoData()">
-            <i class="bi bi-arrow-counterclockwise me-1"></i> Khôi phục demo
+          <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="resetDemoData()" title="Đặt lại danh sách xe mẫu ban đầu">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Dữ liệu mặc định
           </button>
           <a href="post-car.html" class="btn btn-teal btn-sm text-white rounded-2">
-            <i class="bi bi-plus-circle me-1"></i> Đăng tin thử nghiệm
+            <i class="bi bi-plus-circle me-1"></i> Nhập xe vào Showroom
           </a>
         </div>
       </div>
@@ -201,7 +201,7 @@
           <h5 class="fw-bold">Hiện không có tin nào chờ duyệt!</h5>
           <p class="text-muted small mb-3">Tất cả các tin đăng từ người dùng đã được xử lý phê duyệt.</p>
           <a href="post-car.html" class="btn btn-outline-teal btn-sm">
-            <i class="bi bi-plus-circle me-1"></i> Đăng thử 1 tin xe mới để kiểm tra
+            <i class="bi bi-plus-circle me-1"></i> Nhập xe mới vào kho Showroom
           </a>
         </div>
       </section>
@@ -353,7 +353,6 @@
             <li><a href="my-listings.html">Quản lý tin đăng</a></li>
             <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
             <li><a href="login.html">Đăng nhập tài khoản</a></li>
-            <li class="admin-only"><a href="admin.html">Trang quản trị (Admin)</a></li>
           </ul>
         </div>
 

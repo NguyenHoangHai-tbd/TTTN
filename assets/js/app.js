@@ -706,7 +706,7 @@ function syncHeaderUserUI() {
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
           <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
-            <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Ban Quản Trị OtoMarket' : 'Thành viên')}</div>
+            <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Quản lý Showroom' : 'Thành viên')}</div>
             <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
           </li>
           <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
@@ -752,8 +752,8 @@ function syncAdminLinksVisibility() {
         adminItem.className = 'nav-item admin-only admin-nav-item';
         const isCurrentAdminPage = window.location.pathname.includes('admin.html');
         adminItem.innerHTML = `
-          <a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên / Showroom Admin">
-            <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin (Admin)
+          <a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
+            <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin Showroom
             <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
           </a>
         `;
