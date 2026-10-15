@@ -1122,3 +1122,246 @@ li.admin-only.is-admin-visible {
   }
 }
 
+/* ==========================================================================
+   Teal Utility Classes
+   ========================================================================== */
+.bg-teal {
+  background-color: var(--teal-color) !important;
+  color: #FFFFFF !important;
+}
+.bg-teal-subtle {
+  background-color: rgba(13, 148, 136, 0.12) !important;
+  color: var(--teal-color) !important;
+}
+.border-teal {
+  border-color: var(--teal-color) !important;
+}
+.border-teal-subtle {
+  border-color: rgba(13, 148, 136, 0.25) !important;
+}
+
+/* ==========================================================================
+   Post Car Premium Redesign
+   ========================================================================== */
+.post-car-page {
+  background-color: #F8FAFC;
+}
+.post-hero-section {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+}
+.post-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13, 148, 136, 0.1);
+  color: var(--teal-color);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.post-hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.post-hero-subtitle {
+  font-size: 0.95rem;
+  color: #64748B;
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+
+/* Stepper Wizard */
+.post-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto 28px;
+  position: relative;
+  padding: 0 10px;
+}
+.post-stepper::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 3px;
+  background: #E2E8F0;
+  z-index: 1;
+}
+.post-step-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: default;
+}
+.post-step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid #CBD5E1;
+  color: #64748B;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.post-step-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748B;
+  white-space: nowrap;
+}
+.post-step-item.active .post-step-circle {
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+  border-color: #0D9488;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+  transform: scale(1.08);
+}
+.post-step-item.active .post-step-label {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+/* Smart Role-Adaptive Notice Box */
+.post-notice-card {
+  border-radius: 16px;
+  padding: 18px 22px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+.post-notice-card.notice-external {
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+}
+.post-notice-card.notice-showroom {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(20, 184, 166, 0.12) 100%);
+  border: 1.5px solid #0D9488;
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.12);
+}
+.post-notice-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.notice-external .post-notice-icon {
+  background: rgba(30, 41, 59, 0.08);
+  color: #334155;
+}
+.notice-showroom .post-notice-icon {
+  background: #0D9488;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+.post-notice-body h6 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.notice-external .post-notice-body h6 { color: #0F172A; }
+.notice-showroom .post-notice-body h6 { color: #0F766E; }
+.post-notice-body p {
+  font-size: 0.86rem;
+  color: #475569;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Post Form Card */
+.post-form-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+  padding: 30px;
+  margin-bottom: 24px;
+}
+.post-form-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #F1F5F9;
+}
+.post-form-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.25);
+}
+.post-form-header h5 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+.post-form-header p {
+  font-size: 0.8rem;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Dropzone */
+.post-dropzone {
+  border: 2px dashed #CBD5E1;
+  border-radius: 16px;
+  background: #F8FAFC;
+  padding: 32px 20px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.post-dropzone:hover {
+  border-color: #0D9488;
+  background: rgba(13, 148, 136, 0.03);
+}
+
+/* Currency converter pill */
+.price-converter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13, 148, 136, 0.1);
+  color: #0D9488;
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+

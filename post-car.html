@@ -84,46 +84,47 @@
       <div class="row justify-content-center">
         <div class="col-lg-9">
 
-          <!-- Header Form -->
-          <div class="text-center mb-4">
-            <span class="badge bg-teal text-white px-3 py-1 mb-2">MIỄN PHÍ 100%</span>
-            <h1 class="h3 fw-bold mb-2">Tạo tin đăng bán xe ô tô</h1>
-            <p class="text-muted small mb-3">Vui lòng cung cấp thông tin chính xác để tin đăng được phê duyệt nhanh chóng nhất</p>
-            
-            <!-- Visual Form Steps Indicator -->
-            <div class="row g-2 mb-2 text-center max-w-700 mx-auto" style="max-width: 680px;">
-              <div class="col-3">
-                <div class="p-2 rounded-3 bg-white border shadow-xs d-flex align-items-center justify-content-center gap-2">
-                  <span class="badge bg-teal text-white rounded-circle p-1" style="width:22px;height:22px;font-size:0.75rem;">1</span>
-                  <span class="small fw-bold text-dark d-none d-md-inline">Thông tin xe</span>
-                </div>
+          <!-- Header Form & Stepper -->
+          <div class="post-hero-section">
+            <div id="post-role-badge" class="post-hero-badge">
+              <i class="bi bi-patch-check-fill"></i>
+              <span>MIỄN PHÍ ĐĂNG TIN 100%</span>
+            </div>
+            <h1 id="post-hero-title" class="post-hero-title">Tạo tin đăng bán xe ô tô</h1>
+            <p id="post-hero-subtitle" class="post-hero-subtitle">
+              Cung cấp đầy đủ thông tin kỹ thuật và hình ảnh thực tế giúp chiếc xe của bạn tiếp cận hàng ngàn người mua nhanh nhất.
+            </p>
+
+            <!-- Modern Stepper Wizard -->
+            <div class="post-stepper">
+              <div class="post-step-item active">
+                <div class="post-step-circle">1</div>
+                <span class="post-step-label">Thông tin cơ bản</span>
               </div>
-              <div class="col-3">
-                <div class="p-2 rounded-3 bg-white border shadow-xs d-flex align-items-center justify-content-center gap-2">
-                  <span class="badge bg-teal text-white rounded-circle p-1" style="width:22px;height:22px;font-size:0.75rem;">2</span>
-                  <span class="small fw-bold text-dark d-none d-md-inline">Vận hành</span>
-                </div>
+              <div class="post-step-item">
+                <div class="post-step-circle">2</div>
+                <span class="post-step-label">Vận hành & Kỹ thuật</span>
               </div>
-              <div class="col-3">
-                <div class="p-2 rounded-3 bg-white border shadow-xs d-flex align-items-center justify-content-center gap-2">
-                  <span class="badge bg-teal text-white rounded-circle p-1" style="width:22px;height:22px;font-size:0.75rem;">3</span>
-                  <span class="small fw-bold text-dark d-none d-md-inline">Hình ảnh</span>
-                </div>
+              <div class="post-step-item">
+                <div class="post-step-circle">3</div>
+                <span class="post-step-label">Hình ảnh xe</span>
               </div>
-              <div class="col-3">
-                <div class="p-2 rounded-3 bg-white border shadow-xs d-flex align-items-center justify-content-center gap-2">
-                  <span class="badge bg-teal text-white rounded-circle p-1" style="width:22px;height:22px;font-size:0.75rem;">4</span>
-                  <span class="small fw-bold text-dark d-none d-md-inline">Mô tả & Liên hệ</span>
-                </div>
+              <div class="post-step-item">
+                <div class="post-step-circle">4</div>
+                <span class="post-step-label">Mô tả & Người bán</span>
               </div>
             </div>
 
-            <!-- Thông báo quy trình xét duyệt tin xe cũ bên ngoài -->
-            <div class="alert alert-info border-info-subtle d-flex align-items-center gap-3 text-start mx-auto mt-3 rounded-3 p-3 shadow-xs" style="max-width: 680px; background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.25) !important;">
-              <i class="bi bi-shield-check text-teal fs-3 flex-shrink-0"></i>
-              <div class="small text-dark">
-                <strong>Quy trình đăng tin dành cho người bán bên ngoài:</strong>
-                Sau khi gửi tin, tin đăng của bạn sẽ ở trạng thái <span class="badge bg-warning text-dark">Chờ duyệt</span> và được <strong>Admin Showroom</strong> kiểm tra hình ảnh, giá bán và thông số trước khi xuất hiện công khai trên sàn OtoMarket.
+            <!-- Smart Role-Adaptive Notice Card -->
+            <div id="post-notice-card" class="post-notice-card notice-external mx-auto text-start" style="max-width: 720px;">
+              <div class="post-notice-icon" id="post-notice-icon">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <div class="post-notice-body" id="post-notice-body">
+                <h6>Quy trình đăng tin dành cho người bán bên ngoài (Khách cá nhân / Môi giới)</h6>
+                <p>
+                  Sau khi gửi tin, tin đăng của bạn sẽ ở trạng thái <span class="badge bg-warning text-dark px-2 py-1">Chờ duyệt</span> và được <strong>Admin Showroom</strong> kiểm tra hình ảnh, giá bán và thông số trước khi xuất hiện công khai trên sàn OtoMarket.
+                </p>
               </div>
             </div>
           </div>
@@ -131,10 +132,14 @@
           <form id="post-car-form" onsubmit="handlePostCarSubmit(event)" novalidate>
 
             <!-- 1. Thông tin cơ bản của xe -->
-            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
-              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
-                <i class="bi bi-1-circle-fill text-teal me-2"></i> 1. Thông tin cơ bản
-              </h5>
+            <div class="post-form-card">
+              <div class="post-form-header">
+                <div class="post-form-badge">1</div>
+                <div>
+                  <h5>Thông tin cơ bản của xe</h5>
+                  <p>Hãng xe, mẫu xe, năm sản xuất và kiểu dáng thân xe</p>
+                </div>
+              </div>
 
               <div class="row g-3">
                 <div class="col-md-12">
@@ -199,19 +204,27 @@
             </div>
 
             <!-- 2. Thông số kỹ thuật & Vận hành -->
-            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
-              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
-                <i class="bi bi-2-circle-fill text-teal me-2"></i> 2. Thông số kỹ thuật & Tình trạng
-              </h5>
+            <div class="post-form-card">
+              <div class="post-form-header">
+                <div class="post-form-badge">2</div>
+                <div>
+                  <h5>Thông số kỹ thuật & Vận hành</h5>
+                  <p>Giá mong muốn, số km đã đi, hộp số, nhiên liệu và khu vực xem xe</p>
+                </div>
+              </div>
 
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label fw-semibold small">Giá bán mong muốn (VNĐ) <span class="text-danger">*</span></label>
                   <div class="input-group">
                     <input type="number" class="form-control" id="car-price" placeholder="Ví dụ: 750000000" min="10000000" step="1000000" required oninput="previewPriceText(this.value)">
-                    <span class="input-group-text">VNĐ</span>
+                    <span class="input-group-text fw-semibold">VNĐ</span>
                   </div>
-                  <div class="form-text text-teal fw-bold" id="price-preview-label">Quy đổi: --</div>
+                  <div>
+                    <span class="price-converter-pill" id="price-preview-label">
+                      <i class="bi bi-cash-stack"></i> Quy đổi: --
+                    </span>
+                  </div>
                 </div>
 
                 <div class="col-md-6">
@@ -269,7 +282,8 @@
                 <div class="col-md-6">
                   <label class="form-label fw-semibold small">Khu vực xem xe <span class="text-danger">*</span></label>
                   <select class="form-select" id="car-location" required>
-                    <option value="Hà Nội" selected>Hà Nội</option>
+                    <option value="TP. Nha Trang, Khánh Hòa" selected>TP. Nha Trang, Khánh Hòa (Trụ sở Showroom)</option>
+                    <option value="Hà Nội">Hà Nội</option>
                     <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
                     <option value="Đà Nẵng">Đà Nẵng</option>
                     <option value="Hải Phòng">Hải Phòng</option>
@@ -282,20 +296,24 @@
             </div>
 
             <!-- 3. Hình ảnh xe -->
-            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
-              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
-                <i class="bi bi-3-circle-fill text-teal me-2"></i> 3. Hình ảnh xe
-              </h5>
+            <div class="post-form-card">
+              <div class="post-form-header">
+                <div class="post-form-badge">3</div>
+                <div>
+                  <h5>Hình ảnh xe thực tế</h5>
+                  <p>Hình ảnh rõ nét, đầy đủ các góc chụp giúp tăng 300% tương tác từ người mua</p>
+                </div>
+              </div>
 
               <div class="mb-3">
                 <label class="form-label fw-semibold small">Tải lên hình ảnh từ thiết bị của bạn hoặc chọn ảnh mẫu</label>
-                <div class="p-4 border-2 border-dashed rounded-3 text-center bg-light" style="border: 2px dashed #CBD5E1;">
-                  <i class="bi bi-cloud-arrow-up-fill text-teal fs-1 mb-2 d-block"></i>
-                  <p class="mb-2 fw-semibold">Kéo thả ảnh vào đây hoặc nhấp để chọn tệp</p>
-                  <p class="text-muted small mb-3">Hỗ trợ JPG, PNG, WEBP (Khuyến nghị 800x600px trở lên)</p>
+                <div class="post-dropzone">
+                  <i class="bi bi-cloud-arrow-up-fill text-teal fs-1 mb-2 d-inline-block"></i>
+                  <h6 class="fw-bold mb-1">Kéo thả ảnh vào đây hoặc bấm để chọn tệp</h6>
+                  <p class="text-muted small mb-3">Hỗ trợ JPG, PNG, WEBP (Khuyến nghị tỉ lệ 16:9, độ phân giải 800x600px trở lên)</p>
                   <input type="file" id="car-image-upload" class="d-none" accept="image/*" onchange="handleImageFileSelect(event)">
-                  <button type="button" class="btn btn-teal btn-sm px-3" onclick="document.getElementById('car-image-upload').click()">
-                    <i class="bi bi-folder2-open me-1"></i> Chọn tệp ảnh
+                  <button type="button" class="btn btn-teal px-4 py-2 rounded-3 shadow-xs" onclick="document.getElementById('car-image-upload').click()">
+                    <i class="bi bi-folder2-open me-2"></i> Chọn tệp hình ảnh
                   </button>
                 </div>
               </div>
@@ -322,7 +340,7 @@
               <!-- Preview ảnh -->
               <div class="row align-items-center mt-3 pt-3 border-top">
                 <div class="col-sm-4">
-                  <div class="rounded-3 overflow-hidden border" style="height: 140px; background-color: #F1F5F9;">
+                  <div class="rounded-3 overflow-hidden border shadow-xs" style="height: 140px; background-color: #F1F5F9;">
                     <img id="image-preview" src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80" alt="Preview ảnh xe" class="w-100 h-100 object-fit-cover">
                   </div>
                 </div>
@@ -335,15 +353,19 @@
             </div>
 
             <!-- 4. Mô tả chi tiết & Liên hệ -->
-            <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
-              <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
-                <i class="bi bi-4-circle-fill text-teal me-2"></i> 4. Mô tả chi tiết & Thông tin người bán
-              </h5>
+            <div class="post-form-card">
+              <div class="post-form-header">
+                <div class="post-form-badge">4</div>
+                <div>
+                  <h5>Mô tả chi tiết & Thông tin người bán</h5>
+                  <p id="seller-card-subtitle">Cung cấp mô tả trung thực về tình trạng xe và thông tin liên hệ chính xác</p>
+                </div>
+              </div>
 
               <div class="mb-3">
                 <label class="form-label fw-semibold small">Mô tả tình trạng xe <span class="text-danger">*</span></label>
                 <textarea class="form-control" id="car-description" rows="5" placeholder="Mô tả chi tiết lịch sử bảo dưỡng, tình trạng lốp, các phụ kiện độ thêm (camera 360, dán kính, lót sàn...), cam kết xe không đâm đụng ngập nước..." required></textarea>
-                <div class="form-text small">Tối thiểu 30 ký tự để người mua có cái nhìn đầy đủ nhất.</div>
+                <div class="form-text small">Tối thiểu 20 ký tự để người mua có cái nhìn đầy đủ nhất.</div>
               </div>
 
               <div class="row g-3">
@@ -360,16 +382,17 @@
             </div>
 
             <!-- Nút gửi form -->
-            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-              <a href="cars.html" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left"></i> Quay lại
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 pt-2 mb-5">
+              <a href="cars.html" class="btn btn-outline-secondary px-4 py-2 rounded-3">
+                <i class="bi bi-arrow-left me-1"></i> Quay lại danh mục
               </a>
               <div class="d-flex gap-2">
-                <button type="button" class="btn btn-outline-secondary px-4 py-3" onclick="submitCarForm('draft')">
+                <button type="button" class="btn btn-light border px-4 py-3 rounded-3 fw-semibold text-secondary" onclick="submitCarForm('draft')">
                   <i class="bi bi-file-earmark-text me-1"></i> Lưu bản nháp
                 </button>
-                <button type="button" class="btn-cta-orange px-5 py-3 fs-6" onclick="submitCarForm('pending')">
-                  <i class="bi bi-send-check me-1"></i> Gửi xét duyệt
+                <button type="button" class="btn-cta-orange px-5 py-3 fs-6 rounded-3 shadow" id="submit-post-btn" onclick="submitCarForm()">
+                  <i class="bi bi-send-check me-2" id="submit-post-btn-icon"></i>
+                  <span id="submit-post-btn-text">Gửi xét duyệt</span>
                 </button>
               </div>
             </div>
@@ -386,22 +409,22 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
         <div class="modal-body text-center p-4">
-          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 72px; height: 72px; background-color: var(--teal-color);">
-            <i class="bi bi-check-lg fs-1"></i>
+          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" id="modal-success-icon-wrap" style="width: 72px; height: 72px; background-color: var(--teal-color);">
+            <i class="bi bi-check-lg fs-1" id="modal-success-icon"></i>
           </div>
-          <h4 class="fw-bold mb-2">Đăng tin thành công!</h4>
-          <div class="alert alert-warning py-2 px-3 small mb-3 border-0" style="background-color: #FEF3C7; color: #92400E;">
+          <h4 class="fw-bold mb-2" id="modal-success-title">Đăng tin thành công!</h4>
+          <div class="alert alert-warning py-2 px-3 small mb-3 border-0" id="modal-success-alert" style="background-color: #FEF3C7; color: #92400E;">
             <i class="bi bi-hourglass-split me-1"></i> Tin đăng đã được lưu ở trạng thái <strong>Chờ duyệt</strong>.
           </div>
-          <p class="text-muted small mb-4">
-            Tin đăng xe của bạn đã được ghi nhận vào hệ thống. Bạn có thể theo dõi tình trạng tại trang <strong>Quản lý tin đăng</strong> hoặc thử nghiệm phê duyệt tại <strong>Trang quản trị (Admin)</strong>.
+          <p class="text-muted small mb-4" id="modal-success-desc">
+            Tin đăng xe của bạn đã được ghi nhận vào hệ thống. Bạn có thể theo dõi tình trạng tại trang <strong>Quản lý tin đăng</strong>.
           </p>
-          <div class="d-grid gap-2">
-            <a href="my-listings.html" class="btn btn-teal py-2">
+          <div class="d-grid gap-2" id="modal-success-actions">
+            <a href="my-listings.html" class="btn btn-teal py-2" id="modal-btn-primary">
               <i class="bi bi-card-checklist me-1"></i> Đến trang Quản lý tin đăng
             </a>
-            <a href="admin.html" class="btn btn-outline-dark py-2 admin-only">
-              <i class="bi bi-shield-check me-1"></i> Đến trang Quản trị (Duyệt demo)
+            <a href="admin.html" class="btn btn-outline-dark py-2" id="modal-btn-secondary" style="display: none;">
+              <i class="bi bi-speedometer2 me-1"></i> Đến Bảng quản trị Showroom
             </a>
             <button type="button" class="btn btn-link text-muted text-decoration-none small" onclick="window.location.reload()">
               Đăng thêm tin xe khác
@@ -487,6 +510,7 @@
     ];
 
     let selectedImageUrl = PRESET_IMAGES[0];
+    let isCurrentAdmin = false;
 
     function selectPresetImage(index, btnElement) {
       selectedImageUrl = PRESET_IMAGES[index];
@@ -512,11 +536,12 @@
     function previewPriceText(val) {
       const amount = parseInt(val);
       const label = document.getElementById('price-preview-label');
+      if (!label) return;
       if (!amount || isNaN(amount)) {
-        label.textContent = "Quy đổi: --";
+        label.innerHTML = '<i class="bi bi-cash-stack"></i> Quy đổi: --';
         return;
       }
-      label.textContent = `Quy đổi: ${formatCurrency(amount)}`;
+      label.innerHTML = `<i class="bi bi-cash-stack"></i> Quy đổi: ${formatCurrency(amount)}`;
     }
 
     function handleBrandChange() {
@@ -543,12 +568,32 @@
       }
     }
 
-    function submitCarForm(status) {
+    function handlePostCarSubmit(event) {
+      if (event) event.preventDefault();
+      submitCarForm();
+    }
+
+    // Cập nhật Stepper trực quan khi người dùng tương tác với form
+    function updateActiveStep(stepIndex) {
+      const stepItems = document.querySelectorAll('.post-stepper .post-step-item');
+      stepItems.forEach((item, idx) => {
+        if (idx <= stepIndex) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    function submitCarForm(actionType) {
       const user = getLoggedInUser();
       if (!user) {
+        localStorage.setItem('otomarket_redirect_after_login', window.location.href);
         window.location.href = 'login.html';
         return;
       }
+
+      const isStaffOrAdmin = isUserAdmin(user);
 
       const title = document.getElementById('car-title').value.trim();
       const brand = document.getElementById('car-brand').value;
@@ -571,18 +616,41 @@
 
       // Kiểm tra validation
       if (!title || !brand || !model || !price || isNaN(price) || (!isNew && isNaN(mileage)) || !color || !description || !sellerName || !sellerPhone) {
-        showToast("Vui lòng điền đầy đủ các trường bắt buộc!", "error");
+        showToast("Vui lòng điền đầy đủ các thông tin bắt buộc!", "error");
         return;
       }
 
       if (description.length < 20) {
-        showToast("Vui lòng nhập mô tả chi tiết hơn (ít nhất 20 ký tự)", "warning");
+        showToast("Vui lòng nhập mô tả chi tiết hơn (tối thiểu 20 ký tự)", "warning");
         return;
       }
 
-      // Tạo object tin đăng mới
+      // Xác định trạng thái và quyền hạn
+      let targetStatus = LISTING_STATUS.PENDING;
+      let sourceType = 'external';
+      let sellerType = 'Chính chủ';
+      let isFeatured = false;
+      let isShowroom = false;
+
+      if (actionType === 'draft') {
+        targetStatus = LISTING_STATUS.DRAFT;
+      } else if (isStaffOrAdmin) {
+        // Tài khoản nhân viên/Admin: Xuất bản thẳng vào kho showroom
+        targetStatus = LISTING_STATUS.ACTIVE;
+        sourceType = 'showroom';
+        sellerType = 'Showroom';
+        isFeatured = true;
+        isShowroom = true;
+      } else {
+        // Tài khoản người dùng ngoài / môi giới: Đợi admin showroom duyệt
+        targetStatus = LISTING_STATUS.PENDING;
+        sourceType = 'external';
+        sellerType = 'Chính chủ';
+      }
+
+      // Tạo object xe mới
       const newListing = {
-        id: `custom-${Date.now()}`,
+        id: `car-${Date.now()}`,
         ownerId: user.id || user.email,
         title: title,
         brand: brand,
@@ -600,17 +668,19 @@
         interiorColor: "Tiêu chuẩn",
         origin: origin,
         location: location,
-        sellerType: "Chính chủ",
+        sellerType: sellerType,
         sellerName: sellerName,
         sellerPhone: sellerPhone,
         sellerAddress: location,
+        sourceType: sourceType,
+        isShowroom: isShowroom,
         image: selectedImageUrl,
         images: [selectedImageUrl],
-        isFeatured: false,
+        isFeatured: isFeatured,
         isNew: isNew,
         postedDate: new Date().toLocaleDateString('vi-VN'),
         viewCount: 1,
-        status: status, // 'draft' hoặc 'pending'
+        status: targetStatus,
         description: description,
         specifications: {
           engine: "Động cơ tiêu chuẩn",
@@ -619,33 +689,167 @@
           drivetrain: "Cầu trước",
           fuelConsumption: "6.5L / 100km",
           registrationExpiry: "Còn hiệu lực",
-          warranty: "Cam kết từ người bán"
+          warranty: isShowroom ? "Cam kết 176 hạng mục Showroom OtoMarket" : "Cam kết từ người bán"
         }
       };
 
-      // Lưu vào localStorage
+      // Lưu tin đăng
       saveCustomListing(newListing);
 
-      if (status === 'pending') {
-        showToast("Tin đang chờ duyệt", "success");
-      } else {
-        showToast("Đã lưu bản nháp thành công", "success");
+      if (actionType === 'draft') {
+        showToast("Đã lưu bản nháp thành công!", "success");
+        setTimeout(() => {
+          window.location.href = 'my-listings.html';
+        }, 800);
+        return;
       }
 
-      setTimeout(() => {
-        window.location.href = 'my-listings.html';
-      }, 1000);
+      // Cập nhật nội dung Modal thông báo phù hợp với vai trò
+      const modalEl = document.getElementById('successPostModal');
+      const modalTitle = document.getElementById('modal-success-title');
+      const modalAlert = document.getElementById('modal-success-alert');
+      const modalDesc = document.getElementById('modal-success-desc');
+      const modalBtnPrimary = document.getElementById('modal-btn-primary');
+      const modalBtnSecondary = document.getElementById('modal-btn-secondary');
+
+      if (isStaffOrAdmin) {
+        showToast("Đã xuất bản xe mới vào kho Showroom chính hãng!", "success");
+        if (modalTitle) modalTitle.textContent = "Xuất bản xe Showroom thành công!";
+        if (modalAlert) {
+          modalAlert.className = "alert alert-success py-2 px-3 small mb-3 border-0 bg-teal-subtle text-teal fw-bold";
+          modalAlert.innerHTML = '<i class="bi bi-patch-check-fill me-1"></i> Xe đã được kích hoạt trực tiếp vào kho Showroom chính hãng.';
+        }
+        if (modalDesc) {
+          modalDesc.innerHTML = `Xe <strong>${title}</strong> đã được xuất bản công khai trên OtoMarket với nhãn bảo chứng <strong>Xe Showroom</strong> và cam kết 176 hạng mục kiểm định.`;
+        }
+        if (modalBtnPrimary) {
+          modalBtnPrimary.href = `car-detail.html?id=${newListing.id}`;
+          modalBtnPrimary.innerHTML = '<i class="bi bi-eye me-1"></i> Xem chi tiết xe trên sàn';
+        }
+        if (modalBtnSecondary) {
+          modalBtnSecondary.href = 'admin.html';
+          modalBtnSecondary.style.display = 'block';
+        }
+      } else {
+        showToast("Gửi tin xét duyệt thành công!", "success");
+        if (modalTitle) modalTitle.textContent = "Đăng tin thành công!";
+        if (modalAlert) {
+          modalAlert.className = "alert alert-warning py-2 px-3 small mb-3 border-0";
+          modalAlert.innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Tin đăng đã được lưu ở trạng thái <strong>Chờ duyệt</strong>.';
+        }
+        if (modalDesc) {
+          modalDesc.innerHTML = `Tin đăng xe của bạn đã được ghi nhận. Đội ngũ kiểm duyệt viên OtoMarket sẽ tiến hành kiểm tra thông số và hình ảnh xe trước khi xuất bản.`;
+        }
+        if (modalBtnPrimary) {
+          modalBtnPrimary.href = 'my-listings.html';
+          modalBtnPrimary.innerHTML = '<i class="bi bi-card-checklist me-1"></i> Đến trang Quản lý tin đăng';
+        }
+        if (modalBtnSecondary) {
+          modalBtnSecondary.style.display = 'none';
+        }
+      }
+
+      if (modalEl && typeof bootstrap !== 'undefined') {
+        const bsModal = new bootstrap.Modal(modalEl);
+        bsModal.show();
+      } else {
+        setTimeout(() => {
+          window.location.href = isStaffOrAdmin ? 'admin.html' : 'my-listings.html';
+        }, 1200);
+      }
     }
 
-    // Kiểm tra đăng nhập và tự điền thông tin người dùng
+    // Thiết lập giao diện theo vai trò người dùng khi tải trang
     document.addEventListener('DOMContentLoaded', () => {
       const user = getLoggedInUser();
       if (!user) {
+        localStorage.setItem('otomarket_redirect_after_login', window.location.href);
         window.location.href = 'login.html';
         return;
       }
-      if (user.name) document.getElementById('seller-name').value = user.name;
-      if (user.phone) document.getElementById('seller-phone').value = user.phone;
+
+      isCurrentAdmin = isUserAdmin(user);
+
+      if (isCurrentAdmin) {
+        // Chế độ dành cho Nhân viên / Quản trị Showroom
+        const roleBadge = document.getElementById('post-role-badge');
+        if (roleBadge) {
+          roleBadge.className = 'post-hero-badge bg-teal-subtle text-teal border-teal';
+          roleBadge.innerHTML = '<i class="bi bi-shield-fill-check"></i> CHẾ ĐỘ QUẢN TRỊ • KHO SHOWROOM CHÍNH HÃNG';
+        }
+
+        const heroTitle = document.getElementById('post-hero-title');
+        if (heroTitle) heroTitle.textContent = 'Nhập xe mới vào Kho Showroom OtoMarket';
+
+        const heroSubtitle = document.getElementById('post-hero-subtitle');
+        if (heroSubtitle) {
+          heroSubtitle.textContent = 'Xuất bản trực tiếp xe vào danh mục Showroom chính hãng. Xe sẽ được hiển thị ngay lập tức với bảo chứng kiểm định 176 hạng mục kỹ thuật.';
+        }
+
+        // Chuyển đổi hộp thông báo quy định sang chế độ Nhân viên Showroom
+        const noticeCard = document.getElementById('post-notice-card');
+        if (noticeCard) {
+          noticeCard.className = 'post-notice-card notice-showroom mx-auto text-start';
+          noticeCard.innerHTML = `
+            <div class="post-notice-icon">
+              <i class="bi bi-building-check"></i>
+            </div>
+            <div class="post-notice-body">
+              <h6>Chế độ dành cho Nhân viên / Ban Quản trị Showroom</h6>
+              <p>
+                Bạn đang đăng tin với tài khoản <strong>Nhân viên Showroom</strong>. Xe sau khi điền thông tin sẽ được <strong>xuất bản công khai ngay lập tức</strong> (không qua bước duyệt), tự động gắn huy hiệu <strong>Xe Showroom chính hãng</strong> và kèm cam kết kiểm định 176 hạng mục.
+              </p>
+            </div>
+          `;
+        }
+
+        // Tự động điền thông tin Showroom
+        const sellerNameInput = document.getElementById('seller-name');
+        if (sellerNameInput) {
+          sellerNameInput.value = 'Showroom OtoMarket';
+          sellerNameInput.placeholder = 'Showroom OtoMarket';
+        }
+
+        const sellerPhoneInput = document.getElementById('seller-phone');
+        if (sellerPhoneInput) {
+          sellerPhoneInput.value = '1900 6868';
+          sellerPhoneInput.placeholder = '1900 6868';
+        }
+
+        const sellerSubtitle = document.getElementById('seller-card-subtitle');
+        if (sellerSubtitle) {
+          sellerSubtitle.textContent = 'Thông tin liên hệ được cấu hình mặc định theo Hotline và Địa chỉ Showroom chính hãng';
+        }
+
+        const locationSelect = document.getElementById('car-location');
+        if (locationSelect) {
+          locationSelect.value = 'TP. Nha Trang, Khánh Hòa';
+        }
+
+        // Đổi nút bấm thành Xuất bản Showroom
+        const submitBtnText = document.getElementById('submit-post-btn-text');
+        if (submitBtnText) submitBtnText.textContent = 'Xuất bản vào kho Showroom';
+
+        const submitBtnIcon = document.getElementById('submit-post-btn-icon');
+        if (submitBtnIcon) submitBtnIcon.className = 'bi bi-cloud-arrow-up-fill me-2';
+
+        const submitBtn = document.getElementById('submit-post-btn');
+        if (submitBtn) {
+          submitBtn.className = 'btn btn-teal px-5 py-3 fs-6 rounded-3 shadow text-white fw-bold';
+        }
+      } else {
+        // Tài khoản khách cá nhân / Môi giới
+        if (user.name) document.getElementById('seller-name').value = user.name;
+        if (user.phone) document.getElementById('seller-phone').value = user.phone;
+      }
+
+      // Lắng nghe focus vào các card để cập nhật stepper wizard
+      const cards = document.querySelectorAll('.post-form-card');
+      cards.forEach((card, idx) => {
+        card.addEventListener('focusin', () => {
+          updateActiveStep(idx);
+        });
+      });
     });
   </script>
 </body>
