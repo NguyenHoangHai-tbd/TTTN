@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -205,7 +205,7 @@
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
             <li><a href="cars.html">Tất cả xe đang bán</a></li>
-            <li><a href="post-car.html">Bảng giá dịch vụ</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
             <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
@@ -302,7 +302,7 @@
           `;
         } else if (car.status === 'pending') {
           actionsHtml = `
-            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle py-2 px-3 small"><i class="bi bi-hourglass-split me-1"></i> Đang chờ BQT xét duyệt</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle py-2 px-3 small"><i class="bi bi-hourglass-split me-1"></i> Đang chờ Showroom xét duyệt</span>
           `;
         } else if (car.status === 'rejected') {
           actionsHtml = `
@@ -396,7 +396,7 @@
     }
 
     function reopenListing(id) {
-      if (confirm("Gửi yêu cầu mở bán lại tin này để Admin duyệt?")) {
+      if (confirm("Gửi yêu cầu mở bán lại tin này để Showroom xét duyệt?")) {
         updateListingStatus(id, 'pending');
         showToast("Đã gửi yêu cầu mở bán lại (chờ duyệt)", "success");
         renderListings();

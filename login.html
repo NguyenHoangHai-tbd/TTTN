@@ -62,7 +62,7 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between">
                   <label class="form-label small fw-bold">Mật khẩu</label>
-                  <a href="#" class="small text-teal text-decoration-none" onclick="showToast('Đây là phiên bản demo tĩnh!', 'info'); return false;">Quên mật khẩu?</a>
+                  <a href="#" class="small text-teal text-decoration-none" onclick="showToast('Vui lòng liên hệ hotline 1900 6868 hoặc hỗ trợ kỹ thuật để khôi phục mật khẩu!', 'info'); return false;">Quên mật khẩu?</a>
                 </div>
                 <div class="input-group">
                   <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
@@ -193,7 +193,7 @@
 
     function handleDoLogin(user) {
       setLoggedInUser(user);
-      showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Quản trị viên' : 'Thành viên'})`, "success");
+      showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Nhân viên Showroom' : 'Khách cá nhân / Môi giới'})`, "success");
 
       const savedRedirect = localStorage.getItem('otomarket_redirect_after_login');
       localStorage.removeItem('otomarket_redirect_after_login');
@@ -204,7 +204,7 @@
         if (redirectTarget) {
           // Nếu trang đích là admin nhưng người dùng không phải admin
           if (redirectTarget.toLowerCase().includes('admin') && user.role !== 'admin') {
-            showToast("Tài khoản thành viên không thể vào trang Quản trị. Đang chuyển về Quản lý tin đăng...", "warning");
+            showToast("Tài khoản người dùng ngoài không thể vào trang Duyệt tin Showroom. Đang chuyển về Quản lý tin đăng...", "warning");
             window.location.href = 'my-listings.html';
             return;
           }

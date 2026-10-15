@@ -170,7 +170,7 @@
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
             <li><a href="cars.html">Tất cả xe đang bán</a></li>
-            <li><a href="post-car.html">Bảng giá dịch vụ</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
             <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
@@ -252,7 +252,7 @@
                 <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
                 <span>Trạng thái tin đăng: <strong>${getStatusBadgeHtml(car.status)}</strong> ${car.rejectReason ? `(Lý do từ chối: ${car.rejectReason})` : ''}</span>
               </div>
-              <span class="small text-muted">Chỉ chủ tin và quản trị viên mới thấy thông báo này.</span>
+              <span class="small text-muted">Chỉ chủ tin và Quản lý Showroom mới thấy thông báo này.</span>
             </div>
           </div>
         `;
@@ -312,8 +312,8 @@
                   ${(car.sellerName || 'C')[0].toUpperCase()}
                 </div>
                 <div>
-                  <h6 class="fw-bold mb-1" id="seller-name">${car.sellerName || 'Người bán cá nhân'}</h6>
-                  <span class="badge bg-light text-dark border">Người bán cá nhân (Đã duyệt)</span>
+                  <h6 class="fw-bold mb-1" id="seller-name">${car.sellerName || 'Người bán ký gửi'}</h6>
+                  <span class="badge bg-light text-dark border"><i class="bi bi-person me-1"></i>Xe ký gửi / Môi giới (Đã duyệt)</span>
                 </div>
               </div>
               <p class="small text-muted mb-3"><i class="bi bi-geo-alt-fill text-teal me-1"></i> <span id="seller-address">${car.sellerAddress || car.location}</span></p>
@@ -334,8 +334,8 @@
               </div>
 
               <div class="p-3 bg-light rounded-3 small text-muted mt-3">
-                <div class="fw-semibold text-dark mb-1"><i class="bi bi-info-circle-fill text-warning me-1"></i> Lưu ý môi giới:</div>
-                Đây là tin đăng từ người bán bên ngoài. OtoMarket kết nối thông tin; người mua tự thỏa thuận và kiểm tra xe thực tế trước khi giao dịch.
+                <div class="fw-semibold text-dark mb-1"><i class="bi bi-info-circle-fill text-warning me-1"></i> Lưu ý xe ký gửi / môi giới:</div>
+                Đây là tin đăng từ người bán bên ngoài đã qua xét duyệt thông tin. OtoMarket kết nối thông tin; người mua tự thỏa thuận và kiểm tra xe thực tế trước khi giao dịch.
               </div>
             </div>
           `;

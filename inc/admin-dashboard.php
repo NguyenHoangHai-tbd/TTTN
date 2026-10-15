@@ -5,7 +5,7 @@
  * - Theo dõi tình trạng sức khỏe hệ thống (Site Health, PHP, MySQL, Apache)
  * - Cấu hình thông tin Showroom đối tác (Khách hàng mua dự án)
  * - Công cụ bảo trì: Sao lưu CSDL, tối ưu bảng, xóa cache
- * - Cầu nối truy cập nhanh sang Bảng Quản Trị Showroom (Dành cho Admin duyệt tin)
+ * - Cầu nối truy cập nhanh sang Bảng Quản Trị Showroom (Dành cho Nhân viên Showroom duyệt tin)
  */
 
 if (!defined('ABSPATH')) {
@@ -180,7 +180,7 @@ function otomarket_render_superadmin_maintenance_view() {
             <div class="super-bridge-card">
                 <div>
                     <h3 style="margin: 0 0 4px 0; font-size: 16px; font-weight: 700;">Bảng Quản Trị Showroom (Khách hàng)</h3>
-                    <p style="margin: 0; font-size: 12px; color: #94a3b8;">Dành cho Admin của Showroom duyệt tin xe cũ bên ngoài và quản lý xe showroom.</p>
+                    <p style="margin: 0; font-size: 12px; color: #94a3b8;">Dành cho Nhân viên / Quản lý Showroom duyệt tin xe cũ bên ngoài và quản lý kho xe showroom.</p>
                 </div>
                 <a href="<?php echo home_url('/admin.html'); ?>" target="_blank" class="super-bridge-btn">
                     <i class="bi bi-speedometer2"></i> Mở Bảng Quản Trị
@@ -328,7 +328,7 @@ function otomarket_render_superadmin_maintenance_view() {
                         <i class="bi bi-shield-lock-fill text-primary"></i> Phân Định Trách Nhiệm
                     </h4>
                     <p style="font-size: 12px; color: #64748b; line-height: 1.6; margin: 0;">
-                        <strong>Showroom Admin:</strong> Trực tiếp kinh doanh, đăng xe của showroom, xét duyệt tin xe cũ cá nhân bên ngoài tại giao diện Frontend Dashboard.<br><br>
+                        <strong>Nhân viên / Quản lý Showroom:</strong> Trực tiếp kinh doanh, đăng xe của showroom, xét duyệt tin xe ký gửi cá nhân bên ngoài tại giao diện Frontend Showroom.<br><br>
                         <strong>SuperAdmin (Bạn):</strong> Chỉ can thiệp bảo trì, nâng cấp mã nguồn, sửa lỗi khi showroom yêu cầu hỗ trợ kỹ thuật.
                     </p>
                 </div>

@@ -14,7 +14,7 @@ const STORAGE_KEYS = {
 // Chuẩn hóa trạng thái tin đăng
 const LISTING_STATUS = {
   DRAFT: 'draft',       // Bản nháp
-  PENDING: 'pending',   // Chờ Admin duyệt, không công khai
+  PENDING: 'pending',   // Chờ Showroom duyệt, không công khai
   ACTIVE: 'active',     // Đã duyệt và đang công khai
   REJECTED: 'rejected', // Bị từ chối, có lý do
   HIDDEN: 'hidden',     // Người bán chủ động ẩn
@@ -516,7 +516,7 @@ function saveReport(reportData) {
   return newReport;
 }
 
-function updateReportStatus(reportId, status, adminName = 'Admin') {
+function updateReportStatus(reportId, status, adminName = 'Quản lý Showroom') {
   const reports = getReports();
   const report = reports.find(r => r.id === reportId);
   if (report) {
@@ -605,12 +605,29 @@ function updateUserProfile(profileData) {
 function getLoggedInUser() {
   try {
     const data = localStorage.getItem(STORAGE_KEYS.AUTH_USER);
-    if (!data) return null;
+    if (!data) {
+      if (typeof window !== 'undefined' && window.IS_WP_ADMIN === true && window.WP_CURRENT_USER) {
+        const wpUser = {
+          name: window.WP_CURRENT_USER.name || 'Quản lý Showroom',
+          email: window.WP_CURRENT_USER.email || 'admin@otomarket.vn',
+          role: 'admin',
+          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+        };
+        localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(wpUser));
+        return wpUser;
+      }
+      return null;
+    }
     const user = JSON.parse(data);
     if (user && typeof user === 'object') {
       const email = String(user.email || '').trim().toLowerCase();
       const isAdmin = email === 'admin@otomarket.vn' || user.role === 'admin' || user.role === 'staff';
-      if (isAdmin && (!user.name || user.name.includes('Ban Quản Trị'))) {
+      const isLegacyAdminName = !user.name || 
+        user.name.includes('Ban Quản Trị') || 
+        user.name.toLowerCase() === 'admin' || 
+        user.name.toLowerCase() === 'admin demo' ||
+        user.name.toLowerCase() === 'quản trị viên';
+      if (isAdmin && isLegacyAdminName) {
         user.name = 'Quản lý Showroom';
         localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(user));
       }
@@ -823,7 +840,7 @@ function enforcePagePermissions() {
 
   if (path.includes('admin.html')) {
     if (!isAdmin) {
-      showToast("Bạn không có quyền truy cập trang quản trị", "error");
+      showToast("Trang Duyệt tin chỉ dành cho Nhân viên Showroom", "error");
       setTimeout(() => { window.location.href = 'index.html'; }, 500);
     }
   }

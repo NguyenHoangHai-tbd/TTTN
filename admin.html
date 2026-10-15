@@ -341,7 +341,7 @@
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
             <li><a href="cars.html">Tất cả xe đang bán</a></li>
-            <li><a href="post-car.html">Bảng giá dịch vụ</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
             <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
@@ -561,7 +561,7 @@
 
     function handleUpdateReport(reportId, status) {
       const user = getLoggedInUser();
-      updateReportStatus(reportId, status, user ? user.name : 'Admin');
+      updateReportStatus(reportId, status, user ? user.name : 'Quản lý Showroom');
       showToast("Đã cập nhật trạng thái báo cáo!", "success");
       renderAdminDashboard();
     }
@@ -586,7 +586,7 @@
       const user = getLoggedInUser();
       const isWpAdmin = (typeof window.IS_WP_ADMIN !== 'undefined' && window.IS_WP_ADMIN === true) || (user && user.role === 'admin');
       if (!isWpAdmin && (!user || user.email !== 'admin@otomarket.vn')) {
-        showToast("Bạn không có quyền truy cập trang quản trị", "error");
+        showToast("Trang Duyệt tin chỉ dành cho Nhân viên Showroom", "error");
         setTimeout(() => { window.location.href = 'index.html'; }, 500);
         return;
       }
