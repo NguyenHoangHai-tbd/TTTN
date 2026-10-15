@@ -68,7 +68,7 @@ function normalizeListing(item) {
 
   const reviewedBy = item.reviewedBy !== undefined
     ? item.reviewedBy
-    : (status === LISTING_STATUS.ACTIVE ? 'Ban Quản Trị OtoMarket' : null);
+    : (status === LISTING_STATUS.ACTIVE ? 'Quản lý Showroom' : null);
 
   const rejectReason = item.rejectReason !== undefined ? item.rejectReason : null;
 
@@ -88,7 +88,7 @@ function normalizeListing(item) {
         action: status === LISTING_STATUS.ACTIVE ? 'approve' : 'review',
         status: status,
         timestamp: reviewedAt,
-        by: reviewedBy || 'Ban Quản Trị OtoMarket',
+        by: reviewedBy || 'Quản lý Showroom',
         reason: rejectReason,
         note: status === LISTING_STATUS.ACTIVE ? 'Đã phê duyệt tin đăng' : 'Đã xem xét tin đăng'
       });
@@ -160,10 +160,10 @@ function initializeStorage() {
         createdAt: "2026-10-06T08:00:00.000Z",
         submittedAt: "2026-10-06T08:30:00.000Z",
         reviewedAt: "2026-10-06T09:00:00.000Z",
-        reviewedBy: "Ban Quản Trị OtoMarket",
+        reviewedBy: "Quản lý Showroom",
         reviewHistory: [
           { action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-06T08:30:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" },
-          { action: "approve", status: LISTING_STATUS.ACTIVE, timestamp: "2026-10-06T09:00:00.000Z", by: "Ban Quản Trị OtoMarket", reason: null, note: "Đã phê duyệt tin đăng" }
+          { action: "approve", status: LISTING_STATUS.ACTIVE, timestamp: "2026-10-06T09:00:00.000Z", by: "Quản lý Showroom", reason: null, note: "Đã phê duyệt tin đăng" }
         ],
         description: "Xe gia đình đi giữ gìn cẩn thận, bảo dưỡng định kỳ tại hãng. " + OTOMARKET_DISCLAIMER,
         specifications: { engine: "1.5L VTEC", power: "188 hp", drivetrain: "FWD", registrationExpiry: "Tháng 08/2027", warranty: "Theo quy định người bán" }
@@ -314,7 +314,7 @@ function updateListingStatus(id, newStatus, reason = "", reviewer = null) {
     const now = new Date().toISOString();
     const item = listings[index];
     const prevStatus = item.status;
-    const adminName = reviewer || (currentUser && currentUser.name) || 'Ban Quản Trị OtoMarket';
+    const adminName = reviewer || (currentUser && currentUser.name) || 'Quản lý Showroom';
 
     item.status = newStatus;
 
@@ -605,7 +605,17 @@ function updateUserProfile(profileData) {
 function getLoggedInUser() {
   try {
     const data = localStorage.getItem(STORAGE_KEYS.AUTH_USER);
-    return data ? JSON.parse(data) : null;
+    if (!data) return null;
+    const user = JSON.parse(data);
+    if (user && typeof user === 'object') {
+      const email = String(user.email || '').trim().toLowerCase();
+      const isAdmin = email === 'admin@otomarket.vn' || user.role === 'admin' || user.role === 'staff';
+      if (isAdmin && (!user.name || user.name.includes('Ban Quản Trị'))) {
+        user.name = 'Quản lý Showroom';
+        localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(user));
+      }
+    }
+    return user;
   } catch (e) {
     return null;
   }
