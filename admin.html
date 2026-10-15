@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Quản Trị Showroom - OtoMarket</title>
+  <title>Trạm Kiểm Duyệt & Quản Trị Showroom - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Favicon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
 </head>
@@ -70,41 +70,34 @@
   <main class="py-4 py-lg-5">
     <div class="container-fluid px-3 px-xl-5">
       
-      <!-- Tiêu đề trang rộng rãi & Phím tắt tác vụ -->
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-        <div>
-          <div class="d-flex align-items-center gap-2 mb-1">
-            <h1 class="h3 fw-bold mb-0 text-dark">Bảng Quản Trị Showroom</h1>
-            <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-1 small">Quản Trị Showroom</span>
+      <!-- Workspace Header (Banner điều hành cao cấp) -->
+      <div class="bg-white rounded-4 border p-4 mb-4 shadow-sm">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-3 py-1 fw-bold rounded-pill">
+                <i class="bi bi-shield-check me-1"></i>Trạm Thẩm Định Showroom
+              </span>
+              <span class="badge bg-light text-secondary border px-3 py-1 rounded-pill">
+                <i class="bi bi-person-badge text-primary me-1"></i><span id="staff-name-display">Quản lý Showroom</span>
+              </span>
+            </div>
+            <h1 class="h3 fw-bold mb-1 text-dark">Trạm Kiểm Duyệt & Quản Trị Showroom</h1>
+            <p class="text-muted small mb-0">Thẩm định hồ sơ xe ký gửi, đối chiếu chất lượng 176 hạng mục và điều phối kho xe toàn hệ thống</p>
           </div>
-          <p class="text-muted small mb-0">Quản lý kho xe Showroom, xét duyệt tin đăng xe cũ của người bán bên ngoài và xử lý báo cáo vi phạm</p>
-        </div>
-        <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="resetDemoData()" title="Đặt lại danh sách xe mẫu ban đầu">
-            <i class="bi bi-arrow-counterclockwise me-1"></i> Dữ liệu mặc định
-          </button>
-          <a href="post-car.html" class="btn btn-teal btn-sm text-white rounded-2">
-            <i class="bi bi-plus-circle me-1"></i> Nhập xe vào Showroom
-          </a>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-secondary btn-sm rounded-3 px-3 py-2 fw-semibold" onclick="resetDemoData()" title="Khôi phục dữ liệu mẫu ban đầu">
+              <i class="bi bi-arrow-counterclockwise me-1"></i> Dữ liệu mẫu
+            </button>
+            <a href="post-car.html" class="btn btn-teal btn-sm text-white rounded-3 px-3 py-2 fw-semibold shadow-xs">
+              <i class="bi bi-plus-circle me-1"></i> Nhập xe vào Showroom
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Thống kê KPIs toàn màn hình (Full Width 4 cột thoáng đãng) -->
+      <!-- Thống kê KPIs hiện đại (4 cột có thanh màu phân loại) -->
       <div class="row g-3 mb-4">
-        <div class="col-lg-3 col-sm-6">
-          <div class="admin-kpi-card kpi-blue">
-            <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-primary bg-primary-subtle fs-4">
-                <i class="bi bi-people-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block">Tổng người dùng</span>
-                <span class="h4 fw-bold mb-0 text-dark" id="kpi-users-count">2</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-card kpi-amber">
             <div class="d-flex align-items-center gap-3">
@@ -112,22 +105,11 @@
                 <i class="bi bi-hourglass-split"></i>
               </div>
               <div>
-                <span class="text-muted small d-block">Tin chờ duyệt</span>
-                <span class="h4 fw-bold mb-0 text-warning" id="kpi-pending-count">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-sm-6">
-          <div class="admin-kpi-card kpi-green">
-            <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-3 text-success bg-success-subtle fs-4">
-                <i class="bi bi-check-circle-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block">Tin đang bán</span>
-                <span class="h4 fw-bold mb-0 text-success" id="kpi-active-count">0</span>
+                <span class="text-muted small d-block fw-semibold">Tin chờ duyệt ngay</span>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="h3 fw-bold mb-0 text-warning" id="kpi-pending-count">0</span>
+                  <span class="badge bg-warning text-dark small" id="kpi-pending-tag">Cần xử lý</span>
+                </div>
               </div>
             </div>
           </div>
@@ -140,176 +122,269 @@
                 <i class="bi bi-flag-fill"></i>
               </div>
               <div>
-                <span class="text-muted small d-block">Báo cáo vi phạm</span>
-                <span class="h4 fw-bold mb-0 text-danger" id="kpi-reports-count">0</span>
+                <span class="text-muted small d-block fw-semibold">Báo cáo vi phạm</span>
+                <span class="h3 fw-bold mb-0 text-danger" id="kpi-reports-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+          <div class="admin-kpi-card kpi-green">
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 text-success bg-success-subtle fs-4">
+                <i class="bi bi-patch-check-fill"></i>
+              </div>
+              <div>
+                <span class="text-muted small d-block fw-semibold">Xe Showroom chính hãng</span>
+                <span class="h3 fw-bold mb-0 text-success" id="kpi-showroom-count">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+          <div class="admin-kpi-card kpi-blue">
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 text-primary bg-primary-subtle fs-4">
+                <i class="bi bi-car-front-fill"></i>
+              </div>
+              <div>
+                <span class="text-muted small d-block fw-semibold">Xe ký gửi đang bán</span>
+                <span class="h3 fw-bold mb-0 text-dark" id="kpi-external-count">0</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Sync hidden elements for JS compatibility -->
-      <span id="sidebar-pending-count" style="display:none;">0</span>
-      <span id="sidebar-reports-count" style="display:none;">0</span>
+      <!-- Segmented Tab Navigation Bar (Hiện đại & Không bị cuộn chuột dài) -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="studio-segmented-tabs">
+          <button class="studio-tab-btn active" id="tab-btn-queue" onclick="switchStudioTab('queue')">
+            <i class="bi bi-shield-check text-teal"></i>
+            <span>Trạm Duyệt Tin Xe</span>
+            <span class="badge bg-warning text-dark ms-1" id="tab-count-pending">0</span>
+          </button>
+          <button class="studio-tab-btn" id="tab-btn-reports" onclick="switchStudioTab('reports')">
+            <i class="bi bi-flag text-danger"></i>
+            <span>Báo Cáo Vi Phạm</span>
+            <span class="badge bg-danger text-white ms-1" id="tab-count-reports">0</span>
+          </button>
+          <button class="studio-tab-btn" id="tab-btn-inventory" onclick="switchStudioTab('inventory')">
+            <i class="bi bi-collection text-primary"></i>
+            <span>Kho Xe Toàn Sàn</span>
+            <span class="badge bg-secondary ms-1" id="tab-count-inventory">0</span>
+          </button>
+        </div>
 
-      <!-- Thanh chuyển nhanh các khu vực tác vụ Admin -->
-      <div class="d-flex flex-wrap gap-2 mb-4 p-2 bg-white rounded-3 border shadow-xs">
-        <a href="#pending-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
-          <i class="bi bi-inbox-fill text-warning"></i>
-          <span>Duyệt tin đăng</span>
-          <span class="badge bg-warning text-dark" id="nav-pending-badge">Cần xử lý</span>
-        </a>
-        <a href="#reports-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
-          <i class="bi bi-flag-fill text-danger"></i>
-          <span>Báo cáo vi phạm</span>
-        </a>
-        <a href="#inventory-section" class="btn btn-outline-dark btn-sm rounded-2 d-flex align-items-center gap-2">
-          <i class="bi bi-collection-fill text-teal"></i>
-          <span>Kho xe toàn hệ thống</span>
-        </a>
+        <div class="text-muted small d-none d-md-flex align-items-center gap-2">
+          <i class="bi bi-info-circle text-teal"></i>
+          <span>Bấm xe bên trái để xem nhanh ảnh & thông số bên phải</span>
+        </div>
       </div>
 
-      <!-- 1. Danh sách tin chờ duyệt (Full width, thoáng đãng) -->
-      <section class="admin-panel mb-4" id="pending-section">
-        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-          <h2 class="h5 fw-bold mb-0 text-dark">
-            <i class="bi bi-inbox-fill text-warning me-2"></i> Danh sách tin đăng chờ duyệt (<span id="pending-table-count">0</span>)
-          </h2>
-          <span class="badge bg-warning text-dark">Kiểm duyệt chất lượng</span>
-        </div>
+      <!-- ======================================================================
+           TAB 1: TRẠM KIỂM DUYỆT PHÂN ĐÔI (SPLIT-SCREEN INSPECTION STUDIO)
+           ====================================================================== -->
+      <section id="view-queue" class="studio-view-pane">
+        <div class="row g-4">
+          
+          <!-- Cột Trái: Hàng Đợi Xe Chờ Duyệt (Queue Stream) -->
+          <div class="col-xl-4 col-lg-5">
+            <div class="bg-white rounded-4 border p-3 shadow-xs h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                <h5 class="fw-bold mb-0 text-dark fs-6">
+                  <i class="bi bi-inbox-fill text-warning me-2"></i>Hàng đợi thẩm định (<span id="queue-header-count">0</span>)
+                </h5>
+                <span class="badge bg-warning text-dark font-monospace" style="font-size: 0.72rem;">Đang chờ</span>
+              </div>
 
-        <div class="table-responsive">
-          <table class="table table-hover align-middle mb-0">
-            <thead class="table-light small">
-              <tr>
-                <th style="min-width: 280px;">Ảnh & Xe</th>
-                <th style="min-width: 170px;">Người đăng & SĐT</th>
-                <th style="min-width: 160px;">Giá & Khu vực</th>
-                <th style="min-width: 120px;">Ngày tạo</th>
-                <th style="min-width: 120px;">Trạng thái</th>
-                <th class="text-end" style="min-width: 170px;">Hành động</th>
-              </tr>
-            </thead>
-            <tbody id="pending-table-body">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
+              <!-- Danh sách tin chờ duyệt -->
+              <div id="studio-queue-list" style="max-height: 780px; overflow-y: auto; padding-right: 4px;">
+                <!-- Rendered dynamically via JS -->
+              </div>
 
-        <div id="no-pending-message" class="text-center py-5" style="display: none;">
-          <i class="bi bi-check2-circle text-success fs-1 mb-2 d-block"></i>
-          <h5 class="fw-bold">Hiện không có tin nào chờ duyệt!</h5>
-          <p class="text-muted small mb-3">Tất cả các tin đăng từ người dùng đã được xử lý phê duyệt.</p>
-          <a href="post-car.html" class="btn btn-outline-teal btn-sm">
-            <i class="bi bi-plus-circle me-1"></i> Nhập xe mới vào kho Showroom
-          </a>
-        </div>
-      </section>
+              <!-- Khi không có tin chờ duyệt -->
+              <div id="no-queue-msg" class="text-center py-5" style="display: none;">
+                <i class="bi bi-check-circle-fill text-success fs-1 mb-2 d-block"></i>
+                <h6 class="fw-bold text-dark">Hàng đợi trống!</h6>
+                <p class="text-muted small mb-3">Tất cả tin đăng xe ký gửi đã được phê duyệt xong.</p>
+                <button class="btn btn-outline-teal btn-sm rounded-pill" onclick="switchStudioTab('inventory')">
+                  <i class="bi bi-collection me-1"></i> Xem kho xe Showroom
+                </button>
+              </div>
+            </div>
+          </div>
 
-      <!-- 2. Danh sách Báo cáo vi phạm (Full width) -->
-      <section class="admin-panel mb-4" id="reports-section">
-        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-          <h2 class="h5 fw-bold mb-0 text-dark">
-            <i class="bi bi-flag-fill text-danger me-2"></i> Báo cáo tin vi phạm từ người dùng (<span id="reports-table-count">0</span>)
-          </h2>
-          <span class="badge bg-danger text-white">Kiểm tra vi phạm</span>
-        </div>
+          <!-- Cột Phải: Bàn Thẩm Định Chi Tiết Xe (Inspection Deck) -->
+          <div class="col-xl-8 col-lg-7">
+            <div class="studio-deck-card p-4" id="studio-inspection-deck">
+              <!-- Rendered via JS based on selected car -->
+            </div>
 
-        <div class="table-responsive">
-          <table class="table table-hover align-middle mb-0">
-            <thead class="table-light small">
-              <tr>
-                <th style="width: 120px;">Mã báo cáo</th>
-                <th style="min-width: 200px;">Tin bị báo cáo</th>
-                <th style="min-width: 150px;">Lý do</th>
-                <th>Mô tả chi tiết</th>
-                <th style="width: 130px;">Trạng thái</th>
-                <th class="text-end" style="min-width: 220px;">Hành động</th>
-              </tr>
-            </thead>
-            <tbody id="reports-table-body">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
+            <!-- Empty Deck State khi không còn xe nào -->
+            <div class="studio-deck-card p-5 text-center" id="deck-empty-state" style="display: none;">
+              <div class="rounded-circle bg-teal-subtle text-teal mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="bi bi-shield-patch-check display-5"></i>
+              </div>
+              <h4 class="fw-bold text-dark mb-2">Đã Hoàn Thành Thẩm Định</h4>
+              <p class="text-muted small mb-4" style="max-width: 480px; margin-inline: auto;">
+                Toàn bộ tin đăng xe từ khách hàng cá nhân và môi giới bên ngoài đã được kiểm duyệt. Sàn giao dịch OtoMarket hiện đang hiển thị thông tin chính xác nhất.
+              </p>
+              <div class="d-flex justify-content-center gap-2">
+                <a href="post-car.html" class="btn btn-teal rounded-3 px-4 py-2 text-white fw-semibold">
+                  <i class="bi bi-plus-circle me-1"></i> Đăng xe vào kho Showroom
+                </a>
+                <button class="btn btn-outline-secondary rounded-3 px-4 py-2" onclick="switchStudioTab('inventory')">
+                  Quản lý kho xe
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <div id="no-reports-message" class="text-center py-4" style="display: none;">
-          <p class="text-muted small mb-0">Chưa có báo cáo vi phạm nào được gửi.</p>
         </div>
       </section>
 
-      <!-- 3. Danh sách tất cả xe hệ thống (Lọc theo trạng thái) -->
-      <section class="admin-panel" id="inventory-section">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 pb-2 border-bottom gap-3">
-          <h2 class="h5 fw-bold mb-0 text-dark">
-            <i class="bi bi-collection-fill text-teal me-2"></i> Toàn bộ danh mục xe hệ thống (<span id="all-cars-count">0</span>)
-          </h2>
-          <div class="d-flex align-items-center gap-2">
-            <label class="small text-muted fw-semibold">Lọc trạng thái:</label>
-            <select id="admin-status-filter" class="form-select form-select-sm" style="width: auto;" onchange="renderAdminDashboard()">
-              <option value="all">Tất cả trạng thái</option>
-              <option value="active">Đang hiển thị</option>
-              <option value="pending">Chờ duyệt</option>
-              <option value="draft">Bản nháp</option>
-              <option value="rejected">Bị từ chối</option>
-              <option value="hidden">Đã ẩn</option>
-              <option value="sold">Đã bán</option>
-            </select>
+      <!-- ======================================================================
+           TAB 2: BÁO CÁO VI PHẠM (REPORTS)
+           ====================================================================== -->
+      <section id="view-reports" class="studio-view-pane" style="display: none;">
+        <div class="bg-white rounded-4 border p-4 shadow-xs">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+            <h5 class="fw-bold mb-0 text-dark">
+              <i class="bi bi-flag-fill text-danger me-2"></i> Danh sách báo cáo vi phạm từ người dùng (<span id="reports-count-title">0</span>)
+            </h5>
+            <span class="badge bg-danger text-white">Kiểm tra khiếu nại</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light small">
+                <tr>
+                  <th style="width: 120px;">Mã báo cáo</th>
+                  <th style="min-width: 220px;">Tin xe bị khiếu nại</th>
+                  <th style="min-width: 160px;">Lý do báo cáo</th>
+                  <th>Mô tả chi tiết</th>
+                  <th style="width: 140px;">Trạng thái</th>
+                  <th class="text-end" style="min-width: 220px;">Hành động</th>
+                </tr>
+              </thead>
+              <tbody id="reports-table-body">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="no-reports-msg" class="text-center py-5" style="display: none;">
+            <i class="bi bi-shield-check text-teal fs-2 mb-2 d-block"></i>
+            <p class="text-muted small mb-0">Hệ thống trong sạch, chưa có báo cáo vi phạm nào cần xử lý.</p>
           </div>
         </div>
+      </section>
 
-        <div class="table-responsive">
-          <table class="table table-sm table-hover align-middle mb-0">
-            <thead class="table-light small">
-              <tr>
-                <th style="width: 90px;">ID</th>
-                <th style="min-width: 220px;">Tên xe</th>
-                <th style="width: 100px;">Hãng</th>
-                <th style="width: 70px;">Năm</th>
-                <th style="width: 130px;">Giá</th>
-                <th style="width: 120px;">Nguồn xe</th>
-                <th style="min-width: 130px;">Người bán</th>
-                <th style="width: 120px;">Trạng thái</th>
-                <th class="text-end" style="width: 120px;">Hành động</th>
-              </tr>
-            </thead>
-            <tbody id="all-cars-table-body">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
+      <!-- ======================================================================
+           TAB 3: TOÀN BỘ KHO XE TOÀN SÀN (INVENTORY)
+           ====================================================================== -->
+      <section id="view-inventory" class="studio-view-pane" style="display: none;">
+        <div class="bg-white rounded-4 border p-4 shadow-xs">
+          
+          <!-- Thanh công cụ tìm kiếm & bộ lọc đa năng -->
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 pb-3 border-bottom">
+            <div>
+              <h5 class="fw-bold mb-1 text-dark">
+                <i class="bi bi-collection-fill text-teal me-2"></i> Toàn bộ danh mục xe hệ thống (<span id="inventory-count-title">0</span>)
+              </h5>
+              <span class="text-muted small">Bao gồm cả xe Showroom chính hãng và xe ký gửi từ người bán bên ngoài</span>
+            </div>
+
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <div class="input-group input-group-sm" style="width: 240px;">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" id="inventory-search" placeholder="Tìm tên xe, hãng..." oninput="renderInventoryTab()">
+              </div>
+
+              <select id="inventory-source-filter" class="form-select form-select-sm" style="width: auto;" onchange="renderInventoryTab()">
+                <option value="all">Tất cả nguồn xe</option>
+                <option value="showroom">Xe Showroom chính hãng</option>
+                <option value="external">Xe ký gửi / Môi giới</option>
+              </select>
+
+              <select id="inventory-status-filter" class="form-select form-select-sm" style="width: auto;" onchange="renderInventoryTab()">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="active">Đang hiển thị</option>
+                <option value="pending">Chờ duyệt</option>
+                <option value="draft">Bản nháp</option>
+                <option value="rejected">Bị từ chối</option>
+                <option value="hidden">Đã ẩn</option>
+                <option value="sold">Đã bán</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Bảng danh mục xe -->
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light small">
+                <tr>
+                  <th style="width: 100px;">Ảnh</th>
+                  <th style="min-width: 220px;">Tên xe & Thông số</th>
+                  <th style="width: 130px;">Giá bán</th>
+                  <th style="width: 150px;">Nguồn xe</th>
+                  <th style="min-width: 150px;">Người bán</th>
+                  <th style="width: 120px;">Trạng thái</th>
+                  <th class="text-end" style="width: 140px;">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body">
+                <!-- Rendered dynamically via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="no-inventory-match" class="text-center py-5" style="display: none;">
+            <p class="text-muted small mb-0">Không tìm thấy xe nào khớp với điều kiện lọc.</p>
+          </div>
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- Modal Từ Chối Tin Đăng -->
+  <!-- Modal Từ Chối Duyệt Tin Với Quick Reason Chips -->
   <div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold text-danger"><i class="bi bi-x-circle me-2"></i>Từ chối phê duyệt tin</h5>
+        <div class="modal-header border-bottom-0 pb-0">
+          <div>
+            <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 small mb-1">Kiểm định không đạt</span>
+            <h5 class="modal-title fw-bold text-dark"><i class="bi bi-x-circle text-danger me-2"></i>Từ chối phê duyệt tin</h5>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-3">
           <input type="hidden" id="reject-car-id">
-          <p class="small text-muted mb-3">Vui lòng chọn hoặc nhập lý do từ chối để thông báo cho người đăng:</p>
-          <div class="mb-3">
-            <label class="form-label small fw-bold">Lý do từ chối:</label>
-            <select class="form-select mb-2" id="reject-reason-select" onchange="document.getElementById('reject-reason-custom').value = this.value">
-              <option value="Hình ảnh mờ, không rõ biển số hoặc nội thất">Hình ảnh mờ, không rõ biển số hoặc nội thất</option>
-              <option value="Giá chào bán chưa hợp lý so với thị trường">Giá chào bán chưa hợp lý so với thị trường</option>
-              <option value="Thông tin thông số kỹ thuật thiếu chính xác">Thông tin thông số kỹ thuật thiếu chính xác</option>
-              <option value="Nghi vấn trùng lặp tin đăng">Nghi vấn trùng lặp tin đăng</option>
-              <option value="Khác">Lý do khác...</option>
-            </select>
-            <textarea class="form-control" id="reject-reason-custom" rows="3" placeholder="Nhập lý do chi tiết...">Hình ảnh mờ, không rõ biển số hoặc nội thất</textarea>
+          <p class="small text-muted mb-3">Vui lòng chọn nhanh lý do hoặc ghi chi tiết để gửi phản hồi hướng dẫn cho người bán:</p>
+          
+          <!-- Quick Chips -->
+          <label class="form-label small fw-bold text-dark mb-1">Gợi ý lý do thường gặp (Bấm 1-chạm):</label>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="reject-chip" onclick="applyQuickRejectReason('Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số')">📷 Ảnh mờ / thiếu góc chụp</span>
+            <span class="reject-chip" onclick="applyQuickRejectReason('Giá chào bán chênh lệch quá cao so với mặt bằng thị trường')">💰 Giá chưa hợp lý</span>
+            <span class="reject-chip" onclick="applyQuickRejectReason('Thông số kỹ thuật (phiên bản, năm sản xuất, hộp số) thiếu chính xác')">⚙️ Sai thông số</span>
+            <span class="reject-chip" onclick="applyQuickRejectReason('Tin đăng trùng lặp với một bài viết khác đã có trên sàn')">📑 Nghi vấn trùng lặp</span>
+            <span class="reject-chip" onclick="applyQuickRejectReason('Cần bổ sung hình ảnh sổ đăng kiểm hoặc giấy tờ xe hợp lệ')">📄 Thiếu giấy tờ xe</span>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label small fw-bold text-dark">Nội dung phản hồi gửi người đăng:</label>
+            <textarea class="form-control rounded-3" id="reject-reason-custom" rows="3" placeholder="Nhập lý do chi tiết để hỗ trợ người bán điều chỉnh...">Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số</textarea>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-danger fw-semibold" onclick="confirmRejectListing()">
-            Xác nhận từ chối
+        <div class="modal-footer border-top-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary rounded-3" data-bs-dismiss="modal">Hủy bỏ</button>
+          <button type="button" class="btn btn-danger rounded-3 fw-semibold px-4" onclick="confirmRejectListing()">
+            <i class="bi bi-send-x me-1"></i> Xác nhận từ chối
           </button>
         </div>
       </div>
@@ -382,144 +457,375 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js"></script>
   <script>
+    // State quản lý Trạm Thẩm Định
+    let currentSelectedCarId = null;
+    let activeStudioTab = 'queue';
+
+    function switchStudioTab(tabName) {
+      activeStudioTab = tabName;
+      ['queue', 'reports', 'inventory'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const view = document.getElementById(`view-${t}`);
+        if (btn) btn.classList.toggle('active', t === tabName);
+        if (view) view.style.display = (t === tabName) ? 'block' : 'none';
+      });
+
+      if (tabName === 'inventory') renderInventoryTab();
+      if (tabName === 'reports') renderReportsTab();
+      if (tabName === 'queue') renderStudioQueue();
+    }
+
     function renderAdminDashboard() {
+      const user = getLoggedInUser();
+      if (user && document.getElementById('staff-name-display')) {
+        document.getElementById('staff-name-display').textContent = user.name || 'Quản lý Showroom';
+      }
+
       const customListings = getCustomListings();
       const allCars = getAllCars(true);
       const reports = getReports();
 
       const pendingListings = customListings.filter(c => c.status === 'pending');
       const activeListings = allCars.filter(c => c.status === 'active' || !c.status);
+      const showroomCars = allCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
+      const externalCars = allCars.filter(c => !(c.sourceType === 'showroom' || c.isShowroom));
 
-      // KPI Counts
+      // Cập nhật KPIs
       document.getElementById('kpi-pending-count').textContent = pendingListings.length;
-      document.getElementById('kpi-active-count').textContent = activeListings.length;
-      document.getElementById('kpi-reports-count').textContent = reports.length;
-      document.getElementById('kpi-users-count').textContent = getRegisteredUsers().length + 2;
-      
-      const sidebarPending = document.getElementById('sidebar-pending-count');
-      if (sidebarPending) sidebarPending.textContent = pendingListings.length;
-      
-      const sidebarReports = document.getElementById('sidebar-reports-count');
-      if (sidebarReports) sidebarReports.textContent = reports.filter(r => r.status !== 'resolved').length;
-      
-      document.getElementById('pending-table-count').textContent = pendingListings.length;
-      document.getElementById('reports-table-count').textContent = reports.length;
+      document.getElementById('kpi-reports-count').textContent = reports.filter(r => r.status !== 'resolved').length;
+      document.getElementById('kpi-showroom-count').textContent = showroomCars.length;
+      document.getElementById('kpi-external-count').textContent = externalCars.length;
 
-      // Render Bảng Chờ Duyệt
-      const pendingTbody = document.getElementById('pending-table-body');
-      const noPendingMsg = document.getElementById('no-pending-message');
+      // Cập nhật badges trên Tabs
+      document.getElementById('tab-count-pending').textContent = pendingListings.length;
+      document.getElementById('tab-count-reports').textContent = reports.length;
+      document.getElementById('tab-count-inventory').textContent = allCars.length;
 
-      if (pendingListings.length === 0) {
-        pendingTbody.innerHTML = '';
-        noPendingMsg.style.display = 'block';
-      } else {
-        noPendingMsg.style.display = 'none';
-        pendingTbody.innerHTML = pendingListings.map(car => `
-          <tr>
-            <td>
-              <div class="d-flex align-items-center gap-3">
-                <img src="${car.image}" class="rounded-3 shadow-xs object-fit-cover border" width="76" height="52" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
-                <div>
-                  <a href="car-detail.html?id=${car.id}" class="fw-bold text-dark text-decoration-none small d-block mb-1">
-                    ${car.title}
-                  </a>
-                  <span class="text-muted d-flex align-items-center gap-2" style="font-size: 0.75rem;">
-                    <span><i class="bi bi-calendar3 me-1"></i>${car.year}</span>
-                    <span>•</span>
-                    <span><i class="bi bi-gear me-1"></i>${car.transmission}</span>
-                    <span>•</span>
-                    <span><i class="bi bi-fuel-pump me-1"></i>${car.fuel}</span>
-                  </span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="small fw-bold text-dark">${car.sellerName}</div>
-              <div class="badge bg-light text-dark border px-2 py-1 mt-1 font-monospace" style="font-size: 0.72rem;">
-                <i class="bi bi-telephone text-teal me-1"></i>${car.sellerPhone}
-              </div>
-            </td>
-            <td>
-              <div class="fw-bold fs-6 text-orange" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</div>
-              <div class="text-muted small" style="font-size: 0.75rem;"><i class="bi bi-geo-alt me-1"></i>${car.location}</div>
-            </td>
-            <td class="small text-muted">${car.postedDate}</td>
-            <td>${getStatusBadgeHtml(car.status)}</td>
-            <td class="text-end">
-              <div class="d-inline-flex gap-2">
-                <button class="btn btn-sm px-3 py-1 fw-bold text-white shadow-xs" style="background: linear-gradient(135deg, #059669, #10B981); border-radius: 8px;" onclick="handleApproveListing('${car.id}')" title="Phê duyệt tin đăng">
-                  <i class="bi bi-check-circle-fill me-1"></i> Duyệt
-                </button>
-                <button class="btn btn-outline-danger btn-sm px-2 py-1 fw-semibold" style="border-radius: 8px;" onclick="openRejectModal('${car.id}')" title="Từ chối tin">
-                  <i class="bi bi-x-circle me-1"></i> Từ chối
-                </button>
-              </div>
-            </td>
-          </tr>
-        `).join('');
+      const tagPending = document.getElementById('kpi-pending-tag');
+      if (tagPending) {
+        tagPending.textContent = pendingListings.length > 0 ? `${pendingListings.length} tin mới` : 'Đã sạch tin';
+        tagPending.className = pendingListings.length > 0 ? 'badge bg-warning text-dark small' : 'badge bg-success-subtle text-success small';
       }
 
-      // Render Báo Cáo Vi Phạm
+      // Render tab hiện tại
+      renderStudioQueue();
+      renderReportsTab();
+      renderInventoryTab();
+    }
+
+    // ========================================================================
+    // RENDER TAB 1: SPLIT-SCREEN INSPECTION STUDIO
+    // ========================================================================
+    function renderStudioQueue() {
+      const customListings = getCustomListings();
+      const pendingListings = customListings.filter(c => c.status === 'pending');
+      
+      const queueList = document.getElementById('studio-queue-list');
+      const noQueueMsg = document.getElementById('no-queue-msg');
+      const deckCard = document.getElementById('studio-inspection-deck');
+      const deckEmpty = document.getElementById('deck-empty-state');
+      document.getElementById('queue-header-count').textContent = pendingListings.length;
+
+      if (pendingListings.length === 0) {
+        queueList.innerHTML = '';
+        noQueueMsg.style.display = 'block';
+        deckCard.style.display = 'none';
+        deckEmpty.style.display = 'block';
+        currentSelectedCarId = null;
+        return;
+      }
+
+      noQueueMsg.style.display = 'none';
+      deckEmpty.style.display = 'none';
+      deckCard.style.display = 'block';
+
+      // Nếu chưa chọn xe nào hoặc xe đang chọn không còn trong hàng đợi
+      if (!currentSelectedCarId || !pendingListings.some(c => c.id === currentSelectedCarId)) {
+        currentSelectedCarId = pendingListings[0].id;
+      }
+
+      // Render danh sách thẻ hàng đợi bên trái
+      queueList.innerHTML = pendingListings.map(car => {
+        const isSelected = car.id === currentSelectedCarId;
+        const imagesCount = (car.images && car.images.length > 0) ? car.images.length : 1;
+
+        return `
+          <div class="studio-queue-item ${isSelected ? 'is-selected' : ''}" onclick="selectCarForInspection('${car.id}')">
+            <div class="d-flex align-items-center gap-3">
+              <div class="position-relative flex-shrink-0" style="width: 84px; height: 60px;">
+                <img src="${car.image}" class="w-100 h-100 object-fit-cover rounded-3 border" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
+                <span class="position-absolute bottom-0 end-0 bg-dark bg-opacity-75 text-white px-1 rounded-1" style="font-size: 0.65rem;">
+                  <i class="bi bi-images me-0.5"></i>${imagesCount}
+                </span>
+              </div>
+              <div class="flex-grow-1 min-w-0">
+                <div class="d-flex justify-content-between align-items-start gap-1">
+                  <h6 class="fw-bold mb-1 text-truncate text-dark small" style="max-width: 170px;">${car.title}</h6>
+                  <span class="fw-bold text-orange small" style="color: var(--orange-color); white-space: nowrap;">${car.priceDisplay || formatCurrency(car.price)}</span>
+                </div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size: 0.73rem; color: #64748B;">
+                  <span>${car.year}</span>
+                  <span>•</span>
+                  <span>${car.transmission}</span>
+                  <span>•</span>
+                  <span>${car.fuel}</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge bg-light text-secondary border" style="font-size: 0.68rem;">
+                    <i class="bi bi-person me-1"></i>${car.sellerName || 'Khách ký gửi'}
+                  </span>
+                  <span class="text-muted" style="font-size: 0.7rem;">${car.postedDate || 'Hôm nay'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Render chi tiết xe được chọn bên phải
+      const selectedCar = pendingListings.find(c => c.id === currentSelectedCarId) || pendingListings[0];
+      renderInspectionDeck(selectedCar);
+    }
+
+    function selectCarForInspection(carId) {
+      currentSelectedCarId = carId;
+      renderStudioQueue();
+    }
+
+    function renderInspectionDeck(car) {
+      const deck = document.getElementById('studio-inspection-deck');
+      if (!car) return;
+
+      const allImages = (car.images && car.images.length > 0) ? car.images : [car.image];
+      const specs = car.specifications || {};
+
+      deck.innerHTML = `
+        <!-- Header xe & nhãn thẩm định -->
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3 pb-3 border-bottom">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-warning text-dark px-2 py-1"><i class="bi bi-hourglass-split me-1"></i>Chờ duyệt hồ sơ</span>
+              <span class="badge bg-light text-secondary border px-2 py-1">ID: ${car.id}</span>
+              <span class="text-muted small"><i class="bi bi-clock me-1"></i>Gửi lúc: ${car.submittedAt ? new Date(car.submittedAt).toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'}) : 'Hôm nay'}</span>
+            </div>
+            <h3 class="h4 fw-bold text-dark mb-1">${car.title}</h3>
+            <p class="text-muted small mb-0"><i class="bi bi-geo-alt-fill text-teal me-1"></i>Khu vực xem xe: <strong>${car.location}</strong> (${car.sellerAddress || 'Theo hẹn'})</p>
+          </div>
+          <div class="text-lg-end">
+            <span class="text-muted small d-block">Giá chủ xe chào bán</span>
+            <div class="h3 fw-bold mb-0 text-orange" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</div>
+          </div>
+        </div>
+
+        <!-- 1. Trình xem ảnh tương tác (Gallery Showcase) -->
+        <div class="mb-4">
+          <div class="studio-gallery-main mb-2">
+            <img src="${allImages[0]}" id="deck-hero-image" alt="${car.title}" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
+            <div class="position-absolute bottom-0 start-0 w-100 p-3 d-flex justify-content-between align-items-center" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+              <span class="text-white small fw-semibold"><i class="bi bi-camera me-1"></i>Bộ ảnh thực tế (${allImages.length} ảnh)</span>
+              <a href="${allImages[0]}" target="_blank" id="deck-zoom-link" class="btn btn-sm btn-dark bg-opacity-75 text-white border-0 py-1 px-3">
+                <i class="bi bi-arrows-fullscreen me-1"></i>Phóng to ảnh
+              </a>
+            </div>
+          </div>
+          <div class="studio-gallery-thumbs">
+            ${allImages.map((img, idx) => `
+              <div class="studio-gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="switchDeckHeroImage('${img}', this)">
+                <img src="${img}" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=300&q=80'">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 2. Thước đo Định giá & Kiểm chuẩn Showroom -->
+        <div class="p-3 rounded-3 mb-4 d-flex align-items-center gap-3 border" style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-color: #BBF7D0 !important;">
+          <div class="rounded-circle p-2 bg-success text-white d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <i class="bi bi-graph-up-arrow fs-5"></i>
+          </div>
+          <div class="flex-grow-1">
+            <div class="fw-bold text-success-emphasis small mb-0.5">Đối chiếu dữ liệu định giá thị trường:</div>
+            <div class="text-secondary small">
+              Mức giá <strong>${car.priceDisplay || formatCurrency(car.price)}</strong> nằm trong khoảng giao dịch hợp lý của dòng xe ${car.brand} ${car.model} đời ${car.year}. Đủ điều kiện phê duyệt hiển thị.
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Thông số kỹ thuật chi tiết đối chiếu -->
+        <h6 class="fw-bold text-dark mb-2"><i class="bi bi-sliders me-1 text-teal"></i>Thông số kỹ thuật đối chiếu:</h6>
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <div class="spec-mini-badge"><i class="bi bi-calendar3 text-teal"></i> Năm: <strong>${car.year}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-speedometer2 text-teal"></i> ODO: <strong>${car.mileageDisplay || (car.mileage ? car.mileage.toLocaleString() + ' km' : 'Xe mới')}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-gear text-teal"></i> Hộp số: <strong>${car.transmission}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-fuel-pump text-teal"></i> Nhiên liệu: <strong>${car.fuel}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-palette text-teal"></i> Màu xe: <strong>${car.color}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-globe text-teal"></i> Xuất xứ: <strong>${car.origin || 'Lắp ráp trong nước'}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-cpu text-teal"></i> Động cơ: <strong>${specs.engine || 'Chuẩn theo hãng'}</strong></div>
+          <div class="spec-mini-badge"><i class="bi bi-shield-check text-teal"></i> Đăng kiểm: <strong>${specs.registrationExpiry || 'Còn hiệu lực'}</strong></div>
+        </div>
+
+        <!-- 4. Thông tin người bán & Mô tả tin đăng -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div class="p-3 bg-light rounded-3 h-100 border">
+              <span class="text-muted small d-block mb-1">Chủ tin đăng (Người bán ký gửi):</span>
+              <div class="fw-bold text-dark">${car.sellerName}</div>
+              <div class="text-teal font-monospace small fw-bold mb-2">
+                <i class="bi bi-telephone me-1"></i>${car.sellerPhone}
+              </div>
+              <span class="badge bg-secondary-subtle text-secondary border">Loại hình: ${car.sellerType || 'Khách cá nhân ký gửi'}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 bg-light rounded-3 h-100 border">
+              <span class="text-muted small d-block mb-1">Mô tả của người bán:</span>
+              <div class="text-secondary small" style="line-height: 1.5; max-height: 90px; overflow-y: auto;">
+                ${car.description || 'Chủ xe không để lại mô tả bổ sung.'}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Cụm thanh điều khiển hành động thẩm định (Action Bar) -->
+        <div class="p-3 bg-white rounded-3 border d-flex flex-wrap justify-content-between align-items-center gap-2 shadow-sm">
+          <div class="d-flex align-items-center gap-2">
+            <a href="car-detail.html?id=${car.id}" target="_blank" class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2">
+              <i class="bi bi-box-arrow-up-right me-1"></i>Xem trang chi tiết xe
+            </a>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-danger btn-sm rounded-3 px-3 py-2 fw-semibold" onclick="openRejectModal('${car.id}')">
+              <i class="bi bi-x-circle me-1"></i> Từ chối duyệt
+            </button>
+            <button class="btn btn-sm text-white rounded-3 px-4 py-2 fw-bold shadow-xs" style="background: linear-gradient(135deg, #059669, #10B981);" onclick="handleApproveListing('${car.id}')">
+              <i class="bi bi-check-circle-fill me-1"></i> Phê duyệt & Xuất bản lên sàn
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchDeckHeroImage(src, thumbElement) {
+      const hero = document.getElementById('deck-hero-image');
+      const zoom = document.getElementById('deck-zoom-link');
+      if (hero) hero.src = src;
+      if (zoom) zoom.href = src;
+      document.querySelectorAll('.studio-gallery-thumb-item').forEach(el => el.classList.remove('active'));
+      if (thumbElement) thumbElement.classList.add('active');
+    }
+
+    // ========================================================================
+    // RENDER TAB 2: BÁO CÁO VI PHẠM
+    // ========================================================================
+    function renderReportsTab() {
+      const allCars = getAllCars(true);
+      const reports = getReports();
       const reportsTbody = document.getElementById('reports-table-body');
-      const noReportsMsg = document.getElementById('no-reports-message');
+      const noReportsMsg = document.getElementById('no-reports-msg');
+      document.getElementById('reports-count-title').textContent = reports.length;
+
       if (reports.length === 0) {
         reportsTbody.innerHTML = '';
         noReportsMsg.style.display = 'block';
-      } else {
-        noReportsMsg.style.display = 'none';
-        reportsTbody.innerHTML = reports.map(rep => {
-          const car = allCars.find(c => c.id === rep.listingId);
-          let statusBadge = `<span class="badge bg-warning text-dark">Chờ xử lý</span>`;
-          if (rep.status === 'processing') statusBadge = `<span class="badge bg-info text-dark">Đang xử lý</span>`;
-          if (rep.status === 'resolved') statusBadge = `<span class="badge bg-success text-white">Đã xử lý</span>`;
-
-          return `
-            <tr>
-              <td class="small font-monospace">${rep.id}</td>
-              <td class="small fw-semibold">${car ? car.title : rep.listingId}</td>
-              <td class="small text-danger fw-semibold">${rep.reason}</td>
-              <td class="small text-muted">${rep.description || '--'}</td>
-              <td>${statusBadge}</td>
-              <td class="text-end">
-                <div class="d-inline-flex gap-1">
-                  <button class="btn btn-outline-info btn-sm py-0 px-2" onclick="handleUpdateReport('${rep.id}', 'processing')" title="Đánh dấu đang xử lý">Đang xử lý</button>
-                  <button class="btn btn-outline-success btn-sm py-0 px-2" onclick="handleUpdateReport('${rep.id}', 'resolved')" title="Đánh dấu đã xử lý">Đã xong</button>
-                  ${car && car.status === 'active' ? `<button class="btn btn-outline-danger btn-sm py-0 px-2" onclick="handleHideReportedCar('${car.id}')" title="Ẩn tin vi phạm">Ẩn tin</button>` : ''}
-                </div>
-              </td>
-            </tr>
-          `;
-        }).join('');
+        return;
       }
 
-      // Render Bảng Tất Cả Xe (Theo bộ lọc trạng thái)
-      const selectedStatus = document.getElementById('admin-status-filter').value;
+      noReportsMsg.style.display = 'none';
+      reportsTbody.innerHTML = reports.map(rep => {
+        const car = allCars.find(c => c.id === rep.listingId);
+        let statusBadge = `<span class="badge bg-warning text-dark">Chờ xử lý</span>`;
+        if (rep.status === 'processing') statusBadge = `<span class="badge bg-info text-dark">Đang xử lý</span>`;
+        if (rep.status === 'resolved') statusBadge = `<span class="badge bg-success text-white">Đã xử lý</span>`;
+
+        return `
+          <tr>
+            <td class="small font-monospace">${rep.id}</td>
+            <td class="small fw-semibold">
+              ${car ? `<a href="car-detail.html?id=${car.id}" target="_blank" class="text-dark text-decoration-none">${car.title}</a>` : rep.listingId}
+            </td>
+            <td class="small text-danger fw-semibold">${rep.reason}</td>
+            <td class="small text-muted">${rep.description || '--'}</td>
+            <td>${statusBadge}</td>
+            <td class="text-end">
+              <div class="d-inline-flex gap-1">
+                <button class="btn btn-outline-info btn-sm py-1 px-2" onclick="handleUpdateReport('${rep.id}', 'processing')" title="Đánh dấu đang xử lý">Đang xử lý</button>
+                <button class="btn btn-outline-success btn-sm py-1 px-2" onclick="handleUpdateReport('${rep.id}', 'resolved')" title="Đánh dấu đã giải quyết">Đã xong</button>
+                ${car && car.status === 'active' ? `<button class="btn btn-outline-danger btn-sm py-1 px-2" onclick="handleHideReportedCar('${car.id}')" title="Ẩn tin vi phạm này">Ẩn tin</button>` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // ========================================================================
+    // RENDER TAB 3: TOÀN BỘ KHO XE TOÀN SÀN
+    // ========================================================================
+    function renderInventoryTab() {
+      const allCars = getAllCars(true);
+      const searchKey = (document.getElementById('inventory-search') ? document.getElementById('inventory-search').value : '').toLowerCase().trim();
+      const statusFilter = document.getElementById('inventory-status-filter') ? document.getElementById('inventory-status-filter').value : 'all';
+      const sourceFilter = document.getElementById('inventory-source-filter') ? document.getElementById('inventory-source-filter').value : 'all';
+
       let displayCars = allCars;
-      if (selectedStatus !== 'all') {
-        displayCars = allCars.filter(c => c.status === selectedStatus);
+
+      if (statusFilter !== 'all') {
+        displayCars = displayCars.filter(c => c.status === statusFilter);
       }
 
-      document.getElementById('all-cars-count').textContent = displayCars.length;
-      const allTbody = document.getElementById('all-cars-table-body');
-      allTbody.innerHTML = displayCars.map(car => {
-        let actionBtn = `<a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm py-0 px-2" style="font-size: 0.75rem;">Xem</a>`;
+      if (sourceFilter === 'showroom') {
+        displayCars = displayCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
+      } else if (sourceFilter === 'external') {
+        displayCars = displayCars.filter(c => !(c.sourceType === 'showroom' || c.isShowroom));
+      }
+
+      if (searchKey) {
+        displayCars = displayCars.filter(c => 
+          (c.title && c.title.toLowerCase().includes(searchKey)) ||
+          (c.brand && c.brand.toLowerCase().includes(searchKey)) ||
+          (c.sellerName && c.sellerName.toLowerCase().includes(searchKey))
+        );
+      }
+
+      document.getElementById('inventory-count-title').textContent = displayCars.length;
+      const tbody = document.getElementById('inventory-table-body');
+      const noMatchMsg = document.getElementById('no-inventory-match');
+
+      if (displayCars.length === 0) {
+        tbody.innerHTML = '';
+        noMatchMsg.style.display = 'block';
+        return;
+      }
+
+      noMatchMsg.style.display = 'none';
+      tbody.innerHTML = displayCars.map(car => {
+        const isShowroom = car.sourceType === 'showroom' || car.isShowroom;
+        let actionBtn = `<a href="car-detail.html?id=${car.id}" target="_blank" class="btn btn-outline-dark btn-sm py-0.5 px-2" style="font-size: 0.78rem;">Xem</a>`;
         if (car.status === 'active') {
-          actionBtn += ` <button class="btn btn-outline-secondary btn-sm py-0 px-2" onclick="adminHideListing('${car.id}')" style="font-size: 0.75rem;">Ẩn</button>`;
+          actionBtn += ` <button class="btn btn-outline-secondary btn-sm py-0.5 px-2" onclick="adminHideListing('${car.id}')" style="font-size: 0.78rem;">Ẩn</button>`;
         }
 
         return `
           <tr>
-            <td class="small text-muted">${car.id}</td>
-            <td class="fw-semibold small">${car.title}</td>
-            <td class="small">${car.brand}</td>
-            <td class="small">${car.year}</td>
-            <td class="small fw-bold text-orange" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</td>
-            <td class="small">
-              ${(car.sourceType === 'showroom' || car.isShowroom)
-                ? '<span class="badge bg-teal-subtle text-teal border border-teal-subtle"><i class="bi bi-shield-check me-1"></i>Showroom</span>'
-                : '<span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-person me-1"></i>Cá nhân</span>'}
+            <td>
+              <img src="${car.image}" class="rounded-2 border object-fit-cover" width="70" height="48" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
             </td>
-            <td class="small text-muted">${car.sellerName}</td>
+            <td>
+              <a href="car-detail.html?id=${car.id}" target="_blank" class="fw-bold text-dark text-decoration-none small d-block mb-0.5">${car.title}</a>
+              <span class="text-muted small" style="font-size: 0.74rem;">${car.year} • ${car.transmission} • ${car.fuel} • ${car.location}</span>
+            </td>
+            <td>
+              <div class="fw-bold text-orange small" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</div>
+            </td>
+            <td>
+              ${isShowroom 
+                ? '<span class="badge bg-teal-subtle text-teal border border-teal-subtle"><i class="bi bi-shield-check me-1"></i>Xe Showroom</span>' 
+                : '<span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-person me-1"></i>Xe ký gửi</span>'}
+            </td>
+            <td class="small">
+              <div class="fw-semibold text-dark">${car.sellerName}</div>
+              <div class="text-muted" style="font-size: 0.74rem;">${car.sellerPhone || '--'}</div>
+            </td>
             <td>${getStatusBadgeHtml(car.status)}</td>
             <td class="text-end">
               <div class="d-inline-flex gap-1">
@@ -531,9 +837,12 @@
       }).join('');
     }
 
+    // ========================================================================
+    // TÁC VỤ PHÊ DUYỆT & TỪ CHỐI
+    // ========================================================================
     function handleApproveListing(id) {
       updateListingStatus(id, 'active');
-      showToast("Đã phê duyệt tin đăng xe thành công! Xe đã xuất hiện trên sàn.", "success");
+      showToast("Đã phê duyệt tin đăng xe thành công! Xe đã xuất hiện công khai trên sàn.", "success");
       renderAdminDashboard();
     }
 
@@ -541,6 +850,10 @@
       document.getElementById('reject-car-id').value = id;
       const modal = new bootstrap.Modal(document.getElementById('rejectModal'));
       modal.show();
+    }
+
+    function applyQuickRejectReason(text) {
+      document.getElementById('reject-reason-custom').value = text;
     }
 
     function confirmRejectListing() {
@@ -555,19 +868,19 @@
 
       updateListingStatus(id, 'rejected', reason);
       bootstrap.Modal.getInstance(document.getElementById('rejectModal')).hide();
-      showToast("Đã từ chối tin đăng và cập nhật lý do!", "warning");
+      showToast("Đã từ chối tin đăng và gửi phản hồi lý do cho người bán!", "warning");
       renderAdminDashboard();
     }
 
     function handleUpdateReport(reportId, status) {
       const user = getLoggedInUser();
       updateReportStatus(reportId, status, user ? user.name : 'Quản lý Showroom');
-      showToast("Đã cập nhật trạng thái báo cáo!", "success");
+      showToast("Đã cập nhật trạng thái báo cáo vi phạm!", "success");
       renderAdminDashboard();
     }
 
     function handleHideReportedCar(carId) {
-      if (confirm("Ẩn tin đăng vi phạm này khỏi sàn giao dịch?")) {
+      if (confirm("Ẩn tin đăng vi phạm này khỏi sàn giao dịch OtoMarket?")) {
         updateListingStatus(carId, 'hidden');
         showToast("Đã ẩn tin đăng vi phạm thành công", "warning");
         renderAdminDashboard();
@@ -575,7 +888,7 @@
     }
 
     function adminHideListing(carId) {
-      if (confirm("Ẩn tin đăng này?")) {
+      if (confirm("Ẩn tin đăng này khỏi sàn?")) {
         updateListingStatus(carId, 'hidden');
         showToast("Đã ẩn tin đăng thành công", "info");
         renderAdminDashboard();
