@@ -712,7 +712,6 @@ function syncHeaderUserUI() {
           <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
           <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2 text-teal"></i>Quản lý tin đăng</a></li>
           <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
-          ${isAdmin ? '<li><a class="dropdown-item py-2" href="admin.html"><i class="bi bi-shield-lock me-2 text-warning"></i>Trang quản trị (Admin)</a></li>' : ''}
           <li><hr class="dropdown-divider my-1"></li>
           <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
         </ul>
