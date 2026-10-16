@@ -943,19 +943,24 @@ function createCarCardHTML(car) {
   if (isShowroom) {
     badgeHtml = isNewCar
       ? `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom • Xe mới</span>`
-      : `<span class="car-card-badge badge-source-showroom"><i class="bi bi-shield-check me-1"></i>Xe Showroom</span>`;
+      : `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom chính hãng</span>`;
   } else {
-    badgeHtml = `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Người bán cá nhân</span>`;
+    badgeHtml = isNewCar
+      ? `<span class="car-card-badge badge-source-new"><i class="bi bi-stars me-1"></i>Xe mới 100%</span>`
+      : `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Chính chủ bán</span>`;
   }
 
+  const photoCount = (car.images && car.images.length > 0) ? car.images.length : (car.gallery && car.gallery.length > 0 ? car.gallery.length : 6);
+  const photoBadgeHtml = `<span class="car-photo-badge"><i class="bi bi-camera"></i> ${photoCount} ảnh</span>`;
   const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
 
   return `
-    <div class="col-lg-4 col-md-6 mb-4">
+    <div class="col-lg-4 col-md-6 mb-4 car-grid-item">
       <div class="car-card">
         <div class="car-card-img-wrapper">
           <img src="${car.image}" alt="${car.title}" class="car-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
           ${badgeHtml}
+          ${photoBadgeHtml}
           <button class="car-fav-btn ${isFav ? 'active' : ''}" onclick="handleCardFavClick(event, '${car.id}')" title="Lưu xe yêu thích" aria-label="Yêu thích">
             <i class="bi ${heartClass}"></i>
           </button>
@@ -989,7 +994,7 @@ function createCarCardHTML(car) {
               <span class="${isShowroom ? 'fw-bold text-teal' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
             </div>
             <div class="car-location">
-              <i class="bi bi-geo-alt"></i>
+              <i class="bi bi-geo-alt-fill text-teal"></i>
               <span>${car.location}</span>
             </div>
           </div>
@@ -1004,6 +1009,7 @@ function createCarCardHTML(car) {
     </div>
   `;
 }
+
 
 function handleCardFavClick(event, carId) {
   event.preventDefault();
