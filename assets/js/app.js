@@ -435,8 +435,18 @@ function getFavorites() {
   const userId = getCurrentUserId();
   const key = `otomarket_favorites_${userId}`;
   try {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : [];
+    let list = JSON.parse(localStorage.getItem(key) || 'null');
+    // Nếu danh sách của tài khoản hiện tại đang trống, tự động gộp từ guest hoặc key cũ
+    if (!list || list.length === 0) {
+      const guestData = JSON.parse(localStorage.getItem('otomarket_favorites_guest') || 'null');
+      const legacyData = JSON.parse(localStorage.getItem('otomarket_favorites') || 'null');
+      const fallback = (guestData && guestData.length > 0) ? guestData : ((legacyData && legacyData.length > 0) ? legacyData : null);
+      if (fallback && fallback.length > 0) {
+        list = fallback;
+        localStorage.setItem(key, JSON.stringify(list));
+      }
+    }
+    return Array.isArray(list) ? list : [];
   } catch (e) {
     return [];
   }

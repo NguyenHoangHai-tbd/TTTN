@@ -74,7 +74,7 @@
     <div class="container">
 
       <!-- Guest Sync Alert (if not logged in) -->
-      <div id="guest-fav-notice" style="display: none;" class="alert alert-light border d-flex flex-column flex-sm-row align-items-sm-center justify-content-between p-2.5 px-3 rounded-3 mb-4 shadow-xs gap-2">
+      <div id="guest-fav-notice" class="alert alert-light border d-none flex-column flex-sm-row align-items-sm-center justify-content-between p-2.5 px-3 rounded-3 mb-4 shadow-xs gap-2">
         <div class="d-flex align-items-center gap-2 small text-slate-700">
           <i class="bi bi-info-circle-fill text-teal fs-6"></i>
           <span>Bạn đang xem danh sách yêu thích lưu tạm trên trình duyệt này.</span>
@@ -95,7 +95,7 @@
         </div>
 
         <!-- 3 KPI Badges -->
-        <div class="d-flex align-items-center gap-2" id="fav-kpi-container" style="display: none;">
+        <div class="d-flex align-items-center gap-2" id="fav-kpi-container">
           <div class="fav-stat-box">
             <div class="small text-muted fw-semibold">Đã lưu</div>
             <div class="fw-bold fs-6 text-slate-900" id="stat-total-fav">0 xe</div>
@@ -162,13 +162,31 @@
         <p class="text-muted small mb-4" style="max-width: 480px; margin: 0 auto 20px;">
           Bạn chưa lưu chiếc xe nào. Hãy bấm vào biểu tượng hình trái tim trên bất kỳ chiếc xe nào trong kho xe để lưu lại và theo dõi giá.
         </p>
-        <div class="d-flex justify-content-center gap-2">
+        <div class="d-flex justify-content-center gap-2 mb-2">
           <a href="cars.html" class="btn-cta-orange px-4 py-2 text-decoration-none">
             <i class="bi bi-search me-1"></i> Khám phá kho xe ngay
           </a>
           <a href="index.html" class="btn btn-outline-secondary px-3 py-2 text-decoration-none">
             Về trang chủ
           </a>
+        </div>
+      </div>
+
+      <!-- Suggested Cars (shown when empty) -->
+      <div id="suggested-favorites-section" style="display: none;" class="mt-5 pt-3">
+        <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+          <div>
+            <h2 class="h5 fw-bold text-slate-900 mb-1 d-flex align-items-center gap-2">
+              <i class="bi bi-stars text-teal"></i> Gợi Ý Xe Đang Được Quan Tâm Nhiều Nhất
+            </h2>
+            <p class="text-muted small mb-0">Các mẫu xe chất lượng trên sàn mà bạn có thể quan tâm</p>
+          </div>
+          <a href="cars.html" class="btn btn-outline-dark btn-sm fw-semibold d-none d-sm-inline-flex align-items-center gap-1">
+            <span>Khám phá toàn bộ kho xe</span> <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+        <div class="row" id="suggested-favorites-grid">
+          <!-- Rendered via JS -->
         </div>
       </div>
 
@@ -245,13 +263,19 @@
     let currentFavSort = 'recent';
 
     function renderFavorites() {
-      // Check login state - friendly notice instead of forced redirect
+      // 1. Kiểm tra trạng thái đăng nhập - xử lý triệt để ẩn/hiện thông báo
       const user = getLoggedInUser();
       const guestNotice = document.getElementById('guest-fav-notice');
-      if (!user) {
-        if (guestNotice) guestNotice.style.display = 'flex';
-      } else {
-        if (guestNotice) guestNotice.style.display = 'none';
+      if (guestNotice) {
+        if (!user) {
+          guestNotice.classList.remove('d-none');
+          guestNotice.classList.add('d-flex');
+          guestNotice.style.removeProperty('display');
+        } else {
+          guestNotice.classList.remove('d-flex');
+          guestNotice.classList.add('d-none');
+          guestNotice.style.setProperty('display', 'none', 'important');
+        }
       }
 
       const favIds = getFavorites();
@@ -259,18 +283,41 @@
       const emptyState = document.getElementById('favorites-empty-state');
       const kpiContainer = document.getElementById('fav-kpi-container');
       const controlsBar = document.getElementById('fav-controls-bar');
+      const suggestedSection = document.getElementById('suggested-favorites-section');
+
+      // Luôn đảm bảo thanh KPI badges hiển thị để thể hiện giao diện hiện đại
+      if (kpiContainer) {
+        kpiContainer.classList.remove('d-none');
+        kpiContainer.classList.add('d-flex');
+        kpiContainer.style.removeProperty('display');
+      }
 
       if (favIds.length === 0) {
+        document.getElementById('stat-total-fav').textContent = '0 xe';
+        document.getElementById('stat-showroom-fav').textContent = '0 xe';
+        document.getElementById('stat-external-fav').textContent = '0 xe';
+
+        const countAll = document.getElementById('tab-count-all');
+        const countShowroom = document.getElementById('tab-count-showroom');
+        const countExternal = document.getElementById('tab-count-external');
+        if (countAll) countAll.textContent = '0';
+        if (countShowroom) countShowroom.textContent = '0';
+        if (countExternal) countExternal.textContent = '0';
+
         container.innerHTML = '';
-        emptyState.style.display = 'block';
-        if (kpiContainer) kpiContainer.style.setProperty('display', 'none', 'important');
+        if (emptyState) emptyState.style.display = 'block';
         if (controlsBar) controlsBar.style.setProperty('display', 'none', 'important');
+        
+        renderSuggestedFavorites();
         return;
       }
 
-      emptyState.style.display = 'none';
-      if (kpiContainer) kpiContainer.style.removeProperty('display');
-      if (controlsBar) controlsBar.style.removeProperty('display');
+      if (emptyState) emptyState.style.display = 'none';
+      if (suggestedSection) suggestedSection.style.display = 'none';
+      if (controlsBar) {
+        controlsBar.classList.remove('d-none');
+        controlsBar.style.removeProperty('display');
+      }
 
       const allCars = getAllCars(true);
       // Preserve recent order
@@ -367,6 +414,68 @@
                   <a href="tel:${sellerPhone}" class="btn btn-outline-secondary btn-sm fw-semibold flex-fill py-2 text-truncate" title="Gọi người bán: ${sellerPhone}">
                     <i class="bi bi-telephone-fill text-teal me-1"></i> ${sellerPhone}
                   </a>
+                  <a href="car-detail.html?id=${car.id}" class="btn btn-teal btn-sm fw-semibold flex-fill py-2 text-center text-nowrap">
+                    Xem chi tiết <i class="bi bi-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Hiển thị 3 xe gợi ý hấp dẫn nhất khi danh sách yêu thích đang trống
+    function renderSuggestedFavorites() {
+      const section = document.getElementById('suggested-favorites-section');
+      const grid = document.getElementById('suggested-favorites-grid');
+      if (!section || !grid) return;
+
+      section.style.display = 'block';
+      const publicCars = getPublicCars();
+      const suggested = publicCars.slice(0, 3);
+
+      grid.innerHTML = suggested.map(car => {
+        const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
+        const isNewCar = car.condition === 'new' || car.isNew;
+        const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
+
+        let badgeHtml = '';
+        if (isShowroom) {
+          badgeHtml = `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom chính hãng</span>`;
+        } else {
+          badgeHtml = `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Chính chủ bán</span>`;
+        }
+
+        return `
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="car-card">
+              <div class="car-card-img-wrapper">
+                <img src="${car.image}" alt="${car.title}" class="car-card-img" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
+                ${badgeHtml}
+                <button class="car-fav-btn" onclick="handleCardFavClick(event, '${car.id}'); setTimeout(renderFavorites, 200);" title="Thêm vào danh sách yêu thích">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              <div class="car-card-body">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span class="small text-success fw-semibold d-flex align-items-center gap-1">
+                    <span class="d-inline-block rounded-circle bg-success" style="width: 6px; height: 6px;"></span> Đang bán
+                  </span>
+                  <span class="small text-muted"><i class="bi bi-geo-alt-fill text-teal me-1"></i>${car.location}</span>
+                </div>
+                <a href="car-detail.html?id=${car.id}" class="car-card-title text-truncate" title="${car.title}">${car.title}</a>
+                <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
+                <div class="car-spec-grid">
+                  <div class="car-spec-item"><i class="bi bi-calendar3"></i><span>${car.year}</span></div>
+                  <div class="car-spec-item"><i class="bi bi-speedometer2"></i><span>${mileageText}</span></div>
+                  <div class="car-spec-item"><i class="bi bi-gear"></i><span>${car.transmission}</span></div>
+                  <div class="car-spec-item"><i class="bi bi-fuel-pump"></i><span>${car.fuel}</span></div>
+                </div>
+                <div class="mt-3 pt-2 d-flex gap-2">
+                  <button type="button" class="btn btn-outline-danger btn-sm fw-semibold flex-fill py-2" onclick="handleCardFavClick(event, '${car.id}'); setTimeout(renderFavorites, 200);">
+                    <i class="bi bi-heart-fill me-1"></i> Lưu yêu thích
+                  </button>
                   <a href="car-detail.html?id=${car.id}" class="btn btn-teal btn-sm fw-semibold flex-fill py-2 text-center text-nowrap">
                     Xem chi tiết <i class="bi bi-arrow-right ms-1"></i>
                   </a>

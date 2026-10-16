@@ -195,29 +195,31 @@
       setLoggedInUser(user);
       showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Nhân viên Showroom' : 'Khách cá nhân / Môi giới'})`, "success");
 
-      const savedRedirect = localStorage.getItem('otomarket_redirect_after_login');
+      // Xóa sạch redirect lưu tạm cũ để không bị chuyển nhầm trang
       localStorage.removeItem('otomarket_redirect_after_login');
+
       const urlParams = new URLSearchParams(window.location.search);
-      const redirectTarget = urlParams.get('redirect') || savedRedirect;
+      const explicitRedirect = urlParams.get('redirect');
 
       setTimeout(() => {
-        if (redirectTarget) {
-          // Nếu trang đích là admin nhưng người dùng không phải admin
-          if (redirectTarget.toLowerCase().includes('admin') && user.role !== 'admin') {
-            showToast("Tài khoản người dùng ngoài không thể vào trang Duyệt tin Showroom. Đang chuyển về Quản lý tin đăng...", "warning");
-            window.location.href = 'my-listings.html';
-            return;
-          }
-          window.location.href = redirectTarget;
+        // Nếu là tài khoản Admin Showroom -> chuyển đến admin.html
+        if (user.role === 'admin') {
+          window.location.href = 'admin.html';
           return;
         }
 
-        if (user.role === 'admin') {
-          window.location.href = 'admin.html';
-        } else {
-          window.location.href = 'my-listings.html';
+        // Nếu có tham số redirect hợp lệ trên URL (ví dụ sau khi ấn Đăng tin -> post-car.html)
+        if (explicitRedirect && 
+            !explicitRedirect.toLowerCase().includes('login') && 
+            !explicitRedirect.toLowerCase().includes('admin') &&
+            !explicitRedirect.toLowerCase().includes('favorites')) {
+          window.location.href = explicitRedirect;
+          return;
         }
-      }, 700);
+
+        // Mặc định đối với mọi người dùng thông thường: luôn chuyển về Trang chủ index.html
+        window.location.href = 'index.html';
+      }, 500);
     }
   </script>
 </body>
