@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danh Sách Xe Yêu Thích & So Sánh - OtoMarket</title>
+  <title>Danh Sách Xe Yêu Thích - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +91,7 @@
             <i class="bi bi-bookmark-heart-fill"></i> KHO LƯU TRỮ CÁ NHÂN
           </div>
           <h1 class="h4 fw-extrabold text-slate-900 mb-1">Danh Sách Xe Bạn Đang Quan Tâm</h1>
-          <p class="text-muted small mb-0">Theo dõi biến động giá, so sánh trực tiếp các mẫu xe và liên hệ nhanh người bán</p>
+          <p class="text-muted small mb-0">Theo dõi biến động giá và liên hệ nhanh người bán</p>
         </div>
 
         <!-- 3 KPI Badges -->
@@ -160,7 +160,7 @@
         </div>
         <h4 class="fw-bold h5 mb-2">Danh sách yêu thích của bạn đang trống</h4>
         <p class="text-muted small mb-4" style="max-width: 480px; margin: 0 auto 20px;">
-          Bạn chưa lưu chiếc xe nào. Hãy bấm vào biểu tượng hình trái tim trên bất kỳ chiếc xe nào trong kho xe để lưu lại, so sánh thông số và theo dõi giá.
+          Bạn chưa lưu chiếc xe nào. Hãy bấm vào biểu tượng hình trái tim trên bất kỳ chiếc xe nào trong kho xe để lưu lại và theo dõi giá.
         </p>
         <div class="d-flex justify-content-center gap-2">
           <a href="cars.html" class="btn-cta-orange px-4 py-2 text-decoration-none">
@@ -174,57 +174,6 @@
 
     </div>
   </main>
-
-  <!-- Floating Compare Dock -->
-  <div id="floating-compare-dock" class="floating-compare-dock" style="display: none;">
-    <div class="d-flex align-items-center gap-3">
-      <div class="rounded-3 bg-teal text-white p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
-        <i class="bi bi-columns-gap fs-6"></i>
-      </div>
-      <div>
-        <div class="small fw-bold text-white d-flex align-items-center gap-2">
-          <span>Đang chọn so sánh: <strong class="text-teal" id="compare-count-text">2 / 3 xe</strong></span>
-          <span class="badge bg-secondary-subtle text-light small" style="font-size: 0.68rem;">Tối đa 3 xe</span>
-        </div>
-        <div class="small text-secondary" id="compare-names-preview" style="font-size: 0.75rem;">...</div>
-      </div>
-    </div>
-
-    <div class="d-flex align-items-center gap-2">
-      <button type="button" class="btn btn-link btn-sm text-secondary text-decoration-none p-0 px-2" onclick="clearCompareSelection()">
-        Bỏ chọn
-      </button>
-      <button type="button" class="btn btn-teal btn-sm fw-bold px-3 py-2 shadow-sm text-nowrap" onclick="openCompareModal()">
-        <i class="bi bi-arrow-left-right me-1"></i> So Sánh Chi Tiết Ngay
-      </button>
-    </div>
-  </div>
-
-  <!-- Compare Modal -->
-  <div class="modal fade" id="compareModal" tabindex="-1" aria-labelledby="compareModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
-        <div class="modal-header border-bottom py-3">
-          <div class="d-flex align-items-center gap-2">
-            <div class="rounded-3 bg-teal text-white p-1.5 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-              <i class="bi bi-arrow-left-right fs-6"></i>
-            </div>
-            <div>
-              <h5 class="modal-title fw-bold fs-6 mb-0" id="compareModalLabel">Bảng So Sánh Chi Tiết Xe Ô Tô</h5>
-              <div class="text-muted small" style="font-size: 0.75rem;">Đối chiếu thông số kỹ thuật, giá bán và nguồn gốc</div>
-            </div>
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-0" id="compare-modal-content">
-          <!-- Rendered via JS -->
-        </div>
-        <div class="modal-footer border-top py-2.5">
-          <button type="button" class="btn btn-secondary btn-sm fw-semibold" data-bs-dismiss="modal">Đóng</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer-custom">
@@ -292,7 +241,6 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js?v=20261016_purge"></script>
   <script>
-    let selectedCompareIds = [];
     let currentFavTab = 'all';
     let currentFavSort = 'recent';
 
@@ -317,7 +265,6 @@
         emptyState.style.display = 'block';
         if (kpiContainer) kpiContainer.style.setProperty('display', 'none', 'important');
         if (controlsBar) controlsBar.style.setProperty('display', 'none', 'important');
-        hideCompareDock();
         return;
       }
 
@@ -380,19 +327,12 @@
         }
 
         const photoCount = (car.images && car.images.length > 0) ? car.images.length : (car.gallery && car.gallery.length > 0 ? car.gallery.length : 6);
-        const isChecked = selectedCompareIds.includes(car.id);
         const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
         const sellerPhone = car.sellerPhone || '1900 6868';
 
         return `
           <div class="col-lg-4 col-md-6 mb-4" id="fav-col-${car.id}">
             <div class="car-card">
-              <!-- Compare Checkbox -->
-              <label class="compare-checkbox-pill" for="chk-compare-${car.id}">
-                <input type="checkbox" id="chk-compare-${car.id}" ${isChecked ? 'checked' : ''} onchange="toggleCompareCar('${car.id}', this.checked)">
-                <span>So sánh</span>
-              </label>
-
               <!-- Card Image Wrapper -->
               <div class="car-card-img-wrapper">
                 <img src="${car.image}" alt="${car.title}" class="car-card-img" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
@@ -436,142 +376,6 @@
           </div>
         `;
       }).join('');
-
-      updateCompareDockUI();
-    }
-
-    // Comparison Logic
-    function toggleCompareCar(carId, checked) {
-      if (checked) {
-        if (selectedCompareIds.length >= 3) {
-          showToast("Bạn chỉ có thể so sánh tối đa 3 xe cùng lúc", "warning");
-          const chk = document.getElementById(`chk-compare-${carId}`);
-          if (chk) chk.checked = false;
-          return;
-        }
-        if (!selectedCompareIds.includes(carId)) {
-          selectedCompareIds.push(carId);
-        }
-      } else {
-        selectedCompareIds = selectedCompareIds.filter(id => id !== carId);
-      }
-      updateCompareDockUI();
-    }
-
-    function updateCompareDockUI() {
-      const dock = document.getElementById('floating-compare-dock');
-      if (!dock) return;
-
-      if (selectedCompareIds.length >= 2) {
-        dock.style.display = 'flex';
-        document.getElementById('compare-count-text').textContent = `${selectedCompareIds.length} / 3 xe`;
-        
-        const allCars = getAllCars(true);
-        const names = selectedCompareIds.map(id => {
-          const c = allCars.find(car => car.id === id);
-          return c ? c.title : '';
-        }).filter(Boolean).join(' vs ');
-        document.getElementById('compare-names-preview').textContent = names;
-      } else {
-        dock.style.display = 'none';
-      }
-    }
-
-    function hideCompareDock() {
-      selectedCompareIds = [];
-      const dock = document.getElementById('floating-compare-dock');
-      if (dock) dock.style.display = 'none';
-    }
-
-    function clearCompareSelection() {
-      selectedCompareIds = [];
-      const checkboxes = document.querySelectorAll('.compare-checkbox-pill input');
-      checkboxes.forEach(c => c.checked = false);
-      updateCompareDockUI();
-    }
-
-    function openCompareModal() {
-      if (selectedCompareIds.length < 2) {
-        showToast("Vui lòng chọn ít nhất 2 xe để so sánh", "info");
-        return;
-      }
-
-      const allCars = getAllCars(true);
-      const cars = selectedCompareIds.map(id => allCars.find(c => c.id === id)).filter(Boolean);
-      const modalContent = document.getElementById('compare-modal-content');
-
-      let html = `
-        <div class="table-responsive">
-          <table class="table table-bordered compare-table">
-            <tbody>
-              <tr>
-                <th>Hình ảnh & Mẫu xe</th>
-                ${cars.map(c => `
-                  <td style="min-width: 220px;">
-                    <img src="${c.image}" alt="${c.title}" class="img-fluid rounded-3 mb-2 shadow-xs" style="height: 130px; width: 100%; object-fit: cover;">
-                    <div class="fw-bold text-slate-900">${c.title}</div>
-                  </td>
-                `).join('')}
-              </tr>
-              <tr>
-                <th>Giá bán niêm yết</th>
-                ${cars.map(c => `
-                  <td><strong class="text-orange fs-6">${c.priceDisplay || formatCurrency(c.price)}</strong></td>
-                `).join('')}
-              </tr>
-              <tr>
-                <th>Nguồn tin đăng</th>
-                ${cars.map(c => {
-                  const isShowroom = c.sourceType === 'showroom' || c.isShowroom || (c.sellerType && (c.sellerType.includes('Đại lý') || c.sellerType.includes('Showroom') || c.sellerType.includes('Salon')));
-                  return `<td><span class="badge ${isShowroom ? 'bg-teal-subtle text-teal' : 'bg-secondary-subtle text-secondary'}">${isShowroom ? 'Showroom chính hãng' : 'Chính chủ bán'}</span></td>`;
-                }).join('')}
-              </tr>
-              <tr>
-                <th>Năm sản xuất</th>
-                ${cars.map(c => `<td><strong>${c.year}</strong></td>`).join('')}
-              </tr>
-              <tr>
-                <th>Số km đã đi (ODO)</th>
-                ${cars.map(c => `<td>${c.condition === 'new' ? 'Xe mới 100%' : (c.mileageDisplay || (c.mileage + ' km'))}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Kiểu dáng</th>
-                ${cars.map(c => `<td>${c.bodyType || 'SUV'}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Hộp số</th>
-                ${cars.map(c => `<td>${c.transmission || 'Tự động'}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Nhiên liệu</th>
-                ${cars.map(c => `<td>${c.fuel || 'Xăng'}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Số chỗ ngồi</th>
-                ${cars.map(c => `<td>${c.seats ? c.seats + ' chỗ' : '5 chỗ'}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Khu vực xem xe</th>
-                ${cars.map(c => `<td><i class="bi bi-geo-alt-fill text-teal me-1"></i>${c.location}</td>`).join('')}
-              </tr>
-              <tr>
-                <th>Thao tác</th>
-                ${cars.map(c => `
-                  <td>
-                    <a href="car-detail.html?id=${c.id}" class="btn btn-teal btn-sm fw-semibold w-100" target="_blank">
-                      Xem chi tiết <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
-                  </td>
-                `).join('')}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      `;
-
-      modalContent.innerHTML = html;
-      const modal = new bootstrap.Modal(document.getElementById('compareModal'));
-      modal.show();
     }
 
     // Filter & Sort Handlers
@@ -591,7 +395,6 @@
 
     function handleRemoveFavCard(carId) {
       toggleFavorite(carId);
-      selectedCompareIds = selectedCompareIds.filter(id => id !== carId);
       renderFavorites();
       showToast("Đã xóa xe khỏi danh sách yêu thích", "info");
     }
@@ -600,7 +403,6 @@
       if (confirm("Bạn có chắc chắn muốn xóa tất cả xe khỏi danh sách yêu thích?")) {
         saveFavorites([]);
         updateFavoritesCountBadge();
-        hideCompareDock();
         renderFavorites();
         showToast("Đã xóa toàn bộ danh sách yêu thích", "info");
       }
