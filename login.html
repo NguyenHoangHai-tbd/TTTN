@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Đăng Nhập Tài Khoản - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,6 +128,12 @@
   <script src="assets/js/app.js?v=20261016_purge"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Dọn sạch mọi redirect lưu tạm cũ
+      try {
+        localStorage.removeItem('otomarket_redirect_after_login');
+        sessionStorage.removeItem('otomarket_redirect_after_login');
+      } catch(e) {}
+
       // Kiểm tra thông báo phân quyền được lưu từ sessionStorage
       const authMessage = sessionStorage.getItem('otomarket_auth_message');
       if (authMessage) {
@@ -195,31 +204,22 @@
       setLoggedInUser(user);
       showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Nhân viên Showroom' : 'Khách cá nhân / Môi giới'})`, "success");
 
-      // Xóa sạch redirect lưu tạm cũ để không bị chuyển nhầm trang
-      localStorage.removeItem('otomarket_redirect_after_login');
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const explicitRedirect = urlParams.get('redirect');
+      // Xóa triệt để mọi redirect lưu tạm cũ trên mọi bộ nhớ
+      try {
+        localStorage.removeItem('otomarket_redirect_after_login');
+        sessionStorage.removeItem('otomarket_redirect_after_login');
+      } catch(e) {}
 
       setTimeout(() => {
-        // Nếu là tài khoản Admin Showroom -> chuyển đến admin.html
+        // 1. Nếu là tài khoản Admin Showroom -> chuyển đến admin.html
         if (user.role === 'admin') {
           window.location.href = 'admin.html';
           return;
         }
 
-        // Nếu có tham số redirect hợp lệ trên URL (ví dụ sau khi ấn Đăng tin -> post-car.html)
-        if (explicitRedirect && 
-            !explicitRedirect.toLowerCase().includes('login') && 
-            !explicitRedirect.toLowerCase().includes('admin') &&
-            !explicitRedirect.toLowerCase().includes('favorites')) {
-          window.location.href = explicitRedirect;
-          return;
-        }
-
-        // Mặc định đối với mọi người dùng thông thường: luôn chuyển về Trang chủ index.html
+        // 2. Mặc định đối với mọi tài khoản người dùng/khách: LUÔN LUÔN chuyển về Trang chủ index.html
         window.location.href = 'index.html';
-      }, 500);
+      }, 400);
     }
   </script>
 </body>

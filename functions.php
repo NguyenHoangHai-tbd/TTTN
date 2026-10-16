@@ -51,7 +51,7 @@ function otomarket_prevent_404_for_html_pages($preempt, $wp_query) {
     $rel_path = preg_replace('#^' . preg_quote($home_path, '#') . '/?#', '', $request_path);
     $rel_path = preg_replace('/\.html$/i', '', $rel_path);
 
-    $page_map = array('admin', 'cars', 'car-detail', 'post-car', 'about', 'favorites', 'my-listings', 'login', 'register', 'profile');
+    $page_map = array('', 'index', 'admin', 'cars', 'car-detail', 'post-car', 'about', 'favorites', 'my-listings', 'login', 'register', 'profile');
     if (in_array($rel_path, $page_map)) {
         status_header(200);
         return true;
@@ -69,6 +69,8 @@ function otomarket_route_html_pages($template) {
     $rel_path = preg_replace('/\.html$/i', '', $rel_path);
 
     $page_map = array(
+        ''            => 'index.html',
+        'index'       => 'index.html',
         'admin'       => 'admin.html',
         'cars'        => 'cars.html',
         'car-detail'  => 'car-detail.html',

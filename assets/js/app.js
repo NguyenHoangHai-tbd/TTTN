@@ -765,7 +765,7 @@ function syncHeaderUserUI() {
     `;
   } else {
     authSection.innerHTML = `
-      <a href="login.html" class="btn btn-outline-custom">
+      <a href="login.html?v=20261016_home" class="btn btn-outline-custom">
         <i class="bi bi-person"></i>
         <span>Đăng nhập</span>
       </a>
