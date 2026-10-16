@@ -247,34 +247,30 @@
       <div class="filter-toolbar-box">
         <div class="row g-3 align-items-center justify-content-between">
           <div class="col-xl-7 col-lg-8">
-            <!-- Filter Pills with Badge Counters -->
+            <!-- Filter Pills with Badge Counters (Chuẩn 5 trạng thái theo tài liệu) -->
             <div class="d-flex align-items-center gap-2 overflow-x-auto pb-1 pb-lg-0" id="listing-status-tabs">
               <button class="filter-tab-pill active" onclick="filterByStatus('all', this)">
                 Tất cả <span class="badge bg-secondary rounded-pill" id="tab-count-all">0</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterByStatus('active', this)">
-                <i class="bi bi-circle-fill text-success" style="font-size: 0.5rem;"></i> Đang bán 
-                <span class="badge bg-light text-dark rounded-pill" id="tab-count-active">0</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterByStatus('pending', this)">
-                <i class="bi bi-hourglass-split text-warning"></i> Chờ duyệt 
-                <span class="badge bg-light text-dark rounded-pill" id="tab-count-pending">0</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterByStatus('rejected', this)">
-                <i class="bi bi-x-circle text-danger"></i> Cần sửa lại 
-                <span class="badge bg-light text-dark rounded-pill" id="tab-count-rejected">0</span>
               </button>
               <button class="filter-tab-pill" onclick="filterByStatus('draft', this)">
                 <i class="bi bi-file-earmark-text text-secondary"></i> Bản nháp 
                 <span class="badge bg-light text-dark rounded-pill" id="tab-count-draft">0</span>
               </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('pending', this)">
+                <i class="bi bi-hourglass-split text-warning"></i> Chờ duyệt 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-pending">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('active', this)">
+                <i class="bi bi-circle-fill text-success" style="font-size: 0.5rem;"></i> Đang hiển thị 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-active">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('rejected', this)">
+                <i class="bi bi-x-circle text-danger"></i> Bị từ chối 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-rejected">0</span>
+              </button>
               <button class="filter-tab-pill" onclick="filterByStatus('hidden', this)">
                 <i class="bi bi-eye-slash text-secondary"></i> Đã ẩn 
                 <span class="badge bg-light text-dark rounded-pill" id="tab-count-hidden">0</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterByStatus('sold', this)">
-                <i class="bi bi-bag-check text-dark"></i> Đã bán 
-                <span class="badge bg-light text-dark rounded-pill" id="tab-count-sold">0</span>
               </button>
             </div>
           </div>
@@ -491,20 +487,29 @@
       const countRejected = listings.filter(c => c.status === 'rejected').length;
       const countDraft = listings.filter(c => c.status === 'draft').length;
       const countHidden = listings.filter(c => c.status === 'hidden').length;
-      const countSold = listings.filter(c => c.status === 'sold').length;
+      // Cập nhật số lượng trên các tab chuẩn 5 trạng thái
+      const countAll = listings.length;
+      const countDraft = listings.filter(c => c.status === 'draft').length;
+      const countPending = listings.filter(c => c.status === 'pending').length;
+      const countActive = listings.filter(c => c.status === 'active').length;
+      const countRejected = listings.filter(c => c.status === 'rejected').length;
+      const countHidden = listings.filter(c => c.status === 'hidden' || c.status === 'sold').length;
 
       document.getElementById('tab-count-all').textContent = countAll;
-      document.getElementById('tab-count-active').textContent = countActive;
-      document.getElementById('tab-count-pending').textContent = countPending;
-      document.getElementById('tab-count-rejected').textContent = countRejected;
       document.getElementById('tab-count-draft').textContent = countDraft;
+      document.getElementById('tab-count-pending').textContent = countPending;
+      document.getElementById('tab-count-active').textContent = countActive;
+      document.getElementById('tab-count-rejected').textContent = countRejected;
       document.getElementById('tab-count-hidden').textContent = countHidden;
-      document.getElementById('tab-count-sold').textContent = countSold;
 
       // Lọc theo trạng thái
       let filtered = listings;
       if (currentFilterStatus !== 'all') {
-        filtered = listings.filter(c => c.status === currentFilterStatus);
+        if (currentFilterStatus === 'hidden') {
+          filtered = listings.filter(c => c.status === 'hidden' || c.status === 'sold');
+        } else {
+          filtered = listings.filter(c => c.status === currentFilterStatus);
+        }
       }
 
       // Lọc theo từ khóa tìm kiếm
@@ -543,22 +548,20 @@
       emptyState.style.display = 'none';
 
       container.innerHTML = filtered.map(car => {
-        // Status Badge
+        // Chuẩn hóa Badge theo 5 trạng thái
         let badgeHtml = '';
         let cardBorderClass = 'status-' + car.status;
 
-        if (car.status === 'active') {
-          badgeHtml = `<span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1"><i class="bi bi-check-circle-fill me-1"></i>Đang hiển thị công khai</span>`;
+        if (car.status === 'draft') {
+          badgeHtml = `<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1"><i class="bi bi-file-earmark-text me-1"></i>Bản nháp</span>`;
         } else if (car.status === 'pending') {
-          badgeHtml = `<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2.5 py-1"><i class="bi bi-hourglass-split me-1 text-warning"></i>Đang chờ Showroom xét duyệt</span>`;
+          badgeHtml = `<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2.5 py-1"><i class="bi bi-hourglass-split me-1 text-warning"></i>Chờ duyệt</span>`;
+        } else if (car.status === 'active') {
+          badgeHtml = `<span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1"><i class="bi bi-check-circle-fill me-1"></i>Đang hiển thị</span>`;
         } else if (car.status === 'rejected') {
-          badgeHtml = `<span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5 py-1"><i class="bi bi-x-octagon-fill me-1"></i>Cần chỉnh sửa lại</span>`;
-        } else if (car.status === 'draft') {
-          badgeHtml = `<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1"><i class="bi bi-pencil me-1"></i>Bản nháp</span>`;
-        } else if (car.status === 'hidden') {
-          badgeHtml = `<span class="badge bg-info-subtle text-info-emphasis border border-info-subtle px-2.5 py-1"><i class="bi bi-eye-slash me-1"></i>Đã tạm ẩn</span>`;
-        } else if (car.status === 'sold') {
-          badgeHtml = `<span class="badge bg-dark text-white px-2.5 py-1"><i class="bi bi-bag-check-fill me-1"></i>Đã bán</span>`;
+          badgeHtml = `<span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5 py-1"><i class="bi bi-x-octagon-fill me-1"></i>Bị từ chối</span>`;
+        } else if (car.status === 'hidden' || car.status === 'sold') {
+          badgeHtml = `<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1"><i class="bi bi-eye-slash me-1"></i>Đã ẩn</span>`;
         }
 
         // Stepper Progress Timeline
@@ -567,31 +570,44 @@
           stepperHtml = `
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
-              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Đã gửi hồ sơ</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Bản nháp</span>
               <span class="text-muted">➔</span>
-              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>2. Showroom duyệt</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>2. Chờ duyệt</span>
               <span class="text-muted">➔</span>
-              <span class="badge bg-success text-white px-2 py-0.5"><i class="bi bi-broadcast me-1"></i>3. Đang phát hành lên sàn</span>
+              <span class="badge bg-success text-white px-2 py-0.5"><i class="bi bi-broadcast me-1"></i>3. Đang hiển thị</span>
             </div>
           `;
         } else if (car.status === 'pending') {
           stepperHtml = `
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
-              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Đã gửi hồ sơ</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Bản nháp</span>
               <span class="text-muted">➔</span>
-              <span class="badge bg-warning text-dark px-2 py-0.5"><i class="bi bi-search me-1"></i>2. Showroom đang thẩm định 176 hạng mục</span>
+              <span class="badge bg-warning text-dark px-2 py-0.5"><i class="bi bi-search me-1"></i>2. Chờ duyệt (Showroom đang thẩm định)</span>
               <span class="text-muted">➔</span>
-              <span class="text-muted"><i class="bi bi-circle me-1"></i>3. Xuất bản lên sàn</span>
+              <span class="text-muted"><i class="bi bi-circle me-1"></i>3. Đang hiển thị</span>
             </div>
           `;
         } else if (car.status === 'rejected') {
           stepperHtml = `
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
-              <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i>Cần bổ sung thông tin</span>
+              <span class="text-muted">1. Bản nháp</span>
               <span class="text-muted">➔</span>
-              <span class="text-muted">Bấm 'Sửa & Gửi duyệt lại' bên cạnh để Showroom xem xét lại</span>
+              <span class="text-muted">2. Chờ duyệt</span>
+              <span class="text-muted">➔</span>
+              <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i>3. Bị từ chối</span>
+            </div>
+          `;
+        } else if (car.status === 'draft') {
+          stepperHtml = `
+            <div class="status-stepper">
+              <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
+              <span class="text-primary fw-bold"><i class="bi bi-pencil-fill me-1"></i>1. Bản nháp</span>
+              <span class="text-muted">➔</span>
+              <span class="text-muted">2. Chờ duyệt</span>
+              <span class="text-muted">➔</span>
+              <span class="text-muted">3. Đang hiển thị</span>
             </div>
           `;
         }
@@ -621,11 +637,8 @@
               <i class="bi bi-pencil-square me-1"></i> Sửa giá & mô tả
             </button>
             <div class="d-flex gap-1.5 mt-1">
-              <button class="btn btn-outline-secondary btn-sm flex-fill rounded-3 py-1.5 small" title="Tạm ẩn tin khỏi sàn" onclick="hideListing('${car.id}')">
-                <i class="bi bi-eye-slash"></i> Tạm ẩn
-              </button>
-              <button class="btn btn-outline-success btn-sm flex-fill rounded-3 py-1.5 small" title="Đánh dấu xe đã bán" onclick="markSold('${car.id}')">
-                <i class="bi bi-bag-check"></i> Đã bán
+              <button class="btn btn-outline-secondary btn-sm flex-fill rounded-3 py-1.5 small" title="Ẩn tin khỏi sàn" onclick="hideListing('${car.id}')">
+                <i class="bi bi-eye-slash"></i> Ẩn tin
               </button>
               <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small" title="Xóa tin này" onclick="handleDeleteListing('${car.id}')">
                 <i class="bi bi-trash3"></i>
@@ -671,7 +684,7 @@
         } else if (car.status === 'hidden' || car.status === 'sold') {
           actionsHtml = `
             <button class="btn btn-teal btn-sm text-white rounded-3 fw-semibold py-2 shadow-xs" onclick="reopenListing('${car.id}')">
-              <i class="bi bi-arrow-clockwise me-1"></i> Đăng bán lại
+              <i class="bi bi-arrow-clockwise me-1"></i> Đăng hiển thị lại
             </button>
             <button class="btn btn-outline-primary btn-sm rounded-3 py-1.5" onclick="openEditModal('${car.id}')">
               <i class="bi bi-pencil-square me-1"></i> Sửa thông tin
