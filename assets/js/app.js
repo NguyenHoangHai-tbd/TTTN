@@ -758,15 +758,14 @@ function syncAdminLinksVisibility() {
   const isAdmin = isUserAdmin();
 
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    // Tìm mục "Hỗ trợ"
-    let supportItem = null;
+    // Tìm mục "Giới thiệu" để đặt mục Duyệt tin cạnh nó
+    let aboutItem = null;
     nav.querySelectorAll('li.nav-item').forEach(li => {
       const link = li.querySelector('a');
       if (link) {
-        const text = link.textContent.trim().toLowerCase();
         const href = (link.getAttribute('href') || '').toLowerCase();
-        if (text === 'hỗ trợ' || href.includes('#contact')) {
-          supportItem = li;
+        if (href.includes('about.html')) {
+          aboutItem = li;
         }
       }
     });
@@ -1030,6 +1029,7 @@ function resetDemoData() {
 // Tự động khởi tạo khi tải trang
 document.addEventListener('DOMContentLoaded', () => {
   initializeStorage();
+  cleanupNavbarNavigation();
   enhanceBuyCarNavigation();
   cleanupNavbarNavigation();
   updateFavoritesCountBadge();
@@ -1037,3 +1037,7 @@ document.addEventListener('DOMContentLoaded', () => {
   syncAdminLinksVisibility();
   enforcePagePermissions();
 });
+
+// Dọn dẹp dự phòng ngay lập tức và khi toàn bộ trang hoàn tất
+cleanupNavbarNavigation();
+window.addEventListener('load', cleanupNavbarNavigation);
