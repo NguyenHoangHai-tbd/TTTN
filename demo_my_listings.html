@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bản Demo Đề Xuất - Quản Lý Tin Đăng OtoMarket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --teal-color: #0d9488;
+      --teal-hover: #0f766e;
+      --orange-color: #ea580c;
+      --orange-hover: #c2410c;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      color: #334155;
+    }
+    .navbar-custom {
+      background-color: var(--primary-color);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.85rem 0;
+    }
+    .site-logo { height: 38px; }
+    .nav-link-custom {
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .btn-cta-orange {
+      background: linear-gradient(135deg, var(--orange-color), var(--orange-hover));
+      color: #ffffff;
+      font-weight: 600;
+      border: none;
+      padding: 0.5rem 1.15rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-cta-orange:hover {
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+      color: #ffffff;
+    }
+    .btn-teal {
+      background-color: var(--teal-color);
+      color: #ffffff;
+      border: none;
+    }
+    .btn-teal:hover {
+      background-color: var(--teal-hover);
+      color: #ffffff;
+    }
+    .text-teal { color: var(--teal-color) !important; }
+    .text-orange { color: var(--orange-color) !important; }
+
+    /* KPI Cards */
+    .metric-card {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .metric-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    /* Filter Tabs & Toolbar */
+    .filter-tab-pill {
+      border: 1px solid var(--slate-200);
+      background: #FFFFFF;
+      color: var(--slate-600);
+      padding: 0.45rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .filter-tab-pill:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+    .filter-tab-pill.active {
+      background: var(--slate-900);
+      border-color: var(--slate-900);
+      color: #FFFFFF;
+    }
+    .filter-tab-pill.active .badge {
+      background: rgba(255,255,255,0.2) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Listing Item Card */
+    .listing-card {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+    .listing-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .listing-thumb-box {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .listing-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-count-pill {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.75);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .status-stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--slate-50);
+      border-radius: 10px;
+      border: 1px solid var(--slate-200);
+      font-size: 0.76rem;
+      margin-top: 10px;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .step-active { background-color: var(--teal-color); }
+    .step-pending { background-color: #EAB308; }
+    .step-inactive { background-color: #CBD5E1; }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid px-3 px-xl-5">
+      <a class="brand-logo" href="#">
+        <span class="fw-extrabold fs-4 text-white"><span class="text-teal">Oto</span>Market</span>
+      </a>
+
+      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#">Mua xe</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom active" href="#">Đăng bán</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#">Giới thiệu</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <div class="dropdown">
+            <button class="btn btn-outline-light btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2 dropdown-toggle">
+              <i class="bi bi-person-circle text-teal"></i>
+              <span>Nguyễn Hoàng Nam</span>
+            </button>
+          </div>
+          <a href="#" class="btn-cta-orange">
+            <i class="bi bi-plus-circle-fill"></i> Đăng bán xe
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="py-4 pb-5">
+    <div class="container">
+
+      <!-- Breadcrumb & Header Bar -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+          <div class="d-inline-flex align-items-center gap-1.5 px-2.5 py-1 rounded-pill bg-primary-subtle text-primary small fw-bold mb-2">
+            <i class="bi bi-speedometer2"></i> TRUNG TÂM NGƯỜI BÁN XE
+          </div>
+          <h1 class="h3 fw-extrabold text-slate-900 mb-1">Quản Lý Tin Đăng Xe Của Bạn</h1>
+          <p class="text-muted small mb-0">Theo dõi tiến độ xét duyệt Showroom, lượt quan tâm và cập nhật thông tin bán xe</p>
+        </div>
+        <div>
+          <a href="#" class="btn-cta-orange px-4 py-2.5 shadow-sm">
+            <i class="bi bi-plus-lg"></i> Tạo tin bán xe mới
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Filter Tabs & Quick Search Bar -->
+      <div class="bg-white p-3 rounded-4 border mb-4 shadow-xs">
+        <div class="row g-3 align-items-center justify-content-between">
+          <div class="col-lg-7">
+            <!-- Filter Tabs -->
+            <div class="d-flex align-items-center gap-2 overflow-x-auto pb-1 pb-lg-0">
+              <button class="filter-tab-pill active">
+                Tất cả <span class="badge bg-secondary rounded-pill">3</span>
+              </button>
+              <button class="filter-tab-pill">
+                <i class="bi bi-circle-fill text-success" style="font-size: 0.5rem;"></i> Đang bán <span class="badge bg-light text-dark rounded-pill">1</span>
+              </button>
+              <button class="filter-tab-pill">
+                <i class="bi bi-hourglass-split text-warning"></i> Chờ duyệt <span class="badge bg-light text-dark rounded-pill">1</span>
+              </button>
+              <button class="filter-tab-pill">
+                <i class="bi bi-x-circle text-danger"></i> Cần sửa lại <span class="badge bg-light text-dark rounded-pill">1</span>
+              </button>
+              <button class="filter-tab-pill">
+                <i class="bi bi-eye-slash text-secondary"></i> Đã ẩn <span class="badge bg-light text-dark rounded-pill">0</span>
+              </button>
+              <button class="filter-tab-pill">
+                <i class="bi bi-bag-check text-dark"></i> Đã bán <span class="badge bg-light text-dark rounded-pill">0</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <!-- Search & Sort Controls -->
+            <div class="d-flex align-items-center gap-2 justify-content-lg-end">
+              <div class="input-group input-group-sm" style="max-width: 220px;">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Tìm tên xe...">
+              </div>
+              <select class="form-select form-select-sm fw-semibold" style="width: auto;">
+                <option value="recent">Mới tạo nhất</option>
+                <option value="views">Lượt xem nhiều</option>
+                <option value="price-desc">Giá cao đến thấp</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listings Stream -->
+
+      <!-- CARD 1: ĐANG HIỂN THỊ (ACTIVE) -->
+      <div class="listing-card">
+        <div class="row align-items-center gy-3">
+          <div class="col-md-3">
+            <div class="listing-thumb-box">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" class="listing-thumb-img" alt="Toyota Corolla Cross">
+              <span class="photo-count-pill"><i class="bi bi-camera me-1"></i>6 ảnh</span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="d-flex align-items-center gap-2 mb-1.5">
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1">
+                <i class="bi bi-check-circle-fill me-1"></i>Đang hiển thị công khai
+              </span>
+              <span class="badge bg-light text-secondary border">Mã tin: #CAR-102</span>
+              <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>12/10/2026</span>
+            </div>
+
+            <h5 class="fw-bold mb-1">
+              <a href="#" class="text-dark text-decoration-none">Toyota Corolla Cross 1.8V 2023 Trắng Ngọc Trai</a>
+            </h5>
+            <div class="h4 fw-extrabold text-orange mb-2">755.000.000 đ <span class="fs-6 fw-semibold text-muted">(Bằng chữ: 755 triệu)</span></div>
+
+            <div class="d-flex flex-wrap gap-3 small text-muted mb-2">
+              <span><i class="bi bi-speedometer2 text-teal me-1"></i>18.000 km</span>
+              <span><i class="bi bi-gear text-teal me-1"></i>Tự động</span>
+              <span><i class="bi bi-fuel-pump text-teal me-1"></i>Xăng</span>
+              <span><i class="bi bi-geo-alt text-teal me-1"></i>TP. Nha Trang</span>
+              <span><i class="bi bi-eye-fill text-teal me-1"></i><strong>420</strong> lượt xem</span>
+            </div>
+
+            <!-- Approval Progress Stepper -->
+            <div class="status-stepper">
+              <span class="text-muted fw-semibold">Quy trình tin:</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-0.5"></i> 1. Đã gửi</span>
+              <span class="text-muted">→</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-0.5"></i> 2. Showroom duyệt</span>
+              <span class="text-muted">→</span>
+              <span class="badge bg-success text-white px-2 py-0.5"><i class="bi bi-broadcast me-1"></i>3. Đang phát hành</span>
+            </div>
+          </div>
+
+          <div class="col-md-3 text-md-end">
+            <div class="d-flex flex-column gap-2 justify-content-end">
+              <a href="#" class="btn btn-dark btn-sm rounded-3 fw-semibold py-2">
+                <i class="bi bi-eye me-1"></i> Xem trang tin xe
+              </a>
+              <button class="btn btn-outline-primary btn-sm rounded-3 fw-semibold py-2" onclick="alert('Mở form sửa nhanh giá và mô tả xe')">
+                <i class="bi bi-pencil-square me-1"></i> Sửa giá & mô tả
+              </button>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary btn-sm flex-fill rounded-3 py-1.5" title="Tạm ẩn tin khỏi kết quả tìm kiếm">
+                  <i class="bi bi-eye-slash"></i> Tạm ẩn
+                </button>
+                <button class="btn btn-outline-success btn-sm flex-fill rounded-3 py-1.5" title="Đánh dấu xe này đã bán thành công">
+                  <i class="bi bi-bag-check"></i> Đã bán
+                </button>
+                <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5" title="Xóa tin này">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: ĐANG CHỜ DUYỆT (PENDING) -->
+      <div class="listing-card" style="border-left: 4px solid #EAB308;">
+        <div class="row align-items-center gy-3">
+          <div class="col-md-3">
+            <div class="listing-thumb-box">
+              <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" class="listing-thumb-img" alt="Mazda CX-30">
+              <span class="photo-count-pill"><i class="bi bi-camera me-1"></i>4 ảnh</span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="d-flex align-items-center gap-2 mb-1.5">
+              <span class="badge bg-warning-subtle text-dark border border-warning-subtle px-2.5 py-1">
+                <i class="bi bi-hourglass-split me-1 text-warning"></i>Đang chờ Showroom xét duyệt
+              </span>
+              <span class="badge bg-light text-secondary border">Mã tin: #CAR-204</span>
+              <span class="small text-muted"><i class="bi bi-clock me-1"></i>Gửi lúc 08:15 hôm nay</span>
+            </div>
+
+            <h5 class="fw-bold mb-1">
+              <a href="#" class="text-dark text-decoration-none">Mazda CX-30 Premium 2.0 2023 Đỏ Pha Lê</a>
+            </h5>
+            <div class="h4 fw-extrabold text-orange mb-2">709.000.000 đ <span class="fs-6 fw-semibold text-muted">(Bằng chữ: 709 triệu)</span></div>
+
+            <div class="d-flex flex-wrap gap-3 small text-muted mb-2">
+              <span><i class="bi bi-speedometer2 text-teal me-1"></i>11.000 km</span>
+              <span><i class="bi bi-gear text-teal me-1"></i>Tự động</span>
+              <span><i class="bi bi-fuel-pump text-teal me-1"></i>Xăng</span>
+              <span><i class="bi bi-geo-alt text-teal me-1"></i>TP. Hồ Chí Minh</span>
+              <span><i class="bi bi-shield-check text-teal me-1"></i>Chờ đối chiếu ODO & Pháp lý</span>
+            </div>
+
+            <!-- Approval Progress Stepper -->
+            <div class="status-stepper">
+              <span class="text-muted fw-semibold">Quy trình tin:</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-0.5"></i> 1. Đã gửi hồ sơ</span>
+              <span class="text-muted">→</span>
+              <span class="badge bg-warning text-dark px-2 py-0.5"><i class="bi bi-search me-1"></i>2. Showroom đang thẩm định</span>
+              <span class="text-muted">→</span>
+              <span class="text-muted"><i class="bi bi-circle me-0.5"></i> 3. Xuất bản lên sàn</span>
+            </div>
+          </div>
+
+          <div class="col-md-3 text-md-end">
+            <div class="d-flex flex-column gap-2 justify-content-end">
+              <a href="#" class="btn btn-outline-dark btn-sm rounded-3 fw-semibold py-2">
+                <i class="bi bi-eye me-1"></i> Xem trước tin đăng
+              </a>
+              <button class="btn btn-outline-primary btn-sm rounded-3 fw-semibold py-2">
+                <i class="bi bi-pencil-square me-1"></i> Chỉnh sửa thông tin
+              </button>
+              <button class="btn btn-outline-secondary btn-sm rounded-3 py-1.5 text-danger">
+                <i class="bi bi-x-circle me-1"></i> Rút lại yêu cầu
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: BỊ TỪ CHỐI (REJECTED) -->
+      <div class="listing-card" style="border-left: 4px solid #DC2626;">
+        <div class="row align-items-center gy-3">
+          <div class="col-md-3">
+            <div class="listing-thumb-box">
+              <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" class="listing-thumb-img" alt="Hyundai Tucson">
+              <span class="photo-count-pill"><i class="bi bi-camera me-1"></i>2 ảnh</span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="d-flex align-items-center gap-2 mb-1.5">
+              <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5 py-1">
+                <i class="bi bi-x-octagon-fill me-1"></i>Cần chỉnh sửa lại
+              </span>
+              <span class="badge bg-light text-secondary border">Mã tin: #CAR-098</span>
+              <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>Hôm qua</span>
+            </div>
+
+            <h5 class="fw-bold mb-1">
+              <a href="#" class="text-dark text-decoration-none">Hyundai Tucson 2.0ATH Đặc Biệt 2021 Trắng</a>
+            </h5>
+            <div class="h4 fw-extrabold text-orange mb-2">620.000.000 đ</div>
+
+            <!-- Cảnh báo lý do từ chối -->
+            <div class="alert alert-danger py-2 px-3 my-2 d-flex align-items-start gap-2 small rounded-3 border-danger-subtle mb-2">
+              <i class="bi bi-exclamation-triangle-fill text-danger fs-6 flex-shrink-0 mt-0.5"></i>
+              <div>
+                <strong>Lý do từ chối từ Showroom:</strong> Ảnh chụp đuôi xe bị mờ và biển số không trùng khớp với mô tả. Vui lòng bổ sung tối thiểu 4 ảnh chụp rõ nét ngoài ánh sáng tự nhiên.
+              </div>
+            </div>
+
+            <!-- Approval Progress Stepper -->
+            <div class="status-stepper">
+              <span class="text-muted fw-semibold">Quy trình tin:</span>
+              <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-0.5"></i> Cần sửa lại</span>
+              <span class="text-muted">→</span>
+              <span class="text-muted">Sửa ảnh/giá & Gửi duyệt lại</span>
+            </div>
+          </div>
+
+          <div class="col-md-3 text-md-end">
+            <div class="d-flex flex-column gap-2 justify-content-end">
+              <button class="btn btn-teal btn-sm text-white rounded-3 fw-bold py-2 shadow-xs">
+                <i class="bi bi-send-check-fill me-1"></i> Sửa & Gửi duyệt lại
+              </button>
+              <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5">
+                <i class="bi bi-trash me-1"></i> Xóa tin này
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

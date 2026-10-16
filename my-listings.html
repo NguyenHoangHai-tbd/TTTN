@@ -12,9 +12,162 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css?v=20261016_purge">
-    <!-- Favicon -->
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
+
+  <style>
+    /* Scoped Styles for Seller Management Portal */
+    .seller-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #BAE6FD;
+    }
+
+    /* Segmented Filter Toolbar */
+    .filter-toolbar-box {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-tab-pill {
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #475569;
+      padding: 0.45rem 0.95rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .filter-tab-pill:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+      border-color: #CBD5E1;
+    }
+    .filter-tab-pill.active {
+      background: #0F172A;
+      border-color: #0F172A;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+    }
+    .filter-tab-pill .badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .filter-tab-pill.active .badge {
+      background: rgba(255, 255, 255, 0.22) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Listing Item Card */
+    .listing-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .listing-card:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+    }
+    .listing-card.status-pending {
+      border-left: 4px solid #F59E0B;
+    }
+    .listing-card.status-rejected {
+      border-left: 4px solid #EF4444;
+    }
+    .listing-card.status-active {
+      border-left: 4px solid #10B981;
+    }
+
+    .listing-thumb-box {
+      width: 100%;
+      height: 165px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background-color: #F1F5F9;
+    }
+    .listing-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .listing-card:hover .listing-thumb-img {
+      transform: scale(1.03);
+    }
+    .photo-count-pill {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.78);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Timeline Stepper for Inspection */
+    .status-stepper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      font-size: 0.76rem;
+      margin-top: 10px;
+    }
+
+    /* Modal Form enhancements */
+    .price-converter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background-color: #F0FDFA;
+      color: #0D9488;
+      border: 1px solid #99F6E4;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body class="bg-light">
 
@@ -38,7 +191,7 @@
             <a class="nav-link nav-link-custom" href="cars.html">Mua xe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+            <a class="nav-link nav-link-custom active" href="post-car.html">Đăng bán</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
@@ -70,107 +223,171 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="py-4">
+  <main class="py-4 pb-5">
     <div class="container">
       
+      <!-- Page Header -->
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
-          <h1 class="h3 fw-bold mb-1">Quản lý tin đăng</h1>
-          <p class="text-muted small mb-0">Theo dõi trạng thái, chỉnh sửa và quản lý các tin đăng bán xe của bạn</p>
+          <div class="seller-header-badge mb-2">
+            <i class="bi bi-speedometer2"></i> TRUNG TÂM QUẢN LÝ TIN ĐĂNG BÁN XE
+          </div>
+          <h1 class="h3 fw-bold text-slate-900 mb-1">Quản Lý Tin Đăng Bán Xe</h1>
+          <p class="text-muted small mb-0">Theo dõi tiến độ thẩm định Showroom, hiệu quả tiếp cận và cập nhật tin bán xe của bạn</p>
         </div>
         <div>
-          <a href="post-car.html" class="btn btn-teal">
-            <i class="bi bi-plus-circle me-1"></i> Đăng bán xe mới
+          <a href="post-car.html" class="btn-cta-orange px-3.5 py-2">
+            <i class="bi bi-plus-lg"></i>
+            <span>Tạo tin bán xe mới</span>
           </a>
         </div>
       </div>
 
-      <!-- Trạng thái Tabs -->
-      <ul class="nav nav-pills gap-2 mb-4" id="listing-status-tabs">
-        <li class="nav-item">
-          <button class="nav-link active px-3 py-2 small fw-semibold" onclick="filterByStatus('all', this)">
-            Tất cả (<span id="tab-count-all">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('draft', this)">
-            Bản nháp (<span id="tab-count-draft">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('pending', this)">
-            Chờ duyệt (<span id="tab-count-pending">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('active', this)">
-            Đang hiển thị (<span id="tab-count-active">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('rejected', this)">
-            Bị từ chối (<span id="tab-count-rejected">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('hidden', this)">
-            Đã ẩn (<span id="tab-count-hidden">0</span>)
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link px-3 py-2 small fw-semibold" onclick="filterByStatus('sold', this)">
-            Đã bán (<span id="tab-count-sold">0</span>)
-          </button>
-        </li>
-      </ul>
+      <!-- Segmented Filter & Search Toolbar (No KPI Cards) -->
+      <div class="filter-toolbar-box">
+        <div class="row g-3 align-items-center justify-content-between">
+          <div class="col-xl-7 col-lg-8">
+            <!-- Filter Pills with Badge Counters -->
+            <div class="d-flex align-items-center gap-2 overflow-x-auto pb-1 pb-lg-0" id="listing-status-tabs">
+              <button class="filter-tab-pill active" onclick="filterByStatus('all', this)">
+                Tất cả <span class="badge bg-secondary rounded-pill" id="tab-count-all">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('active', this)">
+                <i class="bi bi-circle-fill text-success" style="font-size: 0.5rem;"></i> Đang bán 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-active">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('pending', this)">
+                <i class="bi bi-hourglass-split text-warning"></i> Chờ duyệt 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-pending">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('rejected', this)">
+                <i class="bi bi-x-circle text-danger"></i> Cần sửa lại 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-rejected">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('draft', this)">
+                <i class="bi bi-file-earmark-text text-secondary"></i> Bản nháp 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-draft">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('hidden', this)">
+                <i class="bi bi-eye-slash text-secondary"></i> Đã ẩn 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-hidden">0</span>
+              </button>
+              <button class="filter-tab-pill" onclick="filterByStatus('sold', this)">
+                <i class="bi bi-bag-check text-dark"></i> Đã bán 
+                <span class="badge bg-light text-dark rounded-pill" id="tab-count-sold">0</span>
+              </button>
+            </div>
+          </div>
 
-      <!-- Danh sách tin đăng -->
+          <div class="col-xl-5 col-lg-4">
+            <!-- Search & Sort Controls -->
+            <div class="d-flex align-items-center gap-2 justify-content-lg-end">
+              <div class="input-group input-group-sm" style="max-width: 230px;">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" id="listing-search-input" placeholder="Tìm theo tên dòng xe..." oninput="handleSearch(this.value)">
+              </div>
+              <select class="form-select form-select-sm fw-semibold" id="listing-sort-select" style="width: auto;" onchange="handleSort(this.value)">
+                <option value="newest">Mới nhất</option>
+                <option value="oldest">Cũ nhất</option>
+                <option value="views">Lượt xem nhiều</option>
+                <option value="price-desc">Giá cao → thấp</option>
+                <option value="price-asc">Giá thấp → cao</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listings List Container -->
       <div id="listings-list-container">
         <!-- Rendered via JS -->
       </div>
 
       <!-- Empty State -->
-      <div id="listings-empty-state" class="empty-state-box" style="display: none;">
-        <div class="empty-state-icon">
-          <i class="bi bi-card-checklist"></i>
+      <div id="listings-empty-state" class="empty-state-box py-5 text-center bg-white rounded-4 border p-4" style="display: none;">
+        <div class="empty-state-icon text-muted mb-3" style="font-size: 3rem;">
+          <i class="bi bi-car-front text-secondary"></i>
         </div>
-        <h4 class="fw-bold h5 mb-2">Không có tin đăng nào ở mục này</h4>
-        <p class="text-muted small mb-4">Bạn chưa tạo tin đăng xe nào hoặc chưa có tin ở trạng thái được chọn.</p>
-        <a href="post-car.html" class="btn btn-teal fw-semibold">
-          <i class="bi bi-plus-circle me-1"></i> Đăng bán xe ngay
-        </a>
+        <h4 class="fw-bold h5 mb-2 text-dark">Không có tin đăng nào phù hợp</h4>
+        <p class="text-muted small mb-4 mx-auto" style="max-width: 440px;">
+          Bạn chưa tạo tin đăng xe nào hoặc không có tin nào khớp với trạng thái/từ khóa đang tìm kiếm.
+        </p>
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-outline-secondary btn-sm rounded-3" onclick="resetFilters()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> Xóa bộ lọc
+          </button>
+          <a href="post-car.html" class="btn btn-teal btn-sm fw-semibold rounded-3 px-3">
+            <i class="bi bi-plus-circle me-1"></i> Đăng bán xe ngay
+          </a>
+        </div>
       </div>
 
     </div>
   </main>
 
-  <!-- Modal Chỉnh Sửa Tin Đăng -->
+  <!-- Modal Chỉnh Sửa Tin Đăng Nâng Cấp -->
   <div class="modal fade" id="editListingModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
-        <div class="modal-header">
-          <h5 class="modal-title fw-bold"><i class="bi bi-pencil-square text-teal me-2"></i>Chỉnh sửa tin đăng</h5>
+        <div class="modal-header border-bottom pb-3">
+          <h5 class="modal-title fw-bold">
+            <i class="bi bi-pencil-square text-teal me-2"></i>Chỉnh sửa thông tin xe
+          </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body py-3">
           <input type="hidden" id="edit-listing-id">
+          
           <div class="mb-3">
-            <label class="form-label small fw-bold">Tên xe / Tiêu đề</label>
-            <input type="text" class="form-control" id="edit-listing-title">
+            <label class="form-label small fw-bold">Tiêu đề tin đăng / Tên xe <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="edit-listing-title" placeholder="Ví dụ: Mazda CX-30 2.0 Premium 2023">
           </div>
+
           <div class="mb-3">
-            <label class="form-label small fw-bold">Giá bán (VNĐ)</label>
-            <input type="number" class="form-control" id="edit-listing-price" step="1000000">
+            <label class="form-label small fw-bold">Giá bán mong muốn (VNĐ) <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <input type="text" class="form-control fw-bold" id="edit-listing-price-input" placeholder="Ví dụ: 750.000.000" oninput="handleEditPriceInput(this)">
+              <span class="input-group-text bg-light fw-semibold">VNĐ</span>
+            </div>
+            <input type="hidden" id="edit-listing-price-raw">
+            <div class="mt-1">
+              <span class="price-converter-pill" id="edit-price-converter">
+                <i class="bi bi-cash-stack"></i> Quy đổi: --
+              </span>
+            </div>
           </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label small fw-bold">Số km đã đi (ODO)</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="edit-listing-mileage" min="0">
+                <span class="input-group-text bg-light">km</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <label class="form-label small fw-bold">Khu vực xem xe</label>
+              <input type="text" class="form-control" id="edit-listing-location" placeholder="Ví dụ: Nha Trang, Hà Nội...">
+            </div>
+          </div>
+
           <div class="mb-3">
-            <label class="form-label small fw-bold">Mô tả tình trạng xe</label>
-            <textarea class="form-control" id="edit-listing-desc" rows="4"></textarea>
+            <label class="form-label small fw-bold">Mô tả tình trạng & Trang bị theo xe</label>
+            <textarea class="form-control" id="edit-listing-desc" rows="4" placeholder="Mô tả chi tiết lịch sử bảo dưỡng, tiện nghi, bảo hiểm..."></textarea>
+          </div>
+
+          <div class="alert alert-info py-2 px-3 small rounded-3 mb-0 d-flex align-items-center gap-2">
+            <i class="bi bi-info-circle-fill text-info fs-6 flex-shrink-0"></i>
+            <div>
+              Nếu bạn thay đổi giá bán hoặc nội dung quan trọng, tin sẽ được gửi để Showroom thẩm định lại nhanh chóng (~15 phút).
+            </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-teal fw-semibold" onclick="saveEditedListing()">
-            <i class="bi bi-check2"></i> Lưu thay đổi
+
+        <div class="modal-footer border-top pt-3">
+          <button type="button" class="btn btn-outline-secondary btn-sm px-3 rounded-3" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-teal btn-sm fw-semibold px-4 rounded-3 text-white" onclick="saveEditedListing()">
+            <i class="bi bi-check2 me-1"></i> Lưu thay đổi
           </button>
         </div>
       </div>
@@ -244,6 +461,17 @@
   <script src="assets/js/app.js?v=20261016_purge"></script>
   <script>
     let currentFilterStatus = 'all';
+    let searchQuery = '';
+    let sortMode = 'newest';
+
+    function getSellerListings() {
+      const currentUser = getLoggedInUser();
+      if (!currentUser) return [];
+      const userId = currentUser.id || currentUser.email;
+      const allCustom = getCustomListings();
+      // Trả về danh sách xe của user hiện tại, hoặc các xe demo nếu đang là tài khoản demo
+      return allCustom.filter(c => c.ownerId === userId || !c.ownerId || (userId === 'user-demo-1' && c.ownerId === 'user-demo-1'));
+    }
 
     function renderListings() {
       const currentUser = getLoggedInUser();
@@ -251,31 +479,60 @@
         window.location.href = 'login.html';
         return;
       }
-      const userId = currentUser.id || currentUser.email;
-      const listings = getCustomListings().filter(c => c.ownerId === userId || !c.ownerId);
+
+      const listings = getSellerListings();
       const container = document.getElementById('listings-list-container');
       const emptyState = document.getElementById('listings-empty-state');
 
+      // Cập nhật số lượng trên các tab trạng thái
       const countAll = listings.length;
-      const countDraft = listings.filter(c => c.status === 'draft').length;
-      const countPending = listings.filter(c => c.status === 'pending').length;
       const countActive = listings.filter(c => c.status === 'active').length;
+      const countPending = listings.filter(c => c.status === 'pending').length;
       const countRejected = listings.filter(c => c.status === 'rejected').length;
+      const countDraft = listings.filter(c => c.status === 'draft').length;
       const countHidden = listings.filter(c => c.status === 'hidden').length;
       const countSold = listings.filter(c => c.status === 'sold').length;
 
       document.getElementById('tab-count-all').textContent = countAll;
-      document.getElementById('tab-count-draft').textContent = countDraft;
-      document.getElementById('tab-count-pending').textContent = countPending;
       document.getElementById('tab-count-active').textContent = countActive;
+      document.getElementById('tab-count-pending').textContent = countPending;
       document.getElementById('tab-count-rejected').textContent = countRejected;
+      document.getElementById('tab-count-draft').textContent = countDraft;
       document.getElementById('tab-count-hidden').textContent = countHidden;
       document.getElementById('tab-count-sold').textContent = countSold;
 
+      // Lọc theo trạng thái
       let filtered = listings;
       if (currentFilterStatus !== 'all') {
         filtered = listings.filter(c => c.status === currentFilterStatus);
       }
+
+      // Lọc theo từ khóa tìm kiếm
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(c => 
+          (c.title && c.title.toLowerCase().includes(q)) ||
+          (c.brand && c.brand.toLowerCase().includes(q)) ||
+          (c.model && c.model.toLowerCase().includes(q)) ||
+          (c.id && c.id.toLowerCase().includes(q))
+        );
+      }
+
+      // Sắp xếp
+      filtered.sort((a, b) => {
+        if (sortMode === 'newest') {
+          return new Date(b.createdAt || b.postedDate || 0) - new Date(a.createdAt || a.postedDate || 0);
+        } else if (sortMode === 'oldest') {
+          return new Date(a.createdAt || a.postedDate || 0) - new Date(b.createdAt || b.postedDate || 0);
+        } else if (sortMode === 'views') {
+          return (b.viewCount || 0) - (a.viewCount || 0);
+        } else if (sortMode === 'price-desc') {
+          return (b.price || 0) - (a.price || 0);
+        } else if (sortMode === 'price-asc') {
+          return (a.price || 0) - (b.price || 0);
+        }
+        return 0;
+      });
 
       if (filtered.length === 0) {
         container.innerHTML = '';
@@ -286,75 +543,194 @@
       emptyState.style.display = 'none';
 
       container.innerHTML = filtered.map(car => {
-        const badgeHtml = getStatusBadgeHtml(car.status);
-        const rejectReasonHtml = car.status === 'rejected' && car.rejectReason 
-          ? `<div class="alert alert-danger py-2 px-3 mt-2 mb-0 d-flex align-items-center gap-2 small rounded-3 border-danger-subtle"><i class="bi bi-exclamation-octagon-fill text-danger fs-6 flex-shrink-0"></i> <div><strong>Lý do từ chối:</strong> ${car.rejectReason}. <span class="d-block text-muted" style="font-size: 0.76rem;">Vui lòng bấm "Sửa" để điều chỉnh thông tin và bấm "Gửi lại duyệt".</span></div></div>` 
-          : '';
+        // Status Badge
+        let badgeHtml = '';
+        let cardBorderClass = 'status-' + car.status;
 
-        let actionsHtml = '';
-        if (car.status === 'draft') {
-          actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
-            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check me-1"></i> Gửi duyệt</button>
+        if (car.status === 'active') {
+          badgeHtml = `<span class="badge bg-success-subtle text-success border border-success-subtle px-2.5 py-1"><i class="bi bi-check-circle-fill me-1"></i>Đang hiển thị công khai</span>`;
+        } else if (car.status === 'pending') {
+          badgeHtml = `<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2.5 py-1"><i class="bi bi-hourglass-split me-1 text-warning"></i>Đang chờ Showroom xét duyệt</span>`;
+        } else if (car.status === 'rejected') {
+          badgeHtml = `<span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5 py-1"><i class="bi bi-x-octagon-fill me-1"></i>Cần chỉnh sửa lại</span>`;
+        } else if (car.status === 'draft') {
+          badgeHtml = `<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2.5 py-1"><i class="bi bi-pencil me-1"></i>Bản nháp</span>`;
+        } else if (car.status === 'hidden') {
+          badgeHtml = `<span class="badge bg-info-subtle text-info-emphasis border border-info-subtle px-2.5 py-1"><i class="bi bi-eye-slash me-1"></i>Đã tạm ẩn</span>`;
+        } else if (car.status === 'sold') {
+          badgeHtml = `<span class="badge bg-dark text-white px-2.5 py-1"><i class="bi bi-bag-check-fill me-1"></i>Đã bán</span>`;
+        }
+
+        // Stepper Progress Timeline
+        let stepperHtml = '';
+        if (car.status === 'active') {
+          stepperHtml = `
+            <div class="status-stepper">
+              <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Đã gửi hồ sơ</span>
+              <span class="text-muted">➔</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>2. Showroom duyệt</span>
+              <span class="text-muted">➔</span>
+              <span class="badge bg-success text-white px-2 py-0.5"><i class="bi bi-broadcast me-1"></i>3. Đang phát hành lên sàn</span>
+            </div>
           `;
         } else if (car.status === 'pending') {
-          actionsHtml = `
-            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle py-2 px-3 small"><i class="bi bi-hourglass-split me-1"></i> Đang chờ Showroom xét duyệt</span>
+          stepperHtml = `
+            <div class="status-stepper">
+              <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
+              <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Đã gửi hồ sơ</span>
+              <span class="text-muted">➔</span>
+              <span class="badge bg-warning text-dark px-2 py-0.5"><i class="bi bi-search me-1"></i>2. Showroom đang thẩm định 176 hạng mục</span>
+              <span class="text-muted">➔</span>
+              <span class="text-muted"><i class="bi bi-circle me-1"></i>3. Xuất bản lên sàn</span>
+            </div>
           `;
         } else if (car.status === 'rejected') {
-          actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
-            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="submitForReview('${car.id}')"><i class="bi bi-send-check-fill me-1"></i> Gửi lại duyệt</button>
-          `;
-        } else if (car.status === 'active') {
-          actionsHtml = `
-            <button class="btn btn-outline-primary btn-sm rounded-2" onclick="openEditModal('${car.id}')"><i class="bi bi-pencil-square me-1"></i> Sửa</button>
-            <button class="btn btn-outline-secondary btn-sm rounded-2" onclick="hideListing('${car.id}')"><i class="bi bi-eye-slash me-1"></i> Ẩn tin</button>
-            <button class="btn btn-outline-dark btn-sm rounded-2" onclick="markSold('${car.id}')"><i class="bi bi-bag-check me-1"></i> Đã bán</button>
-          `;
-        } else if (car.status === 'hidden' || car.status === 'sold') {
-          actionsHtml = `
-            <button class="btn btn-teal btn-sm text-white rounded-2 shadow-xs" onclick="reopenListing('${car.id}')"><i class="bi bi-arrow-clockwise me-1"></i> Mở bán lại</button>
+          stepperHtml = `
+            <div class="status-stepper">
+              <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
+              <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i>Cần bổ sung thông tin</span>
+              <span class="text-muted">➔</span>
+              <span class="text-muted">Bấm 'Sửa & Gửi duyệt lại' bên cạnh để Showroom xem xét lại</span>
+            </div>
           `;
         }
 
+        // Rejection Reason Callout
+        const rejectReasonHtml = car.status === 'rejected'
+          ? `<div class="alert alert-danger py-2 px-3 mt-2 mb-1 d-flex align-items-start gap-2 small rounded-3 border-danger-subtle">
+               <i class="bi bi-exclamation-triangle-fill text-danger fs-6 flex-shrink-0 mt-0.5"></i>
+               <div>
+                 <strong>Lý do từ chối từ Showroom:</strong> ${car.rejectReason || 'Thông tin xe chưa đạt tiêu chuẩn đăng tin'}.
+                 <div class="text-muted mt-0.5" style="font-size: 0.75rem;">Vui lòng cập nhật hình ảnh rõ ràng hoặc điều chỉnh giá bán phù hợp rồi gửi lại.</div>
+               </div>
+             </div>`
+          : '';
+
+        // Photos count
+        const photosCount = (Array.isArray(car.images) && car.images.length > 0) ? car.images.length : (car.image ? 1 : 0);
+
+        // Actions per Status
+        let actionsHtml = '';
+        if (car.status === 'active') {
+          actionsHtml = `
+            <a href="car-detail.html?id=${car.id}" class="btn btn-dark btn-sm rounded-3 fw-semibold py-2">
+              <i class="bi bi-eye me-1"></i> Xem tin trên sàn
+            </a>
+            <button class="btn btn-outline-primary btn-sm rounded-3 fw-semibold py-2" onclick="openEditModal('${car.id}')">
+              <i class="bi bi-pencil-square me-1"></i> Sửa giá & mô tả
+            </button>
+            <div class="d-flex gap-1.5 mt-1">
+              <button class="btn btn-outline-secondary btn-sm flex-fill rounded-3 py-1.5 small" title="Tạm ẩn tin khỏi sàn" onclick="hideListing('${car.id}')">
+                <i class="bi bi-eye-slash"></i> Tạm ẩn
+              </button>
+              <button class="btn btn-outline-success btn-sm flex-fill rounded-3 py-1.5 small" title="Đánh dấu xe đã bán" onclick="markSold('${car.id}')">
+                <i class="bi bi-bag-check"></i> Đã bán
+              </button>
+              <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small" title="Xóa tin này" onclick="handleDeleteListing('${car.id}')">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </div>
+          `;
+        } else if (car.status === 'pending') {
+          actionsHtml = `
+            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm rounded-3 fw-semibold py-2">
+              <i class="bi bi-eye me-1"></i> Xem trước tin đăng
+            </a>
+            <button class="btn btn-outline-primary btn-sm rounded-3 fw-semibold py-2" onclick="openEditModal('${car.id}')">
+              <i class="bi bi-pencil-square me-1"></i> Chỉnh sửa thông tin
+            </button>
+            <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small text-danger mt-1" onclick="cancelPendingReview('${car.id}')">
+              <i class="bi bi-x-circle me-1"></i> Rút lại yêu cầu
+            </button>
+          `;
+        } else if (car.status === 'rejected') {
+          actionsHtml = `
+            <button class="btn btn-teal btn-sm text-white rounded-3 fw-bold py-2 shadow-xs" onclick="openEditModal('${car.id}')">
+              <i class="bi bi-send-check-fill me-1"></i> Sửa & Gửi duyệt lại
+            </button>
+            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm rounded-3 py-1.5 small">
+              <i class="bi bi-eye me-1"></i> Xem trước
+            </a>
+            <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small" onclick="handleDeleteListing('${car.id}')">
+              <i class="bi bi-trash3 me-1"></i> Xóa tin này
+            </button>
+          `;
+        } else if (car.status === 'draft') {
+          actionsHtml = `
+            <button class="btn btn-teal btn-sm text-white rounded-3 fw-bold py-2 shadow-xs" onclick="submitForReview('${car.id}')">
+              <i class="bi bi-send-check me-1"></i> Gửi Showroom duyệt
+            </button>
+            <button class="btn btn-outline-primary btn-sm rounded-3 py-1.5" onclick="openEditModal('${car.id}')">
+              <i class="bi bi-pencil-square me-1"></i> Sửa bản nháp
+            </button>
+            <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small" onclick="handleDeleteListing('${car.id}')">
+              <i class="bi bi-trash3 me-1"></i> Xóa
+            </button>
+          `;
+        } else if (car.status === 'hidden' || car.status === 'sold') {
+          actionsHtml = `
+            <button class="btn btn-teal btn-sm text-white rounded-3 fw-semibold py-2 shadow-xs" onclick="reopenListing('${car.id}')">
+              <i class="bi bi-arrow-clockwise me-1"></i> Đăng bán lại
+            </button>
+            <button class="btn btn-outline-primary btn-sm rounded-3 py-1.5" onclick="openEditModal('${car.id}')">
+              <i class="bi bi-pencil-square me-1"></i> Sửa thông tin
+            </button>
+            <button class="btn btn-outline-danger btn-sm rounded-3 py-1.5 small" onclick="handleDeleteListing('${car.id}')">
+              <i class="bi bi-trash3 me-1"></i> Xóa
+            </button>
+          `;
+        }
+
+        // Formatted Price Display
+        const rawPrice = car.price || 0;
+        const formattedVND = rawPrice ? rawPrice.toLocaleString('vi-VN') + ' đ' : (car.priceDisplay || 'Thỏa thuận');
+        const priceInWords = formatCurrency(rawPrice);
+
         return `
-          <div class="bg-white p-3 p-md-4 rounded-4 border mb-3 shadow-sm hover-shadow transition-all">
+          <div class="listing-card ${cardBorderClass}">
             <div class="row align-items-center gy-3">
-              <div class="col-md-3 col-sm-4">
-                <div class="rounded-3 overflow-hidden position-relative shadow-xs" style="height: 145px;">
-                  <img src="${car.image}" alt="${car.title}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
-                </div>
+              <div class="col-lg-3 col-md-4">
+                <a href="car-detail.html?id=${car.id}" class="d-block text-decoration-none">
+                  <div class="listing-thumb-box">
+                    <img src="${car.image}" alt="${car.title}" class="listing-thumb-img" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
+                    <span class="photo-count-pill"><i class="bi bi-camera-fill"></i> ${photosCount} ảnh</span>
+                  </div>
+                </a>
               </div>
 
-              <div class="col-md-6 col-sm-8">
-                <div class="d-flex align-items-center gap-2 mb-1">
+              <div class="col-lg-6 col-md-8">
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-1.5">
                   ${badgeHtml}
-                  <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>${car.postedDate}</span>
+                  <span class="badge bg-light text-secondary border">Mã: #${car.id}</span>
+                  <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>${car.postedDate || 'Hôm nay'}</span>
                 </div>
+
                 <h5 class="fw-bold mb-1">
                   <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none hover-teal">${car.title}</a>
                 </h5>
-                <div class="h5 fw-bold text-orange mb-2" style="color: var(--orange-color);">${car.priceDisplay || formatCurrency(car.price)}</div>
-                
-                <div class="d-flex flex-wrap gap-3 small text-muted">
-                  <span><i class="bi bi-speedometer2 text-teal me-1"></i>${car.mileageDisplay || (car.mileage + ' km')}</span>
-                  <span><i class="bi bi-gear text-teal me-1"></i>${car.transmission}</span>
-                  <span><i class="bi bi-fuel-pump text-teal me-1"></i>${car.fuel}</span>
-                  <span><i class="bi bi-eye text-teal me-1"></i>${car.viewCount || 1} lượt xem</span>
+
+                <div class="d-flex flex-wrap align-items-baseline gap-2 mb-2">
+                  <span class="h4 fw-extrabold text-orange mb-0" style="color: var(--orange-color);">${formattedVND}</span>
+                  <span class="small fw-semibold text-muted">(${priceInWords})</span>
                 </div>
+
+                <div class="d-flex flex-wrap gap-2.5 small text-muted mb-2">
+                  <span><i class="bi bi-calendar-event text-teal me-1"></i>${car.year || '2023'}</span>
+                  <span><i class="bi bi-speedometer2 text-teal me-1"></i>${car.mileageDisplay || (car.mileage ? car.mileage.toLocaleString() + ' km' : '0 km')}</span>
+                  <span><i class="bi bi-gear text-teal me-1"></i>${car.transmission || 'Tự động'}</span>
+                  <span><i class="bi bi-fuel-pump text-teal me-1"></i>${car.fuel || 'Xăng'}</span>
+                  <span><i class="bi bi-geo-alt text-teal me-1"></i>${car.location || 'Toàn quốc'}</span>
+                  <span><i class="bi bi-eye-fill text-teal me-1"></i><strong>${car.viewCount || 1}</strong> lượt xem</span>
+                </div>
+
                 ${rejectReasonHtml}
+                ${stepperHtml}
               </div>
 
-              <div class="col-md-3 text-md-end">
-                <div class="d-flex flex-column flex-sm-row flex-md-column gap-2 justify-content-end">
-                  <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm rounded-2">
-                    <i class="bi bi-box-arrow-up-right me-1"></i> Xem tin
-                  </a>
+              <div class="col-lg-3 text-lg-end">
+                <div class="d-flex flex-column gap-2 justify-content-end">
                   ${actionsHtml}
-                  <button class="btn btn-outline-danger btn-sm rounded-2" onclick="handleDeleteListing('${car.id}')">
-                    <i class="bi bi-trash3 me-1"></i> Xóa
-                  </button>
                 </div>
               </div>
             </div>
@@ -365,29 +741,52 @@
 
     function filterByStatus(status, btnElement) {
       currentFilterStatus = status;
-      document.querySelectorAll('#listing-status-tabs .nav-link').forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
+      document.querySelectorAll('#listing-status-tabs .filter-tab-pill').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      renderListings();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderListings();
+    }
+
+    function handleSort(mode) {
+      sortMode = mode;
+      renderListings();
+    }
+
+    function resetFilters() {
+      currentFilterStatus = 'all';
+      searchQuery = '';
+      sortMode = 'newest';
+      document.getElementById('listing-search-input').value = '';
+      document.getElementById('listing-sort-select').value = 'newest';
+      document.querySelectorAll('#listing-status-tabs .filter-tab-pill').forEach((btn, idx) => {
+        if (idx === 0) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
       renderListings();
     }
 
     function submitForReview(id) {
       updateListingStatus(id, 'pending');
-      showToast("Đã gửi yêu cầu xét duyệt tin đăng!", "success");
+      showToast("Đã gửi yêu cầu xét duyệt tin đăng lên Showroom!", "success");
       renderListings();
     }
 
     function hideListing(id) {
-      if (confirm("Bạn muốn ẩn tin đăng này?")) {
+      if (confirm("Bạn muốn tạm ẩn tin đăng này khỏi sàn OtoMarket?")) {
         updateListingStatus(id, 'hidden');
-        showToast("Đã ẩn tin đăng thành công", "info");
+        showToast("Đã tạm ẩn tin đăng thành công", "info");
         renderListings();
       }
     }
 
     function markSold(id) {
-      if (confirm("Đánh dấu xe này đã bán?")) {
+      if (confirm("Xác nhận đánh dấu xe này đã bán thành công?")) {
         updateListingStatus(id, 'sold');
-        showToast("Đã đánh dấu xe đã bán", "success");
+        showToast("Đã ghi nhận xe đã bán thành công!", "success");
         renderListings();
       }
     }
@@ -395,51 +794,89 @@
     function reopenListing(id) {
       if (confirm("Gửi yêu cầu mở bán lại tin này để Showroom xét duyệt?")) {
         updateListingStatus(id, 'pending');
-        showToast("Đã gửi yêu cầu mở bán lại (chờ duyệt)", "success");
+        showToast("Đã gửi yêu cầu mở bán lại (chờ Showroom duyệt)", "success");
+        renderListings();
+      }
+    }
+
+    function cancelPendingReview(id) {
+      if (confirm("Bạn muốn rút lại yêu cầu xét duyệt để chỉnh sửa thêm?")) {
+        updateListingStatus(id, 'draft');
+        showToast("Đã chuyển tin về bản nháp để bạn chỉnh sửa", "info");
         renderListings();
       }
     }
 
     function handleDeleteListing(id) {
-      if (confirm("Bạn có chắc chắn muốn xóa vĩnh viễn tin đăng này không?")) {
+      if (confirm("Bạn có chắc chắn muốn xóa vĩnh viễn tin đăng này không? Thao tác này không thể hoàn tác.")) {
         deleteCustomListing(id);
-        showToast("Đã xóa tin đăng thành công!", "warning");
+        showToast("Đã xóa tin đăng vĩnh viễn!", "warning");
         renderListings();
       }
     }
 
+    // Modal chỉnh sửa nâng cấp
     function openEditModal(id) {
       const car = getCarById(id);
       if (!car) return;
 
       document.getElementById('edit-listing-id').value = car.id;
-      document.getElementById('edit-listing-title').value = car.title;
-      document.getElementById('edit-listing-price').value = car.price;
-      document.getElementById('edit-listing-desc').value = car.description;
+      document.getElementById('edit-listing-title').value = car.title || '';
+      
+      const priceVal = car.price || 0;
+      document.getElementById('edit-listing-price-raw').value = priceVal;
+      document.getElementById('edit-listing-price-input').value = priceVal ? priceVal.toLocaleString('vi-VN') : '';
+      document.getElementById('edit-price-converter').innerHTML = `<i class="bi bi-cash-stack"></i> Quy đổi: ${formatCurrency(priceVal)}`;
+
+      document.getElementById('edit-listing-mileage').value = car.mileage || 0;
+      document.getElementById('edit-listing-location').value = car.location || '';
+      document.getElementById('edit-listing-desc').value = car.description || '';
 
       const modal = new bootstrap.Modal(document.getElementById('editListingModal'));
       modal.show();
     }
 
+    function handleEditPriceInput(inputEl) {
+      let digits = inputEl.value.replace(/\D/g, '');
+      if (!digits) {
+        inputEl.value = '';
+        document.getElementById('edit-listing-price-raw').value = '0';
+        document.getElementById('edit-price-converter').innerHTML = '<i class="bi bi-cash-stack"></i> Quy đổi: --';
+        return;
+      }
+      const num = parseInt(digits, 10);
+      document.getElementById('edit-listing-price-raw').value = num;
+      inputEl.value = num.toLocaleString('vi-VN');
+      document.getElementById('edit-price-converter').innerHTML = `<i class="bi bi-cash-stack"></i> Quy đổi: ${formatCurrency(num)}`;
+    }
+
     function saveEditedListing() {
       const id = document.getElementById('edit-listing-id').value;
       const title = document.getElementById('edit-listing-title').value.trim();
-      const price = parseInt(document.getElementById('edit-listing-price').value);
+      const rawPrice = parseInt(document.getElementById('edit-listing-price-raw').value, 10);
+      const mileage = parseInt(document.getElementById('edit-listing-mileage').value, 10) || 0;
+      const location = document.getElementById('edit-listing-location').value.trim();
       const desc = document.getElementById('edit-listing-desc').value.trim();
 
-      if (!title || !price || !desc) {
-        showToast("Vui lòng nhập đầy đủ thông tin!", "error");
+      if (!title || !rawPrice) {
+        showToast("Vui lòng nhập đầy đủ tiêu đề và giá bán!", "error");
         return;
       }
 
       updateListingData(id, {
         title: title,
-        price: price,
-        priceDisplay: formatCurrency(price),
+        price: rawPrice,
+        priceDisplay: formatCurrency(rawPrice),
+        mileage: mileage,
+        mileageDisplay: mileage === 0 ? "Xe mới" : `${mileage.toLocaleString('vi-VN')} km`,
+        location: location || "Toàn quốc",
         description: desc
       });
 
-      bootstrap.Modal.getInstance(document.getElementById('editListingModal')).hide();
+      const modalEl = document.getElementById('editListingModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      if (modalInstance) modalInstance.hide();
+
       showToast("Đã cập nhật thông tin tin đăng thành công!", "success");
       renderListings();
     }
