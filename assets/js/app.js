@@ -784,8 +784,8 @@ function syncAdminLinksVisibility() {
             <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
           </a>
         `;
-        if (supportItem) {
-          supportItem.insertAdjacentElement('afterend', adminItem);
+        if (aboutItem) {
+          aboutItem.insertAdjacentElement('afterend', adminItem);
         } else {
           nav.appendChild(adminItem);
         }
@@ -883,41 +883,30 @@ function enhanceBuyCarNavigation() {
   });
 }
 
-// Đồng bộ các mục Giới thiệu và Hỗ trợ trên navbar của mọi trang.
-function ensureSupportNavigation() {
+// Dọn sạch mục Hỗ trợ cũ trên navbar của mọi trang (chỉ giữ lại Giới thiệu thuần túy)
+function cleanupNavbarNavigation() {
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    let supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
+    // Xóa bỏ triệt để các link Hỗ trợ / #contact thừa
+    const supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
       const href = link.getAttribute('href') || '';
-      return link.textContent.trim().toLowerCase() === 'hỗ trợ' || href.endsWith('#contact');
+      return link.textContent.trim().toLowerCase() === 'hỗ trợ' || href.includes('#contact');
     });
+    supportLinks.forEach(link => link.closest('.nav-item')?.remove());
 
+    // Đảm bảo có mục Giới thiệu chuẩn
     let aboutLink = nav.querySelector('a[href="about.html"]');
     if (!aboutLink) {
       const aboutItem = document.createElement('li');
       aboutItem.className = 'nav-item';
       aboutItem.innerHTML = '<a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>';
 
-      const firstSupportItem = supportLinks[0]?.closest('.nav-item');
       const postItem = nav.querySelector('a[href="post-car.html"]')?.closest('.nav-item');
-      if (firstSupportItem) {
-        firstSupportItem.insertAdjacentElement('beforebegin', aboutItem);
-      } else if (postItem) {
+      if (postItem) {
         postItem.insertAdjacentElement('afterend', aboutItem);
       } else {
         nav.appendChild(aboutItem);
       }
-      aboutLink = aboutItem.querySelector('a');
     }
-
-    if (supportLinks.length > 0) {
-      supportLinks.slice(1).forEach(link => link.closest('.nav-item')?.remove());
-      return;
-    }
-
-    const supportItem = document.createElement('li');
-    supportItem.className = 'nav-item';
-    supportItem.innerHTML = '<a class="nav-link nav-link-custom" href="about.html#contact">Hỗ trợ</a>';
-    aboutLink.closest('.nav-item').insertAdjacentElement('afterend', supportItem);
   });
 }
 
@@ -1042,7 +1031,7 @@ function resetDemoData() {
 document.addEventListener('DOMContentLoaded', () => {
   initializeStorage();
   enhanceBuyCarNavigation();
-  ensureSupportNavigation();
+  cleanupNavbarNavigation();
   updateFavoritesCountBadge();
   syncHeaderUserUI();
   syncAdminLinksVisibility();
