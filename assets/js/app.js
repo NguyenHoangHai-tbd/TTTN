@@ -882,17 +882,28 @@ function enhanceBuyCarNavigation() {
   });
 }
 
-// Dọn sạch mục Hỗ trợ cũ trên navbar của mọi trang (chỉ giữ lại Giới thiệu thuần túy)
+// Dọn sạch triệt để mục Hỗ trợ cũ trên navbar của mọi trang (chỉ giữ lại Giới thiệu thuần túy)
 function cleanupNavbarNavigation() {
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    // Xóa bỏ triệt để các link Hỗ trợ / #contact thừa
-    const supportLinks = Array.from(nav.querySelectorAll('a')).filter(link => {
-      const href = link.getAttribute('href') || '';
-      return link.textContent.trim().toLowerCase() === 'hỗ trợ' || href.includes('#contact');
+    // 1. Quét và loại bỏ tất cả các mục có chữ Hỗ trợ hoặc liên kết contact
+    nav.querySelectorAll('li.nav-item').forEach(li => {
+      const a = li.querySelector('a');
+      if (!a) return;
+      const text = (a.textContent || '').trim().toLowerCase();
+      const href = (a.getAttribute('href') || '').toLowerCase();
+      
+      if (
+        text.includes('hỗ trợ') || 
+        text.includes('ho tro') || 
+        href.includes('contact') || 
+        href.includes('#contact') || 
+        href.includes('about.html#contact')
+      ) {
+        li.remove();
+      }
     });
-    supportLinks.forEach(link => link.closest('.nav-item')?.remove());
 
-    // Đảm bảo có mục Giới thiệu chuẩn
+    // 2. Đảm bảo có mục Giới thiệu chuẩn
     let aboutLink = nav.querySelector('a[href="about.html"]');
     if (!aboutLink) {
       const aboutItem = document.createElement('li');
@@ -1038,6 +1049,12 @@ document.addEventListener('DOMContentLoaded', () => {
   enforcePagePermissions();
 });
 
-// Dọn dẹp dự phòng ngay lập tức và khi toàn bộ trang hoàn tất
+// Dọn dẹp dự phòng ngay lập tức, theo chu kỳ và khi toàn bộ trang hoàn tất
 cleanupNavbarNavigation();
+let _purgeCount = 0;
+const _purgeTimer = setInterval(() => {
+  cleanupNavbarNavigation();
+  _purgeCount++;
+  if (_purgeCount > 25) clearInterval(_purgeTimer);
+}, 100);
 window.addEventListener('load', cleanupNavbarNavigation);

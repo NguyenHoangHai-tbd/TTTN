@@ -146,6 +146,14 @@ img {
    Header & Navigation (Chống lỗi ngắt dòng chữ - Zero Wrap)
    ========================================================================== */
 
+/* Triệt để ẩn mục Hỗ trợ (#contact) trên thanh điều hướng */
+.navbar-nav a[href*="contact"],
+.navbar-nav a[href*="#contact"],
+.navbar-nav li.nav-item:has(a[href*="contact"]),
+.navbar-nav li.nav-item:has(a[href*="#contact"]) {
+  display: none !important;
+}
+
 .navbar-custom {
   background: rgba(11, 19, 43, 0.98);
   backdrop-filter: blur(14px);
