@@ -422,18 +422,17 @@ function deleteCustomListing(id) {
   localStorage.setItem(STORAGE_KEYS.CUSTOM_LISTINGS, JSON.stringify(listings));
 }
 
-// Quản lý yêu thích theo tài khoản (userId)
+// Quản lý yêu thích theo tài khoản (userId hoặc guest)
 function getCurrentUserId() {
   const user = getLoggedInUser();
   if (user && (user.id || user.email)) {
     return user.id || user.email;
   }
-  return null;
+  return 'guest';
 }
 
 function getFavorites() {
   const userId = getCurrentUserId();
-  if (!userId) return [];
   const key = `otomarket_favorites_${userId}`;
   try {
     const data = localStorage.getItem(key);
@@ -445,7 +444,6 @@ function getFavorites() {
 
 function saveFavorites(favs) {
   const userId = getCurrentUserId();
-  if (!userId) return;
   const key = `otomarket_favorites_${userId}`;
   localStorage.setItem(key, JSON.stringify(favs));
 }
@@ -456,13 +454,6 @@ function isFavorite(carId) {
 }
 
 function toggleFavorite(carId) {
-  const user = getLoggedInUser();
-  if (!user) {
-    localStorage.setItem('otomarket_redirect_after_login', window.location.href);
-    window.location.href = 'login.html';
-    return false;
-  }
-
   const allCars = getAllCars(true);
   const car = allCars.find(c => c.id === carId);
   if (!car || car.status !== LISTING_STATUS.ACTIVE) {
@@ -470,6 +461,7 @@ function toggleFavorite(carId) {
     return false;
   }
 
+  const user = getLoggedInUser();
   let favs = getFavorites();
   const index = favs.indexOf(carId);
   let added = false;
@@ -479,7 +471,11 @@ function toggleFavorite(carId) {
     added = false;
   } else {
     favs.push(carId);
-    showToast("Đã thêm vào danh sách xe yêu thích", "success");
+    if (!user) {
+      showToast("Đã lưu vào danh sách yêu thích (Chế độ Khách)", "success");
+    } else {
+      showToast("Đã thêm vào danh sách xe yêu thích", "success");
+    }
     added = true;
   }
   saveFavorites(favs);
@@ -647,6 +643,19 @@ function setLoggedInUser(user) {
     role: isAdmin ? 'admin' : 'user'
   };
   localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(normalizedUser));
+
+  // Tự động gộp danh sách xe yêu thích từ chế độ Khách vào tài khoản
+  try {
+    const guestKey = 'otomarket_favorites_guest';
+    const guestFavs = JSON.parse(localStorage.getItem(guestKey) || '[]');
+    if (guestFavs && guestFavs.length > 0) {
+      const userKey = `otomarket_favorites_${normalizedUser.id || normalizedUser.email}`;
+      const userFavs = JSON.parse(localStorage.getItem(userKey) || '[]');
+      const merged = Array.from(new Set([...userFavs, ...guestFavs]));
+      localStorage.setItem(userKey, JSON.stringify(merged));
+      localStorage.removeItem(guestKey);
+    }
+  } catch (e) {}
 }
 
 function logoutUser() {

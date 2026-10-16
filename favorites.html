@@ -69,24 +69,138 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="py-5">
+  <!-- Page Header Strip -->
+  <section class="bg-white border-bottom py-4 mb-4">
     <div class="container">
-      
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <nav aria-label="breadcrumb" class="mb-2">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-teal fw-semibold" aria-current="page">Xe yêu thích</li>
+        </ol>
+      </nav>
+
+      <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
         <div>
-          <h1 class="h3 fw-bold mb-1">
-            <i class="bi bi-heart-fill text-danger me-2"></i> Danh sách xe bạn đã lưu
+          <h1 class="h4 fw-bold text-slate-900 mb-1 d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-danger-subtle text-danger d-inline-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+              <i class="bi bi-heart-fill fs-6"></i>
+            </span>
+            <span>Danh Sách Xe Yêu Thích</span>
           </h1>
-          <p class="text-muted small mb-0" id="fav-summary-text">Đang tải danh sách...</p>
+          <p class="text-muted small mb-0">Quản lý, so sánh và theo dõi biến động các mẫu xe ô tô bạn quan tâm trên OtoMarket</p>
         </div>
-        <div class="d-flex gap-2" id="fav-actions-bar" style="display: none !important;">
-          <button class="btn btn-outline-danger btn-sm" onclick="handleClearAllFavorites()">
-            <i class="bi bi-trash me-1"></i> Xóa tất cả đã lưu
-          </button>
-          <a href="cars.html" class="btn btn-outline-secondary btn-sm">
-            <i class="bi bi-plus-circle me-1"></i> Tìm thêm xe khác
+
+        <!-- 3 Stat Badges -->
+        <div class="d-flex flex-wrap gap-2" id="fav-stats-bar" style="display: none;">
+          <div class="fav-stat-card py-2 px-3">
+            <div class="fav-stat-icon bg-danger-subtle text-danger" style="width: 34px; height: 34px; font-size: 0.95rem;">
+              <i class="bi bi-heart-fill"></i>
+            </div>
+            <div>
+              <div class="small text-muted" style="font-size: 0.72rem;">Đã lưu</div>
+              <div class="fw-bold text-slate-900" style="font-size: 0.92rem;"><span id="stat-total-favs">0</span> xe</div>
+            </div>
+          </div>
+
+          <div class="fav-stat-card py-2 px-3">
+            <div class="fav-stat-icon bg-teal-subtle text-teal" style="width: 34px; height: 34px; font-size: 0.95rem;">
+              <i class="bi bi-cash-stack"></i>
+            </div>
+            <div>
+              <div class="small text-muted" style="font-size: 0.72rem;">Tổng giá trị</div>
+              <div class="fw-bold text-slate-900" style="font-size: 0.92rem;"><span id="stat-total-price">0 đ</span></div>
+            </div>
+          </div>
+
+          <div class="fav-stat-card py-2 px-3">
+            <div class="fav-stat-icon bg-emerald-subtle text-success" style="width: 34px; height: 34px; font-size: 0.95rem;">
+              <i class="bi bi-check2-circle"></i>
+            </div>
+            <div>
+              <div class="small text-muted" style="font-size: 0.72rem;">Đang mở bán</div>
+              <div class="fw-bold text-slate-900" style="font-size: 0.92rem;"><span id="stat-active-cars">0</span> xe</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="pb-5">
+    <div class="container">
+
+      <!-- Guest Mode Alert Notice (nếu chưa đăng nhập) -->
+      <div id="guest-mode-notice" class="alert alert-light border border-teal-subtle rounded-3 p-3 mb-4 shadow-xs d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" style="display: none;">
+        <div class="d-flex align-items-center gap-3">
+          <div class="rounded-circle bg-teal-subtle text-teal d-flex align-items-center justify-content-center flex-shrink-0" style="width: 38px; height: 38px;">
+            <i class="bi bi-person-badge fs-5"></i>
+          </div>
+          <div>
+            <div class="fw-bold text-slate-900 small mb-0.5">Bạn đang sử dụng Danh sách yêu thích ở chế độ Khách</div>
+            <div class="text-muted small">Dữ liệu đang được lưu tạm trên trình duyệt này. Đăng nhập để lưu vĩnh viễn và đồng bộ tự động trên mọi thiết bị.</div>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="login.html" class="btn btn-teal btn-sm fw-bold px-3 text-nowrap">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Đăng nhập ngay
           </a>
+        </div>
+      </div>
+
+      <!-- Controls & Filter Toolbar -->
+      <div id="fav-toolbar" class="bg-white p-3 rounded-3 border mb-4 d-flex flex-wrap justify-content-between align-items-center gap-3 shadow-xs" style="display: none;">
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <!-- Live count -->
+          <span class="fw-bold text-slate-900 small me-2" id="fav-results-count">
+            Đang tải danh sách...
+          </span>
+
+          <!-- Search in favorites -->
+          <div class="position-relative" style="min-width: 210px;">
+            <input type="text" id="fav-search-input" class="form-control form-control-sm ps-4" placeholder="Tìm theo tên xe, hãng..." oninput="handleFavSearch()">
+            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-2 text-muted small"></i>
+          </div>
+
+          <!-- Status Filter -->
+          <select id="fav-status-filter" class="form-select form-select-sm" style="width: auto;" onchange="handleFavFilterChange()">
+            <option value="all">Tất cả tình trạng</option>
+            <option value="active">Đang mở bán</option>
+            <option value="inactive">Đã ngừng bán</option>
+          </select>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <!-- Sort dropdown -->
+          <div class="d-flex align-items-center gap-2">
+            <label class="small text-muted fw-semibold text-nowrap" for="fav-sort-select">Sắp xếp:</label>
+            <select id="fav-sort-select" class="form-select form-select-sm fw-semibold" style="width: auto;" onchange="handleFavFilterChange()">
+              <option value="newest">Mới lưu nhất</option>
+              <option value="price-asc">Giá: Thấp đến cao</option>
+              <option value="price-desc">Giá: Cao đến thấp</option>
+              <option value="year-desc">Năm sản xuất mới nhất</option>
+            </select>
+          </div>
+
+          <!-- View Mode Toggle -->
+          <div class="catalog-view-toggle d-flex align-items-center bg-light p-1 rounded-2 border">
+            <button type="button" id="fav-btn-view-grid" class="btn btn-sm btn-view-mode active" onclick="setFavViewMode('grid')" title="Xem dạng lưới 3 cột">
+              <i class="bi bi-grid-fill"></i>
+            </button>
+            <button type="button" id="fav-btn-view-list" class="btn btn-sm btn-view-mode" onclick="setFavViewMode('list')" title="Xem dạng danh sách">
+              <i class="bi bi-list-ul"></i>
+            </button>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-danger btn-sm fw-semibold" onclick="handleClearAllFavorites()" title="Xóa toàn bộ">
+              <i class="bi bi-trash me-1"></i> Xóa tất cả
+            </button>
+            <a href="cars.html" class="btn btn-teal btn-sm fw-bold text-nowrap">
+              <i class="bi bi-plus-circle me-1"></i> Tìm thêm xe
+            </a>
+          </div>
         </div>
       </div>
 
@@ -96,17 +210,22 @@
       </div>
 
       <!-- Empty State -->
-      <div id="favorites-empty-state" class="empty-state-box" style="display: none;">
-        <div class="empty-state-icon">
+      <div id="favorites-empty-state" class="empty-state-box bg-white p-5 rounded-4 border text-center my-4" style="display: none;">
+        <div class="empty-state-icon mx-auto mb-3" style="width: 72px; height: 72px; border-radius: 50%; background: #FEE2E2; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
           <i class="bi bi-heart text-danger"></i>
         </div>
-        <h4 class="fw-bold h5 mb-2">Bạn chưa lưu chiếc xe nào</h4>
-        <p class="text-muted small mb-4">
-          Hãy bấm vào biểu tượng hình trái tim trên bất kỳ chiếc xe nào trong danh mục để lưu lại và theo dõi.
+        <h3 class="fw-bold text-slate-900 h5 mb-2">Bạn chưa lưu chiếc xe nào</h3>
+        <p class="text-muted small mx-auto mb-4" style="max-width: 480px;">
+          Hãy bấm vào biểu tượng hình trái tim trên bất kỳ chiếc xe nào khi khám phá kho xe để lưu lại, so sánh giá và tiện theo dõi sau này.
         </p>
-        <a href="cars.html" class="btn-cta-orange px-4 py-2">
-          <i class="bi bi-search me-1"></i> Khám phá danh sách xe ngay
-        </a>
+        <div class="d-flex justify-content-center gap-2">
+          <a href="cars.html" class="btn-cta-orange px-4 py-2">
+            <i class="bi bi-search me-1"></i> Khám phá kho xe ngay
+          </a>
+          <a href="index.html" class="btn btn-outline-secondary px-3 py-2 small">
+            Về trang chủ
+          </a>
+        </div>
       </div>
 
     </div>
@@ -178,66 +297,164 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js?v=20261016_purge"></script>
   <script>
+    let currentFavViewMode = localStorage.getItem('otomarket_fav_view_mode') || 'grid';
+
+    function setFavViewMode(mode) {
+      currentFavViewMode = mode;
+      localStorage.setItem('otomarket_fav_view_mode', mode);
+      const container = document.getElementById('favorites-grid-container');
+      const btnGrid = document.getElementById('fav-btn-view-grid');
+      const btnList = document.getElementById('fav-btn-view-list');
+
+      if (mode === 'list') {
+        container.classList.add('list-view');
+        btnList.classList.add('active');
+        btnGrid.classList.remove('active');
+      } else {
+        container.classList.remove('list-view');
+        btnGrid.classList.add('active');
+        btnList.classList.remove('active');
+      }
+    }
+
     function renderFavorites() {
       const user = getLoggedInUser();
-      if (!user) {
-        showToast("Vui lòng đăng nhập để xem danh sách yêu thích", "warning");
-        setTimeout(() => { window.location.href = 'login.html'; }, 500);
-        return;
+      const guestNotice = document.getElementById('guest-mode-notice');
+      if (guestNotice) {
+        guestNotice.style.display = !user ? 'flex' : 'none';
       }
 
       const favIds = getFavorites();
       const container = document.getElementById('favorites-grid-container');
       const emptyState = document.getElementById('favorites-empty-state');
-      const summaryText = document.getElementById('fav-summary-text');
-      const actionsBar = document.getElementById('fav-actions-bar');
+      const toolbar = document.getElementById('fav-toolbar');
+      const statsBar = document.getElementById('fav-stats-bar');
+      const countDisplay = document.getElementById('fav-results-count');
 
-      if (favIds.length === 0) {
+      if (!favIds || favIds.length === 0) {
         container.innerHTML = '';
         emptyState.style.display = 'block';
-        actionsBar.style.setProperty('display', 'none', 'important');
-        summaryText.textContent = 'Hiện tại bạn chưa lưu xe nào vào danh sách yêu thích.';
+        if (toolbar) toolbar.style.display = 'none';
+        if (statsBar) statsBar.style.display = 'none';
         return;
       }
 
       emptyState.style.display = 'none';
-      actionsBar.style.removeProperty('display');
-      summaryText.innerHTML = `Bạn đang lưu <strong class="text-teal">${favIds.length}</strong> chiếc xe quan tâm.`;
+      if (toolbar) toolbar.style.display = 'flex';
+      if (statsBar) statsBar.style.display = 'flex';
 
       const allCars = getAllCars(true);
-      const favCars = favIds.map(id => allCars.find(c => c.id === id)).filter(Boolean);
+      let favCars = favIds.map(id => allCars.find(c => c.id === id)).filter(Boolean);
+
+      // Compute statistics
+      const totalCount = favCars.length;
+      const totalPrice = favCars.reduce((sum, car) => sum + (car.price || 0), 0);
+      const activeCount = favCars.filter(car => car.status === LISTING_STATUS.ACTIVE || !car.status).length;
+
+      document.getElementById('stat-total-favs').textContent = totalCount;
+      document.getElementById('stat-total-price').textContent = formatCurrency(totalPrice);
+      document.getElementById('stat-active-cars').textContent = activeCount;
+
+      // Filter by keyword
+      const keyword = (document.getElementById('fav-search-input') ? document.getElementById('fav-search-input').value : '').trim().toLowerCase();
+      if (keyword) {
+        favCars = favCars.filter(car => {
+          return (car.title && car.title.toLowerCase().includes(keyword)) ||
+                 (car.brand && car.brand.toLowerCase().includes(keyword)) ||
+                 (car.model && car.model.toLowerCase().includes(keyword));
+        });
+      }
+
+      // Filter by status
+      const statusFilter = document.getElementById('fav-status-filter') ? document.getElementById('fav-status-filter').value : 'all';
+      if (statusFilter === 'active') {
+        favCars = favCars.filter(car => car.status === LISTING_STATUS.ACTIVE || !car.status);
+      } else if (statusFilter === 'inactive') {
+        favCars = favCars.filter(car => car.status && car.status !== LISTING_STATUS.ACTIVE);
+      }
+
+      // Sorting
+      const sortBy = document.getElementById('fav-sort-select') ? document.getElementById('fav-sort-select').value : 'newest';
+      if (sortBy === 'price-asc') {
+        favCars.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'price-desc') {
+        favCars.sort((a, b) => b.price - a.price);
+      } else if (sortBy === 'year-desc') {
+        favCars.sort((a, b) => b.year - a.year);
+      }
+
+      countDisplay.innerHTML = `Tìm thấy <strong class="text-teal">${favCars.length}</strong> xe phù hợp`;
+
+      if (favCars.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 py-5 text-center text-muted">
+            <i class="bi bi-search fs-3 text-muted d-block mb-2"></i>
+            <p class="mb-0">Không có xe nào khớp với điều kiện lọc hiện tại.</p>
+          </div>
+        `;
+        return;
+      }
 
       container.innerHTML = favCars.map(car => {
         const isAvailable = car.status === LISTING_STATUS.ACTIVE || !car.status;
-        const notAvailableBadge = !isAvailable 
-          ? `<div class="alert alert-secondary py-1 px-2 small mb-2 text-center fw-semibold rounded-2"><i class="bi bi-exclamation-circle me-1"></i> Không còn được rao bán</div>` 
-          : '';
+        const isNewCar = car.condition === 'new' || car.isNew;
+        const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
+
+        let badgeHtml = '';
+        if (isShowroom) {
+          badgeHtml = isNewCar
+            ? `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom • Xe mới</span>`
+            : `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom chính hãng</span>`;
+        } else {
+          badgeHtml = isNewCar
+            ? `<span class="car-card-badge badge-source-new"><i class="bi bi-stars me-1"></i>Xe mới 100%</span>`
+            : `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Chính chủ bán</span>`;
+        }
+
+        const photoCount = (car.images && car.images.length > 0) ? car.images.length : (car.gallery && car.gallery.length > 0 ? car.gallery.length : 6);
+        const photoBadgeHtml = `<span class="car-photo-badge"><i class="bi bi-camera"></i> ${photoCount} ảnh</span>`;
+        const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
 
         return `
-          <div class="col-lg-4 col-md-6 mb-4" id="fav-col-${car.id}">
+          <div class="col-lg-4 col-md-6 mb-4 car-grid-item" id="fav-col-${car.id}">
             <div class="car-card">
               <div class="car-card-img-wrapper">
-                <img src="${car.image}" alt="${car.title}" class="car-card-img" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
-                <button class="car-fav-btn active" onclick="handleRemoveFavCard('${car.id}')" title="Bỏ lưu khỏi danh sách">
-                  <i class="bi bi-trash text-danger"></i>
+                <img src="${car.image}" alt="${car.title}" class="car-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
+                ${badgeHtml}
+                ${photoBadgeHtml}
+                ${!isAvailable ? `<span class="badge bg-secondary position-absolute top-2 start-2 text-white" style="z-index: 3;"><i class="bi bi-pause-circle me-1"></i>Đã ngừng bán</span>` : ''}
+                <button class="car-fav-btn active" onclick="handleRemoveFavCard('${car.id}')" title="Bỏ lưu khỏi danh sách" aria-label="Bỏ lưu">
+                  <i class="bi bi-heart-fill text-danger"></i>
                 </button>
               </div>
               <div class="car-card-body">
-                ${notAvailableBadge}
-                <a href="car-detail.html?id=${car.id}" class="car-card-title">${car.title}</a>
+                <a href="car-detail.html?id=${car.id}" class="car-card-title" title="${car.title}">${car.title}</a>
                 <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
 
                 <div class="car-spec-grid">
                   <div class="car-spec-item"><i class="bi bi-calendar3"></i><span>${car.year}</span></div>
-                  <div class="car-spec-item"><i class="bi bi-speedometer2"></i><span>${car.mileageDisplay || (car.mileage + ' km')}</span></div>
+                  <div class="car-spec-item"><i class="bi bi-speedometer2"></i><span>${mileageText}</span></div>
                   <div class="car-spec-item"><i class="bi bi-gear"></i><span>${car.transmission}</span></div>
                   <div class="car-spec-item"><i class="bi bi-fuel-pump"></i><span>${car.fuel}</span></div>
                 </div>
 
+                <div class="car-card-footer">
+                  <div class="car-seller-info">
+                    <i class="bi ${isShowroom ? 'bi-building text-teal' : 'bi-person-circle text-muted'}"></i>
+                    <span class="${isShowroom ? 'fw-bold text-teal' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
+                  </div>
+                  <div class="car-location">
+                    <i class="bi bi-geo-alt-fill text-teal"></i>
+                    <span>${car.location}</span>
+                  </div>
+                </div>
+
                 <div class="mt-3 pt-2 d-flex gap-2">
-                  ${isAvailable ? `<a href="car-detail.html?id=${car.id}" class="btn btn-teal btn-sm flex-grow-1 fw-semibold py-2">Xem chi tiết</a>` : `<button class="btn btn-secondary btn-sm flex-grow-1 fw-semibold py-2" disabled>Ngừng bán</button>`}
-                  <button class="btn btn-outline-danger btn-sm px-3" onclick="handleRemoveFavCard('${car.id}')" title="Xóa khỏi yêu thích">
-                    <i class="bi bi-x-lg"></i>
+                  ${isAvailable 
+                    ? `<a href="car-detail.html?id=${car.id}" class="btn btn-teal btn-sm flex-grow-1 fw-bold py-2 text-center">Xem chi tiết <i class="bi bi-arrow-right ms-1"></i></a>` 
+                    : `<button class="btn btn-secondary btn-sm flex-grow-1 fw-semibold py-2" disabled>Đã ngừng bán</button>`}
+                  <button class="btn btn-outline-danger btn-sm px-3 fw-semibold" onclick="handleRemoveFavCard('${car.id}')" title="Bỏ lưu xe này">
+                    <i class="bi bi-trash3"></i>
                   </button>
                 </div>
               </div>
@@ -247,9 +464,28 @@
       }).join('');
     }
 
-    function handleRemoveFavCard(carId) {
-      toggleFavorite(carId);
+    function handleFavSearch() {
       renderFavorites();
+    }
+
+    function handleFavFilterChange() {
+      renderFavorites();
+    }
+
+    function handleRemoveFavCard(carId) {
+      const col = document.getElementById(`fav-col-${carId}`);
+      if (col) {
+        col.style.transition = 'all 0.3s ease';
+        col.style.opacity = '0';
+        col.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          toggleFavorite(carId);
+          renderFavorites();
+        }, 250);
+      } else {
+        toggleFavorite(carId);
+        renderFavorites();
+      }
     }
 
     function handleClearAllFavorites() {
@@ -262,6 +498,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      setFavViewMode(currentFavViewMode);
       renderFavorites();
     });
   </script>
