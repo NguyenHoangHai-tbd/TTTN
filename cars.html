@@ -863,7 +863,10 @@
     function changePage(p) {
       currentPage = p;
       applyFilters();
-      window.scrollTo({ top: 120, behavior: 'smooth' });
+      const catalogEl = document.querySelector('.catalog-control-bar');
+      if (catalogEl) {
+        catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function resetFilters() {
