@@ -1009,13 +1009,13 @@ function createCarCardHTML(car) {
       : `<span class="car-card-badge badge-source-showroom"><i class="bi bi-patch-check-fill me-1"></i>Showroom chính hãng</span>`;
   } else {
     badgeHtml = isNewCar
-      ? `<span class="car-card-badge badge-source-new"><i class="bi bi-stars me-1"></i>Xe mới 100%</span>`
+      ? `<span class="car-card-badge badge-source-new"><i class="bi bi-stars me-1"></i>Xe mới</span>`
       : `<span class="car-card-badge badge-source-external"><i class="bi bi-person-fill me-1"></i>Chính chủ bán</span>`;
   }
 
   const photoCount = (car.images && car.images.length > 0) ? car.images.length : (car.gallery && car.gallery.length > 0 ? car.gallery.length : 6);
   const photoBadgeHtml = `<span class="car-photo-badge"><i class="bi bi-camera"></i> ${photoCount} ảnh</span>`;
-  const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
+  const mileageText = isNewCar ? "Xe mới" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
 
   return `
     <div class="col-lg-4 col-md-6 mb-4 car-grid-item">
