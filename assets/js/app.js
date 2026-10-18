@@ -1030,22 +1030,28 @@ function createCarCardHTML(car) {
         </div>
         <div class="car-card-body">
           <a href="car-detail.html?id=${car.id}" class="car-card-title" title="${car.title}">${car.title}</a>
-          <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
+          
+          <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-1 mb-1.5">
+            <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
+            ${car.price >= 200000000 ? `<span class="small text-muted" style="font-size: 0.75rem;">Trả trước từ: <strong>${Math.round((car.price * 0.3) / 1000000)} tr</strong></span>` : ''}
+          </div>
+
+          ${isShowroom ? `<div class="mb-2"><span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
 
           <div class="car-spec-grid">
-            <div class="car-spec-item">
+            <div class="car-spec-item" title="Năm sản xuất">
               <i class="bi bi-calendar3"></i>
               <span>${car.year}</span>
             </div>
-            <div class="car-spec-item">
+            <div class="car-spec-item" title="Số km đã đi (ODO)">
               <i class="bi bi-speedometer2"></i>
               <span>${mileageText}</span>
             </div>
-            <div class="car-spec-item">
+            <div class="car-spec-item" title="Hộp số">
               <i class="bi bi-gear"></i>
               <span>${car.transmission}</span>
             </div>
-            <div class="car-spec-item">
+            <div class="car-spec-item" title="Nhiên liệu">
               <i class="bi bi-fuel-pump"></i>
               <span>${car.fuel}</span>
             </div>
@@ -1056,15 +1062,18 @@ function createCarCardHTML(car) {
               <i class="bi ${isShowroom ? 'bi-building text-teal' : 'bi-person-circle text-muted'}"></i>
               <span class="${isShowroom ? 'fw-bold text-teal' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
             </div>
-            <div class="car-location">
+            <div class="car-location" title="Khu vực xem xe">
               <i class="bi bi-geo-alt-fill text-teal"></i>
               <span>${car.location}</span>
             </div>
           </div>
 
-          <div class="mt-3 pt-2">
-            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm w-100 fw-semibold rounded-2 py-2">
-              Xem chi tiết <i class="bi bi-arrow-right ms-1"></i>
+          <div class="mt-2.5 pt-2 border-top d-flex align-items-center gap-2">
+            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
+              Xem xe & Ước tính vay <i class="bi bi-chevron-right ms-0.5" style="font-size: 0.7rem;"></i>
+            </a>
+            <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-teal btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
+              <i class="bi bi-telephone-fill"></i>
             </a>
           </div>
         </div>

@@ -142,6 +142,131 @@
     </div>
   </div>
 
+  <!-- Modal Đặt Lịch Lái Thử Showroom -->
+  <div class="modal fade" id="testDriveModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-teal-subtle text-teal p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="bi bi-calendar2-check-fill fs-5"></i>
+            </div>
+            <div>
+              <h5 class="modal-title fw-bold mb-0 text-dark">Đặt lịch lái thử xe tại Showroom</h5>
+              <span class="text-muted small" id="testdrive-car-title">Xe ô tô</span>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-3">
+          <form id="testdrive-form" onsubmit="handleTestDriveSubmit(event)">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Họ và tên của bạn <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="testdrive-name" placeholder="Ví dụ: Nguyễn Văn An" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Số điện thoại liên hệ <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="testdrive-phone" placeholder="Ví dụ: 0912 345 678" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-sm-6">
+                <label class="form-label small fw-bold">Ngày dự kiến lái thử <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="testdrive-date" required>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label small fw-bold">Khung giờ <span class="text-danger">*</span></label>
+                <select class="form-select" id="testdrive-slot" required>
+                  <option value="Sáng (08:30 - 11:30)">Buổi sáng (08:30 - 11:30)</option>
+                  <option value="Chiều (14:00 - 17:30)" selected>Buổi chiều (14:00 - 17:30)</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Địa điểm Showroom trải nghiệm</label>
+              <select class="form-select" id="testdrive-showroom">
+                <option value="Flagship Showroom Nha Trang" selected>Flagship Showroom Nha Trang (Đường Trần Phú)</option>
+                <option value="Trung Tâm Kỹ Thuật Hà Nội">Trung Tâm Kỹ Thuật Hà Nội (Q. Nam Từ Liêm)</option>
+                <option value="Hub Chuyển Giao TP.HCM">Hub Chuyển Giao TP.HCM (KĐT Sala)</option>
+              </select>
+            </div>
+            <div class="p-2.5 rounded-3 bg-light border small text-muted mb-3">
+              <i class="bi bi-shield-check text-teal me-1"></i> Showroom sẽ rửa xe sạch sẽ, nạp đủ nhiên liệu và có chuyên viên kỹ thuật hướng dẫn bạn lái thử trải nghiệm thực tế.
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-teal py-2.5 fw-bold">
+                <i class="bi bi-calendar-check me-1"></i> Xác nhận đặt lịch lái thử
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Đăng Ký Tư Vấn Gói Vay Ngân Hàng -->
+  <div class="modal fade" id="loanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle bg-teal-subtle text-teal p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="bi bi-bank2 fs-5"></i>
+            </div>
+            <div>
+              <h5 class="modal-title fw-bold mb-0 text-dark">Đăng ký tư vấn gói vay ngân hàng</h5>
+              <span class="text-muted small">Lãi suất ưu đãi từ các ngân hàng đối tác liên kết</span>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-3">
+          <div class="p-2.5 rounded-3 bg-teal-subtle text-teal border border-teal-subtle small mb-3" id="loan-modal-summary">
+            Đang tính toán gói vay...
+          </div>
+          <form id="loan-form" onsubmit="handleLoanConsultSubmit(event)">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Họ và tên của bạn <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="loan-name" placeholder="Ví dụ: Trần Quốc Hưng" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Số điện thoại liên hệ <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="loan-phone" placeholder="Ví dụ: 0988 765 432" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-sm-6">
+                <label class="form-label small fw-bold">Ngân hàng ưu tiên</label>
+                <select class="form-select" id="loan-bank">
+                  <option value="Vietcombank" selected>Vietcombank (Từ 7.5%/năm)</option>
+                  <option value="BIDV">BIDV (Từ 7.8%/năm)</option>
+                  <option value="Techcombank">Techcombank (Từ 8.2%/năm)</option>
+                  <option value="VPBank">VPBank (Duyệt nhanh 4 giờ)</option>
+                  <option value="VIB">VIB (Hỗ trợ vay 80%)</option>
+                  <option value="Showroom chọn giúp">Nhờ Showroom so sánh chọn gói tốt nhất</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label small fw-bold">Mức thu nhập hàng tháng</label>
+                <select class="form-select" id="loan-income">
+                  <option value="under15">Dưới 15 triệu/tháng</option>
+                  <option value="15-30" selected>Từ 15 - 30 triệu/tháng</option>
+                  <option value="over30">Trên 30 triệu/tháng</option>
+                </select>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-3 bg-light border small text-muted mb-3">
+              <i class="bi bi-shield-check text-teal me-1"></i> Hồ sơ vay được xử lý trực tiếp bởi phòng tín dụng ngân hàng đối tác. Miễn phí thẩm định, không thu phí trung gian.
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-teal py-2.5 fw-bold">
+                <i class="bi bi-send-check me-1"></i> Gửi thông tin - Nhận kết quả duyệt sơ bộ
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer-custom">
     <div class="container">
@@ -282,18 +407,26 @@
               </div>
               <p class="small text-muted mb-3"><i class="bi bi-geo-alt-fill text-teal me-1"></i> <span id="seller-address">${car.sellerAddress || car.location}</span></p>
               
-              <div class="d-grid gap-2">
-                <button class="btn-cta-orange py-3 fw-bold" onclick="triggerCallDemo()">
+              <div class="d-grid gap-2 mb-3">
+                <button class="btn-cta-orange py-2.5 fw-bold" onclick="triggerCallDemo()">
                   <i class="bi bi-telephone-fill me-2"></i> <span id="seller-btn-phone">${car.sellerPhone || '0901 202 626'} (Hotline Showroom)</span>
                 </button>
+                <button class="btn btn-teal py-2.5 fw-bold" onclick="openTestDriveModal()">
+                  <i class="bi bi-calendar-check me-2"></i> Đặt lịch lái thử tại Showroom
+                </button>
                 <button class="btn btn-outline-teal py-2" onclick="triggerZaloDemo()">
-                  <i class="bi bi-chat-dots-fill me-1"></i> Liên hệ tư vấn Showroom
+                  <i class="bi bi-chat-dots-fill me-1"></i> Chat Zalo trực tiếp với Showroom
                 </button>
               </div>
 
-              <div class="p-3 bg-light rounded-3 small text-muted mt-3 border">
+              <div class="p-3 bg-light rounded-3 small text-muted border">
                 <div class="fw-bold text-dark mb-1"><i class="bi bi-shield-check text-teal me-1"></i> Cam kết Showroom:</div>
-                Xe được Showroom kiểm định 176 hạng mục kỹ thuật, pháp lý minh bạch, hỗ trợ sang tên và hỗ trợ vay mua trả góp ngân hàng.
+                <ul class="list-unstyled mb-0 ps-1">
+                  <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Kiểm định 176 hạng mục kỹ thuật khép kín</li>
+                  <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Bảo hành đến 12 tháng / 20.000 km</li>
+                  <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Hỗ trợ vay ngân hàng đến 80% giá trị xe</li>
+                  <li class="mb-0"><i class="bi bi-check2 text-success me-1"></i> Hoàn tiền 100% nếu phát hiện đâm đụng, thủy kích</li>
+                </ul>
               </div>
             </div>
           `;
@@ -302,7 +435,7 @@
             <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
                 <h5 class="fw-bold mb-0 text-dark">Người bán cá nhân</h5>
-                <span class="badge bg-secondary text-white px-2 py-1"><i class="bi bi-person-fill me-1"></i>Tin đăng bên ngoài</span>
+                <span class="badge bg-secondary text-white px-2 py-1"><i class="bi bi-person-fill me-1"></i>Tin đăng đã duyệt</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
                 <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center fw-bold fs-4" style="width: 56px; height: 56px;">
@@ -310,29 +443,32 @@
                 </div>
                 <div>
                   <h6 class="fw-bold mb-1" id="seller-name">${car.sellerName || 'Người bán ký gửi'}</h6>
-                  <span class="badge bg-light text-dark border"><i class="bi bi-person me-1"></i>Xe ký gửi / Môi giới (Đã duyệt)</span>
+                  <span class="badge bg-light text-dark border"><i class="bi bi-check-circle-fill text-success me-1"></i>Số điện thoại chính chủ đã xác thực</span>
                 </div>
               </div>
               <p class="small text-muted mb-3"><i class="bi bi-geo-alt-fill text-teal me-1"></i> <span id="seller-address">${car.sellerAddress || car.location}</span></p>
               
-              <div class="d-grid gap-2">
-                <button class="btn-cta-orange py-3 fw-bold" onclick="triggerCallDemo()">
+              <div class="d-grid gap-2 mb-3">
+                <button class="btn-cta-orange py-2.5 fw-bold" onclick="triggerCallDemo()">
                   <i class="bi bi-telephone-fill me-2"></i> <span id="seller-btn-phone">${car.sellerPhone} (Liên hệ người bán)</span>
                 </button>
                 <button class="btn btn-outline-teal py-2" onclick="triggerZaloDemo()">
-                  <i class="bi bi-chat-dots-fill me-1"></i> Nhắn tin trao đổi
+                  <i class="bi bi-chat-dots-fill me-1"></i> Nhắn tin trao đổi qua Zalo
                 </button>
+                <button class="btn btn-outline-secondary btn-sm py-1.5" onclick="openTestDriveModal()">
+                  <i class="bi bi-geo-alt me-1"></i> Đặt hẹn xem xe & thẩm định
+                </button>
+              </div>
+
+              <div class="p-3 bg-light rounded-3 small text-muted border">
+                <div class="fw-semibold text-dark mb-1"><i class="bi bi-shield-exclamation text-warning me-1"></i> Lưu ý giao dịch an toàn:</div>
+                Khách hàng nên gặp trực tiếp kiểm tra xe và có thể yêu cầu mang xe qua Showroom OtoMarket để kiểm định 176 hạng mục trên cầu nâng trước khi đặt cọc.
               </div>
 
               <div class="mt-3 text-center">
                 <button class="btn btn-link text-danger btn-sm text-decoration-none small" onclick="openReportModal()">
-                  <i class="bi bi-flag me-1"></i> Báo cáo tin vi phạm
+                  <i class="bi bi-flag me-1"></i> Báo cáo tin có dấu hiệu vi phạm
                 </button>
-              </div>
-
-              <div class="p-3 bg-light rounded-3 small text-muted mt-3">
-                <div class="fw-semibold text-dark mb-1"><i class="bi bi-info-circle-fill text-warning me-1"></i> Lưu ý xe ký gửi / môi giới:</div>
-                Đây là tin đăng từ người bán bên ngoài đã qua xét duyệt thông tin. OtoMarket kết nối thông tin; người mua tự thỏa thuận và kiểm tra xe thực tế trước khi giao dịch.
               </div>
             </div>
           `;
@@ -347,6 +483,232 @@
           </div>
         `;
       }
+
+      // Khối kiểm định 176 hạng mục kỹ thuật Showroom
+      const inspectionSectionHtml = `
+        <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm" id="inspection-section">
+          <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-3 p-2 bg-teal-subtle text-teal">
+                <i class="bi bi-shield-check fs-5"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0 text-dark">Bảng kiểm định chất lượng 176 hạng mục</h5>
+                <span class="text-muted small">Quy trình thẩm định kỹ thuật Showroom độc quyền của OtoMarket</span>
+              </div>
+            </div>
+            <span class="badge bg-success-subtle text-success border border-success px-2.5 py-1.5 rounded-pill">
+              <i class="bi bi-check-circle-fill me-1"></i>Đạt chuẩn 100%
+            </span>
+          </div>
+
+          <p class="small text-secondary mb-3">
+            Tất cả xe được OtoMarket niêm yết đều trải qua quy trình kiểm tra 5 trụ cột khép kín bởi kỹ thuật viên kinh nghiệm:
+          </p>
+
+          <div class="row g-3">
+            <!-- Nhóm 1: Khung gầm & Thân vỏ -->
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 border bg-light h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h6 class="fw-bold text-dark mb-0"><i class="bi bi-car-front-fill text-teal me-2"></i>1. Khung gầm & Thân vỏ</h6>
+                  <span class="badge bg-white text-teal border small">48 hạng mục</span>
+                </div>
+                <ul class="list-unstyled small text-secondary mb-0 ps-1">
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Keo chỉ zin 100%, không mất keo chỉ cánh cửa/cốp</li>
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Khung chassis, cột A-B-C nguyên bản không nắn chỉnh</li>
+                  <li class="mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Không đâm đụng ảnh hưởng kết cấu chịu lực</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Nhóm 2: Động cơ & Hộp số -->
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 border bg-light h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h6 class="fw-bold text-dark mb-0"><i class="bi bi-gear-wide-connected text-teal me-2"></i>2. Động cơ & Hộp số</h6>
+                  <span class="badge bg-white text-teal border small">42 hạng mục</span>
+                </div>
+                <ul class="list-unstyled small text-secondary mb-0 ps-1">
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Động cơ nguyên bản, chưa rã máy, chưa đại tu</li>
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Cam kết tuyệt đối không thủy kích, không ngập nước</li>
+                  <li class="mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Hộp số chuyển số êm mượt, không rung giật hoặc rò rỉ</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Nhóm 3: Hệ thống phanh, lái & an toàn -->
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 border bg-light h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h6 class="fw-bold text-dark mb-0"><i class="bi bi-shield-shaded text-teal me-2"></i>3. Phanh, Lái & Hệ thống an toàn</h6>
+                  <span class="badge bg-white text-teal border small">32 hạng mục</span>
+                </div>
+                <ul class="list-unstyled small text-secondary mb-0 ps-1">
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Túi khí an toàn (Airbags) nguyên bản, hoạt động chuẩn xác</li>
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Phanh ABS, cân bằng điện tử ESP/VSC đạt kiểm định</li>
+                  <li class="mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Hệ thống giảm xóc, thước lái và rô-tuyn cân bằng tốt</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Nhóm 4: Điện, Điều hòa & Tiện nghi -->
+            <div class="col-md-6">
+              <div class="p-3 rounded-3 border bg-light h-100">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h6 class="fw-bold text-dark mb-0"><i class="bi bi-lightning-charge-fill text-teal me-2"></i>4. Điện tử & Tiện nghi nội thất</h6>
+                  <span class="badge bg-white text-teal border small">34 hạng mục</span>
+                </div>
+                <ul class="list-unstyled small text-secondary mb-0 ps-1">
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Quét máy chẩn đoán OBD-II: 0 mã lỗi hệ thống điều khiển</li>
+                  <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Điều hòa làm mát sâu, quạt gió và dàn sưởi hoạt động chuẩn</li>
+                  <li class="mb-0"><i class="bi bi-check2-circle text-success me-1"></i> Màn hình trung tâm, camera, cảm biến quanh xe hoạt động tốt</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Nhóm 5: Pháp lý & Phạt nguội -->
+            <div class="col-12">
+              <div class="p-3 rounded-3 border bg-light">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h6 class="fw-bold text-dark mb-0"><i class="bi bi-file-earmark-lock2-fill text-teal me-2"></i>5. Pháp lý minh bạch, ODO thật & Phạt nguội</h6>
+                  <span class="badge bg-white text-teal border small">20 hạng mục</span>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-3 g-2 small text-secondary">
+                  <div><i class="bi bi-check2-circle text-success me-1"></i> Hồ sơ gốc hợp lệ, hỗ trợ rút hồ sơ & sang tên toàn quốc</div>
+                  <div><i class="bi bi-check2-circle text-success me-1"></i> Không tranh chấp dân sự, không thế chấp xấu ngân hàng</div>
+                  <div><i class="bi bi-check2-circle text-success me-1"></i> Đã tra cứu dữ liệu CSGT: 0 lỗi phạt nguội tồn đọng</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cam kết bồi hoàn văn bản -->
+          <div class="p-3 rounded-3 bg-teal-subtle border border-teal mt-3 d-flex align-items-center gap-3">
+            <i class="bi bi-award-fill text-teal fs-2 flex-shrink-0"></i>
+            <div class="small">
+              <strong class="text-dark">Cam kết bảo đảm bằng văn bản Showroom:</strong>
+              <span class="text-secondary d-block">Nếu phát hiện xe có tai nạn đâm đụng khung gầm hoặc thủy kích ngập nước trong 7 ngày, Showroom nhận lại xe và hoàn trả 100% chi phí.</span>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Khối Bảng dự toán vay trả góp ngân hàng (Loan / EMI Calculator)
+      const loanCalculatorHtml = `
+        <div class="bg-white p-4 rounded-4 border mb-4 shadow-sm" id="loan-calculator-section">
+          <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-3 p-2 bg-teal-subtle text-teal">
+                <i class="bi bi-calculator-fill fs-5"></i>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-0 text-dark">Dự toán vay trả góp ngân hàng</h5>
+                <span class="text-muted small">Ước tính hạn mức vay và số tiền gốc + lãi trả hàng tháng</span>
+              </div>
+            </div>
+            <span class="badge bg-teal-subtle text-teal border border-teal px-2.5 py-1.5 rounded-pill">
+              <i class="bi bi-bank2 me-1"></i>Hỗ trợ vay đến 80%
+            </span>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label small fw-bold text-dark d-flex justify-content-between">
+                  <span>Giá trị xe</span>
+                  <span class="text-orange fw-bold" id="calc-car-price-display">${car.priceDisplay || formatCurrency(car.price)}</span>
+                </label>
+                <input type="text" class="form-control bg-light fw-bold text-dark" id="calc-car-price-input" readonly value="${car.price ? car.price.toLocaleString('vi-VN') + ' đ' : ''}">
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label small fw-bold text-dark mb-0">Tỷ lệ trả trước (Vốn tự có)</label>
+                  <span class="badge bg-teal text-white" id="calc-downpayment-pct-badge">30%</span>
+                </div>
+                <div class="btn-group w-100 mb-2" role="group">
+                  <input type="radio" class="btn-check" name="downPaymentOption" id="dp20" value="20" onchange="updateLoanCalculation()">
+                  <label class="btn btn-outline-secondary btn-sm" for="dp20">20%</label>
+
+                  <input type="radio" class="btn-check" name="downPaymentOption" id="dp30" value="30" checked onchange="updateLoanCalculation()">
+                  <label class="btn btn-outline-secondary btn-sm" for="dp30">30% (Khuyên dùng)</label>
+
+                  <input type="radio" class="btn-check" name="downPaymentOption" id="dp50" value="50" onchange="updateLoanCalculation()">
+                  <label class="btn btn-outline-secondary btn-sm" for="dp50">50%</label>
+
+                  <input type="radio" class="btn-check" name="downPaymentOption" id="dp70" value="70" onchange="updateLoanCalculation()">
+                  <label class="btn btn-outline-secondary btn-sm" for="dp70">70%</label>
+                </div>
+                <div class="d-flex justify-content-between text-muted small">
+                  <span>Vốn chuẩn bị trước:</span>
+                  <strong class="text-dark" id="calc-downpayment-amount">0 đ</strong>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label small fw-bold text-dark mb-0">Thời hạn vay</label>
+                  <span class="badge bg-secondary text-white" id="calc-loan-term-badge">60 tháng (5 năm)</span>
+                </div>
+                <select class="form-select form-select-sm" id="calc-loan-term" onchange="updateLoanCalculation()">
+                  <option value="12">12 tháng (1 năm)</option>
+                  <option value="24">24 tháng (2 năm)</option>
+                  <option value="36">36 tháng (3 năm)</option>
+                  <option value="48">48 tháng (4 năm)</option>
+                  <option value="60" selected>60 tháng (5 năm) - Phổ biến nhất</option>
+                  <option value="72">72 tháng (6 năm)</option>
+                  <option value="84">84 tháng (7 năm) - Tối đa</option>
+                </select>
+              </div>
+
+              <div class="mb-2">
+                <div class="d-flex justify-content-between text-muted small">
+                  <span>Lãi suất ưu đãi tham khảo:</span>
+                  <span class="text-success fw-bold">8.5% / năm (Cố định năm đầu)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3 rounded-4 bg-light border h-100 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="text-muted small mb-1">Ước tính trả góp tháng đầu (Gốc + Lãi)</div>
+                  <div class="h3 fw-extrabold text-orange mb-3" id="calc-monthly-payment" style="color: var(--orange-color); font-weight: 800;">
+                    0 đ / tháng
+                  </div>
+
+                  <div class="border-top pt-2">
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                      <span>Số tiền ngân hàng cho vay:</span>
+                      <strong class="text-dark" id="calc-loan-amount">0 đ</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                      <span>Tiền gốc hàng tháng:</span>
+                      <strong class="text-dark" id="calc-monthly-principal">0 đ</strong>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted mb-2">
+                      <span>Tiền lãi tháng đầu:</span>
+                      <strong class="text-dark" id="calc-monthly-interest">0 đ</strong>
+                    </div>
+                  </div>
+
+                  <div class="p-2 rounded-2 bg-white border mt-3 small text-secondary">
+                    <i class="bi bi-info-circle-fill text-teal me-1"></i>
+                    <span>Tính theo phương thức dư nợ giảm dần. Tiền lãi các tháng sau sẽ giảm dần theo số nợ gốc đã trả.</span>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <button class="btn btn-teal w-100 fw-bold py-2 shadow-sm" onclick="openLoanConsultModal()">
+                    <i class="bi bi-file-earmark-check-fill me-1"></i> Nhận tư vấn gói vay ngân hàng
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
 
       wrapper.innerHTML = `
         ${bannerHtml}
@@ -430,15 +792,6 @@
                 </div>
               </div>
 
-              <!-- Mô tả chi tiết & Tuyên bố kiểm duyệt -->
-              <div class="bg-white p-4 rounded-4 border mb-4">
-                <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">Mô tả chi tiết & Tuyên bố</h5>
-                <div class="p-3 bg-light rounded-3 border mb-3 small text-secondary">
-                  <i class="bi bi-info-circle-fill text-teal me-1"></i> <strong>Lưu ý:</strong> ${OTOMARKET_DISCLAIMER}
-                </div>
-                <p class="text-secondary" style="white-space: pre-line;" id="detail-description">${car.description || 'Không có mô tả chi tiết.'}</p>
-              </div>
-
               <!-- Thông số kỹ thuật -->
               <div class="bg-white p-4 rounded-4 border mb-4">
                 <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">Thông số kỹ thuật chi tiết</h5>
@@ -469,6 +822,21 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Tiêu chuẩn kiểm định 176 hạng mục Showroom -->
+              ${inspectionSectionHtml}
+
+              <!-- Bảng dự toán vay trả góp ngân hàng -->
+              ${loanCalculatorHtml}
+
+              <!-- Mô tả chi tiết & Tuyên bố kiểm duyệt -->
+              <div class="bg-white p-4 rounded-4 border mb-4">
+                <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">Mô tả chi tiết & Tuyên bố</h5>
+                <div class="p-3 bg-light rounded-3 border mb-3 small text-secondary">
+                  <i class="bi bi-info-circle-fill text-teal me-1"></i> <strong>Lưu ý:</strong> ${OTOMARKET_DISCLAIMER}
+                </div>
+                <p class="text-secondary" style="white-space: pre-line;" id="detail-description">${car.description || 'Không có mô tả chi tiết.'}</p>
+              </div>
             </div>
 
             <!-- Cột phải: Người bán -->
@@ -482,6 +850,7 @@
       const bcEl = document.getElementById('breadcrumb-car-title');
       if (bcEl) bcEl.textContent = car.title;
       updateDetailFavUI();
+      initLoanCalculator(car);
     }
 
     function renderNotFound(wrapper) {
@@ -545,7 +914,11 @@
     }
 
     function triggerZaloDemo() {
-      showToast("Đang mở ứng dụng chat với người bán...", "info");
+      if (!currentCar) return;
+      const cleanPhone = (currentCar.sellerPhone || '0901202626').replace(/\D/g, '');
+      const zaloUrl = `https://zalo.me/${cleanPhone}`;
+      showToast(`Đang kết nối Zalo với ${currentCar.sellerName} (${currentCar.sellerPhone})...`, "info");
+      window.open(zaloUrl, '_blank');
     }
 
     function shareCarListing() {
@@ -558,6 +931,141 @@
         navigator.clipboard.writeText(window.location.href);
         showToast("Đã sao chép liên kết tin đăng!", "success");
       }
+    }
+
+    /* ==========================================================================
+       Hàm tính toán dự toán vay trả góp ngân hàng (Loan / EMI Calculator)
+       ========================================================================== */
+    function formatVND(num) {
+      if (isNaN(num)) return "0 đ";
+      return `${Math.round(num).toLocaleString('vi-VN')} đ`;
+    }
+
+    function initLoanCalculator(car) {
+      if (!car || !car.price) return;
+      const priceInput = document.getElementById('calc-car-price-input');
+      const priceDisplay = document.getElementById('calc-car-price-display');
+      if (priceInput) priceInput.value = `${car.price.toLocaleString('vi-VN')} đ (${car.priceDisplay || formatCurrency(car.price)})`;
+      if (priceDisplay) priceDisplay.textContent = car.priceDisplay || formatCurrency(car.price);
+      updateLoanCalculation();
+    }
+
+    function updateLoanCalculation() {
+      if (!currentCar || !currentCar.price) return;
+      const price = currentCar.price;
+
+      // Tỷ lệ trả trước được chọn
+      const selectedDp = document.querySelector('input[name="downPaymentOption"]:checked');
+      const dpPct = selectedDp ? parseInt(selectedDp.value, 10) : 30;
+
+      // Thời hạn vay (tháng)
+      const termSelect = document.getElementById('calc-loan-term');
+      const termMonths = termSelect ? parseInt(termSelect.value, 10) : 60;
+
+      // Lãi suất năm tham khảo cố định năm đầu (~8.5%/năm)
+      const annualRate = 0.085;
+      const monthlyRate = annualRate / 12;
+
+      // Tiền trả trước & Tiền vay ngân hàng
+      const downPayment = Math.round(price * (dpPct / 100));
+      const loanAmount = price - downPayment;
+
+      // Gốc hàng tháng & Lãi tháng đầu
+      const monthlyPrincipal = Math.round(loanAmount / termMonths);
+      const monthlyInterest = Math.round(loanAmount * monthlyRate);
+      const firstMonthPayment = monthlyPrincipal + monthlyInterest;
+
+      // Cập nhật DOM
+      const badgePct = document.getElementById('calc-downpayment-pct-badge');
+      if (badgePct) badgePct.textContent = `${dpPct}%`;
+
+      const dpAmountEl = document.getElementById('calc-downpayment-amount');
+      if (dpAmountEl) dpAmountEl.textContent = formatVND(downPayment);
+
+      const termBadge = document.getElementById('calc-loan-term-badge');
+      if (termBadge) {
+        const years = (termMonths / 12).toFixed(termMonths % 12 === 0 ? 0 : 1);
+        termBadge.textContent = `${termMonths} tháng (${years} năm)`;
+      }
+
+      const loanAmountEl = document.getElementById('calc-loan-amount');
+      if (loanAmountEl) loanAmountEl.textContent = formatVND(loanAmount);
+
+      const principalEl = document.getElementById('calc-monthly-principal');
+      if (principalEl) principalEl.textContent = formatVND(monthlyPrincipal);
+
+      const interestEl = document.getElementById('calc-monthly-interest');
+      if (interestEl) interestEl.textContent = formatVND(monthlyInterest);
+
+      const monthlyPaymentEl = document.getElementById('calc-monthly-payment');
+      if (monthlyPaymentEl) monthlyPaymentEl.textContent = `${formatVND(firstMonthPayment)} / tháng`;
+    }
+
+    function openLoanConsultModal() {
+      if (!currentCar) return;
+      const loanSummary = document.getElementById('loan-modal-summary');
+      if (loanSummary) {
+        const selectedDp = document.querySelector('input[name="downPaymentOption"]:checked');
+        const dpPct = selectedDp ? selectedDp.value : '30';
+        const termSelect = document.getElementById('calc-loan-term');
+        const termMonths = termSelect ? termSelect.value : '60';
+        loanSummary.innerHTML = `<i class="bi bi-info-circle me-1"></i> Xe: <strong>${currentCar.title}</strong> • Trả trước: <strong>${dpPct}%</strong> • Thời hạn: <strong>${termMonths} tháng</strong>`;
+      }
+      const modal = new bootstrap.Modal(document.getElementById('loanModal'));
+      modal.show();
+    }
+
+    function handleLoanConsultSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('loan-name').value.trim();
+      const phone = document.getElementById('loan-phone').value.trim();
+      const bank = document.getElementById('loan-bank').value;
+      if (!name || !phone) {
+        showToast("Vui lòng nhập họ tên và số điện thoại", "warning");
+        return;
+      }
+      showToast(`Đã gửi yêu cầu tư vấn gói vay ngân hàng cho xe ${currentCar ? currentCar.title : ''}. Chuyên viên ngân hàng sẽ liên hệ số ${phone} trong 15 phút!`, "success");
+      bootstrap.Modal.getInstance(document.getElementById('loanModal')).hide();
+      document.getElementById('loan-form').reset();
+    }
+
+    /* ==========================================================================
+       Hàm Đặt Lịch Lái Thử Tại Showroom
+       ========================================================================== */
+    function openTestDriveModal() {
+      if (!currentCar) return;
+      const carTitleEl = document.getElementById('testdrive-car-title');
+      if (carTitleEl) carTitleEl.textContent = currentCar.title;
+
+      // Đặt ngày lái thử mặc định là ngày mai
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dateStr = tomorrow.toISOString().split('T')[0];
+      const dateInput = document.getElementById('testdrive-date');
+      if (dateInput) {
+        dateInput.value = dateStr;
+        dateInput.min = new Date().toISOString().split('T')[0];
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('testDriveModal'));
+      modal.show();
+    }
+
+    function handleTestDriveSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('testdrive-name').value.trim();
+      const phone = document.getElementById('testdrive-phone').value.trim();
+      const date = document.getElementById('testdrive-date').value;
+      const timeSlot = document.getElementById('testdrive-slot').value;
+      const showroom = document.getElementById('testdrive-showroom').value;
+      if (!name || !phone || !date) {
+        showToast("Vui lòng điền đầy đủ họ tên, số điện thoại và ngày muốn lái thử", "warning");
+        return;
+      }
+
+      showToast(`Đặt lịch lái thử xe ${currentCar ? currentCar.title : ''} thành công ngày ${date} (${timeSlot}) tại ${showroom}. Showroom sẽ chuẩn bị xe chu đáo đón bạn!`, "success");
+      bootstrap.Modal.getInstance(document.getElementById('testDriveModal')).hide();
+      document.getElementById('testdrive-form').reset();
     }
 
     function openReportModal() {

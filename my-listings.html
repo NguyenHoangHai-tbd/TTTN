@@ -480,13 +480,6 @@
       const container = document.getElementById('listings-list-container');
       const emptyState = document.getElementById('listings-empty-state');
 
-      // Cập nhật số lượng trên các tab trạng thái
-      const countAll = listings.length;
-      const countActive = listings.filter(c => c.status === 'active').length;
-      const countPending = listings.filter(c => c.status === 'pending').length;
-      const countRejected = listings.filter(c => c.status === 'rejected').length;
-      const countDraft = listings.filter(c => c.status === 'draft').length;
-      const countHidden = listings.filter(c => c.status === 'hidden').length;
       // Cập nhật số lượng trên các tab chuẩn 5 trạng thái
       const countAll = listings.length;
       const countDraft = listings.filter(c => c.status === 'draft').length;
@@ -571,9 +564,9 @@
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
               <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Bản nháp</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>2. Chờ duyệt</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="badge bg-success text-white px-2 py-0.5"><i class="bi bi-broadcast me-1"></i>3. Đang hiển thị</span>
             </div>
           `;
@@ -582,9 +575,9 @@
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
               <span class="text-success fw-bold"><i class="bi bi-check2-circle me-1"></i>1. Bản nháp</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="badge bg-warning text-dark px-2 py-0.5"><i class="bi bi-search me-1"></i>2. Chờ duyệt (Showroom đang thẩm định)</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-muted"><i class="bi bi-circle me-1"></i>3. Đang hiển thị</span>
             </div>
           `;
@@ -593,9 +586,9 @@
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
               <span class="text-muted">1. Bản nháp</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-muted">2. Chờ duyệt</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i>3. Bị từ chối</span>
             </div>
           `;
@@ -604,9 +597,9 @@
             <div class="status-stepper">
               <span class="text-muted fw-bold me-1">Tiến trình tin:</span>
               <span class="text-primary fw-bold"><i class="bi bi-pencil-fill me-1"></i>1. Bản nháp</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-muted">2. Chờ duyệt</span>
-              <span class="text-muted">➔</span>
+              <i class="bi bi-chevron-right text-muted mx-1" style="font-size: 0.72rem;"></i>
               <span class="text-muted">3. Đang hiển thị</span>
             </div>
           `;
