@@ -28,32 +28,12 @@
 <body>
 
   <!-- ========================================================================
-       1. Top Live Ticker Bar
-       ======================================================================== -->
-  <div class="top-live-ticker-bar">
-    <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <div class="d-flex align-items-center gap-2 small">
-        <span class="live-pill-red"><i class="bi bi-broadcast"></i> LIVESTREAM</span>
-        <span class="text-white">Trực tiếp 15:30: Lên sóng "Đoàn xe SUV lướt 2022 - 2024 giảm đến 55 triệu"</span>
-        <a href="#livestream-section" class="text-warning text-decoration-none fw-bold ms-1">Xem ngay &rarr;</a>
-      </div>
-      <div class="d-none d-md-flex align-items-center gap-3 small text-secondary">
-        <span><i class="bi bi-shield-check text-teal me-1"></i>Trạm kiểm định OtoMarket Showroom Nha Trang: <strong class="text-white">Sẵn sàng phục vụ</strong></span>
-        <span class="border-start border-secondary ps-3"><i class="bi bi-telephone-fill text-teal me-1"></i>Hotline: <strong class="text-white">1900 6868</strong> (Miễn phí)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       2. White Navbar (Phong cách Stitch tinh tế)
+       1. White Navbar (Phong cách Stitch tinh tế & Tối giản)
        ======================================================================== -->
   <nav class="navbar navbar-expand-lg navbar-stitch-white">
     <div class="container-fluid px-3 px-xl-5">
-      <a class="d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+      <a class="d-flex align-items-center text-decoration-none" href="index.html">
         <img src="assets/images/logo.png" alt="OtoMarket" style="height: 38px;">
-        <span class="d-none d-sm-block text-muted small fw-semibold border-start ps-2 ms-1" style="font-size: 0.72rem; line-height: 1.1;">
-          SÀN XE LƯỚT<br><strong class="text-danger">CHÍNH HÃNG</strong>
-        </span>
       </a>
 
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
@@ -66,33 +46,22 @@
             <a class="nav-link-stitch active" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link-stitch" href="cars.html">Kho xe</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link-stitch" href="#flash-sale-section">
-              <i class="bi bi-fire text-danger"></i>Săn Flash Deals
+              Săn Flash Deals <span class="badge bg-danger rounded-pill ms-1" style="font-size: 0.65rem;">HOT</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-stitch" href="#livestream-section">
-              <i class="bi bi-camera-reels text-teal"></i>Livestream Thẩm Định
-            </a>
+            <a class="nav-link-stitch" href="#livestream-section">Livestream Thẩm Định</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-stitch" href="cars.html">
-              <i class="bi bi-car-front"></i>Kho xe
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-stitch" href="post-car.html">
-              <i class="bi bi-tag"></i>Đăng bán
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-stitch" href="about.html">
-              <i class="bi bi-info-circle"></i>Giới thiệu
-            </a>
+            <a class="nav-link-stitch" href="about.html">Giới thiệu</a>
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
             <a class="nav-link-stitch text-danger fw-bold" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-              <i class="bi bi-shield-check text-teal"></i>Duyệt tin Showroom
+              Duyệt tin Showroom
               <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
             </a>
           </li>
@@ -288,9 +257,9 @@
           <h2 class="h3 fw-bold text-dark mb-1">Livestream Trực Tiếp & Video Ngắn (TikTok / Reels)</h2>
           <p class="text-muted small mb-0">Xem thợ test tiếng nổ máy, soi gầm xe chống thủy kích, nghe chuyên gia giải đáp thắc mắc 1:1.</p>
         </div>
-        <a href="#livestream-section" class="btn btn-outline-danger btn-sm fw-bold px-3 py-1.5" onclick="showToast('Hiện có 3 phòng Livestream đang mở tại Showroom Nha Trang & TP.HCM!', 'info')">
-          <i class="bi bi-broadcast me-1"></i> Phòng Live Đang Mở (3) &rarr;
-        </a>
+        <span class="badge bg-danger-subtle text-danger fw-bold px-3 py-2 border border-danger-subtle rounded-pill">
+          <i class="bi bi-broadcast me-1"></i> 3 Phòng Live Đang Mở
+        </span>
       </div>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
@@ -306,9 +275,6 @@
               <div class="reel-play-btn"><i class="bi bi-play-fill"></i></div>
               <div>
                 <div class="small fw-bold text-white mb-1 lh-sm">Trực tiếp lái thử Tucson: Test máy số & gầm bệ tại đường Trần Phú</div>
-                <button class="btn btn-danger btn-sm w-100 py-1 fw-bold mt-2" style="font-size: 0.75rem;">
-                  <i class="bi bi-broadcast me-1"></i> Vào Xem Live & Đặt câu hỏi
-                </button>
               </div>
             </div>
           </div>
@@ -414,233 +380,7 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       7. Section: Top Salon Uy Tín & Bảo Hành Minh Bạch Nhất
-       ======================================================================== -->
-  <section class="py-5 bg-white border-top border-bottom">
-    <div class="container-fluid px-3 px-xl-5">
-      <div class="d-flex justify-content-between align-items-end mb-4">
-        <div>
-          <span class="badge bg-warning-subtle text-warning-emphasis fw-bold px-2 py-1 mb-1">
-            BẢNG XẾP HẠNG THÁNG 10/2026 &bull; Bình chọn công khai từ 50.000+ thành viên
-          </span>
-          <h2 class="h3 fw-bold text-dark mb-0">Top Salon Uy Tín & Bảo Hành Minh Bạch Nhất</h2>
-        </div>
-        <a href="cars.html?source=showroom" class="text-danger small fw-bold text-decoration-none">
-          Xem toàn bộ 120+ showroom có chứng chỉ &rarr;
-        </a>
-      </div>
 
-      <div class="row row-cols-1 row-cols-md-3 g-3">
-        <!-- Salon 1 -->
-        <div class="col">
-          <div class="salon-trust-card">
-            <div>
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <div class="d-flex align-items-center gap-2">
-                  <div class="rounded-3 bg-danger text-white d-flex align-items-center justify-content-center fw-bold" style="width: 42px; height: 42px;">
-                    ADT
-                  </div>
-                  <div>
-                    <h5 class="fw-bold mb-0 text-dark fs-6">Auto Đức Tùng (Hà Nội)</h5>
-                    <span class="text-warning small"><i class="bi bi-star-fill"></i> 4.9/5 <span class="text-muted">(1.450 đánh giá)</span></span>
-                  </div>
-                </div>
-                <span class="badge bg-warning text-dark fw-bold">#1 VÙNG 1</span>
-              </div>
-              <p class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-teal"></i>Số 68 Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
-              <div class="p-2.5 rounded-2 bg-light border small text-secondary mb-3">
-                <div class="d-flex justify-content-between mb-1">
-                  <span>Tiêu chuẩn xe:</span>
-                  <strong class="text-success">100% Không đâm đụng</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Hỗ trợ trả góp:</span>
-                  <strong>Vay đến 75%</strong>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-              <span class="small text-muted"><strong>42 xe</strong> đang bán</span>
-              <a href="cars.html?location=Hà Nội" class="btn btn-sm btn-dark px-3 py-1 fw-bold">Ghé thăm Salon</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Salon 2 -->
-        <div class="col">
-          <div class="salon-trust-card">
-            <div>
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <div class="d-flex align-items-center gap-2">
-                  <div class="rounded-3 bg-teal text-white d-flex align-items-center justify-content-center fw-bold" style="width: 42px; height: 42px;">
-                    TSG
-                  </div>
-                  <div>
-                    <h5 class="fw-bold mb-0 text-dark fs-6">Toyota Sure Đông Sài Gòn (VIP)</h5>
-                    <span class="text-warning small"><i class="bi bi-star-fill"></i> 4.9/5 <span class="text-muted">(950 đánh giá)</span></span>
-                  </div>
-                </div>
-                <span class="badge bg-teal text-white fw-bold">#2 CHÍNH HÃNG</span>
-              </div>
-              <p class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-teal"></i>Đại Lộ Mai Chí Thọ, TP. Thủ Đức, TP.HCM</p>
-              <div class="p-2.5 rounded-2 bg-light border small text-secondary mb-3">
-                <div class="d-flex justify-content-between mb-1">
-                  <span>Bảo hành chính hãng:</span>
-                  <strong class="text-success">12 Tháng / 20.000 km</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Đổi trả cam kết:</span>
-                  <strong>Trong vòng 7 ngày</strong>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-              <span class="small text-muted"><strong>35 xe</strong> đang bán</span>
-              <a href="cars.html?location=TP. Hồ Chí Minh" class="btn btn-sm btn-dark px-3 py-1 fw-bold">Ghé thăm Salon</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Salon 3 -->
-        <div class="col">
-          <div class="salon-trust-card">
-            <div>
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <div class="d-flex align-items-center gap-2">
-                  <div class="rounded-3 bg-primary text-white d-flex align-items-center justify-content-center fw-bold" style="width: 42px; height: 42px;">
-                    A68
-                  </div>
-                  <div>
-                    <h5 class="fw-bold mb-0 text-dark fs-6">Auto 68 Lê Văn Lương</h5>
-                    <span class="text-warning small"><i class="bi bi-star-fill"></i> 4.8/5 <span class="text-muted">(720 đánh giá)</span></span>
-                  </div>
-                </div>
-                <span class="badge bg-secondary text-white fw-bold">#3 LÂU NĂM</span>
-              </div>
-              <p class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-teal"></i>Đường Lê Văn Lương, Cầu Giấy, Hà Nội</p>
-              <div class="p-2.5 rounded-2 bg-light border small text-secondary mb-3">
-                <div class="d-flex justify-content-between mb-1">
-                  <span>Hỗ trợ test gầm:</span>
-                  <strong class="text-success">Miễn phí trên cầu nâng</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Pháp lý & sang tên:</span>
-                  <strong>Hỗ trợ trọn gói 24h</strong>
-                </div>
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-              <span class="small text-muted"><strong>28 xe</strong> đang bán</span>
-              <a href="cars.html?location=Hà Nội" class="btn btn-sm btn-dark px-3 py-1 fw-bold">Ghé thăm Salon</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       8. Section: Góc Chia Sẻ: Kinh Nghiệm Ép Giá & Tránh Mua Xe Lỗi
-       ======================================================================== -->
-  <section class="py-5" style="background: #0B132B; color: #FFFFFF;">
-    <div class="container-fluid px-3 px-xl-5">
-      <div class="d-flex justify-content-between align-items-end mb-4">
-        <div>
-          <span class="badge bg-danger text-white fw-bold px-2.5 py-1 mb-1">
-            <i class="bi bi-chat-quote-fill me-1"></i>DIỄN ĐÀN ĐÁNH GIÁ XE SÔI NỔI &bull; Có 492 thớt chia sẻ mới mỗi ngày
-          </span>
-          <h2 class="h3 fw-bold text-white mb-0">Góc Chia Sẻ: Kinh Nghiệm Ép Giá & Tránh Mua Xe Lỗi</h2>
-        </div>
-        <button class="btn btn-danger btn-sm fw-bold px-3 py-2" onclick="showToast('Chức năng đăng bài diễn đàn đang mở cho thành viên OtoMarket!', 'info')">
-          <i class="bi bi-pencil-square me-1"></i> + Đăng Bài Viết Lên Cộng Đồng
-        </button>
-      </div>
-
-      <div class="row row-cols-1 row-cols-md-3 g-3">
-        <!-- Thread 1 -->
-        <div class="col">
-          <div class="community-thread-card">
-            <div>
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center fw-bold" style="width: 34px; height: 34px; font-size: 0.8rem;">
-                  HT
-                </div>
-                <div>
-                  <div class="fw-bold small text-white">Hoàng Tùng (Thợ xe 12 năm)</div>
-                  <span class="badge bg-danger-subtle text-danger" style="font-size: 0.65rem;">CẢNH GIÁC CŨ KỸ</span>
-                </div>
-              </div>
-              <h5 class="fw-bold fs-6 text-white mb-2 lh-sm">
-                Cảnh giác bài ca 'Xe gia đình chỉ đi chợ' nhưng tua ODO từ 12 vạn xuống 3 vạn...
-              </h5>
-              <p class="text-secondary small mb-3">
-                Rất nhiều xe taxi thải hoặc xe chạy dịch vụ đường dài được bọc lại vô lăng, thay má phanh để qua mặt người mua thiếu kinh nghiệm. Hãy kiểm tra sổ bảo dưỡng hãng gốc...
-              </p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 small text-secondary">
-              <span><i class="bi bi-eye me-1"></i>348 &bull; <i class="bi bi-chat-dots me-1"></i>52</span>
-              <span class="text-teal fw-bold">Xem chi tiết &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thread 2 -->
-        <div class="col">
-          <div class="community-thread-card">
-            <div>
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <div class="rounded-circle bg-teal text-white d-flex align-items-center justify-content-center fw-bold" style="width: 34px; height: 34px; font-size: 0.8rem;">
-                  MK
-                </div>
-                <div>
-                  <div class="fw-bold small text-white">Mai Đình Khoa (VIP)</div>
-                  <span class="badge bg-teal-subtle text-teal" style="font-size: 0.65rem;">HƯỚNG DẪN TRẢ GIÁ</span>
-                </div>
-              </div>
-              <h5 class="fw-bold fs-6 text-white mb-2 lh-sm">
-                Vừa tiết kiệm 35 triệu khi mua SantaFe 2021 nhờ bảng đối chiếu giá trên OtoMarket
-              </h5>
-              <p class="text-secondary small mb-3">
-                Chia sẻ mẹo tra cứu lịch sử giá và so sánh xe cùng đời giữa các salon để thương lượng hợp lý mà không bị cò mồi ép giá trên sàn giao dịch...
-              </p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 small text-secondary">
-              <span><i class="bi bi-eye me-1"></i>482 &bull; <i class="bi bi-chat-dots me-1"></i>78</span>
-              <span class="text-teal fw-bold">Xem chi tiết &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thread 3 -->
-        <div class="col">
-          <div class="community-thread-card">
-            <div>
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold" style="width: 34px; height: 34px; font-size: 0.8rem;">
-                  HN
-                </div>
-                <div>
-                  <div class="fw-bold small text-white">Kỹ Sư Ô Tô Hải Nam</div>
-                  <span class="badge bg-info-subtle text-info" style="font-size: 0.65rem;">BẢO HIỂM XE</span>
-                </div>
-              </div>
-              <h5 class="fw-bold fs-6 text-white mb-2 lh-sm">
-                Mới tậu xe: Nên mua gói bảo hiểm thân vỏ nào và cách khai báo bồi thường không bị hành?
-              </h5>
-              <p class="text-secondary small mb-3">
-                Tổng hợp điều khoản khấu trừ, bảo hiểm ngập nước thủy kích và quy trình giám định bồi thường thực tế giữa các công ty bảo hiểm uy tín hiện nay...
-              </p>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-25 small text-secondary">
-              <span><i class="bi bi-eye me-1"></i>615 &bull; <i class="bi bi-chat-dots me-1"></i>94</span>
-              <span class="text-teal fw-bold">Xem chi tiết &rarr;</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ========================================================================
        9. Value Pillars Strip (Cam Kết 4 Trụ Cột Thực Tế)
@@ -745,9 +485,6 @@
         <div class="d-flex gap-3">
           <a href="about.html" class="text-secondary">Điều khoản dịch vụ</a>
           <a href="about.html" class="text-secondary">Chính sách bảo mật</a>
-          <button class="btn btn-link p-0 text-secondary text-decoration-none small" onclick="resetDemoData()">
-            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
-          </button>
         </div>
       </div>
     </div>
@@ -1060,14 +797,11 @@
                 </div>
               </div>
 
-              <!-- Action buttons -->
-              <div class="d-flex gap-1.5 pt-2 border-top">
-                <a href="car-detail.html?id=${car.id}" class="btn btn-danger btn-sm fw-bold flex-grow-1 py-1.5" style="font-size: 0.78rem;">
-                  <i class="bi bi-calendar2-check me-1"></i> Xem xe & Đặt lịch
+              <!-- Action button -->
+              <div class="pt-2 border-top">
+                <a href="car-detail.html?id=${car.id}" class="btn btn-danger btn-sm fw-bold w-100 py-2 d-flex align-items-center justify-content-center gap-1.5 shadow-sm" style="font-size: 0.8125rem;">
+                  <i class="bi bi-calendar2-check"></i> Xem xe & Đặt lịch
                 </a>
-                <button class="btn btn-outline-secondary btn-sm px-2.5" onclick="triggerCallPhone('${car.title}')" title="Gọi hotline">
-                  <i class="bi bi-telephone-fill text-danger"></i>
-                </button>
               </div>
             </div>
           </div>
