@@ -2144,12 +2144,13 @@ li.admin-only.is-admin-visible {
   color: #0D9488 !important;
 }
 
-/* 3. Flash Sale Strip */
+/* 3. Flash Sale Strip (Soft Teal Brand Strip) */
 .flash-sale-strip {
-  background: linear-gradient(90deg, #991B1B 0%, #DC2626 50%, #B91C1C 100%);
-  color: #FFFFFF;
-  padding: 9px 0;
-  font-size: 0.86rem;
+  background: #F0FDFA;
+  border-bottom: 1px solid #CCFBF1;
+  color: #0F766E;
+  padding: 8px 0;
+  font-size: 0.85rem;
 }
 .flash-countdown-box {
   display: inline-flex;
@@ -2157,59 +2158,41 @@ li.admin-only.is-admin-visible {
   gap: 4px;
 }
 .countdown-digit {
-  background: #111827;
-  color: #FACC15;
+  background: #0D9488;
+  color: #FFFFFF;
   font-weight: 800;
   font-size: 0.85rem;
-  padding: 3px 6px;
-  border-radius: 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
   min-width: 26px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 3px rgba(13, 148, 136, 0.25);
 }
 
-/* 4. Hero Dark Bento */
+/* 4. Hero Clean Light Luxury Bento */
 .hero-bento-section {
-  background: radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 20% 80%, rgba(13, 148, 136, 0.12) 0%, transparent 40%),
-              #070B19;
-  color: #FFFFFF;
-  padding: 24px 0 34px;
+  background: #F8FAFC;
+  color: #0F172A;
+  padding: 24px 0 32px;
+  border-bottom: 1px solid #E2E8F0;
 }
 .hero-main-deal-card {
-  background: #0F172A;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
   height: 100%;
 }
 .hero-side-deals-card {
-  background: #0F172A;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
   padding: 18px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-/* Sửa triệt để lỗi màu chữ chìm trên nền tối */
-.hero-bento-section .text-muted,
-.hero-main-deal-card .text-muted,
-.hero-side-deals-card .text-muted,
-.hero-side-item .text-muted {
-  color: #94A3B8 !important; /* Xám sáng dễ đọc */
-}
-.hero-bento-section .text-secondary,
-.hero-main-deal-card .text-secondary,
-.hero-side-deals-card .text-secondary {
-  color: #CBD5E1 !important; /* Trắng bạc sắc nét */
-}
-.hero-main-deal-card .text-decoration-line-through,
-.hero-side-deals-card .text-decoration-line-through {
-  color: #94A3B8 !important;
 }
 
 .hero-deal-car-img {
@@ -2219,9 +2202,9 @@ li.admin-only.is-admin-visible {
   border-radius: 12px;
 }
 .hero-side-item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
   padding: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -2232,8 +2215,9 @@ li.admin-only.is-admin-visible {
   align-items: center;
 }
 .hero-side-item:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(220, 38, 38, 0.5);
+  background: #FFFFFF;
+  border-color: #0D9488;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   transform: translateY(-2px);
 }
 .hero-side-item-img {
@@ -2422,14 +2406,6 @@ li.admin-only.is-admin-visible {
   color: #CBD5E1 !important;
 }
 
-/* 9. Value Pillars Strip */
-.value-pillars-strip {
-  background: #0B132B;
-  color: #FFFFFF;
-  padding: 20px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
 
 /* 10. Coordinated Action Buttons & Filter Tabs */
 .btn-deal-action {
