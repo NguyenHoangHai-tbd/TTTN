@@ -28,7 +28,7 @@
 <body>
 
   <!-- ========================================================================
-       1. White Navbar (Phong cách Stitch tinh tế & Tối giản)
+       1. Thanh điều hướng chính (Navbar)
        ======================================================================== -->
   <nav class="navbar navbar-expand-lg navbar-stitch-white">
     <div class="container-fluid px-3 px-xl-5">
@@ -50,11 +50,11 @@
           </li>
           <li class="nav-item">
             <a class="nav-link-stitch" href="#flash-sale-section">
-              Săn Flash Deals <span class="badge bg-danger rounded-pill ms-1" style="font-size: 0.65rem;">HOT</span>
+              Ưu đãi hot <span class="badge bg-danger rounded-pill ms-1" style="font-size: 0.65rem;">HOT</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-stitch" href="#livestream-section">Livestream Thẩm Định</a>
+            <a class="nav-link-stitch" href="#livestream-section">Video Thẩm Định</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-stitch" href="about.html">Giới thiệu</a>
@@ -68,14 +68,14 @@
         </ul>
 
         <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-          <!-- Favorites -->
+          <!-- Danh sách xe yêu thích -->
           <a href="favorites.html" class="btn-outline-stitch position-relative" title="Xe yêu thích">
             <i class="bi bi-heart text-danger"></i>
             <span class="d-none d-xl-inline">Yêu thích</span>
             <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
           </a>
 
-          <!-- User Auth Section -->
+          <!-- Khu vực xác thực tài khoản -->
           <div id="navbar-auth-section">
             <a href="login.html" class="btn-outline-stitch">
               <i class="bi bi-person"></i>
@@ -83,7 +83,7 @@
             </a>
           </div>
 
-          <!-- Post Car CTA Button (Orange-Red Gradient) -->
+          <!-- Nút đăng tin bán xe -->
           <a href="post-car.html" class="btn-cta-orange">
             <i class="bi bi-plus-circle-fill"></i>
             <span>Đăng bán xe</span>
@@ -94,12 +94,12 @@
   </nav>
 
   <!-- ========================================================================
-       3. Banner Giờ Vàng Săn Deal Xe Lướt (Countdown Strip)
+       2. Banner ưu đãi & đếm ngược thời gian
        ======================================================================== -->
   <div class="flash-sale-strip" id="flash-sale-section">
     <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
       <div class="d-flex align-items-center gap-2">
-        <span class="badge bg-teal text-white px-2.5 py-1 fw-bold"><i class="bi bi-lightning-charge-fill me-1 text-warning"></i>GIỜ VÀNG SĂN DEAL</span>
+        <span class="badge bg-teal text-white px-2.5 py-1 fw-bold"><i class="bi bi-clock-history me-1 text-warning"></i>ƯU ĐÃI TRONG NGÀY</span>
         <span class="fw-semibold text-dark">Cam kết kiểm định 100% trong 24h &bull; Hoàn cọc 100% nếu phát hiện lỗi</span>
       </div>
       <div class="d-flex align-items-center gap-2 small">
@@ -114,22 +114,22 @@
   </div>
 
   <!-- ========================================================================
-       4. Hero Dual Bento Grid (Deal 1 Duy Nhất & Xe Xả Kho Salon)
+       3. Khu vực xe nổi bật & đề xuất (Hero Showcase)
        ======================================================================== -->
   <section class="hero-bento-section">
     <div class="container-fluid px-3 px-xl-5">
       <div class="row g-4">
         
-        <!-- Cột trái (65%): Deal ngợp giảm 1 duy nhất -->
+        <!-- Cột trái: Xe tâm điểm tuần -->
         <div class="col-lg-8">
           <div class="hero-main-deal-card">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
               <div class="d-flex flex-wrap align-items-center gap-2">
                 <span class="badge bg-danger-subtle text-danger px-2.5 py-1.5 fw-bold border border-danger-subtle">
-                  <i class="bi bi-fire me-1"></i>DEAL NGỢP GIẢM 1 DUY NHẤT
+                  <i class="bi bi-star-fill me-1"></i>XE NỔI BẬT TRONG TUẦN
                 </span>
                 <span class="badge bg-teal-subtle text-teal px-2.5 py-1.5 fw-bold border border-teal-subtle">
-                  Rẻ hơn thị trường 9.6%
+                  Giá tốt theo định giá sàn
                 </span>
               </div>
               <span class="badge bg-light text-muted px-2.5 py-1.5 small border">
@@ -137,7 +137,7 @@
               </span>
             </div>
 
-            <!-- Khung ảnh đúng xe Hyundai Tucson Titanium SUV -->
+            <!-- Hình ảnh xe tâm điểm -->
             <div class="position-relative overflow-hidden rounded-3 mb-3">
               <img src="assets/images/cars/tucson.jpg" 
                    alt="Hyundai Tucson 2022 Màu Titan" 
@@ -149,7 +149,7 @@
               </div>
             </div>
 
-            <!-- Thông tin xe & Giá sắc nét, tương phản cao -->
+            <!-- Thông tin kỹ thuật và giá bán -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 border-bottom pb-3 mb-3">
               <div>
                 <h2 class="h4 fw-bold text-dark mb-1">Hyundai Tucson 2.0 AT Đặc Biệt 2022 (Màu Titan)</h2>
@@ -162,7 +162,7 @@
               </div>
             </div>
 
-            <!-- Nút hành động -->
+            <!-- Nút thao tác giữ chỗ và liên hệ -->
             <div class="row g-2">
               <div class="col-md-7">
                 <button class="btn btn-deal-action w-100 py-2.5 fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2 shadow-sm" onclick="openDepositModal('Hyundai Tucson 2.0 AT Đặc Biệt 2022', 720000000)">
@@ -178,21 +178,21 @@
           </div>
         </div>
 
-        <!-- Cột phải (35%): Xe Xả Kho Salon Uy Tín -->
+        <!-- Cột phải: Xe showroom tuyển chọn -->
         <div class="col-lg-4">
           <div class="hero-side-deals-card">
             <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-              <h3 class="h6 fw-bold text-dark mb-0"><i class="bi bi-tag-fill text-teal me-1"></i>Xe Xả Kho Salon Uy Tín</h3>
-              <span class="badge bg-teal-subtle text-teal fw-bold border border-teal-subtle" style="font-size: 0.68rem;">CẬP NHẬT TỪNG PHÚT</span>
+              <h3 class="h6 fw-bold text-dark mb-0"><i class="bi bi-tag-fill text-teal me-1"></i>Xe Tuyển Chọn Tại Showroom</h3>
+              <span class="badge bg-teal-subtle text-teal fw-bold border border-teal-subtle" style="font-size: 0.68rem;">ĐÃ KIỂM ĐỊNH</span>
             </div>
 
             <div class="d-flex gap-1 mb-3">
-              <button class="btn btn-deal-action btn-sm py-1 px-2.5 fw-bold" style="font-size: 0.74rem;">Giảm sâu hôm nay</button>
+              <button class="btn btn-deal-action btn-sm py-1 px-2.5 fw-bold" style="font-size: 0.74rem;">Giá ưu đãi</button>
               <button class="btn btn-outline-secondary btn-sm py-1 px-2.5 text-dark bg-white" style="font-size: 0.74rem;" onclick="location.href='cars.html'">Trả góp</button>
               <button class="btn btn-outline-secondary btn-sm py-1 px-2.5 text-dark bg-white" style="font-size: 0.74rem;" onclick="location.href='cars.html?priceRange=under1000'">Dưới 1 tỷ</button>
             </div>
 
-            <!-- 3 Compact Items với đúng ảnh xe SUV / Sedan tương ứng -->
+            <!-- Danh sách xe đề xuất nhanh -->
             <div class="d-flex flex-column gap-2 flex-grow-1">
               <a href="car-detail.html?id=car-3" class="hero-side-item">
                 <img src="assets/images/cars/crv.jpg" alt="Honda CR-V" class="hero-side-item-img">
@@ -231,10 +231,10 @@
               </a>
             </div>
 
-            <!-- Footer Link -->
+            <!-- Liên kết xem thêm kho xe -->
             <div class="pt-3 border-top text-end mt-2">
               <a href="cars.html" class="text-teal small text-decoration-none fw-bold">
-                Xem toàn bộ kho xe xả kho (36 xe) &rarr;
+                Xem toàn bộ kho xe showroom (36 xe) &rarr;
               </a>
             </div>
           </div>
@@ -244,26 +244,26 @@
   </section>
 
   <!-- ========================================================================
-       5. Section: Livestream Trực Tiếp & Video Ngắn (TikTok / Reels)
+       4. Video thẩm định kỹ thuật & trải nghiệm thực tế
        ======================================================================== -->
   <section class="py-5 bg-white border-bottom" id="livestream-section">
     <div class="container-fluid px-3 px-xl-5">
       <div class="d-flex justify-content-between align-items-end mb-4">
         <div>
           <div class="d-flex align-items-center gap-2 mb-1">
-            <span class="live-pill-red"><i class="bi bi-circle-fill" style="font-size: 0.5rem;"></i> TRỰC TIẾP</span>
-            <span class="text-muted small fw-bold text-uppercase">TRẢI NGHIỆM XE THỰC TẾ</span>
+            <span class="badge bg-teal-subtle text-teal fw-bold px-2 py-0.5"><i class="bi bi-camera-video me-1"></i>TRẢI NGHIỆM THỰC TẾ</span>
+            <span class="text-muted small fw-bold text-uppercase">KIỂM ĐỊNH MINH BẠCH</span>
           </div>
-          <h2 class="h3 fw-bold text-dark mb-1">Livestream Trực Tiếp & Video Ngắn (TikTok / Reels)</h2>
-          <p class="text-muted small mb-0">Xem thợ test tiếng nổ máy, soi gầm xe chống thủy kích, nghe chuyên gia giải đáp thắc mắc 1:1.</p>
+          <h2 class="h3 fw-bold text-dark mb-1">Video Đánh Giá & Thẩm Định Kỹ Thuật Xe</h2>
+          <p class="text-muted small mb-0">Xem quy trình kiểm tra khung gầm, khoang máy chống thủy kích và trải nghiệm lái thực tế cùng chuyên viên.</p>
         </div>
-        <span class="badge bg-danger-subtle text-danger fw-bold px-3 py-2 border border-danger-subtle rounded-pill">
-          <i class="bi bi-broadcast me-1"></i> 3 Phòng Live Đang Mở
+        <span class="badge bg-teal-subtle text-teal fw-bold px-3 py-2 border border-teal-subtle rounded-pill">
+          <i class="bi bi-play-circle-fill me-1"></i> Video Đánh Giá Mới
         </span>
       </div>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
-        <!-- Reel 1: Live Stream (Ảnh khoang lái đêm thực tế) -->
+        <!-- Video 1: Lái thử thực tế -->
         <div class="col">
           <div class="reel-video-card" onclick="openVideoModal('Showroom Nha Trang: Trực tiếp lái thử Tucson và test độ êm bướm ga xe lướt', 'live', 'Kỹ thuật viên Trọng Nhân')">
             <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=600&q=80" alt="Livestream Tucson">
@@ -280,7 +280,7 @@
           </div>
         </div>
 
-        <!-- Reel 2: Video Kiểm Định Gầm (Ảnh thợ kiểm tra khoang máy) -->
+        <!-- Video 2: Quy trình kiểm định kỹ thuật gầm bệ -->
         <div class="col">
           <div class="reel-video-card" onclick="openVideoModal('Quy trình kiểm tra gầm & keo chỉ Mazda CX-30 chống thủy kích', 'inspection', 'Chuyên viên Kiểm Định Đức Huy')">
             <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=600&q=80" alt="Kiểm tra gầm">
@@ -298,7 +298,7 @@
           </div>
         </div>
 
-        <!-- Reel 3: Lái Thử Cung Đường Biển (Ảnh xe trên cung đường biển) -->
+        <!-- Video 3: Trải nghiệm vận hành xe trên đường -->
         <div class="col">
           <div class="reel-video-card" onclick="openVideoModal('Trải nghiệm cung đường biển Nha Trang với Mazda 3 2021', 'testdrive', 'Reviewer Tuấn Anh')">
             <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Lái thử xe">
@@ -316,7 +316,7 @@
           </div>
         </div>
 
-        <!-- Reel 4: Tư Vấn Pháp Lý & Giấy Tờ (Ảnh kiểm tra hồ sơ giấy tờ) -->
+        <!-- Video 4: Hướng dẫn thủ tục & pháp lý giấy tờ -->
         <div class="col">
           <div class="reel-video-card" onclick="openVideoModal('3 điểm cần kiểm tra khi mua xe cũ: Giấy tờ & tra cứu phạt nguội', 'legal', 'Luật Sư Minh Châu')">
             <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Pháp lý xe">
@@ -338,28 +338,28 @@
   </section>
 
   <!-- ========================================================================
-       6. Section: Xe Mới Cập Bến & Giảm Giá Sốc Hôm Nay (8 Deal Cards)
+       5. Danh sách xe đang niêm yết tại sàn
        ======================================================================== -->
   <section class="py-5" id="xe-moi-cap-ben" style="background-color: var(--bg-main);">
     <div class="container-fluid px-3 px-xl-5">
       <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
         <div>
-          <span class="badge bg-danger-subtle text-danger fw-bold px-2.5 py-1 mb-1">
-            <i class="bi bi-lightning-charge-fill me-1"></i>ĐẢM BẢO DỊCH VỤ &bull; 1.450 lượt xe vừa cập nhật trong 24h
+          <span class="badge bg-teal-subtle text-teal fw-bold px-2.5 py-1 mb-1 border border-teal-subtle">
+            <i class="bi bi-patch-check-fill me-1"></i>QUY TRÌNH KIỂM ĐỊNH 176 HẠNG MỤC &bull; Hồ sơ pháp lý minh bạch
           </span>
-          <h2 class="h3 fw-bold text-dark mb-0">Xe Mới Cập Bến & Giảm Giá Sốc Hôm Nay</h2>
+          <h2 class="h3 fw-bold text-dark mb-0">Kho Xe Mới Cập Bến & Giá Tốt</h2>
         </div>
 
-        <!-- Segmented Filter Tabs (Single clean row matching Stitch) -->
+        <!-- Bộ lọc phân loại xe -->
         <div class="d-flex align-items-center gap-1.5 flex-nowrap overflow-x-auto scrollbar-none pb-1" id="deal-tabs-bar">
           <button type="button" class="btn btn-sm active px-3 py-1.5 fw-bold text-nowrap rounded-pill shadow-sm" onclick="filterDeals('all', this)" style="font-size: 0.78rem;">
-            Tất cả xe mới về
+            Tất cả xe
           </button>
           <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('discount', this)" style="font-size: 0.78rem;">
-            Giảm giá sốc > 40Tr
+            Giá ưu đãi tốt
           </button>
           <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('private', this)" style="font-size: 0.78rem;">
-            Chính chủ người quen
+            Chính chủ cá nhân
           </button>
           <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('electric', this)" style="font-size: 0.78rem;">
             Xe điện & Hybrid
@@ -367,21 +367,21 @@
         </div>
       </div>
 
-      <!-- 8 Deal Cards Grid -->
+      <!-- Lưới hiển thị danh sách xe -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 mb-4" id="stitch-deal-cars-container">
-        <!-- Rendered via JS -->
+        <!-- Dữ liệu được kết xuất từ JavaScript -->
       </div>
 
       <div class="text-center mt-4">
         <a href="cars.html" class="btn btn-outline-teal px-4 py-2.5 fw-bold rounded-pill">
-          Tải thêm 42 deal mới về hôm nay <i class="bi bi-chevron-down ms-1"></i>
+          Xem toàn bộ kho xe đang bán <i class="bi bi-arrow-right ms-1"></i>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       10. Footer
+       6. Chân trang (Footer)
        ======================================================================== -->
   <footer class="footer-custom">
     <div class="container-fluid px-3 px-xl-5">
@@ -440,7 +440,7 @@
   </footer>
 
   <!-- ========================================================================
-       MODAL 1: Đặt Cọc Giữ Chỗ 15 Phút (Cọc 5 Triệu Hoàn 100%)
+       Modal: Đặt cọc giữ chỗ xe trực tuyến
        ======================================================================== -->
   <div class="modal fade" id="depositModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -501,7 +501,7 @@
   </div>
 
   <!-- ========================================================================
-       MODAL 2: Video Reel / Livestream Preview Modal
+       Modal: Trình phát video đánh giá xe
        ======================================================================== -->
   <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -540,12 +540,12 @@
 
   <div id="toast-container"></div>
 
-  <!-- Scripts -->
+  <!-- Thư viện và tập lệnh JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261018_stitch_v2"></script>
+  <script src="assets/js/app.js?v=20261018_clean_light_v1"></script>
   <script>
-    // 1. Countdown Timer (Giờ vàng săn deal)
+    // 1. Đếm ngược thời gian ưu đãi trong ngày
     let countdownSeconds = 2 * 3600 + 45 * 60 + 18;
     function runCountdown() {
       if (countdownSeconds > 0) {
@@ -560,7 +560,7 @@
     }
     setInterval(runCountdown, 1000);
 
-    // 2. Danh sách 8 xe Deal Sốc chuẩn Stitch với đúng hình ảnh và chủng loại xe
+    // 2. Dữ liệu danh sách xe hiển thị tại trang chủ
     const STITCH_DEALS = [
       {
         id: "car-1",
@@ -572,7 +572,7 @@
         price: 725000000,
         oldPrice: 770000000,
         discount: "GIẢM 45 TRIỆU",
-        tag: "Rẻ hơn thị trường 5.2%",
+        tag: "Tiết kiệm 5.2%",
         tagClass: "bg-warning text-dark",
         monthly: "7.2 tr/tháng",
         location: "Showroom CN Nha Trang",
@@ -607,8 +607,8 @@
         transmission: "Tự động",
         price: 790000000,
         oldPrice: 840000000,
-        discount: "XE ĐIỆN + FREE SẠC",
-        tag: "Tiết kiệm 40% chi phí",
+        discount: "PIN MUA ĐỨT / THUÊ",
+        tag: "Tiết kiệm chi phí",
         tagClass: "bg-info text-white",
         monthly: "7.9 tr/tháng",
         location: "Bao sang tên TP.HCM",
@@ -644,7 +644,7 @@
         price: 655000000,
         oldPrice: 685000000,
         discount: "GIẢM 30 TRIỆU",
-        tag: "Chính chủ người quen",
+        tag: "Chính chủ cá nhân",
         tagClass: "bg-success text-white",
         monthly: "6.5 tr/tháng",
         location: "Hải Phòng",
@@ -662,7 +662,7 @@
         price: 1285000000,
         oldPrice: 1350000000,
         discount: "GIẢM 65 TRIỆU",
-        tag: "Bản Full VIP 7 chỗ",
+        tag: "Bản VIP 7 chỗ",
         tagClass: "bg-warning text-dark",
         monthly: "12.8 tr/tháng",
         location: "Hà Nội",
@@ -698,7 +698,7 @@
         price: 1220000000,
         oldPrice: 1300000000,
         discount: "GIẢM 80 TRIỆU",
-        tag: "Bao check hãng Mer",
+        tag: "Bao check hãng",
         tagClass: "bg-primary text-white",
         monthly: "12.2 tr/tháng",
         location: "Showroom Q.7 TP.HCM",
@@ -708,7 +708,7 @@
       }
     ];
 
-    // 3. Render 8 Deal Cards
+    // 3. Kết xuất danh sách xe ra giao diện
     function renderStitchDeals(category = 'all') {
       const container = document.getElementById('stitch-deal-cars-container');
       if (!container) return;
@@ -721,7 +721,7 @@
       container.innerHTML = filtered.map(car => `
         <div class="col">
           <div class="deal-car-card">
-            <!-- Image Frame -->
+            <!-- Khung hình ảnh xe -->
             <div class="deal-car-card-img-wrapper">
               <img src="${car.image}" alt="${car.title}" loading="lazy">
               <div class="deal-badge-red">${car.discount}</div>
@@ -730,7 +730,7 @@
               <div class="deal-viewer-tag"><i class="bi bi-people-fill me-0.5"></i> ${car.viewers} xem</div>
             </div>
 
-            <!-- Body -->
+            <!-- Thông tin chi tiết thẻ xe -->
             <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
               <div>
                 <h3 class="fw-bold fs-6 text-dark mb-1 text-truncate" title="${car.title}">${car.title}</h3>
@@ -746,7 +746,7 @@
                 </div>
               </div>
 
-              <!-- Action button -->
+              <!-- Nút hành động -->
               <div class="pt-2 border-top">
                 <a href="car-detail.html?id=${car.id}" class="btn btn-deal-action btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-1.5" style="font-size: 0.8125rem;">
                   <i class="bi bi-calendar2-check"></i> Xem xe & Đặt lịch
@@ -768,7 +768,7 @@
       renderStitchDeals(cat);
     }
 
-    // 4. Modal Handlers
+    // 4. Xử lý các sự kiện modal và gửi thông tin
     let targetDepositCar = '';
     function openDepositModal(carTitle, price) {
       targetDepositCar = carTitle;

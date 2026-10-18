@@ -128,7 +128,7 @@
   <script src="assets/js/app.js?v=20261016_purge"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Dọn sạch mọi redirect lưu tạm cũ
+      // Xóa dữ liệu chuyển hướng trang lưu tạm
       try {
         localStorage.removeItem('otomarket_redirect_after_login');
         sessionStorage.removeItem('otomarket_redirect_after_login');
@@ -204,7 +204,7 @@
       setLoggedInUser(user);
       showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Nhân viên Showroom' : 'Khách cá nhân / Môi giới'})`, "success");
 
-      // Xóa triệt để mọi redirect lưu tạm cũ trên mọi bộ nhớ
+      // Xóa dữ liệu chuyển hướng trang lưu tạm
       try {
         localStorage.removeItem('otomarket_redirect_after_login');
         sessionStorage.removeItem('otomarket_redirect_after_login');

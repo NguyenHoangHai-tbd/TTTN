@@ -945,10 +945,10 @@ function enhanceBuyCarNavigation() {
   });
 }
 
-// Dọn sạch triệt để mục Hỗ trợ cũ trên navbar của mọi trang (chỉ giữ lại Giới thiệu thuần túy)
+// Đồng bộ liên kết điều hướng trên thanh navbar
 function cleanupNavbarNavigation() {
   document.querySelectorAll('.navbar-nav').forEach(nav => {
-    // 1. Quét và loại bỏ tất cả các mục có chữ Hỗ trợ hoặc liên kết contact
+    // 1. Lọc và chuẩn hóa danh mục liên kết
     nav.querySelectorAll('li.nav-item').forEach(li => {
       const a = li.querySelector('a');
       if (!a) return;
@@ -966,7 +966,7 @@ function cleanupNavbarNavigation() {
       }
     });
 
-    // 2. Đảm bảo có mục Giới thiệu chuẩn
+    // 2. Khởi tạo liên kết Giới thiệu nếu chưa tồn tại
     let aboutLink = nav.querySelector('a[href="about.html"]');
     if (!aboutLink) {
       const aboutItem = document.createElement('li');
@@ -1127,7 +1127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   enforcePagePermissions();
 });
 
-// Dọn dẹp dự phòng ngay lập tức, theo chu kỳ và khi toàn bộ trang hoàn tất
+// Khởi tạo và đồng bộ trạng thái thanh điều hướng
 cleanupNavbarNavigation();
 let _purgeCount = 0;
 const _purgeTimer = setInterval(() => {

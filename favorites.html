@@ -263,7 +263,7 @@
     let currentFavSort = 'recent';
 
     function renderFavorites() {
-      // 1. Kiểm tra trạng thái đăng nhập - xử lý triệt để ẩn/hiện thông báo
+      // 1. Kiểm tra trạng thái đăng nhập và hiển thị thông báo tương ứng
       const user = getLoggedInUser();
       const guestNotice = document.getElementById('guest-fav-notice');
       if (guestNotice) {

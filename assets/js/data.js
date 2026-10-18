@@ -270,7 +270,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "09/10/2026",
     viewCount: 620,
-    description: "Siêu phẩm SUV 7 chỗ đỉnh cao đời 2024 lướt 9.500km như xe đập hộp. Động cơ Bi-Turbo 210 mã lực kèm hộp số 10 cấp êm ái, hệ dẫn động 2 cầu toàn thời gian 4WD với 6 chế độ lái địa hình. Màn hình cảm ứng trung tâm đặt dọc 12 inch SYNC 4A kết nối không dây Apple CarPlay, camera 360, hỗ trợ đỗ xe tự động 2.0.",
+    description: "Xe SUV 7 chỗ gầm cao đời 2024, ODO 9.500km còn nguyên bản. Động cơ Bi-Turbo 210 mã lực kèm hộp số 10 cấp êm ái, hệ dẫn động 2 cầu toàn thời gian 4WD với 6 chế độ lái địa hình. Màn hình cảm ứng trung tâm đặt dọc 12 inch SYNC 4A kết nối không dây Apple CarPlay, camera 360, hỗ trợ đỗ xe tự động 2.0.",
     specifications: {
       engine: "Bi-Turbo Diesel 2.0L i4 TDCi",
       power: "210 PS / 3.750 rpm",
@@ -528,7 +528,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "08/10/2026",
     viewCount: 388,
-    description: "Vua bán tải tại Việt Nam đời mới nhất. Xe đã lắp sẵn nắp thùng cuộn điện xịn xò và thanh thể thao chính hãng. Gầm bệ chắc chắn, chưa từng chở hàng nặng hay đi offroad nặng. Động cơ Bi-Turbo 210 mã lực, dẫn động 4x4 kèm khóa vi sai cầu sau điện tử.",
+    description: "Mẫu xe bán tải 2 cầu đời mới. Xe đã lắp sẵn nắp thùng cuộn điện và thanh thể thao chính hãng. Khung gầm nguyên bản, vận hành ổn định. Động cơ Bi-Turbo 210 mã lực, dẫn động 4x4 kèm khóa vi sai cầu sau điện tử.",
     specifications: {
       engine: "2.0L Bi-Turbo Diesel",
       power: "210 PS / 3.750 rpm",
@@ -571,7 +571,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "04/10/2026",
     viewCount: 275,
-    description: "Hyundai Tucson thế hệ mới thiết kế cánh chim tương lai cực kỳ bắt mắt. Bản máy dầu vận hành tiết kiệm vượt trội, tăng tốc dính lưng. Xe có camera 360, cần số điện tử dạng nút bấm, ga tự động thông minh Smart Cruise Control, sưởi và làm mát ghế.",
+    description: "Hyundai Tucson thế hệ mới thiết kế hiện đại, cụm đèn định vị Parametric Jewel đặc trưng. Bản máy dầu vận hành tiết kiệm nhiên liệu, khả năng tăng tốc mượt mà. Xe có camera 360, cần số điện tử dạng nút bấm, ga tự động thông minh Smart Cruise Control, sưởi và làm mát ghế.",
     specifications: {
       engine: "Smartstream D2.0 CRDi",
       power: "186 mã lực / 4.000 rpm",
@@ -699,7 +699,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "09/10/2026",
     viewCount: 690,
-    description: "Mẫu MPV gia đình hạng sang 7 chỗ chuyên cơ mặt đất. Hàng ghế thứ 2 thương gia chỉnh điện đệm đỡ bắp chân, sưởi và làm mát, chế độ thư giãn không trọng lực. Cửa lùa điện thông minh, cốp điện, màn hình đôi 12.3 inch, âm thanh Bose 12 loa.",
+    description: "Mẫu MPV 7 chỗ cao cấp dành cho gia đình và doanh nghiệp. Hàng ghế thứ 2 thương gia chỉnh điện đệm đỡ bắp chân, sưởi và làm mát. Trang bị cửa lùa điện thông minh, cốp điện, màn hình đôi 12.3 inch, âm thanh Bose 12 loa.",
     specifications: {
       engine: "Smartstream D2.2 CRDi",
       power: "199 mã lực / 3.800 rpm",

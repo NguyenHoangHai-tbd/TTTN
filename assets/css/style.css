@@ -136,17 +136,17 @@ img {
 }
 
 /* ==========================================================================
-   Top Header Bar: Ẩn triệt để theo yêu cầu của người dùng
+   Thanh thông báo đầu trang (Top Header Bar)
    ========================================================================== */
 .top-header-bar {
   display: none !important;
 }
 
 /* ==========================================================================
-   Header & Navigation (Chống lỗi ngắt dòng chữ - Zero Wrap)
+   Thanh điều hướng chính & Menu (Header & Navigation)
    ========================================================================== */
 
-/* Triệt để ẩn mục Hỗ trợ (#contact) trên thanh điều hướng */
+/* Cấu hình hiển thị các liên kết trên thanh điều hướng */
 .navbar-nav a[href*="contact"],
 .navbar-nav a[href*="#contact"],
 .navbar-nav li.nav-item:has(a[href*="contact"]),
@@ -225,7 +225,7 @@ img {
 }
 
 
-/* Navigation Links (Tuyệt đối không bị ngắt dòng chữ - Zero Wrap) */
+/* Định dạng danh sách liên kết điều hướng */
 @media (min-width: 992px) {
   .navbar-nav {
     display: flex;
@@ -1796,7 +1796,7 @@ li.admin-only.is-admin-visible {
   color: #CCFBF1;
 }
 
-/* Left Filter Sidebar Card (Cố định tự nhiên theo trang, không trôi lơ lửng, không bẫy cuộn chuột) */
+/* Khối bộ lọc tìm kiếm xe (Filter Sidebar) */
 .filter-sidebar-card {
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
@@ -2069,10 +2069,10 @@ li.admin-only.is-admin-visible {
 }
 
 /* ==========================================================================
-   Stitch E-Commerce Home Page Styles
+   Giao diện Trang chủ (Home Page Components)
    ========================================================================== */
 
-/* 1. Top Announcement Bar */
+/* 1. Dải thông báo ưu đãi */
 .top-live-ticker-bar {
   background: #000000;
   color: #E2E8F0;
@@ -2093,7 +2093,7 @@ li.admin-only.is-admin-visible {
   gap: 4px;
 }
 
-/* 2. White Navbar for Stitch layout */
+/* 2. Thanh điều hướng nền sáng */
 .navbar-stitch-white {
   background: #FFFFFF !important;
   border-bottom: 1px solid #E2E8F0;
@@ -2287,7 +2287,7 @@ li.admin-only.is-admin-visible {
   color: #FFFFFF;
 }
 
-/* 6. Stitch Red Deal Car Cards */
+/* 6. Thẻ danh sách xe niêm yết */
 .deal-car-card {
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
