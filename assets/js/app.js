@@ -1070,7 +1070,7 @@ function createCarCardHTML(car) {
 
           <div class="mt-2.5 pt-2 border-top d-flex align-items-center gap-2">
             <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
-              Xem xe & Ước tính vay <i class="bi bi-chevron-right ms-0.5" style="font-size: 0.7rem;"></i>
+              Xem xe <i class="bi bi-arrow-right ms-0.5" style="font-size: 0.7rem;"></i>
             </a>
             <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-teal btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
               <i class="bi bi-telephone-fill"></i>

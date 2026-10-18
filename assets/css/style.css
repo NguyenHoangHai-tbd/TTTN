@@ -2455,6 +2455,334 @@ li.admin-only.is-admin-visible {
   box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
 }
 
+/* ==========================================================================
+   Giao diện Trang chủ Mới (Portal & Marketplace Search - Phương án 3)
+   ========================================================================== */
+
+/* 1. Thanh thông báo & liên hệ đầu trang */
+.portal-topbar {
+  background: #0B132B;
+  color: #94A3B8;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.portal-topbar a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.portal-topbar a:hover {
+  color: #FFFFFF;
+}
+
+/* 2. Thanh điều hướng chính */
+.portal-navbar {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+.portal-search-input {
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.875rem;
+  padding: 8px 14px;
+}
+.portal-search-input:focus {
+  border-color: #0D9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+.portal-search-btn {
+  background: #EA580C;
+  border-color: #EA580C;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 0 8px 8px 0;
+  padding: 8px 18px;
+}
+.portal-search-btn:hover {
+  background: #C2410C;
+  border-color: #C2410C;
+  color: #FFFFFF;
+}
+
+/* 3. Dải danh mục phụ (Subnav) */
+.portal-subnav {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.portal-subnav-link {
+  display: inline-block;
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border-bottom: 2px solid transparent;
+}
+.portal-subnav-link:hover,
+.portal-subnav-link.active {
+  color: #0D9488;
+  border-bottom-color: #0D9488;
+}
+
+/* 4. Banner Hero chính */
+.portal-hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #070B19 0%, #0F172A 55%, #1E293B 100%);
+  color: #FFFFFF;
+  padding: 56px 0 88px;
+  overflow: hidden;
+}
+.portal-hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(13, 148, 136, 0.12) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* 5. Khối tìm kiếm xe tổng hợp */
+.portal-search-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.22);
+  border: 1px solid #E2E8F0;
+  margin-top: -55px;
+  position: relative;
+  z-index: 10;
+}
+.portal-tab-pill {
+  border: none;
+  background: #F1F5F9;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.84rem;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+.portal-tab-pill.active {
+  background: #0B132B;
+  color: #FFFFFF;
+}
+.portal-tab-pill:hover:not(.active) {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.portal-field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 5px;
+  display: block;
+}
+.portal-field-select {
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  padding: 9px 12px;
+  font-weight: 500;
+  background-color: #F8FAFC;
+}
+.portal-field-select:focus {
+  border-color: #0D9488;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* Khối dịch vụ nhanh dưới tìm kiếm */
+.portal-subpromo-card {
+  background: #0F172A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.portal-subpromo-card.teal-theme {
+  border-left: 4px solid #0D9488;
+}
+.portal-subpromo-card.orange-theme {
+  border-left: 4px solid #EA580C;
+}
+
+/* 6. Thẻ thương hiệu phổ biến */
+.portal-brand-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s ease;
+}
+.portal-brand-card:hover {
+  transform: translateY(-3px);
+  border-color: #0D9488;
+  box-shadow: 0 8px 18px rgba(13, 148, 136, 0.1);
+}
+.portal-brand-card .brand-svg {
+  height: 38px;
+  max-width: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.portal-brand-card .brand-title {
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+.portal-brand-card .brand-count {
+  font-size: 0.74rem;
+  color: #64748B;
+}
+
+/* 7. Khối phân loại dáng xe & ngân sách */
+.portal-category-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 20px;
+  height: 100%;
+}
+.portal-chip-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #1E293B;
+  transition: all 0.15s ease;
+  background: #F8FAFC;
+}
+.portal-chip-item:hover {
+  border-color: #0D9488;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.08);
+}
+
+/* 8. Thẻ xe niêm yết chuẩn Portal */
+.portal-car-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+.portal-car-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #CBD5E1;
+}
+.portal-car-thumb {
+  position: relative;
+  width: 100%;
+  padding-top: 62.5%;
+  overflow: hidden;
+  background-color: #F1F5F9;
+}
+.portal-car-thumb img {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.portal-car-item:hover .portal-car-thumb img {
+  transform: scale(1.04);
+}
+.portal-car-badge {
+  position: absolute;
+  top: 8px; left: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+.portal-car-fav {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #E2E8F0;
+  display: flex; align-items: center; justify-content: center;
+  color: #64748B;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.15s ease;
+}
+.portal-car-fav:hover,
+.portal-car-fav.active {
+  color: #EF4444;
+  background: #FFFFFF;
+}
+
+/* Nút Xem xe trên thẻ xe */
+.btn-view-car {
+  background: #FFFFFF;
+  border: 1.5px solid #0D9488;
+  color: #0D9488;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.btn-view-car:hover {
+  background: #0D9488;
+  color: #FFFFFF;
+}
+
+/* 9. Thẻ công cụ tính toán tài chính & so sánh */
+.portal-tool-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 992px) {
+  .row-cols-lg-8 > * {
+    flex: 0 0 auto;
+    width: 12.5%;
+  }
+}
+.max-w-600 {
+  max-width: 600px;
+}
+.max-w-650 {
+  max-width: 650px;
+}
+.max-w-700 {
+  max-width: 700px;
+}
+.max-w-750 {
+  max-width: 750px;
+}
+.shadow-xs {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+
 
 
 
