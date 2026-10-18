@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-stitch-white">
     <div class="container-fluid px-3 px-xl-5">
       <a class="d-flex align-items-center text-decoration-none" href="index.html">
-        <img src="assets/images/logo.png" alt="OtoMarket" style="height: 38px;">
+        <img src="assets/images/logo-light.png" alt="OtoMarket" style="height: 38px;">
       </a>
 
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
@@ -139,7 +139,7 @@
 
             <!-- Khung ảnh đúng xe Hyundai Tucson Titanium SUV -->
             <div class="position-relative overflow-hidden rounded-3 mb-3">
-              <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" 
+              <img src="assets/images/cars/tucson.jpg" 
                    alt="Hyundai Tucson 2022 Màu Titan" 
                    class="hero-deal-car-img">
               <div class="deal-badge-red">GIẢM NGAY 55.000.000 đ</div>
@@ -165,7 +165,7 @@
             <!-- Nút hành động -->
             <div class="row g-2">
               <div class="col-md-7">
-                <button class="btn btn-danger w-100 py-2.5 fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2 shadow-sm" onclick="openDepositModal('Hyundai Tucson 2.0 AT Đặc Biệt 2022', 720000000)">
+                <button class="btn btn-deal-action w-100 py-2.5 fw-bold text-uppercase d-flex align-items-center justify-content-center gap-2 shadow-sm" onclick="openDepositModal('Hyundai Tucson 2.0 AT Đặc Biệt 2022', 720000000)">
                   <i class="bi bi-shield-lock-fill"></i> Giữ chỗ ngay trong 15 phút (Cọc 5tr hoàn 100%)
                 </button>
               </div>
@@ -187,7 +187,7 @@
             </div>
 
             <div class="d-flex gap-1 mb-3">
-              <button class="btn btn-danger btn-sm py-1 px-2.5 fw-bold" style="font-size: 0.74rem;">Giảm sâu hôm nay</button>
+              <button class="btn btn-deal-action btn-sm py-1 px-2.5 fw-bold" style="font-size: 0.74rem;">Giảm sâu hôm nay</button>
               <button class="btn btn-outline-secondary btn-sm py-1 px-2.5 text-white" style="font-size: 0.74rem;" onclick="location.href='cars.html'">Trả góp</button>
               <button class="btn btn-outline-secondary btn-sm py-1 px-2.5 text-white" style="font-size: 0.74rem;" onclick="location.href='cars.html?priceRange=under1000'">Dưới 1 tỷ</button>
             </div>
@@ -195,7 +195,7 @@
             <!-- 3 Compact Items với đúng ảnh xe SUV / Sedan tương ứng -->
             <div class="d-flex flex-column gap-2 flex-grow-1">
               <a href="car-detail.html?id=car-3" class="hero-side-item">
-                <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=400&q=80" alt="Honda CR-V" class="hero-side-item-img">
+                <img src="assets/images/cars/crv.jpg" alt="Honda CR-V" class="hero-side-item-img">
                 <div class="flex-grow-1 min-w-0">
                   <div class="fw-bold text-white small text-truncate">Honda CR-V 2.0 Premium 2023</div>
                   <div class="text-secondary small" style="font-size: 0.74rem;">15.000 km &bull; Tự động &bull; Showroom Nha Trang</div>
@@ -207,7 +207,7 @@
               </a>
 
               <a href="car-detail.html?id=car-2" class="hero-side-item">
-                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=400&q=80" alt="Ford Everest" class="hero-side-item-img">
+                <img src="assets/images/cars/everest.jpg" alt="Ford Everest" class="hero-side-item-img">
                 <div class="flex-grow-1 min-w-0">
                   <div class="fw-bold text-white small text-truncate">Ford Everest Titanium 4x2 2022</div>
                   <div class="text-secondary small" style="font-size: 0.74rem;">28.000 km &bull; Dầu &bull; Auto Thăng Long</div>
@@ -219,7 +219,7 @@
               </a>
 
               <a href="car-detail.html?id=new-2" class="hero-side-item">
-                <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=400&q=80" alt="VinFast VF8" class="hero-side-item-img">
+                <img src="assets/images/cars/vf8.jpg" alt="VinFast VF8" class="hero-side-item-img">
                 <div class="flex-grow-1 min-w-0">
                   <div class="fw-bold text-white small text-truncate">VinFast VF 8 Plus 2023 (Kèm pin)</div>
                   <div class="text-secondary small" style="font-size: 0.74rem;">12.000 km &bull; Điện &bull; TP.HCM</div>
@@ -352,16 +352,16 @@
 
         <!-- Segmented Filter Tabs (Single clean row matching Stitch) -->
         <div class="d-flex align-items-center gap-1.5 flex-nowrap overflow-x-auto scrollbar-none pb-1" id="deal-tabs-bar">
-          <button type="button" class="btn btn-sm btn-danger active px-2.5 py-1 fw-bold text-nowrap rounded-pill shadow-sm" onclick="filterDeals('all', this)" style="font-size: 0.78rem;">
+          <button type="button" class="btn btn-sm active px-3 py-1.5 fw-bold text-nowrap rounded-pill shadow-sm" onclick="filterDeals('all', this)" style="font-size: 0.78rem;">
             Tất cả xe mới về
           </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary px-2.5 py-1 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('discount', this)" style="font-size: 0.78rem;">
+          <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('discount', this)" style="font-size: 0.78rem;">
             Giảm giá sốc > 40Tr
           </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary px-2.5 py-1 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('private', this)" style="font-size: 0.78rem;">
+          <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('private', this)" style="font-size: 0.78rem;">
             Chính chủ người quen
           </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary px-2.5 py-1 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('electric', this)" style="font-size: 0.78rem;">
+          <button type="button" class="btn btn-sm btn-outline-secondary px-3 py-1.5 fw-semibold text-nowrap bg-white rounded-pill text-dark" onclick="filterDeals('electric', this)" style="font-size: 0.78rem;">
             Xe điện & Hybrid
           </button>
         </div>
@@ -373,7 +373,7 @@
       </div>
 
       <div class="text-center mt-4">
-        <a href="cars.html" class="btn btn-outline-danger px-4 py-2.5 fw-bold rounded-pill">
+        <a href="cars.html" class="btn btn-outline-teal px-4 py-2.5 fw-bold rounded-pill">
           Tải thêm 42 deal mới về hôm nay <i class="bi bi-chevron-down ms-1"></i>
         </a>
       </div>
@@ -629,7 +629,7 @@
         location: "Showroom CN Nha Trang",
         viewers: 18,
         category: "discount",
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/tucson.jpg"
       },
       {
         id: "car-3",
@@ -647,7 +647,7 @@
         location: "Salon Đông Sài Gòn",
         viewers: 24,
         category: "discount",
-        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/cx5.jpg"
       },
       {
         id: "new-2",
@@ -665,7 +665,7 @@
         location: "Bao sang tên TP.HCM",
         viewers: 15,
         category: "electric",
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/vf8.jpg"
       },
       {
         id: "car-2",
@@ -683,7 +683,7 @@
         location: "Auto Thăng Long",
         viewers: 31,
         category: "discount",
-        image: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/everest.jpg"
       },
       {
         id: "new-1",
@@ -701,7 +701,7 @@
         location: "Hải Phòng",
         viewers: 19,
         category: "private",
-        image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/corolla_cross.jpg"
       },
       {
         id: "custom-2",
@@ -719,7 +719,7 @@
         location: "Hà Nội",
         viewers: 42,
         category: "discount",
-        image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/carnival.jpg"
       },
       {
         id: "custom-1",
@@ -737,7 +737,7 @@
         location: "Cần Thơ",
         viewers: 14,
         category: "private",
-        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/crv.jpg"
       },
       {
         id: "new-3",
@@ -755,7 +755,7 @@
         location: "Showroom Q.7 TP.HCM",
         viewers: 28,
         category: "electric",
-        image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80"
+        image: "assets/images/cars/c200.jpg"
       }
     ];
 
@@ -799,7 +799,7 @@
 
               <!-- Action button -->
               <div class="pt-2 border-top">
-                <a href="car-detail.html?id=${car.id}" class="btn btn-danger btn-sm fw-bold w-100 py-2 d-flex align-items-center justify-content-center gap-1.5 shadow-sm" style="font-size: 0.8125rem;">
+                <a href="car-detail.html?id=${car.id}" class="btn btn-deal-action btn-sm w-100 py-2 d-flex align-items-center justify-content-center gap-1.5" style="font-size: 0.8125rem;">
                   <i class="bi bi-calendar2-check"></i> Xem xe & Đặt lịch
                 </a>
               </div>
@@ -811,11 +811,11 @@
 
     function filterDeals(cat, btn) {
       document.querySelectorAll('#deal-tabs-bar button').forEach(b => {
-        b.classList.remove('btn-danger', 'active');
+        b.classList.remove('active');
         b.classList.add('btn-outline-secondary', 'bg-white', 'text-dark');
       });
       btn.classList.remove('btn-outline-secondary', 'bg-white', 'text-dark');
-      btn.classList.add('btn-danger', 'active');
+      btn.classList.add('active');
       renderStitchDeals(cat);
     }
 

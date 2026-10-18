@@ -2115,10 +2115,14 @@ li.admin-only.is-admin-visible {
   gap: 5px;
   white-space: nowrap;
 }
-.navbar-stitch-white .nav-link-stitch:hover,
+.navbar-stitch-white .nav-link-stitch:hover {
+  color: #0D9488 !important;
+  background-color: #F0FDFA;
+}
 .navbar-stitch-white .nav-link-stitch.active {
-  color: #DC2626 !important;
-  background-color: #FEF2F2;
+  color: #0D9488 !important;
+  background-color: #F0FDFA;
+  font-weight: 700;
 }
 .navbar-stitch-white .btn-outline-stitch {
   border: 1px solid #CBD5E1;
@@ -2135,9 +2139,9 @@ li.admin-only.is-admin-visible {
   white-space: nowrap;
 }
 .navbar-stitch-white .btn-outline-stitch:hover {
-  background-color: #F8FAFC;
-  border-color: #94A3B8;
-  color: #0F172A !important;
+  background-color: #F0FDFA;
+  border-color: #0D9488;
+  color: #0D9488 !important;
 }
 
 /* 3. Flash Sale Strip */
@@ -2425,6 +2429,54 @@ li.admin-only.is-admin-visible {
   padding: 20px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 10. Coordinated Action Buttons & Filter Tabs */
+.btn-deal-action {
+  background-color: #EA580C !important;
+  border-color: #EA580C !important;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25);
+}
+.btn-deal-action:hover {
+  background-color: #C2410C !important;
+  border-color: #C2410C !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+}
+
+.hero-main-deal-card .btn-danger {
+  background-color: #EA580C !important;
+  border-color: #EA580C !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+}
+.hero-main-deal-card .btn-danger:hover {
+  background-color: #C2410C !important;
+  border-color: #C2410C !important;
+}
+
+#deal-tabs-bar .btn.active {
+  background-color: #0D9488 !important;
+  border-color: #0D9488 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
+}
+
+.btn-outline-teal {
+  border: 1.5px solid #0D9488 !important;
+  color: #0D9488 !important;
+  background-color: #FFFFFF !important;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.btn-outline-teal:hover {
+  background-color: #0D9488 !important;
+  border-color: #0D9488 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
 }
 
 
