@@ -2913,3 +2913,305 @@ li.admin-only.is-admin-visible {
 .footer-light .footer-bottom a:hover {
   color: #EA580C;
 }
+
+/* ==========================================================================
+   STITCH OTOMARKET EXACT PALETTE & DESIGN SYSTEM
+   Overrides old project DACN teal logic with authentic Stitch colors
+   ========================================================================== */
+
+:root {
+  --oto-orange: #FF6B00;
+  --oto-orange-dark: #EA580C;
+  --oto-orange-light: #FFF7ED;
+  --oto-blue-soft: #EBF3FE;
+  --oto-blue-text: #1D4ED8;
+  --oto-blue-border: #D6E4FE;
+  --oto-green: #059669;
+  --oto-green-light: #ECFDF5;
+  --oto-dark: #0F172A;
+  --oto-gray-bg: #F8FAFC;
+  --oto-border: #E2E8F0;
+  --oto-text-muted: #64748B;
+}
+
+/* 1. Eyebrow Category Headings */
+.section-eyebrow-orange {
+  color: #E06A3B !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  display: block;
+  margin-bottom: 3px;
+}
+.section-eyebrow-green {
+  color: #059669 !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+}
+.link-orange-arrow {
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+  font-size: 0.84rem !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+.link-orange-arrow:hover {
+  color: #EA580C !important;
+  transform: translateX(2px);
+}
+
+/* 2. Topbar & Navbar */
+.portal-navbar-clean {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+.portal-navbar-clean .nav-link-portal {
+  color: #1F2937 !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease;
+}
+.portal-navbar-clean .nav-link-portal:hover {
+  color: #FF6B00 !important;
+  background-color: #FFF7ED !important;
+}
+.portal-navbar-clean .nav-link-portal.active {
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+}
+.btn-cta-orange {
+  background-color: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+.btn-cta-orange:hover {
+  background-color: #EA580C !important;
+  border-color: #EA580C !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
+}
+
+/* 3. Hero Section & Stats */
+.portal-hero-section {
+  background-color: #070B19 !important;
+  background-image: 
+    linear-gradient(to right, rgba(7, 11, 25, 0.97) 0%, rgba(7, 11, 25, 0.88) 45%, rgba(7, 11, 25, 0.35) 72%, rgba(7, 11, 25, 0.08) 100%),
+    url('../images/hero-car-bg.jpg') !important;
+}
+.hero-stat-orange {
+  color: #FF7300 !important;
+  font-weight: 800 !important;
+  font-size: 1.55rem !important;
+}
+.hero-stat-blue {
+  color: #38BDF8 !important;
+  font-weight: 800 !important;
+  font-size: 1.55rem !important;
+}
+.hero-stat-white {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  font-size: 1.55rem !important;
+}
+
+/* 4. Search Card (Stitch Exact Look) */
+.portal-search-card {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  padding: 22px 24px !important;
+  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.14) !important;
+  border: 1px solid #E2E8F0 !important;
+}
+.portal-tab-pill {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #64748B !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  transition: all 0.15s ease;
+}
+.portal-tab-pill.active {
+  background: #FFF7ED !important;
+  color: #FF6B00 !important;
+  border-color: #FED7AA !important;
+  font-weight: 700 !important;
+}
+.portal-tab-pill:hover:not(.active) {
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+}
+.portal-field-select {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: #1F2937 !important;
+  padding: 9px 12px !important;
+}
+.portal-field-select:focus {
+  border-color: #FF6B00 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12) !important;
+}
+.trend-tag-pill {
+  background: #F1F5F9 !important;
+  color: #334155 !important;
+  border: 1px solid #E2E8F0 !important;
+  text-decoration: none !important;
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  padding: 5px 10px !important;
+  border-radius: 6px !important;
+  transition: all 0.15s ease;
+}
+.trend-tag-pill:hover {
+  background: #FFF7ED !important;
+  border-color: #FED7AA !important;
+  color: #FF6B00 !important;
+}
+
+/* 5. Subpromo Cards Below Search */
+.subpromo-left-card {
+  background: #0B132B !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  color: #FFFFFF !important;
+}
+.subpromo-right-card {
+  background: #0B132B !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  color: #FFFFFF !important;
+}
+
+/* 6. Car Cards in Stitch (Soft Ice-Blue View Car Button) */
+.portal-car-item {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+  transition: all 0.2s ease !important;
+}
+.portal-car-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.1) !important;
+  border-color: #CBD5E1 !important;
+}
+.car-card-price-stitch {
+  color: #FF5500 !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: -0.3px;
+}
+.btn-view-car-stitch {
+  background: #EBF3FE !important;
+  color: #1D4ED8 !important;
+  border: 1px solid #D6E4FE !important;
+  font-weight: 700 !important;
+  font-size: 0.76rem !important;
+  padding: 5px 14px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-view-car-stitch:hover {
+  background: #DBEAFE !important;
+  color: #1E40AF !important;
+  border-color: #BFDBFE !important;
+}
+.btn-phone-call-stitch {
+  background: #F8FAFC !important;
+  color: #475569 !important;
+  border: 1px solid #E2E8F0 !important;
+  padding: 5px 10px !important;
+  border-radius: 6px !important;
+  font-size: 0.78rem !important;
+  transition: all 0.15s ease;
+}
+.btn-phone-call-stitch:hover {
+  background: #FFF7ED !important;
+  color: #FF6B00 !important;
+  border-color: #FED7AA !important;
+}
+.btn-loadmore-stitch {
+  background: #EDF3FD !important;
+  color: #2563EB !important;
+  border: 1px solid #D6E4FE !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  padding: 10px 24px !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.btn-loadmore-stitch:hover {
+  background: #DBEAFE !important;
+  color: #1D4ED8 !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* 7. Category Boxes & Budget Pills */
+.category-box-stitch {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 18px !important;
+}
+.budget-tier-stitch {
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
+  background: #F8FAFC !important;
+  text-decoration: none !important;
+  display: block;
+  transition: all 0.15s ease;
+}
+.budget-tier-stitch:hover {
+  border-color: #FF6B00 !important;
+  background: #FFF7ED !important;
+}
+.budget-tier-installment {
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+}
+
+/* 8. 4 Value / Guarantee Pills */
+.value-pill-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 14px 16px !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.value-icon-red { background: #FEE2E2 !important; color: #DC2626 !important; }
+.value-icon-blue { background: #E0F2FE !important; color: #0284C7 !important; }
+.value-icon-purple { background: #EDE9FE !important; color: #7C3AED !important; }
+.value-icon-orange { background: #FFEDD5 !important; color: #EA580C !important; }
