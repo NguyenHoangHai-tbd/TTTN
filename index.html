@@ -38,7 +38,7 @@
       left: 0;
       width: 100%;
       z-index: 1050;
-      background: linear-gradient(180deg, rgba(7, 11, 25, 0.72) 0%, rgba(7, 11, 25, 0.28) 65%, transparent 100%);
+      background: linear-gradient(180deg, rgba(7, 11, 25, 0.75) 0%, rgba(7, 11, 25, 0.28) 65%, transparent 100%);
       transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -97,10 +97,10 @@
       box-shadow: 0 0 10px rgba(255, 107, 0, 0.45) !important;
     }
 
-    /* Nút Tài Khoản & Đăng Nhập TopBar Nền Trong Suốt Đẳng Cấp */
-    .topbar-user-btn {
-      border: 1.5px solid rgba(255, 255, 255, 0.32) !important;
-      background: rgba(255, 255, 255, 0.12) !important;
+    /* 1. FIX LỖI NỀN ĐĂNG NHẬP: Không bao giờ bị chìm/mất chữ khi rê chuột */
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
+      border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+      background: rgba(255, 255, 255, 0.14) !important;
       color: #FFFFFF !important;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -114,20 +114,32 @@
       align-items: center;
       gap: 6px;
     }
-    .topbar-user-btn:hover {
-      background: rgba(255, 107, 0, 0.22) !important;
-      border-color: #FF6B00 !important;
-      color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.28) !important;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
+      color: #FFFFFF !important;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      transition: all 0.2s ease;
     }
-    .topbar-user-btn.show,
-    .topbar-user-btn:focus,
-    .topbar-user-btn:active {
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.35) !important;
-      background: rgba(255, 107, 0, 0.25) !important;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i {
       color: #FF6B00 !important;
+      transition: all 0.2s ease;
     }
+    /* Hover trạng thái trong suốt: Chuyển sang nút Cam thương hiệu nổi bật, chữ trắng 100% */
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
+      background: #FF6B00 !important;
+      border-color: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.5) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover .user-name-label,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover i {
+      color: #FFFFFF !important;
+      text-shadow: none !important;
+    }
+
     .user-avatar-dot {
       display: inline-flex;
       align-items: center;
@@ -138,12 +150,6 @@
       background: #FF6B00;
       color: #FFFFFF;
       font-size: 0.74rem;
-    }
-    .user-name-label {
-      color: #FFFFFF !important;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
     .topbar-dropdown-menu {
       margin-top: 8px !important;
@@ -166,7 +172,7 @@
       padding-left: 18px !important;
     }
 
-    /* 2. Thanh Menu Chính Nền Trong Suốt (Navbar Clean) & Sáng Khung Khi Chọn Nút */
+    /* 2. Thanh Menu Chính Nền Trong Suốt (Navbar Clean) */
     .portal-navbar-clean {
       background: transparent !important;
       border-bottom: none !important;
@@ -202,25 +208,53 @@
       text-shadow: none !important;
     }
 
-    /* Nút Yêu Thích & Nút Đăng Bán Xe Sáng Khung Viền Nổi Bật */
-    .btn-fav-outline {
-      border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
-      background-color: rgba(255, 255, 255, 0.12) !important;
-      color: #FFFFFF !important;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 8px !important;
-      padding: 7px 14px !important;
-      transition: all 0.2s ease;
+    /* 2. FIX NÚT YÊU THÍCH GỌN GÀNG, NỔI BẬT DỄ NHẬN BIẾT */
+    .btn-fav-compact {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      border-radius: 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+      background-color: rgba(255, 255, 255, 0.15) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+      padding: 0 !important;
+      position: relative !important;
     }
-    .btn-fav-outline:hover,
-    .btn-fav-outline:focus,
-    .btn-fav-outline:active {
+    .btn-fav-compact i {
+      font-size: 1.15rem !important;
+      color: #EF4444 !important;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      transition: transform 0.2s ease;
+    }
+    .btn-fav-compact:hover {
+      background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
-      background-color: rgba(239, 68, 68, 0.22) !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.35) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important;
+      transform: scale(1.05);
     }
+    .btn-fav-compact:hover i {
+      transform: scale(1.15);
+    }
+    .btn-fav-compact .favorites-badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
+      font-size: 0.65rem !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFFFFF;
+    }
+
     .btn-cta-orange {
       background-color: #FF6B00 !important;
       border: 1.5px solid #FF6B00 !important;
@@ -296,22 +330,35 @@
       color: #FFFFFF !important;
       box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
     }
+    /* Nút Đăng nhập ở trạng thái cuộn */
     .portal-header-wrapper.is-scrolled .topbar-user-btn {
       border: 1.5px solid #CBD5E1 !important;
       background: #F8FAFC !important;
       color: #0F172A !important;
       backdrop-filter: none;
+      padding: 5px 14px;
+      border-radius: 20px;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
       color: #0F172A !important;
       text-shadow: none !important;
     }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover {
-      background: #FFF7ED !important;
-      border-color: #FF6B00 !important;
+    .portal-header-wrapper.is-scrolled .topbar-user-btn i {
       color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.18) !important;
     }
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn.show {
+      background: #FF6B00 !important;
+      border-color: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 10px rgba(255, 107, 0, 0.35) !important;
+    }
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-name-label,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover i {
+      color: #FFFFFF !important;
+    }
+
     .portal-header-wrapper.is-scrolled .portal-navbar-clean {
       background: #FFFFFF !important;
       border-bottom: 1px solid #E2E8F0 !important;
@@ -334,98 +381,118 @@
       border-color: #FF6B00 !important;
       box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.22) !important;
     }
-    .portal-header-wrapper.is-scrolled .btn-fav-outline {
+    .portal-header-wrapper.is-scrolled .btn-fav-compact {
       border: 1.5px solid #CBD5E1 !important;
       background-color: #FFFFFF !important;
-      color: #334155 !important;
-      backdrop-filter: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+      backdrop-filter: none !important;
     }
-    .portal-header-wrapper.is-scrolled .btn-fav-outline:hover {
-      border-color: #EF4444 !important;
+    .portal-header-wrapper.is-scrolled .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
-      color: #DC2626 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+      border-color: #EF4444 !important;
     }
 
-    /* 3. Hero Section Nền Tối Sáng Hơn & Bao Quát Toàn Bộ Đầu Trang (Behind Transparent Header) */
+    /* 4. HERO SECTION KÉO DÀI ĐỦ MÀN HÌNH MÁY (100VH) & CĂNG TRÀN ĐẲNG CẤP */
     .portal-hero-section {
       background-color: #070B19 !important;
       background-image: 
-        linear-gradient(to right, rgba(7, 11, 25, 0.93) 0%, rgba(7, 11, 25, 0.82) 42%, rgba(7, 11, 25, 0.28) 72%, rgba(7, 11, 25, 0.04) 100%),
+        linear-gradient(to right, rgba(7, 11, 25, 0.93) 0%, rgba(7, 11, 25, 0.78) 42%, rgba(7, 11, 25, 0.25) 72%, rgba(7, 11, 25, 0.04) 100%),
         url('assets/images/hero-car-bg-bright.jpg?v=20261021_bright') !important;
       background-position: right center !important;
       background-size: cover !important;
       background-repeat: no-repeat !important;
       color: #FFFFFF !important;
-      padding: 160px 0 115px !important;
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      padding: 120px 0 80px !important;
       position: relative;
-      min-height: 520px;
-    }
-    @media (max-width: 991px) {
-      .portal-hero-section {
-        padding: 140px 0 95px !important;
-      }
-    }
-    @media (max-width: 576px) {
-      .portal-hero-section {
-        padding: 125px 0 85px !important;
-      }
     }
     .hero-title {
-      font-size: 2.85rem !important;
+      font-size: 3.2rem !important;
       font-weight: 800 !important;
-      line-height: 1.18 !important;
+      line-height: 1.15 !important;
       color: #FFFFFF !important;
     }
     .hero-subtitle {
-      font-size: 1.05rem !important;
+      font-size: 1.12rem !important;
       color: #CBD5E1 !important;
-      max-width: 620px;
-      line-height: 1.6 !important;
+      max-width: 640px;
+      line-height: 1.65 !important;
+    }
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 2.3rem !important;
+      }
+      .portal-hero-section {
+        min-height: 90vh !important;
+        padding: 110px 0 60px !important;
+      }
     }
 
-    /* Nút Thao Tác Trong Hero Sáng Khung Nổi Bật */
+    /* Nút Thao Tác Trong Hero */
     .btn-hero-primary {
       background-color: #FF6B00 !important;
       border: 2px solid #FF6B00 !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
-      transition: all 0.2s ease !important;
+      transition: all 0.25s ease !important;
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.45) !important;
     }
     .btn-hero-primary:hover,
     .btn-hero-primary:focus,
     .btn-hero-primary:active {
       background-color: #EA580C !important;
       border-color: #FFFFFF !important;
-      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.5) !important;
+      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.5), 0 8px 25px rgba(255, 107, 0, 0.5) !important;
       color: #FFFFFF !important;
-    }
-    .btn-hero-secondary {
-      border: 2px solid rgba(255, 255, 255, 0.75) !important;
-      color: #FFFFFF !important;
-      background: transparent !important;
-      font-weight: 600 !important;
-      transition: all 0.2s ease !important;
-    }
-    .btn-hero-secondary:hover,
-    .btn-hero-secondary:focus,
-    .btn-hero-secondary:active {
-      background: rgba(255, 255, 255, 0.12) !important;
-      border-color: #FF6B00 !important;
-      color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.4) !important;
+      transform: translateY(-2px);
     }
 
-    /* 4. Khối Tìm Kiếm Nổi Bật (Floating Search Card) */
+    /* Hiệu ứng nhấp nháy cuộn trang (Scroll hint) */
+    @keyframes bounceSlow {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(8px); }
+      60% { transform: translateY(4px); }
+    }
+    .animate-bounce-slow {
+      animation: bounceSlow 2.2s infinite ease-in-out;
+    }
+    .hero-scroll-hint {
+      z-index: 15;
+      pointer-events: auto;
+    }
+    .scroll-hint-link {
+      transition: all 0.2s ease;
+    }
+    .scroll-hint-link:hover {
+      color: #FF6B00 !important;
+    }
+
+    /* 4. KHỐI TÌM KIẾM NHANH: BAN ĐẦU ẨN, HIỆN LÊN KHI CUỘN XUỐNG VỚI HIỆU ỨNG MƯỢT MÀ */
+    .portal-search-wrapper {
+      position: relative;
+      z-index: 30;
+      margin-top: -65px;
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .portal-search-wrapper.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     .portal-search-card {
       background: #FFFFFF !important;
       border-radius: 16px !important;
       padding: 22px 24px !important;
       box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.18) !important;
       border: 1px solid #E2E8F0 !important;
-      margin-top: -65px !important;
       position: relative !important;
-      z-index: 10 !important;
     }
     .portal-tab-pill {
       border: 2px solid transparent !important;
@@ -491,7 +558,6 @@
       border-color: #FED7AA;
       box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15);
     }
-
     /* Brand Utilities */
     .text-orange-theme {
       color: #FF6B00 !important;
@@ -553,16 +619,13 @@
           <img src="assets/images/logo.png?v=20261021_brand_orange_v6" alt="OtoMarket" class="site-logo logo-scrolled-mode" style="height: 42px; display: none;">
         </a>
 
-        <!-- Menu Điều Hướng Chính -->
+        <!-- Menu Điều Hướng Chính (Đã lược bỏ "Đăng bán" trùng lặp với nút CTA) -->
         <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
             <a class="nav-link-portal active" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-portal" href="cars.html">Mua xe</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="post-car.html">Đăng bán</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-portal" href="about.html">Giới thiệu</a>
@@ -575,13 +638,14 @@
           </li>
         </ul>
 
-        <!-- Nút Yêu Thích & Nút Đăng Bán Xe -->
+        <!-- Nút Yêu Thích Gọn Gàng & Nút Đăng Bán Xe Nổi Bật -->
         <div class="d-flex align-items-center gap-2">
-          <a href="favorites.html" class="btn btn-fav-outline btn-sm py-2 px-3 rounded-3 d-flex align-items-center gap-1.5 position-relative" title="Xe yêu thích">
-            <i class="bi bi-heart text-danger"></i>
-            <span class="d-none d-lg-inline small fw-semibold">Yêu thích</span>
-            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="font-size: 0.68rem; display:none;">0</span>
+          <!-- Nút Yêu thích thiết kế ô vuông bo góc tinh gọn, icon tim đỏ nổi bật, không chiếm diện tích -->
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
+          <!-- Nút Đăng Bán Xe duy nhất trên Header -->
           <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
@@ -593,11 +657,11 @@
 
   <main>
     <!-- ========================================================================
-         3. Banner Hero Nền Tối Sang Trọng (Xe thể thao đỏ Showroom - Không chú thích AI)
+         3. Banner Hero Nền Tối Sang Trọng (100vh Full Màn Hình - Không Bị Che Khuất)
          ======================================================================== -->
     <section class="portal-hero-section">
-      <div class="container-fluid px-3 px-xl-5 position-relative">
-        <div class="max-w-750 py-3 py-lg-4">
+      <div class="container-fluid px-3 px-xl-5 position-relative my-auto">
+        <div class="max-w-750 py-4">
           <!-- Tiêu đề lớn trắng tinh tế -->
           <h1 class="hero-title mb-3">
             Tìm Chiếc Xe Phù Hợp <br>
@@ -606,27 +670,33 @@
 
           <!-- Mô tả nghiệp vụ thực tế -->
           <p class="hero-subtitle mb-4">
-            Nền tảng kết nối trực tiếp người mua và người bán ô tô.<br>
-            Thông tin xe minh bạch, liên hệ trực tiếp chính chủ để hẹn xem xe thực tế.
+            Nền tảng kết nối trực tiếp người mua và người bán ô tô uy tín.<br>
+            Thông tin xe minh bạch, kiểm tra thực tế, liên hệ trực tiếp chính chủ.
           </p>
 
-          <!-- 2 Nút hành động trực tiếp -->
+          <!-- 1 Nút hành động duy nhất (Khám phá kho xe) - Bỏ nút Đăng bán xe bị trùng lặp -->
           <div class="d-flex align-items-center gap-3">
-            <a href="cars.html" class="btn btn-hero-primary px-4 py-2.5 rounded-pill fw-bold">
-              Xem danh sách xe
-            </a>
-            <a href="post-car.html" class="btn btn-hero-secondary px-4 py-2.5 rounded-pill fw-semibold">
-              Đăng bán xe &rarr;
+            <a href="cars.html" class="btn btn-hero-primary px-4 py-3 rounded-pill fw-bold d-inline-flex align-items-center gap-2">
+              <span>Khám phá kho xe ngay</span>
+              <i class="bi bi-arrow-right"></i>
             </a>
           </div>
         </div>
       </div>
+
+      <!-- Gợi ý cuộn trang xuống (Scroll Hint) -->
+      <div class="hero-scroll-hint position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center">
+        <a href="#quick-search-section" class="text-white-50 text-decoration-none small d-flex flex-column align-items-center gap-1 scroll-hint-link">
+          <span style="font-size: 0.74rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.75);">Cuộn để tìm xe</span>
+          <i class="bi bi-chevron-down animate-bounce-slow" style="font-size: 1.15rem; color: #FF6B00;"></i>
+        </a>
+      </div>
     </section>
 
     <!-- ========================================================================
-         4. Khối Tìm Kiếm Xe Tổng Hợp Nổi Bật (Floating 5-Field Search Widget)
+         4. Khối Tìm Kiếm Nhanh: Ban đầu ẩn, hiện lên khi cuộn chuột xuống
          ======================================================================== -->
-    <div class="container-fluid px-3 px-xl-5">
+    <div id="quick-search-section" class="portal-search-wrapper container-fluid px-3 px-xl-5">
       <div class="portal-search-card">
         <!-- 3 Tab phân loại xe -->
         <div class="d-flex align-items-center gap-2 mb-3">
@@ -730,6 +800,7 @@
         </div>
       </div>
     </div>
+div>
 
     <!-- ========================================================================
          4. Thương hiệu ô tô phổ biến (Đúng phong cách Stitch)
@@ -1937,25 +2008,39 @@
       }
     }
 
-    // 5. Xử lý Header: Trong suốt ở đầu trang, Đổi màu nổi bật khi cuộn xuống
-    function handleHeaderScroll() {
+    // 5. Xử lý Header & Hiệu ứng Hiện Thanh Tìm Kiếm Khi Cuộn Trang
+    function handleScrollEffects() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      // A. Header chuyển sang màu nền nổi bật
       const header = document.getElementById('portal-header');
-      if (!header) return;
-      if (window.scrollY > 40) {
-        header.classList.add('is-scrolled');
-      } else {
-        header.classList.remove('is-scrolled');
+      if (header) {
+        if (scrollY > 40) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+
+      // B. Thanh tìm kiếm nhanh hiện lên mượt mà khi cuộn chuột xuống
+      const searchSection = document.getElementById('quick-search-section');
+      if (searchSection) {
+        if (scrollY > 50) {
+          searchSection.classList.add('is-visible');
+        } else {
+          searchSection.classList.remove('is-visible');
+        }
       }
     }
-    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-    window.addEventListener('DOMContentLoaded', handleHeaderScroll);
+    window.addEventListener('scroll', handleScrollEffects, { passive: true });
+    window.addEventListener('DOMContentLoaded', handleScrollEffects);
 
     // Tự động khởi tạo khi tải trang
     document.addEventListener('DOMContentLoaded', () => {
       renderPortalCars('all');
       calculateRollingPrice();
       calculateLoanEstimate();
-      handleHeaderScroll();
+      handleScrollEffects();
     });
   </script>
 </body>

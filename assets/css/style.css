@@ -3635,3 +3635,117 @@ li.admin-only.is-admin-visible {
   border-color: #FF6B00 !important;
   box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.22) !important;
 }
+
+
+/* ==========================================================================
+   FIXES: LOGIN HOVER, COMPACT FAVORITES, 100VH HERO & SCROLL REVEAL SEARCH
+   ========================================================================== */
+.portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
+.portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
+.portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
+  background: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.5) !important;
+}
+.portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover .user-name-label,
+.portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover i {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+.portal-header-wrapper.is-scrolled .topbar-user-btn:hover,
+.portal-header-wrapper.is-scrolled .topbar-user-btn:focus,
+.portal-header-wrapper.is-scrolled .topbar-user-btn.show {
+  background: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.35) !important;
+}
+.portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-name-label,
+.portal-header-wrapper.is-scrolled .topbar-user-btn:hover i {
+  color: #FFFFFF !important;
+}
+
+/* Compact High-Contrast Favorites Button */
+.btn-fav-compact {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+.btn-fav-compact i {
+  font-size: 1.15rem !important;
+  color: #EF4444 !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease;
+}
+.btn-fav-compact:hover {
+  background-color: #FEF2F2 !important;
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important;
+  transform: scale(1.05);
+}
+.btn-fav-compact:hover i {
+  transform: scale(1.15);
+}
+.portal-header-wrapper.is-scrolled .btn-fav-compact {
+  border: 1.5px solid #CBD5E1 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  backdrop-filter: none !important;
+}
+.portal-header-wrapper.is-scrolled .btn-fav-compact:hover {
+  background-color: #FEF2F2 !important;
+  border-color: #EF4444 !important;
+}
+.btn-fav-compact .favorites-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  font-size: 0.65rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+
+/* Fullscreen 100vh Hero */
+.portal-hero-section {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 120px 0 80px !important;
+  position: relative;
+}
+
+/* Scroll Reveal Search Card */
+.portal-search-wrapper {
+  position: relative;
+  z-index: 30;
+  margin-top: -65px;
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.portal-search-wrapper.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
