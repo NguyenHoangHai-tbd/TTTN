@@ -29,29 +29,30 @@
   <!-- Essential CSS for Dark Luxury Hero & Clean Navbar (Zero Cache Failure) -->
   <!-- Comprehensive Design System & Button Highlighting (Bypass Cache 100%) -->
   <style>
-    /* 1. Topbar Nền Tối Sang Trọng (Đồng bộ với Hero Dark) */
-    .portal-topbar-dark {
-      background-color: #0F172A !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    /* 1. Topbar Đồng Nhất & Thanh Lịch (Hòa nhập hoàn hảo với Header, triệt tiêu vạch trắng) */
+    .portal-topbar-clean {
+      background-color: #FFFFFF !important;
+      border-bottom: 1px solid #F1F5F9 !important;
       font-size: 0.8125rem !important;
-      color: #94A3B8 !important;
+      color: #64748B !important;
       padding: 7px 0 !important;
     }
     .topbar-info-item {
-      color: #E2E8F0 !important;
-      font-weight: 500;
+      color: #334155 !important;
+      font-weight: 600;
+      font-size: 0.8125rem;
     }
     .topbar-divider {
-      color: rgba(255, 255, 255, 0.18) !important;
-      margin: 0 4px;
+      color: #E2E8F0 !important;
+      margin: 0 6px;
     }
 
     /* Nút Chuyển Ngôn Ngữ VI / EN Viên Thuốc Hiện Đại */
     .lang-switch-container {
       display: inline-flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
       border-radius: 20px;
       padding: 2px;
       gap: 2px;
@@ -59,7 +60,7 @@
     .lang-pill-btn {
       border: none;
       background: transparent;
-      color: #94A3B8;
+      color: #64748B;
       font-size: 0.74rem;
       font-weight: 700;
       padding: 3px 9px;
@@ -69,63 +70,65 @@
       line-height: 1.2;
     }
     .lang-pill-btn:hover:not(.active) {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.1);
+      color: #0F172A;
+      background: #E2E8F0;
     }
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.5) !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
     }
 
-    /* Nút Tài Khoản TopBar & Dropdown Nền Tối */
+    /* Nút Tài Khoản & Đăng Nhập TopBar Nền Sáng Đẳng Cấp */
     .topbar-user-btn {
-      border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
-      background: rgba(255, 255, 255, 0.08) !important;
-      color: #FFFFFF !important;
-      font-weight: 600;
+      border: 1.5px solid #E2E8F0 !important;
+      background: #F8FAFC !important;
+      color: #0F172A !important;
+      font-weight: 700;
       font-size: 0.8125rem;
-      padding: 5px 12px;
+      padding: 5px 14px;
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .topbar-user-btn:hover {
-      background: rgba(255, 107, 0, 0.15) !important;
+      background: #FFF7ED !important;
       border-color: #FF6B00 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.25) !important;
+      color: #FF6B00 !important;
+      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.18) !important;
     }
     .topbar-user-btn.show,
     .topbar-user-btn:focus,
     .topbar-user-btn:active {
       border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.4) !important;
-      background: rgba(255, 107, 0, 0.2) !important;
-      color: #FFFFFF !important;
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25) !important;
+      background: #FFF7ED !important;
+      color: #EA580C !important;
     }
     .user-avatar-dot {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: #FF6B00;
       color: #FFFFFF;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
     }
     .user-name-label {
-      color: #FFFFFF !important;
+      color: #0F172A !important;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
     .topbar-dropdown-menu {
       margin-top: 8px !important;
       border-radius: 12px !important;
       border: 1px solid #E2E8F0 !important;
-      box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.2) !important;
+      box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.15) !important;
     }
     .topbar-dropdown-menu .dropdown-item {
       transition: all 0.15s ease;
@@ -144,7 +147,7 @@
     .portal-navbar-clean {
       background: #FFFFFF !important;
       border-bottom: 1px solid #E2E8F0 !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
       padding: 10px 0 !important;
     }
     .nav-link-portal {
@@ -355,7 +358,7 @@
   <!-- ========================================================================
        1. TopBar Trên Cùng (Địa chỉ showroom, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập)
        ======================================================================== -->
-  <div class="portal-topbar-dark">
+  <div class="portal-topbar-clean">
     <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
       <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa Showroom -->
       <div class="d-flex align-items-center gap-2 gap-md-3 small">
