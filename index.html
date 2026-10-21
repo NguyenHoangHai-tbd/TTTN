@@ -23,7 +23,285 @@
   <link rel="shortcut icon" href="favicon.ico">
   
   <!-- Tệp định dạng CSS tùy biến (Stitch Palette) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261020_stitch_palette">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261021_portal_v2">
+
+  <!-- Critical CSS for Header, Topbar, Orange Nav & Clean Hero (Bypass Browser Cache) -->
+  <style>
+/* ==========================================================================
+   GIAO DIỆN MỚI THEO ẢNH REFERENCE (TopBar Chú Thích + Orange Nav + Clean Hero)
+   ========================================================================== */
+
+/* 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, VI/EN, Đăng nhập) */
+.portal-topbar-new {
+  background-color: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  font-size: 0.8125rem !important;
+  color: #64748B !important;
+  padding: 6px 0 !important;
+}
+.portal-topbar-new a {
+  color: #1E293B !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
+}
+.portal-topbar-new a:hover {
+  color: #FF6B00 !important;
+}
+.topbar-divider {
+  color: #CBD5E1 !important;
+  margin: 0 4px;
+}
+.lang-switch-pills {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 4px;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+}
+.lang-switch-pills .lang-opt {
+  font-weight: 600;
+  cursor: pointer;
+  color: #64748B;
+  transition: color 0.15s ease;
+}
+.lang-switch-pills .lang-opt.active,
+.lang-switch-pills .lang-opt:hover {
+  color: #FF6B00 !important;
+}
+
+/* 2. Thanh Header Tìm Kiếm Giữa (Brand + Search Box + Actions) */
+.portal-header-middle {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #F1F5F9 !important;
+  padding: 14px 0 !important;
+}
+.portal-search-pill-container {
+  max-width: 560px;
+  width: 100%;
+}
+.portal-search-pill-form {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 50px;
+  padding: 3px 5px 3px 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.portal-search-pill-form:focus-within {
+  border-color: #FF6B00;
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.12);
+}
+.search-cat-wrapper select {
+  font-size: 0.82rem !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  background-position: right 0.25rem center !important;
+  padding-right: 1.4rem !important;
+  max-width: 160px;
+}
+.search-cat-divider {
+  width: 1px;
+  height: 22px;
+  background-color: #CBD5E1;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+.btn-search-pill-icon {
+  background-color: #1E293B;
+  color: #FFFFFF;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.btn-search-pill-icon:hover {
+  background-color: #FF6B00;
+  transform: scale(1.05);
+}
+
+/* 3. Thanh Navigation Màu Cam (Orange Navigation Bar) */
+.portal-orange-navbar {
+  background-color: #FF6B00 !important;
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.22) !important;
+  padding: 0 !important;
+}
+.btn-categories-white {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  font-weight: 800 !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 20px !important;
+  border-radius: 6px 6px 0 0 !important;
+  border: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+}
+.btn-categories-white:hover {
+  background-color: #FFF7ED !important;
+  color: #FF6B00 !important;
+}
+.portal-orange-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link-orange {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  padding: 12px 18px !important;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: all 0.15s ease;
+}
+.nav-link-orange:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: #FFFFFF !important;
+}
+.nav-link-orange.active {
+  background-color: rgba(0, 0, 0, 0.18) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+
+/* 4. Hero Section Mới (Clean Editorial Style Chuẩn Ảnh) */
+.clean-editorial-hero {
+  background-color: #FFFFFF !important;
+  padding: 48px 0 32px 0;
+  border-bottom: 1px solid #F1F5F9;
+  min-height: 420px;
+}
+.hero-clean-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
+  font-size: 3.35rem !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.5px;
+}
+.hero-clean-amp {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #EA580C !important;
+}
+.hero-clean-subtitle {
+  color: #9A3412 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  font-weight: 500 !important;
+  max-width: 480px;
+}
+.btn-hero-clean-outline {
+  display: inline-block;
+  border: 1.5px solid #0F172A !important;
+  color: #0F172A !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  padding: 10px 28px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+.btn-hero-clean-outline:hover {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+}
+.btn-hero-clean-link {
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  transition: transform 0.15s ease;
+}
+.btn-hero-clean-link:hover {
+  color: #EA580C !important;
+  text-decoration: underline !important;
+}
+.hero-clean-car-img {
+  max-height: 380px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 991px) {
+  .hero-clean-title {
+    font-size: 2.3rem !important;
+  }
+  .hero-clean-car-img {
+    max-height: 260px;
+  }
+}
+
+/* 5. Khử Màu Xanh Còn Sót, Đồng Bộ Sang Màu Cam Thương Hiệu */
+.section-eyebrow-green {
+  color: #E06A3B !important;
+}
+.btn-calc-orange {
+  background-color: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+}
+.btn-calc-orange:hover {
+  background-color: #EA580C !important;
+}
+.badge-pill-orange {
+  background-color: #FFF7ED !important;
+  color: #EA580C !important;
+  border: 1px solid #FFEDD5 !important;
+}
+
+
+/* OtoMarket Brand Synchronized Classes */
+.text-orange-theme {
+  color: #FF6B00 !important;
+}
+.badge-showroom-check {
+  background-color: #FFF7ED !important;
+  color: #EA580C !important;
+  border: 1px solid #FED7AA !important;
+}
+.btn-outline-orange {
+  border: 1.5px solid #FF6B00 !important;
+  color: #FF6B00 !important;
+  background-color: #FFFFFF !important;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.btn-outline-orange:hover {
+  background-color: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.25);
+}
+.text-teal {
+  color: #FF6B00 !important;
+}
+
+  </style>
 </head>
 <body class="bg-white">
 
