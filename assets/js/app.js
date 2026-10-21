@@ -795,7 +795,7 @@ function syncHeaderUserUI() {
           <span class="d-none d-sm-inline text-truncate user-name-label" style="max-width: 140px; vertical-align: middle;">${user.name || user.email}</span>
           <i class="bi bi-chevron-down" style="font-size: 0.68rem; opacity: 0.8;"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 py-2 topbar-dropdown-menu" style="min-width: 240px;">
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 py-2 topbar-dropdown-menu" style="min-width: 240px; z-index: 99999 !important;">
           <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
             <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Quản lý Showroom' : 'Thành viên')}</div>
             <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>

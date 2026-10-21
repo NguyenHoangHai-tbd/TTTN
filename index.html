@@ -44,12 +44,22 @@
 
     /* 1. Topbar ở trạng thái ban đầu: Nền Trong Suốt Trên Ảnh Nền Xe */
     .portal-topbar-clean {
+      position: relative !important;
+      z-index: 1090 !important;
       background: transparent !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
       font-size: 0.8125rem !important;
       color: #E2E8F0 !important;
       padding: 8px 0 !important;
       transition: all 0.25s ease;
+    }
+    #navbar-auth-section {
+      position: relative !important;
+      z-index: 1095 !important;
+    }
+    #navbar-auth-section .dropdown {
+      position: relative !important;
+      z-index: 1095 !important;
     }
     .topbar-info-item {
       color: #F8FAFC !important;
@@ -151,12 +161,17 @@
       color: #FFFFFF;
       font-size: 0.74rem;
     }
-    .topbar-dropdown-menu {
-      margin-top: 8px !important;
-      border-radius: 12px !important;
-      border: 1px solid #E2E8F0 !important;
-      box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.18) !important;
+    .topbar-dropdown-menu,
+    #navbar-auth-section .dropdown-menu {
+      position: absolute !important;
+      z-index: 99999 !important;
+      margin-top: 10px !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.05) !important;
       background: #FFFFFF !important;
+      min-width: 240px !important;
+      overflow: hidden;
     }
     .topbar-dropdown-menu .dropdown-item {
       transition: all 0.15s ease;
@@ -174,6 +189,8 @@
 
     /* 2. Thanh Menu Chính Nền Trong Suốt (Navbar Clean) */
     .portal-navbar-clean {
+      position: relative !important;
+      z-index: 1050 !important;
       background: transparent !important;
       border-bottom: none !important;
       box-shadow: none !important;
@@ -350,33 +367,70 @@
       box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
     }
 
-    /* Nút Đăng nhập / Tài khoản khi cuộn */
-    .portal-header-wrapper.is-scrolled .topbar-user-btn {
-      border: 1.5px solid rgba(203, 213, 225, 0.85) !important;
-      background: rgba(255, 255, 255, 0.8) !important;
+    /* Nút Đăng nhập / Tài khoản khi cuộn (is-scrolled) - Rõ nét, nền trắng tinh, chữ than chì */
+    .portal-header-wrapper.is-scrolled .topbar-user-btn,
+    .portal-header-wrapper.is-scrolled button.topbar-user-btn,
+    .portal-header-wrapper.is-scrolled a.topbar-user-btn,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn {
+      border: 1.5px solid rgba(203, 213, 225, 0.95) !important;
+      background: #FFFFFF !important;
+      background-color: #FFFFFF !important;
       color: #0F172A !important;
-      padding: 5px 14px;
-      border-radius: 20px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      padding: 5px 14px !important;
+      border-radius: 20px !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer;
     }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
+    .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .user-name-label {
       color: #0F172A !important;
       text-shadow: none !important;
-      font-weight: 700;
+      font-weight: 700 !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn i {
       color: #FF6B00 !important;
     }
+    .portal-header-wrapper.is-scrolled .topbar-user-btn .bi-chevron-down {
+      color: #64748B !important;
+    }
+    .portal-header-wrapper.is-scrolled .user-avatar-dot {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+    }
+    .portal-header-wrapper.is-scrolled .user-avatar-dot i {
+      color: #FFFFFF !important;
+    }
+
+    /* Hover trạng thái cuộn: Sáng viền Cam và nền Cam thương hiệu rõ ràng, chữ trắng 100% */
     .portal-header-wrapper.is-scrolled .topbar-user-btn:hover,
     .portal-header-wrapper.is-scrolled .topbar-user-btn:focus,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn.show {
+    .portal-header-wrapper.is-scrolled .topbar-user-btn.show,
+    .portal-header-wrapper.is-scrolled button.topbar-user-btn:hover,
+    .portal-header-wrapper.is-scrolled button.topbar-user-btn:focus,
+    .portal-header-wrapper.is-scrolled button.topbar-user-btn.show,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show {
       background: #FF6B00 !important;
+      background-color: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
       box-shadow: 0 0 12px rgba(255, 107, 0, 0.45) !important;
     }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-name-label,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover i {
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover *,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus *,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn.show *,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover *,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus *,
+    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show * {
+      color: #FFFFFF !important;
+      text-shadow: none !important;
+    }
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-avatar-dot,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus .user-avatar-dot,
+    .portal-header-wrapper.is-scrolled .topbar-user-btn.show .user-avatar-dot {
+      background: rgba(255, 255, 255, 0.25) !important;
       color: #FFFFFF !important;
     }
 
@@ -842,7 +896,6 @@
         </div>
       </div>
     </div>
-div>
 
     <!-- ========================================================================
          4. Thương hiệu ô tô phổ biến (Đúng phong cách Stitch)

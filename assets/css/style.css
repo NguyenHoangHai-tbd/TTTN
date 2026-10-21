@@ -3654,17 +3654,100 @@ li.admin-only.is-admin-visible {
   text-shadow: none !important;
 }
 
+/* Scrolled user button: Clear white background, crisp dark charcoal text */
+.portal-header-wrapper.is-scrolled .topbar-user-btn,
+.portal-header-wrapper.is-scrolled button.topbar-user-btn,
+.portal-header-wrapper.is-scrolled a.topbar-user-btn,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn {
+  border: 1.5px solid rgba(203, 213, 225, 0.95) !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+}
+.portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .user-name-label {
+  color: #0F172A !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+.portal-header-wrapper.is-scrolled .topbar-user-btn i {
+  color: #FF6B00 !important;
+}
+.portal-header-wrapper.is-scrolled .topbar-user-btn .bi-chevron-down {
+  color: #64748B !important;
+}
+.portal-header-wrapper.is-scrolled .user-avatar-dot {
+  background: #FF6B00 !important;
+  color: #FFFFFF !important;
+}
+.portal-header-wrapper.is-scrolled .user-avatar-dot i {
+  color: #FFFFFF !important;
+}
+
+/* Hover trạng thái cuộn: Sáng viền Cam và nền Cam thương hiệu rõ ràng, chữ trắng 100% */
 .portal-header-wrapper.is-scrolled .topbar-user-btn:hover,
 .portal-header-wrapper.is-scrolled .topbar-user-btn:focus,
-.portal-header-wrapper.is-scrolled .topbar-user-btn.show {
+.portal-header-wrapper.is-scrolled .topbar-user-btn.show,
+.portal-header-wrapper.is-scrolled button.topbar-user-btn:hover,
+.portal-header-wrapper.is-scrolled button.topbar-user-btn:focus,
+.portal-header-wrapper.is-scrolled button.topbar-user-btn.show,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show {
   background: #FF6B00 !important;
+  background-color: #FF6B00 !important;
   border-color: #FF6B00 !important;
   color: #FFFFFF !important;
-  box-shadow: 0 0 10px rgba(255, 107, 0, 0.35) !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.45) !important;
 }
-.portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-name-label,
-.portal-header-wrapper.is-scrolled .topbar-user-btn:hover i {
+.portal-header-wrapper.is-scrolled .topbar-user-btn:hover *,
+.portal-header-wrapper.is-scrolled .topbar-user-btn:focus *,
+.portal-header-wrapper.is-scrolled .topbar-user-btn.show *,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover *,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus *,
+.portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show * {
   color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+.portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-avatar-dot,
+.portal-header-wrapper.is-scrolled .topbar-user-btn:focus .user-avatar-dot,
+.portal-header-wrapper.is-scrolled .topbar-user-btn.show .user-avatar-dot {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+/* Stacking & z-index for dropdowns */
+.portal-topbar-clean {
+  position: relative !important;
+  z-index: 1090 !important;
+}
+.portal-navbar-clean {
+  position: relative !important;
+  z-index: 1050 !important;
+}
+#navbar-auth-section {
+  position: relative !important;
+  z-index: 1095 !important;
+}
+#navbar-auth-section .dropdown {
+  position: relative !important;
+  z-index: 1095 !important;
+}
+.topbar-dropdown-menu,
+#navbar-auth-section .dropdown-menu {
+  position: absolute !important;
+  z-index: 99999 !important;
+  margin-top: 10px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.05) !important;
+  background: #FFFFFF !important;
+  min-width: 240px !important;
 }
 
 /* Compact High-Contrast Favorites Button */
