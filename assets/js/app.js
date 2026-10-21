@@ -791,7 +791,7 @@ function syncHeaderUserUI() {
     authSection.innerHTML = `
       <div class="dropdown">
         <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" style="white-space: nowrap !important;">
-          <i class="bi bi-person-circle text-teal"></i>
+          <i class="bi bi-person-circle" style="color: #FF6B00;"></i>
           <span class="d-none d-xl-inline text-truncate" style="max-width: 140px; vertical-align: middle; white-space: nowrap !important;">${user.name || user.email}</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
@@ -800,7 +800,7 @@ function syncHeaderUserUI() {
             <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
           </li>
           <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
-          <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2 text-teal"></i>Quản lý tin đăng</a></li>
+          <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2" style="color: #FF6B00;"></i>Quản lý tin đăng</a></li>
           <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
           <li><hr class="dropdown-divider my-1"></li>
           <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
@@ -842,7 +842,7 @@ function syncAdminLinksVisibility() {
         const isCurrentAdminPage = window.location.pathname.includes('admin.html');
         adminItem.innerHTML = `
           <a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-            <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin Showroom
+            <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
             <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
           </a>
         `;
@@ -1036,7 +1036,7 @@ function createCarCardHTML(car) {
             ${car.price >= 200000000 ? `<span class="small text-muted" style="font-size: 0.75rem;">Trả trước từ: <strong>${Math.round((car.price * 0.3) / 1000000)} tr</strong></span>` : ''}
           </div>
 
-          ${isShowroom ? `<div class="mb-2"><span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
+          ${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
 
           <div class="car-spec-grid">
             <div class="car-spec-item" title="Năm sản xuất">
@@ -1059,11 +1059,11 @@ function createCarCardHTML(car) {
 
           <div class="car-card-footer">
             <div class="car-seller-info">
-              <i class="bi ${isShowroom ? 'bi-building text-teal' : 'bi-person-circle text-muted'}"></i>
-              <span class="${isShowroom ? 'fw-bold text-teal' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
+              <i class="bi ${isShowroom ? 'bi-building text-orange-theme' : 'bi-person-circle text-muted'}"></i>
+              <span class="${isShowroom ? 'fw-bold text-orange-theme' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
             </div>
             <div class="car-location" title="Khu vực xem xe">
-              <i class="bi bi-geo-alt-fill text-teal"></i>
+              <i class="bi bi-geo-alt-fill text-orange-theme"></i>
               <span>${car.location}</span>
             </div>
           </div>
@@ -1072,7 +1072,7 @@ function createCarCardHTML(car) {
             <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
               Xem xe <i class="bi bi-arrow-right ms-0.5" style="font-size: 0.7rem;"></i>
             </a>
-            <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-teal btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
+            <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-orange btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
               <i class="bi bi-telephone-fill"></i>
             </a>
           </div>

@@ -9,10 +9,10 @@
   <meta property="og:description" content="Khám phá kho xe đã qua kiểm tra kỹ thuật và liên hệ trực tiếp người bán." />
   <meta property="og:type" content="website" />
   
-  <!-- Phông chữ Google: Plus Jakarta Sans -->
+  <!-- Phông chữ Google: Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Bootstrap 5 & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,107 +28,174 @@
 <body class="bg-white">
 
   <!-- ========================================================================
-       1. Thanh điều hướng chính (Main Navbar - Nền trắng, nút tinh gọn như Bản 1)
+       1. TopBar Trên Cùng (Địa chỉ showroom, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập)
        ======================================================================== -->
-  <nav class="navbar navbar-expand-lg portal-navbar-clean">
-    <div class="container-fluid px-3 px-xl-5">
-      <!-- Logo OtoMarket (Dùng logo tối để tương phản sắc nét trên nền trắng) -->
+  <div class="portal-topbar-new">
+    <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa Showroom -->
+      <div class="d-flex align-items-center gap-2 gap-md-3 small">
+        <span class="d-inline-flex align-items-center gap-1.5">
+          <i class="bi bi-geo-alt-fill" style="color: #FF6B00;"></i>
+          <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+        </span>
+        <span class="topbar-divider d-none d-sm-inline">|</span>
+        <span class="d-none d-sm-inline-flex align-items-center gap-1.5">
+          <i class="bi bi-clock-fill" style="color: #FF6B00;"></i>
+          <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+        </span>
+      </div>
+
+      <!-- Bên phải: Chuyển ngôn ngữ VI/EN & Nút Đăng nhập đưa lên trên cùng -->
+      <div class="d-flex align-items-center gap-3">
+        <!-- Nút chuyển ngôn ngữ VI/EN -->
+        <div class="lang-switch-pills" title="Chuyển đổi ngôn ngữ">
+          <span class="lang-opt active" onclick="switchLanguage('VI', this)">VI</span>
+          <span class="mx-1 text-muted opacity-50">/</span>
+          <span class="lang-opt" onclick="switchLanguage('EN', this)">EN</span>
+        </div>
+        <span class="topbar-divider">|</span>
+        <!-- Nút Đăng nhập đưa lên trên cùng (Hydrated dynamically by app.js) -->
+        <div id="navbar-auth-section">
+          <a href="login.html" class="topbar-login-link text-decoration-none small text-dark fw-semibold d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-fill" style="color: #FF6B00;"></i>
+            <span>Đăng nhập</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. Hàng Header Giữa (Logo cam, Thanh tìm kiếm viên thuốc với dropdown danh mục, Yêu thích, Đăng bán)
+       ======================================================================== -->
+  <header class="portal-header-middle">
+    <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center gap-3">
+      <!-- Logo OtoMarket (Màu cam thương hiệu mới) -->
       <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
-        <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo" style="height: 38px;">
+        <img src="assets/images/logo-light.png" alt="OtoMarket" class="site-logo" style="height: 42px;">
       </a>
 
-      <!-- Nút toggle mobile -->
-      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainPortal">
-        <i class="bi bi-list fs-2 text-dark"></i>
-      </button>
+      <!-- Thanh tìm kiếm bo tròn chuẩn ảnh iBid (Category dropdown + Input + Search button) -->
+      <div class="portal-search-pill-container mx-auto d-none d-md-flex align-items-center">
+        <form class="portal-search-pill-form w-100" onsubmit="handlePortalHeaderSearch(event)">
+          <div class="search-cat-wrapper">
+            <select id="header-search-cat" class="form-select border-0 bg-transparent py-0">
+              <option value="">Tất cả danh mục</option>
+              <option value="SUV">SUV / Crossover</option>
+              <option value="Sedan">Sedan</option>
+              <option value="MPV">MPV 7 chỗ</option>
+              <option value="Bán tải">Bán tải</option>
+              <option value="Điện">Xe điện EV</option>
+            </select>
+          </div>
+          <div class="search-cat-divider"></div>
+          <input type="text" id="header-search-keyword" class="form-control border-0 py-1.5 px-3 shadow-none text-dark" placeholder="Tìm kiếm theo tên xe, hãng xe, đời xe...">
+          <button type="submit" class="btn-search-pill-icon" title="Tìm kiếm xe">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
 
-      <!-- Khối menu chính (Đồng bộ danh sách nút như Bản 1) -->
-      <div class="collapse navbar-collapse" id="navbarMainPortal">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+      <!-- Nút Yêu thích & Nút Đăng bán xe -->
+      <div class="d-flex align-items-center gap-2">
+        <a href="favorites.html" class="btn-portal-outline position-relative" title="Xe yêu thích">
+          <i class="bi bi-heart text-danger"></i>
+          <span class="d-none d-xl-inline">Yêu thích</span>
+          <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="font-size: 0.68rem; display:none;">0</span>
+        </a>
+        <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <i class="bi bi-plus-circle-fill"></i>
+          <span>Đăng bán xe</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       3. Thanh Navigation Bar Màu Cam (Orange Navbar - Chuẩn Thiết Kế Reference)
+       ======================================================================== -->
+  <nav class="portal-orange-navbar">
+    <div class="container-fluid px-3 px-xl-5 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <!-- Nút Trắng Bo Góc Bên Trái: DANH MỤC XE -->
+        <div class="dropdown me-2 me-lg-3">
+          <button class="btn btn-categories-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-list fs-5 me-1"></i> DANH MỤC XE
+          </button>
+          <ul class="dropdown-menu shadow border-0 py-2 mt-1" style="min-width: 230px; font-size: 0.88rem; border-radius: 8px;">
+            <li><a class="dropdown-item py-2 d-flex align-items-center" href="cars.html?bodyType=SUV"><i class="bi bi-car-front me-2 text-warning"></i>SUV / Crossover</a></li>
+            <li><a class="dropdown-item py-2 d-flex align-items-center" href="cars.html?bodyType=Sedan"><i class="bi bi-car-front me-2 text-info"></i>Sedan</a></li>
+            <li><a class="dropdown-item py-2 d-flex align-items-center" href="cars.html?bodyType=MPV"><i class="bi bi-people me-2 text-primary"></i>MPV 7 chỗ</a></li>
+            <li><a class="dropdown-item py-2 d-flex align-items-center" href="cars.html?bodyType=Bán tải"><i class="bi bi-truck me-2 text-secondary"></i>Bán tải</a></li>
+            <li><a class="dropdown-item py-2 d-flex align-items-center" href="cars.html?fuel=Điện"><i class="bi bi-lightning-charge-fill me-2" style="color: #FF6B00;"></i>Xe điện EV</a></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item py-2 fw-bold" href="cars.html" style="color: #FF6B00;"><i class="bi bi-grid-3x3-gap-fill me-2"></i>Xem tất cả xe &rarr;</a></li>
+          </ul>
+        </div>
+
+        <!-- Các liên kết trang chính màu trắng trên nền cam -->
+        <ul class="portal-orange-nav-list d-none d-md-flex">
           <li class="nav-item">
-            <a class="nav-link-portal active" href="index.html">Trang chủ</a>
+            <a class="nav-link-orange active" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal" href="cars.html">Mua xe</a>
+            <a class="nav-link-orange" href="cars.html">Mua xe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal" href="post-car.html">Đăng bán</a>
+            <a class="nav-link-orange" href="post-car.html">Đăng bán</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
+            <a class="nav-link-orange" href="about.html">Giới thiệu</a>
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
-            <a class="nav-link-portal" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-              <i class="bi bi-shield-check me-1 text-primary"></i>Duyệt tin Showroom
-              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+            <a class="nav-link-orange" href="admin.html">
+              <i class="bi bi-shield-check me-1"></i>Duyệt tin Showroom
+              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
             </a>
           </li>
         </ul>
+      </div>
 
-        <!-- Các nút thao tác tài khoản, yêu thích & đăng bán (Đồng bộ Bản 1) -->
-        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-          <!-- Nút Yêu thích -->
-          <a href="favorites.html" class="btn-portal-outline position-relative" title="Xe yêu thích">
-            <i class="bi bi-heart text-danger"></i>
-            <span class="d-none d-xl-inline">Yêu thích</span>
-            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="font-size: 0.68rem; display:none;">0</span>
-          </a>
-
-          <!-- Khối Đăng nhập / Tài khoản (Hydrated dynamically by app.js) -->
-          <div id="navbar-auth-section">
-            <a href="login.html" class="btn-portal-outline">
-              <i class="bi bi-person"></i>
-              <span>Đăng nhập</span>
-            </a>
-          </div>
-
-          <!-- Nút Đăng bán xe nổi bật (Màu cam rực rỡ Stitch) -->
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
-            <i class="bi bi-plus-circle-fill"></i>
-            <span>Đăng bán xe</span>
-          </a>
-        </div>
+      <!-- Phía bên phải thanh cam: Hotline tư vấn -->
+      <div class="d-none d-lg-flex align-items-center text-white small fw-bold">
+        <i class="bi bi-telephone-fill me-1.5"></i> Hotline: 1900 6868
       </div>
     </div>
   </nav>
 
   <main>
     <!-- ========================================================================
-         2. Banner Hero chính (Nền xe thể thao đỏ showroom đêm đúng ảnh Stitch)
+         4. Hero Section Nền Trắng Tinh Tế (Clean Editorial - Chuẩn Ảnh Reference)
          ======================================================================== -->
-    <section class="portal-hero-section">
-      <div class="container-fluid px-3 px-xl-5 position-relative">
-        <div class="max-w-750">
-          <!-- Tag định danh sàn uy tín -->
-          <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 hero-pill-tag">
-            <span class="hero-pulse-dot" style="background-color: #FF6B00;"></span>
-            <span>KẾT NỐI NGƯỜI MUA VÀ NGƯỜI BÁN Ô TÔ</span>
+    <section class="clean-editorial-hero">
+      <div class="container-fluid px-3 px-xl-5">
+        <div class="row align-items-center gy-4">
+          <!-- Cột trái: Chữ đơn giản đúng ảnh -->
+          <div class="col-lg-5 col-xl-5 py-3 py-lg-4">
+            <div class="hero-clean-content pe-lg-3">
+              <h1 class="hero-clean-title mb-3">
+                Find your dream car <br>
+                <span class="hero-clean-amp">&amp;</span> give it a try
+              </h1>
+              <p class="hero-clean-subtitle mb-4">
+                Nền tảng kết nối trực tiếp người mua và người bán ô tô.<br>
+                Thông tin minh bạch, liên hệ trực tiếp, không qua trung gian.
+              </p>
+              <div class="d-flex align-items-center gap-3">
+                <a href="cars.html" class="btn-hero-clean-outline">
+                  XEM DANH SÁCH XE
+                </a>
+                <a href="post-car.html" class="btn-hero-clean-link">
+                  Đăng bán xe &rarr;
+                </a>
+              </div>
+            </div>
           </div>
 
-          <!-- Tiêu đề lớn trắng tinh tế đúng ảnh Stitch -->
-          <h1 class="hero-title mb-3">
-            Tìm Chiếc Xe Phù Hợp <br>
-            <span class="text-white fw-bold">Theo Nhu Cầu Của Bạn</span>
-          </h1>
-
-          <!-- Mô tả nghiệp vụ thực tế -->
-          <p class="hero-subtitle mb-4">
-            Kênh thông tin mua bán ô tô minh bạch, hỗ trợ người mua tìm xe dễ dàng và liên hệ trực tiếp người bán mà không qua môi giới.
-          </p>
-
-          <!-- 3 Chỉ số thực tế của sàn (Màu chuẩn Stitch: Cam, Xanh lam nhạt, Trắng) -->
-          <div class="d-flex flex-wrap align-items-center gap-4 pt-2">
-            <div>
-              <div class="hero-stat-orange mb-0">42+</div>
-              <span class="text-secondary small">Mẫu xe đăng bán</span>
-            </div>
-            <div class="border-start border-secondary ps-4">
-              <div class="hero-stat-blue mb-0">4</div>
-              <span class="text-secondary small">Khu vực xem xe</span>
-            </div>
-            <div class="border-start border-secondary ps-4">
-              <div class="hero-stat-white mb-0">Trực tiếp</div>
-              <span class="text-secondary small">Liên hệ người bán</span>
+          <!-- Cột phải: Chiếc xe ô tô màu bạc sang trọng đúng ảnh -->
+          <div class="col-lg-7 col-xl-7 text-end position-relative">
+            <div class="hero-car-clean-wrapper">
+              <img src="assets/images/hero-clean-car.png" alt="Chiếc xe ô tô mơ ước" class="img-fluid hero-clean-car-img">
             </div>
           </div>
         </div>
@@ -247,13 +314,13 @@
         <div class="col-md-6">
           <div class="subpromo-left-card d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div class="d-flex align-items-center gap-3">
-              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(16, 185, 129, 0.2); width: 40px; height: 40px;">
-                <i class="bi bi-plus-circle-fill text-success fs-4"></i>
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background: rgba(255, 107, 0, 0.15); width: 40px; height: 40px;">
+                <i class="bi bi-plus-circle-fill fs-4" style="color: #FF6B00;"></i>
               </div>
               <div>
                 <div class="d-flex align-items-center gap-2">
                   <span class="fw-bold text-white small">ĐĂNG BÁN XE MIỄN PHÍ</span>
-                  <span class="badge bg-success text-white" style="font-size: 0.65rem;">TIỆN LỢI</span>
+                  <span class="badge text-white" style="background-color: #FF6B00; font-size: 0.65rem;">TIỆN LỢI</span>
                 </div>
                 <span class="text-secondary" style="font-size: 0.76rem;">Tạo tin đăng bán xe nhanh chóng với hình ảnh, giá bán và số điện thoại liên hệ.</span>
               </div>
@@ -413,12 +480,12 @@
                 </a>
               </div>
               <div class="col">
-                <a href="cars.html?fuel=Điện" class="portal-chip-item" style="border-color: #A7F3D0;">
+                <a href="cars.html?fuel=Điện" class="portal-chip-item" style="border-color: #FED7AA;">
                   <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="fw-bold small" style="color: #059669;">Xe điện EV</span>
+                    <span class="fw-bold small" style="color: #EA580C;">Xe điện EV</span>
                   </div>
                   <span class="text-muted" style="font-size: 0.72rem;">2 xe</span>
-                  <div class="mt-1"><span class="badge" style="background-color: #ECFDF5; color: #059669; font-size: 0.65rem;">Động cơ điện</span></div>
+                  <div class="mt-1"><span class="badge" style="background-color: #FFF7ED; color: #EA580C; font-size: 0.65rem;">Động cơ điện</span></div>
                 </a>
               </div>
               <div class="col">
@@ -435,7 +502,7 @@
           <div class="category-box-stitch">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h3 class="h6 fw-bold text-dark mb-0">
-                <i class="bi bi-wallet2 me-1.5" style="color: #059669;"></i> Tìm theo ngân sách tham khảo
+                <i class="bi bi-wallet2 me-1.5" style="color: #FF6B00;"></i> Tìm theo ngân sách tham khảo
               </h3>
               <a href="#tool-loan-calculator" class="small text-muted text-decoration-none">Công cụ tính &gt;</a>
             </div>
@@ -523,15 +590,15 @@
         <div class="col-lg-6">
           <div class="p-4 rounded-4 text-white d-flex flex-column justify-content-between h-100" style="background: #111827; border: 1px solid rgba(255,255,255,0.08);">
             <div>
-              <span class="badge text-white mb-2 fw-semibold px-2.5 py-1" style="background-color: #0D9488; font-size: 0.72rem;">DÀNH CHO NGƯỜI MUA XE</span>
+              <span class="badge text-white mb-2 fw-semibold px-2.5 py-1" style="background-color: #FF6B00; font-size: 0.72rem;">DÀNH CHO NGƯỜI MUA XE</span>
               <h3 class="h5 fw-bold mb-2">Tìm Kiếm & Hẹn Xem Xe Trực Tiếp</h3>
               <p class="text-secondary small mb-3">
                 Tra cứu danh sách xe đầy đủ thông số kỹ thuật, giá bán công khai và hình ảnh chi tiết. Người mua chủ động liên hệ với người bán qua số điện thoại để trao đổi và trực tiếp xem xe.
               </p>
               <div class="d-flex align-items-center gap-3 text-secondary small mb-4">
-                <span><i class="bi bi-check-circle-fill text-success me-1"></i> Giá bán rõ ràng</span>
-                <span><i class="bi bi-check-circle-fill text-success me-1"></i> Không qua trung gian</span>
-                <span><i class="bi bi-check-circle-fill text-success me-1"></i> Xem xe thực tế</span>
+                <span><i class="bi bi-check-circle-fill me-1" style="color: #FF6B00;"></i> Giá bán rõ ràng</span>
+                <span><i class="bi bi-check-circle-fill me-1" style="color: #FF6B00;"></i> Không qua trung gian</span>
+                <span><i class="bi bi-check-circle-fill me-1" style="color: #FF6B00;"></i> Xem xe thực tế</span>
               </div>
             </div>
             <div>
@@ -666,7 +733,7 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between small mb-1">
                   <span class="text-muted">Thời hạn vay:</span>
-                  <strong id="loan-years-text" style="color: #059669;">5 năm (60 tháng)</strong>
+                  <strong id="loan-years-text" style="color: #FF6B00;">5 năm (60 tháng)</strong>
                 </div>
                 <input type="range" class="form-range" id="loan-years-range" min="1" max="8" step="1" value="5" oninput="calculateLoanEstimate()">
               </div>
@@ -686,9 +753,9 @@
             <div>
               <div class="d-flex justify-content-between align-items-baseline mb-2">
                 <span class="small fw-semibold text-secondary">Trả góp tháng đầu:</span>
-                <span class="h5 fw-bold mb-0" id="loan-monthly" style="color: #059669;">12.804.000 đ</span>
+                <span class="h5 fw-bold mb-0" id="loan-monthly" style="color: #FF6B00;">12.804.000 đ</span>
               </div>
-              <button class="btn btn-sm w-100 fw-bold rounded-2 py-2 text-white" style="background-color: #059669;" onclick="calculateLoanEstimate()">
+              <button class="btn btn-sm w-100 fw-bold rounded-2 py-2 text-white" style="background-color: #FF6B00;" onclick="calculateLoanEstimate()">
                 Cập nhật
               </button>
             </div>
@@ -856,7 +923,7 @@
             <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="VinFast VF 8" style="height: 160px; object-fit: cover;" onerror="this.src='assets/images/cars/vf8.jpg'">
             <div class="card-body p-3 d-flex flex-column justify-content-between">
               <div>
-                <span class="badge mb-2 fw-semibold" style="background-color: #ECFDF5; color: #059669; font-size: 0.68rem;">ĐÁNH GIÁ XE ĐIỆN</span>
+                <span class="badge mb-2 fw-semibold" style="background-color: #FFF7ED; color: #EA580C; font-size: 0.68rem;">ĐÁNH GIÁ XE ĐIỆN</span>
                 <h4 class="card-title fw-bold fs-6 text-dark mb-2">Trải Nghiệm Thực Tế VinFast VF 8 Sau Quãng Đường Dài</h4>
                 <p class="card-text text-muted small mb-0" style="font-size: 0.78rem;">
                   Chi phí sạc điện so với xăng, hiệu quả trạm sạc trên các tuyến quốc lộ và cảm giác lái trên đường trường.
@@ -1037,7 +1104,7 @@
             <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
-              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #ECFDF5; color: #059669; width: 36px; height: 36px;">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
                 <i class="bi bi-telephone-fill"></i>
               </div>
               <div>
@@ -1116,7 +1183,7 @@
         brand: "Hyundai",
         category: "used",
         badge: "Xe gia đình",
-        badgeClass: "bg-success-subtle text-success",
+        badgeClass: "bg-light text-dark border",
         sellerTag: "Salon Kim Mã",
         image: "assets/images/cars/tucson.jpg",
         year: 2022,
@@ -1136,7 +1203,7 @@
         brand: "Mazda",
         category: "used",
         badge: "Xe lướt",
-        badgeClass: "bg-success-subtle text-success",
+        badgeClass: "bg-light text-dark border",
         sellerTag: "Showroom Nha Trang",
         image: "assets/images/cars/cx5.jpg",
         year: 2023,
@@ -1196,7 +1263,7 @@
         brand: "Toyota",
         category: "used",
         badge: "Đã qua sử dụng",
-        badgeClass: "bg-success-subtle text-success",
+        badgeClass: "bg-light text-dark border",
         sellerTag: "Showroom Hà Nội",
         image: "assets/images/cars/corolla_cross.jpg",
         year: 2023,
@@ -1470,6 +1537,26 @@
         document.getElementById('loan-principal').textContent = monthlyPrincipal.toLocaleString('vi-VN') + ' đ';
       }
       document.getElementById('loan-monthly').textContent = monthlyTotal.toLocaleString('vi-VN') + ' đ';
+    }
+
+    // 3. Xử lý tìm kiếm từ Header tìm kiếm viên thuốc (Pill search)
+    function handlePortalHeaderSearch(event) {
+      if (event) event.preventDefault();
+      const cat = document.getElementById('header-search-cat') ? document.getElementById('header-search-cat').value : '';
+      const kw = document.getElementById('header-search-keyword') ? document.getElementById('header-search-keyword').value.trim() : '';
+      const params = new URLSearchParams();
+      if (cat) params.set('bodyType', cat);
+      if (kw) params.set('keyword', kw);
+      window.location.href = `cars.html${params.toString() ? '?' + params.toString() : ''}`;
+    }
+
+    // 4. Chuyển đổi ngôn ngữ VI / EN
+    function switchLanguage(lang, el) {
+      document.querySelectorAll('.lang-opt').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+      if (window.showToast) {
+        window.showToast(lang === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
+      }
     }
 
     // Tự động khởi tạo khi tải trang
