@@ -454,20 +454,19 @@ img {
   border: 2px solid #0B132B;
 }
 
-/* User Capsule trong Navbar */
+/* User Capsule trong Navbar / Topbar */
 #navbar-auth-section .dropdown-toggle {
-  max-width: 175px;
   white-space: nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: none !important;
 }
-#navbar-auth-section .dropdown-toggle span {
-  max-width: 120px;
+#navbar-auth-section .dropdown-toggle span.user-name-label {
   white-space: nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: inline-block;
   vertical-align: middle;
+  max-width: none !important;
+}
+.topbar-user-btn.dropdown-toggle::after {
+  display: none !important;
 }
 #navbar-auth-section .dropdown-menu {
   background: #FFFFFF;

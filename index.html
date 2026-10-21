@@ -107,7 +107,10 @@
       box-shadow: 0 0 10px rgba(255, 107, 0, 0.45) !important;
     }
 
-    /* 1. FIX LỖI NỀN ĐĂNG NHẬP: Không bao giờ bị chìm/mất chữ khi rê chuột */
+    /* 1. NÚT TÀI KHOẢN / ĐĂNG NHẬP TRÊN TOPBAR: Đẹp, rõ nét, không mất chữ, không trùng mũi tên */
+    .topbar-user-btn.dropdown-toggle::after {
+      display: none !important;
+    }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
       border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
       background: rgba(255, 255, 255, 0.14) !important;
@@ -122,7 +125,7 @@
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
       color: #FFFFFF !important;
@@ -130,26 +133,36 @@
       letter-spacing: 0.2px;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
       transition: all 0.2s ease;
+      max-width: none !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i {
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-person-fill:not(.user-avatar-dot i) {
       color: #FF6B00 !important;
-      transition: all 0.2s ease;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-chevron-down {
+      color: rgba(255, 255, 255, 0.75) !important;
+      transition: transform 0.2s ease;
+    }
+    .topbar-user-btn.show i.bi-chevron-down {
+      transform: rotate(180deg);
     }
     /* Hover trạng thái trong suốt: Chuyển sang nút Cam thương hiệu nổi bật, chữ trắng 100% */
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
       background: #FF6B00 !important;
+      background-color: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
       box-shadow: 0 0 12px rgba(255, 107, 0, 0.5) !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover .user-name-label,
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover i {
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show * {
       color: #FFFFFF !important;
       text-shadow: none !important;
     }
 
+    /* Icon Avatar hình tròn cam với biểu tượng người trắng tinh khôi */
     .user-avatar-dot {
       display: inline-flex;
       align-items: center;
@@ -157,9 +170,15 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #FF6B00;
-      color: #FFFFFF;
-      font-size: 0.74rem;
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      flex-shrink: 0;
+    }
+    .user-avatar-dot i,
+    .topbar-user-btn .user-avatar-dot i {
+      color: #FFFFFF !important;
+      font-size: 0.74rem !important;
+      line-height: 1;
     }
     .topbar-dropdown-menu,
     #navbar-auth-section .dropdown-menu {

@@ -792,8 +792,8 @@ function syncHeaderUserUI() {
       <div class="dropdown">
         <button class="topbar-user-btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="white-space: nowrap !important;">
           <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
-          <span class="d-none d-sm-inline text-truncate user-name-label" style="max-width: 140px; vertical-align: middle;">${user.name || user.email}</span>
-          <i class="bi bi-chevron-down" style="font-size: 0.68rem; opacity: 0.8;"></i>
+          <span class="d-none d-sm-inline user-name-label" style="vertical-align: middle;">${user.name || user.email}</span>
+          <i class="bi bi-chevron-down user-dropdown-caret" style="font-size: 0.68rem;"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 py-2 topbar-dropdown-menu" style="min-width: 240px; z-index: 99999 !important;">
           <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
