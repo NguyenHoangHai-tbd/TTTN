@@ -790,11 +790,12 @@ function syncHeaderUserUI() {
     const isAdmin = isUserAdmin(user);
     authSection.innerHTML = `
       <div class="dropdown">
-        <button class="btn btn-outline-custom dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" style="white-space: nowrap !important;">
-          <i class="bi bi-person-circle" style="color: #FF6B00;"></i>
-          <span class="d-none d-xl-inline text-truncate" style="max-width: 140px; vertical-align: middle; white-space: nowrap !important;">${user.name || user.email}</span>
+        <button class="topbar-user-btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="white-space: nowrap !important;">
+          <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
+          <span class="d-none d-sm-inline text-truncate user-name-label" style="max-width: 140px; vertical-align: middle;">${user.name || user.email}</span>
+          <i class="bi bi-chevron-down" style="font-size: 0.68rem; opacity: 0.8;"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2" style="min-width: 240px;">
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 py-2 topbar-dropdown-menu" style="min-width: 240px;">
           <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
             <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Quản lý Showroom' : 'Thành viên')}</div>
             <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
@@ -809,9 +810,9 @@ function syncHeaderUserUI() {
     `;
   } else {
     authSection.innerHTML = `
-      <a href="login.html?v=20261016_home" class="btn btn-outline-custom">
-        <i class="bi bi-person"></i>
-        <span>Đăng nhập</span>
+      <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+        <i class="bi bi-person-fill" style="color: #FF6B00;"></i>
+        <span class="user-name-label">Đăng nhập</span>
       </a>
     `;
   }
