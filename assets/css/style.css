@@ -3773,3 +3773,29 @@ li.admin-only.is-admin-visible {
   pointer-events: none !important;
   transform: translate(-50%, 15px) !important;
 }
+
+
+/* Frosted Glass Translucent Scrolled Header System */
+.portal-header-wrapper.is-scrolled {
+  background: rgba(255, 255, 255, 0.82) !important;
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(18px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(170%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
+}
+.portal-header-wrapper.is-scrolled:hover {
+  background: rgba(255, 255, 255, 0.90) !important;
+}
+.portal-header-wrapper.is-scrolled .portal-topbar-clean {
+  background: rgba(248, 250, 252, 0.68) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+}
+.portal-header-wrapper.is-scrolled .portal-navbar-clean {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}

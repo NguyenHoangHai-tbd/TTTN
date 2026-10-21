@@ -287,7 +287,7 @@
     }
 
     /* ==========================================================================
-       TRẠNG THÁI CUỘN XUỐNG: CẢ TOPBAR VÀ NAVBAR ĐỔI SANG MÀU NỀN NỔI BẬT (STICKY)
+       TRẠNG THÁI CUỘN XUỐNG: TOPBAR SÁNG TRONG SUỐT (FROSTED GLASS - MỜ MỜ CÓ SÁNG)
        ========================================================================== */
     .portal-header-wrapper.is-scrolled {
       position: fixed !important;
@@ -295,28 +295,46 @@
       left: 0 !important;
       width: 100% !important;
       z-index: 1050 !important;
-      background: rgba(255, 255, 255, 0.98) !important;
-      box-shadow: 0 4px 22px rgba(15, 23, 42, 0.08) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
+      background: rgba(255, 255, 255, 0.82) !important;
+      box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.08) !important;
+      backdrop-filter: blur(18px) saturate(170%) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(170%) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
+    .portal-header-wrapper.is-scrolled:hover {
+      background: rgba(255, 255, 255, 0.90) !important;
+      box-shadow: 0 10px 36px 0 rgba(15, 23, 42, 0.10) !important;
+    }
+
+    /* Topbar trong suốt mờ mờ có sáng khi cuộn xuống */
     .portal-header-wrapper.is-scrolled .portal-topbar-clean {
-      background: #F8FAFC !important;
-      border-bottom: 1px solid #E2E8F0 !important;
-      color: #64748B !important;
+      background: rgba(248, 250, 252, 0.68) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.55) !important;
+      backdrop-filter: blur(16px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+      color: #475569 !important;
       padding: 6px 0 !important;
+      transition: background 0.25s ease;
+    }
+    .portal-header-wrapper.is-scrolled:hover .portal-topbar-clean {
+      background: rgba(248, 250, 252, 0.82) !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-info-item {
       color: #334155 !important;
       text-shadow: none !important;
+      font-weight: 600;
     }
     .portal-header-wrapper.is-scrolled .topbar-divider {
-      color: #E2E8F0 !important;
+      color: rgba(203, 213, 225, 0.8) !important;
     }
+
+    /* Khối chuyển ngôn ngữ VI / EN khi cuộn */
     .portal-header-wrapper.is-scrolled .lang-switch-container {
-      background: #F1F5F9 !important;
-      border-color: #E2E8F0 !important;
-      backdrop-filter: none;
+      background: rgba(241, 245, 249, 0.85) !important;
+      border: 1px solid rgba(226, 232, 240, 0.85) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .portal-header-wrapper.is-scrolled .lang-pill-btn {
       color: #64748B !important;
@@ -330,18 +348,22 @@
       color: #FFFFFF !important;
       box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
     }
-    /* Nút Đăng nhập ở trạng thái cuộn */
+
+    /* Nút Đăng nhập / Tài khoản ở trạng thái cuộn */
     .portal-header-wrapper.is-scrolled .topbar-user-btn {
-      border: 1.5px solid #CBD5E1 !important;
-      background: #F8FAFC !important;
+      border: 1.5px solid rgba(203, 213, 225, 0.85) !important;
+      background: rgba(255, 255, 255, 0.85) !important;
       color: #0F172A !important;
-      backdrop-filter: none;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
       padding: 5px 14px;
       border-radius: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
       color: #0F172A !important;
       text-shadow: none !important;
+      font-weight: 700;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn i {
       color: #FF6B00 !important;
@@ -352,44 +374,54 @@
       background: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 10px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.45) !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-name-label,
     .portal-header-wrapper.is-scrolled .topbar-user-btn:hover i {
       color: #FFFFFF !important;
     }
 
+    /* Navbar trong suốt kính mờ khi cuộn */
     .portal-header-wrapper.is-scrolled .portal-navbar-clean {
-      background: #FFFFFF !important;
-      border-bottom: 1px solid #E2E8F0 !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+      background: rgba(255, 255, 255, 0.75) !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      backdrop-filter: blur(16px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
       padding: 10px 0 !important;
+      transition: background 0.25s ease;
+    }
+    .portal-header-wrapper.is-scrolled:hover .portal-navbar-clean {
+      background: rgba(255, 255, 255, 0.88) !important;
     }
     .portal-header-wrapper.is-scrolled .nav-link-portal {
       color: #1F2937 !important;
       text-shadow: none !important;
+      font-weight: 600;
     }
     .portal-header-wrapper.is-scrolled .nav-link-portal:hover {
       color: #FF6B00 !important;
-      background-color: #FFF7ED !important;
-      border-color: #FED7AA !important;
+      background-color: rgba(255, 107, 0, 0.12) !important;
+      border-color: rgba(255, 107, 0, 0.35) !important;
       box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15) !important;
     }
     .portal-header-wrapper.is-scrolled .nav-link-portal.active {
       color: #FF6B00 !important;
-      background-color: #FFF7ED !important;
+      background-color: rgba(255, 107, 0, 0.15) !important;
       border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.22) !important;
+      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.25) !important;
     }
     .portal-header-wrapper.is-scrolled .btn-fav-compact {
-      border: 1.5px solid #CBD5E1 !important;
-      background-color: #FFFFFF !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
-      backdrop-filter: none !important;
+      border: 1.5px solid rgba(203, 213, 225, 0.85) !important;
+      background-color: rgba(255, 255, 255, 0.85) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
     }
     .portal-header-wrapper.is-scrolled .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
     }
 
     /* 4. HERO SECTION KÉO DÀI ĐỦ MÀN HÌNH MÁY (100VH) - SÁNG RỰC RỠ, NỀN TỐI SANG TRỌNG */
