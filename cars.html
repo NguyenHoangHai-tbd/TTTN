@@ -36,10 +36,13 @@
             <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom active" href="cars.html">Mua xe</a>
+            <a class="nav-link nav-link-custom nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="post-car.html">Đăng bán</a>
+            <a class="nav-link nav-link-custom nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html#guide-section">Tin tức &amp; Đánh giá</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
@@ -643,8 +646,14 @@
         syncBrandChipsUI(params.get('brand'));
       }
       if (params.get('condition')) {
-        document.getElementById('filter-condition').value = params.get('condition');
-        syncSegmentedConditionUI(params.get('condition'));
+        const cond = params.get('condition');
+        document.getElementById('filter-condition').value = cond;
+        syncSegmentedConditionUI(cond);
+        if (cond === 'new') {
+          document.querySelector('.nav-link-car-new')?.classList.add('active');
+        } else if (cond === 'used') {
+          document.querySelector('.nav-link-car-used')?.classList.add('active');
+        }
       }
       if (params.get('bodyType')) {
         document.getElementById('filter-body-type').value = params.get('bodyType');

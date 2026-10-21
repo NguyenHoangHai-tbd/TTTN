@@ -180,17 +180,24 @@
       padding: 12px 0 !important;
       transition: all 0.25s ease;
     }
+    html {
+      scroll-behavior: smooth;
+    }
+    #guide-section {
+      scroll-margin-top: 110px;
+    }
     .nav-link-portal {
       color: #FFFFFF !important;
       font-weight: 600 !important;
-      font-size: 0.92rem !important;
-      padding: 8px 16px !important;
+      font-size: 0.90rem !important;
+      padding: 7px 14px !important;
       border-radius: 8px !important;
       border: 1.5px solid transparent !important;
       text-decoration: none !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
       transition: all 0.2s ease;
       display: inline-block;
+      white-space: nowrap;
     }
     .nav-link-portal:hover {
       color: #FF6B00 !important;
@@ -648,13 +655,19 @@
           <img src="assets/images/logo.png?v=20261021_brand_orange_v6" alt="OtoMarket" class="site-logo logo-scrolled-mode" style="height: 42px; display: none;">
         </a>
 
-        <!-- Menu Điều Hướng Chính (Đã lược bỏ "Đăng bán" trùng lặp với nút CTA) -->
+        <!-- Menu Điều Hướng Chính (Tách Ô tô mới, Ô tô cũ & Bổ sung Tin tức & Đánh giá) -->
         <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
             <a class="nav-link-portal active" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal" href="cars.html">Mua xe</a>
+            <a class="nav-link-portal" href="cars.html?condition=new">Ô tô mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="#guide-section">Tin tức &amp; Đánh giá</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-portal" href="about.html">Giới thiệu</a>
@@ -1361,13 +1374,13 @@ div>
     </section>
 
     <!-- ========================================================================
-         10. Kinh Nghiệm & Hướng Dẫn Mua Bán Xe
+         10. Tin Tức & Đánh Giá Xe - Cẩm Nang Kinh Nghiệm
          ======================================================================== -->
     <section class="container-fluid px-3 px-xl-5 mt-5" id="guide-section">
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="section-eyebrow-orange">CẨM NANG & KINH NGHIỆM</span>
-          <h2 class="h5 fw-bold text-dark mb-0">Kinh Nghiệm & Hướng Dẫn Mua Bán Xe</h2>
+          <span class="section-eyebrow-orange">TIN TỨC &amp; ĐÁNH GIÁ CHUYÊN SÂU</span>
+          <h2 class="h5 fw-bold text-dark mb-0">Tin Tức &amp; Đánh Giá Xe - Cẩm Nang Kinh Nghiệm</h2>
         </div>
         <a href="about.html" class="link-orange-arrow">
           Xem tất cả bài viết <i class="bi bi-chevron-right"></i>
