@@ -426,12 +426,130 @@
       margin-bottom: 4px;
     }
   </style>
-</head>
-<body class="bg-white">
 
-  <!-- ========================================================================
-       PORTAL HEADER: TOPBAR + NAVBAR (NỀN SÁNG TIÊU CHUẨN, KHÔNG XUYÊN THẤU)
-       ======================================================================== -->
+  <style>
+    /* OPTION 2: WARM ARCHITECTURAL BENTO STYLES */
+    body.opt2-body {
+      background-color: #EEF2F6 !important;
+      color: #0F172A !important;
+    }
+    .opt2-hero-wrap {
+      padding: 36px 0 24px 0 !important;
+    }
+    .opt2-hero-card {
+      background: #FFFFFF !important;
+      border-radius: 24px !important;
+      border: 1px solid #CBD5E1 !important;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06) !important;
+      padding: 40px !important;
+    }
+    .opt2-hero-title {
+      font-size: 2.4rem !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.5px !important;
+    }
+    .opt2-stat-card {
+      background: #F8FAFC !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 14px !important;
+      padding: 16px 12px !important;
+      text-align: center !important;
+      transition: all 0.2s ease !important;
+    }
+    .opt2-stat-card:hover {
+      transform: translateY(-2px) !important;
+      background: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+    }
+    .opt2-stat-val {
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      color: #FF6B00 !important;
+      line-height: 1.1 !important;
+      margin-bottom: 4px !important;
+    }
+    .opt2-stat-lbl {
+      font-size: 0.75rem !important;
+      color: #64748B !important;
+      font-weight: 600 !important;
+      line-height: 1.3 !important;
+    }
+    .opt2-hq-frame {
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      border: 1px solid #CBD5E1 !important;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08) !important;
+    }
+    .opt2-hq-img {
+      width: 100% !important;
+      height: 310px !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    .opt2-hq-bar {
+      padding: 14px 18px !important;
+      background: #F8FAFC !important;
+      border-top: 1px solid #E2E8F0 !important;
+    }
+    .opt2-info-item {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-size: 0.85rem !important;
+      color: #334155 !important;
+      margin-bottom: 6px !important;
+    }
+    .opt2-info-item:last-child {
+      margin-bottom: 0 !important;
+    }
+    .opt2-info-icon {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 6px !important;
+      background: #FFF7ED !important;
+      color: #EA580C !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 0.9rem !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Bento values dark container */
+    .opt2-dark-bento {
+      background: #0F172A !important;
+      border-radius: 24px !important;
+      padding: 44px !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16) !important;
+      border: 1px solid #1E293B !important;
+    }
+    .opt2-dark-card {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 16px !important;
+      padding: 24px !important;
+      height: 100% !important;
+      transition: all 0.2s ease !important;
+    }
+    .opt2-dark-card:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: #FF6B00 !important;
+      transform: translateY(-3px) !important;
+    }
+    .opt2-white-bento {
+      background: #FFFFFF !important;
+      border-radius: 24px !important;
+      border: 1px solid #CBD5E1 !important;
+      padding: 40px !important;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
+    }
+  </style>
+</head>
+<body class="opt2-body">
+
   <header id="portal-header" class="portal-header-wrapper">
     <!-- 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập) -->
     <div class="portal-topbar-clean">
@@ -516,473 +634,330 @@
     </nav>
   </header>
 
-  <!-- ==================== SECTION 1: HERO GIỚI THIỆU THƯƠNG HIỆU & DOANH NGHIỆP ==================== -->
-  <section class="about-hero-section">
+  <div class="opt2-hero-wrap">
     <div class="container-fluid px-3 px-xl-5">
-      <div class="row align-items-center gy-5">
-        
-        <!-- Cột trái: Định vị thương hiệu, Tôn chỉ hoạt động & Giá trị mang lại -->
-        <div class="col-lg-7 text-start">
-          <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background: #FFF7ED; border: 1px solid #FED7AA; color: #EA580C;">
-            <i class="bi bi-building-check text-orange-theme"></i>
-            <span class="small fw-bold text-uppercase" style="letter-spacing: 0.8px; font-size: 0.74rem;">VỀ CHÚNG TÔI • HỆ THỐNG NỀN TẢNG OTOMARKET</span>
+      <!-- HERO BENTO TILE KHỔNG LỒ NỔI TRÊN NỀN XÁM CÁT SANG TRỌNG -->
+      <div class="opt2-hero-card mb-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h1 class="opt2-hero-title mb-3">
+              Kiến Tạo Chuẩn Mực Mới <br>
+              <span style="color: #FF6B00;">Trong Giao Dịch Ô Tô Trực Tuyến</span>
+            </h1>
+
+            <p class="text-secondary line-height-lg mb-4" style="font-size: 1.05rem;">
+              OtoMarket là nền tảng công nghệ số hóa thị trường thương mại ô tô, ra đời nhằm thiết lập môi trường giao dịch <strong>minh bạch, tin cậy và không qua trung gian môi giới</strong>. Chúng tôi kết nối trực tiếp Người Cần Mua và Người Đang Bán, chuẩn hóa quy trình rà soát dữ liệu kỹ thuật và thẩm định thông tin xe thực tế.
+            </p>
+
+            <div class="row g-3">
+              <div class="col-6 col-sm-3">
+                <div class="opt2-stat-card">
+                  <div class="opt2-stat-val">10.000+</div>
+                  <div class="opt2-stat-lbl">Lượt tra cứu mỗi ngày</div>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="opt2-stat-card">
+                  <div class="opt2-stat-val">3.500+</div>
+                  <div class="opt2-stat-lbl">Tin xe đang hiển thị</div>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="opt2-stat-card">
+                  <div class="opt2-stat-val">15 Phút</div>
+                  <div class="opt2-stat-lbl">Kiểm duyệt tin nhanh chóng</div>
+                </div>
+              </div>
+              <div class="col-6 col-sm-3">
+                <div class="opt2-stat-card">
+                  <div class="opt2-stat-val">63 Tỉnh</div>
+                  <div class="opt2-stat-lbl">Mạng lưới kết nối rộng rãi</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <h1 class="about-hero-title mb-3">
-            Kiến Tạo Chuẩn Mực Mới <br>
-            <span style="color: #FF6B00;">Trong Giao Dịch Ô Tô Trực Tuyến</span>
-          </h1>
-
-          <p class="about-hero-subtitle mb-4">
-            OtoMarket là nền tảng công nghệ số hóa thị trường thương mại ô tô, ra đời nhằm thiết lập môi trường giao dịch <strong>minh bạch, tin cậy và không qua trung gian môi giới</strong>. Chúng tôi kết nối trực tiếp Người Cần Mua và Người Đang Bán trên khắp 63 tỉnh thành, chuẩn hóa quy trình rà soát dữ liệu kỹ thuật và thẩm định thông tin xe thực tế.
-          </p>
-
-          <!-- 4 Thẻ chỉ số thành tựu nổi bật -->
-          <div class="row g-2 mb-2">
-            <div class="col-6 col-sm-3">
-              <div class="about-kpi-card">
-                <div class="h4 fw-bold mb-0" style="color: #FF6B00;">10.000+</div>
-                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Lượt tra cứu / ngày</div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-3">
-              <div class="about-kpi-card">
-                <div class="h4 fw-bold mb-0 text-success">3.500+</div>
-                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Tin xe niêm yết sạch</div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-3">
-              <div class="about-kpi-card">
-                <div class="h4 fw-bold mb-0 text-primary">15 Phút</div>
-                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Quy trình duyệt tin</div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-3">
-              <div class="about-kpi-card">
-                <div class="h4 fw-bold mb-0" style="color: #D97706;">63 Tỉnh</div>
-                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Kết nối trên toàn quốc</div>
+          <div class="col-lg-6">
+            <div class="opt2-hq-frame">
+              <img src="assets/images/nhatrang-hq-showroom.jpg" alt="Trụ sở điều hành và showroom OtoMarket tại Nha Trang" class="opt2-hq-img">
+              <div class="opt2-hq-bar">
+                <div class="opt2-info-item">
+                  <div class="opt2-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                  <div><strong>Trụ sở chính:</strong> Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa</div>
+                </div>
+                <div class="opt2-info-item">
+                  <div class="opt2-info-icon"><i class="bi bi-diagram-3-fill"></i></div>
+                  <div><strong>Mô hình vận hành:</strong> Sàn kết nối trực tiếp Người Mua & Người Bán (C2C & B2C)</div>
+                </div>
+                <div class="opt2-info-item">
+                  <div class="opt2-info-icon"><i class="bi bi-headset"></i></div>
+                  <div><strong>Hotline hỗ trợ:</strong> <span class="fw-bold" style="color: #FF6B00;">1900 6868</span> (08:00 – 18:30 hàng ngày)</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Cột phải: Thẻ Hồ Sơ Doanh Nghiệp & Nền Tảng (Platform Profile Card) -->
+      <!-- SECTION 2: 3 BENTO CARDS SỨ MỆNH -->
+      <div class="row g-4 mb-4 align-items-stretch">
+        <div class="col-lg-4">
+          <div class="bg-white rounded-4 p-4 border h-100 shadow-sm">
+            <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: #FFF7ED; color: #EA580C;"><i class="bi bi-lightbulb-fill fs-4"></i></div>
+            <h3 class="h5 fw-bold text-dark mb-2">Vì Sao OtoMarket Ra Đời?</h3>
+            <p class="small text-secondary mb-0 line-height-lg">
+              Tại Việt Nam, giao dịch ô tô là quyết định tài chính quan trọng nhưng người dùng thường đối mặt với tin ảo phá giá câu view, tua đồng hồ ODO, che giấu lịch sử xe và các cuộc gọi môi giới phiền toái. OtoMarket ra đời để giải quyết triệt để rào cản này bằng công nghệ minh bạch.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="bg-white rounded-4 p-4 border h-100 shadow-sm">
+            <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: #FEF3C7; color: #D97706;"><i class="bi bi-bullseye fs-4"></i></div>
+            <h3 class="h5 fw-bold text-dark mb-2">Sứ Mệnh Doanh Nghiệp</h3>
+            <p class="small text-secondary mb-0 line-height-lg">
+              Minh bạch hóa thị trường mua bán xe ô tô, bảo vệ quyền lợi chính đáng của cả Người Cần Mua và Người Đang Bán. Mang đến một công cụ số chuẩn mực, giúp việc tìm kiếm xe, hẹn xem xe và hoàn tất thủ tục trở nên an tâm, thuận tiện.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="bg-white rounded-4 p-4 border h-100 shadow-sm">
+            <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: #EFF6FF; color: #2563EB;"><i class="bi bi-compass-fill fs-4"></i></div>
+            <h3 class="h5 fw-bold text-dark mb-2">Định Hướng Bền Vững</h3>
+            <p class="small text-secondary mb-0 line-height-lg">
+              Xây dựng nền tảng thương mại điện tử ô tô đáng tin cậy cho cộng đồng người dùng, từng bước mở rộng trung tâm hỗ trợ kỹ thuật tại các đô thị trọng điểm, lấy sự trung thực và minh bạch dữ liệu làm kim chỉ nam vận hành.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: DARK BENTO TILE - GIÁ TRỊ CỐT LÕI TẠO ĐIỂM NHẤN TƯƠNG PHẢN ĐẬM -->
+      <div class="opt2-dark-bento mb-4">
+        <div class="text-center max-w-700 mx-auto mb-4">
+          <h2 class="h3 fw-bold text-white mb-2">Giá Trị Cốt Lõi Định Hình OtoMarket</h2>
+          <p class="text-light opacity-75 small">Mọi tính năng công nghệ, quy chế kiểm duyệt và chính sách vận hành của sàn đều dựa trên 4 nguyên tắc đạo đức nghề nghiệp:</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-3">
+            <div class="opt2-dark-card">
+              <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: rgba(254, 243, 199, 0.15); color: #FBBF24;"><i class="bi bi-eye-fill fs-4"></i></div>
+              <h3 class="h6 fw-bold text-white mb-2">Minh Bạch Thông Tin</h3>
+              <p class="small text-light opacity-75 mb-0">Giá niêm yết là giá bán thực tế, không chi phí ẩn, không tạo sự mập mờ, hỗ trợ so sánh dữ liệu rõ ràng.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="opt2-dark-card">
+              <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: rgba(236, 253, 245, 0.15); color: #34D399;"><i class="bi bi-shield-check fs-4"></i></div>
+              <h3 class="h6 fw-bold text-white mb-2">Kiểm Duyệt Nghiêm Ngặt</h3>
+              <p class="small text-light opacity-75 mb-0">Từ chối tin ảo, ảnh mờ catalogue hoặc thông tin sai lệch. Mọi tin đăng đều trải qua quy trình kiểm soát nội dung.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="opt2-dark-card">
+              <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: rgba(239, 246, 255, 0.15); color: #60A5FA;"><i class="bi bi-people-fill fs-4"></i></div>
+              <h3 class="h6 fw-bold text-white mb-2">Không Môi Giới Phức Tạp</h3>
+              <p class="small text-light opacity-75 mb-0">Kết nối trực tiếp giữa người có xe và người cần mua. Người dùng chủ động liên hệ điện thoại hoặc Zalo xem xe.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="opt2-dark-card">
+              <div class="rounded-3 p-2 d-inline-flex mb-3" style="background: rgba(255, 241, 242, 0.15); color: #FB7185;"><i class="bi bi-heart-pulse-fill fs-4"></i></div>
+              <h3 class="h6 fw-bold text-white mb-2">Đồng Hành Tận Tâm</h3>
+              <p class="small text-light opacity-75 mb-0">Tổng đài hỗ trợ giải đáp thắc mắc, cung cấp cẩm nang 3 bước giao dịch an toàn và tiếp nhận xử lý báo cáo vi phạm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: BENTO KIỂM DUYỆT XE THỰC TẾ -->
+      <div class="opt2-white-bento mb-4">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <div class="rounded-4 overflow-hidden border shadow-sm">
+              <img src="assets/images/inspection-process.jpg" alt="Quy trình kiểm định và rà soát chất lượng xe ô tô thực tế" class="w-100 d-block" style="min-height: 290px; object-fit: cover;">
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <h2 class="h3 fw-bold text-dark mb-2">Quy Trình Kiểm Duyệt Tin Xe Thực Tế</h2>
+            <p class="text-muted small mb-4">
+              Để đảm bảo kho xe trực tuyến luôn chính xác và đáng tin cậy, đội ngũ quản trị sàn áp dụng 4 tiêu chuẩn thẩm duyệt bắt buộc đối với mỗi tin đăng:
+            </p>
+
+            <div class="bg-light rounded-3 p-3 border mb-2.5 d-flex align-items-start gap-3">
+              <div class="badge bg-warning text-dark p-2 rounded-2 fw-bold">1</div>
+              <div>
+                <h4 class="h6 fw-bold text-dark mb-1">Ảnh Chụp Thực Tế Rõ Nét</h4>
+                <p class="small text-muted mb-0">Từ chối ảnh sao chép từ mạng xã hội, ảnh mờ không rõ biển số hoặc không phản ánh đúng ngoại thất xe thực tế.</p>
+              </div>
+            </div>
+
+            <div class="bg-light rounded-3 p-3 border mb-2.5 d-flex align-items-start gap-3">
+              <div class="badge bg-warning text-dark p-2 rounded-2 fw-bold">2</div>
+              <div>
+                <h4 class="h6 fw-bold text-dark mb-1">Giá Bán Niêm Yết Thật</h4>
+                <p class="small text-muted mb-0">Nghiêm cấm mức giá ảo 0đ, 1 triệu câu view. Người bán bắt buộc niêm yết đúng số tiền chuyển nhượng mong muốn.</p>
+              </div>
+            </div>
+
+            <div class="bg-light rounded-3 p-3 border mb-2.5 d-flex align-items-start gap-3">
+              <div class="badge bg-warning text-dark p-2 rounded-2 fw-bold">3</div>
+              <div>
+                <h4 class="h6 fw-bold text-dark mb-1">Xác Thực Người Đăng Tin</h4>
+                <p class="small text-muted mb-0">Mỗi tin đăng phải gắn liền với số điện thoại liên lạc hợp lệ để người mua kết nối trực tiếp, tránh tin nặc danh.</p>
+              </div>
+            </div>
+
+            <div class="bg-light rounded-3 p-3 border d-flex align-items-start gap-3">
+              <div class="badge bg-warning text-dark p-2 rounded-2 fw-bold">4</div>
+              <div>
+                <h4 class="h6 fw-bold text-dark mb-1">Ngăn Ngừa Tin Trùng Lặp & Spam</h4>
+                <p class="small text-muted mb-0">Hệ thống tự động phát hiện số khung (VIN) và biển số xe để hạn chế việc đăng lặp lại nhiều lần cùng một phương tiện.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: BENTO TRỤ SỞ & CẨM NANG -->
+      <div class="row g-4 mb-4 align-items-stretch">
         <div class="col-lg-5">
-          <div class="platform-profile-card">
-            <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
-              <div class="d-flex align-items-center gap-2">
-                <span class="badge px-2.5 py-1 rounded-pill fw-bold text-white" style="background-color: #FF6B00; font-size: 0.72rem;">
-                  <i class="bi bi-shield-lock-fill me-1"></i>HỒ SƠ NỀN TẢNG
-                </span>
-                <span class="text-muted small fw-semibold" style="font-size: 0.76rem;">Phiên bản hệ thống 2026</span>
+          <div class="rounded-4 p-4 text-white h-100 d-flex flex-column justify-content-between shadow-sm" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-building fs-4 text-warning"></i>
+                <span class="fw-bold text-uppercase text-light small" style="letter-spacing: 0.5px;">Trụ Sở Vận Hành</span>
               </div>
-              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 small">Đang vận hành</span>
-            </div>
-
-            <!-- Danh sách thông tin thực thể doanh nghiệp -->
-            <div class="profile-item">
-              <div class="profile-icon-box">
-                <i class="bi bi-laptop"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block" style="font-size: 0.74rem;">Tên hệ sinh thái:</span>
-                <strong class="text-dark small">Sàn Mua Bán Ô Tô Trực Tuyến OtoMarket</strong>
+              <h3 class="h4 fw-bold text-white mb-3">Trung Tâm Công Nghệ OtoMarket</h3>
+              <p class="text-light opacity-75 small mb-3">
+                Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa.<br>
+                Nơi đặt máy chủ điều hành, bộ phận kỹ thuật kiểm duyệt thông tin xe và văn phòng hỗ trợ khách hàng.
+              </p>
+              <div class="small text-light opacity-75 mb-3">
+                <i class="bi bi-clock me-1 text-warning"></i> Giờ làm việc: 08:00 – 18:30 (Thứ 2 đến Chủ Nhật)
               </div>
             </div>
 
-            <div class="profile-item">
-              <div class="profile-icon-box">
-                <i class="bi bi-geo-alt-fill"></i>
-              </div>
+            <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
               <div>
-                <span class="text-muted small d-block" style="font-size: 0.74rem;">Trụ sở điều hành chính:</span>
-                <strong class="text-dark small">Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa</strong>
+                <span class="d-block small text-light opacity-75">Hotline hỗ trợ:</span>
+                <span class="fs-4 fw-bold text-warning">1900 6868</span>
               </div>
-            </div>
-
-            <div class="profile-item">
-              <div class="profile-icon-box">
-                <i class="bi bi-diagram-3-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block" style="font-size: 0.74rem;">Mô hình vận hành:</span>
-                <strong class="text-dark small">Sàn giao dịch C2C & B2C trực tiếp — Không qua môi giới</strong>
-              </div>
-            </div>
-
-            <div class="profile-item">
-              <div class="profile-icon-box">
-                <i class="bi bi-patch-check-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block" style="font-size: 0.74rem;">Quy chuẩn rà soát:</span>
-                <strong class="text-dark small">Tiêu chuẩn kiểm duyệt tin sạch 4 cấp độ độc quyền</strong>
-              </div>
-            </div>
-
-            <div class="profile-item">
-              <div class="profile-icon-box">
-                <i class="bi bi-headset"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block" style="font-size: 0.74rem;">Tổng đài hỗ trợ toàn quốc:</span>
-                <strong class="text-orange-theme small">1900 6868 (Trực tuyến 08:00 - 18:30)</strong>
-              </div>
+              <a href="tel:19006868" class="btn btn-warning text-dark fw-bold px-3 py-2 rounded-3">
+                <i class="bi bi-telephone-fill me-1"></i> Gọi ngay
+              </a>
             </div>
           </div>
         </div>
 
+        <div class="col-lg-7">
+          <div class="bg-white rounded-4 p-4 border h-100 shadow-sm">
+            <h3 class="h5 fw-bold text-dark mb-2 d-flex align-items-center gap-2">
+              <i class="bi bi-shield-check text-success"></i>
+              <span>Cẩm Nang 3 Bước Giao Dịch Xe Trực Tuyến An Toàn</span>
+            </h3>
+            <p class="small text-muted mb-4">Khuyến nghị dành cho người mua xe nhằm đảm bảo quyền lợi pháp lý và kỹ thuật:</p>
+
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="bg-light rounded-3 p-3 border h-100">
+                  <span class="badge text-warning bg-warning bg-opacity-10 border border-warning border-opacity-25 mb-2">Bước 01</span>
+                  <h5 class="fw-bold text-dark small mb-2">Xem xe & Lái thử</h5>
+                  <p class="small text-muted mb-0">Hẹn gặp người bán tại garage uy tín để kiểm tra thân vỏ, khung gầm và khoang máy.</p>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="bg-light rounded-3 p-3 border h-100">
+                  <span class="badge text-warning bg-warning bg-opacity-10 border border-warning border-opacity-25 mb-2">Bước 02</span>
+                  <h5 class="fw-bold text-dark small mb-2">Đối chiếu giấy tờ gốc</h5>
+                  <p class="small text-muted mb-0">Kiểm tra Cà-vẹt (Đăng ký xe), sổ đăng kiểm và tra cứu dữ liệu phạt nguội chính thức.</p>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="bg-light rounded-3 p-3 border h-100">
+                  <span class="badge text-warning bg-warning bg-opacity-10 border border-warning border-opacity-25 mb-2">Bước 03</span>
+                  <h5 class="fw-bold text-dark small mb-2">Công chứng hợp đồng</h5>
+                  <p class="small text-muted mb-0">Ký hợp đồng mua bán tại Văn phòng công chứng trước khi bàn giao xe và thanh toán.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: BENTO FAQ -->
+      <div class="bg-white rounded-4 p-4 border shadow-sm mb-4">
+        <div class="text-center max-w-700 mx-auto mb-4">
+          <h2 class="h3 fw-bold text-dark mb-2">Giải Đáp Thắc Mắc Thường Gặp</h2>
+          <p class="text-muted small">Những câu hỏi phổ biến của khách hàng khi tham gia giao dịch trên sàn OtoMarket:</p>
+        </div>
+
+        <div class="max-w-800 mx-auto">
+          <div class="accordion custom-portal-faq" id="faqAboutAccordion">
+            <div class="accordion-item border rounded-3 mb-3 overflow-hidden shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  OtoMarket kiểm duyệt tin đăng bán xe như thế nào?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAboutAccordion">
+                <div class="accordion-body text-secondary small line-height-lg">
+                  Sau khi người bán gửi thông tin, đội ngũ quản trị sàn sẽ rà soát ảnh chụp thực tế, thông số kỹ thuật và tính hợp lý của giá bán trong vòng 15 phút. Khi đạt tiêu chuẩn tin sạch, bài đăng sẽ được xuất bản công khai.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border rounded-3 mb-3 overflow-hidden shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Đăng tin bán xe trên OtoMarket có mất phí không?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAboutAccordion">
+                <div class="accordion-body text-secondary small line-height-lg">
+                  Hiện tại OtoMarket hỗ trợ đăng tin bán xe hoàn toàn miễn phí cho người dùng cá nhân có nhu cầu bán xe chính chủ, tiếp cận nhanh chóng đến người mua tiềm năng.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border rounded-3 mb-3 overflow-hidden shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Làm thế nào để người mua liên hệ và xem xe thực tế?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAboutAccordion">
+                <div class="accordion-body text-secondary small line-height-lg">
+                  Mỗi tin xe đều hiển thị số điện thoại liên lạc trực tiếp của chủ xe. Người mua có thể gọi điện thoại hoặc kết nối qua Zalo để trao đổi chi tiết và hẹn thời gian xem xe.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border rounded-3 mb-3 overflow-hidden shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Nếu phát hiện tin xe đăng giá ảo hoặc thông tin sai lệch thì sao?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAboutAccordion">
+                <div class="accordion-body text-secondary small line-height-lg">
+                  Người dùng có thể nhấn nút "Báo cáo tin vi phạm" trên trang chi tiết xe. Bộ phận kiểm duyệt sẽ tiến hành rà soát và tạm ẩn hoặc xóa tin đăng nếu xác nhận có hành vi gian lận.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Main Content -->
-  <main class="py-5 bg-white">
-    <div class="container-fluid px-3 px-xl-5">
-
-      <!-- ==================== SECTION 2: CÂU CHUYỆN HÌNH THÀNH & SỨ MỆNH ==================== -->
-      <section class="mb-5 pb-lg-3">
-        <div class="row g-4 align-items-stretch">
-          
-          <!-- Câu chuyện hình thành -->
-          <div class="col-lg-6">
-            <div class="p-4 p-md-5 rounded-4 border bg-light h-100 d-flex flex-column justify-content-between">
-              <div>
-                <span class="section-eyebrow-orange">CÂU CHUYỆN HÌNH THÀNH</span>
-                <h2 class="h4 fw-bold text-dark mt-1 mb-3">Vì Sao OtoMarket Ra Đời?</h2>
-                <p class="text-secondary small mb-3" style="line-height: 1.75;">
-                  Tại Việt Nam, thị trường giao dịch xe ô tô luôn là một trong những lĩnh vực có giá trị tài sản lớn nhưng lại đối mặt với nhiều rào cản thông tin bất cân xứng: tin ảo phá giá câu view, tình trạng tua đồng hồ ODO, xe từng tai nạn ngập nước bị che giấu lịch sử, và vô số cuộc gọi môi giới phiền toái.
-                </p>
-                <p class="text-secondary small mb-0" style="line-height: 1.75;">
-                  Khởi nguồn từ thực tế thị trường xe tại Nha Trang và khát vọng mang đến một công cụ số hóa minh bạch cho người dân trên toàn quốc, <strong>OtoMarket</strong> được phát triển nhằm tái định hình niềm tin trong từng giao dịch: <em>Người bán niêm yết đúng giá thật — Người mua tiếp cận đúng xe thật.</em>
-                </p>
-              </div>
-
-              <div class="pt-4 mt-4 border-top border-secondary border-opacity-10 d-flex align-items-center gap-3">
-                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center text-white" style="background-color: #FF6B00; width: 40px; height: 40px;">
-                  <i class="bi bi-shield-fill-check"></i>
-                </div>
-                <div>
-                  <div class="fw-bold text-dark small">Cam Kết Không Gian Lận</div>
-                  <span class="text-muted small" style="font-size: 0.74rem;">Kiểm soát chất lượng bằng công nghệ & rà soát thủ công</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sứ mệnh & Tầm nhìn -->
-          <div class="col-lg-6">
-            <div class="row g-3 h-100">
-              <div class="col-12">
-                <div class="p-4 rounded-4 border bg-white h-100 shadow-xs">
-                  <div class="d-flex align-items-center gap-3 mb-2">
-                    <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background-color: #FF6B00;">
-                      <i class="bi bi-bullseye fs-5"></i>
-                    </div>
-                    <div>
-                      <span class="section-eyebrow-orange">SỨ MỆNH DOANH NGHIỆP</span>
-                      <h3 class="h5 fw-bold text-dark mb-0">Minh Bạch Hóa Thị Trường Ô Tô</h3>
-                    </div>
-                  </div>
-                  <p class="text-secondary small mb-0" style="line-height: 1.7;">
-                    Bảo vệ tối đa quyền lợi chính đáng của cả Người Cần Mua và Người Đang Bán. Xóa bỏ hoàn toàn chiêu trò trung gian, mang lại môi trường số hóa chuẩn mực nơi người dùng có thể tự tin hẹn xem xe và ký kết hợp đồng an toàn.
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="p-4 rounded-4 border bg-white h-100 shadow-xs">
-                  <div class="d-flex align-items-center gap-3 mb-2">
-                    <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background-color: #0F172A;">
-                      <i class="bi bi-binoculars-fill fs-5"></i>
-                    </div>
-                    <div>
-                      <span class="section-eyebrow-orange">TẦM NHÌN DÀI HẠN</span>
-                      <h3 class="h5 fw-bold text-dark mb-0">Nền Tảng Giao Dịch Số 1 Về Độ Tin Cậy</h3>
-                    </div>
-                  </div>
-                  <p class="text-secondary small mb-0" style="line-height: 1.7;">
-                    Phát triển OtoMarket trở thành nền tảng thương mại điện tử ô tô được tin cậy hàng đầu tại Việt Nam, mở rộng mạng lưới trung tâm điều hành kỹ thuật số tại các tỉnh thành trọng điểm, đặt sự trung thực làm kim chỉ nam.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ==================== SECTION 3: 4 GIÁ TRỊ CỐT LÕI (CORE VALUES) ==================== -->
-      <section class="mb-5 pb-lg-3">
-        <div class="text-center max-w-700 mx-auto mb-5">
-          <span class="section-eyebrow-orange">NGUYÊN TẮC HÀNH ĐỘNG</span>
-          <h2 class="h4 fw-bold text-dark mt-1">4 Giá Trị Cốt Lõi Định Hình OtoMarket</h2>
-          <p class="text-secondary small mb-0">
-            Mọi tính năng công nghệ, quy chế kiểm duyệt và chính sách của sàn đều được xây dựng dựa trên 4 trụ cột đạo đức kinh doanh:
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="core-value-card">
-              <div class="rounded-3 p-2 mb-3 d-inline-flex align-items-center justify-content-center" style="width: 48px; height: 48px; background-color: #FFF7ED; color: #FF6B00;">
-                <i class="bi bi-eye-fill fs-4"></i>
-              </div>
-              <h3 class="h6 fw-bold text-dark mb-2">Minh Bạch Tuyệt Đối</h3>
-              <p class="text-secondary small mb-0" style="line-height: 1.65;">
-                Giá xe niêm yết là giá bán thực tế. Không phí ẩn, không tạo sự mập mờ, cung cấp biểu đồ đối chiếu giá thị trường chuẩn xác.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="core-value-card">
-              <div class="rounded-3 p-2 mb-3 d-inline-flex align-items-center justify-content-center" style="width: 48px; height: 48px; background-color: #ECFDF5; color: #10B981;">
-                <i class="bi bi-shield-check fs-4"></i>
-              </div>
-              <h3 class="h6 fw-bold text-dark mb-2">Kiểm Duyệt Khắt Khe</h3>
-              <p class="text-secondary small mb-0" style="line-height: 1.65;">
-                Từ chối tin ảo, ảnh mờ catalogue hoặc thông tin sai lệch. Mọi tin đăng đều trải qua vòng kiểm soát nghiêm ngặt trước khi xuất bản.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="core-value-card">
-              <div class="rounded-3 p-2 mb-3 d-inline-flex align-items-center justify-content-center" style="width: 48px; height: 48px; background-color: #EFF6FF; color: #0284C7;">
-                <i class="bi bi-people-fill fs-4"></i>
-              </div>
-              <h3 class="h6 fw-bold text-dark mb-2">Không Môi Giới Phức Tạp</h3>
-              <p class="text-secondary small mb-0" style="line-height: 1.65;">
-                Kết nối thẳng giữa người có xe và người cần mua. Người dùng chủ động liên hệ điện thoại hoặc Zalo trực tiếp để hẹn xem xe.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="core-value-card">
-              <div class="rounded-3 p-2 mb-3 d-inline-flex align-items-center justify-content-center" style="width: 48px; height: 48px; background-color: #FEF2F2; color: #EF4444;">
-                <i class="bi bi-heart-pulse-fill fs-4"></i>
-              </div>
-              <h3 class="h6 fw-bold text-dark mb-2">Đồng Hành Tận Tâm</h3>
-              <p class="text-secondary small mb-0" style="line-height: 1.65;">
-                Tổng đài hỗ trợ 24/7, cung cấp cẩm nang 3 bước giao dịch an toàn và sẵn sàng xử lý mọi báo cáo vi phạm trong vòng 15 phút.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SECTION 4: 4 TIÊU CHUẨN DUYỆT TIN SẠCH ==================== -->
-      <section class="mb-5 pb-lg-3" id="inspect">
-        <div class="text-center max-w-700 mx-auto mb-5">
-          <span class="section-eyebrow-orange">QUY CHUẨN KỸ THUẬT</span>
-          <h2 class="h4 fw-bold text-dark mt-1">4 Tiêu Chuẩn "Duyệt Tin Sạch" Bắt Buộc</h2>
-          <p class="text-secondary small mb-0">
-            Hàng rào kiểm soát chất lượng giúp giữ cho kho xe OtoMarket luôn sạch sẽ, đáng tin cậy và không có tin rác:
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="standard-pill-card">
-              <div class="rounded-3 p-2 mb-3 d-inline-flex align-items-center justify-content-center" style="width: 46px; height: 46px; background-color: #FFF7ED; color: #FF6B00;">
-                <i class="bi bi-camera-fill fs-5"></i>
-              </div>
-              <h4 class="h6 fw-bold text-dark mb-2">1. Ảnh Chụp Thực Tế</h4>
-              <p class="text-secondary small mb-0" style="line-height: 1.6;">
-                Từ chối 100% ảnh lấy từ mạng xã hội, ảnh catalogue hoặc hình ảnh chụp mờ không rõ biển số và hiện trạng ngoại thất xe.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="standard-pill-card">
-              <div class="rounded-3 p-2 mb-3 text-success d-inline-flex align-items-center justify-content-center" style="width: 46px; height: 46px; background: #ECFDF5;">
-                <i class="bi bi-currency-dollar fs-5"></i>
-              </div>
-              <h4 class="h6 fw-bold text-dark mb-2">2. Giá Niêm Yết Thật</h4>
-              <p class="text-secondary small mb-0" style="line-height: 1.6;">
-                Nghiêm cấm các mức giá ảo 0đ, 1 triệu câu view. Người bán bắt buộc niêm yết đúng số tiền chuyển nhượng mong muốn thực tế.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="standard-pill-card">
-              <div class="rounded-3 p-2 mb-3 text-primary d-inline-flex align-items-center justify-content-center" style="width: 46px; height: 46px; background: #EFF6FF;">
-                <i class="bi bi-person-check-fill fs-5"></i>
-              </div>
-              <h4 class="h6 fw-bold text-dark mb-2">3. Xác Thực Người Bán</h4>
-              <p class="text-secondary small mb-0" style="line-height: 1.6;">
-                Mỗi tin đăng phải gắn liền với số điện thoại liên lạc hợp lệ đã được xác minh qua hệ thống SMS/OTP để người mua kết nối trực tiếp.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="standard-pill-card">
-              <div class="rounded-3 p-2 mb-3 text-danger d-inline-flex align-items-center justify-content-center" style="width: 46px; height: 46px; background: #FEF2F2;">
-                <i class="bi bi-shield-slash-fill fs-5"></i>
-              </div>
-              <h4 class="h6 fw-bold text-dark mb-2">4. Chống Spam & Trùng Tin</h4>
-              <p class="text-secondary small mb-0" style="line-height: 1.6;">
-                Hệ thống tự động phát hiện số khung (VIN) và biển số xe để ngăn chặn việc đăng trùng lặp một chiếc xe nhiều lần gây loãng kho tin.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SECTION 5: TRỤ SỞ NHA TRANG & CẨM NANG AN TOÀN ==================== -->
-      <section class="mb-5 pb-lg-3">
-        <div class="row g-4 align-items-stretch">
-          
-          <!-- Trụ sở điều hành nền tảng (Nha Trang) -->
-          <div class="col-lg-5">
-            <div class="p-4 p-md-5 rounded-4 text-white h-100 d-flex flex-column justify-content-between" style="background: linear-gradient(135deg, #0A1128 0%, #0F172A 60%, #16243A 100%); border: 1px solid rgba(255,255,255,0.12);">
-              <div>
-                <div class="d-inline-flex align-items-center gap-1.5 px-2.5 py-1 rounded-pill small fw-bold mb-3" style="background: rgba(255,107,0,0.18); border: 1px solid rgba(255,107,0,0.4); color: #FF8533;">
-                  <i class="bi bi-geo-alt-fill"></i>
-                  <span>Trụ sở vận hành trung tâm</span>
-                </div>
-                <h3 class="h4 fw-bold text-white mb-2">Trung Tâm Công Nghệ OtoMarket</h3>
-                <p class="text-secondary small mb-4" style="line-height: 1.7; color: #94A3B8 !important;">
-                  Đường Trần Phú, TP. Nha Trang, Tỉnh Khánh Hòa.<br>
-                  Nơi đặt trung tâm điều hành máy chủ, rà soát kiểm duyệt tin đăng số và hỗ trợ kỹ thuật sàn giao dịch trên toàn quốc.
-                </p>
-                <div class="small text-white-50 mb-3" style="font-size: 0.78rem;">
-                  <i class="bi bi-clock-history me-1 text-warning"></i> Giờ làm việc: 08:00 - 18:30 (Thứ 2 đến Chủ Nhật)
-                </div>
-              </div>
-
-              <div class="pt-3 border-top border-white border-opacity-10 d-flex align-items-center justify-content-between">
-                <div>
-                  <span class="text-secondary small d-block" style="font-size: 0.74rem; color: #94A3B8 !important;">Tổng đài trực tuyến:</span>
-                  <a href="tel:19006868" class="h5 fw-bold text-decoration-none" style="color: #FF6B00;">1900 6868</a>
-                </div>
-                <a href="tel:19006868" class="btn btn-cta-orange btn-sm rounded-pill px-3 py-1.5 fw-bold">
-                  <i class="bi bi-telephone-fill me-1"></i> Liên hệ ngay
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cẩm nang 3 bước giao dịch an toàn -->
-          <div class="col-lg-7">
-            <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm h-100">
-              <div class="d-flex align-items-center gap-2 mb-4">
-                <i class="bi bi-lightbulb-fill fs-4" style="color: #FF6B00;"></i>
-                <h3 class="h5 fw-bold text-dark mb-0">Cẩm Nang 3 Bước Giao Dịch Xe Trực Tuyến An Toàn</h3>
-              </div>
-
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <div class="p-3 rounded-3 bg-light border h-100">
-                    <span class="badge text-white mb-2" style="background-color: #FF6B00; font-size: 0.72rem;">Bước 01</span>
-                    <h5 class="fw-bold text-dark small mb-2">Xem xe & Lái thử</h5>
-                    <p class="text-secondary small mb-0" style="font-size: 0.8rem; line-height: 1.5;">
-                      Hẹn gặp người bán tại nơi công cộng hoặc mang xe vào garage uy tín kiểm tra gầm máy, thân vỏ trước khi đặt cọc.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <div class="p-3 rounded-3 bg-light border h-100">
-                    <span class="badge text-white mb-2" style="background-color: #FF6B00; font-size: 0.72rem;">Bước 02</span>
-                    <h5 class="fw-bold text-dark small mb-2">Đối chiếu giấy tờ gốc</h5>
-                    <p class="text-secondary small mb-0" style="font-size: 0.8rem; line-height: 1.5;">
-                      Kiểm tra Cà-vẹt (Đăng ký), Sổ đăng kiểm, tra cứu phạt nguội giao thông và đối chiếu số khung số máy thực tế.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <div class="p-3 rounded-3 bg-light border h-100">
-                    <span class="badge text-white mb-2" style="background-color: #FF6B00; font-size: 0.72rem;">Bước 03</span>
-                    <h5 class="fw-bold text-dark small mb-2">Công chứng & Thanh toán</h5>
-                    <p class="text-secondary small mb-0" style="font-size: 0.8rem; line-height: 1.5;">
-                      Ký hợp đồng mua bán tại Văn phòng công chứng có thẩm quyền và thực hiện thanh toán chuyển khoản qua ngân hàng.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- ==================== SECTION 6: CÂU HỎI THƯỜNG GẶP (FAQ) ==================== -->
-      <section class="mb-5 pb-lg-3" id="faq">
-        <div class="text-center max-w-700 mx-auto mb-4">
-          <span class="section-eyebrow-orange">GIẢI ĐÁP THẮC MẮC</span>
-          <h2 class="h4 fw-bold text-dark mt-1">Câu Hỏi Thường Gặp Về Sàn OtoMarket</h2>
-        </div>
-
-        <div class="accordion accordion-flush bg-white rounded-4 border p-3 shadow-sm mx-auto" id="accordionFaq" style="max-width: 850px;">
-          
-          <div class="accordion-item border-bottom">
-            <h2 class="accordion-header">
-              <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                OtoMarket kiểm duyệt tin đăng bán xe như thế nào?
-              </button>
-            </h2>
-            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
-              <div class="accordion-body text-secondary small" style="line-height: 1.65;">
-                Sau khi người bán gửi biểu mẫu, đội ngũ quản trị sàn sẽ rà soát ảnh chụp thực tế, thông số kỹ thuật và tính hợp lý của mức giá trong vòng 15 phút. Khi đạt chuẩn tin sạch, tin sẽ được xuất bản công khai ngay trên sàn.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item border-bottom">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                Đăng tin bán xe trên OtoMarket có mất phí không?
-              </button>
-            </h2>
-            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
-              <div class="accordion-body text-secondary small" style="line-height: 1.65;">
-                Việc đăng tin bán xe trên sàn OtoMarket là <strong>hoàn toàn miễn phí 100%</strong> cho cả chủ xe cá nhân lẫn đại lý. Bạn có thể đăng tải tối đa 8 hình ảnh chi tiết và quản lý trạng thái tin xe thuận tiện.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item border-bottom">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                Làm thế nào để người mua liên hệ và xem xe thực tế?
-              </button>
-            </h2>
-            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
-              <div class="accordion-body text-secondary small" style="line-height: 1.65;">
-                Trên mỗi trang chi tiết xe, người mua có thể bấm nút gọi điện thoại hoặc gửi tin nhắn Zalo trực tiếp đến số điện thoại của người bán để hẹn địa điểm gặp mặt và xem xe thực tế.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                Nếu phát hiện tin xe đăng giá ảo hoặc thông tin sai lệch thì sao?
-              </button>
-            </h2>
-            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
-              <div class="accordion-body text-secondary small" style="line-height: 1.65;">
-                Người dùng có thể sử dụng chức năng <strong>Báo cáo vi phạm</strong> ngay trên trang chi tiết xe. Đội ngũ quản trị sàn sẽ kiểm tra và gỡ bỏ ngay lập tức nếu xác minh tin đăng vi phạm quy định tiêu chuẩn tin sạch.
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- ========================================================================
-       FOOTER (ĐỒNG BỘ 100% VỚI FOOTER-LIGHT CỦA TRANG CHỦ)
-       ======================================================================== -->
   <footer class="footer-light">
     <div class="container-fluid px-3 px-xl-5">
       <div class="row gy-4 mb-4">
@@ -1069,6 +1044,7 @@
       </div>
     </div>
   </footer>
+  
 
   <div id="toast-container"></div>
 
@@ -1088,3 +1064,4 @@
   </script>
 </body>
 </html>
+
