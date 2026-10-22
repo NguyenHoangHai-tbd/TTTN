@@ -5,14 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kho Xe Ô Tô Mua Bán Trực Tuyến - OtoMarket</title>
   
+  <!-- Chuẩn hoá Typography: Inter hỗ trợ 100% tiếng Việt chuẩn, không lỗi dấu hay nhảy font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261022_bento_cars">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261022_bento_cars_v3">
 
   <style>
+    /* ==========================================================================
+       TYPOGRAPHY & GLOBAL RESET: FONT INTER 100% TIẾNG VIỆT CHUẨN XÁC
+       ========================================================================== */
+    body.cars-bento-body,
+    body.cars-bento-body button,
+    body.cars-bento-body input,
+    body.cars-bento-body select,
+    body.cars-bento-body textarea {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      background-color: #F8FAFC !important;
+      color: #0F172A !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     /* ==========================================================================
        HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN (STICKY, ZERO OVERLAP)
        ========================================================================== */
@@ -25,23 +41,23 @@
       width: 100% !important;
       z-index: 1050 !important;
       background: #FFFFFF !important;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05) !important;
       border-bottom: 1px solid #E2E8F0 !important;
     }
 
     /* 1. TopBar */
     .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
     .portal-topbar-clean {
-      background: #F8FAFC !important;
-      border-bottom: 1px solid #E2E8F0 !important;
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #F1F5F9 !important;
       font-size: 0.8125rem !important;
-      color: #334155 !important;
+      color: #475569 !important;
       padding: 7px 0 !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
     .topbar-info-item {
-      color: #1E293B !important;
-      font-weight: 600 !important;
+      color: #334155 !important;
+      font-weight: 500 !important;
       font-size: 0.8125rem !important;
       text-shadow: none !important;
     }
@@ -56,12 +72,11 @@
     .lang-switch-container {
       display: inline-flex !important;
       align-items: center;
-      background: #FFFFFF !important;
-      border: 1px solid #CBD5E1 !important;
+      background: #F1F5F9 !important;
+      border: 1px solid #E2E8F0 !important;
       border-radius: 20px;
       padding: 2px;
       gap: 2px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn,
     .lang-pill-btn {
@@ -69,23 +84,18 @@
       background: transparent;
       color: #475569 !important;
       font-size: 0.74rem;
-      font-weight: 700;
+      font-weight: 600;
       padding: 3px 9px;
       border-radius: 16px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       line-height: 1.2;
-    }
-    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn:hover:not(.active),
-    .lang-pill-btn:hover:not(.active) {
-      color: #0F172A !important;
-      background: #F1F5F9 !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn.active,
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #0F172A !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.15) !important;
     }
 
     /* Nút Tài Khoản / Đăng Nhập */
@@ -94,34 +104,30 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
     .topbar-user-btn {
-      border: 1.5px solid #CBD5E1 !important;
+      border: 1px solid #E2E8F0 !important;
       background: #FFFFFF !important;
       color: #0F172A !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       font-size: 0.8125rem !important;
       padding: 5px 14px !important;
       border-radius: 20px !important;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label,
     .topbar-user-btn .user-name-label {
       color: #0F172A !important;
-      font-weight: 700 !important;
+      font-weight: 600 !important;
       letter-spacing: 0.2px;
       text-shadow: none !important;
-      transition: all 0.2s ease;
-      max-width: none !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
     .topbar-user-btn:hover {
-      background: #FFF7ED !important;
-      border-color: #FF6B00 !important;
-      color: #FF6B00 !important;
+      background: #F8FAFC !important;
+      border-color: #CBD5E1 !important;
     }
 
     /* 2. Navbar Chính */
@@ -134,23 +140,22 @@
     .portal-header-wrapper:not(.is-scrolled) .nav-link-portal,
     .portal-header-wrapper .nav-link-portal,
     .nav-link-portal {
-      color: #0F172A !important;
-      font-weight: 600 !important;
+      color: #334155 !important;
+      font-weight: 500 !important;
       font-size: 0.90rem !important;
       padding: 8px 16px !important;
       border-radius: 8px !important;
       border: 1.5px solid transparent !important;
       text-decoration: none !important;
       text-shadow: none !important;
-      transition: all 0.2s ease !important;
+      transition: all 0.15s ease !important;
       display: inline-block;
       white-space: nowrap;
     }
     .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover,
     .nav-link-portal:hover {
-      color: #FF6B00 !important;
-      background-color: #FFF7ED !important;
-      border-color: #FED7AA !important;
+      color: #0F172A !important;
+      background-color: #F1F5F9 !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active,
     .nav-link-portal.active {
@@ -170,10 +175,9 @@
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      border: 1.5px solid #E2E8F0 !important;
+      border: 1px solid #E2E8F0 !important;
       background-color: #FFFFFF !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
-      transition: all 0.2s ease !important;
+      transition: all 0.15s ease !important;
       text-decoration: none !important;
       padding: 0 !important;
       position: relative !important;
@@ -185,8 +189,7 @@
     .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
     .btn-fav-compact .favorites-badge-count {
       position: absolute;
@@ -205,116 +208,147 @@
     /* Nút CTA Cam */
     .btn-cta-orange {
       background-color: #FF6B00 !important;
-      border: 1.5px solid #FF6B00 !important;
+      border: 1px solid #FF6B00 !important;
       color: #FFFFFF !important;
-      font-weight: 700 !important;
-      transition: all 0.2s ease !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
+      font-weight: 600 !important;
+      transition: all 0.15s ease !important;
+      box-shadow: 0 2px 8px rgba(255, 107, 0, 0.25) !important;
     }
-    .btn-cta-orange:hover,
-    .btn-cta-orange:focus,
-    .btn-cta-orange:active {
+    .btn-cta-orange:hover {
       background-color: #EA580C !important;
       border-color: #EA580C !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
     }
 
     /* ==========================================================================
-       PHƯƠNG ÁN 1: BENTO CATALOG & SMART DYNAMIC STUDIO
+       HỆ THỐNG MÀU SẮC ĐỒNG NHẤT, TINH TẾ & CAO CẤP (EDITORIAL BENTO)
        ========================================================================== */
-    body.cars-bento-body {
-      background-color: #EEF2F6 !important;
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      color: #0F172A !important;
-    }
     .cars-bento-card {
       background: #FFFFFF !important;
-      border-radius: 20px !important;
-      border: 1px solid #CBD5E1 !important;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+      border-radius: 16px !important;
+      border: 1px solid #E2E8F0 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
     }
+
+    /* Bộ Chuyển Đổi Segmented Pill (Quiet Luxury) */
     .switcher-pill {
       display: inline-flex;
       background: #F1F5F9;
-      padding: 4px;
-      border-radius: 12px;
+      padding: 3px;
+      border-radius: 10px;
       border: 1px solid #E2E8F0;
+      gap: 3px;
     }
     .switcher-btn {
       border: none;
       background: transparent;
       padding: 7px 18px;
-      border-radius: 9px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #64748B;
-      transition: all 0.2s ease;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569 !important;
+      transition: all 0.15s ease;
       cursor: pointer;
       text-decoration: none;
+      line-height: 1.3;
+    }
+    .switcher-btn:hover:not(.active) {
+      color: #0F172A !important;
+      background: rgba(255, 255, 255, 0.6);
     }
     .switcher-btn.active {
-      background: #FF6B00;
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15) !important;
+      font-weight: 700;
     }
+
+    /* Chip Hãng Xe Tinh Giản, Chữ Rõ Ràng, Không Bị Lỗi Màu Trắng */
     .brand-chip {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       padding: 6px 14px;
-      border-radius: 30px;
-      border: 1px solid #E2E8F0;
-      background: #FFFFFF;
-      color: #334155;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0 !important;
+      background: #FFFFFF !important;
+      color: #334155 !important;
       font-size: 0.82rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
+      text-decoration: none !important;
+      transition: all 0.15s ease;
       cursor: pointer;
       user-select: none;
     }
-    .brand-chip:hover, .brand-chip.active {
-      background: #FFF7ED;
-      border-color: #FF6B00;
-      color: #EA580C;
+    .brand-chip:hover:not(.active) {
+      background: #F8FAFC !important;
+      border-color: #CBD5E1 !important;
+      color: #0F172A !important;
       transform: translateY(-1px);
     }
+    /* Đảm bảo chữ luôn hiển thị màu trắng rõ nét khi active */
+    .brand-chip.active {
+      background: #0F172A !important;
+      border-color: #0F172A !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18) !important;
+      font-weight: 700 !important;
+    }
+    .brand-chip.active span,
+    .brand-chip.active strong {
+      color: #FFFFFF !important;
+    }
+    .brand-chip .badge-count {
+      font-size: 0.74rem;
+      opacity: 0.75;
+      font-weight: 500;
+    }
+
+    /* Chip Lọc Sidebar */
     .filter-chip-btn {
       padding: 6px 12px;
       border-radius: 8px;
-      border: 1px solid #E2E8F0;
-      background: #F8FAFC;
-      color: #475569;
+      border: 1px solid #E2E8F0 !important;
+      background: #FFFFFF !important;
+      color: #475569 !important;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
     }
-    .filter-chip-btn.active, .filter-chip-btn:hover {
-      background: #FFF7ED;
-      border-color: #FF6B00;
-      color: #EA580C;
+    .filter-chip-btn:hover:not(.active) {
+      background: #F8FAFC !important;
+      border-color: #CBD5E1 !important;
+      color: #0F172A !important;
     }
+    .filter-chip-btn.active {
+      background: #0F172A !important;
+      border-color: #0F172A !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12) !important;
+    }
+
+    /* Thẻ Xe (Car Card Bento) */
     .car-bento-item {
       background: #FFFFFF;
-      border-radius: 16px;
+      border-radius: 14px;
       border: 1px solid #E2E8F0;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       height: 100%;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     }
     .car-bento-item:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: #CBD5E1;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.09);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
     .car-img-wrap {
       position: relative;
-      height: 200px;
+      height: 205px;
       overflow: hidden;
       background: #F1F5F9;
     }
@@ -325,33 +359,39 @@
       transition: transform 0.35s ease;
     }
     .car-bento-item:hover .car-img-wrap img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
+
+    /* Huy hiệu trạng thái kính mờ thanh lịch (Không chói mắt, không quá nhiều màu) */
     .car-status-badge {
       position: absolute;
       top: 10px;
       left: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 3px 9px;
       border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      color: #1E293B;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      z-index: 2;
     }
-    .badge-new {
-      background: #ECFDF5;
-      color: #059669;
-      border: 1px solid #A7F3D0;
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
     }
-    .badge-used-dealer {
-      background: #FFF7ED;
-      color: #EA580C;
-      border: 1px solid #FED7AA;
-    }
-    .badge-used-owner {
-      background: #EFF6FF;
-      color: #2563EB;
-      border: 1px solid #BFDBFE;
-    }
+    .dot-new { background-color: #10B981; }
+    .dot-dealer { background-color: #F59E0B; }
+    .dot-owner { background-color: #3B82F6; }
+
+    /* Nút Yêu Thích Trên Ảnh */
     .car-fav-btn {
       position: absolute;
       top: 10px;
@@ -360,38 +400,73 @@
       height: 32px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.95);
-      border: none;
+      border: 1px solid #E2E8F0;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #64748B;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      z-index: 2;
     }
     .car-fav-btn:hover {
       background: #FFFFFF;
       color: #EF4444;
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
     .car-fav-btn.active {
       color: #EF4444;
       background: #FFFFFF;
+      border-color: #FECACA;
     }
     .car-fav-btn.active i::before {
       content: "\F415"; /* bi-heart-fill */
     }
+
+    /* Thông Số Xe (Gọn gàng, không lặp lại chữ) */
     .spec-chip {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-radius: 6px;
       padding: 3px 8px;
       font-size: 0.74rem;
-      color: #64748B;
-      font-weight: 600;
+      color: #475569;
+      font-weight: 500;
     }
-    .text-orange-theme {
-      color: #FF6B00 !important;
+
+    /* Nút Thao Tác Thẻ Xe */
+    .btn-detail-car {
+      background: #0F172A;
+      border: 1px solid #0F172A;
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-detail-car:hover {
+      background: #1E293B;
+      border-color: #1E293B;
+      color: #FFFFFF;
+    }
+    .btn-call-car {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #EA580C;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-call-car:hover {
+      background: #FFF7ED;
+      border-color: #EA580C;
+      color: #EA580C;
     }
   </style>
 </head>
@@ -407,12 +482,12 @@
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
           <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <i class="bi bi-geo-alt-fill text-muted"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
           <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <i class="bi bi-clock-fill text-muted"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
         </div>
@@ -426,7 +501,7 @@
           <span class="topbar-divider">|</span>
           <div id="navbar-auth-section">
             <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
-              <i class="bi bi-person-fill text-orange-theme"></i>
+              <i class="bi bi-person-fill text-secondary"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
           </div>
@@ -483,7 +558,7 @@
   </header>
 
   <!-- ==========================================================================
-       BENTO STUDIO MAIN SECTION
+       BENTO STUDIO MAIN SECTION (THANH THOÁT, ĐỒNG NHẤT, RÕ CHỮ)
        ========================================================================== -->
   <main class="py-4">
     <div class="container-fluid px-3 px-xl-5">
@@ -492,47 +567,47 @@
       <div class="cars-bento-card p-4 mb-4">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-3">
           <div>
-            <h1 class="h3 fw-bold text-dark mb-1" id="bento-page-title">Kho Xe Ô Tô Mua Bán Trực Tuyến</h1>
+            <h1 class="h4 fw-bold text-dark mb-1" id="bento-page-title" style="letter-spacing: -0.3px;">Kho Xe Ô Tô Mua Bán Trực Tuyến</h1>
             <p class="text-secondary small mb-0" id="bento-page-subtitle">Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.</p>
           </div>
-          <!-- Segmented Condition Switcher -->
+          <!-- Segmented Condition Switcher (Thanh Lịch, Không Dùng Emoji) -->
           <div class="switcher-pill">
-            <button class="switcher-btn active" data-cond="all" onclick="selectCondition('all')">Tất cả kho xe</button>
-            <button class="switcher-btn" data-cond="new" onclick="selectCondition('new')">✨ Ô tô mới <span id="count-cond-new">(3)</span></button>
-            <button class="switcher-btn" data-cond="used" onclick="selectCondition('used')">🚗 Ô tô cũ <span id="count-cond-used">(6)</span></button>
+            <button type="button" class="switcher-btn active" data-cond="all" onclick="selectCondition('all')">Tất cả kho xe</button>
+            <button type="button" class="switcher-btn" data-cond="new" onclick="selectCondition('new')">Ô tô mới <span id="count-cond-new">(3)</span></button>
+            <button type="button" class="switcher-btn" data-cond="used" onclick="selectCondition('used')">Ô tô cũ <span id="count-cond-used">(7)</span></button>
           </div>
         </div>
 
-        <!-- Quick Brand Chips Carousel -->
+        <!-- Quick Brand Chips Carousel (Chữ Rõ Nét, Tối Giản, Không Méo Logo) -->
         <div class="d-flex flex-wrap align-items-center gap-2 pt-3 border-top" id="brand-chips-bar">
-          <span class="small fw-bold text-muted me-1">Hãng xe:</span>
-          <span class="brand-chip active" data-brand="all" onclick="selectBrand('all', this)">Tất cả hãng</span>
-          <span class="brand-chip" data-brand="Toyota" onclick="selectBrand('Toyota', this)"><img src="assets/images/brands/toyota.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Toyota"> Toyota <span id="bcount-toyota"></span></span>
-          <span class="brand-chip" data-brand="Mazda" onclick="selectBrand('Mazda', this)"><img src="assets/images/brands/mazda.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Mazda"> Mazda <span id="bcount-mazda"></span></span>
-          <span class="brand-chip" data-brand="Hyundai" onclick="selectBrand('Hyundai', this)"><img src="assets/images/brands/hyundai.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Hyundai"> Hyundai <span id="bcount-hyundai"></span></span>
-          <span class="brand-chip" data-brand="VinFast" onclick="selectBrand('VinFast', this)"><img src="assets/images/brands/vinfast.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="VinFast"> VinFast <span id="bcount-vinfast"></span></span>
-          <span class="brand-chip" data-brand="Ford" onclick="selectBrand('Ford', this)"><img src="assets/images/brands/ford.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Ford"> Ford <span id="bcount-ford"></span></span>
-          <span class="brand-chip" data-brand="Kia" onclick="selectBrand('Kia', this)"><img src="assets/images/brands/kia.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Kia"> Kia <span id="bcount-kia"></span></span>
-          <span class="brand-chip" data-brand="Mercedes-Benz" onclick="selectBrand('Mercedes-Benz', this)"><img src="assets/images/brands/mercedes-benz.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Mercedes"> Mercedes <span id="bcount-mercedes"></span></span>
-          <span class="brand-chip" data-brand="Honda" onclick="selectBrand('Honda', this)"><img src="assets/images/brands/honda.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Honda"> Honda <span id="bcount-honda"></span></span>
+          <span class="small fw-semibold text-muted me-1">Hãng xe:</span>
+          <span class="brand-chip active" data-brand="all" onclick="selectBrand('all', this)">Tất cả kho xe</span>
+          <span class="brand-chip" data-brand="Toyota" onclick="selectBrand('Toyota', this)">Toyota <span class="badge-count" id="bcount-toyota"></span></span>
+          <span class="brand-chip" data-brand="Mazda" onclick="selectBrand('Mazda', this)">Mazda <span class="badge-count" id="bcount-mazda"></span></span>
+          <span class="brand-chip" data-brand="Hyundai" onclick="selectBrand('Hyundai', this)">Hyundai <span class="badge-count" id="bcount-hyundai"></span></span>
+          <span class="brand-chip" data-brand="VinFast" onclick="selectBrand('VinFast', this)">VinFast <span class="badge-count" id="bcount-vinfast"></span></span>
+          <span class="brand-chip" data-brand="Ford" onclick="selectBrand('Ford', this)">Ford <span class="badge-count" id="bcount-ford"></span></span>
+          <span class="brand-chip" data-brand="Kia" onclick="selectBrand('Kia', this)">Kia <span class="badge-count" id="bcount-kia"></span></span>
+          <span class="brand-chip" data-brand="Mercedes-Benz" onclick="selectBrand('Mercedes-Benz', this)">Mercedes <span class="badge-count" id="bcount-mercedes"></span></span>
+          <span class="brand-chip" data-brand="Honda" onclick="selectBrand('Honda', this)">Honda <span class="badge-count" id="bcount-honda"></span></span>
         </div>
       </div>
 
       <!-- 2. MAIN LAYOUT: SIDEBAR BENTO + CATALOG GRID -->
       <div class="row g-4">
-        <!-- Sidebar Filter (Bento Card) -->
+        <!-- Sidebar Filter (Bento Card Tối Giản) -->
         <aside class="col-lg-3">
           <div class="cars-bento-card p-3.5 mb-4">
             <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
-              <span class="fw-bold text-dark d-flex align-items-center gap-2">
-                <i class="bi bi-sliders text-warning"></i> Bộ Lọc Thông Minh
+              <span class="fw-bold text-dark d-flex align-items-center gap-2" style="font-size: 0.92rem;">
+                <i class="bi bi-sliders text-secondary"></i> Bộ Lọc Thông Minh
               </span>
               <button class="btn btn-sm btn-link text-muted p-0 text-decoration-none" style="font-size: 0.8rem;" onclick="resetAllFilters()">Đặt lại</button>
             </div>
 
             <!-- Từ khóa tìm kiếm -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted mb-1.5">Tìm kiếm từ khóa</label>
+              <label class="form-label small fw-semibold text-muted mb-1.5">Tìm kiếm từ khóa</label>
               <div class="input-group input-group-sm">
                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
                 <input type="text" id="filter-keyword" class="form-control bg-light border-start-0" placeholder="Nhập tên xe, mẫu xe..." oninput="handleKeywordInput()">
@@ -541,7 +616,7 @@
 
             <!-- Khoảng giá bán -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted mb-1.5">Khoảng giá bán</label>
+              <label class="form-label small fw-semibold text-muted mb-1.5">Khoảng giá bán</label>
               <div class="d-flex flex-wrap gap-1.5" id="price-chips-group">
                 <button type="button" class="filter-chip-btn" data-price="under600" onclick="togglePriceFilter('under600', this)">Dưới 600tr</button>
                 <button type="button" class="filter-chip-btn" data-price="600-900" onclick="togglePriceFilter('600-900', this)">600 - 900tr</button>
@@ -552,7 +627,7 @@
 
             <!-- Kiểu dáng xe -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted mb-1.5">Kiểu dáng xe</label>
+              <label class="form-label small fw-semibold text-muted mb-1.5">Kiểu dáng xe</label>
               <div class="d-flex flex-wrap gap-1.5" id="body-chips-group">
                 <button type="button" class="filter-chip-btn" data-body="SUV" onclick="toggleBodyFilter('SUV', this)">SUV</button>
                 <button type="button" class="filter-chip-btn" data-body="Sedan" onclick="toggleBodyFilter('Sedan', this)">Sedan</button>
@@ -563,7 +638,7 @@
 
             <!-- Khu vực xem xe -->
             <div class="mb-3">
-              <label class="form-label small fw-bold text-muted mb-1.5">Khu vực xem xe</label>
+              <label class="form-label small fw-semibold text-muted mb-1.5">Khu vực xem xe</label>
               <select id="filter-location" class="form-select form-select-sm bg-light" onchange="handleLocationChange()">
                 <option value="all">Tất cả khu vực</option>
                 <option value="Nha Trang">Nha Trang (Khánh Hòa)</option>
@@ -575,7 +650,7 @@
 
             <!-- Loại nhiên liệu -->
             <div class="mb-2">
-              <label class="form-label small fw-bold text-muted mb-1.5">Loại nhiên liệu</label>
+              <label class="form-label small fw-semibold text-muted mb-1.5">Loại nhiên liệu</label>
               <div class="d-flex flex-wrap gap-1.5" id="fuel-chips-group">
                 <button type="button" class="filter-chip-btn" data-fuel="Xăng" onclick="toggleFuelFilter('Xăng', this)">Xăng</button>
                 <button type="button" class="filter-chip-btn" data-fuel="Dầu" onclick="toggleFuelFilter('Dầu', this)">Dầu</button>
@@ -612,7 +687,7 @@
             <i class="bi bi-car-front text-muted" style="font-size: 3rem;"></i>
             <h5 class="fw-bold mt-3 mb-1">Không tìm thấy xe phù hợp</h5>
             <p class="text-muted small mb-3">Vui lòng điều chỉnh hoặc xóa bớt tiêu chí lọc để xem thêm xe trong kho.</p>
-            <button class="btn btn-sm btn-outline-dark fw-bold px-3 py-1.5" onclick="resetAllFilters()">Đặt lại tất cả bộ lọc</button>
+            <button class="btn btn-sm btn-outline-dark fw-semibold px-3 py-1.5" onclick="resetAllFilters()">Đặt lại tất cả bộ lọc</button>
           </div>
 
           <!-- Pagination -->
@@ -690,7 +765,7 @@
             <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
-              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
                 <i class="bi bi-telephone-fill"></i>
               </div>
               <div>
@@ -722,9 +797,8 @@
 
   <script>
     /* ==========================================================================
-       BENTO STUDIO CATALOG CONTROLLER
+       BENTO STUDIO CATALOG CONTROLLER (THƯƠNG MẠI TINH GỌN, CHUẨN XÁC)
        ========================================================================== */
-    // 1. Kho xe chuẩn hoá Option 1 với hình ảnh thực tế và thông tin minh bạch
     const CURATED_CARS = [
       {
         id: "new-1",
@@ -738,7 +812,7 @@
         condition: "new",
         statusBadge: "Xe mới 100%",
         statusType: "new",
-        mileage: "Xe mới 100%",
+        mileage: "0 km",
         fuel: "Xăng",
         trans: "Tự động",
         body: "SUV",
@@ -759,7 +833,7 @@
         condition: "new",
         statusBadge: "Xe mới 100%",
         statusType: "new",
-        mileage: "Xe mới 100%",
+        mileage: "0 km",
         fuel: "Điện",
         trans: "Tự động",
         body: "SUV",
@@ -780,7 +854,7 @@
         condition: "new",
         statusBadge: "Xe mới 100%",
         statusType: "new",
-        mileage: "Xe mới 100%",
+        mileage: "0 km",
         fuel: "Hybrid",
         trans: "Tự động",
         body: "SUV",
@@ -933,11 +1007,10 @@
     const pageSize = 6;
     let allCarsList = [];
 
-    // 2. Tải toàn bộ kho xe (Curated + Tin đăng người dùng hợp lệ)
+    // 2. Tải toàn bộ kho xe
     function loadCompleteFleet() {
       const fleet = [...CURATED_CARS];
 
-      // Tích hợp tin đăng từ localStorage nếu có
       if (typeof getCustomListings === 'function') {
         const customListings = getCustomListings().filter(c => c.status === 'active');
         customListings.forEach(c => {
@@ -954,7 +1027,7 @@
             condition: isNew ? 'new' : 'used',
             statusBadge: isNew ? 'Xe mới 100%' : (c.sourceType === 'showroom' ? 'Showroom chính hãng' : 'Chính chủ bán'),
             statusType: isNew ? 'new' : (c.sourceType === 'showroom' ? 'used-dealer' : 'used-owner'),
-            mileage: isNew ? 'Xe mới 100%' : (c.mileageDisplay || `${(c.mileage || 0).toLocaleString()} km`),
+            mileage: isNew ? '0 km' : (c.mileageDisplay || `${(c.mileage || 0).toLocaleString()} km`),
             fuel: c.fuel || 'Xăng',
             trans: c.transmission || 'Tự động',
             body: c.bodyType || 'SUV',
@@ -970,7 +1043,7 @@
       updateHeaderCounts();
     }
 
-    // 3. Cập nhật số lượng trên các Switcher Pills & Brand Chips
+    // 3. Cập nhật số lượng
     function updateHeaderCounts() {
       const newCount = allCarsList.filter(c => c.condition === 'new').length;
       const usedCount = allCarsList.filter(c => c.condition === 'used').length;
@@ -999,7 +1072,7 @@
       });
     }
 
-    // 4. Đồng bộ tiêu đề Hero Banner & Active Nav Link theo Condition
+    // 4. Đồng bộ tiêu đề Hero Banner & Active Nav Link
     function syncHeroAndNav(cond) {
       const titleEl = document.getElementById('bento-page-title');
       const subEl = document.getElementById('bento-page-subtitle');
@@ -1022,7 +1095,6 @@
         if (subEl) subEl.textContent = 'Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.';
       }
 
-      // Cập nhật Switcher Button
       document.querySelectorAll('.switcher-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.cond === cond);
       });
@@ -1098,7 +1170,7 @@
         currentFilterState.keyword = input ? input.value.trim().toLowerCase() : '';
         currentPage = 1;
         applyAllFilters();
-      }, 250);
+      }, 200);
     }
 
     function handleSortChange() {
@@ -1207,14 +1279,13 @@
       } else if (currentFilterState.sort === 'year-desc') {
         sorted.sort((a, b) => b.year - a.year);
       } else {
-        // Newest / Featured default
         sorted.sort((a, b) => b.year - a.year);
       }
 
       renderBentoGrid(sorted);
     }
 
-    // 8. Render Grid Cards & Phân Trang
+    // 8. Render Grid Cards & Phân Trang (Không lặp chữ, không rối mắt)
     function renderBentoGrid(list) {
       const container = document.getElementById('bento-cars-grid');
       const emptyState = document.getElementById('cars-empty-state');
@@ -1240,18 +1311,45 @@
       const favs = (typeof getFavorites === 'function') ? getFavorites() : [];
 
       container.innerHTML = paginatedList.map(car => {
-        let badgeClass = 'badge-new';
-        if (car.statusType === 'used-dealer') badgeClass = 'badge-used-dealer';
-        if (car.statusType === 'used-owner') badgeClass = 'badge-used-owner';
+        let dotClass = 'dot-new';
+        let badgeText = 'Xe mới 100%';
+        if (car.statusType === 'used-dealer') {
+          dotClass = 'dot-dealer';
+          badgeText = 'Showroom chính hãng';
+        } else if (car.statusType === 'used-owner') {
+          dotClass = 'dot-owner';
+          badgeText = 'Chính chủ bán';
+        }
 
         const isFav = favs.includes(car.id);
+
+        // Thông số kỹ thuật thông minh: Không lặp lại "Xe mới 100%" nếu là xe mới
+        let specChipsHTML = '';
+        if (car.condition === 'new') {
+          specChipsHTML = `
+            <span class="spec-chip">${car.year}</span>
+            <span class="spec-chip">${car.trans}</span>
+            <span class="spec-chip">${car.fuel}</span>
+            <span class="spec-chip">${car.body}</span>
+          `;
+        } else {
+          specChipsHTML = `
+            <span class="spec-chip">${car.year}</span>
+            <span class="spec-chip">${car.mileage}</span>
+            <span class="spec-chip">${car.trans}</span>
+            <span class="spec-chip">${car.fuel}</span>
+          `;
+        }
 
         return `
           <div class="col-lg-4 col-md-6 mb-3">
             <div class="car-bento-item">
               <div class="car-img-wrap">
                 <img src="${car.image}" alt="${car.title}" loading="lazy" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
-                <span class="car-status-badge ${badgeClass}">${car.statusBadge}</span>
+                <span class="car-status-badge">
+                  <span class="badge-dot ${dotClass}"></span>
+                  <span>${badgeText}</span>
+                </span>
                 <button type="button" class="car-fav-btn ${isFav ? 'active' : ''}" onclick="handleBentoFavClick(event, '${car.id}')" title="Lưu xe yêu thích" aria-label="Yêu thích">
                   <i class="bi bi-heart"></i>
                 </button>
@@ -1262,21 +1360,18 @@
                     <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>
                   </h3>
                   <div class="d-flex align-items-baseline justify-content-between mb-2">
-                    <span class="fs-5 fw-bold" style="color: #EA580C;">${car.priceText}</span>
+                    <span class="fs-5 fw-bold" style="color: #EA580C; letter-spacing: -0.3px;">${car.priceText}</span>
                     <span class="small text-muted" style="font-size: 0.74rem;">Trả trước: <strong>${car.prepay}</strong></span>
                   </div>
                   <div class="d-flex flex-wrap gap-1 mb-3">
-                    <span class="spec-chip">${car.year}</span>
-                    <span class="spec-chip">${car.mileage}</span>
-                    <span class="spec-chip">${car.trans}</span>
-                    <span class="spec-chip">${car.fuel}</span>
+                    ${specChipsHTML}
                   </div>
                 </div>
                 <div class="pt-2 border-top d-flex align-items-center justify-content-between">
                   <span class="small text-secondary" style="font-size: 0.76rem;"><i class="bi bi-geo-alt me-1 text-danger"></i>${car.location}</span>
                   <div class="d-flex gap-1.5">
-                    <a href="car-detail.html?id=${car.id}" class="btn btn-sm btn-outline-dark fw-bold px-2 py-1" style="font-size: 0.78rem;">Chi tiết</a>
-                    <a href="tel:${car.sellerPhone || '19006868'}" class="btn btn-sm text-white fw-bold px-2 py-1" style="background: #FF6B00; font-size: 0.78rem;" title="Gọi tư vấn: ${car.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
+                    <a href="car-detail.html?id=${car.id}" class="btn-detail-car">Chi tiết</a>
+                    <a href="tel:${car.sellerPhone || '19006868'}" class="btn-call-car" title="Gọi tư vấn: ${car.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
                   </div>
                 </div>
               </div>
