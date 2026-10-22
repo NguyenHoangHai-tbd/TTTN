@@ -65,7 +65,7 @@
       color: #F8FAFC !important;
       font-weight: 600;
       font-size: 0.8125rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+      text-shadow: none !important;
     }
     .topbar-divider {
       color: rgba(255, 255, 255, 0.3) !important;
@@ -131,7 +131,7 @@
       color: #FFFFFF !important;
       font-weight: 700;
       letter-spacing: 0.2px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      text-shadow: none !important;
       transition: all 0.2s ease;
       max-width: none !important;
     }
@@ -230,16 +230,18 @@
       border-radius: 8px !important;
       border: 1.5px solid transparent !important;
       text-decoration: none !important;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      text-shadow: none !important;
       transition: all 0.2s ease;
       display: inline-block;
       white-space: nowrap;
     }
-    .nav-link-portal:hover {
+    .nav-link-portal:hover,
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover,
+    .portal-navbar-clean .nav-link-portal:hover {
       color: #FF6B00 !important;
-      background-color: rgba(255, 107, 0, 0.18) !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3) !important;
+      background-color: rgba(255, 255, 255, 0.14) !important;
+      border-color: rgba(255, 107, 0, 0.6) !important;
+      box-shadow: 0 0 14px rgba(255, 107, 0, 0.3) !important;
       text-shadow: none !important;
     }
     .nav-link-portal.active {
@@ -510,14 +512,14 @@
       font-weight: 800 !important;
       line-height: 1.15 !important;
       color: #FFFFFF !important;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+      text-shadow: none !important;
     }
     .hero-subtitle {
       font-size: 1.12rem !important;
       color: #E2E8F0 !important;
       max-width: 640px;
       line-height: 1.65 !important;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
+      text-shadow: none !important;
     }
     @media (max-width: 991px) {
       .hero-title {
@@ -856,6 +858,20 @@
     .value-pill-card:hover {
       border-color: #0F172A !important;
       transform: translateY(-2px) !important;
+    }
+
+  
+    /* Chữ TopBar Sắc Nét, Không Nhòe Chữ */
+    .portal-topbar-clean,
+    .portal-topbar-clean * {
+      text-shadow: none !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    .topbar-info-item {
+      font-size: 0.84rem !important;
+      font-weight: 500 !important;
+      text-shadow: none !important;
     }
 
   </style>

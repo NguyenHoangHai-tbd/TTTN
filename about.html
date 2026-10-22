@@ -37,20 +37,9 @@
 
     /* 1. TopBar Trên Cùng */
     .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
-    .portal-topbar-clean {
-      background: #F8FAFC !important;
-      border-bottom: 1px solid #E2E8F0 !important;
-      font-size: 0.8125rem !important;
-      color: #334155 !important;
-      padding: 7px 0 !important;
-    }
+    .portal-topbar-clean { background: #FFFFFF !important; border-bottom: 1px solid #E2E8F0 !important; font-size: 0.84rem !important; padding: 7px 0 !important; text-shadow: none !important; }
     .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
-    .topbar-info-item {
-      color: #1E293B !important;
-      font-weight: 600 !important;
-      font-size: 0.8125rem !important;
-      text-shadow: none !important;
-    }
+    .topbar-info-item { color: #0F172A !important; font-weight: 500 !important; font-size: 0.84rem !important; text-shadow: none !important; }
     .portal-header-wrapper:not(.is-scrolled) .topbar-divider,
     .topbar-divider {
       color: #CBD5E1 !important;
@@ -559,6 +548,16 @@
       padding: 20px 22px !important;
     }
 
+  
+    /* Chữ TopBar Sắc Nét, Không Nhòe Chữ */
+    .portal-topbar-clean,
+    .portal-topbar-clean * {
+      text-shadow: none !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    .topbar-info-item { color: #0F172A !important; font-weight: 500 !important; font-size: 0.84rem !important; text-shadow: none !important; }
+
   </style>
 
   <style>
@@ -813,6 +812,16 @@
       line-height: 1.65 !important;
       padding: 20px 22px !important;
     }
+
+  
+    /* Chữ TopBar Sắc Nét, Không Nhòe Chữ */
+    .portal-topbar-clean,
+    .portal-topbar-clean * {
+      text-shadow: none !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    .topbar-info-item { color: #0F172A !important; font-weight: 500 !important; font-size: 0.84rem !important; text-shadow: none !important; }
 
   </style>
 </head>
