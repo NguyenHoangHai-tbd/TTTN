@@ -3,383 +3,651 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mua Bán Ô Tô Cũ & Mới Chất Lượng - OtoMarket</title>
-  <meta name="description" content="Khám phá danh sách hàng ngàn xe ô tô chất lượng, đa dạng thương hiệu Toyota, Mazda, Hyundai, Ford, Mercedes... Lọc theo giá, đời xe và khu vực dễ dàng." />
+  <title>Kho Xe Ô Tô Mua Bán Trực Tuyến - OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261016_purge">
-    <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261022_bento_cars">
+
+  <style>
+    /* ==========================================================================
+       HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN (STICKY, ZERO OVERLAP)
+       ========================================================================== */
+    header#portal-header,
+    .portal-header-wrapper,
+    .portal-header-wrapper:not(.is-scrolled) {
+      position: sticky !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      z-index: 1050 !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+    }
+
+    /* 1. TopBar */
+    .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
+    .portal-topbar-clean {
+      background: #F8FAFC !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      font-size: 0.8125rem !important;
+      color: #334155 !important;
+      padding: 7px 0 !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
+    .topbar-info-item {
+      color: #1E293B !important;
+      font-weight: 600 !important;
+      font-size: 0.8125rem !important;
+      text-shadow: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-divider,
+    .topbar-divider {
+      color: #CBD5E1 !important;
+      margin: 0 8px;
+    }
+
+    /* Chuyển Ngôn Ngữ VI / EN */
+    .portal-header-wrapper:not(.is-scrolled) .lang-switch-container,
+    .lang-switch-container {
+      display: inline-flex !important;
+      align-items: center;
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn,
+    .lang-pill-btn {
+      border: none;
+      background: transparent;
+      color: #475569 !important;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn:hover:not(.active),
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A !important;
+      background: #F1F5F9 !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn.active,
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
+    }
+
+    /* Nút Tài Khoản / Đăng Nhập */
+    .topbar-user-btn.dropdown-toggle::after {
+      display: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
+    .topbar-user-btn {
+      border: 1.5px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      font-weight: 700 !important;
+      font-size: 0.8125rem !important;
+      padding: 5px 14px !important;
+      border-radius: 20px !important;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label,
+    .topbar-user-btn .user-name-label {
+      color: #0F172A !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.2px;
+      text-shadow: none !important;
+      transition: all 0.2s ease;
+      max-width: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
+    .topbar-user-btn:hover {
+      background: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+      color: #FF6B00 !important;
+    }
+
+    /* 2. Navbar Chính */
+    .portal-navbar-clean {
+      background: #FFFFFF !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      padding: 10px 0 !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal,
+    .portal-header-wrapper .nav-link-portal,
+    .nav-link-portal {
+      color: #0F172A !important;
+      font-weight: 600 !important;
+      font-size: 0.90rem !important;
+      padding: 8px 16px !important;
+      border-radius: 8px !important;
+      border: 1.5px solid transparent !important;
+      text-decoration: none !important;
+      text-shadow: none !important;
+      transition: all 0.2s ease !important;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover,
+    .nav-link-portal:hover {
+      color: #FF6B00 !important;
+      background-color: #FFF7ED !important;
+      border-color: #FED7AA !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active,
+    .nav-link-portal.active {
+      color: #FF6B00 !important;
+      font-weight: 700 !important;
+      background-color: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+    }
+
+    /* Nút Yêu Thích */
+    .portal-header-wrapper:not(.is-scrolled) .btn-fav-compact,
+    .btn-fav-compact {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      border-radius: 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1.5px solid #E2E8F0 !important;
+      background-color: #FFFFFF !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+      padding: 0 !important;
+      position: relative !important;
+    }
+    .btn-fav-compact i {
+      font-size: 1.15rem !important;
+      color: #EF4444 !important;
+    }
+    .btn-fav-compact:hover {
+      background-color: #FEF2F2 !important;
+      border-color: #EF4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+      transform: scale(1.05);
+    }
+    .btn-fav-compact .favorites-badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
+      font-size: 0.65rem !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFFFFF;
+    }
+
+    /* Nút CTA Cam */
+    .btn-cta-orange {
+      background-color: #FF6B00 !important;
+      border: 1.5px solid #FF6B00 !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      transition: all 0.2s ease !important;
+      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
+    }
+    .btn-cta-orange:hover,
+    .btn-cta-orange:focus,
+    .btn-cta-orange:active {
+      background-color: #EA580C !important;
+      border-color: #EA580C !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
+    }
+
+    /* ==========================================================================
+       PHƯƠNG ÁN 1: BENTO CATALOG & SMART DYNAMIC STUDIO
+       ========================================================================== */
+    body.cars-bento-body {
+      background-color: #EEF2F6 !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      color: #0F172A !important;
+    }
+    .cars-bento-card {
+      background: #FFFFFF !important;
+      border-radius: 20px !important;
+      border: 1px solid #CBD5E1 !important;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+    }
+    .switcher-pill {
+      display: inline-flex;
+      background: #F1F5F9;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+    }
+    .switcher-btn {
+      border: none;
+      background: transparent;
+      padding: 7px 18px;
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #64748B;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .switcher-btn.active {
+      background: #FF6B00;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+    }
+    .brand-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #334155;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .brand-chip:hover, .brand-chip.active {
+      background: #FFF7ED;
+      border-color: #FF6B00;
+      color: #EA580C;
+      transform: translateY(-1px);
+    }
+    .filter-chip-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      color: #475569;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-chip-btn.active, .filter-chip-btn:hover {
+      background: #FFF7ED;
+      border-color: #FF6B00;
+      color: #EA580C;
+    }
+    .car-bento-item {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .car-bento-item:hover {
+      transform: translateY(-4px);
+      border-color: #CBD5E1;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.09);
+    }
+    .car-img-wrap {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: #F1F5F9;
+    }
+    .car-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .car-bento-item:hover .car-img-wrap img {
+      transform: scale(1.04);
+    }
+    .car-status-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .badge-new {
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+    }
+    .badge-used-dealer {
+      background: #FFF7ED;
+      color: #EA580C;
+      border: 1px solid #FED7AA;
+    }
+    .badge-used-owner {
+      background: #EFF6FF;
+      color: #2563EB;
+      border: 1px solid #BFDBFE;
+    }
+    .car-fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .car-fav-btn:hover {
+      background: #FFFFFF;
+      color: #EF4444;
+      transform: scale(1.1);
+    }
+    .car-fav-btn.active {
+      color: #EF4444;
+      background: #FFFFFF;
+    }
+    .car-fav-btn.active i::before {
+      content: "\F415"; /* bi-heart-fill */
+    }
+    .spec-chip {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.74rem;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .text-orange-theme {
+      color: #FF6B00 !important;
+    }
+  </style>
 </head>
-<body>
+<body class="cars-bento-body">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid px-3 px-xl-5">
-      <a class="brand-logo" href="index.html">
-        <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo">
-      </a>
+  <!-- ==========================================================================
+       HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN
+       ========================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <!-- 1. TopBar Trên Cùng -->
+    <div class="portal-topbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
+        </div>
 
-      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-        <i class="bi bi-list fs-2 text-white"></i>
-      </button>
+        <!-- Bên phải: Chuyển ngôn ngữ VI/EN & Đăng nhập -->
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+          </div>
+          <span class="topbar-divider">|</span>
+          <div id="navbar-auth-section">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Đăng nhập</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+    <!-- 2. Thanh Điều Hướng Chính -->
+    <nav class="portal-navbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
+        <!-- Logo OtoMarket Tiêu Chuẩn Nền Sáng -->
+        <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
+        </a>
+
+        <!-- Menu Điều Hướng Chính -->
+        <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+            <a class="nav-link-portal" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
+            <a class="nav-link-portal nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
+            <a class="nav-link-portal nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="index.html#guide-section">Tin tức &amp; Đánh giá</a>
+            <a class="nav-link-portal" href="index.html#guide-section">Tin tức &amp; Đánh giá</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
-            <a class="nav-link nav-link-custom" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-              <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin Showroom
-              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+            <a class="nav-link-portal" href="admin.html">
+              <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
             </a>
           </li>
         </ul>
 
-        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
-            <i class="bi bi-heart text-danger"></i>
-            <span class="d-none d-xl-inline">Yêu thích</span>
-            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
-          </a>
-
-          <div id="navbar-auth-section">
-            <a href="login.html" class="btn btn-outline-custom">
-              <i class="bi bi-person"></i>
-              <span>Đăng nhập</span>
-            </a>
-          </div>
-
-          <a href="post-car.html" class="btn-cta-orange">
-            <i class="bi bi-plus-circle-fill"></i>
-            <span>Đăng bán xe</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Top Quick Brand Strip / Page Header -->
-  <section class="catalog-top-strip">
-    <div class="container">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
-        <div>
-          <h1 class="h4 fw-bold text-slate-900 mb-1">Kho Xe Ô Tô Mua Bán Trực Tuyến</h1>
-          <p class="text-muted small mb-0">Tìm kiếm xe đã kiểm duyệt kỹ thuật & niêm yết giá minh bạch trên toàn quốc</p>
-        </div>
+        <!-- Nút Yêu Thích & Nút Đăng Bán Xe -->
         <div class="d-flex align-items-center gap-2">
-          <span class="badge bg-light text-muted border px-2.5 py-1.5 rounded-pill small">
-            <i class="bi bi-shield-check text-teal me-1"></i>100% Tin duyệt sạch
-          </span>
-          <span class="badge bg-teal-subtle text-teal border border-teal-subtle px-2.5 py-1.5 rounded-pill small">
-            <i class="bi bi-clock-history me-1"></i>Cập nhật liên tục 24/7
-          </span>
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
+          </a>
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>+ Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       BENTO STUDIO MAIN SECTION
+       ========================================================================== -->
+  <main class="py-4">
+    <div class="container-fluid px-3 px-xl-5">
+
+      <!-- 1. BENTO HERO BANNER CARD -->
+      <div class="cars-bento-card p-4 mb-4">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-3">
+          <div>
+            <h1 class="h3 fw-bold text-dark mb-1" id="bento-page-title">Kho Xe Ô Tô Mua Bán Trực Tuyến</h1>
+            <p class="text-secondary small mb-0" id="bento-page-subtitle">Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.</p>
+          </div>
+          <!-- Segmented Condition Switcher -->
+          <div class="switcher-pill">
+            <button class="switcher-btn active" data-cond="all" onclick="selectCondition('all')">Tất cả kho xe</button>
+            <button class="switcher-btn" data-cond="new" onclick="selectCondition('new')">✨ Ô tô mới <span id="count-cond-new">(3)</span></button>
+            <button class="switcher-btn" data-cond="used" onclick="selectCondition('used')">🚗 Ô tô cũ <span id="count-cond-used">(6)</span></button>
+          </div>
+        </div>
+
+        <!-- Quick Brand Chips Carousel -->
+        <div class="d-flex flex-wrap align-items-center gap-2 pt-3 border-top" id="brand-chips-bar">
+          <span class="small fw-bold text-muted me-1">Hãng xe:</span>
+          <span class="brand-chip active" data-brand="all" onclick="selectBrand('all', this)">Tất cả hãng</span>
+          <span class="brand-chip" data-brand="Toyota" onclick="selectBrand('Toyota', this)"><img src="assets/images/brands/toyota.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Toyota"> Toyota <span id="bcount-toyota"></span></span>
+          <span class="brand-chip" data-brand="Mazda" onclick="selectBrand('Mazda', this)"><img src="assets/images/brands/mazda.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Mazda"> Mazda <span id="bcount-mazda"></span></span>
+          <span class="brand-chip" data-brand="Hyundai" onclick="selectBrand('Hyundai', this)"><img src="assets/images/brands/hyundai.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Hyundai"> Hyundai <span id="bcount-hyundai"></span></span>
+          <span class="brand-chip" data-brand="VinFast" onclick="selectBrand('VinFast', this)"><img src="assets/images/brands/vinfast.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="VinFast"> VinFast <span id="bcount-vinfast"></span></span>
+          <span class="brand-chip" data-brand="Ford" onclick="selectBrand('Ford', this)"><img src="assets/images/brands/ford.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Ford"> Ford <span id="bcount-ford"></span></span>
+          <span class="brand-chip" data-brand="Kia" onclick="selectBrand('Kia', this)"><img src="assets/images/brands/kia.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Kia"> Kia <span id="bcount-kia"></span></span>
+          <span class="brand-chip" data-brand="Mercedes-Benz" onclick="selectBrand('Mercedes-Benz', this)"><img src="assets/images/brands/mercedes-benz.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Mercedes"> Mercedes <span id="bcount-mercedes"></span></span>
+          <span class="brand-chip" data-brand="Honda" onclick="selectBrand('Honda', this)"><img src="assets/images/brands/honda.svg" style="height: 14px; width: auto; max-width: 22px; object-fit: contain; vertical-align: middle;" alt="Honda"> Honda <span id="bcount-honda"></span></span>
         </div>
       </div>
 
-      <!-- Quick Brand Chips Carousel -->
-      <div class="d-flex align-items-center gap-2 overflow-x-auto pb-1 scrollbar-none" id="brand-chips-bar">
-        <span class="small text-muted fw-bold text-nowrap me-1">Hãng xe:</span>
-        <button type="button" class="brand-chip active" data-brand="" onclick="selectBrandChip('')">
-          <span>Tất cả hãng</span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Toyota" onclick="selectBrandChip('Toyota')">
-          <i class="bi bi-car-front text-teal"></i> Toyota <span class="badge-count" id="count-toyota"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Mazda" onclick="selectBrandChip('Mazda')">
-          <i class="bi bi-car-front text-teal"></i> Mazda <span class="badge-count" id="count-mazda"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Hyundai" onclick="selectBrandChip('Hyundai')">
-          <i class="bi bi-car-front text-teal"></i> Hyundai <span class="badge-count" id="count-hyundai"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="VinFast" onclick="selectBrandChip('VinFast')">
-          <i class="bi bi-car-front text-teal"></i> VinFast <span class="badge-count" id="count-vinfast"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Ford" onclick="selectBrandChip('Ford')">
-          <i class="bi bi-car-front text-teal"></i> Ford <span class="badge-count" id="count-ford"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Kia" onclick="selectBrandChip('Kia')">
-          <i class="bi bi-car-front text-teal"></i> Kia <span class="badge-count" id="count-kia"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Mercedes-Benz" onclick="selectBrandChip('Mercedes-Benz')">
-          <i class="bi bi-car-front text-teal"></i> Mercedes-Benz <span class="badge-count" id="count-mercedes-benz"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Honda" onclick="selectBrandChip('Honda')">
-          <i class="bi bi-car-front text-teal"></i> Honda <span class="badge-count" id="count-honda"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="BMW" onclick="selectBrandChip('BMW')">
-          <i class="bi bi-car-front text-teal"></i> BMW <span class="badge-count" id="count-bmw"></span>
-        </button>
-        <button type="button" class="brand-chip" data-brand="Mitsubishi" onclick="selectBrandChip('Mitsubishi')">
-          <i class="bi bi-car-front text-teal"></i> Mitsubishi <span class="badge-count" id="count-mitsubishi"></span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Content: Sidebar Cột Trái & Catalog Lưới Xe -->
-  <main class="pb-5">
-    <div class="container">
-      <div class="row">
-
-        <!-- Sidebar Bộ lọc bên trái (Col-lg-3) -->
-        <div class="col-lg-3 mb-4">
-          <div class="filter-sidebar-card">
-            <!-- Header bộ lọc -->
-            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-              <div class="d-flex align-items-center gap-2">
-                <div class="filter-header-icon">
-                  <i class="bi bi-funnel-fill text-teal"></i>
-                </div>
-                <h2 class="h6 fw-bold mb-0 text-slate-900">Bộ Lọc Chi Tiết</h2>
-                <span class="badge rounded-pill bg-teal-subtle text-teal fw-bold" id="active-filter-badge" style="display:none;">0</span>
-              </div>
-              <button class="btn btn-link btn-sm text-decoration-none text-muted p-0 filter-reset-link" onclick="resetFilters()">
-                Đặt lại
-              </button>
-            </div>
-
-            <!-- Dải Tag Đang Lọc (Active Filter Pills) -->
-            <div id="active-tags-wrapper" class="mb-3" style="display: none;">
-              <label class="filter-section-label">Đang áp dụng</label>
-              <div class="d-flex flex-wrap gap-1" id="active-filter-tags">
-                <!-- Injected dynamically -->
-              </div>
+      <!-- 2. MAIN LAYOUT: SIDEBAR BENTO + CATALOG GRID -->
+      <div class="row g-4">
+        <!-- Sidebar Filter (Bento Card) -->
+        <aside class="col-lg-3">
+          <div class="cars-bento-card p-3.5 mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
+              <span class="fw-bold text-dark d-flex align-items-center gap-2">
+                <i class="bi bi-sliders text-warning"></i> Bộ Lọc Thông Minh
+              </span>
+              <button class="btn btn-sm btn-link text-muted p-0 text-decoration-none" style="font-size: 0.8rem;" onclick="resetAllFilters()">Đặt lại</button>
             </div>
 
             <!-- Từ khóa tìm kiếm -->
             <div class="mb-3">
-              <label class="filter-section-label" for="filter-keyword">Từ khóa tìm kiếm</label>
-              <div class="position-relative">
-                <input type="text" id="filter-keyword" class="form-control form-control-sm ps-4" placeholder="Tên xe, mẫu xe, năm SX..." oninput="applyFilters()">
-                <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-2 text-muted small"></i>
+              <label class="form-label small fw-bold text-muted mb-1.5">Tìm kiếm từ khóa</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" id="filter-keyword" class="form-control bg-light border-start-0" placeholder="Nhập tên xe, mẫu xe..." oninput="handleKeywordInput()">
               </div>
             </div>
 
-            <!-- Nguồn tin xe (Segmented Buttons) -->
+            <!-- Khoảng giá bán -->
             <div class="mb-3">
-              <label class="filter-section-label">Nguồn tin xe</label>
-              <input type="hidden" id="filter-source" value="">
-              <div class="filter-segmented" id="segmented-source">
-                <button type="button" class="filter-segmented-btn active" data-val="" onclick="selectSegmentedSource('')">Tất cả</button>
-                <button type="button" class="filter-segmented-btn" data-val="showroom" onclick="selectSegmentedSource('showroom')">Showroom</button>
-                <button type="button" class="filter-segmented-btn" data-val="external" onclick="selectSegmentedSource('external')">Cá nhân</button>
+              <label class="form-label small fw-bold text-muted mb-1.5">Khoảng giá bán</label>
+              <div class="d-flex flex-wrap gap-1.5" id="price-chips-group">
+                <button type="button" class="filter-chip-btn" data-price="under600" onclick="togglePriceFilter('under600', this)">Dưới 600tr</button>
+                <button type="button" class="filter-chip-btn" data-price="600-900" onclick="togglePriceFilter('600-900', this)">600 - 900tr</button>
+                <button type="button" class="filter-chip-btn" data-price="900-1200" onclick="togglePriceFilter('900-1200', this)">900tr - 1.2 tỷ</button>
+                <button type="button" class="filter-chip-btn" data-price="above1200" onclick="togglePriceFilter('above1200', this)">Trên 1.2 tỷ</button>
               </div>
             </div>
 
-            <!-- Tình trạng xe (Segmented Buttons) -->
+            <!-- Kiểu dáng xe -->
             <div class="mb-3">
-              <label class="filter-section-label">Tình trạng xe</label>
-              <input type="hidden" id="filter-condition" value="">
-              <div class="filter-segmented" id="segmented-condition">
-                <button type="button" class="filter-segmented-btn active" data-val="" onclick="selectSegmentedCondition('')">Tất cả</button>
-                <button type="button" class="filter-segmented-btn" data-val="new" onclick="selectSegmentedCondition('new')">Xe mới</button>
-                <button type="button" class="filter-segmented-btn" data-val="used" onclick="selectSegmentedCondition('used')">Xe cũ</button>
+              <label class="form-label small fw-bold text-muted mb-1.5">Kiểu dáng xe</label>
+              <div class="d-flex flex-wrap gap-1.5" id="body-chips-group">
+                <button type="button" class="filter-chip-btn" data-body="SUV" onclick="toggleBodyFilter('SUV', this)">SUV</button>
+                <button type="button" class="filter-chip-btn" data-body="Sedan" onclick="toggleBodyFilter('Sedan', this)">Sedan</button>
+                <button type="button" class="filter-chip-btn" data-body="MPV" onclick="toggleBodyFilter('MPV', this)">MPV</button>
+                <button type="button" class="filter-chip-btn" data-body="Bán tải" onclick="toggleBodyFilter('Bán tải', this)">Bán tải</button>
               </div>
             </div>
 
-            <!-- Hãng xe -->
+            <!-- Khu vực xem xe -->
             <div class="mb-3">
-              <label class="filter-section-label" for="filter-brand">Hãng xe</label>
-              <select id="filter-brand" class="form-select form-select-sm" onchange="syncBrandFromSelect(this.value)">
-                <option value="">Tất cả hãng xe</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Mazda">Mazda</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="VinFast">VinFast</option>
-                <option value="Ford">Ford</option>
-                <option value="Kia">Kia</option>
-                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                <option value="Honda">Honda</option>
-                <option value="BMW">BMW</option>
-                <option value="Mitsubishi">Mitsubishi</option>
+              <label class="form-label small fw-bold text-muted mb-1.5">Khu vực xem xe</label>
+              <select id="filter-location" class="form-select form-select-sm bg-light" onchange="handleLocationChange()">
+                <option value="all">Tất cả khu vực</option>
+                <option value="Nha Trang">Nha Trang (Khánh Hòa)</option>
+                <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
               </select>
             </div>
 
-            <!-- Khoảng giá (Clickable Quick Chips) -->
-            <div class="mb-3">
-              <label class="filter-section-label">Khoảng giá bán</label>
-              <input type="hidden" id="filter-price" value="">
-              <div class="filter-chip-grid" id="grid-price-chips">
-                <button type="button" class="filter-chip-btn" data-price="under500" onclick="togglePriceChip('under500')">Dưới 500tr</button>
-                <button type="button" class="filter-chip-btn" data-price="500-800" onclick="togglePriceChip('500-800')">500 - 800tr</button>
-                <button type="button" class="filter-chip-btn" data-price="800-1000" onclick="togglePriceChip('800-1000')">800tr - 1 tỷ</button>
-                <button type="button" class="filter-chip-btn" data-price="above1000" onclick="togglePriceChip('above1000')">Trên 1 tỷ</button>
+            <!-- Loại nhiên liệu -->
+            <div class="mb-2">
+              <label class="form-label small fw-bold text-muted mb-1.5">Loại nhiên liệu</label>
+              <div class="d-flex flex-wrap gap-1.5" id="fuel-chips-group">
+                <button type="button" class="filter-chip-btn" data-fuel="Xăng" onclick="toggleFuelFilter('Xăng', this)">Xăng</button>
+                <button type="button" class="filter-chip-btn" data-fuel="Dầu" onclick="toggleFuelFilter('Dầu', this)">Dầu</button>
+                <button type="button" class="filter-chip-btn" data-fuel="Hybrid" onclick="toggleFuelFilter('Hybrid', this)">Hybrid</button>
+                <button type="button" class="filter-chip-btn" data-fuel="Điện" onclick="toggleFuelFilter('Điện', this)">Điện</button>
               </div>
             </div>
-
-            <!-- Kiểu dáng xe (Clickable Chips) -->
-            <div class="mb-3">
-              <label class="filter-section-label">Kiểu dáng xe</label>
-              <input type="hidden" id="filter-body-type" value="">
-              <div class="filter-chip-grid grid-3-cols" id="grid-body-chips">
-                <button type="button" class="filter-chip-btn" data-body="SUV" onclick="toggleBodyChip('SUV')">SUV</button>
-                <button type="button" class="filter-chip-btn" data-body="Sedan" onclick="toggleBodyChip('Sedan')">Sedan</button>
-                <button type="button" class="filter-chip-btn" data-body="MPV" onclick="toggleBodyChip('MPV')">MPV</button>
-                <button type="button" class="filter-chip-btn" data-body="Hatchback" onclick="toggleBodyChip('Hatchback')">Hatchback</button>
-                <button type="button" class="filter-chip-btn" data-body="Bán tải" onclick="toggleBodyChip('Bán tải')">Bán tải</button>
-                <button type="button" class="filter-chip-btn" data-body="Coupe" onclick="toggleBodyChip('Coupe')">Coupe</button>
-              </div>
-            </div>
-
-            <!-- Khu vực & Hộp số -->
-            <div class="row g-2 mb-3">
-              <div class="col-6">
-                <label class="filter-section-label" for="filter-location">Khu vực</label>
-                <select id="filter-location" class="form-select form-select-sm" onchange="applyFilters()">
-                  <option value="">Toàn quốc</option>
-                  <option value="Nha Trang">Nha Trang</option>
-                  <option value="Hà Nội">Hà Nội</option>
-                  <option value="TP. Hồ Chí Minh">TP.HCM</option>
-                  <option value="Đà Nẵng">Đà Nẵng</option>
-                  <option value="Hải Phòng">Hải Phòng</option>
-                  <option value="Bình Dương">Bình Dương</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <label class="filter-section-label" for="filter-transmission">Hộp số</label>
-                <select id="filter-transmission" class="form-select form-select-sm" onchange="applyFilters()">
-                  <option value="">Tất cả</option>
-                  <option value="Tự động">Tự động</option>
-                  <option value="Số sàn">Số sàn</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Nhiên liệu & Năm sản xuất -->
-            <div class="row g-2 mb-3">
-              <div class="col-6">
-                <label class="filter-section-label" for="filter-fuel">Nhiên liệu</label>
-                <select id="filter-fuel" class="form-select form-select-sm" onchange="applyFilters()">
-                  <option value="">Tất cả</option>
-                  <option value="Xăng">Xăng</option>
-                  <option value="Dầu">Dầu (Diesel)</option>
-                  <option value="Điện">Điện</option>
-                  <option value="Hybrid">Hybrid</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <label class="filter-section-label" for="filter-year-from">Năm sản xuất</label>
-                <select id="filter-year-from" class="form-select form-select-sm" onchange="applyFilters()">
-                  <option value="">Từ năm</option>
-                  <option value="2020">2020</option>
-                  <option value="2021">2021</option>
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                </select>
-                <input type="hidden" id="filter-year-to" value="">
-              </div>
-            </div>
-
-            <button class="btn btn-teal w-100 fw-bold py-2 shadow-sm" onclick="applyFilters()">
-              <i class="bi bi-check2-circle me-1"></i> Áp dụng bộ lọc
-            </button>
           </div>
-        </div>
+        </aside>
 
-        <!-- Main Cars Grid bên phải (Col-lg-9) -->
-        <div class="col-lg-9">
-          <!-- Thanh điều khiển trên cùng (Catalog Control Bar) -->
-          <div class="catalog-control-bar bg-white p-3 rounded-3 border mb-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <!-- Catalog Area -->
+        <section class="col-lg-9">
+          <!-- Status Bar -->
+          <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+            <span class="small text-secondary">Tìm thấy <strong class="text-dark fs-6" id="results-count-bento">0</strong> xe phù hợp</span>
             <div class="d-flex align-items-center gap-2">
-              <span class="text-muted small">Kết quả tìm kiếm:</span>
-              <span class="fw-bold fs-6 text-slate-900" id="results-count">
-                Đang tải danh sách xe...
-              </span>
-            </div>
-
-            <div class="d-flex align-items-center gap-3">
-              <!-- Sắp xếp theo -->
-              <div class="d-flex align-items-center gap-2">
-                <label class="small text-muted fw-semibold text-nowrap" for="filter-sort">Sắp xếp theo:</label>
-                <select id="filter-sort" class="form-select form-select-sm fw-semibold" style="width: auto;" onchange="applyFilters()">
-                  <option value="newest">Mới đăng nhất</option>
-                  <option value="price-asc">Giá: Thấp đến cao</option>
-                  <option value="price-desc">Giá: Cao đến thấp</option>
-                  <option value="year-desc">Năm sản xuất mới nhất</option>
-                </select>
-              </div>
-
-              <!-- View Mode Toggle (Grid vs List) -->
-              <div class="catalog-view-toggle d-flex align-items-center bg-light p-1 rounded-2 border">
-                <button type="button" id="btn-view-grid" class="btn btn-sm btn-view-mode active" onclick="setViewMode('grid')" title="Xem dạng lưới 3 cột">
-                  <i class="bi bi-grid-fill"></i>
-                </button>
-                <button type="button" id="btn-view-list" class="btn btn-sm btn-view-mode" onclick="setViewMode('list')" title="Xem dạng danh sách">
-                  <i class="bi bi-list-ul"></i>
-                </button>
-              </div>
+              <span class="small text-muted d-none d-sm-inline">Sắp xếp:</span>
+              <select id="filter-sort" class="form-select form-select-sm bg-white border" style="width: 170px; font-size: 0.8rem;" onchange="handleSortChange()">
+                <option value="newest">Mới đăng nhất</option>
+                <option value="price-asc">Giá: Thấp đến cao</option>
+                <option value="price-desc">Giá: Cao đến thấp</option>
+                <option value="year-desc">Năm sản xuất mới</option>
+              </select>
             </div>
           </div>
 
-          <!-- Grid xe -->
-          <div class="row" id="cars-grid-container">
-            <!-- Rendered by JS -->
+          <!-- Cards Grid -->
+          <div class="row g-3" id="bento-cars-grid">
+            <!-- Rendered dynamically by JS -->
           </div>
 
-          <!-- Pagination container -->
-          <nav aria-label="Pagination" class="mt-4">
+          <!-- Empty State -->
+          <div id="cars-empty-state" class="cars-bento-card p-5 text-center my-4" style="display: none;">
+            <i class="bi bi-car-front text-muted" style="font-size: 3rem;"></i>
+            <h5 class="fw-bold mt-3 mb-1">Không tìm thấy xe phù hợp</h5>
+            <p class="text-muted small mb-3">Vui lòng điều chỉnh hoặc xóa bớt tiêu chí lọc để xem thêm xe trong kho.</p>
+            <button class="btn btn-sm btn-outline-dark fw-bold px-3 py-1.5" onclick="resetAllFilters()">Đặt lại tất cả bộ lọc</button>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="mt-4" id="pagination-nav">
             <ul class="pagination justify-content-center" id="pagination-container"></ul>
           </nav>
-
-          <!-- Empty State khi không tìm thấy xe -->
-          <div id="cars-empty-state" class="empty-state-box" style="display: none;">
-            <div class="empty-state-icon">
-              <i class="bi bi-search"></i>
-            </div>
-            <h4 class="fw-bold h5 mb-2">Không tìm thấy xe phù hợp</h4>
-            <p class="text-muted small mb-4">Hãy thử nới lỏng các tiêu chí bộ lọc hoặc tìm kiếm với từ khóa khác.</p>
-            <button class="btn btn-teal fw-semibold" onclick="resetFilters()">
-              <i class="bi bi-arrow-counterclockwise me-1"></i> Xóa tất cả bộ lọc
-            </button>
-          </div>
-        </div>
-
+        </section>
       </div>
+
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-custom">
-    <div class="container">
-      <div class="row gy-4 mb-5">
-        <div class="col-lg-4 col-md-6">
+  <!-- ==========================================================================
+       FOOTER ĐỒNG BỘ TIÊU CHUẨN (NỀN SÁNG)
+       ========================================================================== -->
+  <footer class="footer-light">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="col-lg-3 col-md-6">
           <div class="brand-logo mb-3">
-            <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo footer-logo">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
           </div>
-          <p class="small text-secondary mb-3">
-            Nền tảng công nghệ mua bán ô tô trực tuyến hàng đầu. Minh bạch thông tin, cam kết chất lượng kiểm định và hỗ trợ trọn đời cho chủ xe.
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
           </p>
-          <div class="d-flex gap-3 text-secondary fs-5">
-            <a href="#" class="text-secondary"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-tiktok"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-telegram"></i></a>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
           </div>
         </div>
 
+        <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
           <h5 class="footer-title">Về OtoMarket</h5>
           <ul class="footer-links">
@@ -391,78 +659,326 @@
           </ul>
         </div>
 
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Dành cho người dùng</h5>
+        <!-- Cột 3: Dành cho người dùng -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
           <ul class="footer-links">
-            <li><a href="post-car.html">Đăng tin bán xe</a></li>
-            <li><a href="my-listings.html">Quản lý tin đăng</a></li>
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="index.html#tool-rolling-price">Dự tính giá lăn bánh</a></li>
             <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
-            <li><a href="login.html">Đăng nhập tài khoản</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
           </ul>
         </div>
 
+        <!-- Cột 4: Top thương hiệu -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Thông tin liên hệ</h5>
-          <p class="small mb-2"><i class="bi bi-geo-alt-fill text-teal me-2"></i> Trụ sở chính: TP. Nha Trang, Tỉnh Khánh Hòa</p>
-          <p class="small mb-2"><i class="bi bi-geo-alt-fill text-teal me-2"></i> Văn phòng: Đường Trần Phú, TP. Nha Trang, Khánh Hòa</p>
-          <p class="small mb-2"><i class="bi bi-telephone-fill text-teal me-2"></i> Hotline 24/7: <strong>1900 6868</strong></p>
-          <p class="small mb-2"><i class="bi bi-envelope-fill text-teal me-2"></i> Email: support@otomarket.vn</p>
+          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="border-top border-secondary pt-4 d-flex justify-content-center justify-content-md-end gap-3 small text-secondary">
-        <a href="about.html" class="text-secondary">Điều khoản sử dụng</a>
-        <a href="about.html" class="text-secondary">Chính sách bảo mật</a>
-        <button class="btn btn-link p-0 text-secondary text-decoration-none small" onclick="resetDemoData()">
-          <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
-        </button>
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
+        <div class="d-flex gap-3">
+          <a href="about.html">Điều khoản sử dụng</a>
+          <a href="about.html">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
+        </div>
       </div>
     </div>
   </footer>
 
-  <div id="toast-container"></div>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261016_purge"></script>
+  <script src="assets/js/app.js?v=20261022_cars_opt1"></script>
+
   <script>
-    let currentPage = 1;
-    const pageSize = 9;
-    let currentViewMode = localStorage.getItem('otomarket_view_mode') || 'grid';
-
-    // 1. View Mode switcher (Grid vs List)
-    function setViewMode(mode) {
-      currentViewMode = mode;
-      localStorage.setItem('otomarket_view_mode', mode);
-      const container = document.getElementById('cars-grid-container');
-      const btnGrid = document.getElementById('btn-view-grid');
-      const btnList = document.getElementById('btn-view-list');
-
-      if (mode === 'list') {
-        container.classList.add('list-view');
-        btnList.classList.add('active');
-        btnGrid.classList.remove('active');
-      } else {
-        container.classList.remove('list-view');
-        btnGrid.classList.add('active');
-        btnList.classList.remove('active');
+    /* ==========================================================================
+       BENTO STUDIO CATALOG CONTROLLER
+       ========================================================================== */
+    // 1. Kho xe chuẩn hoá Option 1 với hình ảnh thực tế và thông tin minh bạch
+    const CURATED_CARS = [
+      {
+        id: "new-1",
+        title: "Toyota Corolla Cross 1.8V 2026",
+        brand: "Toyota",
+        model: "Corolla Cross",
+        year: 2026,
+        price: 860000000,
+        priceText: "860 triệu",
+        prepay: "258 tr",
+        condition: "new",
+        statusBadge: "Xe mới 100%",
+        statusType: "new",
+        mileage: "Xe mới 100%",
+        fuel: "Xăng",
+        trans: "Tự động",
+        body: "SUV",
+        location: "Nha Trang",
+        seller: "Toyota Nha Trang",
+        sellerPhone: "0901202626",
+        image: "assets/images/cars/corolla_cross.jpg"
+      },
+      {
+        id: "new-2",
+        title: "VinFast VF 8 Plus 2026",
+        brand: "VinFast",
+        model: "VF 8",
+        year: 2026,
+        price: 1199000000,
+        priceText: "1,199 tỷ",
+        prepay: "360 tr",
+        condition: "new",
+        statusBadge: "Xe mới 100%",
+        statusType: "new",
+        mileage: "Xe mới 100%",
+        fuel: "Điện",
+        trans: "Tự động",
+        body: "SUV",
+        location: "TP. Hồ Chí Minh",
+        seller: "VinFast Central",
+        sellerPhone: "0906202626",
+        image: "assets/images/cars/vf8.jpg"
+      },
+      {
+        id: "new-3",
+        title: "Honda CR-V e:HEV RS 2026",
+        brand: "Honda",
+        model: "CR-V",
+        year: 2026,
+        price: 1259000000,
+        priceText: "1,259 tỷ",
+        prepay: "378 tr",
+        condition: "new",
+        statusBadge: "Xe mới 100%",
+        statusType: "new",
+        mileage: "Xe mới 100%",
+        fuel: "Hybrid",
+        trans: "Tự động",
+        body: "SUV",
+        location: "Hà Nội",
+        seller: "Honda Mỹ Đình",
+        sellerPhone: "0905202626",
+        image: "assets/images/cars/crv.jpg"
+      },
+      {
+        id: "car-3",
+        title: "Mazda CX-5 2.0 Luxury 2023",
+        brand: "Mazda",
+        model: "CX-5",
+        year: 2023,
+        price: 735000000,
+        priceText: "735 triệu",
+        prepay: "220 tr",
+        condition: "used",
+        statusBadge: "Showroom chính hãng",
+        statusType: "used-dealer",
+        mileage: "18.000 km",
+        fuel: "Xăng",
+        trans: "Tự động",
+        body: "SUV",
+        location: "Nha Trang",
+        seller: "OtoMarket Nha Trang",
+        sellerPhone: "0901202626",
+        image: "assets/images/cars/cx5.jpg"
+      },
+      {
+        id: "car-4",
+        title: "Ford Everest Titanium 2.0 4x4 2024",
+        brand: "Ford",
+        model: "Everest",
+        year: 2024,
+        price: 1389000000,
+        priceText: "1,389 tỷ",
+        prepay: "417 tr",
+        condition: "used",
+        statusBadge: "Showroom chính hãng",
+        statusType: "used-dealer",
+        mileage: "9.500 km",
+        fuel: "Dầu",
+        trans: "Tự động",
+        body: "SUV",
+        location: "TP. Hồ Chí Minh",
+        seller: "Sài Gòn Ford Used",
+        sellerPhone: "0918999111",
+        image: "assets/images/cars/everest.jpg"
+      },
+      {
+        id: "car-11",
+        title: "Hyundai Tucson 2.0 Dầu Đặc Biệt 2022",
+        brand: "Hyundai",
+        model: "Tucson",
+        year: 2022,
+        price: 885000000,
+        priceText: "885 triệu",
+        prepay: "265 tr",
+        condition: "used",
+        statusBadge: "Chính chủ bán",
+        statusType: "used-owner",
+        mileage: "28.000 km",
+        fuel: "Dầu",
+        trans: "Tự động",
+        body: "SUV",
+        location: "Hà Nội",
+        seller: "Nguyễn Hải Đăng",
+        sellerPhone: "0915789654",
+        image: "assets/images/cars/tucson.jpg"
+      },
+      {
+        id: "car-8",
+        title: "Mercedes-Benz C200 Avantgarde 2022",
+        brand: "Mercedes-Benz",
+        model: "C200",
+        year: 2022,
+        price: 1350000000,
+        priceText: "1,350 tỷ",
+        prepay: "405 tr",
+        condition: "used",
+        statusBadge: "Showroom chính hãng",
+        statusType: "used-dealer",
+        mileage: "22.000 km",
+        fuel: "Xăng",
+        trans: "Tự động",
+        body: "Sedan",
+        location: "Hà Nội",
+        seller: "Mercedes Haxaco",
+        sellerPhone: "0968888999",
+        image: "assets/images/cars/c200.jpg"
+      },
+      {
+        id: "car-14",
+        title: "Kia Carnival 2.2D Signature 2023",
+        brand: "Kia",
+        model: "Carnival",
+        year: 2023,
+        price: 1369000000,
+        priceText: "1,369 tỷ",
+        prepay: "410 tr",
+        condition: "used",
+        statusBadge: "Showroom chính hãng",
+        statusType: "used-dealer",
+        mileage: "25.000 km",
+        fuel: "Dầu",
+        trans: "Tự động",
+        body: "MPV",
+        location: "TP. Hồ Chí Minh",
+        seller: "Kia Bình Triệu",
+        sellerPhone: "0908777999",
+        image: "assets/images/cars/carnival.jpg"
+      },
+      {
+        id: "car-1",
+        title: "Toyota Corolla Cross 1.8HV 2022",
+        brand: "Toyota",
+        model: "Corolla Cross",
+        year: 2022,
+        price: 779000000,
+        priceText: "779 triệu",
+        prepay: "233 tr",
+        condition: "used",
+        statusBadge: "Chính chủ bán",
+        statusType: "used-owner",
+        mileage: "31.000 km",
+        fuel: "Hybrid",
+        trans: "Tự động",
+        body: "SUV",
+        location: "Đà Nẵng",
+        seller: "Trần Anh Tuấn",
+        sellerPhone: "0988123456",
+        image: "assets/images/cars/corolla_cross.jpg"
       }
+    ];
+
+    // State Variables
+    let currentFilterState = {
+      condition: 'all',
+      brand: 'all',
+      price: '',
+      body: '',
+      location: 'all',
+      fuel: '',
+      keyword: '',
+      sort: 'newest'
+    };
+
+    let currentPage = 1;
+    const pageSize = 6;
+    let allCarsList = [];
+
+    // 2. Tải toàn bộ kho xe (Curated + Tin đăng người dùng hợp lệ)
+    function loadCompleteFleet() {
+      const fleet = [...CURATED_CARS];
+
+      // Tích hợp tin đăng từ localStorage nếu có
+      if (typeof getCustomListings === 'function') {
+        const customListings = getCustomListings().filter(c => c.status === 'active');
+        customListings.forEach(c => {
+          const isNew = c.condition === 'new' || c.isNew;
+          fleet.push({
+            id: c.id,
+            title: c.title,
+            brand: c.brand,
+            model: c.model || '',
+            year: c.year,
+            price: c.price || 0,
+            priceText: c.priceDisplay || formatCurrency(c.price),
+            prepay: c.price ? `${Math.round((c.price * 0.3) / 1000000)} tr` : 'Liên hệ',
+            condition: isNew ? 'new' : 'used',
+            statusBadge: isNew ? 'Xe mới 100%' : (c.sourceType === 'showroom' ? 'Showroom chính hãng' : 'Chính chủ bán'),
+            statusType: isNew ? 'new' : (c.sourceType === 'showroom' ? 'used-dealer' : 'used-owner'),
+            mileage: isNew ? 'Xe mới 100%' : (c.mileageDisplay || `${(c.mileage || 0).toLocaleString()} km`),
+            fuel: c.fuel || 'Xăng',
+            trans: c.transmission || 'Tự động',
+            body: c.bodyType || 'SUV',
+            location: c.location || 'Nha Trang',
+            seller: c.sellerName || 'Người bán cá nhân',
+            sellerPhone: c.sellerPhone || '19006868',
+            image: c.image || 'assets/images/cars/corolla_cross.jpg'
+          });
+        });
+      }
+
+      allCarsList = fleet;
+      updateHeaderCounts();
     }
 
-    function initViewMode() {
-      setViewMode(currentViewMode);
-    }
-
-    // 2. Dynamic Brand Counters in Brand Strip
-    function updateBrandChipCounts() {
-      const allCars = getPublicCars();
-      const counts = {};
-      allCars.forEach(car => {
-        if (car.brand) {
-          counts[car.brand] = (counts[car.brand] || 0) + 1;
-        }
-      });
+    // 3. Cập nhật số lượng trên các Switcher Pills & Brand Chips
+    function updateHeaderCounts() {
+      const newCount = allCarsList.filter(c => c.condition === 'new').length;
+      const usedCount = allCarsList.filter(c => c.condition === 'used').length;
+      
+      const elNew = document.getElementById('count-cond-new');
+      const elUsed = document.getElementById('count-cond-used');
+      if (elNew) elNew.textContent = `(${newCount})`;
+      if (elUsed) elUsed.textContent = `(${usedCount})`;
 
       const brandMap = {
         'toyota': 'Toyota',
@@ -471,386 +987,308 @@
         'vinfast': 'VinFast',
         'ford': 'Ford',
         'kia': 'Kia',
-        'mercedes-benz': 'Mercedes-Benz',
-        'honda': 'Honda',
-        'bmw': 'BMW',
-        'mitsubishi': 'Mitsubishi'
+        'mercedes': 'Mercedes-Benz',
+        'honda': 'Honda'
       };
 
       Object.keys(brandMap).forEach(key => {
         const brandName = brandMap[key];
-        const countEl = document.getElementById(`count-${key}`);
-        if (countEl) {
-          const c = counts[brandName] || 0;
-          countEl.textContent = `(${c})`;
-        }
+        const count = allCarsList.filter(c => c.brand.toLowerCase() === brandName.toLowerCase()).length;
+        const countEl = document.getElementById(`bcount-${key}`);
+        if (countEl) countEl.textContent = `(${count})`;
       });
     }
 
-    // 3. UI Synchronization Helpers
-    function syncBrandChipsUI(brand) {
-      const chips = document.querySelectorAll('#brand-chips-bar .brand-chip');
-      chips.forEach(chip => {
-        if ((chip.dataset.brand || '') === (brand || '')) {
-          chip.classList.add('active');
-        } else {
-          chip.classList.remove('active');
-        }
-      });
-    }
+    // 4. Đồng bộ tiêu đề Hero Banner & Active Nav Link theo Condition
+    function syncHeroAndNav(cond) {
+      const titleEl = document.getElementById('bento-page-title');
+      const subEl = document.getElementById('bento-page-subtitle');
+      const linkNew = document.querySelector('.nav-link-car-new');
+      const linkUsed = document.querySelector('.nav-link-car-used');
 
-    function syncSegmentedSourceUI(val) {
-      const btns = document.querySelectorAll('#segmented-source .filter-segmented-btn');
-      btns.forEach(btn => {
-        if ((btn.dataset.val || '') === (val || '')) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
+      if (linkNew) linkNew.classList.remove('active');
+      if (linkUsed) linkUsed.classList.remove('active');
 
-    function syncSegmentedConditionUI(val) {
-      const btns = document.querySelectorAll('#segmented-condition .filter-segmented-btn');
-      btns.forEach(btn => {
-        if ((btn.dataset.val || '') === (val || '')) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
-
-    function syncPriceChipsUI(val) {
-      const btns = document.querySelectorAll('#grid-price-chips .filter-chip-btn');
-      btns.forEach(btn => {
-        if ((btn.dataset.price || '') === (val || '')) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
-
-    function syncBodyChipsUI(val) {
-      const btns = document.querySelectorAll('#grid-body-chips .filter-chip-btn');
-      btns.forEach(btn => {
-        if ((btn.dataset.body || '') === (val || '')) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
-
-    // 4. Click Handlers
-    function selectBrandChip(brand) {
-      const brandSelect = document.getElementById('filter-brand');
-      if (brandSelect) brandSelect.value = brand;
-      syncBrandChipsUI(brand);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function syncBrandFromSelect(brand) {
-      syncBrandChipsUI(brand);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function selectSegmentedSource(val) {
-      const sourceInput = document.getElementById('filter-source');
-      if (sourceInput) sourceInput.value = val;
-      syncSegmentedSourceUI(val);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function selectSegmentedCondition(val) {
-      const condInput = document.getElementById('filter-condition');
-      if (condInput) condInput.value = val;
-      syncSegmentedConditionUI(val);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function togglePriceChip(val) {
-      const priceInput = document.getElementById('filter-price');
-      if (priceInput.value === val) {
-        priceInput.value = '';
+      if (cond === 'new') {
+        if (titleEl) titleEl.textContent = 'Kho Ô Tô Mới Chính Hãng';
+        if (subEl) subEl.textContent = 'Xe mới 100% nguyên bản, đầy đủ sổ bảo hành chính hãng, niêm yết giá minh bạch.';
+        if (linkNew) linkNew.classList.add('active');
+      } else if (cond === 'used') {
+        if (titleEl) titleEl.textContent = 'Kho Ô Tô Đã Qua Sử Dụng Chất Lượng';
+        if (subEl) subEl.textContent = 'Xe lướt & chính chủ đã kiểm duyệt kỹ thuật, cam kết không đâm đụng, thủy kích.';
+        if (linkUsed) linkUsed.classList.add('active');
       } else {
-        priceInput.value = val;
-      }
-      syncPriceChipsUI(priceInput.value);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function toggleBodyChip(val) {
-      const bodyInput = document.getElementById('filter-body-type');
-      if (bodyInput.value === val) {
-        bodyInput.value = '';
-      } else {
-        bodyInput.value = val;
-      }
-      syncBodyChipsUI(bodyInput.value);
-      currentPage = 1;
-      applyFilters();
-    }
-
-    // 5. Active Filter Tags Pill Renderer
-    function updateActiveFilterTags(activeFilters) {
-      const wrapper = document.getElementById('active-tags-wrapper');
-      const container = document.getElementById('active-filter-tags');
-      const badge = document.getElementById('active-filter-badge');
-
-      if (!wrapper || !container) return;
-
-      const keys = Object.keys(activeFilters);
-      if (keys.length === 0) {
-        wrapper.style.display = 'none';
-        if (badge) badge.style.display = 'none';
-        container.innerHTML = '';
-        return;
+        if (titleEl) titleEl.textContent = 'Kho Xe Ô Tô Mua Bán Trực Tuyến';
+        if (subEl) subEl.textContent = 'Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.';
       }
 
-      wrapper.style.display = 'block';
-      if (badge) {
-        badge.style.display = 'inline-block';
-        badge.textContent = keys.length;
-      }
-
-      let html = '';
-      keys.forEach(key => {
-        const item = activeFilters[key];
-        html += `
-          <span class="filter-tag-pill">
-            <span>${item.label}</span>
-            <button type="button" class="tag-close" onclick="${item.clearFn}" title="Xóa lọc">×</button>
-          </span>
-        `;
+      // Cập nhật Switcher Button
+      document.querySelectorAll('.switcher-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cond === cond);
       });
-
-      container.innerHTML = html;
     }
 
-    // 6. Initialize Filters from URL
-    function initFiltersFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('source')) {
-        document.getElementById('filter-source').value = params.get('source');
-        syncSegmentedSourceUI(params.get('source'));
+    // 5. Click Handlers
+    function selectCondition(cond) {
+      currentFilterState.condition = cond;
+      syncHeroAndNav(cond);
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function selectBrand(brand, el) {
+      currentFilterState.brand = brand;
+      document.querySelectorAll('#brand-chips-bar .brand-chip').forEach(c => c.classList.remove('active'));
+      if (el) el.classList.add('active');
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function togglePriceFilter(val, el) {
+      if (currentFilterState.price === val) {
+        currentFilterState.price = '';
+        if (el) el.classList.remove('active');
+      } else {
+        currentFilterState.price = val;
+        document.querySelectorAll('#price-chips-group .filter-chip-btn').forEach(b => b.classList.remove('active'));
+        if (el) el.classList.add('active');
       }
-      if (params.get('brand')) {
-        document.getElementById('filter-brand').value = params.get('brand');
-        syncBrandChipsUI(params.get('brand'));
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function toggleBodyFilter(val, el) {
+      if (currentFilterState.body === val) {
+        currentFilterState.body = '';
+        if (el) el.classList.remove('active');
+      } else {
+        currentFilterState.body = val;
+        document.querySelectorAll('#body-chips-group .filter-chip-btn').forEach(b => b.classList.remove('active'));
+        if (el) el.classList.add('active');
       }
-      if (params.get('condition')) {
-        const cond = params.get('condition');
-        document.getElementById('filter-condition').value = cond;
-        syncSegmentedConditionUI(cond);
-        if (cond === 'new') {
-          document.querySelector('.nav-link-car-new')?.classList.add('active');
-        } else if (cond === 'used') {
-          document.querySelector('.nav-link-car-used')?.classList.add('active');
-        }
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function toggleFuelFilter(val, el) {
+      if (currentFilterState.fuel === val) {
+        currentFilterState.fuel = '';
+        if (el) el.classList.remove('active');
+      } else {
+        currentFilterState.fuel = val;
+        document.querySelectorAll('#fuel-chips-group .filter-chip-btn').forEach(b => b.classList.remove('active'));
+        if (el) el.classList.add('active');
       }
-      if (params.get('bodyType')) {
-        document.getElementById('filter-body-type').value = params.get('bodyType');
-        syncBodyChipsUI(params.get('bodyType'));
-      }
-      if (params.get('location')) {
-        document.getElementById('filter-location').value = params.get('location');
-      }
-      if (params.get('keyword')) {
-        document.getElementById('filter-keyword').value = params.get('keyword');
-      }
-      if (params.get('priceRange')) {
-        document.getElementById('filter-price').value = params.get('priceRange');
-        syncPriceChipsUI(params.get('priceRange'));
-      }
-      if (params.get('sort')) {
-        document.getElementById('filter-sort').value = params.get('sort');
-      }
-      if (params.get('fuel')) {
-        document.getElementById('filter-fuel').value = params.get('fuel');
-      }
-      if (params.get('transmission')) {
-        document.getElementById('filter-transmission').value = params.get('transmission');
-      }
-      if (params.get('yearFrom')) {
-        document.getElementById('filter-year-from').value = params.get('yearFrom');
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function handleLocationChange() {
+      const select = document.getElementById('filter-location');
+      currentFilterState.location = select ? select.value : 'all';
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    let keywordTimer = null;
+    function handleKeywordInput() {
+      clearTimeout(keywordTimer);
+      keywordTimer = setTimeout(() => {
+        const input = document.getElementById('filter-keyword');
+        currentFilterState.keyword = input ? input.value.trim().toLowerCase() : '';
+        currentPage = 1;
+        applyAllFilters();
+      }, 250);
+    }
+
+    function handleSortChange() {
+      const select = document.getElementById('filter-sort');
+      currentFilterState.sort = select ? select.value : 'newest';
+      currentPage = 1;
+      applyAllFilters();
+    }
+
+    function resetAllFilters() {
+      currentFilterState = {
+        condition: 'all',
+        brand: 'all',
+        price: '',
+        body: '',
+        location: 'all',
+        fuel: '',
+        keyword: '',
+        sort: 'newest'
+      };
+
+      document.getElementById('filter-keyword').value = '';
+      document.getElementById('filter-location').value = 'all';
+      document.getElementById('filter-sort').value = 'newest';
+
+      document.querySelectorAll('.filter-chip-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('#brand-chips-bar .brand-chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('#brand-chips-bar .brand-chip[data-brand="all"]')?.classList.add('active');
+
+      syncHeroAndNav('all');
+      currentPage = 1;
+      applyAllFilters();
+
+      if (typeof showToast === 'function') {
+        showToast("Đã đặt lại tất cả bộ lọc", "info");
       }
     }
 
-    // 7. Core Filtering & Sorting Logic
-    function applyFilters() {
-      const keyword = document.getElementById('filter-keyword').value.trim().toLowerCase();
-      const source = document.getElementById('filter-source') ? document.getElementById('filter-source').value : '';
-      const brand = document.getElementById('filter-brand').value;
-      const condition = document.getElementById('filter-condition').value;
-      const priceRange = document.getElementById('filter-price').value;
-      const yearFrom = parseInt(document.getElementById('filter-year-from').value) || 0;
-      const yearTo = parseInt(document.getElementById('filter-year-to').value) || 9999;
-      const location = document.getElementById('filter-location').value;
-      const bodyType = document.getElementById('filter-body-type').value;
-      const fuel = document.getElementById('filter-fuel').value;
-      const transmission = document.getElementById('filter-transmission').value;
-      const sortBy = document.getElementById('filter-sort').value;
+    // 6. Xử lý lưu xe yêu thích
+    function handleBentoFavClick(event, carId) {
+      event.preventDefault();
+      event.stopPropagation();
+      const btn = event.currentTarget;
 
-      // Track active filter tags
-      const activeFilters = {};
-      if (keyword) {
-        activeFilters.keyword = { label: `"${keyword}"`, clearFn: "clearFilter('keyword')" };
+      if (typeof toggleFavorite === 'function') {
+        const isAdded = toggleFavorite(carId);
+        btn.classList.toggle('active', isAdded);
+      } else {
+        btn.classList.toggle('active');
       }
-      if (brand) {
-        activeFilters.brand = { label: brand, clearFn: "selectBrandChip('')" };
-      }
-      if (source) {
-        const sLabel = source === 'showroom' ? 'Xe Showroom' : 'Người bán cá nhân';
-        activeFilters.source = { label: sLabel, clearFn: "selectSegmentedSource('')" };
-      }
-      if (condition) {
-        const cLabel = condition === 'new' ? 'Xe mới' : 'Xe cũ';
-        activeFilters.condition = { label: cLabel, clearFn: "selectSegmentedCondition('')" };
-      }
-      if (priceRange) {
-        const pLabels = {
-          'under500': '< 500 triệu',
-          '500-800': '500 - 800 triệu',
-          '800-1000': '800tr - 1 tỷ',
-          'above1000': '> 1 tỷ',
-          '1000-1500': '1 - 1.5 tỷ',
-          'above1500': '> 1.5 tỷ'
-        };
-        activeFilters.price = { label: pLabels[priceRange] || priceRange, clearFn: "togglePriceChip('')" };
-      }
-      if (bodyType) {
-        activeFilters.bodyType = { label: bodyType, clearFn: "toggleBodyChip('')" };
-      }
-      if (location) {
-        activeFilters.location = { label: location, clearFn: "clearFilter('location')" };
-      }
-      if (transmission) {
-        activeFilters.transmission = { label: transmission, clearFn: "clearFilter('transmission')" };
-      }
-      if (fuel) {
-        activeFilters.fuel = { label: fuel, clearFn: "clearFilter('fuel')" };
-      }
-      if (yearFrom > 0) {
-        activeFilters.year = { label: `Từ ${yearFrom}`, clearFn: "clearFilter('yearFrom')" };
-      }
+    }
 
-      updateActiveFilterTags(activeFilters);
-
-      const allCars = getPublicCars();
-
-      let filtered = allCars.filter(car => {
-        if (source) {
-          const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
-          if (source === 'showroom' && !isShowroom) return false;
-          if (source === 'external' && isShowroom) return false;
+    // 7. Lọc & Sắp xếp
+    function applyAllFilters() {
+      let filtered = allCarsList.filter(car => {
+        // Condition
+        if (currentFilterState.condition !== 'all' && car.condition !== currentFilterState.condition) {
+          return false;
         }
 
-        if (keyword) {
-          const matchTitle = car.title.toLowerCase().includes(keyword);
-          const matchBrand = car.brand.toLowerCase().includes(keyword);
-          const matchModel = car.model ? car.model.toLowerCase().includes(keyword) : false;
+        // Brand
+        if (currentFilterState.brand !== 'all' && car.brand.toLowerCase() !== currentFilterState.brand.toLowerCase()) {
+          return false;
+        }
+
+        // Keyword
+        if (currentFilterState.keyword) {
+          const matchTitle = car.title.toLowerCase().includes(currentFilterState.keyword);
+          const matchBrand = car.brand.toLowerCase().includes(currentFilterState.keyword);
+          const matchModel = car.model ? car.model.toLowerCase().includes(currentFilterState.keyword) : false;
           if (!matchTitle && !matchBrand && !matchModel) return false;
         }
 
-        if (brand && car.brand.toLowerCase() !== brand.toLowerCase()) return false;
-
-        if (condition) {
-          const carCond = car.condition || (car.isNew ? 'new' : 'used');
-          if (carCond !== condition) return false;
+        // Price range
+        if (currentFilterState.price) {
+          if (currentFilterState.price === 'under600' && car.price >= 600000000) return false;
+          if (currentFilterState.price === '600-900' && (car.price < 600000000 || car.price > 900000000)) return false;
+          if (currentFilterState.price === '900-1200' && (car.price < 900000000 || car.price > 1200000000)) return false;
+          if (currentFilterState.price === 'above1200' && car.price <= 1200000000) return false;
         }
 
-        if (location && !car.location.toLowerCase().includes(location.toLowerCase())) return false;
-
-        if (bodyType) {
-          if (bodyType === 'MPV') {
-            if (car.bodyType !== 'MPV' && car.bodyType !== 'Xe gia đình') return false;
-          } else if (car.bodyType !== bodyType) {
-            return false;
-          }
+        // Body type
+        if (currentFilterState.body && car.body.toLowerCase() !== currentFilterState.body.toLowerCase()) {
+          return false;
         }
 
-        if (fuel && car.fuel !== fuel) return false;
+        // Location
+        if (currentFilterState.location !== 'all' && !car.location.toLowerCase().includes(currentFilterState.location.toLowerCase())) {
+          return false;
+        }
 
-        if (transmission && car.transmission !== transmission) return false;
-
-        if (car.year < yearFrom || car.year > yearTo) return false;
-
-        if (priceRange) {
-          if (priceRange === 'under500' && car.price >= 500000000) return false;
-          if (priceRange === '500-800' && (car.price < 500000000 || car.price > 800000000)) return false;
-          if (priceRange === '800-1000' && (car.price < 800000000 || car.price > 1000000000)) return false;
-          if (priceRange === 'above1000' && car.price <= 1000000000) return false;
-          if (priceRange === '1000-1500' && (car.price < 1000000000 || car.price > 1500000000)) return false;
-          if (priceRange === 'above1500' && car.price <= 1500000000) return false;
+        // Fuel
+        if (currentFilterState.fuel && car.fuel.toLowerCase() !== currentFilterState.fuel.toLowerCase()) {
+          return false;
         }
 
         return true;
       });
 
-      // Sorting without mutating original array
+      // Sorting
       let sorted = [...filtered];
-      if (sortBy === 'price-asc') {
+      if (currentFilterState.sort === 'price-asc') {
         sorted.sort((a, b) => a.price - b.price);
-      } else if (sortBy === 'price-desc') {
+      } else if (currentFilterState.sort === 'price-desc') {
         sorted.sort((a, b) => b.price - a.price);
-      } else if (sortBy === 'year-desc') {
+      } else if (currentFilterState.sort === 'year-desc') {
         sorted.sort((a, b) => b.year - a.year);
       } else {
-        sorted.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
+        // Newest / Featured default
+        sorted.sort((a, b) => b.year - a.year);
       }
 
-      renderCarsWithPagination(sorted);
+      renderBentoGrid(sorted);
     }
 
-    function clearFilter(filterType) {
-      if (filterType === 'keyword') {
-        document.getElementById('filter-keyword').value = '';
-      } else if (filterType === 'location') {
-        document.getElementById('filter-location').value = '';
-      } else if (filterType === 'transmission') {
-        document.getElementById('filter-transmission').value = '';
-      } else if (filterType === 'fuel') {
-        document.getElementById('filter-fuel').value = '';
-      } else if (filterType === 'yearFrom') {
-        document.getElementById('filter-year-from').value = '';
-      }
-      currentPage = 1;
-      applyFilters();
-    }
-
-    function renderCarsWithPagination(filteredList) {
-      const container = document.getElementById('cars-grid-container');
+    // 8. Render Grid Cards & Phân Trang
+    function renderBentoGrid(list) {
+      const container = document.getElementById('bento-cars-grid');
       const emptyState = document.getElementById('cars-empty-state');
-      const countEl = document.getElementById('results-count');
+      const countEl = document.getElementById('results-count-bento');
 
-      countEl.innerHTML = `Tìm thấy <strong class="text-teal">${filteredList.length}</strong> xe phù hợp`;
+      if (countEl) countEl.textContent = list.length;
 
-      if (filteredList.length === 0) {
+      if (list.length === 0) {
         container.innerHTML = '';
-        emptyState.style.display = 'block';
+        if (emptyState) emptyState.style.display = 'block';
         renderPagination(0, 1);
         return;
       }
 
-      emptyState.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'none';
 
-      const totalPages = Math.ceil(filteredList.length / pageSize);
+      const totalPages = Math.ceil(list.length / pageSize);
       if (currentPage > totalPages) currentPage = 1;
 
       const start = (currentPage - 1) * pageSize;
-      const paginatedItems = filteredList.slice(start, start + pageSize);
+      const paginatedList = list.slice(start, start + pageSize);
 
-      container.innerHTML = paginatedItems.map(car => createCarCardHTML(car)).join('');
+      const favs = (typeof getFavorites === 'function') ? getFavorites() : [];
+
+      container.innerHTML = paginatedList.map(car => {
+        let badgeClass = 'badge-new';
+        if (car.statusType === 'used-dealer') badgeClass = 'badge-used-dealer';
+        if (car.statusType === 'used-owner') badgeClass = 'badge-used-owner';
+
+        const isFav = favs.includes(car.id);
+
+        return `
+          <div class="col-lg-4 col-md-6 mb-3">
+            <div class="car-bento-item">
+              <div class="car-img-wrap">
+                <img src="${car.image}" alt="${car.title}" loading="lazy" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+                <span class="car-status-badge ${badgeClass}">${car.statusBadge}</span>
+                <button type="button" class="car-fav-btn ${isFav ? 'active' : ''}" onclick="handleBentoFavClick(event, '${car.id}')" title="Lưu xe yêu thích" aria-label="Yêu thích">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+              <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
+                <div>
+                  <h3 class="h6 fw-bold text-dark mb-1 text-truncate" title="${car.title}">
+                    <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>
+                  </h3>
+                  <div class="d-flex align-items-baseline justify-content-between mb-2">
+                    <span class="fs-5 fw-bold" style="color: #EA580C;">${car.priceText}</span>
+                    <span class="small text-muted" style="font-size: 0.74rem;">Trả trước: <strong>${car.prepay}</strong></span>
+                  </div>
+                  <div class="d-flex flex-wrap gap-1 mb-3">
+                    <span class="spec-chip">${car.year}</span>
+                    <span class="spec-chip">${car.mileage}</span>
+                    <span class="spec-chip">${car.trans}</span>
+                    <span class="spec-chip">${car.fuel}</span>
+                  </div>
+                </div>
+                <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+                  <span class="small text-secondary" style="font-size: 0.76rem;"><i class="bi bi-geo-alt me-1 text-danger"></i>${car.location}</span>
+                  <div class="d-flex gap-1.5">
+                    <a href="car-detail.html?id=${car.id}" class="btn btn-sm btn-outline-dark fw-bold px-2 py-1" style="font-size: 0.78rem;">Chi tiết</a>
+                    <a href="tel:${car.sellerPhone || '19006868'}" class="btn btn-sm text-white fw-bold px-2 py-1" style="background: #FF6B00; font-size: 0.78rem;" title="Gọi tư vấn: ${car.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
       renderPagination(totalPages, currentPage);
     }
 
+    // 9. Phân Trang UI
     function renderPagination(totalPages, page) {
       const pagContainer = document.getElementById('pagination-container');
       if (!pagContainer) return;
@@ -871,43 +1309,42 @@
 
     function changePage(p) {
       currentPage = p;
-      applyFilters();
-      const catalogEl = document.querySelector('.catalog-control-bar');
-      if (catalogEl) {
-        catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      applyAllFilters();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
     }
 
-    function resetFilters() {
-      document.getElementById('filter-keyword').value = '';
-      if (document.getElementById('filter-source')) document.getElementById('filter-source').value = '';
-      document.getElementById('filter-brand').value = '';
-      document.getElementById('filter-condition').value = '';
-      document.getElementById('filter-price').value = '';
-      document.getElementById('filter-year-from').value = '';
-      document.getElementById('filter-year-to').value = '';
-      document.getElementById('filter-location').value = '';
-      document.getElementById('filter-body-type').value = '';
-      document.getElementById('filter-fuel').value = '';
-      document.getElementById('filter-transmission').value = '';
-      document.getElementById('filter-sort').value = 'newest';
+    // 10. Khởi tạo trang từ URL Parameters
+    function initFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const cond = params.get('condition');
+      if (cond && (cond === 'new' || cond === 'used')) {
+        currentFilterState.condition = cond;
+      }
 
-      syncBrandChipsUI('');
-      syncSegmentedSourceUI('');
-      syncSegmentedConditionUI('');
-      syncPriceChipsUI('');
-      syncBodyChipsUI('');
+      const brand = params.get('brand');
+      if (brand) {
+        currentFilterState.brand = brand;
+        const brandChip = document.querySelector(`#brand-chips-bar .brand-chip[data-brand="${brand}"]`);
+        if (brandChip) {
+          document.querySelectorAll('#brand-chips-bar .brand-chip').forEach(c => c.classList.remove('active'));
+          brandChip.classList.add('active');
+        }
+      }
 
-      currentPage = 1;
-      applyFilters();
-      showToast("Đã đặt lại tất cả bộ lọc", "info");
+      const keyword = params.get('keyword');
+      if (keyword) {
+        currentFilterState.keyword = keyword.trim().toLowerCase();
+        const input = document.getElementById('filter-keyword');
+        if (input) input.value = keyword;
+      }
+
+      syncHeroAndNav(currentFilterState.condition);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      initViewMode();
-      updateBrandChipCounts();
-      initFiltersFromURL();
-      applyFilters();
+      loadCompleteFleet();
+      initFromURL();
+      applyAllFilters();
     });
   </script>
 </body>

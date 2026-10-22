@@ -18,7 +18,7 @@ const LISTING_STATUS = {
   ACTIVE: 'active',     // Đã duyệt và đang công khai
   REJECTED: 'rejected', // Bị từ chối, có lý do
   HIDDEN: 'hidden',     // Người bán chủ động ẩn
-  SOLD: 'sold'          // Xe đã bán
+  SOLD: 'sold'// Xe đã bán
 };
 
 // Tuyên bố kiểm duyệt thống nhất
@@ -96,7 +96,7 @@ function normalizeListing(item) {
   }
 
   const isShowroom = (item.sourceType === 'showroom') || 
-                     (item.sellerType && (item.sellerType.includes('Đại lý') || item.sellerType.includes('Showroom') || item.sellerType.includes('Salon')));
+ (item.sellerType && (item.sellerType.includes('Đại lý') || item.sellerType.includes('Showroom') || item.sellerType.includes('Salon')));
   const sourceType = isShowroom ? 'showroom' : 'external';
   const sellerType = isShowroom ? 'Xe Showroom' : 'Người bán cá nhân';
 
@@ -162,8 +162,8 @@ function initializeStorage() {
         reviewedAt: "2026-10-06T09:00:00.000Z",
         reviewedBy: "Quản lý Showroom",
         reviewHistory: [
-          { action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-06T08:30:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" },
-          { action: "approve", status: LISTING_STATUS.ACTIVE, timestamp: "2026-10-06T09:00:00.000Z", by: "Quản lý Showroom", reason: null, note: "Đã phê duyệt tin đăng" }
+{ action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-06T08:30:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" },
+{ action: "approve", status: LISTING_STATUS.ACTIVE, timestamp: "2026-10-06T09:00:00.000Z", by: "Quản lý Showroom", reason: null, note: "Đã phê duyệt tin đăng" }
         ],
         description: "Xe gia đình đi giữ gìn cẩn thận, bảo dưỡng định kỳ tại hãng. " + OTOMARKET_DISCLAIMER,
         specifications: { engine: "1.5L VTEC", power: "188 hp", drivetrain: "FWD", registrationExpiry: "Tháng 08/2027", warranty: "Theo quy định người bán" }
@@ -206,7 +206,7 @@ function initializeStorage() {
         reviewedAt: null,
         reviewedBy: null,
         reviewHistory: [
-          { action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-09T08:15:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" }
+{ action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-09T08:15:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" }
         ],
         description: "Xe nhập khẩu nguyên chiếc từ Thái Lan. " + OTOMARKET_DISCLAIMER,
         specifications: { engine: "SkyActiv-G 2.0L", power: "153 hp", drivetrain: "FWD", registrationExpiry: "Tháng 10/2027", warranty: "Theo quy định" }
@@ -249,8 +249,8 @@ function initializeStorage() {
         reviewedAt: "2026-10-12T09:15:00.000Z",
         reviewedBy: "Quản lý Showroom",
         reviewHistory: [
-          { action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-12T08:30:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" },
-          { action: "reject", status: LISTING_STATUS.REJECTED, timestamp: "2026-10-12T09:15:00.000Z", by: "Quản lý Showroom", reason: "Ảnh chụp đuôi xe bị mờ và biển số chưa rõ nét. Vui lòng bổ sung ảnh chụp thực tế rõ ràng ngoài ánh sáng ban ngày.", note: "Từ chối duyệt: Ảnh chụp đuôi xe bị mờ và biển số chưa rõ nét." }
+{ action: "submit", status: LISTING_STATUS.PENDING, timestamp: "2026-10-12T08:30:00.000Z", by: "user-demo-1", note: "Gửi yêu cầu đăng tin" },
+{ action: "reject", status: LISTING_STATUS.REJECTED, timestamp: "2026-10-12T09:15:00.000Z", by: "Quản lý Showroom", reason: "Ảnh chụp đuôi xe bị mờ và biển số chưa rõ nét. Vui lòng bổ sung ảnh chụp thực tế rõ ràng ngoài ánh sáng ban ngày.", note: "Từ chối duyệt: Ảnh chụp đuôi xe bị mờ và biển số chưa rõ nét." }
         ],
         description: "Xe gia đình một chủ từ đầu, bảo dưỡng hãng đầy đủ. " + OTOMARKET_DISCLAIMER,
         specifications: { engine: "Nu 2.0L MPI", power: "155 hp", drivetrain: "FWD", registrationExpiry: "Tháng 05/2027", warranty: "Theo quy định" }
@@ -334,13 +334,13 @@ function saveCustomListing(carData) {
     reviewHistory: Array.isArray(carData.reviewHistory) && carData.reviewHistory.length > 0
       ? carData.reviewHistory
       : [
-          {
-            action: carData.status === LISTING_STATUS.DRAFT ? 'draft' : 'submit',
-            status: carData.status || LISTING_STATUS.PENDING,
-            timestamp: now,
-            by: ownerId,
-            note: carData.status === LISTING_STATUS.DRAFT ? 'Lưu bản nháp' : 'Gửi yêu cầu đăng tin'
-          }
+{
+  action: carData.status === LISTING_STATUS.DRAFT ? 'draft' : 'submit',
+  status: carData.status || LISTING_STATUS.PENDING,
+  timestamp: now,
+  by: ownerId,
+  note: carData.status === LISTING_STATUS.DRAFT ? 'Lưu bản nháp' : 'Gửi yêu cầu đăng tin'
+}
         ]
   });
 
@@ -658,10 +658,10 @@ function getLoggedInUser() {
     if (!data) {
       if (typeof window !== 'undefined' && window.IS_WP_ADMIN === true && window.WP_CURRENT_USER) {
         const wpUser = {
-          name: window.WP_CURRENT_USER.name || 'Quản lý Showroom',
-          email: window.WP_CURRENT_USER.email || 'admin@otomarket.vn',
-          role: 'admin',
-          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+name: window.WP_CURRENT_USER.name || 'Quản lý Showroom',
+email: window.WP_CURRENT_USER.email || 'admin@otomarket.vn',
+role: 'admin',
+avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
         };
         localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(wpUser));
         return wpUser;
@@ -744,8 +744,8 @@ function showToast(message, type = 'success') {
     <div id="${toastId}" class="toast align-items-center ${bgClass} border-0 shadow mb-2" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body d-flex align-items-center gap-2">
-          <i class="bi ${icon} fs-5"></i>
-          <span>${message}</span>
+<i class="bi ${icon} fs-5"></i>
+<span>${message}</span>
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -791,20 +791,20 @@ function syncHeaderUserUI() {
     authSection.innerHTML = `
       <div class="dropdown">
         <button class="topbar-user-btn dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="white-space: nowrap !important;">
-          <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
-          <span class="d-none d-sm-inline user-name-label" style="vertical-align: middle;">${user.name || user.email}</span>
-          <i class="bi bi-chevron-down user-dropdown-caret" style="font-size: 0.68rem;"></i>
+<span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
+<span class="d-none d-sm-inline user-name-label" style="vertical-align: middle;">${user.name || user.email}</span>
+<i class="bi bi-chevron-down user-dropdown-caret" style="font-size: 0.68rem;"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3 py-2 topbar-dropdown-menu" style="min-width: 240px; z-index: 99999 !important;">
-          <li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
-            <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Quản lý Showroom' : 'Thành viên')}</div>
-            <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
-          </li>
-          <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
-          <li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2" style="color: #FF6B00;"></i>Quản lý tin đăng</a></li>
-          <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
-          <li><hr class="dropdown-divider my-1"></li>
-          <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
+<li class="px-3 py-2 border-bottom mb-1 bg-light rounded-top-3">
+  <div class="fw-bold text-dark small text-truncate" style="max-width: 200px;">${user.name || (isAdmin ? 'Quản lý Showroom' : 'Thành viên')}</div>
+  <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
+</li>
+<li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
+<li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2" style="color: #FF6B00;"></i>Quản lý tin đăng</a></li>
+<li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
+<li><hr class="dropdown-divider my-1"></li>
+<li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
         </ul>
       </div>
     `;
@@ -829,7 +829,7 @@ function syncAdminLinksVisibility() {
       if (link) {
         const href = (link.getAttribute('href') || '').toLowerCase();
         if (href.includes('about.html')) {
-          aboutItem = li;
+aboutItem = li;
         }
       }
     });
@@ -842,15 +842,15 @@ function syncAdminLinksVisibility() {
         adminItem.className = 'nav-item admin-only admin-nav-item';
         const isCurrentAdminPage = window.location.pathname.includes('admin.html');
         adminItem.innerHTML = `
-          <a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-            <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
-            <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
-          </a>
+<a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
+  <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+  <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+</a>
         `;
         if (aboutItem) {
-          aboutItem.insertAdjacentElement('afterend', adminItem);
+aboutItem.insertAdjacentElement('afterend', adminItem);
         } else {
-          nav.appendChild(adminItem);
+nav.appendChild(adminItem);
         }
       }
       adminItem.classList.add('is-admin-visible');
@@ -862,10 +862,10 @@ function syncAdminLinksVisibility() {
       const badge = adminItem.querySelector('.nav-pending-count');
       if (badge) {
         if (pendingCount > 0) {
-          badge.textContent = pendingCount;
-          badge.style.display = 'inline-block';
+badge.textContent = pendingCount;
+badge.style.display = 'inline-block';
         } else {
-          badge.style.display = 'none';
+badge.style.display = 'none';
         }
       }
     } else {
@@ -931,15 +931,15 @@ function enhanceBuyCarNavigation() {
     item.insertAdjacentHTML('beforeend', `
       <div class="buy-car-menu" role="menu">
         <a href="cars.html?condition=new" role="menuitem">
-          <span class="buy-car-menu-icon new"><i class="bi bi-stars"></i></span>
-          <span><strong>Xe mới</strong><small>Xe mới 100% từ đại lý</small></span>
+<span class="buy-car-menu-icon new"><i class="bi bi-stars"></i></span>
+<span><strong>Xe mới</strong><small>Xe mới 100% từ đại lý</small></span>
         </a>
         <a href="cars.html?condition=used" role="menuitem">
-          <span class="buy-car-menu-icon used"><i class="bi bi-car-front"></i></span>
-          <span><strong>Xe đã qua sử dụng</strong><small>Tin xe cũ đang được rao bán</small></span>
+<span class="buy-car-menu-icon used"><i class="bi bi-car-front"></i></span>
+<span><strong>Xe đã qua sử dụng</strong><small>Tin xe cũ đang được rao bán</small></span>
         </a>
         <a class="buy-car-menu-all" href="cars.html" role="menuitem">
-          Xem tất cả xe <i class="bi bi-arrow-right"></i>
+Xem tất cả xe <i class="bi bi-arrow-right"></i>
         </a>
       </div>
     `);
@@ -1022,61 +1022,61 @@ function createCarCardHTML(car) {
     <div class="col-lg-4 col-md-6 mb-4 car-grid-item">
       <div class="car-card">
         <div class="car-card-img-wrapper">
-          <img src="${car.image}" alt="${car.title}" class="car-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
-          ${badgeHtml}
-          ${photoBadgeHtml}
-          <button class="car-fav-btn ${isFav ? 'active' : ''}" onclick="handleCardFavClick(event, '${car.id}')" title="Lưu xe yêu thích" aria-label="Yêu thích">
-            <i class="bi ${heartClass}"></i>
-          </button>
+<img src="${car.image}" alt="${car.title}" class="car-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
+${badgeHtml}
+${photoBadgeHtml}
+<button class="car-fav-btn ${isFav ? 'active' : ''}" onclick="handleCardFavClick(event, '${car.id}')" title="Lưu xe yêu thích" aria-label="Yêu thích">
+  <i class="bi ${heartClass}"></i>
+</button>
         </div>
         <div class="car-card-body">
-          <a href="car-detail.html?id=${car.id}" class="car-card-title" title="${car.title}">${car.title}</a>
-          
-          <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-1 mb-1.5">
-            <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
-            ${car.price >= 200000000 ? `<span class="small text-muted" style="font-size: 0.75rem;">Trả trước từ: <strong>${Math.round((car.price * 0.3) / 1000000)} tr</strong></span>` : ''}
-          </div>
+<a href="car-detail.html?id=${car.id}" class="car-card-title" title="${car.title}">${car.title}</a>
 
-          ${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
+<div class="d-flex flex-wrap align-items-baseline justify-content-between gap-1 mb-1.5">
+  <div class="car-card-price">${car.priceDisplay || formatCurrency(car.price)}</div>
+  ${car.price >= 200000000 ? `<span class="small text-muted" style="font-size: 0.75rem;">Trả trước từ: <strong>${Math.round((car.price * 0.3) / 1000000)} tr</strong></span>` : ''}
+</div>
 
-          <div class="car-spec-grid">
-            <div class="car-spec-item" title="Năm sản xuất">
-              <i class="bi bi-calendar3"></i>
-              <span>${car.year}</span>
-            </div>
-            <div class="car-spec-item" title="Số km đã đi (ODO)">
-              <i class="bi bi-speedometer2"></i>
-              <span>${mileageText}</span>
-            </div>
-            <div class="car-spec-item" title="Hộp số">
-              <i class="bi bi-gear"></i>
-              <span>${car.transmission}</span>
-            </div>
-            <div class="car-spec-item" title="Nhiên liệu">
-              <i class="bi bi-fuel-pump"></i>
-              <span>${car.fuel}</span>
-            </div>
-          </div>
+${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
 
-          <div class="car-card-footer">
-            <div class="car-seller-info">
-              <i class="bi ${isShowroom ? 'bi-building text-orange-theme' : 'bi-person-circle text-muted'}"></i>
-              <span class="${isShowroom ? 'fw-bold text-orange-theme' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
-            </div>
-            <div class="car-location" title="Khu vực xem xe">
-              <i class="bi bi-geo-alt-fill text-orange-theme"></i>
-              <span>${car.location}</span>
-            </div>
-          </div>
+<div class="car-spec-grid">
+  <div class="car-spec-item" title="Năm sản xuất">
+    <i class="bi bi-calendar3"></i>
+    <span>${car.year}</span>
+  </div>
+  <div class="car-spec-item" title="Số km đã đi (ODO)">
+    <i class="bi bi-speedometer2"></i>
+    <span>${mileageText}</span>
+  </div>
+  <div class="car-spec-item" title="Hộp số">
+    <i class="bi bi-gear"></i>
+    <span>${car.transmission}</span>
+  </div>
+  <div class="car-spec-item" title="Nhiên liệu">
+    <i class="bi bi-fuel-pump"></i>
+    <span>${car.fuel}</span>
+  </div>
+</div>
 
-          <div class="mt-2.5 pt-2 border-top d-flex align-items-center gap-2">
-            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
-              Xem xe <i class="bi bi-arrow-right ms-0.5" style="font-size: 0.7rem;"></i>
-            </a>
-            <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-orange btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
-              <i class="bi bi-telephone-fill"></i>
-            </a>
-          </div>
+<div class="car-card-footer">
+  <div class="car-seller-info">
+    <i class="bi ${isShowroom ? 'bi-building text-orange-theme' : 'bi-person-circle text-muted'}"></i>
+    <span class="${isShowroom ? 'fw-bold text-orange-theme' : ''}">${car.sellerName || (isShowroom ? 'Showroom OtoMarket' : 'Người bán cá nhân')}</span>
+  </div>
+  <div class="car-location" title="Khu vực xem xe">
+    <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+    <span>${car.location}</span>
+  </div>
+</div>
+
+<div class="mt-2.5 pt-2 border-top d-flex align-items-center gap-2">
+  <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
+    Xem xe <i class="bi bi-arrow-right ms-0.5" style="font-size: 0.7rem;"></i>
+  </a>
+  <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-orange btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+</div>
         </div>
       </div>
     </div>
