@@ -12,7 +12,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261022_about_v1">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261022_about_v3">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -20,65 +20,60 @@
 
   <style>
     /* ==========================================================================
-       PORTAL HEADER WRAPPER: TRANSPARENT OVER HERO -> FROSTED ACRYLIC ON SCROLL
+       HEADER TRANG GIỚI THIỆU: NỀN SÁNG TIÊU CHUẨN (KHÔNG XUYÊN THẤU)
        ========================================================================== */
-    .portal-header-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1050;
-      background: linear-gradient(180deg, rgba(7, 11, 25, 0.75) 0%, rgba(7, 11, 25, 0.28) 65%, transparent 100%);
-      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    header#portal-header,
+    .portal-header-wrapper,
+    .portal-header-wrapper:not(.is-scrolled) {
+      position: sticky !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      z-index: 1050 !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+      border-bottom: 1px solid #E2E8F0 !important;
     }
 
-    /* 1. Topbar ở trạng thái ban đầu: Nền Trong Suốt Trên Ảnh Nền Xe */
+    /* 1. TopBar Trên Cùng (Nền sáng nhẹ #F8FAFC, chữ xám than rõ nét) */
+    .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
     .portal-topbar-clean {
-      position: relative !important;
-      z-index: 1090 !important;
-      background: transparent !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+      background: #F8FAFC !important;
+      border-bottom: 1px solid #E2E8F0 !important;
       font-size: 0.8125rem !important;
-      color: #E2E8F0 !important;
-      padding: 8px 0 !important;
-      transition: all 0.25s ease;
+      color: #334155 !important;
+      padding: 7px 0 !important;
     }
-    #navbar-auth-section {
-      position: relative !important;
-      z-index: 1095 !important;
-    }
-    #navbar-auth-section .dropdown {
-      position: relative !important;
-      z-index: 1095 !important;
-    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
     .topbar-info-item {
-      color: #F8FAFC !important;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+      color: #1E293B !important;
+      font-weight: 600 !important;
+      font-size: 0.8125rem !important;
+      text-shadow: none !important;
     }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-divider,
     .topbar-divider {
-      color: rgba(255, 255, 255, 0.3) !important;
+      color: #CBD5E1 !important;
       margin: 0 8px;
     }
 
-    /* Nút Chuyển Ngôn Ngữ VI / EN Viên Thuốc Hiện Đại */
+    /* Cụm Chuyển Ngôn Ngữ VI / EN Nền Sáng */
+    .portal-header-wrapper:not(.is-scrolled) .lang-switch-container,
     .lang-switch-container {
-      display: inline-flex;
+      display: inline-flex !important;
       align-items: center;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
       border-radius: 20px;
       padding: 2px;
       gap: 2px;
-      transition: all 0.25s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
     }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn,
     .lang-pill-btn {
       border: none;
       background: transparent;
-      color: #F1F5F9;
+      color: #475569 !important;
       font-size: 0.74rem;
       font-weight: 700;
       padding: 3px 9px;
@@ -87,49 +82,54 @@
       transition: all 0.2s ease;
       line-height: 1.2;
     }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn:hover:not(.active),
     .lang-pill-btn:hover:not(.active) {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.18);
+      color: #0F172A !important;
+      background: #F1F5F9 !important;
     }
+    .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn.active,
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 10px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
     }
 
-    /* Nút Tài Khoản / Đăng Nhập Trên Topbar */
+    /* Nút Tài Khoản / Đăng Nhập Trên Topbar (Nền Trắng, Chữ Đen Rõ Nét) */
     .topbar-user-btn.dropdown-toggle::after {
       display: none !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
-      border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
-      background: rgba(255, 255, 255, 0.14) !important;
-      color: #FFFFFF !important;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      font-weight: 700;
-      font-size: 0.8125rem;
-      padding: 5px 14px;
-      border-radius: 20px;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
+    .topbar-user-btn {
+      border: 1.5px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      font-weight: 700 !important;
+      font-size: 0.8125rem !important;
+      padding: 5px 14px !important;
+      border-radius: 20px !important;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 7px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
-      color: #FFFFFF !important;
-      font-weight: 700;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label,
+    .topbar-user-btn .user-name-label {
+      color: #0F172A !important;
+      font-weight: 700 !important;
       letter-spacing: 0.2px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      text-shadow: none !important;
       transition: all 0.2s ease;
       max-width: none !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-person-fill:not(.user-avatar-dot i) {
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-person-fill:not(.user-avatar-dot i),
+    .topbar-user-btn i.bi-person-fill:not(.user-avatar-dot i) {
       color: #FF6B00 !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-chevron-down {
-      color: rgba(255, 255, 255, 0.75) !important;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-chevron-down,
+    .topbar-user-btn i.bi-chevron-down {
+      color: #64748B !important;
       transition: transform 0.2s ease;
     }
     .topbar-user-btn.show i.bi-chevron-down {
@@ -137,18 +137,22 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show,
+    .topbar-user-btn:hover,
+    .topbar-user-btn:focus,
+    .topbar-user-btn.show {
       background: #FF6B00 !important;
-      background-color: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.5) !important;
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show * {
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show *,
+    .topbar-user-btn:hover *,
+    .topbar-user-btn:focus *,
+    .topbar-user-btn.show * {
       color: #FFFFFF !important;
-      text-shadow: none !important;
     }
 
     /* Icon Avatar hình tròn cam */
@@ -195,46 +199,49 @@
       padding-left: 18px !important;
     }
 
-    /* 2. Thanh Menu Chính (Navbar Clean) */
+    /* 2. Thanh Menu Chính (Navbar Nền Trắng Sáng, Chữ Đậm Rõ Nét) */
+    .portal-header-wrapper:not(.is-scrolled) .portal-navbar-clean,
     .portal-navbar-clean {
-      position: relative !important;
-      z-index: 1050 !important;
-      background: transparent !important;
+      background: #FFFFFF !important;
       border-bottom: none !important;
       box-shadow: none !important;
-      padding: 12px 0 !important;
-      transition: all 0.25s ease;
+      padding: 10px 0 !important;
     }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal,
+    .portal-header-wrapper .nav-link-portal,
     .nav-link-portal {
-      color: #FFFFFF !important;
+      color: #0F172A !important;
       font-weight: 600 !important;
       font-size: 0.90rem !important;
-      padding: 7px 14px !important;
+      padding: 8px 16px !important;
       border-radius: 8px !important;
       border: 1.5px solid transparent !important;
       text-decoration: none !important;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-      transition: all 0.2s ease;
+      text-shadow: none !important;
+      transition: all 0.2s ease !important;
       display: inline-block;
       white-space: nowrap;
     }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover,
     .nav-link-portal:hover {
       color: #FF6B00 !important;
-      background-color: rgba(255, 107, 0, 0.18) !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3) !important;
+      background-color: #FFF7ED !important;
+      border-color: #FED7AA !important;
       text-shadow: none !important;
+      box-shadow: none !important;
     }
+    .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active,
     .nav-link-portal.active {
       color: #FF6B00 !important;
       font-weight: 700 !important;
-      background-color: rgba(255, 107, 0, 0.22) !important;
+      background-color: #FFF7ED !important;
       border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.4) !important;
       text-shadow: none !important;
+      box-shadow: none !important;
     }
 
-    /* Nút Yêu Thích Gọn Gàng */
+    /* Nút Yêu Thích Gọn Gàng Nền Sáng */
+    .portal-header-wrapper:not(.is-scrolled) .btn-fav-compact,
     .btn-fav-compact {
       width: 40px !important;
       height: 40px !important;
@@ -243,25 +250,25 @@
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
-      background-color: rgba(255, 255, 255, 0.15) !important;
-      backdrop-filter: blur(8px) !important;
-      -webkit-backdrop-filter: blur(8px) !important;
+      border: 1.5px solid #E2E8F0 !important;
+      background-color: #FFFFFF !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
       transition: all 0.2s ease !important;
       text-decoration: none !important;
       padding: 0 !important;
       position: relative !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
     }
     .btn-fav-compact i {
       font-size: 1.15rem !important;
       color: #EF4444 !important;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
       transition: transform 0.2s ease;
     }
     .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
       transform: scale(1.05);
     }
     .btn-fav-compact .favorites-badge-count {
@@ -285,230 +292,74 @@
       color: #FFFFFF !important;
       font-weight: 700 !important;
       transition: all 0.2s ease !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4) !important;
+      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
     }
     .btn-cta-orange:hover,
     .btn-cta-orange:focus,
     .btn-cta-orange:active {
       background-color: #EA580C !important;
-      border-color: #FFFFFF !important;
+      border-color: #EA580C !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.5), 0 4px 18px rgba(255, 107, 0, 0.45) !important;
-    }
-
-    /* Logo hiển thị theo chế độ */
-    .portal-header-wrapper:not(.is-scrolled) .logo-transparent-mode {
-      display: inline-block !important;
-    }
-    .portal-header-wrapper:not(.is-scrolled) .logo-scrolled-mode {
-      display: none !important;
-    }
-    .portal-header-wrapper.is-scrolled .logo-transparent-mode {
-      display: none !important;
-    }
-    .portal-header-wrapper.is-scrolled .logo-scrolled-mode {
-      display: inline-block !important;
+      box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
     }
 
     /* ==========================================================================
-       TRẠNG THÁI CUỘN XUỐNG: FROSTED ACRYLIC GLASS MỜ SÁNG KHI CUỘN
-       ========================================================================== */
-    .portal-header-wrapper.is-scrolled {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      z-index: 1050 !important;
-      background: rgba(255, 255, 255, 0.58) !important;
-      backdrop-filter: blur(20px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45) !important;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-    .portal-header-wrapper.is-scrolled:hover {
-      background: rgba(255, 255, 255, 0.72) !important;
-      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.12) !important;
-    }
-    .portal-header-wrapper.is-scrolled .portal-topbar-clean {
-      background: rgba(248, 250, 252, 0.22) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important;
-      color: #334155 !important;
-      padding: 6px 0 !important;
-      transition: background 0.25s ease;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-info-item {
-      color: #1E293B !important;
-      text-shadow: none !important;
-      font-weight: 700;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-divider {
-      color: rgba(100, 116, 139, 0.4) !important;
-    }
-    .portal-header-wrapper.is-scrolled .lang-switch-container {
-      background: rgba(255, 255, 255, 0.75) !important;
-      border: 1px solid rgba(203, 213, 225, 0.8) !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    }
-    .portal-header-wrapper.is-scrolled .lang-pill-btn {
-      color: #475569 !important;
-    }
-    .portal-header-wrapper.is-scrolled .lang-pill-btn:hover:not(.active) {
-      color: #0F172A !important;
-      background: #E2E8F0 !important;
-    }
-    .portal-header-wrapper.is-scrolled .lang-pill-btn.active {
-      background: #FF6B00 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn,
-    .portal-header-wrapper.is-scrolled button.topbar-user-btn,
-    .portal-header-wrapper.is-scrolled a.topbar-user-btn,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn {
-      border: 1.5px solid rgba(203, 213, 225, 0.95) !important;
-      background: #FFFFFF !important;
-      background-color: #FFFFFF !important;
-      color: #0F172A !important;
-      padding: 5px 14px !important;
-      border-radius: 20px !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
-      transition: all 0.2s ease !important;
-      cursor: pointer;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .user-name-label {
-      color: #0F172A !important;
-      text-shadow: none !important;
-      font-weight: 700 !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn i {
-      color: #FF6B00 !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn .bi-chevron-down {
-      color: #64748B !important;
-    }
-    .portal-header-wrapper.is-scrolled .user-avatar-dot {
-      background: #FF6B00 !important;
-      color: #FFFFFF !important;
-    }
-    .portal-header-wrapper.is-scrolled .user-avatar-dot i {
-      color: #FFFFFF !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn.show,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show {
-      background: #FF6B00 !important;
-      background-color: #FF6B00 !important;
-      border-color: #FF6B00 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.45) !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover *,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus *,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn.show *,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover *,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus *,
-    .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show * {
-      color: #FFFFFF !important;
-      text-shadow: none !important;
-    }
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:hover .user-avatar-dot,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn:focus .user-avatar-dot,
-    .portal-header-wrapper.is-scrolled .topbar-user-btn.show .user-avatar-dot {
-      background: rgba(255, 255, 255, 0.25) !important;
-      color: #FFFFFF !important;
-    }
-    .portal-header-wrapper.is-scrolled .portal-navbar-clean {
-      background: transparent !important;
-      border-bottom: none !important;
-      box-shadow: none !important;
-      padding: 10px 0 !important;
-    }
-    .portal-header-wrapper.is-scrolled .nav-link-portal {
-      color: #0F172A !important;
-      text-shadow: none !important;
-      font-weight: 700;
-    }
-    .portal-header-wrapper.is-scrolled .nav-link-portal:hover {
-      color: #FF6B00 !important;
-      background-color: rgba(255, 107, 0, 0.12) !important;
-      border-color: rgba(255, 107, 0, 0.35) !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15) !important;
-    }
-    .portal-header-wrapper.is-scrolled .nav-link-portal.active {
-      color: #FF6B00 !important;
-      background-color: rgba(255, 107, 0, 0.15) !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.25) !important;
-    }
-    .portal-header-wrapper.is-scrolled .btn-fav-compact {
-      border: 1.5px solid rgba(203, 213, 225, 0.85) !important;
-      background-color: rgba(255, 255, 255, 0.8) !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-    }
-    .portal-header-wrapper.is-scrolled .btn-fav-compact:hover {
-      background-color: #FEF2F2 !important;
-      border-color: #EF4444 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
-    }
-
-    /* ==========================================================================
-       SECTION 1: HERO BANNER NỀN TỐI SANG TRỌNG ĐỒNG BỘ VỚI TRANG CHỦ
+       SECTION 1: HERO BANNER NỀN SÁNG TRANG NHÃ (KHÔNG DÙNG ẢNH NỀN)
        ========================================================================== */
     .about-hero-section {
-      background-color: #0A1128 !important;
-      background-image: 
-        linear-gradient(to right, rgba(10, 17, 40, 0.94) 0%, rgba(10, 17, 40, 0.82) 48%, rgba(10, 17, 40, 0.45) 78%, rgba(10, 17, 40, 0.90) 100%),
-        url('assets/images/hero-car-bg-bright.jpg?v=20261021_luminous_v2') !important;
-      background-position: right center !important;
-      background-size: cover !important;
-      background-repeat: no-repeat !important;
-      color: #FFFFFF !important;
-      padding: 135px 0 75px !important;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #F1F5F9 100%) !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      padding: 56px 0 60px !important;
       position: relative;
     }
     .about-hero-title {
-      font-size: 2.8rem !important;
+      font-size: 2.6rem !important;
       font-weight: 800 !important;
-      line-height: 1.2 !important;
-      color: #FFFFFF !important;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+      line-height: 1.25 !important;
+      color: #0F172A !important;
     }
     .about-hero-subtitle {
       font-size: 1.05rem !important;
-      color: #E2E8F0 !important;
+      color: #475569 !important;
       max-width: 650px;
       line-height: 1.65 !important;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
     }
     @media (max-width: 991px) {
       .about-hero-title {
-        font-size: 2.1rem !important;
+        font-size: 2.0rem !important;
       }
       .about-hero-section {
-        padding: 115px 0 50px !important;
+        padding: 40px 0 45px !important;
       }
     }
 
-    /* Thẻ chỉ số Frosted Glass trong Hero */
+    /* Thẻ chỉ số nền trắng sang trọng trong Hero */
     .about-stat-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
       border-radius: 14px;
       padding: 14px 16px;
       transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     }
     .about-stat-card:hover {
       transform: translateY(-2px);
       border-color: #FF6B00;
-      background: rgba(255, 255, 255, 0.14);
-      box-shadow: 0 8px 20px rgba(255, 107, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(255, 107, 0, 0.12);
+    }
+
+    /* Thẻ ảnh xe minh chứng */
+    .car-proof-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      transition: all 0.3s ease;
+    }
+    .car-proof-card:hover {
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      transform: translateY(-3px);
     }
 
     /* ==========================================================================
@@ -597,7 +448,7 @@
 <body class="bg-white">
 
   <!-- ========================================================================
-       PORTAL HEADER: TOPBAR + NAVBAR (TRANSPARENT OVER HERO -> STICKY ACRYLIC ON SCROLL)
+       PORTAL HEADER: TOPBAR + NAVBAR (NỀN SÁNG TIÊU CHUẨN, KHÔNG XUYÊN THẤU)
        ======================================================================== -->
   <header id="portal-header" class="portal-header-wrapper">
     <!-- 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập) -->
@@ -635,16 +486,15 @@
       </div>
     </div>
 
-    <!-- 2. Thanh Điều Hướng Chính (Navbar: Trong suốt khi ở đầu trang, Nền trắng khi cuộn xuống) -->
+    <!-- 2. Thanh Điều Hướng Chính (Navbar Nền Trắng Sáng Rõ Ràng) -->
     <nav class="portal-navbar-clean">
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
-        <!-- Logo OtoMarket (Chế độ trong suốt hiển thị logo-light, chế độ cuộn hiển thị logo chuẩn) -->
+        <!-- Logo OtoMarket Tiêu Chuẩn Nền Sáng -->
         <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
-          <img src="assets/images/logo-light.png?v=20261021_brand_orange_v6" alt="OtoMarket" class="site-logo logo-transparent-mode" style="height: 42px;">
-          <img src="assets/images/logo.png?v=20261021_brand_orange_v6" alt="OtoMarket" class="site-logo logo-scrolled-mode" style="height: 42px; display: none;">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
         </a>
 
-        <!-- Menu Điều Hướng Chính (Đồng bộ tuyệt đối với trang chủ, Giới thiệu Active) -->
+        <!-- Menu Điều Hướng Chính (Chữ đen rõ nét, Giới thiệu Active) -->
         <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
             <a class="nav-link-portal" href="index.html">Trang chủ</a>
@@ -684,16 +534,16 @@
     </nav>
   </header>
 
-  <!-- ==================== SECTION 1: HERO BANNER NỀN TỐI SANG TRỌNG ==================== -->
+  <!-- ==================== SECTION 1: HERO BANNER NỀN SÁNG TRANG NHÃ (KHÔNG DÙNG ẢNH NỀN) ==================== -->
   <section class="about-hero-section">
     <div class="container-fluid px-3 px-xl-5">
       <div class="row align-items-center gy-5">
         
         <!-- Cột trái: Định vị thương hiệu, Tiêu đề & 4 Thẻ chỉ số nền tảng -->
         <div class="col-lg-7 text-start">
-          <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background: rgba(255, 107, 0, 0.16); border: 1px solid rgba(255, 107, 0, 0.4); color: #FF8533;">
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3" style="background: #FFF7ED; border: 1px solid #FED7AA; color: #EA580C;">
             <i class="bi bi-patch-check-fill text-orange-theme"></i>
-            <span class="small fw-bold text-uppercase" style="letter-spacing: 0.8px; font-size: 0.76rem;">VỀ CHÚNG TÔI • SÀN MUA BÁN Ô TÔ TRỰC TUYẾN 100%</span>
+            <span class="small fw-bold text-uppercase" style="letter-spacing: 0.6px; font-size: 0.74rem;">VỀ CHÚNG TÔI • SÀN MUA BÁN Ô TÔ TRỰC TUYẾN 100%</span>
           </div>
 
           <h1 class="about-hero-title mb-3">
@@ -705,30 +555,30 @@
             OtoMarket là sàn công nghệ kết nối trực tiếp giữa <strong>Người Cần Mua</strong> và <strong>Người Đang Bán</strong> trên phạm vi toàn quốc. Chúng tôi loại bỏ hoàn toàn môi giới trung gian, kiểm duyệt nghiêm ngặt từng tin đăng để mang lại môi trường giao dịch minh bạch, tin cậy.
           </p>
 
-          <!-- 4 Thẻ chỉ số nền tảng (Frosted Glass) -->
+          <!-- 4 Thẻ chỉ số nền tảng (Thẻ Trắng Bo Góc) -->
           <div class="row g-2 pt-2 mb-4">
             <div class="col-6 col-sm-3">
               <div class="about-stat-card">
                 <div class="h4 fw-bold mb-0" style="color: #FF6B00;">10.000+</div>
-                <div class="text-white-50 small mt-1" style="font-size: 0.74rem;">Lượt tìm mỗi ngày</div>
+                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Lượt tìm mỗi ngày</div>
               </div>
             </div>
             <div class="col-6 col-sm-3">
               <div class="about-stat-card">
-                <div class="h4 fw-bold mb-0 text-success">3.500+</div>
-                <div class="text-white-50 small mt-1" style="font-size: 0.74rem;">Xe đang niêm yết</div>
+                <div class="h4 fw-bold mb-0" style="color: #10B981;">3.500+</div>
+                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Xe đang niêm yết</div>
               </div>
             </div>
             <div class="col-6 col-sm-3">
               <div class="about-stat-card">
-                <div class="h4 fw-bold mb-0" style="color: #38BDF8;">15 Phút</div>
-                <div class="text-white-50 small mt-1" style="font-size: 0.74rem;">Kiểm duyệt siêu tốc</div>
+                <div class="h4 fw-bold mb-0" style="color: #0284C7;">15 Phút</div>
+                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Kiểm duyệt siêu tốc</div>
               </div>
             </div>
             <div class="col-6 col-sm-3">
               <div class="about-stat-card">
-                <div class="h4 fw-bold mb-0" style="color: #FBBF24;">63 Tỉnh</div>
-                <div class="text-white-50 small mt-1" style="font-size: 0.74rem;">Kết nối toàn quốc</div>
+                <div class="h4 fw-bold mb-0" style="color: #D97706;">63 Tỉnh</div>
+                <div class="text-secondary small mt-1" style="font-size: 0.74rem;">Kết nối toàn quốc</div>
               </div>
             </div>
           </div>
@@ -739,18 +589,18 @@
               <span>Khám phá kho xe ngay</span>
               <i class="bi bi-arrow-right"></i>
             </a>
-            <a href="post-car.html" class="btn btn-outline-light px-4 py-2.5 rounded-pill fw-bold d-inline-flex align-items-center gap-2">
+            <a href="post-car.html" class="btn btn-outline-dark px-4 py-2.5 rounded-pill fw-bold d-inline-flex align-items-center gap-2">
               <i class="bi bi-plus-circle-fill text-orange-theme"></i>
               <span>Tạo tin bán xe miễn phí</span>
             </a>
           </div>
         </div>
 
-        <!-- Cột phải: Khung ảnh xe kiểm duyệt thực tế cục bộ & Huy hiệu xác thực -->
+        <!-- Cột phải: Khung ảnh xe kiểm duyệt thực tế (Card trắng cao cấp) -->
         <div class="col-lg-5">
-          <div class="p-3 rounded-4 backdrop-blur shadow-lg border" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.18) !important;">
+          <div class="car-proof-card">
             <div class="position-relative overflow-hidden rounded-3 mb-3">
-              <img src="assets/images/cars/cx5.jpg" alt="Mazda CX-5 đã thẩm định tin sạch" class="img-fluid w-100 object-fit-cover" style="height: 220px;">
+              <img src="assets/images/cars/cx5.jpg" alt="Mazda CX-5 đã thẩm định tin sạch" class="img-fluid w-100 object-fit-cover rounded-3" style="height: 230px;">
               <span class="badge position-absolute top-0 start-0 m-2.5 px-2.5 py-1 text-white fw-bold rounded-pill" style="background-color: #FF6B00; font-size: 0.72rem;">
                 <i class="bi bi-patch-check-fill me-1"></i> Tin Thật • Giá Thật
               </span>
@@ -761,18 +611,18 @@
             
             <div class="d-flex align-items-center justify-content-between mb-1">
               <div>
-                <span class="fw-bold text-white fs-6 d-block">Mazda CX-5 2.0 Luxury</span>
-                <span class="text-white-50" style="font-size: 0.74rem;">Đời 2023 &bull; Tự động &bull; Lướt 15.000 km</span>
+                <span class="fw-bold text-dark fs-6 d-block">Mazda CX-5 2.0 Luxury</span>
+                <span class="text-muted" style="font-size: 0.74rem;">Đời 2023 &bull; Tự động &bull; Lướt 15.000 km</span>
               </div>
               <div class="text-end">
-                <span class="fw-bold fs-6 d-block" style="color: #FF8533;">735 Triệu</span>
-                <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-50" style="font-size: 0.65rem;">Đã duyệt tin</span>
+                <span class="fw-bold fs-6 d-block text-orange-theme">735 Triệu</span>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25" style="font-size: 0.65rem;">Đã duyệt tin</span>
               </div>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between small text-white-50 pt-2.5 mt-2 border-top border-white border-opacity-10" style="font-size: 0.76rem;">
-              <span><i class="bi bi-geo-alt-fill me-1 text-warning"></i>TP. Nha Trang, Khánh Hòa</span>
-              <span class="text-white"><i class="bi bi-shield-check text-success me-1"></i>Chính chủ bán xe</span>
+            <div class="d-flex align-items-center justify-content-between small text-muted pt-2.5 mt-2 border-top" style="font-size: 0.76rem;">
+              <span><i class="bi bi-geo-alt-fill me-1 text-orange-theme"></i>TP. Nha Trang, Khánh Hòa</span>
+              <span class="text-dark fw-semibold"><i class="bi bi-shield-check text-success me-1"></i>Chính chủ bán xe</span>
             </div>
           </div>
         </div>
@@ -1244,9 +1094,9 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261022_about_v1"></script>
+  <script src="assets/js/app.js?v=20261022_about_v3"></script>
   <script>
-    // 1. Chuyển đổi ngôn ngữ VI / EN
+    // Chuyển đổi ngôn ngữ VI / EN
     function switchLanguage(lang, el) {
       document.querySelectorAll('.lang-pill-btn').forEach(item => item.classList.remove('active'));
       if (el) el.classList.add('active');
@@ -1254,21 +1104,6 @@
         window.showToast(lang === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
       }
     }
-
-    // 2. Xử lý Header Frosted Acrylic Glass khi cuộn trang
-    function handleAboutScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const header = document.getElementById('portal-header');
-      if (header) {
-        if (scrollY > 40) {
-          header.classList.add('is-scrolled');
-        } else {
-          header.classList.remove('is-scrolled');
-        }
-      }
-    }
-    window.addEventListener('scroll', handleAboutScroll, { passive: true });
-    window.addEventListener('DOMContentLoaded', handleAboutScroll);
   </script>
 </body>
 </html>
