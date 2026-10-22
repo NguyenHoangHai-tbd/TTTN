@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kho Xe Ô Tô Mua Bán Trực Tuyến - OtoMarket</title>
+  <title>Kho Xe Ô Tô Đang Bán - OtoMarket</title>
   
   <!-- Chuẩn hoá Typography: Inter hỗ trợ 100% tiếng Việt chuẩn, không lỗi dấu hay nhảy font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -593,9 +593,8 @@
       <div class="cars-bento-card p-4 mb-4">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-3">
           <div>
-            <span class="badge px-2.5 py-1 mb-2 text-uppercase fw-bold" style="background: #FFF7ED; color: #EA580C; font-size: 0.72rem; letter-spacing: 0.5px;">Kho Xe Đã Kiểm Định</span>
-            <h1 class="h4 fw-bold text-dark mb-1" id="bento-page-title" style="letter-spacing: -0.3px;">Kho Xe Ô Tô Mua Bán Trực Tuyến</h1>
-            <p class="text-secondary small mb-0" id="bento-page-subtitle">Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.</p>
+            <h1 class="h4 fw-bold text-dark mb-1" id="bento-page-title" style="letter-spacing: -0.3px;">Kho Xe Ô Tô Đang Bán</h1>
+            <p class="text-secondary small mb-0" id="bento-page-subtitle">Danh sách xe ô tô mới và đã qua sử dụng, thông tin rõ ràng, liên hệ trực tiếp người bán.</p>
           </div>
           <!-- Segmented Condition Switcher (Thanh Lịch, Không Dùng Emoji) -->
           <div class="switcher-pill">
@@ -636,9 +635,12 @@
               <!-- Từ khóa tìm kiếm -->
               <div class="mb-3">
                 <label class="filter-section-title">Từ khóa xe</label>
-                <div class="input-group input-group-sm">
+                <div class="input-group input-group-sm position-relative">
                   <span class="input-group-text bg-white border-end-0 text-muted" style="border-color: #CBD5E1;"><i class="bi bi-search"></i></span>
-                  <input type="text" id="filter-keyword" class="form-control bg-white border-start-0" style="border-color: #CBD5E1;" placeholder="Nhập tên xe, mẫu xe..." oninput="handleKeywordInput()">
+                  <input type="text" id="filter-keyword" class="form-control bg-white border-start-0 pe-4" style="border-color: #CBD5E1;" placeholder="Nhập tên xe, mẫu xe..." oninput="handleKeywordInput()">
+                  <button type="button" id="btn-clear-car-keyword" class="btn btn-sm text-muted position-absolute end-0 top-50 translate-middle-y z-3 p-0 me-2 border-0 bg-transparent" style="display: none;" onclick="clearKeywordSearch()" title="Xóa từ khóa">
+                    <i class="bi bi-x-circle-fill text-secondary"></i>
+                  </button>
                 </div>
               </div>
 
@@ -698,7 +700,7 @@
             <div class="d-flex align-items-center gap-2">
               <span class="small text-muted d-none d-sm-inline">Sắp xếp:</span>
               <select id="filter-sort" class="form-select form-select-sm bg-white border" style="width: 170px; font-size: 0.8rem; border-color: #CBD5E1 !important;" onchange="handleSortChange()">
-                <option value="newest">Mới đăng nhất</option>
+                <option value="newest">Mới đăng</option>
                 <option value="price-asc">Giá: Thấp đến cao</option>
                 <option value="price-desc">Giá: Cao đến thấp</option>
                 <option value="year-desc">Năm sản xuất mới</option>
@@ -1120,8 +1122,8 @@
         if (subEl) subEl.textContent = 'Xe lướt & chính chủ đã kiểm duyệt kỹ thuật, cam kết không đâm đụng, thủy kích.';
         if (linkUsed) linkUsed.classList.add('active');
       } else {
-        if (titleEl) titleEl.textContent = 'Kho Xe Ô Tô Mua Bán Trực Tuyến';
-        if (subEl) subEl.textContent = 'Kết nối trực tiếp Người Cần Mua và Người Đang Bán, thông tin minh bạch, không qua trung gian.';
+        if (titleEl) titleEl.textContent = 'Kho Xe Ô Tô Đang Bán';
+        if (subEl) subEl.textContent = 'Danh sách xe ô tô mới và đã qua sử dụng, thông tin rõ ràng, liên hệ trực tiếp người bán.';
       }
 
       document.querySelectorAll('.switcher-btn').forEach(btn => {
@@ -1192,7 +1194,24 @@
     }
 
     let keywordTimer = null;
+    function clearKeywordSearch() {
+      const input = document.getElementById('filter-keyword');
+      if (input) {
+        input.value = '';
+        const btn = document.getElementById('btn-clear-car-keyword');
+        if (btn) btn.style.display = 'none';
+        currentFilterState.keyword = '';
+        currentPage = 1;
+        applyAllFilters();
+      }
+    }
+
     function handleKeywordInput() {
+      const input = document.getElementById('filter-keyword');
+      const btn = document.getElementById('btn-clear-car-keyword');
+      if (btn) {
+        btn.style.display = (input && input.value.trim().length > 0) ? 'inline-block' : 'none';
+      }
       clearTimeout(keywordTimer);
       keywordTimer = setTimeout(() => {
         const input = document.getElementById('filter-keyword');

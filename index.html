@@ -2357,16 +2357,7 @@
     };
 
     function openArticleModal(id) {
-      const art = ARTICLES_DATA[id];
-      if (!art) return;
-      document.getElementById('art-modal-cat').textContent = art.category;
-      document.getElementById('art-modal-title').textContent = art.title;
-      document.getElementById('art-modal-date').textContent = art.date;
-      document.getElementById('art-modal-readtime').textContent = art.readTime;
-      document.getElementById('art-modal-img').src = art.image;
-      document.getElementById('art-modal-content').innerHTML = art.content;
-      const modal = new bootstrap.Modal(document.getElementById('articleModal'));
-      modal.show();
+      window.location.href = 'news.html?id=' + id;
     }
 
     // Tự động khởi tạo khi tải trang
