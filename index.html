@@ -399,18 +399,19 @@
     /* ==========================================================================
        TRẠNG THÁI CUỘN XUỐNG: NỀN TRONG SUỐT NHÌN XUYÊN THẤU MỜ ẢO (FROSTED ACRYLIC)
        ========================================================================== */
+    body.index-bento-body .portal-header-wrapper.is-scrolled,
     .portal-header-wrapper.is-scrolled {
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
       width: 100% !important;
       z-index: 1050 !important;
-      background: rgba(255, 255, 255, 0.58) !important;
+      background: rgba(255, 255, 255, 0.72) !important;
       backdrop-filter: blur(20px) saturate(180%) !important;
       -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45) !important;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+      transition: background 0.3s ease, box-shadow 0.3s ease !important;
     }
     .portal-header-wrapper.is-scrolled:hover {
       background: rgba(255, 255, 255, 0.72) !important;
@@ -418,9 +419,12 @@
     }
 
     /* Topbar trong suốt mờ ảo, nhìn xuyên thấu trang sau khi rê cuộn chuột */
+    body.index-bento-body .portal-header-wrapper.is-scrolled .portal-topbar-clean,
     .portal-header-wrapper.is-scrolled .portal-topbar-clean {
-      background: rgba(248, 250, 252, 0.22) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important;
+      background: rgba(248, 250, 252, 0.45) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
       color: #334155 !important;
       padding: 6px 0 !important;
       transition: background 0.25s ease;
