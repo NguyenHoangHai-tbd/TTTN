@@ -105,6 +105,8 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label,
     .topbar-user-btn .user-name-label {
+      background: transparent !important;
+      border: none !important;
       color: #0F172A !important;
       font-weight: 700 !important;
       letter-spacing: 0.2px;
@@ -142,6 +144,16 @@
     .topbar-user-btn:focus *,
     .topbar-user-btn.show * {
       color: #FFFFFF !important;
+      background: transparent !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot,
+    .topbar-user-btn.show .user-avatar-dot {
+      background: #FFFFFF !important;
+      color: #FF6B00 !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot i,
+    .topbar-user-btn.show .user-avatar-dot i {
+      color: #FF6B00 !important;
     }
 
     /* Icon Avatar hình tròn cam */

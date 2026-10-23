@@ -3562,14 +3562,76 @@ li.admin-only.is-admin-visible {
   color: #CBD5E1 !important;
 }
 .portal-topbar-clean .topbar-user-btn,
-.portal-topbar-clean .topbar-user-btn .user-name-label,
-.topbar-user-btn,
-.topbar-user-btn .user-name-label {
+.topbar-user-btn {
   color: #0F172A !important;
   border: 1.5px solid #CBD5E1 !important;
   background: #FFFFFF !important;
   font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+  padding: 5px 14px !important;
+  border-radius: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  text-decoration: none !important;
   text-shadow: none !important;
+}
+.portal-topbar-clean .topbar-user-btn .user-name-label,
+.topbar-user-btn .user-name-label {
+  color: inherit !important;
+  background: transparent !important;
+  border: none !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+.topbar-user-btn:hover,
+.topbar-user-btn:focus,
+.topbar-user-btn.show {
+  background: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+}
+.topbar-user-btn:hover *,
+.topbar-user-btn:focus *,
+.topbar-user-btn.show * {
+  color: #FFFFFF !important;
+  background: transparent !important;
+}
+.user-avatar-dot {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: #FF6B00 !important;
+  color: #FFFFFF !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+}
+.user-avatar-dot i,
+.topbar-user-btn .user-avatar-dot i {
+  color: #FFFFFF !important;
+  font-size: 0.70rem !important;
+  line-height: 1 !important;
+}
+.topbar-user-btn:hover .user-avatar-dot,
+.topbar-user-btn.show .user-avatar-dot {
+  background: #FFFFFF !important;
+  color: #FF6B00 !important;
+}
+.topbar-user-btn:hover .user-avatar-dot i,
+.topbar-user-btn.show .user-avatar-dot i {
+  color: #FF6B00 !important;
 }
 
 /* B. UNIVERSAL NAVBAR ON LIGHT PAGES (cars.html, about.html, or scrolled index) */
@@ -3636,11 +3698,16 @@ body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item
 body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-divider {
   color: rgba(255, 255, 255, 0.3) !important;
 }
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
   color: #FFFFFF !important;
   border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
   background: rgba(255, 255, 255, 0.12) !important;
+  text-shadow: none !important;
+}
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
+  color: #FFFFFF !important;
+  background: transparent !important;
+  border: none !important;
   text-shadow: none !important;
 }
 
@@ -3695,11 +3762,16 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item * {
   font-weight: 500 !important;
   text-shadow: none !important;
 }
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn,
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn {
   color: #0F172A !important;
   border: 1.5px solid #CBD5E1 !important;
   background: #FFFFFF !important;
+  text-shadow: none !important;
+}
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
+  color: #0F172A !important;
+  background: transparent !important;
+  border: none !important;
   text-shadow: none !important;
 }
 body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal {
@@ -3715,4 +3787,115 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
   color: #FF6B00 !important;
   background-color: #FFF7ED !important;
   border-color: #FF6B00 !important;
+}
+
+
+/* ==========================================================================
+   HOMEPAGE CAR TABS (BỘ LỌC TAB KHO XE ĐANG CHÀO BÁN)
+   ========================================================================== */
+#portal-car-tabs {
+  background: #F1F5F9 !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  border: 1px solid #E2E8F0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+}
+.portal-filter-tab {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: #64748B !important;
+  font-weight: 600 !important;
+  font-size: 0.84rem !important;
+  padding: 7px 16px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+.portal-filter-tab:hover:not(.active) {
+  color: #0F172A !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-color: #E2E8F0 !important;
+}
+.portal-filter-tab.active {
+  background: #FFFFFF !important;
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+  border-color: rgba(255, 107, 0, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+}
+.portal-filter-tab.active i {
+  color: #FF6B00 !important;
+}
+.portal-filter-tab i {
+  font-size: 0.92rem !important;
+}
+
+/* ==========================================================================
+   UNIVERSAL HEADER ELEMENTS (BUTTON FAVORITES & POST CAR)
+   ========================================================================== */
+.btn-fav-compact {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+.btn-fav-compact i {
+  font-size: 1.15rem !important;
+  color: #EF4444 !important;
+  transition: transform 0.2s ease;
+}
+.btn-fav-compact:hover {
+  background-color: #FEF2F2 !important;
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+  transform: scale(1.05);
+}
+.btn-fav-compact .favorites-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  font-size: 0.65rem !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+}
+.btn-cta-orange {
+  background-color: #FF6B00 !important;
+  border: 1.5px solid #FF6B00 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
+}
+.btn-cta-orange:hover,
+.btn-cta-orange:focus,
+.btn-cta-orange:active {
+  background-color: #EA580C !important;
+  border-color: #EA580C !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
 }

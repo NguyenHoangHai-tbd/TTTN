@@ -19,58 +19,92 @@
 <body class="bg-light">
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid px-3 px-xl-5">
-      <a class="brand-logo" href="index.html">
-        <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo">
-      </a>
+    <!-- ==========================================================================
+       HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR)
+       ========================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <!-- 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập) -->
+    <div class="portal-topbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
+        </div>
 
-      <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-        <i class="bi bi-list fs-2 text-white"></i>
-      </button>
+        <!-- Bên phải: Chuyển ngôn ngữ VI/EN & Nút Đăng nhập / Tài khoản -->
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <!-- Cụm chuyển ngôn ngữ VI/EN -->
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+          </div>
+          <span class="topbar-divider">|</span>
+          <!-- Nút Đăng nhập / Tài khoản (Được hydrate động bởi app.js) -->
+          <div id="navbar-auth-section">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Đăng nhập</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+    <!-- 2. Thanh Điều Hướng Chính -->
+    <nav class="portal-navbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
+        <!-- Logo OtoMarket Tiêu Chuẩn Nền Sáng -->
+        <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
+        </a>
+
+        <!-- Menu Điều Hướng Chính -->
+        <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="index.html">Trang chủ</a>
+            <a class="nav-link-portal " href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="cars.html?condition=new">Ô tô mới</a>
+            <a class="nav-link-portal " href="cars.html?condition=new">Ô tô mới</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="cars.html?condition=used">Ô tô cũ</a>
+            <a class="nav-link-portal " href="cars.html?condition=used">Ô tô cũ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="news.html">Tin tức &amp; Đánh giá</a>
+            <a class="nav-link-portal " href="news.html">Tin tức &amp; Đánh giá</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-custom" href="about.html">Giới thiệu</a>
+            <a class="nav-link-portal " href="about.html">Giới thiệu</a>
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
-            <a class="nav-link nav-link-custom" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-              <i class="bi bi-shield-check me-1 text-teal"></i>Duyệt tin Showroom
-              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+            <a class="nav-link-portal " href="admin.html">
+              <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
             </a>
           </li>
         </ul>
 
-        <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-          <a href="favorites.html" class="btn btn-outline-custom position-relative" title="Xe yêu thích">
-            <i class="bi bi-heart text-danger"></i>
-            <span class="d-none d-xl-inline">Yêu thích</span>
-            <span class="badge-fav-count favorites-badge-count" style="display:none;">0</span>
+        <!-- Nút Yêu Thích & Nút Đăng Bán Xe -->
+        <div class="d-flex align-items-center gap-2">
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
-
-          <div id="navbar-auth-section"></div>
-
-          <a href="post-car.html" class="btn-cta-orange">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
-            <span>Đăng bán xe</span>
+            <span>+ Đăng bán xe</span>
           </a>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- Main Profile Content -->
   <main class="py-5">
