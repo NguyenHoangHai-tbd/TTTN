@@ -1683,9 +1683,11 @@
       const art = NEWS_ARTICLES.find(a => a.id === id);
       if (!art) return;
 
-      // 1. Breadcrumbs
-      document.getElementById('reader-breadcrumb-cat').textContent = art.categoryName;
-      document.getElementById('reader-breadcrumb-title').textContent = art.title;
+      // 1. Breadcrumbs (safe check)
+      const bCat = document.getElementById('reader-breadcrumb-cat');
+      if (bCat) bCat.textContent = art.categoryName;
+      const bTitle = document.getElementById('reader-breadcrumb-title');
+      if (bTitle) bTitle.textContent = art.title;
 
       // 2. Main Article Header & Meta
       document.getElementById('reader-title').textContent = art.title;
