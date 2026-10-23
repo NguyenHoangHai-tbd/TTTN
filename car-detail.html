@@ -994,115 +994,8 @@
         `;
       }
 
-      // Khối kiểm định 176 hạng mục kỹ thuật Showroom
-      const inspectionSectionHtml = `
-        <div class="bento-card" id="inspection-section">
-          <div class="inspection-header-box">
-            <div class="d-flex align-items-center gap-3">
-              <div class="rounded-3 p-2.5 bg-white bg-opacity-10 text-white fs-4">
-                <i class="bi bi-shield-check"></i>
-              </div>
-              <div>
-                <h5 class="fw-bold mb-0 text-white">Bảng Kiểm Định Kỹ Thuật 176 Hạng Mục</h5>
-                <span class="text-white text-opacity-75 small">Quy trình thẩm định Showroom độc quyền bởi kỹ sư ô tô OtoMarket</span>
-              </div>
-            </div>
-            <span class="badge bg-success text-white px-3 py-2 rounded-pill fs-7 shadow-sm">
-              <i class="bi bi-check-circle-fill me-1"></i>ĐẠT CHUẨN 100%
-            </span>
-          </div>
-
-          <p class="small text-secondary mb-3">
-            Xe được chuyên viên thẩm định độc lập kiểm tra thực tế trên cầu nâng thủy lực theo 5 trụ cột kỹ thuật khắt khe:
-          </p>
-
-          <div class="row g-3">
-            <!-- Nhóm 1: Khung gầm & Thân vỏ -->
-            <div class="col-md-6">
-              <div class="inspection-pillar-card">
-                <div class="inspection-pillar-title">
-                  <span><i class="bi bi-car-front-fill text-teal me-2"></i>1. Khung gầm &amp; Thân vỏ</span>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle small">48/48 điểm</span>
-                </div>
-                <ul class="list-unstyled small text-secondary mb-0 ps-1 d-flex flex-column gap-1">
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Keo chỉ zin 100%, không mất keo chỉ cửa / cốp</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Khung chassis, cột A-B-C nguyên bản không nắn chỉnh</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Không đâm đụng ảnh hưởng kết cấu chịu lực</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Nhóm 2: Động cơ & Hộp số -->
-            <div class="col-md-6">
-              <div class="inspection-pillar-card">
-                <div class="inspection-pillar-title">
-                  <span><i class="bi bi-gear-wide-connected text-teal me-2"></i>2. Động cơ &amp; Hộp số</span>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle small">42/42 điểm</span>
-                </div>
-                <ul class="list-unstyled small text-secondary mb-0 ps-1 d-flex flex-column gap-1">
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Động cơ nguyên bản, chưa rã máy, chưa đại tu</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Cam kết tuyệt đối không thủy kích, không ngập nước</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Hộp số chuyển số êm mượt, không giật hoặc rò rỉ</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Nhóm 3: Hệ thống phanh, lái & an toàn -->
-            <div class="col-md-6">
-              <div class="inspection-pillar-card">
-                <div class="inspection-pillar-title">
-                  <span><i class="bi bi-shield-shaded text-teal me-2"></i>3. Phanh, Lái &amp; An toàn</span>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle small">32/32 điểm</span>
-                </div>
-                <ul class="list-unstyled small text-secondary mb-0 ps-1 d-flex flex-column gap-1">
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Túi khí an toàn (Airbags) nguyên bản, hoạt động chuẩn</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Phanh ABS, cân bằng điện tử ESP/VSC đạt kiểm định</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Giảm xóc, rô-tuyn và thước lái cân bằng ổn định</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Nhóm 4: Điện tử & Tiện nghi -->
-            <div class="col-md-6">
-              <div class="inspection-pillar-card">
-                <div class="inspection-pillar-title">
-                  <span><i class="bi bi-lightning-charge-fill text-teal me-2"></i>4. Điện tử &amp; Tiện nghi</span>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle small">34/34 điểm</span>
-                </div>
-                <ul class="list-unstyled small text-secondary mb-0 ps-1 d-flex flex-column gap-1">
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Chẩn đoán điện tử OBD-II: 0 mã lỗi hệ thống</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Điều hòa làm mát sâu, quạt gió làm lạnh nhanh</li>
-                  <li><i class="bi bi-check2-circle text-success me-1"></i> Màn hình trung tâm, camera, cảm biến hoạt động tốt</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Nhóm 5: Pháp lý & Phạt nguội -->
-            <div class="col-12">
-              <div class="inspection-pillar-card">
-                <div class="inspection-pillar-title">
-                  <span><i class="bi bi-file-earmark-lock2-fill text-teal me-2"></i>5. Pháp lý minh bạch, ODO thật &amp; 0 phạt nguội</span>
-                  <span class="badge bg-teal-subtle text-teal border border-teal-subtle small">20/20 điểm</span>
-                </div>
-                <div class="row row-cols-1 row-cols-sm-3 g-2 small text-secondary">
-                  <div><i class="bi bi-check2-circle text-success me-1"></i> Hồ sơ gốc hợp lệ, hỗ trợ sang tên toàn quốc</div>
-                  <div><i class="bi bi-check2-circle text-success me-1"></i> Không tranh chấp dân sự, không cầm cố ngân hàng</div>
-                  <div><i class="bi bi-check2-circle text-success me-1"></i> Đã tra cứu dữ liệu CSGT: 0 lỗi phạt nguội</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cam kết bồi hoàn văn bản -->
-          <div class="p-3 rounded-3 mt-3 d-flex align-items-center gap-3 border" style="background-color: #F0FDFA; border-color: #99F6E4 !important;">
-            <i class="bi bi-award-fill text-teal fs-2 flex-shrink-0" style="color: #0D9488;"></i>
-            <div class="small">
-              <strong class="text-dark">Cam kết bảo đảm bằng văn bản Showroom:</strong>
-              <span class="text-secondary d-block">Nếu phát hiện xe có tai nạn đâm đụng khung gầm hoặc ngập nước thủy kích trong 7 ngày, Showroom nhận lại xe và hoàn tiền 100%.</span>
-            </div>
-          </div>
-        </div>
-      `;
+      // Đã bỏ bảng kiểm định 176 hạng mục theo yêu cầu
+      const inspectionSectionHtml = '';
 
       // Khối Bảng dự toán vay trả góp ngân hàng (Loan / EMI Calculator)
       const loanCalculatorHtml = `
@@ -1233,7 +1126,7 @@
                 <div class="detail-gallery-main">
                   <img id="detail-main-img" src="${car.image}" alt="${car.title}">
                   <span class="gallery-verified-badge">
-                    <i class="bi bi-patch-check-fill me-1"></i>Đã kiểm định 176 điểm
+                    <i class="bi bi-patch-check-fill me-1"></i>Đã kiểm định chất lượng
                   </span>
                   <span class="gallery-counter-badge" id="gallery-counter">
                     <i class="bi bi-camera me-1"></i> ${allImages.length} ảnh thực tế
@@ -1377,8 +1270,7 @@
                 </div>
               </div>
 
-              <!-- Tiêu chuẩn kiểm định 176 hạng mục Showroom -->
-              ${inspectionSectionHtml}
+
 
               <!-- Bảng dự toán vay trả góp ngân hàng -->
               ${loanCalculatorHtml}
