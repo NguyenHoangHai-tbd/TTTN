@@ -542,25 +542,9 @@
       transition: color 0.2s;
     }
 
-    /* SIDEBAR CỐ ĐỊNH CỘT TRÁI */
-    .sidebar-sticky-scroll {
-      top: 85px;
-      z-index: 10;
-      max-height: calc(100vh - 100px);
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      padding-right: 4px;
-    }
-    .sidebar-sticky-scroll::-webkit-scrollbar {
-      width: 4px;
-    }
-    .sidebar-sticky-scroll::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .sidebar-sticky-scroll::-webkit-scrollbar-thumb {
-      background: #CBD5E1;
-      border-radius: 4px;
+    /* SIDEBAR CỘT PHẢI CHUẨN OTO.COM.VN */
+    .oto-sidebar-wrap {
+      position: relative;
     }
     .oto-sidebar-widget {
       background: #FFFFFF;
@@ -678,6 +662,64 @@
       border-top: 1px solid #CBD5E1;
       color: #334155;
     }
+  
+    /* ========================================================================
+       BANNER ẢNH QUẢNG CÁO XE Ô TÔ CHUẨN OTO.COM.VN (THUẦN HÌNH ẢNH)
+       ======================================================================== */
+    .oto-ad-slot {
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+      border: 1px solid #CBD5E1;
+      background: #0B132B;
+    }
+    .oto-ad-slot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+  
+    /* Nút Chuyển Ngôn Ngữ VI / EN Chuẩn Sắc Nét */
+    .lang-switch-container,
+    .lang-pill-group {
+      display: inline-flex !important;
+      align-items: center !important;
+      background: #F1F5F9 !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 20px !important;
+      padding: 2px !important;
+      gap: 2px !important;
+      transition: all 0.25s ease !important;
+      line-height: 1 !important;
+    }
+    .lang-pill-btn {
+      border: none !important;
+      outline: none !important;
+      background: transparent !important;
+      color: #64748B !important;
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      padding: 3px 9px !important;
+      border-radius: 16px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      line-height: 1.2 !important;
+      box-shadow: none !important;
+    }
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A !important;
+      background: rgba(15, 23, 42, 0.08) !important;
+    }
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+    }
+    
   </style>
 </head>
 <body class="news-bento-body">
@@ -699,9 +741,9 @@
             </span>
           </div>
           <div class="d-flex align-items-center gap-3">
-            <div class="d-flex align-items-center lang-pill-group">
-              <button type="button" class="lang-pill-btn active" onclick="switchLanguage('vi', this)">VI</button>
-              <button type="button" class="lang-pill-btn" onclick="switchLanguage('en', this)">EN</button>
+            <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+              <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+              <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
             </div>
             <span class="topbar-divider">|</span>
             <a href="login.html" class="nav-auth-link topbar-info-item">
@@ -901,30 +943,119 @@
       <!-- ====================================================================
            VIEW 2: TRÌNH ĐỌC BÀI VIẾT 2 CỘT CHUẨN OTO.COM.VN
            ==================================================================== -->
-      <div id="news-reader-view" style="display: none;">
+      <div id="news-reader-view" style="display: block;">
         
-        <!-- Breadcrumb chuẩn Oto.com.vn -->
-        <nav class="oto-breadcrumb" aria-label="breadcrumb">
-          <a href="index.html"><i class="bi bi-house-door me-1"></i>Trang chủ</a>
-          <span class="separator">/</span>
-          <a href="javascript:void(0)" onclick="showArticlesList()">Tin tức &amp; Đánh giá</a>
-          <span class="separator">/</span>
-          <span class="text-secondary" id="reader-breadcrumb-cat">Chuyên mục</span>
-          <span class="separator">/</span>
-          <span class="current" id="reader-breadcrumb-title">Tên bài viết</span>
-        </nav>
+        
 
-        <!-- HÀNG 2 CỘT: SIDEBAR CỐ ĐỊNH BÊN TRÁI (32%) VÀ BÀI VIẾT BÊN PHẢI (68%) -->
+        <!-- ====================================================================
+             1. CHỖ TRỐNG ĐẦU BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (1140x150)
+             ==================================================================== -->
+        <div class="oto-ad-slot mb-4">
+          <img src="assets/images/banners/ad-banner-top-leaderboard.jpg" alt="Quảng cáo VinFast VF 8 &amp; VF 9" class="img-fluid">
+        </div>
+
+        <!-- ====================================================================
+             BỐ CỤC 2 CỘT CHUẨN OTO.COM.VN: BÀI VIẾT BÊN TRÁI (68%) & SIDEBAR BÊN PHẢI (32%)
+             ==================================================================== -->
         <div class="row g-4">
           
-                    <!-- CỘT TRÁI (32%): SIDEBAR CỐ ĐỊNH CHUẨN OTO.COM.VN (STICKY) -->
-          <aside class="col-lg-4 order-lg-1 order-2">
-            <div class="sticky-top sidebar-sticky-scroll">
+          <!-- CỘT TRÁI (68%): NỘI DUNG BÀI VIẾT CHÍNH CHUẨN BÁO CHÍ OTO.COM.VN -->
+          <div class="col-lg-8">
+            <article class="article-main-card">
               
-              <!-- WIDGET 1: TIN ĐỌC NHIỀU NHẤT (CÓ ĐÁNH SỐ #1, #2, #3, #4, #5) -->
+              <!-- Nút quay lại & Chia sẻ góc trên -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <button type="button" onclick="showArticlesList()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.80rem;">
+                  <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách tin
+                </button>
+                <div class="d-flex align-items-center gap-2">
+                  <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 text-muted" style="font-size: 0.75rem;" onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép liên kết bài viết!');">
+                    <i class="bi bi-share me-1"></i>Chia sẻ bài viết
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tiêu đề bài viết H1 chuẩn Oto.com.vn -->
+              <h1 class="oto-article-title" id="reader-title">
+                VinFast bàn giao 70.085 ô tô điện và 286.039 xe máy, xe đạp điện trong quý II/2026
+              </h1>
+
+              <!-- Meta bar (Chuyên mục, Ngày đăng, Lượt xem, Thời gian đọc) -->
+              <div class="oto-meta-bar">
+                <div class="oto-meta-left">
+                  <a href="javascript:void(0)" id="reader-cat-pill" class="oto-cat-pill">Thị Trường Ô Tô</a>
+                  <span>|</span>
+                  <span><i class="bi bi-calendar3 me-1"></i><span id="reader-date">22/10/2026</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-eye me-1"></i><span id="reader-views">3.820 lượt xem</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-clock me-1"></i><span id="reader-readtime">5 phút đọc</span></span>
+                </div>
+              </div>
+
+              <!-- Đoạn mở đầu (Sapo) in đậm chuẩn Oto.com.vn -->
+              <div class="oto-sapo-text" id="reader-sapo">
+                Theo báo cáo kết quả tài chính chưa kiểm toán quý II/2026, VinFast ghi nhận sự bứt phá mạnh mẽ với 70.085 ô tô điện được bàn giao trên toàn cầu, tăng 20% so với quý trước và tăng trưởng ấn tượng 96% so với cùng kỳ năm 2025.
+              </div>
+
+              <!-- Hộp Hotline & Tư Vấn Mua Trả Góp (Đặc trưng của Oto.com.vn) -->
+              <div class="oto-consult-banner">
+                <div>
+                  <div class="oto-consult-title">Liên hệ lái thử &bull; Mua trả góp &bull; Báo giá lăn bánh</div>
+                  <div class="small text-muted" style="font-size: 0.82rem;">Hỗ trợ thông tin kỹ thuật, thẩm định xe và đăng ký lái thử các dòng xe ô tô.</div>
+                </div>
+                <a href="tel:19006868" class="oto-consult-hotline flex-shrink-0">
+                  <i class="bi bi-telephone-fill"></i> 1900 6868
+                </a>
+              </div>
+
+              <!-- Nội dung bài viết chi tiết -->
+              <div class="oto-article-content" id="reader-content">
+                <!-- Nội dung động -->
+              </div>
+
+              <!-- ================================================================
+                   2. CHỖ TRỐNG GIỮA BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (760x140)
+                   ================================================================ -->
+              <div class="oto-ad-slot my-4">
+                <img src="assets/images/banners/ad-banner-inline-article.jpg" alt="Quảng cáo dịch vụ thẩm định xe lướt" class="img-fluid">
+              </div>
+
+              <!-- Tags Cloud (Từ khóa bài viết chuẩn Oto.com.vn) -->
+              <div class="oto-tags-box" id="reader-tags-container">
+                <!-- Tags động -->
+              </div>
+
+              <!-- Chữ ký Ban biên tập & Nguồn tin -->
+              <div class="oto-author-footer">
+                <div>
+                  <div class="fw-bold text-dark small"><i class="bi bi-shield-check text-orange-theme me-1"></i>Ban Biên Tập Tin Tức &amp; Thị Trường OtoMarket</div>
+                  <div class="text-muted" style="font-size: 0.76rem;">Nội dung được tổng hợp từ dữ liệu vận hành thực tế và các báo cáo tài chính chính thức.</div>
+                </div>
+                <a href="cars.html" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold">
+                  Khám phá kho xe &rarr;
+                </a>
+              </div>
+
+              <!-- KHỐI BÀI VIẾT LIÊN QUAN DƯỚI BÀI VIẾT (CÁC TIN KHÁC) -->
+              <div class="oto-related-section">
+                <div class="oto-section-heading">CÁC TIN KHÁC</div>
+                <div id="reader-related-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- CỘT PHẢI (32%): SIDEBAR CHUẨN OTO.COM.VN (STICKY) -->
+          <aside class="col-lg-4">
+            <div class="sticky-top" style="top: 85px; z-index: 10;">
+              
+              <!-- WIDGET 1: TIN ĐỌC NHIỀU NHẤT ("NGƯỜI VIỆT QUAN TÂM ĐẾN MẪU XE NÀO" CHUẨN OTO.COM.VN) -->
               <div class="oto-sidebar-widget">
                 <div class="oto-sidebar-title">
-                  <span>Người Việt Quan Tâm Nhất</span>
+                  <span>Người Việt Quan Tâm Đến Mẫu Xe Nào</span>
                   <span class="badge bg-light text-secondary border fw-normal" style="font-size: 0.72rem;">Xu hướng</span>
                 </div>
 
@@ -937,6 +1068,13 @@
                 <div id="sidebar-ranked-list">
                   <!-- Rendered dynamically -->
                 </div>
+              </div>
+
+              <!-- ================================================================
+                   3. CHỖ TRỐNG CỘT SIDEBAR: HÌNH ẢNH BANNER POSTER DỌC BẮT MẮT (360x500)
+                   ================================================================ -->
+              <div class="oto-ad-slot mb-4">
+                <img src="assets/images/banners/ad-banner-sidebar-halfpage.jpg" alt="Quảng cáo Toyota Corolla Cross 2026" class="img-fluid">
               </div>
 
               <!-- WIDGET 2: XE ĐANG BÁN NỔI BẬT TRÊN SÀN -->
@@ -989,108 +1127,23 @@
                 </a>
               </div>
 
-              <!-- WIDGET 3: DỰ TÍNH VAY TRẢ GÓP & GIÁ LĂN BÁNH -->
-              <div class="sidebar-calc-banner">
-                <div class="badge bg-warning text-dark fw-bold mb-2" style="font-size: 0.70rem;">CÔNG CỤ HỖ TRỢ</div>
-                <h4 class="h6 fw-bold mb-2 text-white">Dự Tính Giá Lăn Bánh &amp; Khoản Vay Ngân Hàng</h4>
-                <p class="text-white-50 small mb-3" style="font-size: 0.78rem; line-height: 1.5;">
-                  Tính chính xác phí trước bạ, biển số và tiền gốc lãi hàng tháng chỉ trong 30 giây.
-                </p>
-                <a href="index.html#tool-rolling-price" class="btn btn-sm btn-light fw-bold rounded-pill px-3 py-1.5 w-100" style="font-size: 0.82rem; color: #0F172A;">
-                  <i class="bi bi-calculator me-1"></i> Tính giá lăn bánh ngay
-                </a>
-              </div>
-
             </div>
           </aside>
 
-          <!-- CỘT PHẢI (68%): NỘI DUNG BÀI VIẾT CHÍNH -->
-          <div class="col-lg-8 order-lg-2 order-1">
-            <article class="article-main-card">
-              
-              <!-- Nút quay lại gọn gàng góc trên -->
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <button type="button" onclick="showArticlesList()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.80rem;">
-                  <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách tin
-                </button>
-                <div class="d-flex align-items-center gap-2">
-                  <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 text-muted" style="font-size: 0.75rem;" onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép liên kết bài viết!');">
-                    <i class="bi bi-share me-1"></i>Chia sẻ
-                  </button>
-                </div>
-              </div>
-
-              <!-- Tiêu đề bài viết H1 chuẩn Oto.com.vn -->
-              <h1 class="oto-article-title" id="reader-title">
-                Tiêu đề bài viết
-              </h1>
-
-              <!-- Meta bar (Chuyên mục, Ngày đăng, Lượt xem, Thời gian đọc) -->
-              <div class="oto-meta-bar">
-                <div class="oto-meta-left">
-                  <a href="javascript:void(0)" id="reader-cat-pill" class="oto-cat-pill">Thị Trường Ô Tô</a>
-                  <span>|</span>
-                  <span><i class="bi bi-calendar3 me-1"></i><span id="reader-date">22/10/2026</span></span>
-                  <span>|</span>
-                  <span><i class="bi bi-eye me-1"></i><span id="reader-views">2.450 lượt xem</span></span>
-                  <span>|</span>
-                  <span><i class="bi bi-clock me-1"></i><span id="reader-readtime">5 phút đọc</span></span>
-                </div>
-              </div>
-
-              <!-- Đoạn mở đầu (Sapo) in đậm chuẩn Oto.com.vn -->
-              <div class="oto-sapo-text" id="reader-sapo">
-                Tóm tắt dẫn đề bài viết.
-              </div>
-
-              <!-- Hộp Hotline & Tư Vấn Mua Trả Góp (Đặc trưng của Oto.com.vn) -->
-              <div class="oto-consult-banner">
-                <div>
-                  <div class="oto-consult-title">Liên hệ lái thử &bull; Mua trả góp &bull; Báo giá lăn bánh</div>
-                  <div class="small text-muted" style="font-size: 0.82rem;">Hỗ trợ thông tin kỹ thuật, thẩm định xe và đăng ký lái thử các dòng xe ô tô.</div>
-                </div>
-                <a href="tel:19006868" class="oto-consult-hotline flex-shrink-0">
-                  <i class="bi bi-telephone-fill"></i> 1900 6868
-                </a>
-              </div>
-
-              <!-- Nội dung bài viết chi tiết -->
-              <div class="oto-article-content" id="reader-content">
-                <!-- Nội dung động -->
-              </div>
-
-              <!-- Tags Cloud (Từ khóa bài viết chuẩn Oto.com.vn) -->
-              <div class="oto-tags-box" id="reader-tags-container">
-                <!-- Tags động -->
-              </div>
-
-              <!-- Chữ ký Ban biên tập & Nguồn tin -->
-              <div class="oto-author-footer">
-                <div>
-                  <div class="fw-bold text-dark small"><i class="bi bi-shield-check text-orange-theme me-1"></i>Ban Biên Tập Tin Tức &amp; Thị Trường OtoMarket</div>
-                  <div class="text-muted" style="font-size: 0.76rem;">Nội dung được tổng hợp từ dữ liệu vận hành thực tế và các quy định pháp luật hiện hành.</div>
-                </div>
-                <a href="cars.html" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold">
-                  Khám phá kho xe &rarr;
-                </a>
-              </div>
-
-              <!-- KHỐI BÀI VIẾT LIÊN QUAN DƯỚI BÀI VIẾT (CÁC TIN KHÁC) -->
-              <div class="oto-related-section">
-                <div class="oto-section-heading">CÁC TIN KHÁC</div>
-                <div id="reader-related-list">
-                  <!-- Rendered dynamically -->
-                </div>
-              </div>
-
-            </article>
-          </div>
-
         </div>
+
+        <!-- ====================================================================
+             4. CHỖ TRỐNG CUỐI BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (1140x150)
+             ==================================================================== -->
+        <div class="oto-ad-slot mt-5 mb-2">
+          <img src="assets/images/banners/ad-banner-bottom-leaderboard.jpg" alt="Quảng cáo hệ thống Showroom &amp; Kho xe kiểm định" class="img-fluid">
+        </div>
+
       </div>
 
     </div>
   </main>
+
 
   <!-- ========================================================================
        FOOTER NỀN SÁNG ĐỒNG BỘ
@@ -1751,6 +1804,9 @@
     function switchLanguage(lang, el) {
       document.querySelectorAll('.lang-pill-btn').forEach(item => item.classList.remove('active'));
       if (el) el.classList.add('active');
+      if (window.showToast) {
+        window.showToast(lang.toUpperCase() === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
+      }
     }
 
     // Khởi tạo ban đầu

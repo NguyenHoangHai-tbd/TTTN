@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Tức & Đánh Giá Xe Ô Tô - OtoMarket</title>
+  <meta name="description" content="Kênh tin tức, đánh giá xe ô tô thực tế, kinh nghiệm kiểm tra xe cũ, chống thủy kích và hướng dẫn thủ tục pháp lý sang tên ô tô." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261023_oto_style_v2">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <style>
+    /* ==========================================================================
+       BENTO STUDIO: TRANG TIN TỨC & ĐÁNH GIÁ (NỀN SLATE #EEF2F6, RÕ RÀNG, TINH TẾ)
+       ========================================================================== */
+    body.news-bento-body,
+    body.news-bento-body button,
+    body.news-bento-body input,
+    body.news-bento-body select,
+    body.news-bento-body textarea {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      background-color: #EEF2F6 !important;
+      color: #0F172A !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN */
+    header#portal-header,
+    .portal-header-wrapper {
+      position: sticky !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      z-index: 1050 !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+      border-bottom: 1px solid #CBD5E1 !important;
+    }
+
+    /* Topbar Chuẩn Sắc Nét */
+    .portal-topbar-clean {
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      font-size: 0.84rem !important;
+      line-height: 1.45 !important;
+      letter-spacing: 0.01em !important;
+      padding: 8px 0 !important;
+      text-shadow: none !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    .topbar-info-item {
+      color: #0F172A !important;
+      font-weight: 500 !important;
+      text-shadow: none !important;
+    }
+    .topbar-divider {
+      color: #CBD5E1 !important;
+      margin: 0 8px;
+    }
+
+    /* Navbar */
+    .portal-navbar-clean {
+      background: #FFFFFF !important;
+      padding: 10px 0 !important;
+    }
+    .nav-link-portal {
+      color: #1E293B !important;
+      font-weight: 500 !important;
+      font-size: 0.90rem !important;
+      padding: 8px 16px !important;
+      border-radius: 8px !important;
+      border: 1.5px solid transparent !important;
+      text-decoration: none !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .nav-link-portal:hover {
+      color: #0F172A !important;
+      background-color: #F1F5F9 !important;
+      border-color: #CBD5E1 !important;
+    }
+    .nav-link-portal.active {
+      color: #FF6B00 !important;
+      font-weight: 700 !important;
+      background-color: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.2) !important;
+    }
+
+    /* Nút Đăng Bán Xe */
+    .btn-portal-post-car {
+      background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%) !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      border: none !important;
+      border-radius: 999px !important;
+      padding: 8px 20px !important;
+      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-portal-post-car:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 107, 0, 0.45) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Hộp Bento Header & Thẻ Bài Viết Danh Sách */
+    .news-bento-hero {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .bento-article-card {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      cursor: pointer;
+    }
+    .bento-article-card:hover {
+      transform: translateY(-3px);
+      border-color: #94A3B8;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Khối Feature Chính (Editorial Lead) */
+    .hero-lead-card {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .hero-lead-card:hover {
+      border-color: #94A3B8;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+    }
+
+    /* Thumbnail ảnh danh sách */
+    .article-thumb-container {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      overflow: hidden;
+      background-color: #F1F5F9;
+    }
+    .article-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .bento-article-card:hover .article-thumb-img,
+    .hero-lead-card:hover .article-thumb-img {
+      transform: scale(1.04);
+    }
+
+    .badge-editorial-category {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      color: #FFFFFF;
+      font-size: 0.70rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .news-category-pill {
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .news-category-pill:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+      border-color: #94A3B8;
+    }
+    .news-category-pill.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+    }
+
+    .btn-read-bento {
+      color: #FF6B00;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s ease;
+    }
+    .bento-article-card:hover .btn-read-bento,
+    .hero-lead-card:hover .btn-read-bento {
+      gap: 8px;
+    }
+
+    .article-title-link {
+      color: #0F172A;
+      text-decoration: none;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.2s ease;
+    }
+    .bento-article-card:hover .article-title-link,
+    .hero-lead-card:hover .article-title-link {
+      color: #FF6B00;
+    }
+
+    .search-alert-bar {
+      background-color: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 12px 18px;
+    }
+
+    /* ==========================================================================
+       BỐ CỤC 2 CỘT CHUẨN OTO.COM.VN KHI ĐỌC CHI TIẾT BÀI VIẾT
+       ========================================================================== */
+    .oto-breadcrumb {
+      font-size: 0.84rem;
+      color: #64748B;
+      margin-bottom: 16px;
+    }
+    .oto-breadcrumb a {
+      color: #64748B;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .oto-breadcrumb a:hover {
+      color: #FF6B00;
+    }
+    .oto-breadcrumb .separator {
+      margin: 0 8px;
+      color: #CBD5E1;
+    }
+    .oto-breadcrumb .current {
+      color: #0F172A;
+      font-weight: 600;
+    }
+
+    .article-main-card {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    @media (max-width: 768px) {
+      .article-main-card {
+        padding: 20px;
+      }
+    }
+
+    .oto-article-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.35;
+      letter-spacing: -0.4px;
+      margin-bottom: 14px;
+    }
+
+    .oto-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #E2E8F0;
+      font-size: 0.82rem;
+      color: #64748B;
+    }
+    .oto-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .oto-cat-pill {
+      background: #FFF7ED;
+      color: #EA580C;
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      border: 1px solid #FFEDD5;
+      text-decoration: none;
+    }
+
+    .oto-sapo-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.65;
+      color: #334155;
+      margin-bottom: 22px;
+      padding-left: 16px;
+      border-left: 4px solid #FF6B00;
+    }
+
+    .oto-consult-banner {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .oto-consult-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: #475569;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .oto-consult-hotline {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FF6B00;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .oto-article-content {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #1E293B;
+    }
+    .oto-article-content p {
+      margin-bottom: 20px;
+    }
+    .oto-article-content h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-top: 34px;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+    .oto-article-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-top: 26px;
+      margin-bottom: 12px;
+    }
+    .oto-image-figure {
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+    .oto-image-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .oto-image-caption {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: #64748B;
+      text-align: center;
+      padding: 10px 16px;
+      background: #F8FAFC;
+      border-top: 1px solid #F1F5F9;
+      margin-bottom: 0;
+    }
+    .oto-highlight-box {
+      background-color: #FFF7ED;
+      border-left: 4px solid #FF6B00;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: #9A3412;
+    }
+
+    .oto-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.88rem;
+    }
+    .oto-data-table th {
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .oto-data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #E2E8F0;
+      background: #FFFFFF;
+    }
+    .oto-data-table tr:nth-child(even) td {
+      background: #F8FAFC;
+    }
+
+    .oto-tags-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding-top: 20px;
+      margin-top: 30px;
+      border-top: 1px solid #E2E8F0;
+    }
+    .oto-tag-chip {
+      background: #F1F5F9;
+      color: #475569;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid #E2E8F0;
+    }
+    .oto-tag-chip:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+
+    .oto-author-footer {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .oto-related-section {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 2px solid #E2E8F0;
+    }
+    .oto-section-heading {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0F172A;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .oto-section-heading::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: #FF6B00;
+      border-radius: 2px;
+    }
+    .related-news-row {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed #CBD5E1;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+    .related-news-row:hover .related-news-title {
+      color: #FF6B00;
+    }
+    .related-news-thumb {
+      width: 130px;
+      height: 85px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #F1F5F9;
+    }
+    .related-news-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .related-news-title {
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.45;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+
+    /* SIDEBAR CỘT PHẢI CHUẨN OTO.COM.VN */
+    .oto-sidebar-wrap {
+      position: relative;
+    }
+    .oto-sidebar-widget {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .oto-sidebar-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #0F172A;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1.5px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rank-news-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #F1F5F9;
+      text-decoration: none;
+      color: inherit;
+      align-items: flex-start;
+    }
+    .rank-news-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .rank-news-number {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #94A3B8;
+      width: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .rank-news-item:nth-child(1) .rank-news-number {
+      color: #FF6B00;
+    }
+    .rank-news-item:nth-child(2) .rank-news-number {
+      color: #EA580C;
+    }
+    .rank-news-item:nth-child(3) .rank-news-number {
+      color: #F59E0B;
+    }
+    .rank-news-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #1E293B;
+      transition: color 0.2s;
+    }
+    .rank-news-item:hover .rank-news-title {
+      color: #FF6B00;
+    }
+
+    .sidebar-car-card {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    .sidebar-car-card:hover {
+      border-color: #FF6B00;
+      background: #FFF7ED;
+      transform: translateY(-2px);
+    }
+    .sidebar-car-thumb {
+      width: 90px;
+      height: 65px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .sidebar-car-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sidebar-car-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .sidebar-car-price {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #FF6B00;
+    }
+
+    .sidebar-calc-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-editorial {
+      background-color: #FFFFFF;
+      border-top: 1px solid #CBD5E1;
+      color: #334155;
+    }
+  
+    /* ========================================================================
+       BANNER ẢNH QUẢNG CÁO XE Ô TÔ CHUẨN OTO.COM.VN (THUẦN HÌNH ẢNH)
+       ======================================================================== */
+    .oto-ad-slot {
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+      border: 1px solid #CBD5E1;
+      background: #0B132B;
+    }
+    .oto-ad-slot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+  
+    /* Nút Chuyển Ngôn Ngữ VI / EN Chuẩn Sắc Nét */
+    .lang-switch-container,
+    .lang-pill-group {
+      display: inline-flex !important;
+      align-items: center !important;
+      background: #F1F5F9 !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 20px !important;
+      padding: 2px !important;
+      gap: 2px !important;
+      transition: all 0.25s ease !important;
+      line-height: 1 !important;
+    }
+    .lang-pill-btn {
+      border: none !important;
+      outline: none !important;
+      background: transparent !important;
+      color: #64748B !important;
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      padding: 3px 9px !important;
+      border-radius: 16px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+      line-height: 1.2 !important;
+      box-shadow: none !important;
+    }
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A !important;
+      background: rgba(15, 23, 42, 0.08) !important;
+    }
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+    }
+    
+  </style>
+</head>
+<body class="news-bento-body">
+
+  <!-- ========================================================================
+       TOPBAR & HEADER CỐ ĐỊNH CHUẨN SẮC NÉT (KHÔNG MỜ CHỮ, KHÔNG NHÒE VIỀN)
+       ======================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <div class="portal-topbar-clean d-none d-md-block">
+      <div class="container-fluid px-3 px-xl-5">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center gap-3">
+            <span class="topbar-info-item">
+              <i class="bi bi-geo-alt-fill text-orange-theme me-1"></i>Đường Trần Phú, TP. Nha Trang, Khánh Hòa
+            </span>
+            <span class="topbar-divider">|</span>
+            <span class="topbar-info-item">
+              <i class="bi bi-clock-fill text-orange-theme me-1"></i>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)
+            </span>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+              <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+              <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+            </div>
+            <span class="topbar-divider">|</span>
+            <a href="login.html" class="nav-auth-link topbar-info-item">
+              <i class="bi bi-person-fill text-orange-theme me-1"></i>Đăng nhập
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="portal-navbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.png" alt="OtoMarket" style="height: 38px; width: auto; object-fit: contain;">
+        </a>
+
+        <ul class="nav align-items-center gap-1 d-none d-lg-flex mb-0">
+          <li class="nav-item"><a class="nav-link-portal" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link-portal" href="cars.html?condition=new">Ô tô mới</a></li>
+          <li class="nav-item"><a class="nav-link-portal" href="cars.html?condition=used">Ô tô cũ</a></li>
+          <li class="nav-item"><a class="nav-link-portal active" href="news.html">Tin tức &amp; Đánh giá</a></li>
+          <li class="nav-item"><a class="nav-link-portal" href="about.html">Giới thiệu</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="favorites.html" class="btn btn-light rounded-circle p-2 text-secondary position-relative shadow-2xs" title="Xe đã lưu">
+            <i class="bi bi-heart-fill text-danger"></i>
+          </a>
+          <a href="post-car.html" class="btn-portal-post-car">
+            <i class="bi bi-plus-circle-fill"></i> Đăng bán xe
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       MAIN CONTAINER
+       ======================================================================== -->
+  <main class="py-4">
+    <div class="container-fluid px-3 px-xl-5">
+
+      <!-- ====================================================================
+           VIEW 1: DANH SÁCH BÀI VIẾT (LISTING VIEW)
+           ==================================================================== -->
+      <div id="news-listing-view">
+        <!-- 1. BENTO HERO BANNER CARD -->
+        <div class="news-bento-hero p-4 mb-4">
+          <div class="row align-items-center gy-3">
+            <div class="col-lg-7">
+              <h1 class="h3 fw-bold mb-1" style="color: #0F172A; letter-spacing: -0.3px;">Tin Tức &amp; Đánh Giá Xe</h1>
+              <p class="text-secondary small mb-0" style="font-size: 0.88rem;">
+                Kinh nghiệm kiểm tra xe ô tô, đánh giá trải nghiệm thực tế và hướng dẫn thủ tục giấy tờ mua bán.
+              </p>
+            </div>
+            <!-- Thanh tìm kiếm nhanh bài viết -->
+            <div class="col-lg-5">
+              <div class="position-relative">
+                <i class="bi bi-search position-absolute text-muted" style="top: 12px; left: 16px; font-size: 0.95rem;"></i>
+                <input type="text" id="news-search-input" oninput="handleNewsSearchInput()" class="form-control ps-5 pe-5 rounded-pill" placeholder="Tìm kiếm bài viết, kinh nghiệm, dòng xe..." style="font-size: 0.88rem; border: 1.5px solid #CBD5E1; background: #FFFFFF; height: 44px;">
+                <button type="button" id="btn-clear-news-search" onclick="clearNewsSearch()" class="btn btn-sm text-muted position-absolute end-0 top-50 translate-middle-y me-2 p-0 border-0 bg-transparent" style="display: none;" title="Xóa từ khóa tìm kiếm">
+                  <i class="bi bi-x-circle-fill text-secondary fs-6"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Filter Pills Bar -->
+          <div class="d-flex flex-wrap align-items-center gap-2 pt-3 mt-3 border-top" id="category-pills-bar">
+            <span class="small fw-semibold text-muted me-1">Chuyên mục:</span>
+            <button type="button" class="news-category-pill active" onclick="selectCategory('all', this)">
+              <i class="bi bi-grid-fill"></i> Tất cả bài viết
+            </button>
+            <button type="button" class="news-category-pill" onclick="selectCategory('market', this)">
+              <i class="bi bi-graph-up-arrow"></i> Thị trường ô tô
+            </button>
+            <button type="button" class="news-category-pill" onclick="selectCategory('review', this)">
+              <i class="bi bi-speedometer2"></i> Đánh giá xe thực tế
+            </button>
+            <button type="button" class="news-category-pill" onclick="selectCategory('tips', this)">
+              <i class="bi bi-shield-check"></i> Kinh nghiệm xem xe cũ
+            </button>
+            <button type="button" class="news-category-pill" onclick="selectCategory('legal', this)">
+              <i class="bi bi-journal-text"></i> Thủ tục &amp; Pháp lý
+            </button>
+          </div>
+        </div>
+
+        <!-- Thanh thông báo kết quả tìm kiếm / lọc danh mục -->
+        <div id="search-feedback-bar" class="search-alert-bar align-items-center justify-content-between mb-4" style="display: none;">
+          <div class="small text-dark" id="search-feedback-text">
+            <!-- Nội dung tìm kiếm động -->
+          </div>
+          <button type="button" class="btn btn-sm btn-link text-muted text-decoration-none fw-semibold p-0" onclick="resetAllNewsFilters()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Xem tất cả bài viết
+          </button>
+        </div>
+
+        <!-- 2. KHỐI TIÊU ĐIỂM (FEATURED BENTO SECTION - Ẩn khi đang tìm kiếm từ khóa) -->
+        <div id="featured-bento-section" class="mb-4">
+          <div class="row g-4">
+            <!-- Bài tiêu điểm lớn bên trái -->
+            <div class="col-lg-7">
+              <div class="hero-lead-card h-100 d-flex flex-column" onclick="showArticleDetail(9)">
+                <div class="position-relative overflow-hidden" style="height: 330px;">
+                  <img src="assets/images/cars/vf8.jpg" class="w-100 h-100 object-fit-cover article-thumb-img" alt="VinFast Bàn Giao Xe">
+                  <span class="badge position-absolute top-0 start-0 m-3 badge-editorial-category">Thị Trường Ô Tô</span>
+                </div>
+                <div class="p-4 d-flex flex-column justify-content-between flex-grow-1">
+                  <div>
+                    <div class="d-flex align-items-center gap-2 text-muted small mb-2" style="font-size: 0.78rem;">
+                      <span><i class="bi bi-calendar3 me-1"></i>22/10/2026 - 15:30</span>
+                      <span>•</span>
+                      <span><i class="bi bi-clock me-1"></i>5 phút đọc</span>
+                      <span>•</span>
+                      <span class="text-success fw-semibold"><i class="bi bi-eye me-1"></i>2.450 lượt xem</span>
+                    </div>
+                    <h2 class="h5 fw-bold mb-2">
+                      <a href="javascript:void(0)" class="article-title-link">VinFast Bàn Giao 70.085 Ô Tô Điện Và 286.039 Xe Máy, Xe Đạp Điện Trong Quý II/2026</a>
+                    </h2>
+                    <p class="text-muted small mb-0" style="line-height: 1.6; font-size: 0.85rem;">
+                      Doanh số toàn cầu của VinFast ghi nhận mức tăng trưởng ấn tượng ở cả hai mảng ô tô điện và xe máy điện. Doanh thu bán xe đạt 28.833,1 tỷ đồng, tăng 92,7% so với cùng kỳ năm trước.
+                    </p>
+                  </div>
+                  <div class="pt-3 mt-3 border-top d-flex justify-content-between align-items-center">
+                    <span class="small text-muted">Tác giả: <strong>Ban Biên Tập OtoMarket</strong></span>
+                    <span class="btn btn-dark btn-sm rounded-pill px-3 py-1 fw-bold" style="font-size: 0.80rem;">Đọc bài viết đầy đủ &rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 Bài phụ + 1 thẻ tra cứu nhanh bên phải -->
+            <div class="col-lg-5 d-flex flex-column gap-3">
+              <!-- Thẻ phụ 1 -->
+              <div class="bento-article-card p-3 flex-row align-items-center gap-3" onclick="showArticleDetail(1)">
+                <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 120px; height: 95px;">
+                  <img src="assets/images/cars/tucson.jpg" class="w-100 h-100 object-fit-cover article-thumb-img" alt="Kiểm tra xe cũ">
+                </div>
+                <div class="d-flex flex-column justify-content-between flex-grow-1">
+                  <div>
+                    <span class="badge bg-light text-danger border mb-1" style="font-size: 0.68rem;">KINH NGHIỆM XEM XE</span>
+                    <h3 class="fw-bold mb-1" style="font-size: 0.86rem;">
+                      <a href="javascript:void(0)" class="article-title-link">Các Bước Kiểm Tra Ô Tô Cũ Tránh Mua Phải Xe Bị Thủy Kích Hoặc Ngập Nước</a>
+                    </h3>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center text-muted" style="font-size: 0.74rem;">
+                    <span>14/10/2026 • 5 phút đọc</span>
+                    <span class="btn-read-bento">Đọc tiếp &rarr;</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thẻ phụ 2 -->
+              <div class="bento-article-card p-3 flex-row align-items-center gap-3" onclick="showArticleDetail(5)">
+                <div class="rounded-3 overflow-hidden flex-shrink-0" style="width: 120px; height: 95px;">
+                  <img src="assets/images/cars/everest.jpg" class="w-100 h-100 object-fit-cover article-thumb-img" alt="Ford Everest vs Kia Carnival">
+                </div>
+                <div class="d-flex flex-column justify-content-between flex-grow-1">
+                  <div>
+                    <span class="badge bg-light text-primary border mb-1" style="font-size: 0.68rem;">SO SÁNH CHI PHÍ</span>
+                    <h3 class="fw-bold mb-1" style="font-size: 0.86rem;">
+                      <a href="javascript:void(0)" class="article-title-link">So Sánh Chi Phí Nuôi SUV 7 Chỗ: Ford Everest vs Kia Carnival Sau 30.000 km</a>
+                    </h3>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center text-muted" style="font-size: 0.74rem;">
+                    <span>12/10/2026 • 6 phút đọc</span>
+                    <span class="btn-read-bento">Đọc tiếp &rarr;</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thẻ Tra cứu pháp lý nhanh -->
+              <div class="p-3 rounded-4 border text-white d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); cursor: pointer;" onclick="showArticleDetail(4); event.stopPropagation();">
+                <div>
+                  <div class="text-white-50 small" style="font-size: 0.72rem;">Tra cứu thủ tục pháp lý</div>
+                  <div class="fw-bold" style="font-size: 0.90rem;">Thủ Tục Sang Tên Đổi Chủ &amp; Phạt Nguội 2026</div>
+                </div>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 flex-shrink-0" style="font-size: 0.78rem;">Xem hướng dẫn &rarr;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. DANH SÁCH BÀI VIẾT (GRID) -->
+        <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+          <h2 class="h5 fw-bold mb-0" style="color: #0F172A;" id="feed-heading">Danh Sách Bài Viết</h2>
+          <span id="feed-count-display" class="small text-muted">Hiển thị 9 / 9 bài viết</span>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="articles-grid-container">
+          <!-- Rendered dynamically by JavaScript -->
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           VIEW 2: TRÌNH ĐỌC BÀI VIẾT 2 CỘT CHUẨN OTO.COM.VN
+           ==================================================================== -->
+      <div id="news-reader-view" style="display: block;">
+        
+        
+
+        <!-- ====================================================================
+             1. CHỖ TRỐNG ĐẦU BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (1140x150)
+             ==================================================================== -->
+        <div class="oto-ad-slot mb-4">
+          <img src="assets/images/banners/ad-banner-top-leaderboard.jpg" alt="Quảng cáo VinFast VF 8 &amp; VF 9" class="img-fluid">
+        </div>
+
+        <!-- ====================================================================
+             BỐ CỤC 2 CỘT CHUẨN OTO.COM.VN: BÀI VIẾT BÊN TRÁI (68%) & SIDEBAR BÊN PHẢI (32%)
+             ==================================================================== -->
+        <div class="row g-4">
+          
+          <!-- CỘT TRÁI (68%): NỘI DUNG BÀI VIẾT CHÍNH CHUẨN BÁO CHÍ OTO.COM.VN -->
+          <div class="col-lg-8">
+            <article class="article-main-card">
+              
+              <!-- Nút quay lại & Chia sẻ góc trên -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <button type="button" onclick="showArticlesList()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.80rem;">
+                  <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách tin
+                </button>
+                <div class="d-flex align-items-center gap-2">
+                  <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 text-muted" style="font-size: 0.75rem;" onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép liên kết bài viết!');">
+                    <i class="bi bi-share me-1"></i>Chia sẻ bài viết
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tiêu đề bài viết H1 chuẩn Oto.com.vn -->
+              <h1 class="oto-article-title" id="reader-title">
+                VinFast bàn giao 70.085 ô tô điện và 286.039 xe máy, xe đạp điện trong quý II/2026
+              </h1>
+
+              <!-- Meta bar (Chuyên mục, Ngày đăng, Lượt xem, Thời gian đọc) -->
+              <div class="oto-meta-bar">
+                <div class="oto-meta-left">
+                  <a href="javascript:void(0)" id="reader-cat-pill" class="oto-cat-pill">Thị Trường Ô Tô</a>
+                  <span>|</span>
+                  <span><i class="bi bi-calendar3 me-1"></i><span id="reader-date">22/10/2026</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-eye me-1"></i><span id="reader-views">3.820 lượt xem</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-clock me-1"></i><span id="reader-readtime">5 phút đọc</span></span>
+                </div>
+              </div>
+
+              <!-- Đoạn mở đầu (Sapo) in đậm chuẩn Oto.com.vn -->
+              <div class="oto-sapo-text" id="reader-sapo">
+                Theo báo cáo kết quả tài chính chưa kiểm toán quý II/2026, VinFast ghi nhận sự bứt phá mạnh mẽ với 70.085 ô tô điện được bàn giao trên toàn cầu, tăng 20% so với quý trước và tăng trưởng ấn tượng 96% so với cùng kỳ năm 2025.
+              </div>
+
+              <!-- Hộp Hotline & Tư Vấn Mua Trả Góp (Đặc trưng của Oto.com.vn) -->
+              <div class="oto-consult-banner">
+                <div>
+                  <div class="oto-consult-title">Liên hệ lái thử &bull; Mua trả góp &bull; Báo giá lăn bánh</div>
+                  <div class="small text-muted" style="font-size: 0.82rem;">Hỗ trợ thông tin kỹ thuật, thẩm định xe và đăng ký lái thử các dòng xe ô tô.</div>
+                </div>
+                <a href="tel:19006868" class="oto-consult-hotline flex-shrink-0">
+                  <i class="bi bi-telephone-fill"></i> 1900 6868
+                </a>
+              </div>
+
+              <!-- Nội dung bài viết chi tiết -->
+              <div class="oto-article-content" id="reader-content">
+                <!-- Nội dung động -->
+              </div>
+
+              <!-- ================================================================
+                   2. CHỖ TRỐNG GIỮA BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (760x140)
+                   ================================================================ -->
+              <div class="oto-ad-slot my-4">
+                <img src="assets/images/banners/ad-banner-inline-article.jpg" alt="Quảng cáo dịch vụ thẩm định xe lướt" class="img-fluid">
+              </div>
+
+              <!-- Tags Cloud (Từ khóa bài viết chuẩn Oto.com.vn) -->
+              <div class="oto-tags-box" id="reader-tags-container">
+                <!-- Tags động -->
+              </div>
+
+              <!-- Chữ ký Ban biên tập & Nguồn tin -->
+              <div class="oto-author-footer">
+                <div>
+                  <div class="fw-bold text-dark small"><i class="bi bi-shield-check text-orange-theme me-1"></i>Ban Biên Tập Tin Tức &amp; Thị Trường OtoMarket</div>
+                  <div class="text-muted" style="font-size: 0.76rem;">Nội dung được tổng hợp từ dữ liệu vận hành thực tế và các báo cáo tài chính chính thức.</div>
+                </div>
+                <a href="cars.html" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold">
+                  Khám phá kho xe &rarr;
+                </a>
+              </div>
+
+              <!-- KHỐI BÀI VIẾT LIÊN QUAN DƯỚI BÀI VIẾT (CÁC TIN KHÁC) -->
+              <div class="oto-related-section">
+                <div class="oto-section-heading">CÁC TIN KHÁC</div>
+                <div id="reader-related-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+            </article>
+          </div>
+
+          <!-- CỘT PHẢI (32%): SIDEBAR CHUẨN OTO.COM.VN (STICKY) -->
+          <aside class="col-lg-4">
+            <div class="sticky-top" style="top: 85px; z-index: 10;">
+              
+              <!-- WIDGET 1: TIN ĐỌC NHIỀU NHẤT ("NGƯỜI VIỆT QUAN TÂM ĐẾN MẪU XE NÀO" CHUẨN OTO.COM.VN) -->
+              <div class="oto-sidebar-widget">
+                <div class="oto-sidebar-title">
+                  <span>Người Việt Quan Tâm Đến Mẫu Xe Nào</span>
+                  <span class="badge bg-light text-secondary border fw-normal" style="font-size: 0.72rem;">Xu hướng</span>
+                </div>
+
+                <!-- Tin Top 1 (Có ảnh lớn đại diện) -->
+                <div class="mb-3 pb-3 border-bottom" id="sidebar-top1-box">
+                  <!-- Rendered dynamically -->
+                </div>
+
+                <!-- Tin Ranked #2, #3, #4, #5 -->
+                <div id="sidebar-ranked-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- ================================================================
+                   3. CHỖ TRỐNG CỘT SIDEBAR: HÌNH ẢNH BANNER POSTER DỌC BẮT MẮT (360x500)
+                   ================================================================ -->
+              <div class="oto-ad-slot mb-4">
+                <img src="assets/images/banners/ad-banner-sidebar-halfpage.jpg" alt="Quảng cáo Toyota Corolla Cross 2026" class="img-fluid">
+              </div>
+
+              <!-- WIDGET 2: XE ĐANG BÁN NỔI BẬT TRÊN SÀN -->
+              <div class="oto-sidebar-widget">
+                <div class="oto-sidebar-title">
+                  <span>Xe Đang Bán Nổi Bật</span>
+                  <a href="cars.html" class="small text-decoration-none" style="color: #FF6B00; font-size: 0.78rem;">Xem tất cả &rarr;</a>
+                </div>
+
+                <!-- Xe 1 -->
+                <a href="car-detail.html?id=toyota-cross" class="sidebar-car-card">
+                  <div class="sidebar-car-thumb">
+                    <img src="assets/images/cars/corolla_cross.jpg" alt="Toyota Corolla Cross">
+                  </div>
+                  <div class="d-flex flex-column justify-content-between flex-grow-1">
+                    <div class="sidebar-car-title">Toyota Corolla Cross 1.8V 2026</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span class="sidebar-car-price">860 triệu</span>
+                      <span class="badge bg-light text-muted border" style="font-size: 0.65rem;">Nha Trang</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Xe 2 -->
+                <a href="car-detail.html?id=vf8" class="sidebar-car-card">
+                  <div class="sidebar-car-thumb">
+                    <img src="assets/images/cars/vf8.jpg" alt="VinFast VF 8">
+                  </div>
+                  <div class="d-flex flex-column justify-content-between flex-grow-1">
+                    <div class="sidebar-car-title">VinFast VF 8 Plus 2026</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span class="sidebar-car-price">1,199 tỷ</span>
+                      <span class="badge bg-light text-muted border" style="font-size: 0.65rem;">TP.HCM</span>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Xe 3 -->
+                <a href="car-detail.html?id=tucson" class="sidebar-car-card">
+                  <div class="sidebar-car-thumb">
+                    <img src="assets/images/cars/tucson.jpg" alt="Hyundai Tucson">
+                  </div>
+                  <div class="d-flex flex-column justify-content-between flex-grow-1">
+                    <div class="sidebar-car-title">Hyundai Tucson 2.0 Đỏ 2026</div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span class="sidebar-car-price">850 triệu</span>
+                      <span class="badge bg-light text-muted border" style="font-size: 0.65rem;">Hà Nội</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+
+        <!-- ====================================================================
+             4. CHỖ TRỐNG CUỐI BÀI VIẾT: HÌNH ẢNH BANNER QUẢNG CÁO XE BẮT MẮT (1140x150)
+             ==================================================================== -->
+        <div class="oto-ad-slot mt-5 mb-2">
+          <img src="assets/images/banners/ad-banner-bottom-leaderboard.jpg" alt="Quảng cáo hệ thống Showroom &amp; Kho xe kiểm định" class="img-fluid">
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ========================================================================
+       FOOTER NỀN SÁNG ĐỒNG BỘ
+       ======================================================================== -->
+  <footer class="footer-editorial py-5 mt-5">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="mb-3">
+            <img src="assets/images/logo.png" alt="OtoMarket" style="height: 36px; width: auto;">
+          </div>
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            OtoMarket là nền tảng hỗ trợ kết nối trực tiếp người mua và người bán ô tô. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế.
+          </p>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Chuyên Mục Tin Tức</h5>
+          <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
+            <li><a href="javascript:void(0)" onclick="selectCategory('market')" class="text-decoration-none text-muted">Thị trường ô tô</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('review')" class="text-decoration-none text-muted">Đánh giá xe thực tế</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('tips')" class="text-decoration-none text-muted">Kinh nghiệm kiểm tra xe cũ</a></li>
+            <li><a href="javascript:void(0)" onclick="selectCategory('legal')" class="text-decoration-none text-muted">Thủ tục sang tên &amp; Pháp lý</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Dòng Xe Quan Tâm</h5>
+          <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
+            <li><a href="cars.html?brand=Toyota" class="text-decoration-none text-muted">Toyota Corolla Cross</a></li>
+            <li><a href="cars.html?brand=Mazda" class="text-decoration-none text-muted">Mazda CX-5, CX-30</a></li>
+            <li><a href="cars.html?brand=VinFast" class="text-decoration-none text-muted">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Ford" class="text-decoration-none text-muted">Ford Everest, Ranger</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Trụ Sở &amp; Hỗ Trợ</h5>
+          <div class="p-3 rounded-3 bg-light border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1 text-orange-theme"></i> <strong>Trụ sở:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="small text-muted mb-2"><i class="bi bi-clock-fill me-1 text-orange-theme"></i> <strong>Giờ làm việc:</strong> 08:00 - 18:30 (Thứ 2 - CN)</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.72rem;">Hỗ trợ thông tin trực tuyến</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center flex-wrap pt-3 border-top small text-muted">
+        <div>&copy; 2026 OtoMarket - Nền Tảng Giao Dịch &amp; Đánh Giá Ô Tô.</div>
+        <div class="d-flex gap-3">
+          <a href="about.html" class="text-decoration-none text-muted">Điều khoản sử dụng</a>
+          <a href="about.html" class="text-decoration-none text-muted">Chính sách bảo mật</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dữ liệu bài viết đầy đủ chuyên sâu (Đã bổ sung bài doanh số VinFast theo link oto.com.vn)
+    const NEWS_ARTICLES = [
+      {
+        id: 9,
+        categoryTag: "market",
+        categoryName: "Thị trường ô tô",
+        badgeText: "THỊ TRƯỜNG Ô TÔ",
+        title: "VinFast Bàn Giao 70.085 Ô Tô Điện Và 286.039 Xe Máy, Xe Đạp Điện Trong Quý II/2026",
+        date: "22/10/2026 - 15:30",
+        readTime: "5 phút đọc",
+        views: "2.450 lượt xem",
+        image: "assets/images/cars/vf8.jpg",
+        summary: "Doanh số toàn cầu của VinFast ghi nhận mức tăng trưởng ấn tượng ở cả hai mảng ô tô điện và xe máy điện. Doanh thu bán xe đạt 28.833,1 tỷ đồng, tăng 92,7% so với cùng kỳ năm trước, nhờ lực kéo từ cả thị trường trong nước lẫn mở rộng quốc tế.",
+        tag: "Thị trường ô tô",
+        tags: ["VinFast", "Doanh số ô tô", "VinFast VF 8", "Xe điện Việt Nam", "Thị trường ô tô 2026", "Giá xe VinFast"],
+        content: `
+          <p>Theo báo cáo tài chính chưa kiểm toán quý II/2026, Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast công bố đã bàn giao tổng cộng <strong>70.085 xe ô tô điện</strong> trên phạm vi toàn cầu, đạt mức tăng trưởng gần gấp đôi so với quý II năm ngoái.</p>
+
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/vf8.jpg" alt="VinFast VF 8 sạc pin tại trạm cao tốc">
+            <figcaption class="oto-image-caption">
+              VinFast VF 8 và hệ thống xe điện thông minh tiếp tục dẫn dắt doanh số phân khúc SUV điện tại Việt Nam. (Ảnh: OtoMarket)
+            </figcaption>
+          </figure>
+
+          <h2>1. Động lực tăng trưởng từ các thị trường trọng điểm</h2>
+          <p>Tại thị trường Việt Nam, các dòng xe gầm cao đô thị như VF 3, VF 5 Plus và dòng SUV cỡ D VF 8 duy trì lượng đơn đặt hàng ổn định nhờ hạ tầng trạm sạc V-GREEN phủ rộng khắp các tỉnh thành và chính sách chi phí vận hành kinh tế hơn đáng kể so với xe xăng cùng phân khúc.</p>
+          <p>Song song đó, chiến lược mở rộng tại khu vực Đông Nam Á (Indonesia, Philippines) và các thị trường mới như Ấn Độ bước đầu đóng góp vào sản lượng xuất khẩu với tỷ trọng ngày càng tăng trong cơ cấu doanh thu.</p>
+
+          <div class="table-responsive">
+            <table class="oto-data-table">
+              <thead>
+                <tr>
+                  <th>Chỉ tiêu kinh doanh</th>
+                  <th>Quý II/2026</th>
+                  <th>Cùng kỳ năm trước</th>
+                  <th>Tăng trưởng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ô tô điện bàn giao (xe)</strong></td>
+                  <td class="fw-bold text-dark">70.085</td>
+                  <td>35.800</td>
+                  <td class="text-success fw-bold">+95,7%</td>
+                </tr>
+                <tr>
+                  <td><strong>Xe máy &amp; xe đạp điện (xe)</strong></td>
+                  <td class="fw-bold text-dark">286.039</td>
+                  <td>168.200</td>
+                  <td class="text-success fw-bold">+70,1%</td>
+                </tr>
+                <tr>
+                  <td><strong>Doanh thu bán xe (tỷ VNĐ)</strong></td>
+                  <td class="fw-bold text-dark">28.833,1</td>
+                  <td>14.960,5</td>
+                  <td class="text-success fw-bold">+92,7%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="oto-highlight-box">
+            <strong><i class="bi bi-info-circle-fill me-1"></i> Điểm đáng chú ý:</strong>
+            Mảng xe hai bánh điện ghi nhận bước nhảy vọt với 286.039 xe bán ra, phản ánh xu hướng chuyển dịch mạnh mẽ của người tiêu dùng đô thị sang các phương tiện giao thông xanh không phát thải.
+          </div>
+
+          <h2>2. Kế hoạch sản phẩm và mở rộng hạ tầng cuối năm 2026</h2>
+          <p>Trong nửa cuối năm 2026, VinFast dự kiến đẩy mạnh tiến độ bàn giao các đơn hàng dòng xe đa dụng, đồng thời tiếp tục tối ưu hóa phần mềm hỗ trợ lái ADAS thế hệ mới nhằm gia tăng tiện ích an toàn cho người dùng đường dài.</p>
+
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/tucson.jpg" alt="Thị trường xe ô tô gầm cao sôi động">
+            <figcaption class="oto-image-caption">
+              Phân khúc xe gầm cao từ 600 triệu đến hơn 1 tỷ đồng chứng kiến sự cạnh tranh quyết liệt giữa xe điện và xe xăng truyền thống.
+            </figcaption>
+          </figure>
+
+          <p>Đại diện sàn giao dịch OtoMarket nhận định: <em>"Sự tăng trưởng của phân khúc xe điện kéo theo lượng giao dịch mua bán xe ô tô lướt trên sàn tăng hơn 35%. Người mua ngày càng quan tâm đến chính sách bảo hành pin, lịch sử sạc và độ hao mòn thực tế trước khi xuống tiền giao dịch."</em></p>
+        `
+      },
+      {
+        id: 1,
+        categoryTag: "tips",
+        categoryName: "Kinh nghiệm xem xe cũ",
+        badgeText: "KINH NGHIỆM XEM XE",
+        title: "Các Bước Kiểm Tra Ô Tô Cũ Tránh Mua Phải Xe Bị Thủy Kích Hoặc Ngập Nước",
+        date: "14/10/2026",
+        readTime: "5 phút đọc",
+        views: "3.120 lượt xem",
+        image: "assets/images/cars/tucson.jpg",
+        summary: "Hướng dẫn chi tiết từng vị trí bắt buộc phải soi bằng đèn pin: kiểm tra ốc chân máy, đinh tán vách ngăn khoang động cơ, vết ố dây đai an toàn và mùi ẩm mốc dưới lớp nỉ sàn xe.",
+        tag: "Xe gầm cao",
+        tags: ["Kiểm tra xe cũ", "Thủy kích", "Kinh nghiệm mua xe", "Ốc chân máy", "An toàn ô tô"],
+        content: `
+          <p>Khi mua ô tô đã qua sử dụng, thủy kích và ngập nước là hai rủi ro phổ biến khiến người mua phải gánh chịu chi phí sửa chữa rất lớn. Dưới đây là quy trình kiểm tra thực tế được đúc kết từ kinh nghiệm của đội ngũ kỹ thuật:</p>
+          
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/tucson.jpg" alt="Kiểm tra khoang động cơ xe cũ">
+            <figcaption class="oto-image-caption">
+              Kiểm tra kỹ các chi tiết ốc máy và keo chỉ trước khi quyết định đặt cọc xe. (Ảnh: OtoMarket)
+            </figcaption>
+          </figure>
+
+          <h2>1. Kiểm tra ốc giàn đầu và chân máy</h2>
+          <p>Dùng đèn pin có độ sáng cao soi kỹ các bu-lông chân máy, ốc nắp máy và ốc cổ góp xả. Nếu động cơ còn nguyên bản, các đầu ốc sẽ có lớp mạ sáng, cạnh ốc sắc cạnh và vạch sơn đánh dấu của nhà máy vẫn liền mạch. Nếu phát hiện cạnh ốc bị toét, trầy xước hoặc có vết cờ-lê tháo lắp, rất có thể động cơ đã từng bị rã máy để đại tu do ngập nước.</p>
+
+          <div class="oto-highlight-box">
+            <strong><i class="bi bi-lightbulb-fill text-warning me-1"></i> Mẹo thẩm định thực tế:</strong>
+            Hãy kéo hết toàn bộ chiều dài của dây đai an toàn (seatbelt) ở cả các vị trí ghế. Nếu phần đuôi dây đai có vết ngả màu vàng ố, cặn bùn li ti hoặc mốc đen, chiếc xe có nguy cơ đã từng bị nước tràn vào khoang cabin.
+          </div>
+
+          <h2>2. Kiểm tra khoang nội thất và mùi ẩm mốc</h2>
+          <p>Những chiếc xe từng ngập nước dù được sấy khô và xịt nước hoa kỹ lưỡng thì khi đóng kín cửa dưới trời nắng khoảng 15 phút, khoang xe vẫn bốc lên mùi ẩm mốc đặc trưng của mút ghế và nỉ sàn. Ngoài ra, hãy lật lớp nỉ lót ở các góc chân ga, chân phanh để kiểm tra các giắc cắm điện tử và bu-lông bắt chân ghế xem có hiện tượng rỉ sét hay không.</p>
+
+          <h2>3. Cắm máy chẩn đoán lỗi OBD-II</h2>
+          <p>Xe bị ngập nước thường để lại các mã lỗi chập chờn trong bộ nhớ ECU của các hộp điều khiển túi khí (SRS), hộp body (BCM) hoặc cảm biến ABS. Việc quét lỗi điện tử sẽ bóc tách toàn bộ lịch sử cảnh báo của hệ thống điện.</p>
+        `
+      },
+      {
+        id: 2,
+        categoryTag: "review",
+        categoryName: "Đánh giá xe thực tế",
+        badgeText: "TIÊU ĐIỂM ĐÁNH GIÁ",
+        title: "Đánh Giá Thực Tế VinFast VF 8 Sau 1 Năm: Chi Phí Sạc Điện Và Trải Nghiệm Đường Dài",
+        date: "18/10/2026",
+        readTime: "7 phút đọc",
+        views: "2.890 lượt xem",
+        image: "assets/images/cars/vf8.jpg",
+        summary: "Phân tích chi tiết mức tiêu hao pin thực tế, so sánh chi phí thuê pin và mua pin, khả năng vận hành của hệ thống ADAS và trải nghiệm hạ tầng trạm sạc trên tuyến cao tốc Nha Trang - TP.HCM.",
+        tag: "D-SUV Điện",
+        tags: ["VinFast VF 8", "Đánh giá xe điện", "Chi phí sạc pin", "Hệ thống ADAS", "Trải nghiệm đường dài"],
+        content: `
+          <p>VinFast VF 8 là một trong những mẫu SUV điện cỡ D thu hút nhiều sự quan tâm tại thị trường Việt Nam. Sau 1 năm vận hành với tổng quãng đường hơn 20.000 km, ban biên tập OtoMarket tổng hợp các số liệu đo lường thực tế:</p>
+
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/vf8.jpg" alt="VinFast VF 8 trên cung đường cao tốc">
+            <figcaption class="oto-image-caption">
+              Trải nghiệm thực tế VinFast VF 8 trên cung đường ven biển Nha Trang. (Ảnh: OtoMarket)
+            </figcaption>
+          </figure>
+
+          <h2>1. Mức tiêu hao năng lượng và chi phí nhiên liệu</h2>
+          <p>Trên cung đường hỗn hợp nội đô và cao tốc, VF 8 phiên bản Plus tiêu thụ trung bình từ 19.5 đến 21.0 kWh/100km. Với đơn giá sạc công cộng hiện nay, chi phí di chuyển tương đương khoảng 650 - 750 đồng/km. So sánh với một mẫu SUV máy xăng 2.5L cùng phân khúc tiêu tốn khoảng 2.200 - 2.500 đồng/km, người dùng tiết kiệm được đáng kể chi phí nhiên liệu hàng tháng.</p>
+
+          <div class="oto-highlight-box">
+            <strong><i class="bi bi-speedometer2 text-orange-theme me-1"></i> Trải nghiệm vận hành:</strong>
+            Động cơ điện công suất 402 mã lực và mô-men xoắn tức thời 620 Nm mang lại khả năng vượt xe nhanh chóng. Khung gầm đầm chắc, trọng tâm thấp do khối pin đặt dưới sàn giúp xe ôm cua ổn định ở dải tốc độ 100 - 120 km/h.
+          </div>
+
+          <h2>2. Hệ thống trợ lái ADAS trên cao tốc</h2>
+          <p>Tính năng giữ làn đường tự động (LKA) và kiểm soát hành trình thích ứng (ACC) hoạt động mượt mà ở điều kiện thời tiết rõ ràng. Tuy nhiên, khi gặp mưa to hoặc vạch kẻ đường mờ trên một số đoạn đường đang thi công, hệ thống sẽ phát âm thanh cảnh báo yêu cầu người lái can thiệp trực tiếp.</p>
+        `
+      },
+      {
+        id: 3,
+        categoryTag: "review",
+        categoryName: "Đánh giá xe thực tế",
+        badgeText: "TƯ VẤN MUA XE",
+        title: "Gợi Ý Mẫu SUV Đô Thị Phù Hợp Tầm Giá 600 - 800 Triệu Đồng",
+        date: "10/10/2026",
+        readTime: "4 phút đọc",
+        views: "1.950 lượt xem",
+        image: "assets/images/cars/corolla_cross.jpg",
+        summary: "Tổng hợp đánh giá độ bền, chi phí phụ tùng thay thế và khả năng giữ giá của Toyota Corolla Cross, Kia Seltos và Hyundai Creta trong phân khúc gầm cao cỡ B/B+.",
+        tag: "B-SUV Đô thị",
+        tags: ["SUV đô thị", "Toyota Corolla Cross", "Hyundai Creta", "Kia Seltos", "Tư vấn mua xe"],
+        content: `
+          <p>Phân khúc SUV gầm cao đô thị từ 600 đến 800 triệu đồng đang là phân khúc sôi động nhờ khoảng sáng gầm tốt, thiết kế hiện đại và mức tiêu thụ nhiên liệu tiết kiệm:</p>
+
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/corolla_cross.jpg" alt="Toyota Corolla Cross phiên bản 2026">
+            <figcaption class="oto-image-caption">
+              Toyota Corolla Cross là dòng xe giữ giá tốt và phù hợp nhu cầu di chuyển gia đình. (Ảnh: OtoMarket)
+            </figcaption>
+          </figure>
+
+          <h2>1. Toyota Corolla Cross (Bản 1.8V hoặc 1.8G lướt)</h2>
+          <p>Ưu điểm nổi bật là độ bền cơ học cao, không gian nội thất rộng rãi và khả năng giữ giá tốt. Phiên bản 1.8V trang bị gói an toàn chủ động Toyota Safety Sense hỗ trợ đắc lực khi di chuyển trong đô thị đông đúc.</p>
+
+          <h2>2. Hyundai Creta & Kia Seltos</h2>
+          <p>Hai mẫu xe Hàn Quốc ghi điểm với phong cách thiết kế trẻ trung, nhiều tiện nghi như màn hình giải trí lớn, làm mát hàng ghế trước và phanh tay điện tử có Auto Hold. Chi phí phụ tùng thay thế sẵn có và mức tiêu thụ xăng chỉ khoảng 6.3L/100km hỗn hợp.</p>
+        `
+      },
+      {
+        id: 4,
+        categoryTag: "legal",
+        categoryName: "Thủ tục & Pháp lý",
+        badgeText: "PHÁP LÝ Ô TÔ",
+        title: "Quy Trình Rút Hồ Sơ Gốc & Sang Tên Biển Số Định Danh Năm 2026",
+        date: "08/10/2026",
+        readTime: "6 phút đọc",
+        views: "4.210 lượt xem",
+        image: "assets/images/cars/crv.jpg",
+        summary: "Hướng dẫn chi tiết thủ tục thu hồi biển số, kê khai nộp thuế trước bạ điện tử trên cổng Dịch vụ công và đăng ký biển số định danh theo thông tư mới.",
+        tag: "Thủ tục pháp lý",
+        tags: ["Biển số định danh", "Sang tên đổi chủ", "Thuế trước bạ ô tô", "Rút hồ sơ gốc", "Luật giao thông 2026"],
+        content: `
+          <p>Việc mua bán xe ô tô cũ hiện nay yêu cầu tuân thủ nghiêm ngặt quy định về biển số định danh. Để tránh rủi ro phát sinh sau khi giao nhận xe, cả bên mua và bên bán cần nắm rõ 3 bước:</p>
+
+          <h2>Bước 1: Làm thủ tục thu hồi cà vẹt và biển số tại cơ quan công an</h2>
+          <p>Chủ xe (bên bán) bắt buộc phải nộp lại chứng nhận đăng ký xe và biển số xe cho cơ quan đăng ký để làm thủ tục thu hồi. Biển số định danh sẽ được lưu giữ trong kho dữ liệu trong vòng 5 năm cho chủ cũ.</p>
+
+          <h2>Bước 2: Nộp lệ phí trước bạ trực tuyến</h2>
+          <p>Bên mua tiến hành nộp thuế trước bạ 2% (đối với xe cũ) thông qua cổng Dịch vụ công Quốc gia hoặc ứng dụng ngân hàng liên kết, không cần phải xếp hàng trực tiếp tại Chi cục Thuế.</p>
+
+          <h2>Bước 3: Đăng ký sang tên và bấm biển số mới</h2>
+          <p>Bên mua mang xe đến điểm đăng ký xe để cà số khung, số máy, nộp hồ sơ thu hồi gốc và bấm biển số mới (hoặc cấp lại biển định danh cũ của người mua nếu có sẵn trong kho).</p>
+        `
+      },
+      {
+        id: 5,
+        categoryTag: "review",
+        categoryName: "Đánh giá xe thực tế",
+        badgeText: "SO SÁNH CHI PHÍ",
+        title: "So Sánh Chi Phí Nuôi SUV 7 Chỗ: Ford Everest vs Kia Carnival Sau 30.000 km",
+        date: "12/10/2026",
+        readTime: "6 phút đọc",
+        views: "2.180 lượt xem",
+        image: "assets/images/cars/everest.jpg",
+        summary: "Bóc tách chi phí bảo dưỡng định kỳ, mức tiêu hao dầu Diesel, khấu hao lốp và phụ tùng thay thế của hai dòng xe phục vụ gia đình phổ biến.",
+        tag: "SUV 7 chỗ",
+        tags: ["Ford Everest", "Kia Carnival", "So sánh chi phí", "Bảo dưỡng định kỳ", "Xe gia đình 7 chỗ"],
+        content: `
+          <p>Cả Ford Everest và Kia Carnival đều là những cái tên được nhiều gia đình đông người hoặc doanh nghiệp di chuyển nhiều cân nhắc. Sau 30.000 km trải nghiệm thực tế:</p>
+
+          <figure class="oto-image-figure">
+            <img src="assets/images/cars/everest.jpg" alt="Ford Everest đối đầu Kia Carnival">
+            <figcaption class="oto-image-caption">
+              Hai mẫu xe 7 chỗ đại diện cho hai triết lý SUV việt dã và MPV gia đình đa dụng. (Ảnh: OtoMarket)
+            </figcaption>
+          </figure>
+
+          <h2>1. Mức tiêu thụ nhiên liệu dầu Diesel</h2>
+          <p>Ford Everest 2.0 Bi-Turbo tiêu thụ trung bình 7.8L/100km trên đường trường và 9.5L/100km trong phố. Kia Carnival máy dầu 2.2L Smartstream tiêu thụ khoảng 7.2L/100km đường trường và 8.8L/100km nội đô. Carnival tiết kiệm hơn khoảng 8 - 10% chi phí nhiên liệu nhờ hộp số 8 cấp mượt mà.</p>
+
+          <h2>2. Không gian và độ êm ái</h2>
+          <p>Kia Carnival vượt trội rõ rệt về độ rộng rãi ở hàng ghế thứ hai và thứ ba, đặc biệt sàn xe phẳng giúp người lớn tuổi và trẻ nhỏ bước lên xuống thuận tiện. Trong khi đó, Ford Everest với kết cấu khung gầm rời (Body-on-frame) và hệ dẫn động 2 cầu lại tỏ ra vững chãi khi vượt qua các cung đường đèo dốc, gồ ghề.</p>
+        `
+      },
+      {
+        id: 6,
+        categoryTag: "tips",
+        categoryName: "Kinh nghiệm xem xe cũ",
+        badgeText: "CHĂM SÓC XE",
+        title: "Bảo Dưỡng Ô Tô Cũ Định Kỳ: Danh Mục Cần Thay Thế Sau 50.000 km",
+        date: "05/10/2026",
+        readTime: "5 phút đọc",
+        views: "1.740 lượt xem",
+        image: "assets/images/cars/cx5.jpg",
+        summary: "Hướng dẫn các hạng mục bảo dưỡng lớn: thay dầu hộp số tự động, bugi Iridium, nước làm mát động cơ và vệ sinh họng hút kim phun buồng đốt.",
+        tag: "Bảo dưỡng",
+        tags: ["Bảo dưỡng 50.000km", "Dầu hộp số", "Chăm sóc ô tô", "Mazda CX-5"],
+        content: `
+          <p>Sau mốc 50.000 km (cấp bảo dưỡng lớn), nhiều chi tiết trên xe đã bắt đầu suy giảm hiệu suất. Việc chủ động thay thế đúng hạn sẽ giúp xe vận hành êm ái và tránh hư hỏng dây chuyền:</p>
+
+          <h2>1. Thay dầu hộp số tự động và lọc dầu</h2>
+          <p>Nhiều người lầm tưởng dầu hộp số là loại vĩnh viễn không cần thay. Tuy nhiên, sau 50.000 km di chuyển trong điều kiện giao thông dừng đỗ nhiều tại Việt Nam, dầu hộp số bị oxy hóa và lẫn mạt kim loại. Thay dầu tuần hoàn sẽ giúp các bước số chuyển mượt mà, không bị giật cục.</p>
+
+          <h2>2. Thay thế dây curoa tổng và nước làm mát</h2>
+          <p>Dây curoa dẫn động máy phát và lốc lạnh cần được kiểm tra vết nứt chân chim. Đồng thời xả toàn bộ nước làm mát cũ để thay nước làm mát mới (Long Life Coolant) nhằm bảo vệ két nước không bị đóng cặn rỉ sét.</p>
+        `
+      },
+      {
+        id: 7,
+        categoryTag: "tips",
+        categoryName: "Kinh nghiệm xem xe cũ",
+        badgeText: "LÁI THỬ XE CŨ",
+        title: "Kinh Nghiệm Lái Thử Ô Tô Cũ Trước Khi Xuống Tiền Đặt Cọc",
+        date: "02/10/2026",
+        readTime: "4 phút đọc",
+        views: "1.620 lượt xem",
+        image: "assets/images/cars/carnival.jpg",
+        summary: "Cách cảm nhận độ rơ vô lăng, kiểm tra hệ thống phanh ABS, độ trễ chân ga và tiếng kêu từ hệ thống treo rotuyn khi đi qua gờ giảm tốc.",
+        tag: "Lái thử xe",
+        tags: ["Lái thử ô tô", "Kinh nghiệm đặt cọc", "Kiểm tra gầm bệ", "Thước lái"],
+        content: `
+          <p>Lái thử là bước quan trọng nhất trước khi quyết định đặt cọc mua xe ô tô đã qua sử dụng. Hãy yêu cầu người bán cho lái thử tối thiểu từ 5 đến 10 km qua nhiều điều kiện mặt đường khác nhau:</p>
+
+          <h2>1. Thử độ trễ chân ga và bước số</h2>
+          <p>Khi dừng đèn đỏ, đạp ga dứt khoát để cảm nhận độ nhạy của bướm ga và xem hộp số có bị trễ hay giật mạnh không. Nếu xe có hiện tượng rồ ga nhưng xe không bứt tốc, các lá côn trong hộp số có thể đã bị mòn.</p>
+
+          <h2>2. Thả lỏng vô lăng trên đường thẳng</h2>
+          <p>Chọn đoạn đường vắng, bằng phẳng, chạy ở tốc độ 40 km/h rồi nới lỏng tay khỏi vô lăng khoảng 3 giây. Nếu xe tự động nhao lái rõ rệt về một bên, hệ thống thước lái hoặc góc đặt bánh xe đang bị lệch.</p>
+        `
+      },
+      {
+        id: 8,
+        categoryTag: "tips",
+        categoryName: "Kinh nghiệm xem xe cũ",
+        badgeText: "XE SANG CŨ",
+        title: "Những Lưu Ý Quan Trọng Khi Mua Xe Sang Đức Cũ (Mercedes, BMW, Audi)",
+        date: "28/09/2026",
+        readTime: "6 phút đọc",
+        views: "2.350 lượt xem",
+        image: "assets/images/cars/c200.jpg",
+        summary: "Phân tích rủi ro hệ thống treo khí nén, chi phí thay thế cảm biến điện tử, gioăng phớt cao su động cơ và cách kiểm tra lịch sử bảo dưỡng chính hãng.",
+        tag: "Xe Châu Âu",
+        tags: ["Mercedes C200", "Xe Đức cũ", "Chi phí sửa chữa xe sang", "Kiểm tra OBD-II"],
+        content: `
+          <p>Xe sang Đức qua sử dụng có mức khấu hao rất nhanh, mang lại cơ hội trải nghiệm cảm giác lái đẳng cấp với chi phí mua ban đầu hợp lý. Tuy nhiên, người mua cần chuẩn bị ngân sách dự phòng cho các hạng mục sau:</p>
+
+          <h2>1. Kiểm tra dàn cao su gầm và hệ thống treo</h2>
+          <p>Sau mốc 50.000 - 70.000 km, các đệm cao su giảm chấn và rotuyn lái của xe Đức thường bị lão hóa. Hãy lái thử qua các đoạn đường gồ ghề để lắng nghe xem có tiếng lục cục phát ra từ hệ thống gầm hay không.</p>
+
+          <h2>2. Quét lỗi hệ thống điện bằng máy chuyên dụng</h2>
+          <p>Mercedes-Benz trang bị hàng chục hộp điều khiển SAM và cảm biến. Bắt buộc phải đưa xe vào garage có máy chẩn đoán Star Diagnosis hoặc OBD-II chuyên sâu để kiểm tra toàn bộ lịch sử lỗi của hộp số 9G-Tronic và hệ thống điều hòa.</p>
+        `
+      }
+    ];
+
+    let currentCategory = 'all';
+
+    function getCategoryName(catTag) {
+      if (catTag === 'market') return 'Thị trường ô tô';
+      if (catTag === 'review') return 'Đánh giá xe thực tế';
+      if (catTag === 'tips') return 'Kinh nghiệm xem xe cũ';
+      if (catTag === 'legal') return 'Thủ tục & Pháp lý';
+      return 'Tất cả bài viết';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // Xử lý tìm kiếm bài viết tức thì
+    function handleNewsSearchInput() {
+      const input = document.getElementById('news-search-input');
+      const clearBtn = document.getElementById('btn-clear-news-search');
+      const val = input ? input.value.trim() : '';
+      if (clearBtn) {
+        clearBtn.style.display = val.length > 0 ? 'inline-block' : 'none';
+      }
+      renderArticlesGrid();
+    }
+
+    // Xóa từ khóa tìm kiếm
+    function clearNewsSearch() {
+      const input = document.getElementById('news-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('btn-clear-news-search');
+      if (clearBtn) clearBtn.style.display = 'none';
+      renderArticlesGrid();
+    }
+
+    // Đặt lại toàn bộ bộ lọc
+    function resetAllNewsFilters() {
+      currentCategory = 'all';
+      clearNewsSearch();
+      document.querySelectorAll('#category-pills-bar .news-category-pill').forEach(btn => btn.classList.remove('active'));
+      document.querySelector('#category-pills-bar .news-category-pill:first-child')?.classList.add('active');
+      renderArticlesGrid();
+    }
+
+    // Chọn danh mục
+    function selectCategory(cat, el) {
+      currentCategory = cat;
+      document.querySelectorAll('#category-pills-bar .news-category-pill').forEach(btn => btn.classList.remove('active'));
+      if (el) {
+        el.classList.add('active');
+      } else {
+        document.querySelectorAll('#category-pills-bar .news-category-pill').forEach(btn => {
+          if (btn.getAttribute('onclick')?.includes(`'${cat}'`)) btn.classList.add('active');
+        });
+      }
+      // Đảm bảo đang ở view danh sách
+      if (document.getElementById('news-reader-view').style.display !== 'none') {
+        showArticlesList();
+      }
+      renderArticlesGrid();
+    }
+
+    // Hàm render danh sách bài viết theo bộ lọc & tìm kiếm
+    function renderArticlesGrid() {
+      const container = document.getElementById('articles-grid-container');
+      const input = document.getElementById('news-search-input');
+      const searchKeyword = (input ? input.value : '').toLowerCase().trim();
+      const feedbackBar = document.getElementById('search-feedback-bar');
+      const featuredSection = document.getElementById('featured-bento-section');
+      const feedHeading = document.getElementById('feed-heading');
+
+      const filtered = NEWS_ARTICLES.filter(art => {
+        const matchCategory = (currentCategory === 'all' || art.categoryTag === currentCategory);
+        const matchSearch = (!searchKeyword || 
+          art.title.toLowerCase().includes(searchKeyword) || 
+          art.summary.toLowerCase().includes(searchKeyword) ||
+          art.tag.toLowerCase().includes(searchKeyword) ||
+          art.categoryName.toLowerCase().includes(searchKeyword)
+        );
+        return matchCategory && matchSearch;
+      });
+
+      const isFiltering = searchKeyword.length > 0 || currentCategory !== 'all';
+
+      if (isFiltering) {
+        if (featuredSection) featuredSection.style.display = 'none';
+        if (feedbackBar) {
+          feedbackBar.style.display = 'flex';
+          let msg = '';
+          if (searchKeyword.length > 0 && currentCategory !== 'all') {
+            msg = `Kết quả tìm kiếm cho: "<strong>${escapeHtml(searchKeyword)}</strong>" trong chuyên mục <em>${getCategoryName(currentCategory)}</em> (${filtered.length} bài viết)`;
+          } else if (searchKeyword.length > 0) {
+            msg = `Kết quả tìm kiếm cho: "<strong>${escapeHtml(searchKeyword)}</strong>" (${filtered.length} bài viết)`;
+          } else {
+            msg = `Chuyên mục: <strong>${getCategoryName(currentCategory)}</strong> (${filtered.length} bài viết)`;
+          }
+          document.getElementById('search-feedback-text').innerHTML = msg;
+        }
+        if (feedHeading) {
+          feedHeading.textContent = searchKeyword.length > 0 ? 'Kết Quả Tìm Kiếm' : getCategoryName(currentCategory);
+        }
+      } else {
+        if (featuredSection) featuredSection.style.display = 'block';
+        if (feedbackBar) feedbackBar.style.display = 'none';
+        if (feedHeading) feedHeading.textContent = 'Danh Sách Bài Viết';
+      }
+
+      document.getElementById('feed-count-display').textContent = `Hiển thị ${filtered.length} / ${NEWS_ARTICLES.length} bài viết`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 py-5 text-center">
+            <div class="p-4 bg-white rounded-4 border mx-auto" style="max-width: 480px;">
+              <i class="bi bi-search fs-2 text-muted mb-2 d-block"></i>
+              <div class="fw-bold mb-1 text-dark">Không tìm thấy bài viết phù hợp</div>
+              <div class="text-muted small mb-3">Không có bài viết nào khớp với từ khóa "${escapeHtml(searchKeyword)}".</div>
+              <button class="btn btn-outline-dark btn-sm rounded-pill px-3" onclick="resetAllNewsFilters()">Xem tất cả bài viết</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(art => `
+        <div class="col">
+          <div class="bento-article-card h-100" onclick="showArticleDetail(${art.id})">
+            <div class="article-thumb-container">
+              <img src="${art.image}" class="article-thumb-img" alt="${art.title}">
+              <span class="badge position-absolute top-0 start-0 m-2.5 badge-editorial-category">${art.badgeText}</span>
+            </div>
+            <div class="p-3.5 d-flex flex-column justify-content-between flex-grow-1" style="padding: 20px;">
+              <div>
+                <div class="text-muted small mb-2" style="font-size: 0.76rem;"><i class="bi bi-calendar3 me-1"></i>${art.date} • ${art.readTime}</div>
+                <h3 class="h6 fw-bold mb-2">
+                  <a href="javascript:void(0)" class="article-title-link">${art.title}</a>
+                </h3>
+                <p class="text-muted small mb-0" style="font-size: 0.82rem; line-height: 1.55;">
+                  ${art.summary}
+                </p>
+              </div>
+              <div class="pt-3 mt-3 border-top d-flex justify-content-between align-items-center">
+                <span class="badge bg-light text-dark border" style="font-size: 0.72rem;">${art.tag}</span>
+                <span class="btn-read-bento">Đọc tiếp &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ========================================================================
+    // HIỂN THỊ CHI TIẾT BÀI VIẾT BỐ CỤC 2 CỘT CHUẨN OTO.COM.VN
+    // ========================================================================
+    function showArticleDetail(id) {
+      const art = NEWS_ARTICLES.find(a => a.id === id);
+      if (!art) return;
+
+      // 1. Breadcrumbs
+      document.getElementById('reader-breadcrumb-cat').textContent = art.categoryName;
+      document.getElementById('reader-breadcrumb-title').textContent = art.title;
+
+      // 2. Main Article Header & Meta
+      document.getElementById('reader-title').textContent = art.title;
+      document.getElementById('reader-cat-pill').textContent = art.categoryName.toUpperCase();
+      document.getElementById('reader-date').textContent = art.date;
+      document.getElementById('reader-views').textContent = art.views || '2.150 lượt xem';
+      document.getElementById('reader-readtime').textContent = art.readTime;
+      document.getElementById('reader-sapo').textContent = art.summary;
+
+      // 3. Main Content
+      document.getElementById('reader-content').innerHTML = art.content;
+
+      // 4. Tags
+      const tagsContainer = document.getElementById('reader-tags-container');
+      const tagsList = art.tags || [art.tag, 'Ô tô Việt Nam', 'Kinh nghiệm xe'];
+      tagsContainer.innerHTML = `
+        <span class="small fw-bold text-dark me-1"><i class="bi bi-tags-fill me-1"></i>Từ khóa:</span>
+        ${tagsList.map(t => `<a href="javascript:void(0)" onclick="quickSearchTag('${t}')" class="oto-tag-chip">${t}</a>`).join('')}
+      `;
+
+      // 5. Cột Trái: CÁC TIN KHÁC (4 bài liên quan)
+      const relatedList = document.getElementById('reader-related-list');
+      const otherArticles = NEWS_ARTICLES.filter(a => a.id !== id).slice(0, 4);
+      relatedList.innerHTML = otherArticles.map(item => `
+        <a href="javascript:void(0)" onclick="showArticleDetail(${item.id})" class="related-news-row">
+          <div class="related-news-thumb">
+            <img src="${item.image}" alt="${item.title}">
+          </div>
+          <div>
+            <h4 class="related-news-title">${item.title}</h4>
+            <div class="text-muted small" style="font-size: 0.76rem;"><i class="bi bi-clock me-1"></i>${item.date} • ${item.readTime}</div>
+          </div>
+        </a>
+      `).join('');
+
+      // 6. Cột Phải Sidebar: "Người Việt Quan Tâm Nhất" (#1 kèm ảnh + #2, #3, #4, #5)
+      renderSidebarRanked(id);
+
+      // Chuyển view
+      document.getElementById('news-listing-view').style.display = 'none';
+      document.getElementById('news-reader-view').style.display = 'block';
+
+      // Cuộn lên đầu trang
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Cập nhật URL
+      if (window.history && history.pushState) {
+        history.pushState({ articleId: id }, '', '?id=' + id);
+      }
+    }
+
+    // Render Sidebar Ranked News (#1 to #5)
+    function renderSidebarRanked(currentId) {
+      const topNews = NEWS_ARTICLES.filter(a => a.id !== currentId);
+      if (topNews.length === 0) return;
+
+      // Top 1
+      const top1 = topNews[0];
+      document.getElementById('sidebar-top1-box').innerHTML = `
+        <a href="javascript:void(0)" onclick="showArticleDetail(${top1.id})" class="text-decoration-none">
+          <div class="rounded-3 overflow-hidden mb-2" style="height: 140px;">
+            <img src="${top1.image}" class="w-100 h-100 object-fit-cover" alt="${top1.title}">
+          </div>
+          <h4 class="fw-bold mb-1 text-dark" style="font-size: 0.88rem; line-height: 1.4;">
+            ${top1.title}
+          </h4>
+          <div class="text-muted small" style="font-size: 0.74rem;">${top1.date} • ${top1.views || '1.890 lượt đọc'}</div>
+        </a>
+      `;
+
+      // Top 2 - 5
+      const ranked4 = topNews.slice(1, 5);
+      document.getElementById('sidebar-ranked-list').innerHTML = ranked4.map((item, idx) => `
+        <a href="javascript:void(0)" onclick="showArticleDetail(${item.id})" class="rank-news-item">
+          <span class="rank-news-number">${idx + 2}</span>
+          <div>
+            <h5 class="rank-news-title mb-1">${item.title}</h5>
+            <div class="text-muted small" style="font-size: 0.72rem;">${item.categoryName}</div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Tìm kiếm nhanh theo thẻ tag
+    function quickSearchTag(tagText) {
+      showArticlesList();
+      const input = document.getElementById('news-search-input');
+      if (input) input.value = tagText;
+      handleNewsSearchInput();
+    }
+
+    // Quay lại danh sách bài viết
+    function showArticlesList() {
+      document.getElementById('news-reader-view').style.display = 'none';
+      document.getElementById('news-listing-view').style.display = 'block';
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      if (window.history && history.pushState) {
+        history.pushState(null, '', 'news.html');
+      }
+    }
+
+    // Xử lý nút Back/Forward của trình duyệt
+    window.addEventListener('popstate', (e) => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      if (id && NEWS_ARTICLES.some(a => a.id === id)) {
+        showArticleDetail(id);
+      } else {
+        showArticleDetail(9); // Default to VinFast Q2/2026
+      }
+    });
+
+    // Chuyển đổi ngôn ngữ VI / EN
+    function switchLanguage(lang, el) {
+      document.querySelectorAll('.lang-pill-btn').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+      if (window.showToast) {
+        window.showToast(lang.toUpperCase() === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
+      }
+    }
+
+    // Khởi tạo ban đầu
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      const q = params.get('q') || params.get('search');
+      const cat = params.get('cat') || params.get('category');
+
+      if (id && NEWS_ARTICLES.some(a => a.id === id)) {
+        showArticleDetail(id);
+      } else if (q) {
+        const input = document.getElementById('news-search-input');
+        if (input) input.value = q;
+        handleNewsSearchInput();
+      } else if (cat) {
+        selectCategory(cat);
+      } else {
+        renderArticlesGrid();
+      }
+    });
+  </script>
+</body>
+</html>
