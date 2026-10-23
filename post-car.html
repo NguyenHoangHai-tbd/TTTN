@@ -107,12 +107,17 @@
       border: none !important;
       font-weight: 700 !important;
       border-radius: 10px !important;
-      padding: 8px 18px !important;
+      padding: 9px 20px !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-cta-orange:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35) !important;
+      color: #FFFFFF !important;
     }
 
-    /* ==========================================================================
-       BENTO FORM STUDIO & CHEVRON STEPPER (EXACT PHƯƠNG ÁN 1 DEMO)
-       ========================================================================== */
+    /* Container */
     .bento-main-container {
       max-width: 1240px;
       margin: 0 auto;
@@ -122,7 +127,7 @@
       background: #FFFFFF !important;
       border: 1px solid #E2E8F0 !important;
       border-radius: 16px !important;
-      padding: 24px 28px !important;
+      padding: 26px 28px !important;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
     }
 
@@ -141,7 +146,7 @@
       flex-shrink: 0;
     }
 
-    /* Chevron Ribbon Stepper chuẩn Demo */
+    /* Chevron Ribbon Stepper Bar chuẩn Demo */
     .chevron-stepper-ribbon {
       display: flex;
       align-items: stretch;
@@ -157,10 +162,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 12px;
-      font-size: 0.83rem;
+      padding: 10px 14px;
+      font-size: 0.84rem;
       font-weight: 600;
-      color: #475569;
+      color: #64748B;
       background: #FFFFFF;
       border: none;
       position: relative;
@@ -173,24 +178,41 @@
     .chevron-ribbon-item:last-child {
       border-right: none;
     }
+    .chevron-ribbon-item:hover:not(.active) {
+      background: #F8FAFC;
+      color: #0F172A;
+    }
     .chevron-ribbon-item.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
     }
+    .chevron-ribbon-item.completed {
+      color: #166534;
+      background: #F0FDF4;
+    }
     /* Chevron arrow effect */
     .chevron-ribbon-item.active::after {
       content: '';
       position: absolute;
-      right: -8px;
+      right: -9px;
       top: 0;
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: 19px solid transparent;
-      border-bottom: 19px solid transparent;
-      border-left: 8px solid #FF6B00;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 9px solid #FF6B00;
       z-index: 5;
+    }
+
+    /* Form Step Animation */
+    .form-step-pane {
+      animation: fadeInStep 0.25s ease-in-out;
+    }
+    @keyframes fadeInStep {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Form Labels & Inputs */
@@ -199,6 +221,7 @@
       font-weight: 600;
       color: #334155;
       margin-bottom: 5px;
+      display: block;
     }
     .bento-form-input,
     .bento-form-select {
@@ -217,12 +240,31 @@
       outline: none !important;
     }
 
+    /* Quick Pills (Models, ODO) */
+    .quick-pill-opt {
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      padding: 4px 10px;
+      border-radius: 7px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .quick-pill-opt:hover {
+      background: #FFF7ED;
+      border-color: #FED7AA;
+      color: #FF6B00;
+    }
+
     /* Feature pills */
     .feature-pill-chip {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 14px;
+      gap: 6px;
+      padding: 7px 14px;
       border-radius: 8px;
       border: 1px solid #E2E8F0;
       background: #F8FAFC;
@@ -243,20 +285,71 @@
       color: #FF6B00 !important;
     }
 
-    /* Thumbnails Row */
+    /* Photo Dropzone & Thumbnails */
+    .bento-photo-dropzone {
+      border: 2px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      background: #F8FAFC;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 16px;
+    }
+    .bento-photo-dropzone:hover {
+      border-color: #FF6B00;
+      background: #FFF7ED;
+    }
+
     .bento-photo-thumb {
       position: relative;
       height: 76px;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #E2E8F0;
+      border: 1.5px solid #E2E8F0;
       background: #0F172A;
+      cursor: pointer;
     }
     .bento-photo-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+    .bento-photo-thumb.is-primary {
+      border-color: #FF6B00 !important;
+      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.35);
+    }
+    .bento-photo-thumb-badge {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    .bento-photo-thumb-del {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      color: #FFFFFF;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      cursor: pointer;
+    }
+    .bento-photo-thumb-del:hover {
+      background: #DC2626;
+    }
+
     .bento-photo-add-slot {
       height: 76px;
       border: 1.5px dashed #CBD5E1;
@@ -279,19 +372,24 @@
     }
 
     /* ==========================================================================
-       RIGHT COLUMN: LIVE PREVIEW CARD (EXACT DEMO SPEC)
+       RIGHT COLUMN: LIVE PREVIEW CARD (STICKY, ZERO JITTER)
        ========================================================================== */
+    .sticky-preview-wrapper {
+      position: sticky !important;
+      top: 90px !important;
+      z-index: 20;
+    }
     .bento-preview-card {
       background: #FFFFFF !important;
       border: 1px solid #E2E8F0 !important;
       border-radius: 16px !important;
-      padding: 16px !important;
+      padding: 18px !important;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
     }
     .preview-media-box {
       position: relative;
       width: 100%;
-      height: 195px;
+      height: 200px;
       border-radius: 12px;
       overflow: hidden;
       background: #0F172A;
@@ -465,14 +563,14 @@
   </header>
 
   <!-- ==========================================================================
-       MAIN CONTENT: BENTO STUDIO (KHỚP 100% PHƯƠNG ÁN 1 DEMO)
+       MAIN CONTENT: BENTO STUDIO WIZARD (GIAO DIỆN CHUẨN DEMO, THAO TÁC TIỆN DỤNG)
        ========================================================================== -->
   <main class="py-4 pb-5">
     <div class="container bento-main-container">
 
       <div class="row g-3 g-xl-4 align-items-start">
         
-        <!-- CỘT TRÁI (62%): Bento Form Studio -->
+        <!-- CỘT TRÁI (62%): Bento Form Studio (4 Bước Linh Hoạt) -->
         <div class="col-lg-7 col-xl-8">
           <div class="bento-studio-card">
 
@@ -487,32 +585,34 @@
               </div>
             </div>
 
-            <!-- Chevron Ribbon Stepper Bar -->
+            <!-- Chevron Ribbon Stepper Bar (Clickable Chuyển Bước Tức Thì) -->
             <div class="chevron-stepper-ribbon">
-              <button type="button" class="chevron-ribbon-item active" id="step-node-1" onclick="goToStep(1)">
+              <button type="button" class="chevron-ribbon-item active" id="ribbon-step-1" onclick="switchStep(1)">
                 1. Thông tin xe
               </button>
-              <button type="button" class="chevron-ribbon-item" id="step-node-2" onclick="goToStep(2)">
+              <button type="button" class="chevron-ribbon-item" id="ribbon-step-2" onclick="switchStep(2)">
                 2. Định giá &amp; ODO
               </button>
-              <button type="button" class="chevron-ribbon-item" id="step-node-3" onclick="goToStep(3)">
+              <button type="button" class="chevron-ribbon-item" id="ribbon-step-3" onclick="switchStep(3)">
                 3. Tải ảnh thực tế
               </button>
-              <button type="button" class="chevron-ribbon-item" id="step-node-4" onclick="goToStep(4)">
+              <button type="button" class="chevron-ribbon-item" id="ribbon-step-4" onclick="switchStep(4)">
                 4. Tiện nghi &amp; Xuất bản
               </button>
             </div>
 
-            <!-- Form Body -->
+            <!-- Form Body with 4 Interactive Panes -->
             <form id="post-car-form" onsubmit="event.preventDefault();">
 
-              <!-- STEP 1 & 2: THÔNG SỐ XE & ĐỊNH GIÁ (HIỂN THỊ TRỰC QUAN NHƯ DEMO) -->
-              <div id="step-content-1">
+              <!-- ============================================================
+                   BƯỚC 1: THÔNG TIN XE
+                   ============================================================ -->
+              <div class="form-step-pane" id="pane-step-1">
                 
                 <!-- Hãng xe & Dòng xe -->
                 <div class="row g-3 mb-2.5">
                   <div class="col-md-5">
-                    <label class="bento-form-label">Hãng xe</label>
+                    <label class="bento-form-label">Hãng xe <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-brand" onchange="handleBrandChange(this.value)">
                       <option value="Toyota" selected>Toyota</option>
                       <option value="Hyundai">Hyundai</option>
@@ -528,15 +628,25 @@
                   </div>
 
                   <div class="col-md-7">
-                    <label class="bento-form-label">Dòng xe</label>
+                    <label class="bento-form-label">Dòng xe (Model) <span class="text-danger">*</span></label>
                     <input type="text" class="form-control bento-form-input" id="car-model" value="Corolla Cross" placeholder="Ví dụ: Corolla Cross" oninput="handleModelInput(this.value)">
                   </div>
                 </div>
 
-                <!-- 4 Cột: Năm SX - Kiểu dáng - Hộp số - Nhiên liệu (Chuẩn Demo) -->
-                <div class="row g-2 g-md-3 mb-2.5">
+                <!-- Gợi ý Model xe nhanh -->
+                <div class="d-flex align-items-center gap-1.5 flex-wrap mb-3" id="quick-model-chips">
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Corolla Cross')">+ Corolla Cross</span>
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Vios')">+ Vios</span>
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Camry')">+ Camry</span>
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Fortuner')">+ Fortuner</span>
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Veloz Cross')">+ Veloz Cross</span>
+                  <span class="quick-pill-opt" onclick="selectQuickModel('Yaris Cross')">+ Yaris Cross</span>
+                </div>
+
+                <!-- 4 Cột: Năm SX - Kiểu dáng - Hộp số - Nhiên liệu -->
+                <div class="row g-2 g-md-3 mb-3">
                   <div class="col-6 col-md-3">
-                    <label class="bento-form-label">Năm sản xuất</label>
+                    <label class="bento-form-label">Năm sản xuất <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-year" onchange="updateLivePreview()">
                       <option value="2026">2026</option>
                       <option value="2025">2025</option>
@@ -545,31 +655,34 @@
                       <option value="2022">2022</option>
                       <option value="2021">2021</option>
                       <option value="2020">2020</option>
+                      <option value="2019">2019</option>
                     </select>
                   </div>
 
                   <div class="col-6 col-md-3">
-                    <label class="bento-form-label">Kiểu dáng</label>
+                    <label class="bento-form-label">Kiểu dáng <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-body" onchange="updateLivePreview()">
                       <option value="SUV" selected>SUV</option>
                       <option value="Sedan">Sedan</option>
                       <option value="Crossover">Crossover</option>
                       <option value="MPV">MPV</option>
                       <option value="Bán tải">Bán tải</option>
+                      <option value="Hatchback">Hatchback</option>
                     </select>
                   </div>
 
                   <div class="col-6 col-md-3">
-                    <label class="bento-form-label">Hộp số</label>
+                    <label class="bento-form-label">Hộp số <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-transmission" onchange="updateLivePreview()">
                       <option value="Tự động CVT" selected>Tự động CVT</option>
                       <option value="Tự động 6 cấp">Tự động</option>
                       <option value="Số sàn">Số sàn</option>
+                      <option value="Ly hợp kép">Ly hợp kép</option>
                     </select>
                   </div>
 
                   <div class="col-6 col-md-3">
-                    <label class="bento-form-label">Nhiên liệu</label>
+                    <label class="bento-form-label">Nhiên liệu <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-fuel" onchange="updateLivePreview()">
                       <option value="Xăng" selected>Xăng</option>
                       <option value="Dầu">Dầu</option>
@@ -579,150 +692,246 @@
                   </div>
                 </div>
 
-                <!-- 2 Cột: Giá bán & ODO -->
-                <div class="row g-3 mb-1">
+                <!-- Tình trạng xe & Màu sắc -->
+                <div class="row g-3 mb-2">
                   <div class="col-md-6">
-                    <input type="text" class="form-control bento-form-input" id="car-price-formatted" value="750.000.000 đ" oninput="handlePriceInput(this)">
+                    <label class="bento-form-label">Tình trạng xe <span class="text-danger">*</span></label>
+                    <select class="form-select bento-form-select" id="car-condition" onchange="handleConditionChange(this.value)">
+                      <option value="used" selected>Đã qua sử dụng</option>
+                      <option value="new">Xe mới 100%</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="bento-form-label">Màu ngoại thất <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control bento-form-input" id="car-color" value="Trắng Ngọc Trai" placeholder="Ví dụ: Trắng Ngọc Trai, Đen..." oninput="autoGenerateTitle()">
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- ============================================================
+                   BƯỚC 2: ĐỊNH GIÁ & ODO
+                   ============================================================ -->
+              <div class="form-step-pane" id="pane-step-2" style="display: none;">
+                
+                <!-- Giá bán & ODO (Có đầy đủ Label rõ ràng) -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="bento-form-label">Giá bán niêm yết (VNĐ) <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <input type="text" class="form-control bento-form-input" id="car-price-formatted" value="750.000.000 đ" oninput="handlePriceInput(this)">
+                      <span class="input-group-text bg-light text-muted">đ</span>
+                    </div>
                     <input type="hidden" id="car-price-raw" value="750000000">
-                    <div class="form-text small text-muted mt-1" id="car-price-words">
+                    <div class="form-text small text-orange-theme fw-semibold mt-1" id="car-price-words">
                       Bằng chữ: Bảy trăm năm mươi triệu đồng
                     </div>
                   </div>
 
                   <div class="col-md-6">
-                    <input type="text" class="form-control bento-form-input" id="car-mileage" value="18.000 km" oninput="updateLivePreview()">
-                  </div>
-                </div>
-
-                <!-- Feature Chips (Camera 360, Cửa sổ trời, Ghế da, Cốp điện) -->
-                <div class="d-flex flex-wrap gap-2 my-3">
-                  <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Camera 360')">
-                    <i class="bi bi-check2"></i> <span>Camera 360</span>
-                  </div>
-                  <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Cửa sổ trời')">
-                    <i class="bi bi-check2"></i> <span>Cửa sổ trời</span>
-                  </div>
-                  <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Ghế da cao cấp')">
-                    <i class="bi bi-check2"></i> <span>Ghế da cao cấp</span>
-                  </div>
-                  <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Cốp điện')">
-                    <i class="bi bi-check2"></i> <span>Cốp điện</span>
-                  </div>
-                </div>
-
-                <!-- Lưới 5 ảnh xe + Nút thêm ảnh (Chuẩn Demo) -->
-                <div class="row g-2 mb-4" id="bento-photo-thumbs-row">
-                  <div class="col">
-                    <div class="bento-photo-thumb">
-                      <img src="assets/images/cars/corolla_cross.jpg" alt="Ảnh 1" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+                    <label class="bento-form-label">Số km đã đi (ODO) <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <input type="text" class="form-control bento-form-input" id="car-mileage" value="18.000 km" oninput="handleOdoInput(this)">
+                      <span class="input-group-text bg-light text-muted">km</span>
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="bento-photo-thumb">
-                      <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80" alt="Ảnh 2">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="bento-photo-thumb">
-                      <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80" alt="Ảnh 3">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="bento-photo-thumb">
-                      <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=400&q=80" alt="Ảnh 4">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="bento-photo-thumb">
-                      <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=400&q=80" alt="Ảnh 5">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="bento-photo-add-slot" onclick="document.getElementById('car-images-input').click()">
-                      <i class="bi bi-plus-lg mb-1" style="font-size: 1.1rem;"></i>
-                      <span>Thêm ảnh</span>
-                      <input type="file" id="car-images-input" multiple accept="image/*" class="d-none" onchange="handleFilesUpload(this.files)">
+                    <!-- Chọn nhanh ODO -->
+                    <div class="d-flex align-items-center gap-1.5 mt-1.5 flex-wrap">
+                      <span class="quick-pill-opt" onclick="setQuickOdo('5.000 km')">&lt; 10.000 km</span>
+                      <span class="quick-pill-opt" onclick="setQuickOdo('18.000 km')">10.000 - 30.000 km</span>
+                      <span class="quick-pill-opt" onclick="setQuickOdo('50.000 km')">&gt; 50.000 km</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Hidden inputs for full compatibility -->
-                <input type="hidden" id="car-title" value="Toyota Corolla Cross 1.8V 2023 Trắng Ngọc Trai">
-                <input type="hidden" id="car-condition" value="used">
-                <input type="hidden" id="car-seats" value="5">
-                <input type="hidden" id="car-color" value="Trắng Ngọc Trai">
-                <input type="hidden" id="car-origin" value="Nhập khẩu Thái Lan">
-                <input type="hidden" id="car-location" value="Nha Trang">
-                <input type="hidden" id="seller-name" value="Nguyễn Hoàng Nam">
-                <input type="hidden" id="seller-phone" value="0912 345 678">
-                <textarea id="car-description" class="d-none">Xe gia đình sử dụng giữ gìn cẩn thận, bảo dưỡng định kỳ 100% tại hãng. Sơn zin 95%, nội thất da như mới, lốp sơ cua chưa hạ. Xe cam kết không đâm đụng, không ngập nước thủy kích.</textarea>
+                <!-- Xuất xứ & Địa điểm xem xe -->
+                <div class="row g-3 mb-2">
+                  <div class="col-md-6">
+                    <label class="bento-form-label">Xuất xứ xe</label>
+                    <select class="form-select bento-form-select" id="car-origin">
+                      <option value="Nhập khẩu Thái Lan" selected>Nhập khẩu Thái Lan</option>
+                      <option value="Lắp ráp trong nước">Lắp ráp trong nước</option>
+                      <option value="Nhập khẩu Nhật Bản">Nhập khẩu Nhật Bản</option>
+                      <option value="Nhập khẩu Mỹ">Nhập khẩu Mỹ</option>
+                      <option value="Nhập khẩu khác">Nhập khẩu khác</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="bento-form-label">Tỉnh / Thành phố xem xe <span class="text-danger">*</span></label>
+                    <select class="form-select bento-form-select" id="car-location" onchange="updateLivePreview()">
+                      <option value="Nha Trang, Khánh Hòa" selected>Nha Trang, Khánh Hòa</option>
+                      <option value="Hà Nội">Hà Nội</option>
+                      <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                      <option value="Đà Nẵng">Đà Nẵng</option>
+                      <option value="Cần Thơ">Cần Thơ</option>
+                      <option value="Hải Phòng">Hải Phòng</option>
+                    </select>
+                  </div>
+                </div>
 
               </div>
 
-              <!-- STEP 4 / MODAL DETAILS (THÔNG TIN BỔ SUNG KHI CẦN) -->
-              <div id="step-content-extra" style="display: none;">
-                <!-- Additional step details if clicked on stepper -->
+              <!-- ============================================================
+                   BƯỚC 3: TẢI ẢNH THỰC TẾ
+                   ============================================================ -->
+              <div class="form-step-pane" id="pane-step-3" style="display: none;">
+                
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                  <label class="bento-form-label mb-0">Bộ ảnh xe thực tế (Chọn gói mẫu hoặc tải ảnh mới)</label>
+                  <div class="d-flex gap-1.5">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2.5 small" onclick="applyPreset('suv-white')">
+                      <i class="bi bi-images me-1"></i> Mẫu Corolla Cross
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2.5 small" onclick="applyPreset('sedan-red')">
+                      <i class="bi bi-images me-1"></i> Mẫu Sedan
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Dropzone kéo thả -->
+                <div class="bento-photo-dropzone" onclick="document.getElementById('car-images-input').click()">
+                  <i class="bi bi-cloud-arrow-up text-orange-theme" style="font-size: 1.8rem;"></i>
+                  <div class="fw-bold text-dark mt-1" style="font-size: 0.9rem;">Bấm để tải ảnh lên hoặc kéo thả vào đây</div>
+                  <div class="text-muted small">Hỗ trợ JPG, PNG, WEBP (Bấm vào ảnh bất kỳ để đặt làm Ảnh bìa chính)</div>
+                  <input type="file" id="car-images-input" multiple accept="image/*" class="d-none" onchange="handleFilesUpload(this.files)">
+                </div>
+
+                <!-- Lưới 5 ô ảnh xe thực tế (Có thể chọn ảnh bìa hoặc xóa) -->
+                <div class="row g-2 mb-2" id="bento-photo-thumbs-row">
+                  <!-- Rendered dynamically by JS -->
+                </div>
+
               </div>
 
-              <!-- Bottom Actions Bar (Căn phải chuẩn Demo) -->
-              <div class="d-flex justify-content-end align-items-center gap-2 pt-2 border-top">
-                <button type="button" class="btn btn-outline-secondary px-3.5 py-2 rounded-3 fw-semibold bg-white" onclick="submitCarForm('draft')">
-                  Lưu nháp
+              <!-- ============================================================
+                   BƯỚC 4: TIỆN NGHI & XUẤT BẢN
+                   ============================================================ -->
+              <div class="form-step-pane" id="pane-step-4" style="display: none;">
+                
+                <!-- Chips tiện nghi nổi bật -->
+                <div class="mb-3">
+                  <label class="bento-form-label mb-2">Trang bị tiện nghi nổi bật (Bấm để bật/tắt)</label>
+                  <div class="d-flex flex-wrap gap-2" id="feature-chips-box">
+                    <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Camera 360')">
+                      <i class="bi bi-check2"></i> <span>Camera 360</span>
+                    </div>
+                    <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Cửa sổ trời')">
+                      <i class="bi bi-check2"></i> <span>Cửa sổ trời</span>
+                    </div>
+                    <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Ghế da cao cấp')">
+                      <i class="bi bi-check2"></i> <span>Ghế da cao cấp</span>
+                    </div>
+                    <div class="feature-pill-chip active" onclick="toggleFeatureChip(this, 'Cốp điện')">
+                      <i class="bi bi-check2"></i> <span>Cốp điện</span>
+                    </div>
+                    <div class="feature-pill-chip" onclick="toggleFeatureChip(this, 'Apple CarPlay')">
+                      <i class="bi bi-plus"></i> <span>Apple CarPlay</span>
+                    </div>
+                    <div class="feature-pill-chip" onclick="toggleFeatureChip(this, 'Cảm biến lùi')">
+                      <i class="bi bi-plus"></i> <span>Cảm biến lùi</span>
+                    </div>
+                    <div class="feature-pill-chip" onclick="toggleFeatureChip(this, 'Phanh tay điện tử')">
+                      <i class="bi bi-plus"></i> <span>Phanh tay điện tử</span>
+                    </div>
+                    <div class="feature-pill-chip" onclick="toggleFeatureChip(this, 'Cruise Control')">
+                      <i class="bi bi-plus"></i> <span>Cruise Control</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mô tả chi tiết xe -->
+                <div class="mb-3">
+                  <label class="bento-form-label">Mô tả tình trạng xe</label>
+                  <textarea class="form-control bento-form-input" id="car-description" rows="3" placeholder="Mô tả lịch sử bảo dưỡng, tình trạng xe...">Xe gia đình sử dụng giữ gìn cẩn thận, bảo dưỡng định kỳ 100% tại hãng. Sơn zin 95%, nội thất da như mới, lốp sơ cua chưa hạ. Xe cam kết không đâm đụng, không ngập nước thủy kích, bao kiểm tra test hãng toàn quốc.</textarea>
+                </div>
+
+                <!-- Thông tin người bán -->
+                <div class="p-3 bg-light border rounded-3 mb-2">
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <label class="bento-form-label">Họ và tên người bán <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control bento-form-input" id="seller-name" value="Nguyễn Hoàng Nam" oninput="updateLivePreview()">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="bento-form-label">Số điện thoại liên hệ <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control bento-form-input" id="seller-phone" value="0912 345 678" oninput="updateLivePreview()">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Thanh Nút Thao Tác Đáy Form (Linh hoạt theo bước) -->
+              <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top">
+                <button type="button" class="btn btn-outline-secondary px-3.5 py-2 rounded-3 fw-semibold bg-white" id="btn-action-prev" style="display: none;" onclick="prevStep()">
+                  <i class="bi bi-arrow-left me-1"></i> Quay lại
                 </button>
-                <button type="button" class="btn btn-cta-orange px-4 py-2 rounded-3 fw-bold text-white shadow-xs" onclick="submitCarForm('submit')">
-                  <span>Tiếp tục: Xem trước &amp; Gửi duyệt tin</span> <i class="bi bi-arrow-right ms-1"></i>
-                </button>
+
+                <div class="d-flex align-items-center gap-2 ms-auto">
+                  <button type="button" class="btn btn-outline-secondary px-3.5 py-2 rounded-3 fw-semibold bg-white" onclick="submitCarForm('draft')">
+                    Lưu nháp
+                  </button>
+                  <button type="button" class="btn btn-cta-orange px-4 py-2 rounded-3 fw-bold text-white shadow-xs" id="btn-action-next" onclick="nextStep()">
+                    <span>Tiếp tục: Định giá &amp; ODO</span> <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
               </div>
+
+              <!-- Hidden inputs -->
+              <input type="hidden" id="car-title" value="Toyota Corolla Cross 1.8V 2023 Trắng Ngọc Trai">
+              <input type="hidden" id="car-seats" value="5">
 
             </form>
 
           </div>
         </div>
 
-        <!-- CỘT PHẢI (38%): Live Preview Card Chuẩn Demo -->
+        <!-- CỘT PHẢI (38%): Live Preview Card Chuẩn Demo (Cố định thông minh) -->
         <div class="col-lg-5 col-xl-4">
-          <div class="bento-preview-card">
-            
-            <div class="small fw-bold text-dark mb-2.5">
-              Xem trước tin đăng trên sàn OtoMarket
+          <div class="sticky-preview-wrapper">
+            <div class="bento-preview-card">
+              
+              <div class="small fw-bold text-dark mb-2.5">
+                Xem trước tin đăng trên sàn OtoMarket
+              </div>
+
+              <!-- Preview Card Media -->
+              <div class="preview-media-box mb-3">
+                <img id="preview-card-img" src="assets/images/cars/corolla_cross.jpg" alt="Preview xe" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+                <span class="badge-preview-count">
+                  <i class="bi bi-camera me-1"></i><span id="preview-photo-num">5 ảnh</span>
+                </span>
+                <span class="badge-preview-source" id="preview-role-tag">
+                  Chính chủ bán
+                </span>
+              </div>
+
+              <!-- Vehicle Title (2 dòng tự nhiên) -->
+              <h3 class="h6 fw-bold text-dark mb-1" id="preview-card-title" style="line-height: 1.35;">
+                Toyota Corolla Cross 1.8V 2023 Trắng Ngọc Trai
+              </h3>
+
+              <!-- Price & ODO -->
+              <div class="d-flex align-items-baseline gap-2 mb-2">
+                <span class="preview-price-text" id="preview-card-price">750 triệu</span>
+              </div>
+
+              <!-- Spec pills row (2023, 18.000 km, Tự động, Xăng, Nha Trang) -->
+              <div class="d-flex flex-wrap gap-1.5 mb-3" id="preview-card-specs">
+                <span class="preview-pill-chip" id="preview-tag-year">2023</span>
+                <span class="preview-pill-chip" id="preview-tag-odo">18.000 km</span>
+                <span class="preview-pill-chip" id="preview-tag-trans">Tự động</span>
+                <span class="preview-pill-chip" id="preview-tag-fuel">Xăng</span>
+                <span class="preview-pill-chip"><i class="bi bi-geo-alt text-danger me-0.5"></i> <span id="preview-tag-loc">Nha Trang</span></span>
+              </div>
+
+              <!-- Seller Pill at bottom -->
+              <div class="preview-seller-pill">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Avatar" class="preview-seller-avatar">
+                <span id="preview-seller-text">Nguyễn Hoàng Nam • 0912 345 678</span>
+              </div>
+
             </div>
-
-            <!-- Preview Card -->
-            <div class="preview-media-box mb-3">
-              <img id="preview-card-img" src="assets/images/cars/corolla_cross.jpg" alt="Preview xe" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
-              <span class="badge-preview-count">
-                <i class="bi bi-camera me-1"></i><span id="preview-photo-num">8 ảnh</span>
-              </span>
-              <span class="badge-preview-source">
-                Chính chủ bán
-              </span>
-            </div>
-
-            <!-- Vehicle Title -->
-            <h3 class="h6 fw-bold text-dark mb-1" id="preview-card-title" style="line-height: 1.35;">
-              Toyota Corolla Cross 1.8V 2023 Trắng Ngọc Trai
-            </h3>
-
-            <!-- Price & ODO -->
-            <div class="d-flex align-items-baseline gap-2 mb-2">
-              <span class="preview-price-text" id="preview-card-price">750 triệu</span>
-            </div>
-
-            <!-- Spec pills row (2023, 18.000 km, Tự động, Xăng, Nha Trang) -->
-            <div class="d-flex flex-wrap gap-1.5 mb-3">
-              <span class="preview-pill-chip" id="preview-tag-year">2023</span>
-              <span class="preview-pill-chip" id="preview-tag-odo">18.000 km</span>
-              <span class="preview-pill-chip" id="preview-tag-trans">Tự động</span>
-              <span class="preview-pill-chip" id="preview-tag-fuel">Xăng</span>
-              <span class="preview-pill-chip"><i class="bi bi-geo-alt text-danger me-0.5"></i> <span id="preview-tag-loc">Nha Trang</span></span>
-            </div>
-
-            <!-- Seller Pill at bottom -->
-            <div class="preview-seller-pill">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Avatar" class="preview-seller-avatar">
-              <span>Nguyễn Hoàng Nam • 0912 345 678</span>
-            </div>
-
           </div>
         </div>
 
@@ -826,6 +1035,9 @@
   <script src="assets/js/app.js?v=20261023_app_v2"></script>
 
   <script>
+    let currentStep = 1;
+    let primaryImageIndex = 0;
+
     let uploadedImages = [
       "assets/images/cars/corolla_cross.jpg",
       "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80",
@@ -836,19 +1048,92 @@
 
     let selectedFeatures = ['Camera 360', 'Cửa sổ trời', 'Ghế da cao cấp', 'Cốp điện'];
 
-    function goToStep(step) {
-      document.querySelectorAll('.chevron-ribbon-item').forEach((item, idx) => {
-        item.classList.toggle('active', (idx + 1) === step);
-      });
-      if (typeof showToast === 'function') {
-        const names = ['', 'Thông tin xe', 'Định giá & ODO', 'Tải ảnh thực tế', 'Tiện nghi & Xuất bản'];
-        showToast("Đang ở bước: " + names[step], "info");
+    const BRAND_MODELS = {
+      'Toyota': ['Corolla Cross', 'Vios', 'Camry', 'Fortuner', 'Veloz Cross', 'Yaris Cross', 'Raize'],
+      'Hyundai': ['Santa Fe', 'Tucson', 'Accent', 'Creta', 'Elantra', 'Custin'],
+      'Mazda': ['CX-5', 'Mazda 3', 'CX-30', 'CX-8', 'Mazda 2'],
+      'Kia': ['Seltos', 'Carnival', 'Sonet', 'Sportage', 'K3', 'Sorento'],
+      'Honda': ['CR-V', 'City', 'Civic', 'HR-V'],
+      'Ford': ['Everest', 'Ranger', 'Territory', 'Explorer'],
+      'VinFast': ['VF 8', 'VF 6', 'VF 7', 'VF 5', 'VF 3'],
+      'Mercedes-Benz': ['C200', 'C300', 'GLC 300', 'E200', 'E300'],
+      'BMW': ['320i', '330i', '520i', 'X3', 'X5'],
+      'Mitsubishi': ['Xpander', 'Outlander', 'Xforce']
+    };
+
+    // Chuyển đổi giữa 4 bước mượt mà
+    function switchStep(step) {
+      if (step < 1 || step > 4) return;
+      currentStep = step;
+
+      // Cập nhật ribbon buttons
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`ribbon-step-${i}`);
+        const pane = document.getElementById(`pane-step-${i}`);
+        if (btn) {
+          btn.classList.toggle('active', i === currentStep);
+          btn.classList.toggle('completed', i < currentStep);
+        }
+        if (pane) {
+          pane.style.display = (i === currentStep) ? 'block' : 'none';
+        }
+      }
+
+      // Cập nhật nút đáy form
+      const btnPrev = document.getElementById('btn-action-prev');
+      const btnNext = document.getElementById('btn-action-next');
+
+      if (btnPrev) btnPrev.style.display = (currentStep > 1) ? 'inline-block' : 'none';
+
+      if (btnNext) {
+        const nextLabels = [
+          '',
+          'Tiếp tục: Định giá & ODO',
+          'Tiếp tục: Tải ảnh xe',
+          'Tiếp tục: Tiện nghi & Xuất bản',
+          'Xuất bản & Gửi duyệt tin ngay'
+        ];
+        if (currentStep === 4) {
+          btnNext.innerHTML = `<span>Xuất bản &amp; Gửi duyệt tin ngay</span> <i class="bi bi-check2-circle ms-1"></i>`;
+        } else {
+          btnNext.innerHTML = `<span>${nextLabels[currentStep]}</span> <i class="bi bi-arrow-right ms-1"></i>`;
+        }
       }
     }
 
+    function nextStep() {
+      if (currentStep < 4) {
+        switchStep(currentStep + 1);
+      } else {
+        submitCarForm('submit');
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        switchStep(currentStep - 1);
+      }
+    }
+
+    // Thay đổi hãng xe & cập nhật gợi ý
     function handleBrandChange(brand) {
-      const modelEl = document.getElementById('car-model');
-      if (brand === 'Toyota' && !modelEl.value) modelEl.value = 'Corolla Cross';
+      const chipsContainer = document.getElementById('quick-model-chips');
+      if (chipsContainer) {
+        const models = BRAND_MODELS[brand] || ['Tiêu chuẩn', 'Cao cấp'];
+        chipsContainer.innerHTML = models.map(m => `
+          <span class="quick-pill-opt" onclick="selectQuickModel('${m}')">+ ${m}</span>
+        `).join('');
+      }
+      const modelInput = document.getElementById('car-model');
+      if (BRAND_MODELS[brand] && BRAND_MODELS[brand].length > 0) {
+        modelInput.value = BRAND_MODELS[brand][0];
+      }
+      autoGenerateTitle();
+      updateLivePreview();
+    }
+
+    function selectQuickModel(modelName) {
+      document.getElementById('car-model').value = modelName;
       autoGenerateTitle();
       updateLivePreview();
     }
@@ -862,10 +1147,23 @@
       const brand = document.getElementById('car-brand').value;
       const model = document.getElementById('car-model').value.trim();
       const year = document.getElementById('car-year').value;
+      const color = document.getElementById('car-color') ? document.getElementById('car-color').value.trim() : '';
       if (brand && model) {
-        document.getElementById('car-title').value = `${brand} ${model} 1.8V ${year} Trắng Ngọc Trai`;
+        document.getElementById('car-title').value = `${brand} ${model} 1.8V ${year} ${color}`;
         updateLivePreview();
       }
+    }
+
+    function handleConditionChange(val) {
+      const odoInput = document.getElementById('car-mileage');
+      if (val === 'new') {
+        odoInput.value = '0 km';
+        odoInput.disabled = true;
+      } else {
+        if (odoInput.value === '0 km') odoInput.value = '18.000 km';
+        odoInput.disabled = false;
+      }
+      updateLivePreview();
     }
 
     function handlePriceInput(inputEl) {
@@ -894,13 +1192,62 @@
       updateLivePreview();
     }
 
-    function toggleFeatureChip(el, featureName) {
-      el.classList.toggle('active');
-      if (selectedFeatures.includes(featureName)) {
-        selectedFeatures = selectedFeatures.filter(f => f !== featureName);
-      } else {
-        selectedFeatures.push(featureName);
+    function handleOdoInput(inputEl) {
+      let digits = inputEl.value.replace(/\D/g, '');
+      if (!digits) {
+        inputEl.value = '0 km';
+        updateLivePreview();
+        return;
       }
+      const num = parseInt(digits, 10);
+      inputEl.value = num.toLocaleString('vi-VN') + ' km';
+      updateLivePreview();
+    }
+
+    function setQuickOdo(odoStr) {
+      document.getElementById('car-mileage').value = odoStr;
+      updateLivePreview();
+    }
+
+    // Quản lý ảnh
+    function renderPhotoRow() {
+      const row = document.getElementById('bento-photo-thumbs-row');
+      if (!row) return;
+
+      row.innerHTML = uploadedImages.slice(0, 5).map((url, idx) => {
+        const isPrimary = (idx === primaryImageIndex);
+        return `
+          <div class="col">
+            <div class="bento-photo-thumb ${isPrimary ? 'is-primary' : ''}" onclick="setPrimaryPhoto(${idx})" title="Bấm để đặt làm ảnh bìa">
+              <img src="${url}" alt="Ảnh ${idx + 1}" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+              ${isPrimary ? '<span class="bento-photo-thumb-badge"><i class="bi bi-star-fill text-warning me-1"></i>Bìa</span>' : ''}
+              ${uploadedImages.length > 1 ? `<button type="button" class="bento-photo-thumb-del" onclick="event.stopPropagation(); deletePhoto(${idx})" title="Xóa ảnh"><i class="bi bi-x"></i></button>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('') + `
+        <div class="col">
+          <div class="bento-photo-add-slot" onclick="document.getElementById('car-images-input').click()">
+            <i class="bi bi-plus-lg mb-1" style="font-size: 1.1rem;"></i>
+            <span>Thêm ảnh</span>
+          </div>
+        </div>
+      `;
+
+      updateLivePreview();
+    }
+
+    function setPrimaryPhoto(idx) {
+      primaryImageIndex = idx;
+      renderPhotoRow();
+      if (typeof showToast === 'function') showToast(`Đã chọn ảnh ${idx + 1} làm ảnh bìa chính!`, "info");
+    }
+
+    function deletePhoto(idx) {
+      if (uploadedImages.length <= 1) return;
+      uploadedImages.splice(idx, 1);
+      if (primaryImageIndex >= uploadedImages.length) primaryImageIndex = 0;
+      renderPhotoRow();
     }
 
     function handleFilesUpload(files) {
@@ -909,14 +1256,50 @@
         const reader = new FileReader();
         reader.onload = (e) => {
           uploadedImages.unshift(e.target.result);
-          document.getElementById('preview-card-img').src = e.target.result;
-          document.getElementById('preview-photo-num').textContent = `${uploadedImages.length} ảnh`;
+          primaryImageIndex = 0;
+          renderPhotoRow();
         };
         reader.readAsDataURL(file);
       });
-      if (typeof showToast === 'function') showToast(`Đã thêm ${files.length} ảnh vào tin đăng!`, "success");
+      if (typeof showToast === 'function') showToast(`Đã thêm ${files.length} ảnh mới!`, "success");
     }
 
+    function applyPreset(type) {
+      if (type === 'suv-white') {
+        uploadedImages = [
+          "assets/images/cars/corolla_cross.jpg",
+          "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=400&q=80"
+        ];
+      } else {
+        uploadedImages = [
+          "assets/images/cars/c200.jpg",
+          "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80",
+          "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80"
+        ];
+      }
+      primaryImageIndex = 0;
+      renderPhotoRow();
+      if (typeof showToast === 'function') showToast("Đã nạp bộ ảnh mẫu thành công!", "success");
+    }
+
+    // Quản lý Tiện nghi
+    function toggleFeatureChip(el, featureName) {
+      el.classList.toggle('active');
+      const icon = el.querySelector('i');
+      if (selectedFeatures.includes(featureName)) {
+        selectedFeatures = selectedFeatures.filter(f => f !== featureName);
+        if (icon) icon.className = 'bi bi-plus';
+      } else {
+        selectedFeatures.push(featureName);
+        if (icon) icon.className = 'bi bi-check2';
+      }
+    }
+
+    // Cập nhật Live Preview Card tức thời
     function updateLivePreview() {
       const brand = document.getElementById('car-brand').value;
       const model = document.getElementById('car-model').value.trim();
@@ -925,6 +1308,9 @@
       const mileage = document.getElementById('car-mileage').value.trim();
       const trans = document.getElementById('car-transmission').value.replace(' CVT', '').replace(' 6 cấp', '');
       const fuel = document.getElementById('car-fuel').value;
+      const loc = document.getElementById('car-location').value.split(',')[0].trim();
+      const seller = document.getElementById('seller-name').value.trim() || 'Nguyễn Hoàng Nam';
+      const phone = document.getElementById('seller-phone').value.trim() || '0912 345 678';
 
       document.getElementById('preview-card-title').textContent = `${brand} ${model} 1.8V ${year} Trắng Ngọc Trai`;
       document.getElementById('preview-card-price').textContent = rawPrice > 0 ? (rawPrice / 1000000).toFixed(0) + ' triệu' : '750 triệu';
@@ -932,8 +1318,15 @@
       document.getElementById('preview-tag-odo').textContent = mileage || '18.000 km';
       document.getElementById('preview-tag-trans').textContent = trans;
       document.getElementById('preview-tag-fuel').textContent = fuel;
+      document.getElementById('preview-tag-loc').textContent = loc;
+      document.getElementById('preview-seller-text').textContent = `${seller} • ${phone}`;
+
+      const primaryImg = uploadedImages[primaryImageIndex] || uploadedImages[0] || 'assets/images/cars/corolla_cross.jpg';
+      document.getElementById('preview-card-img').src = primaryImg;
+      document.getElementById('preview-photo-num').textContent = `${uploadedImages.length} ảnh`;
     }
 
+    // Lưu / Gửi duyệt tin
     function submitCarForm(actionType) {
       const user = typeof getLoggedInUser === 'function' ? getLoggedInUser() : null;
       if (!user) {
@@ -949,6 +1342,12 @@
       const mileageNum = parseInt(mileageStr.replace(/\D/g, ''), 10) || 18000;
       const title = `${brand} ${model} 1.8V ${year} Trắng Ngọc Trai`;
 
+      const sortedImages = [...uploadedImages];
+      if (primaryImageIndex > 0 && primaryImageIndex < sortedImages.length) {
+        const prim = sortedImages.splice(primaryImageIndex, 1)[0];
+        sortedImages.unshift(prim);
+      }
+
       const newListing = {
         id: "custom-" + Date.now(),
         title: title,
@@ -963,17 +1362,17 @@
         transmission: document.getElementById('car-transmission').value,
         bodyType: document.getElementById('car-body').value,
         seats: 5,
-        color: "Trắng Ngọc Trai",
-        origin: "Nhập khẩu Thái Lan",
-        location: "Nha Trang",
-        sellerAddress: "Trần Phú, TP. Nha Trang",
+        color: document.getElementById('car-color').value.trim() || "Trắng Ngọc Trai",
+        origin: document.getElementById('car-origin').value,
+        location: document.getElementById('car-location').value.split(',')[0].trim(),
+        sellerAddress: document.getElementById('car-location').value,
         sellerType: "Người bán cá nhân",
-        sellerName: "Nguyễn Hoàng Nam",
-        sellerPhone: "0912 345 678",
-        image: uploadedImages[0],
-        images: uploadedImages,
-        condition: "used",
-        isNew: false,
+        sellerName: document.getElementById('seller-name').value.trim(),
+        sellerPhone: document.getElementById('seller-phone').value.trim(),
+        image: sortedImages[0],
+        images: sortedImages,
+        condition: document.getElementById('car-condition').value,
+        isNew: document.getElementById('car-condition').value === 'new',
         status: actionType === 'draft' ? 'draft' : 'pending',
         features: selectedFeatures,
         description: document.getElementById('car-description').value,
@@ -988,7 +1387,7 @@
         if (actionType === 'draft') {
           showToast("Đã lưu bản nháp tin đăng thành công!", "info");
         } else {
-          showToast("Đã gửi duyệt tin đăng bán xe thành công!", "success");
+          showToast("Đã xuất bản & gửi xét duyệt tin đăng bán xe thành công!", "success");
         }
       }
 
@@ -998,6 +1397,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      renderPhotoRow();
       updateLivePreview();
     });
   </script>
