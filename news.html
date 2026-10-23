@@ -542,7 +542,26 @@
       transition: color 0.2s;
     }
 
-    /* SIDEBAR CỘT PHẢI */
+    /* SIDEBAR CỐ ĐỊNH CỘT TRÁI */
+    .sidebar-sticky-scroll {
+      top: 85px;
+      z-index: 10;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      padding-right: 4px;
+    }
+    .sidebar-sticky-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sidebar-sticky-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sidebar-sticky-scroll::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
     .oto-sidebar-widget {
       background: #FFFFFF;
       border: 1px solid #CBD5E1;
@@ -895,94 +914,12 @@
           <span class="current" id="reader-breadcrumb-title">Tên bài viết</span>
         </nav>
 
-        <!-- HÀNG 2 CỘT: CỘT BÁO CHÍ (68%) VÀ CỘT SIDEBAR (32%) -->
+        <!-- HÀNG 2 CỘT: SIDEBAR CỐ ĐỊNH BÊN TRÁI (32%) VÀ BÀI VIẾT BÊN PHẢI (68%) -->
         <div class="row g-4">
           
-          <!-- CỘT TRÁI (68%): NỘI DUNG BÀI VIẾT CHÍNH -->
-          <div class="col-lg-8">
-            <article class="article-main-card">
-              
-              <!-- Nút quay lại gọn gàng góc trên -->
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <button type="button" onclick="showArticlesList()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.80rem;">
-                  <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách tin
-                </button>
-                <div class="d-flex align-items-center gap-2">
-                  <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 text-muted" style="font-size: 0.75rem;" onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép liên kết bài viết!');">
-                    <i class="bi bi-share me-1"></i>Chia sẻ
-                  </button>
-                </div>
-              </div>
-
-              <!-- Tiêu đề bài viết H1 chuẩn Oto.com.vn -->
-              <h1 class="oto-article-title" id="reader-title">
-                Tiêu đề bài viết
-              </h1>
-
-              <!-- Meta bar (Chuyên mục, Ngày đăng, Lượt xem, Thời gian đọc) -->
-              <div class="oto-meta-bar">
-                <div class="oto-meta-left">
-                  <a href="javascript:void(0)" id="reader-cat-pill" class="oto-cat-pill">Thị Trường Ô Tô</a>
-                  <span>|</span>
-                  <span><i class="bi bi-calendar3 me-1"></i><span id="reader-date">22/10/2026</span></span>
-                  <span>|</span>
-                  <span><i class="bi bi-eye me-1"></i><span id="reader-views">2.450 lượt xem</span></span>
-                  <span>|</span>
-                  <span><i class="bi bi-clock me-1"></i><span id="reader-readtime">5 phút đọc</span></span>
-                </div>
-              </div>
-
-              <!-- Đoạn mở đầu (Sapo) in đậm chuẩn Oto.com.vn -->
-              <div class="oto-sapo-text" id="reader-sapo">
-                Tóm tắt dẫn đề bài viết.
-              </div>
-
-              <!-- Hộp Hotline & Tư Vấn Mua Trả Góp (Đặc trưng của Oto.com.vn) -->
-              <div class="oto-consult-banner">
-                <div>
-                  <div class="oto-consult-title">Liên hệ lái thử &bull; Mua trả góp &bull; Báo giá lăn bánh</div>
-                  <div class="small text-muted" style="font-size: 0.82rem;">Hỗ trợ thông tin kỹ thuật, thẩm định xe và đăng ký lái thử các dòng xe ô tô.</div>
-                </div>
-                <a href="tel:19006868" class="oto-consult-hotline flex-shrink-0">
-                  <i class="bi bi-telephone-fill"></i> 1900 6868
-                </a>
-              </div>
-
-              <!-- Nội dung bài viết chi tiết -->
-              <div class="oto-article-content" id="reader-content">
-                <!-- Nội dung động -->
-              </div>
-
-              <!-- Tags Cloud (Từ khóa bài viết chuẩn Oto.com.vn) -->
-              <div class="oto-tags-box" id="reader-tags-container">
-                <!-- Tags động -->
-              </div>
-
-              <!-- Chữ ký Ban biên tập & Nguồn tin -->
-              <div class="oto-author-footer">
-                <div>
-                  <div class="fw-bold text-dark small"><i class="bi bi-shield-check text-orange-theme me-1"></i>Ban Biên Tập Tin Tức &amp; Thị Trường OtoMarket</div>
-                  <div class="text-muted" style="font-size: 0.76rem;">Nội dung được tổng hợp từ dữ liệu vận hành thực tế và các quy định pháp luật hiện hành.</div>
-                </div>
-                <a href="cars.html" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold">
-                  Khám phá kho xe &rarr;
-                </a>
-              </div>
-
-              <!-- KHỐI BÀI VIẾT LIÊN QUAN DƯỚI BÀI VIẾT (CÁC TIN KHÁC) -->
-              <div class="oto-related-section">
-                <div class="oto-section-heading">CÁC TIN KHÁC</div>
-                <div id="reader-related-list">
-                  <!-- Rendered dynamically -->
-                </div>
-              </div>
-
-            </article>
-          </div>
-
-          <!-- CỘT PHẢI (32%): SIDEBAR CHUẨN OTO.COM.VN (STICKY) -->
-          <aside class="col-lg-4">
-            <div class="sticky-top" style="top: 85px; z-index: 10;">
+                    <!-- CỘT TRÁI (32%): SIDEBAR CỐ ĐỊNH CHUẨN OTO.COM.VN (STICKY) -->
+          <aside class="col-lg-4 order-lg-1 order-2">
+            <div class="sticky-top sidebar-sticky-scroll">
               
               <!-- WIDGET 1: TIN ĐỌC NHIỀU NHẤT (CÓ ĐÁNH SỐ #1, #2, #3, #4, #5) -->
               <div class="oto-sidebar-widget">
@@ -1066,6 +1003,88 @@
 
             </div>
           </aside>
+
+          <!-- CỘT PHẢI (68%): NỘI DUNG BÀI VIẾT CHÍNH -->
+          <div class="col-lg-8 order-lg-2 order-1">
+            <article class="article-main-card">
+              
+              <!-- Nút quay lại gọn gàng góc trên -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <button type="button" onclick="showArticlesList()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 fw-semibold" style="font-size: 0.80rem;">
+                  <i class="bi bi-arrow-left me-1"></i> Quay lại danh sách tin
+                </button>
+                <div class="d-flex align-items-center gap-2">
+                  <button type="button" class="btn btn-sm btn-light border rounded-pill px-2.5 py-1 text-muted" style="font-size: 0.75rem;" onclick="navigator.clipboard.writeText(window.location.href); alert('Đã sao chép liên kết bài viết!');">
+                    <i class="bi bi-share me-1"></i>Chia sẻ
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tiêu đề bài viết H1 chuẩn Oto.com.vn -->
+              <h1 class="oto-article-title" id="reader-title">
+                Tiêu đề bài viết
+              </h1>
+
+              <!-- Meta bar (Chuyên mục, Ngày đăng, Lượt xem, Thời gian đọc) -->
+              <div class="oto-meta-bar">
+                <div class="oto-meta-left">
+                  <a href="javascript:void(0)" id="reader-cat-pill" class="oto-cat-pill">Thị Trường Ô Tô</a>
+                  <span>|</span>
+                  <span><i class="bi bi-calendar3 me-1"></i><span id="reader-date">22/10/2026</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-eye me-1"></i><span id="reader-views">2.450 lượt xem</span></span>
+                  <span>|</span>
+                  <span><i class="bi bi-clock me-1"></i><span id="reader-readtime">5 phút đọc</span></span>
+                </div>
+              </div>
+
+              <!-- Đoạn mở đầu (Sapo) in đậm chuẩn Oto.com.vn -->
+              <div class="oto-sapo-text" id="reader-sapo">
+                Tóm tắt dẫn đề bài viết.
+              </div>
+
+              <!-- Hộp Hotline & Tư Vấn Mua Trả Góp (Đặc trưng của Oto.com.vn) -->
+              <div class="oto-consult-banner">
+                <div>
+                  <div class="oto-consult-title">Liên hệ lái thử &bull; Mua trả góp &bull; Báo giá lăn bánh</div>
+                  <div class="small text-muted" style="font-size: 0.82rem;">Hỗ trợ thông tin kỹ thuật, thẩm định xe và đăng ký lái thử các dòng xe ô tô.</div>
+                </div>
+                <a href="tel:19006868" class="oto-consult-hotline flex-shrink-0">
+                  <i class="bi bi-telephone-fill"></i> 1900 6868
+                </a>
+              </div>
+
+              <!-- Nội dung bài viết chi tiết -->
+              <div class="oto-article-content" id="reader-content">
+                <!-- Nội dung động -->
+              </div>
+
+              <!-- Tags Cloud (Từ khóa bài viết chuẩn Oto.com.vn) -->
+              <div class="oto-tags-box" id="reader-tags-container">
+                <!-- Tags động -->
+              </div>
+
+              <!-- Chữ ký Ban biên tập & Nguồn tin -->
+              <div class="oto-author-footer">
+                <div>
+                  <div class="fw-bold text-dark small"><i class="bi bi-shield-check text-orange-theme me-1"></i>Ban Biên Tập Tin Tức &amp; Thị Trường OtoMarket</div>
+                  <div class="text-muted" style="font-size: 0.76rem;">Nội dung được tổng hợp từ dữ liệu vận hành thực tế và các quy định pháp luật hiện hành.</div>
+                </div>
+                <a href="cars.html" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold">
+                  Khám phá kho xe &rarr;
+                </a>
+              </div>
+
+              <!-- KHỐI BÀI VIẾT LIÊN QUAN DƯỚI BÀI VIẾT (CÁC TIN KHÁC) -->
+              <div class="oto-related-section">
+                <div class="oto-section-heading">CÁC TIN KHÁC</div>
+                <div id="reader-related-list">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+            </article>
+          </div>
 
         </div>
       </div>
