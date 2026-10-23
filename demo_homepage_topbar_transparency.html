@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm Tra Topbar Mua Xe & Độ Trong Suốt Trang Chủ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { background-color: #0F172A; color: #FFFFFF; }
+    .demo-block {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .demo-block-title {
+      padding: 12px 20px;
+      background: #0F172A;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Mô phỏng khung cảnh Hero ảnh xe phía sau */
+    .hero-bg-preview {
+      background: url('assets/images/hero-car-bg.jpg') center center / cover no-repeat;
+      min-height: 220px;
+      position: relative;
+    }
+  </style>
+</head>
+<body class="p-4 index-bento-body">
+  <div class="container-fluid px-3 px-xl-5">
+
+    <!-- PHẦN 1: TOPBAR TRANG MUA XE (CARS.HTML) ĐÃ ĐỒNG BỘ 100% -->
+    <div class="demo-block">
+      <div class="demo-block-title">
+        <h5 class="fw-bold mb-0 text-white">1. Topbar Trang Mua Xe (cars.html) - Đã đồng bộ VI màu cam & icon cam</h5>
+        <span class="badge bg-success">Đã đồng bộ 100%</span>
+      </div>
+      <div class="bg-white">
+        <header id="portal-header-cars" class="portal-header-wrapper position-static bg-white">
+          <div class="portal-topbar-clean">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-2 gap-md-3 small">
+                <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+                  <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+                  <span class="text-dark">Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+                </span>
+                <span class="topbar-divider d-none d-sm-inline">|</span>
+                <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+                  <i class="bi bi-clock-fill text-orange-theme"></i>
+                  <span class="text-dark">Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center gap-2 gap-sm-3">
+                <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+                  <button type="button" class="lang-pill-btn active">VI</button>
+                  <button type="button" class="lang-pill-btn">EN</button>
+                </div>
+                <span class="topbar-divider">|</span>
+                <div id="navbar-auth-section">
+                  <div class="dropdown">
+                    <button class="topbar-user-btn dropdown-toggle d-flex align-items-center gap-2" type="button">
+                      <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
+                      <span class="d-inline user-name-label">NAM NGUYEN</span>
+                      <i class="bi bi-chevron-down user-dropdown-caret" style="font-size: 0.68rem;"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav class="portal-navbar-clean">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+              <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+                <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo" style="height: 40px;">
+              </a>
+
+              <ul class="nav align-items-center gap-1 d-none d-md-flex">
+                <li class="nav-item"><a class="nav-link-portal" href="index.html">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link-portal active" href="cars.html?condition=new">Ô tô mới</a></li>
+                <li class="nav-item"><a class="nav-link-portal" href="cars.html?condition=used">Ô tô cũ</a></li>
+                <li class="nav-item"><a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a></li>
+                <li class="nav-item"><a class="nav-link-portal" href="about.html">Giới thiệu</a></li>
+              </ul>
+
+              <div class="d-flex align-items-center gap-2">
+                <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích">
+                  <i class="bi bi-heart-fill text-danger"></i>
+                </a>
+                <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <span>+ Đăng bán xe</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <!-- PHẦN 2: TRANG CHỦ (INDEX.HTML) - TRONG SUỐT HOÀN TOÀN TRÊN NỀN ẢNH XE BAN ĐẦU -->
+    <div class="demo-block">
+      <div class="demo-block-title">
+        <h5 class="fw-bold mb-0 text-white">2. Trang Chủ (index.html) Ban Đầu: Trong suốt 100%, thấy rõ ảnh xe & showroom phía sau</h5>
+        <span class="badge bg-primary">Không bị tối/đen che khuất</span>
+      </div>
+      <div class="hero-bg-preview">
+        <header class="portal-header-wrapper" style="position: relative !important; background: transparent !important; box-shadow: none !important;">
+          <div class="portal-topbar-clean" style="background: transparent !important; border-bottom: 1px solid rgba(255,255,255,0.18) !important;">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-2 gap-md-3 small">
+                <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item text-white">
+                  <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+                  <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+                </span>
+                <span class="topbar-divider d-none d-sm-inline text-white-50">|</span>
+                <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item text-white">
+                  <i class="bi bi-clock-fill text-orange-theme"></i>
+                  <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center gap-2 gap-sm-3">
+                <div class="lang-switch-container" style="background: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.3) !important;">
+                  <button type="button" class="lang-pill-btn active">VI</button>
+                  <button type="button" class="lang-pill-btn text-white">EN</button>
+                </div>
+                <span class="topbar-divider text-white-50">|</span>
+                <div class="dropdown">
+                  <button class="topbar-user-btn d-flex align-items-center gap-2 text-white" style="background: rgba(255,255,255,0.12) !important; border: 1.5px solid rgba(255,255,255,0.35) !important;">
+                    <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
+                    <span class="d-inline user-name-label text-white">NAM NGUYEN</span>
+                    <i class="bi bi-chevron-down" style="font-size: 0.68rem;"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav class="portal-navbar-clean" style="background: transparent !important; border: none !important;">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+              <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+                <img src="assets/images/logo-light.png" alt="OtoMarket" style="height: 40px;">
+              </a>
+
+              <ul class="nav align-items-center gap-1 d-none d-md-flex">
+                <li class="nav-item"><a class="nav-link-portal active text-white" style="border-color: #FF6B00 !important; background: rgba(255,107,0,0.2) !important;" href="index.html">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white" href="cars.html?condition=new">Ô tô mới</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white" href="cars.html?condition=used">Ô tô cũ</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white" href="news.html">Tin tức &amp; Đánh giá</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white" href="about.html">Giới thiệu</a></li>
+              </ul>
+
+              <div class="d-flex align-items-center gap-2">
+                <a href="favorites.html" class="btn btn-fav-compact position-relative" style="background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.3) !important;">
+                  <i class="bi bi-heart-fill text-danger"></i>
+                </a>
+                <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <span>+ Đăng bán xe</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <!-- PHẦN 3: KHI RÊ CHUỘT (HOVER) TRÊN TRANG CHỦ: DẠNG TRONG SUỐT SÁNG MỜ (FROSTED GLASS) MỜ MỜ THẤY NỀN SAU -->
+    <div class="demo-block">
+      <div class="demo-block-title">
+        <h5 class="fw-bold mb-0 text-white">3. Trang Chủ Khi Rê Chuột (Hover): Dạng kính mờ trong suốt sáng (Frosted Glass), nhìn mờ mờ thấy xe sau</h5>
+        <span class="badge bg-warning text-dark">Hiệu ứng kính mờ trong suốt</span>
+      </div>
+      <div class="hero-bg-preview">
+        <header class="portal-header-wrapper" style="position: relative !important; background: rgba(255, 255, 255, 0.22) !important; backdrop-filter: blur(16px) saturate(180%) !important; -webkit-backdrop-filter: blur(16px) saturate(180%) !important; border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important; box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15) !important;">
+          <div class="portal-topbar-clean" style="background: rgba(255, 255, 255, 0.12) !important; border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex align-items-center gap-2 gap-md-3 small">
+                <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item text-white">
+                  <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+                  <span class="text-white fw-semibold">Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+                </span>
+                <span class="topbar-divider d-none d-sm-inline text-white-50">|</span>
+                <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item text-white">
+                  <i class="bi bi-clock-fill text-orange-theme"></i>
+                  <span class="text-white fw-semibold">Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center gap-2 gap-sm-3">
+                <div class="lang-switch-container" style="background: rgba(255,255,255,0.2) !important; border: 1px solid rgba(255,255,255,0.4) !important;">
+                  <button type="button" class="lang-pill-btn active">VI</button>
+                  <button type="button" class="lang-pill-btn text-white">EN</button>
+                </div>
+                <span class="topbar-divider text-white-50">|</span>
+                <div class="dropdown">
+                  <button class="topbar-user-btn d-flex align-items-center gap-2 text-white" style="background: rgba(255,255,255,0.2) !important; border: 1.5px solid rgba(255,255,255,0.45) !important;">
+                    <span class="user-avatar-dot"><i class="bi bi-person-fill"></i></span>
+                    <span class="d-inline user-name-label text-white fw-semibold">NAM NGUYEN</span>
+                    <i class="bi bi-chevron-down" style="font-size: 0.68rem;"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav class="portal-navbar-clean" style="background: transparent !important; border: none !important;">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+              <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+                <img src="assets/images/logo-light.png" alt="OtoMarket" style="height: 40px;">
+              </a>
+
+              <ul class="nav align-items-center gap-1 d-none d-md-flex">
+                <li class="nav-item"><a class="nav-link-portal active text-white" style="border-color: #FF6B00 !important; background: rgba(255,107,0,0.3) !important;" href="index.html">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white fw-semibold" href="cars.html?condition=new">Ô tô mới</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white fw-semibold" href="cars.html?condition=used">Ô tô cũ</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white fw-semibold" href="news.html">Tin tức &amp; Đánh giá</a></li>
+                <li class="nav-item"><a class="nav-link-portal text-white fw-semibold" href="about.html">Giới thiệu</a></li>
+              </ul>
+
+              <div class="d-flex align-items-center gap-2">
+                <a href="favorites.html" class="btn btn-fav-compact position-relative" style="background: rgba(255,255,255,0.2) !important; border-color: rgba(255,255,255,0.4) !important;">
+                  <i class="bi bi-heart-fill text-danger"></i>
+                </a>
+                <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <span>+ Đăng bán xe</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

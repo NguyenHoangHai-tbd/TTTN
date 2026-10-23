@@ -88,8 +88,21 @@
       left: 0;
       width: 100%;
       z-index: 1050;
-      background: linear-gradient(180deg, rgba(7, 11, 25, 0.75) 0%, rgba(7, 11, 25, 0.28) 65%, transparent 100%);
-      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: transparent !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled):hover {
+      background: rgba(255, 255, 255, 0.18) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
     }
 
     /* 1. Topbar ở trạng thái ban đầu: Nền Trong Suốt Trên Ảnh Nền Xe */

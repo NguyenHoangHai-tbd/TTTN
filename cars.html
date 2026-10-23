@@ -82,9 +82,9 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn.active,
     .lang-pill-btn.active {
-      background: #0F172A !important;
+      background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.15) !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
     }
 
     /* Nút Tài Khoản / Đăng Nhập */
@@ -116,9 +116,51 @@
       text-shadow: none !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
-    .topbar-user-btn:hover {
-      background: #F8FAFC !important;
-      border-color: #94A3B8 !important;
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show,
+    .topbar-user-btn:hover,
+    .topbar-user-btn:focus,
+    .topbar-user-btn.show {
+      background: #FF6B00 !important;
+      border-color: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show *,
+    .topbar-user-btn:hover *,
+    .topbar-user-btn:focus *,
+    .topbar-user-btn.show * {
+      color: #FFFFFF !important;
+      background: transparent !important;
+    }
+    .user-avatar-dot {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 22px !important;
+      height: 22px !important;
+      border-radius: 50% !important;
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      flex-shrink: 0 !important;
+      transition: all 0.2s ease !important;
+    }
+    .user-avatar-dot i,
+    .topbar-user-btn .user-avatar-dot i {
+      color: #FFFFFF !important;
+      font-size: 0.74rem !important;
+      line-height: 1 !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot,
+    .topbar-user-btn.show .user-avatar-dot {
+      background: #FFFFFF !important;
+      color: #FF6B00 !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot i,
+    .topbar-user-btn.show .user-avatar-dot i {
+      color: #FF6B00 !important;
     }
 
     /* 2. Navbar Chính */
@@ -496,6 +538,7 @@
     }
     .topbar-info-item { color: #0F172A !important; font-weight: 500 !important; font-size: 0.84rem !important; text-shadow: none !important; }
 
+    .text-orange-theme { color: #FF6B00 !important; }
   </style>
 </head>
 <body class="cars-bento-body">
@@ -510,12 +553,12 @@
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
           <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-geo-alt-fill text-muted"></i>
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
           <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-clock-fill text-muted"></i>
+            <i class="bi bi-clock-fill text-orange-theme"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
         </div>
@@ -529,7 +572,7 @@
           <span class="topbar-divider">|</span>
           <div id="navbar-auth-section">
             <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
-              <i class="bi bi-person-fill text-secondary"></i>
+              <i class="bi bi-person-fill text-orange-theme"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
           </div>
