@@ -899,10 +899,8 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <span class="badge badge-showroom-certified">
-                  <i class="bi bi-patch-check-fill me-1"></i>Xe Showroom chính hãng
-                </span>
-                <span class="badge bg-light text-dark border small">Đã xác minh</span>
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-building me-1.5 text-secondary"></i>Showroom chính hãng</h6>
+                <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
                 <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-4 flex-shrink-0" style="width: 58px; height: 58px; background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);">
@@ -942,10 +940,8 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <span class="badge bg-secondary text-white px-2.5 py-1 rounded-pill">
-                  <i class="bi bi-person-fill me-1"></i>Chính chủ ký gửi
-                </span>
-                <span class="badge bg-light text-success border small"><i class="bi bi-check2-circle me-1"></i>Đã thẩm định sàn</span>
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-person-fill me-1.5 text-secondary"></i>Người bán cá nhân</h6>
+                <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực SĐT</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
                 <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-4 flex-shrink-0" style="width: 58px; height: 58px; background: linear-gradient(135deg, #475569 0%, #334155 100%);">
@@ -1125,9 +1121,7 @@
               <div class="bento-card p-3 mb-4">
                 <div class="detail-gallery-main">
                   <img id="detail-main-img" src="${car.image}" alt="${car.title}">
-                  <span class="gallery-verified-badge">
-                    <i class="bi bi-patch-check-fill me-1"></i>Đã kiểm định chất lượng
-                  </span>
+
                   <span class="gallery-counter-badge" id="gallery-counter">
                     <i class="bi bi-camera me-1"></i> ${allImages.length} ảnh thực tế
                   </span>
@@ -1145,12 +1139,7 @@
               <div class="bento-card mb-4">
                 <div class="d-flex justify-content-between align-items-start gap-3 mb-2 flex-wrap">
                   <div>
-                    <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                      <span class="badge badge-showroom-certified">
-                        <i class="bi bi-shield-check me-1"></i>${isShowroom ? 'Showroom chính hãng' : 'Chính chủ ký gửi'}
-                      </span>
-                      <span class="badge badge-condition-pill">${isNewCar ? 'Xe mới 100%' : 'Xe lướt kiểm định'}</span>
-                    </div>
+
                     <h1 class="h3 fw-bold mb-1 text-dark">${car.title}</h1>
                     <div class="text-muted small d-flex flex-wrap gap-3 mt-1">
                       <span><i class="bi bi-clock me-1"></i> Đăng ngày: <strong>${car.postedDate || "Hôm nay"}</strong></span>
@@ -1179,9 +1168,6 @@
                     </span>
                   </div>
                   <div class="text-sm-end">
-                    <span class="badge bg-success-subtle text-success border border-success px-2.5 py-1 mb-1 d-inline-block">
-                      <i class="bi bi-tag-fill me-1"></i>Giá thật không phát sinh phí ẩn
-                    </span>
                     <div class="small text-muted">Ước tính trả góp từ <strong class="text-dark">8,2 triệu/tháng</strong></div>
                   </div>
                 </div>
