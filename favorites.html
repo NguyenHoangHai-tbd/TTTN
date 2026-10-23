@@ -505,11 +505,10 @@
       <!-- Header & KPI Stats Bento Card -->
       <div class="fav-header-card mb-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
         <div>
-          <div class="d-inline-flex align-items-center gap-1.5 px-2.5 py-1 rounded-pill bg-danger-subtle text-danger small fw-bold mb-2">
-            <i class="bi bi-bookmark-heart-fill"></i> KHO LƯU TRỮ CÁ NHÂN
-          </div>
-          <h1 class="h3 fw-extrabold text-dark mb-1">Danh Sách Xe Bạn Đang Quan Tâm</h1>
-          <p class="text-muted small mb-0">Theo dõi các mẫu xe yêu thích, cập nhật biến động giá và liên hệ nhanh người bán</p>
+          <h1 class="h4 fw-bold text-dark mb-1">
+            <i class="bi bi-heart-fill text-danger me-2"></i>Danh Sách Xe Yêu Thích
+          </h1>
+          <p class="text-muted small mb-0">Theo dõi các mẫu xe bạn quan tâm, cập nhật giá bán và liên hệ trực tiếp người bán</p>
         </div>
 
         <!-- 3 KPI Badges -->
@@ -600,9 +599,7 @@
       <div id="suggested-favorites-section" style="display: none;" class="mt-5 pt-3">
         <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
           <div>
-            <h2 class="h5 fw-bold text-dark mb-1 d-flex align-items-center gap-2">
-              <i class="bi bi-stars text-teal"></i> Gợi Ý Xe Đang Được Quan Tâm Nhiều Nhất
-            </h2>
+            <h2 class="h5 fw-bold text-dark mb-1">Gợi Ý Xe Đang Được Quan Tâm</h2>
             <p class="text-muted small mb-0">Các mẫu xe chất lượng trên sàn mà bạn có thể quan tâm</p>
           </div>
           <a href="cars.html" class="btn btn-outline-teal btn-sm fw-semibold d-inline-flex align-items-center gap-1 rounded-pill px-3 py-1.5">
@@ -758,6 +755,7 @@
         if (countExternal) countExternal.textContent = '0';
 
         container.innerHTML = '';
+        if (kpiContainer) kpiContainer.style.setProperty('display', 'none', 'important');
         if (emptyState) emptyState.style.display = 'block';
         if (controlsBar) controlsBar.style.setProperty('display', 'none', 'important');
         if (suggestedSection) suggestedSection.style.display = 'block';
@@ -766,6 +764,11 @@
         return;
       }
 
+      if (kpiContainer) {
+        kpiContainer.style.removeProperty('display');
+        kpiContainer.classList.remove('d-none');
+        kpiContainer.classList.add('d-flex');
+      }
       if (emptyState) emptyState.style.display = 'none';
       if (suggestedSection) suggestedSection.style.display = 'none';
       if (controlsBar) {
