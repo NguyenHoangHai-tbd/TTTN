@@ -380,11 +380,41 @@
       margin-bottom: 8px;
     }
 
-    /* CỘT PHẢI LIÊN HỆ STICKY */
+    /* KHỐI CHUYỂN ĐỔI NGÔN NGỮ VI / EN VIÊN THUỐC ĐỒNG BỘ */
+    .lang-switch-container {
+      display: inline-flex;
+      align-items: center;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .lang-pill-btn {
+      border: none;
+      background: transparent;
+      color: #64748B;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 16px;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: all 0.2s ease;
+    }
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A;
+      background: #E2E8F0;
+    }
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+    }
+
+    /* CỘT PHẢI LIÊN HỆ ĐỨNG YÊN CỐ ĐỊNH TỰ NHIÊN, KHÔNG TRÔI KHI KÉO TRANG */
     .sticky-seller-column {
-      position: sticky;
-      top: 90px;
-      z-index: 1000;
+      position: static !important;
     }
     .btn-hotline-call {
       background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%) !important;
@@ -716,57 +746,89 @@
   </div>
 
   <!-- Footer -->
-  <footer class="portal-footer bg-dark text-white pt-5 pb-3 mt-5">
-    <div class="container">
-      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" style="height: 38px;">
+    <!-- Footer Đồng Bộ Chuẩn Toàn Sàn (Nền Sáng footer-light) -->
+  <footer class="footer-light">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="col-lg-3 col-md-6">
+          <div class="brand-logo mb-3">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
           </div>
-          <p class="text-secondary small mb-3">
-            OtoMarket là nền tảng giao dịch và hệ thống showroom mua bán ô tô trực tuyến uy tín hàng đầu, thẩm định 176 hạng mục khắt khe, minh bạch pháp lý và hỗ trợ trả góp toàn quốc.
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
           </p>
-          <div class="small text-secondary">
-            <div><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i>Trụ sở: Đường Trần Phú, TP. Nha Trang, Khánh Hòa</div>
-            <div class="mt-1"><i class="bi bi-telephone-fill text-orange-theme me-2"></i>Hotline: 0901 202 626 (08:00 - 18:30)</div>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
           </div>
         </div>
-        <div class="col-6 col-lg-2">
-          <h6 class="fw-bold text-white mb-3">Mua Xe</h6>
-          <ul class="list-unstyled small text-secondary d-flex flex-column gap-2">
-            <li><a href="cars.html?condition=new" class="text-secondary text-decoration-none hover-orange">Ô tô mới 100%</a></li>
-            <li><a href="cars.html?condition=used" class="text-secondary text-decoration-none hover-orange">Ô tô cũ lướt</a></li>
-            <li><a href="cars.html?brand=Toyota" class="text-secondary text-decoration-none hover-orange">Xe Toyota</a></li>
-            <li><a href="cars.html?brand=Mazda" class="text-secondary text-decoration-none hover-orange">Xe Mazda</a></li>
-            <li><a href="cars.html?brand=VinFast" class="text-secondary text-decoration-none hover-orange">Xe VinFast</a></li>
+
+        <!-- Cột 2: Về OtoMarket -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Về OtoMarket</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">Giới thiệu công ty</a></li>
+            <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
+            <li><a href="cars.html">Tất cả xe đang bán</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
+            <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
-        <div class="col-6 col-lg-2">
-          <h6 class="fw-bold text-white mb-3">Dịch Vụ</h6>
-          <ul class="list-unstyled small text-secondary d-flex flex-column gap-2">
-            <li><a href="post-car.html" class="text-secondary text-decoration-none hover-orange">Đăng bán xe</a></li>
-            <li><a href="about.html" class="text-secondary text-decoration-none hover-orange">Kiểm định 176 điểm</a></li>
-            <li><a href="about.html" class="text-secondary text-decoration-none hover-orange">Vay trả góp ngân hàng</a></li>
-            <li><a href="news.html" class="text-secondary text-decoration-none hover-orange">Tin tức &amp; Đánh giá</a></li>
+
+        <!-- Cột 3: Dành cho người dùng -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="index.html#tool-rolling-price">Dự tính giá lăn bánh</a></li>
+            <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
           </ul>
         </div>
-        <div class="col-lg-4">
-          <h6 class="fw-bold text-white mb-3">Đăng Ký Nhận Bản Tin</h6>
-          <p class="text-secondary small mb-3">Cập nhật danh sách xe mới về showroom và biến động giá thị trường ô tô hàng tuần.</p>
-          <div class="input-group">
-            <input type="email" class="form-control" placeholder="Nhập email của bạn...">
-            <button class="btn btn-cta-orange px-3 fw-bold" type="button">Đăng ký</button>
+
+        <!-- Cột 4: Top thương hiệu -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 5: Văn phòng & Hotline -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-between align-items-center flex-wrap pt-3 small text-secondary">
-        <div>&copy; 2026 OtoMarket. Bản quyền thuộc về Hệ thống Showroom &amp; Sàn Ô tô Việt Nam.</div>
-        <div class="d-flex gap-3 mt-2 mt-sm-0">
-          <a href="about.html" class="text-secondary text-decoration-none">Giới thiệu</a>
-          <span>•</span>
-          <a href="news.html" class="text-secondary text-decoration-none">Tin tức</a>
-          <span>•</span>
-          <a href="cars.html" class="text-secondary text-decoration-none">Kho xe</a>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
+        <div class="d-flex gap-3">
+          <a href="about.html">Điều khoản sử dụng</a>
+          <a href="about.html">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
         </div>
       </div>
     </div>
@@ -1161,16 +1223,7 @@
       wrapper.innerHTML = `
         ${bannerHtml}
         <div class="container">
-          <!-- Thanh Breadcrumbs Bento -->
-          <nav class="bento-breadcrumb">
-            <a href="index.html"><i class="bi bi-house-door me-1"></i>Trang chủ</a>
-            <i class="bi bi-chevron-right" style="font-size: 0.72rem;"></i>
-            <a href="cars.html">Kho xe đang bán</a>
-            <i class="bi bi-chevron-right" style="font-size: 0.72rem;"></i>
-            <a href="cars.html?brand=${encodeURIComponent(car.brand)}">${car.brand}</a>
-            <i class="bi bi-chevron-right" style="font-size: 0.72rem;"></i>
-            <span class="active-crumb text-truncate" style="max-width: 320px;">${car.title}</span>
-          </nav>
+
 
           <div class="row g-4">
             <!-- Cột trái: Nội dung chi tiết xe (70%) -->
