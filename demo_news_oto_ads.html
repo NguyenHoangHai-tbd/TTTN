@@ -1220,6 +1220,8 @@
 
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js?v=20261023_news_auth"></script>
   <script>
     // Dữ liệu bài viết đầy đủ chuyên sâu (Đã bổ sung bài doanh số VinFast theo link oto.com.vn)
     const NEWS_ARTICLES = [
@@ -1818,6 +1820,10 @@
 
     // Khởi tạo ban đầu
     document.addEventListener('DOMContentLoaded', () => {
+      // Đồng bộ thông tin người dùng đã đăng nhập & số xe yêu thích
+      if (typeof syncHeaderUserUI === 'function') syncHeaderUserUI();
+      if (typeof updateFavoritesCountBadge === 'function') updateFavoritesCountBadge();
+      if (typeof syncAdminLinksVisibility === 'function') syncAdminLinksVisibility();
       const params = new URLSearchParams(window.location.search);
       const id = parseInt(params.get('id'));
       const q = params.get('q') || params.get('search');

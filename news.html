@@ -46,6 +46,107 @@
       border-bottom: 1px solid #CBD5E1 !important;
     }
 
+    /* Nút Tài Khoản / Đăng Nhập Trên Topbar - Đồng Bộ Chuẩn Toàn Sàn */
+    .topbar-user-btn.dropdown-toggle::after {
+      display: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
+    .topbar-user-btn {
+      border: 1px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      font-weight: 600 !important;
+      font-size: 0.8125rem !important;
+      padding: 5px 12px !important;
+      border-radius: 20px !important;
+      cursor: pointer;
+      transition: all 0.2s ease !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label,
+    .topbar-user-btn .user-name-label {
+      background: transparent !important;
+      border: none !important;
+      color: #0F172A !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.2px;
+      text-shadow: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show,
+    .topbar-user-btn:hover,
+    .topbar-user-btn:focus,
+    .topbar-user-btn.show {
+      background: #FF6B00 !important;
+      border-color: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show *,
+    .topbar-user-btn:hover *,
+    .topbar-user-btn:focus *,
+    .topbar-user-btn.show * {
+      color: #FFFFFF !important;
+      background: transparent !important;
+    }
+    .user-avatar-dot {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 22px !important;
+      height: 22px !important;
+      border-radius: 50% !important;
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      flex-shrink: 0 !important;
+      transition: all 0.2s ease !important;
+    }
+    .user-avatar-dot i,
+    .topbar-user-btn .user-avatar-dot i {
+      color: #FFFFFF !important;
+      font-size: 0.74rem !important;
+      line-height: 1 !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot,
+    .topbar-user-btn.show .user-avatar-dot {
+      background: #FFFFFF !important;
+      color: #FF6B00 !important;
+    }
+    .topbar-user-btn:hover .user-avatar-dot i,
+    .topbar-user-btn.show .user-avatar-dot i {
+      color: #FF6B00 !important;
+    }
+    .topbar-dropdown-menu,
+    #navbar-auth-section .dropdown-menu {
+      position: absolute !important;
+      z-index: 99999 !important;
+      margin-top: 10px !important;
+      border-radius: 14px !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.05) !important;
+      background: #FFFFFF !important;
+      min-width: 240px !important;
+      overflow: hidden;
+    }
+    .topbar-dropdown-menu .dropdown-item {
+      transition: all 0.15s ease;
+      font-size: 0.86rem;
+      border-left: 3px solid transparent;
+      color: #334155;
+    }
+    .topbar-dropdown-menu .dropdown-item:hover,
+    .topbar-dropdown-menu .dropdown-item:focus {
+      background-color: #FFF7ED !important;
+      color: #EA580C !important;
+      border-left-color: #FF6B00 !important;
+      padding-left: 18px !important;
+    }
+
     /* Topbar Chuẩn Sắc Nét */
     .portal-topbar-clean {
       background: #FFFFFF !important;
@@ -1220,6 +1321,8 @@
 
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js?v=20261023_news_auth"></script>
   <script>
     // Dữ liệu bài viết đầy đủ chuyên sâu (Đã bổ sung bài doanh số VinFast theo link oto.com.vn)
     const NEWS_ARTICLES = [
@@ -1818,6 +1921,10 @@
 
     // Khởi tạo ban đầu
     document.addEventListener('DOMContentLoaded', () => {
+      // Đồng bộ thông tin người dùng đã đăng nhập & số xe yêu thích
+      if (typeof syncHeaderUserUI === 'function') syncHeaderUserUI();
+      if (typeof updateFavoritesCountBadge === 'function') updateFavoritesCountBadge();
+      if (typeof syncAdminLinksVisibility === 'function') syncAdminLinksVisibility();
       const params = new URLSearchParams(window.location.search);
       const id = parseInt(params.get('id'));
       const q = params.get('q') || params.get('search');

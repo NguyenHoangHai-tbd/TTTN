@@ -3692,17 +3692,21 @@ body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-navbar-cl
   transition: all 0.35s ease !important;
 }
 
-/* HIỆU ỨNG RÊ CHUỘT (HOVER) TRANG CHỦ: TRONG SUỐT SÁNG MỜ (FROSTED GLASS) THẤY HÌNH NỀN XE PHÍA SAU */
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover {
-  background: rgba(255, 255, 255, 0.18) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.28) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+/* TRANG CHỦ: GIỮ NỀN 100% TRONG SUỐT KHI RÊ CHUỘT (HOVER), KHÔNG LÀM MỜ THANH TOPBAR VÀ HEADER */
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover,
+.portal-header-wrapper:not(.is-scrolled):hover {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22) !important;
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean,
+.portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
 body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item *,
@@ -3775,11 +3779,13 @@ body.index-bento-body .portal-header-wrapper.is-scrolled {
   border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
   transition: background 0.3s ease, box-shadow 0.3s ease !important;
 }
-body.index-bento-body .portal-header-wrapper.is-scrolled .portal-topbar-clean {
-  background: rgba(248, 250, 252, 0.45) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+body.index-bento-body .portal-header-wrapper.is-scrolled .portal-topbar-clean,
+.portal-header-wrapper.is-scrolled .portal-topbar-clean {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 6px 0 !important;
 }
 body.index-bento-body .portal-header-wrapper.is-scrolled .portal-navbar-clean {
   background: transparent !important;
@@ -3789,8 +3795,11 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .portal-navbar-clean {
 body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item,
 body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item * {
   color: #0F172A !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   text-shadow: none !important;
+}
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item i {
+  color: #FF6B00 !important;
 }
 body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn {
   color: #0F172A !important;

@@ -1116,6 +1116,17 @@ function resetDemoData() {
   }
 }
 
+// Chuyển đổi ngôn ngữ VI / EN toàn sàn
+if (typeof window.switchLanguage !== 'function') {
+  window.switchLanguage = function(lang, el) {
+    document.querySelectorAll('.lang-pill-btn').forEach(item => item.classList.remove('active'));
+    if (el) el.classList.add('active');
+    if (typeof showToast === 'function') {
+      showToast(lang.toUpperCase() === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
+    }
+  };
+}
+
 // Tự động khởi tạo khi tải trang
 document.addEventListener('DOMContentLoaded', () => {
   initializeStorage();
