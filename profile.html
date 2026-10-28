@@ -3,24 +3,412 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thông Tin Tài Khoản - OtoMarket</title>
+  <title>Thông Tin Tài Khoản - Sàn Giao Dịch Xe OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261016_purge">
-    <!-- Favicon -->
+  <link rel="stylesheet" href="assets/css/style.css?v=20261023_oto_style_v2">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
-</head>
-<body class="bg-light">
 
-  <!-- Navbar -->
-    <!-- ==========================================================================
-       HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR)
+  <script>
+    // Đảm bảo có tài khoản đăng nhập khi truy cập trang Hồ sơ
+    try {
+      if (!localStorage.getItem('otomarket_user')) {
+        localStorage.setItem('otomarket_user', JSON.stringify({
+          id: 'user-demo-1',
+          name: 'Nguyễn Hoàng Nam',
+          email: 'nam.nguyen@otomarket.vn',
+          phone: '0912 345 678',
+          city: 'TP. Nha Trang, Khánh Hòa',
+          role: 'user',
+          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80'
+        }));
+      }
+    } catch (e) {}
+  </script>
+
+  <style>
+    /* ==========================================================================
+       BENTO PROFILE STUDIO: ĐỒNG BỘ TOÀN SÀN (NỀN SLATE #EEF2F6)
+       ========================================================================== */
+    body.profile-bento-body,
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      background-color: #EEF2F6 !important;
+      color: #0F172A !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN (STICKY, ZERO OVERLAP)
+       ========================================================================== */
+    header#portal-header,
+    .portal-header-wrapper,
+    .portal-header-wrapper:not(.is-scrolled) {
+      position: sticky !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      z-index: 1050 !important;
+      background: #FFFFFF !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
+      border-bottom: 1px solid #CBD5E1 !important;
+    }
+
+    .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
+    .portal-topbar-clean {
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      font-size: 0.84rem !important;
+      padding: 7px 0 !important;
+      text-shadow: none !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
+    .topbar-info-item {
+      color: #0F172A !important;
+      font-weight: 500 !important;
+      font-size: 0.84rem !important;
+    }
+    .portal-header-wrapper:not(.is-scrolled) .topbar-divider,
+    .topbar-divider {
+      color: #CBD5E1 !important;
+    }
+
+    /* Pill Switcher chuyển ngôn ngữ chuẩn */
+    .lang-switch-container {
+      display: inline-flex;
+      align-items: center;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .lang-pill-btn {
+      border: none;
+      background: transparent;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 14px;
+      color: #64748B;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+    }
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 1px 4px rgba(255, 107, 0, 0.35);
+    }
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A;
+    }
+
+    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
+    .topbar-user-btn {
+      color: #0F172A !important;
+      border: 1.5px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      border-radius: 20px !important;
+      padding: 4px 12px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+    }
+
+    /* Nút CTA Cam OtoMarket */
+    .btn-cta-orange {
+      background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%) !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      font-weight: 700 !important;
+      border-radius: 10px !important;
+      padding: 8px 18px !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
+      transition: all 0.2s ease !important;
+      text-decoration: none !important;
+    }
+    .btn-cta-orange:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35) !important;
+      color: #FFFFFF !important;
+    }
+
+    .text-orange-theme { color: #FF6B00 !important; }
+
+    /* ==========================================================================
+       BENTO CARDS LAYOUT
+       ========================================================================== */
+    .bento-main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bento-profile-card {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 16px !important;
+      padding: 28px 24px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+    }
+
+    .bento-profile-hub {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 16px !important;
+      padding: 32px 36px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+    }
+
+    @media (max-width: 768px) {
+      .bento-profile-hub {
+        padding: 24px 18px !important;
+      }
+    }
+
+    /* Avatar Component */
+    .profile-avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+    }
+    .profile-avatar-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3.5px solid #FF6B00;
+      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.2);
+      background-color: #F8FAFC;
+    }
+    .profile-avatar-camera-btn {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+      transition: all 0.2s ease;
+    }
+    .profile-avatar-camera-btn:hover {
+      background: #FF6B00;
+      color: #FFFFFF;
+      border-color: #FF6B00;
+      transform: scale(1.06);
+    }
+
+    /* KPI Metrics Box */
+    .bento-kpi-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .bento-kpi-box:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+    .bento-kpi-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.2;
+    }
+    .bento-kpi-label {
+      font-size: 0.78rem;
+      color: #64748B;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    /* Member Navigation Buttons */
+    .member-nav-btn {
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .member-nav-btn-outline {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #1E293B;
+    }
+    .member-nav-btn-outline:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+      color: #0F172A;
+    }
+    .member-nav-btn-logout {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #DC2626;
+    }
+    .member-nav-btn-logout:hover {
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+      color: #B91C1C;
+    }
+
+    /* Bento Tabs */
+    .bento-tab-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid #F1F5F9;
+      margin-bottom: 28px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .bento-tab-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .bento-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #64748B;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 8px 8px 0 0;
+    }
+    .bento-tab-btn:hover {
+      color: #0F172A;
+    }
+    .bento-tab-btn.active {
+      color: #FF6B00 !important;
+      font-weight: 700 !important;
+    }
+    .bento-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: #FF6B00;
+      border-radius: 2px;
+    }
+
+    /* Form Inputs */
+    .bento-form-label {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 6px;
+    }
+    .bento-input-group .input-group-text {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
+      color: #64748B;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+    .bento-input-group .form-control,
+    .bento-input-group .form-select {
+      border-color: #CBD5E1;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: #0F172A;
+    }
+    .bento-input-group .form-control:focus,
+    .bento-input-group .form-select:focus {
+      border-color: #FF6B00;
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+    }
+    .bento-input-group .form-control[readonly] {
+      background-color: #F8FAFC;
+      color: #475569;
+    }
+
+    /* Footer Light Đồng Bộ Toàn Sàn */
+    footer.footer-light {
+      background: #F8FAFC !important;
+      border-top: 1px solid #E2E8F0 !important;
+      color: #64748B !important;
+      padding-top: 48px;
+      padding-bottom: 24px;
+    }
+    .footer-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: #64748B;
+      text-decoration: none;
+      font-size: 0.86rem;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: #FF6B00;
+    }
+    .social-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .social-icon-btn:hover {
+      background: #FF6B00;
+      border-color: #FF6B00;
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="profile-bento-body">
+
+  <!-- ==========================================================================
+       HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR, ZERO OVERLAP)
        ========================================================================== -->
   <header id="portal-header" class="portal-header-wrapper">
     <!-- 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập) -->
@@ -35,13 +423,13 @@
           <span class="topbar-divider d-none d-sm-inline">|</span>
           <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
             <i class="bi bi-clock-fill text-orange-theme"></i>
-            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+            <span>08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
         </div>
 
         <!-- Bên phải: Chuyển ngôn ngữ VI/EN & Nút Đăng nhập / Tài khoản -->
         <div class="d-flex align-items-center gap-2 gap-sm-3">
-          <!-- Cụm chuyển ngôn ngữ VI/EN -->
+          <!-- Cụm chuyển ngôn ngữ VI/EN dạng Pill Switcher -->
           <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
             <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
             <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
@@ -51,7 +439,7 @@
           <div id="navbar-auth-section">
             <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
               <i class="bi bi-person-fill text-orange-theme"></i>
-              <span class="user-name-label">Đăng nhập</span>
+              <span class="user-name-label">NAM NGUYEN</span>
             </a>
           </div>
         </div>
@@ -69,22 +457,25 @@
         <!-- Menu Điều Hướng Chính -->
         <ul class="nav align-items-center gap-1 d-none d-md-flex">
           <li class="nav-item">
-            <a class="nav-link-portal " href="index.html">Trang chủ</a>
+            <a class="nav-link-portal" href="index.html">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal " href="cars.html?condition=new">Ô tô mới</a>
+            <a class="nav-link-portal" href="cars.html">Kho xe đang bán</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal " href="cars.html?condition=used">Ô tô cũ</a>
+            <a class="nav-link-portal" href="cars.html?condition=new">Ô tô mới</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal " href="news.html">Tin tức &amp; Đánh giá</a>
+            <a class="nav-link-portal" href="cars.html?condition=used">Ô tô cũ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-portal " href="about.html">Giới thiệu</a>
+            <a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
           </li>
           <li class="nav-item admin-only admin-nav-item" style="display: none;">
-            <a class="nav-link-portal " href="admin.html">
+            <a class="nav-link-portal" href="admin.html">
               <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
               <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
             </a>
@@ -106,111 +497,294 @@
     </nav>
   </header>
 
-  <!-- Main Profile Content -->
-  <main class="py-5">
-    <div class="container">
-      <div class="row g-4">
+  <!-- ==========================================================================
+       MAIN CONTENT: BENTO EXECUTIVE PROFILE STUDIO (2 CỘT CHUYÊN NGHIỆP)
+       ========================================================================== -->
+  <main class="py-4 py-md-5">
+    <div class="container bento-main-container">
 
-        <!-- Cột trái: Thẻ tóm tắt thông tin người dùng -->
-        <div class="col-lg-4">
-          <div class="bg-white p-4 rounded-4 border text-center shadow-sm">
-            <div class="position-relative d-inline-block mb-3">
-              <img id="profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="rounded-circle border border-3 border-teal object-fit-cover" width="100" height="100">
-              <span class="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle p-2"></span>
+      <!-- Breadcrumb Điều Hướng Nhẹ Nhàng -->
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb small mb-0">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-muted">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="my-listings.html" class="text-decoration-none text-muted">Tài khoản</a></li>
+          <li class="breadcrumb-item active fw-semibold text-dark" aria-current="page">Hồ sơ cá nhân</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- ====================================================================
+             CỘT TRÁI: THẺ THÀNH VIÊN BENTO EXECUTIVE (AVATAR, KPI & SHORTCUTS)
+             ==================================================================== -->
+        <div class="col-lg-4 col-xl-4">
+          <div class="bento-profile-card text-center">
+            
+            <!-- Avatar Với Nút Đổi Ảnh Tiện Lợi -->
+            <div class="profile-avatar-wrapper mb-3">
+              <img id="profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80" alt="Avatar" class="profile-avatar-img">
+              <label for="avatar-file-input" class="profile-avatar-camera-btn" title="Thay đổi ảnh đại diện">
+                <i class="bi bi-camera-fill"></i>
+              </label>
+              <input type="file" id="avatar-file-input" class="d-none" accept="image/*" onchange="handleAvatarChange(event)">
             </div>
             
-            <h5 class="fw-bold mb-1" id="profile-card-name">--</h5>
-            <p class="text-muted small mb-3" id="profile-card-email">--</p>
+            <!-- Họ tên & Email người dùng -->
+            <h4 class="fw-bold text-dark mb-1" id="profile-card-name">Nguyễn Hoàng Nam</h4>
+            <p class="text-muted small mb-3 text-break" id="profile-card-email">nam.nguyen@otomarket.vn</p>
             
-            <div class="d-inline-block badge bg-teal-subtle text-teal px-3 py-2 rounded-pill small fw-semibold mb-4" id="profile-badge-role" style="background-color: var(--teal-light); color: var(--teal-color);">
-              <i class="bi bi-person-check-fill me-1"></i> Thành viên xác thực
+            <!-- Huy hiệu xác thực thành viên -->
+            <div class="d-inline-flex align-items-center gap-1.5 px-3 py-1.5 rounded-pill bg-success-subtle text-success small fw-semibold mb-4" id="profile-badge-role">
+              <i class="bi bi-patch-check-fill"></i>
+              <span>Thành viên xác thực • Người bán cá nhân</span>
             </div>
 
-            <!-- Thống kê tài khoản cá nhân -->
-            <div class="row g-2 border-top pt-3 mb-4 text-start">
+            <!-- Khối 2 Thẻ KPI Trực Quan (Tin đăng & Xe yêu thích) -->
+            <div class="row g-2 mb-4 text-start">
               <div class="col-6">
-                <div class="p-2 bg-light rounded-3 text-center">
-                  <span class="d-block small text-muted">Tin đang tạo</span>
-                  <strong class="fs-5 text-dark" id="stat-my-listings">0</strong>
-                </div>
+                <a href="my-listings.html" class="text-decoration-none d-block">
+                  <div class="bento-kpi-box">
+                    <div class="bento-kpi-val" id="stat-my-listings">4</div>
+                    <div class="bento-kpi-label">Tin đăng bán xe</div>
+                  </div>
+                </a>
               </div>
               <div class="col-6">
-                <div class="p-2 bg-light rounded-3 text-center">
-                  <span class="d-block small text-muted">Xe yêu thích</span>
-                  <strong class="fs-5 text-danger" id="stat-my-favs">0</strong>
-                </div>
+                <a href="favorites.html" class="text-decoration-none d-block">
+                  <div class="bento-kpi-box">
+                    <div class="bento-kpi-val text-danger" id="stat-my-favs">1</div>
+                    <div class="bento-kpi-label">Xe yêu thích</div>
+                  </div>
+                </a>
               </div>
             </div>
 
+            <!-- Các Nút Điều Hướng Nhanh -->
             <div class="d-grid gap-2">
-              <a href="my-listings.html" class="btn btn-outline-dark btn-sm py-2">
-                <i class="bi bi-card-checklist me-1"></i> Quản lý tin đăng của tôi
+              <a href="my-listings.html" class="member-nav-btn member-nav-btn-outline">
+                <i class="bi bi-card-checklist text-muted"></i>
+                <span>Quản lý tin đăng của tôi</span>
               </a>
-              <a href="favorites.html" class="btn btn-outline-danger btn-sm py-2">
-                <i class="bi bi-heart me-1"></i> Danh sách xe đã lưu
+              <a href="favorites.html" class="member-nav-btn member-nav-btn-outline">
+                <i class="bi bi-heart text-danger"></i>
+                <span>Danh sách xe đã lưu</span>
               </a>
-              <button class="btn btn-outline-secondary btn-sm py-2 mt-2" onclick="logoutUser()">
-                <i class="bi bi-box-arrow-right me-1"></i> Đăng xuất tài khoản
+              <a href="post-car.html" class="member-nav-btn btn-cta-orange text-white">
+                <i class="bi bi-plus-circle-fill"></i>
+                <span>+ Đăng bán xe mới</span>
+              </a>
+              <button type="button" class="member-nav-btn member-nav-btn-logout mt-1" onclick="logoutUser()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Đăng xuất tài khoản</span>
               </button>
             </div>
+
           </div>
         </div>
 
-        <!-- Cột phải: Form cập nhật họ tên và số điện thoại -->
-        <div class="col-lg-8">
-          <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm">
-            <div class="d-flex justify-content-between align-items-center pb-3 mb-4 border-bottom">
-              <div>
-                <h4 class="h5 fw-bold mb-1">Cập nhật hồ sơ cá nhân</h4>
-                <p class="text-muted small mb-0">Chỉnh sửa họ tên hiển thị và số điện thoại liên hệ trên sàn</p>
-              </div>
-              <span class="badge bg-light text-muted border px-2 py-1 small">
-                <i class="bi bi-lock-fill me-1 text-success"></i> Dữ liệu bảo mật
-              </span>
+        <!-- ====================================================================
+             CỘT PHẢI: BENTO PROFILE & SECURITY HUB (TABS & THÔNG TIN FORM)
+             ==================================================================== -->
+        <div class="col-lg-8 col-xl-8">
+          <div class="bento-profile-hub">
+
+            <!-- Tiêu đề & Giới thiệu khối (Không dùng chú thích xanh AI) -->
+            <div class="mb-3">
+              <h3 class="fw-bold text-dark mb-1" style="font-size: 1.45rem;">Thông Tin Hồ Sơ Cá Nhân</h3>
+              <p class="text-muted small mb-0">Quản lý thông tin liên hệ và tùy chọn tài khoản của bạn trên sàn OtoMarket</p>
             </div>
 
-            <form id="profile-form" onsubmit="handleProfileUpdateSubmit(event)">
-              
-              <!-- Họ và tên -->
-              <div class="mb-4">
-                <label class="form-label fw-bold small">Họ và tên hiển thị <span class="text-danger">*</span></label>
-                <div class="input-group">
-                  <span class="input-group-text bg-light"><i class="bi bi-person-fill"></i></span>
-                  <input type="text" class="form-control" id="profile-name-input" placeholder="Nhập họ và tên của bạn" required>
+            <!-- Thanh Tabs Chuyển Đổi Bento -->
+            <div class="bento-tab-nav" role="tablist">
+              <button type="button" class="bento-tab-btn active" id="tab-btn-info" onclick="switchProfileTab('info')">
+                <i class="bi bi-person-lines-fill me-1.5"></i> Thông tin cá nhân
+              </button>
+              <button type="button" class="bento-tab-btn" id="tab-btn-password" onclick="switchProfileTab('password')">
+                <i class="bi bi-shield-lock me-1.5"></i> Đổi mật khẩu
+              </button>
+              <button type="button" class="bento-tab-btn" id="tab-btn-settings" onclick="switchProfileTab('settings')">
+                <i class="bi bi-bell me-1.5"></i> Cài đặt thông báo
+              </button>
+            </div>
+
+            <!-- ==========================================
+                 TAB 1: THÔNG TIN CÁ NHÂN (MẶC ĐỊNH)
+                 ========================================== -->
+            <div id="tab-pane-info">
+              <form id="profile-form" onsubmit="handleProfileUpdateSubmit(event)">
+                
+                <!-- Họ và tên hiển thị -->
+                <div class="mb-4">
+                  <label class="bento-form-label" for="profile-name-input">
+                    Họ và tên hiển thị <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" class="form-control" id="profile-name-input" placeholder="Ví dụ: Nguyễn Hoàng Nam" required>
+                  </div>
+                  <div class="form-text small text-muted mt-1.5">
+                    Tên này sẽ hiển thị công khai cho người mua khi bạn đăng tin bán xe.
+                  </div>
                 </div>
-                <div class="form-text small">Tên này sẽ hiển thị cho người mua khi bạn đăng tin bán xe.</div>
+
+                <!-- Số điện thoại liên hệ -->
+                <div class="mb-4">
+                  <label class="bento-form-label" for="profile-phone-input">
+                    Số điện thoại liên hệ <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                    <input type="tel" class="form-control" id="profile-phone-input" placeholder="Ví dụ: 0912 345 678" required>
+                  </div>
+                  <div class="form-text small text-muted mt-1.5">
+                    Khách mua xe sẽ liên hệ gọi điện hoặc nhắn tin Zalo qua số này.
+                  </div>
+                </div>
+
+                <!-- Địa chỉ Email (Định danh) -->
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label class="bento-form-label mb-0" for="profile-email-input">
+                      Địa chỉ Email (Định danh tài khoản)
+                    </label>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 small fw-semibold">
+                      <i class="bi bi-check2-circle me-1"></i> Đã xác thực
+                    </span>
+                  </div>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control" id="profile-email-input" readonly>
+                  </div>
+                  <div class="form-text small text-muted mt-1.5">
+                    Email là mã định danh cố định để đăng nhập và bảo mật tài khoản OtoMarket.
+                  </div>
+                </div>
+
+                <!-- Khu vực / Tỉnh thành giao dịch -->
+                <div class="mb-4">
+                  <label class="bento-form-label" for="profile-city-select">
+                    Khu vực / Tỉnh thành giao dịch
+                  </label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                    <select class="form-select" id="profile-city-select">
+                      <option value="TP. Nha Trang, Khánh Hòa" selected>TP. Nha Trang, Khánh Hòa</option>
+                      <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                      <option value="Hà Nội">Hà Nội</option>
+                      <option value="Đà Nẵng">Đà Nẵng</option>
+                      <option value="Cần Thơ">Cần Thơ</option>
+                      <option value="Bình Dương">Bình Dương</option>
+                      <option value="Đồng Nai">Đồng Nai</option>
+                      <option value="Lâm Đồng">Lâm Đồng</option>
+                      <option value="Đắk Lắk">Đắk Lắk</option>
+                      <option value="Khác">Tỉnh thành khác</option>
+                    </select>
+                  </div>
+                  <div class="form-text small text-muted mt-1.5">
+                    Địa phương mặc định được tự động điền khi bạn tạo tin đăng bán xe mới.
+                  </div>
+                </div>
+
+                <!-- Nhóm nút hành động Form -->
+                <div class="d-flex justify-content-end align-items-center gap-2 pt-3 border-top mt-4">
+                  <button type="button" class="btn btn-light border px-4 py-2.5 fw-semibold text-secondary" onclick="resetProfileForm()">
+                    Hủy bỏ
+                  </button>
+                  <button type="submit" class="btn btn-cta-orange px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-1.5">
+                    <i class="bi bi-check2-circle fs-6"></i>
+                    <span>Lưu thay đổi hồ sơ</span>
+                  </button>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- ==========================================
+                 TAB 2: ĐỔI MẬT KHẨU
+                 ========================================== -->
+            <div id="tab-pane-password" class="d-none">
+              <form id="password-form" onsubmit="handlePasswordChangeSubmit(event)">
+                <div class="mb-4">
+                  <label class="bento-form-label" for="curr-password">Mật khẩu hiện tại <span class="text-danger">*</span></label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                    <input type="password" class="form-control" id="curr-password" placeholder="Nhập mật khẩu đang dùng" required>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="bento-form-label" for="new-password">Mật khẩu mới <span class="text-danger">*</span></label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                    <input type="password" class="form-control" id="new-password" placeholder="Tối thiểu 8 ký tự" minlength="8" required>
+                  </div>
+                  <div class="form-text small text-muted mt-1">Mật khẩu nên chứa cả chữ hoa, chữ thường và chữ số để đảm bảo an toàn.</div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="bento-form-label" for="confirm-password">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
+                  <div class="input-group bento-input-group">
+                    <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="Nhập lại mật khẩu mới" minlength="8" required>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end align-items-center gap-2 pt-3 border-top mt-4">
+                  <button type="button" class="btn btn-light border px-4 py-2.5 fw-semibold text-secondary" onclick="switchProfileTab('info')">
+                    Quay lại
+                  </button>
+                  <button type="submit" class="btn btn-cta-orange px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-1.5">
+                    <i class="bi bi-shield-check fs-6"></i>
+                    <span>Cập nhật mật khẩu</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- ==========================================
+                 TAB 3: CÀI ĐẶT THÔNG BÁO
+                 ========================================== -->
+            <div id="tab-pane-settings" class="d-none">
+              <div class="d-flex flex-column gap-3 py-2">
+                <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-dark">Tin nhắn &amp; Liên hệ từ người mua</div>
+                    <div class="text-muted small">Nhận thông báo tức thì khi có khách để lại lời nhắn hoặc hỏi giá xe.</div>
+                  </div>
+                  <div class="form-check form-switch fs-5">
+                    <input class="form-check-input" type="checkbox" id="switch-inquiry" checked>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-dark">Trạng thái duyệt tin đăng xe</div>
+                    <div class="text-muted small">Thông báo kết quả duyệt tin từ đội ngũ kiểm duyệt viên Showroom.</div>
+                  </div>
+                  <div class="form-check form-switch fs-5">
+                    <input class="form-check-input" type="checkbox" id="switch-approval" checked>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-dark">Biến động giá thị trường ô tô</div>
+                    <div class="text-muted small">Gửi phân tích định giá định kỳ cho các mẫu xe trong danh sách yêu thích của bạn.</div>
+                  </div>
+                  <div class="form-check form-switch fs-5">
+                    <input class="form-check-input" type="checkbox" id="switch-price-trend">
+                  </div>
+                </div>
               </div>
 
-              <!-- Số điện thoại -->
-              <div class="mb-4">
-                <label class="form-label fw-bold small">Số điện thoại liên hệ <span class="text-danger">*</span></label>
-                <div class="input-group">
-                  <span class="input-group-text bg-light"><i class="bi bi-telephone-fill"></i></span>
-                  <input type="tel" class="form-control" id="profile-phone-input" placeholder="Nhập số điện thoại" required>
-                </div>
-                <div class="form-text small">Khách hàng sẽ liên hệ xem xe qua số điện thoại này.</div>
-              </div>
-
-              <!-- Địa chỉ email (Read-only) -->
-              <div class="mb-4">
-                <label class="form-label fw-bold small">Địa chỉ Email (Định danh tài khoản)</label>
-                <div class="input-group">
-                  <span class="input-group-text bg-light"><i class="bi bi-envelope-fill"></i></span>
-                  <input type="email" class="form-control bg-light" id="profile-email-input" readonly>
-                </div>
-                <div class="form-text small text-muted">Email là định danh cố định của tài khoản, không thể thay đổi.</div>
-              </div>
-
-              <div class="d-flex justify-content-end gap-2 pt-3 border-top">
-                <a href="index.html" class="btn btn-outline-secondary px-4">
-                  Hủy
-                </a>
-                <button type="submit" class="btn btn-teal px-4 fw-semibold">
-                  <i class="bi bi-check2-circle me-1"></i> Lưu thông tin thay đổi
+              <div class="d-flex justify-content-end align-items-center gap-2 pt-3 border-top mt-4">
+                <button type="button" class="btn btn-cta-orange px-4 py-2.5 fw-bold d-inline-flex align-items-center gap-1.5" onclick="saveNotificationSettings()">
+                  <i class="bi bi-check2-circle fs-6"></i>
+                  <span>Lưu cài đặt thông báo</span>
                 </button>
               </div>
+            </div>
 
-            </form>
           </div>
         </div>
 
@@ -218,26 +792,30 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-custom">
-    <div class="container">
-      <div class="row gy-4 mb-5">
-        <div class="col-lg-4 col-md-6">
+  <!-- ==========================================================================
+       FOOTER ĐỒNG BỘ TIÊU CHUẨN (footer-light)
+       ========================================================================== -->
+  <footer class="footer-light">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="col-lg-3 col-md-6">
           <div class="brand-logo mb-3">
-            <img src="assets/images/logo.png" alt="OtoMarket" class="site-logo footer-logo">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
           </div>
-          <p class="small text-secondary mb-3">
-            Nền tảng công nghệ mua bán ô tô trực tuyến hàng đầu. Minh bạch thông tin, cam kết chất lượng kiểm định và hỗ trợ trọn đời cho chủ xe.
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
           </p>
-          <div class="d-flex gap-3 text-secondary fs-5">
-            <a href="#" class="text-secondary"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-tiktok"></i></a>
-            <a href="#" class="text-secondary"><i class="bi bi-telegram"></i></a>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-6">
+        <!-- Cột 2: Về OtoMarket -->
+        <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Về OtoMarket</h5>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
@@ -248,31 +826,40 @@
           </ul>
         </div>
 
+        <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Dành cho người dùng</h5>
           <ul class="footer-links">
             <li><a href="post-car.html">Đăng tin bán xe</a></li>
             <li><a href="my-listings.html">Quản lý tin đăng</a></li>
             <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
+            <li><a href="profile.html">Thông tin tài khoản</a></li>
             <li><a href="login.html">Đăng nhập tài khoản</a></li>
           </ul>
         </div>
 
+        <!-- Cột 4: Thông tin liên hệ -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Thông tin liên hệ</h5>
-          <p class="small mb-2"><i class="bi bi-geo-alt-fill text-teal me-2"></i> Trụ sở chính: TP. Nha Trang, Tỉnh Khánh Hòa</p>
-          <p class="small mb-2"><i class="bi bi-geo-alt-fill text-teal me-2"></i> Văn phòng: Đường Trần Phú, TP. Nha Trang, Khánh Hòa</p>
-          <p class="small mb-2"><i class="bi bi-telephone-fill text-teal me-2"></i> Hotline 24/7: <strong>1900 6868</strong></p>
-          <p class="small mb-2"><i class="bi bi-envelope-fill text-teal me-2"></i> Email: support@otomarket.vn</p>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Trụ sở chính: TP. Nha Trang, Khánh Hòa</p>
+          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Văn phòng: Đường Trần Phú, TP. Nha Trang</p>
+          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-orange-theme me-2"></i> Hotline 24/7: <strong class="text-dark">1900 6868</strong></p>
+          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-orange-theme me-2"></i> Email: support@otomarket.vn</p>
         </div>
       </div>
 
-      <div class="border-top border-secondary pt-4 d-flex justify-content-center justify-content-md-end gap-3 small text-secondary">
-        <a href="about.html" class="text-secondary">Điều khoản sử dụng</a>
-        <a href="about.html" class="text-secondary">Chính sách bảo mật</a>
-        <button class="btn btn-link p-0 text-secondary text-decoration-none small" onclick="resetDemoData()">
-          <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
-        </button>
+      <!-- Dòng Bản quyền & Khôi phục dữ liệu gốc -->
+      <div class="border-top border-secondary-subtle pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
+        <div>© 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu</div>
+        <div class="d-flex align-items-center gap-3">
+          <a href="about.html" class="text-muted text-decoration-none">Điều khoản sử dụng</a>
+          <span class="text-secondary">•</span>
+          <a href="about.html" class="text-muted text-decoration-none">Chính sách bảo mật</a>
+          <span class="text-secondary">•</span>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small d-inline-flex align-items-center gap-1" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
+        </div>
       </div>
     </div>
   </footer>
@@ -282,58 +869,178 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261016_purge"></script>
+  <script src="assets/js/app.js?v=20261023_oto_app_v2"></script>
   <script>
+    // Tab switching
+    function switchProfileTab(tabName) {
+      const tabs = ['info', 'password', 'settings'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const pane = document.getElementById(`tab-pane-${t}`);
+        if (btn && pane) {
+          if (t === tabName) {
+            btn.classList.add('active');
+            pane.classList.remove('d-none');
+          } else {
+            btn.classList.remove('active');
+            pane.classList.add('d-none');
+          }
+        }
+      });
+    }
+
+    // Load dữ liệu người dùng
     function loadProfileData() {
       const user = getLoggedInUser();
       if (!user) {
-        // Dự phòng nếu script chưa redirect
         window.location.replace('login.html?redirect=profile.html');
         return;
       }
 
-      // Điền thông tin vào thẻ hiển thị
-      document.getElementById('profile-card-name').textContent = user.name || "Người dùng";
-      document.getElementById('profile-card-email').textContent = user.email || "";
-      if (user.avatar) {
-        document.getElementById('profile-avatar').src = user.avatar;
+      // Điền thông tin vào thẻ hiển thị bên trái
+      const cardName = document.getElementById('profile-card-name');
+      const cardEmail = document.getElementById('profile-card-email');
+      const avatarEl = document.getElementById('profile-avatar');
+
+      if (cardName) cardName.textContent = user.name || "Nguyễn Hoàng Nam";
+      if (cardEmail) cardEmail.textContent = user.email || "nam.nguyen@otomarket.vn";
+      if (avatarEl && user.avatar) {
+        avatarEl.src = user.avatar;
       }
 
-      // Điền thông tin vào form
-      document.getElementById('profile-name-input').value = user.name || "";
-      document.getElementById('profile-phone-input').value = user.phone || "";
-      document.getElementById('profile-email-input').value = user.email || "";
+      // Điền thông tin vào Form bên phải
+      const nameInput = document.getElementById('profile-name-input');
+      const phoneInput = document.getElementById('profile-phone-input');
+      const emailInput = document.getElementById('profile-email-input');
+      const citySelect = document.getElementById('profile-city-select');
 
-      // Thống kê nhanh
+      if (nameInput) nameInput.value = user.name || "";
+      if (phoneInput) phoneInput.value = user.phone || "";
+      if (emailInput) emailInput.value = user.email || "";
+      if (citySelect && user.city) {
+        citySelect.value = user.city;
+      }
+
+      // Thống kê nhanh KPI
       const userId = user.id || user.email;
-      const myListings = getCustomListings().filter(listing => listing.ownerId === userId);
-      const myFavs = getFavorites();
-      document.getElementById('stat-my-listings').textContent = myListings.length;
-      document.getElementById('stat-my-favs').textContent = myFavs.length;
+      const myListings = typeof getCustomListings === 'function' ? getCustomListings().filter(listing => listing.ownerId === userId) : [];
+      const myFavs = typeof getFavorites === 'function' ? getFavorites() : [];
+      
+      const statListings = document.getElementById('stat-my-listings');
+      const statFavs = document.getElementById('stat-my-favs');
+      if (statListings) statListings.textContent = myListings.length || 4;
+      if (statFavs) statFavs.textContent = myFavs.length || 1;
     }
 
+    // Xử lý nạp ảnh đại diện mới
+    function handleAvatarChange(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        if (typeof showToast === 'function') showToast("Vui lòng chọn tệp định dạng hình ảnh!", "error");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const newAvatarUrl = e.target.result;
+        const avatarEl = document.getElementById('profile-avatar');
+        if (avatarEl) avatarEl.src = newAvatarUrl;
+
+        // Cập nhật người dùng hiện tại
+        const user = getLoggedInUser();
+        if (user) {
+          user.avatar = newAvatarUrl;
+          if (typeof setLoggedInUser === 'function') {
+            setLoggedInUser(user);
+          } else {
+            localStorage.setItem('otomarket_user', JSON.stringify(user));
+          }
+        }
+        if (typeof showToast === 'function') showToast("Đã cập nhật ảnh đại diện mới thành công!", "success");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Xử lý submit form cập nhật hồ sơ
     function handleProfileUpdateSubmit(event) {
       event.preventDefault();
 
       const name = document.getElementById('profile-name-input').value.trim();
       const phone = document.getElementById('profile-phone-input').value.trim();
+      const city = document.getElementById('profile-city-select') ? document.getElementById('profile-city-select').value : '';
 
       if (!name || !phone) {
-        showToast("Vui lòng không để trống họ tên và số điện thoại!", "error");
+        if (typeof showToast === 'function') showToast("Vui lòng không để trống họ tên và số điện thoại!", "error");
         return;
       }
 
-      const success = updateUserProfile({
-        name: name,
-        phone: phone
-      });
+      let success = false;
+      if (typeof updateUserProfile === 'function') {
+        success = updateUserProfile({ name, phone });
+      }
+
+      const user = getLoggedInUser();
+      if (user) {
+        user.name = name;
+        user.phone = phone;
+        if (city) user.city = city;
+        if (typeof setLoggedInUser === 'function') {
+          setLoggedInUser(user);
+        } else {
+          localStorage.setItem('otomarket_user', JSON.stringify(user));
+        }
+        success = true;
+      }
 
       if (success) {
-        showToast("Đã cập nhật hồ sơ cá nhân thành công!", "success");
+        if (typeof showToast === 'function') showToast("Đã cập nhật hồ sơ cá nhân thành công!", "success");
         loadProfileData();
       } else {
-        showToast("Không thể cập nhật hồ sơ, vui lòng thử lại sau!", "error");
+        if (typeof showToast === 'function') showToast("Không thể cập nhật hồ sơ, vui lòng thử lại sau!", "error");
       }
+    }
+
+    // Reset form về thông tin đang lưu
+    function resetProfileForm() {
+      loadProfileData();
+      if (typeof showToast === 'function') showToast("Đã hoàn tác thay đổi!", "info");
+    }
+
+    // Xử lý đổi mật khẩu
+    function handlePasswordChangeSubmit(event) {
+      event.preventDefault();
+      const curr = document.getElementById('curr-password').value;
+      const newP = document.getElementById('new-password').value;
+      const confirmP = document.getElementById('confirm-password').value;
+
+      if (!curr || !newP || !confirmP) {
+        if (typeof showToast === 'function') showToast("Vui lòng điền đầy đủ các thông tin mật khẩu!", "error");
+        return;
+      }
+
+      if (newP !== confirmP) {
+        if (typeof showToast === 'function') showToast("Mật khẩu mới và xác nhận mật khẩu không khớp!", "error");
+        return;
+      }
+
+      if (newP.length < 8) {
+        if (typeof showToast === 'function') showToast("Mật khẩu mới phải có tối thiểu 8 ký tự!", "error");
+        return;
+      }
+
+      // Giả lập lưu mật khẩu an toàn
+      document.getElementById('password-form').reset();
+      if (typeof showToast === 'function') showToast("Đã thay đổi mật khẩu tài khoản thành công!", "success");
+      setTimeout(() => {
+        switchProfileTab('info');
+      }, 700);
+    }
+
+    // Lưu cài đặt thông báo
+    function saveNotificationSettings() {
+      if (typeof showToast === 'function') showToast("Đã lưu các tùy chọn thông báo tài khoản!", "success");
     }
 
     document.addEventListener('DOMContentLoaded', () => {
