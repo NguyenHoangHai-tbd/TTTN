@@ -66,7 +66,56 @@
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 36px;
+      box-sizing: border-box;
+    }
+
+    /* Thẻ kính mờ Glassmorphism sang trọng góc trái chuẩn Demo */
+    .hero-glass-card {
+      background: rgba(15, 23, 42, 0.76);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 24px 28px;
+      color: #FFFFFF;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .hero-glass-title {
+      font-size: 1.68rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .hero-glass-desc {
+      font-size: 0.88rem;
+      color: #CBD5E1;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .hero-perk-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #F8FAFC;
+    }
+
+    .hero-perk-item i {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #FF6B00 !important;
     }
 
     /* ==========================================================================
@@ -324,7 +373,23 @@
          CỘT TRÁI (HERO SHOWCASE XE HƠI SANG TRỌNG & CAM KẾT SÀN CHUẨN DEMO)
          ========================================================================== -->
     <div class="login-hero-pane d-none d-lg-flex">
-      <!-- Ảnh nền login-hero-showcase.jpg hiển thị chính xác xe SUV và card cam kết chuẩn 100% như demo -->
+      <div class="hero-glass-card">
+        <h2 class="hero-glass-title">Khám Phá Hàng Ngàn Xe Ô Tô Chất Lượng</h2>
+        <p class="hero-glass-desc">
+          Sàn giao dịch kết nối người mua và người bán uy tín, minh bạch hàng đầu Việt Nam
+        </p>
+        <div class="d-flex flex-wrap align-items-center gap-3">
+          <span class="hero-perk-item">
+            <i class="bi bi-check2 text-orange-theme"></i> Kiểm định 160 điểm
+          </span>
+          <span class="hero-perk-item">
+            <i class="bi bi-check2 text-orange-theme"></i> Định giá chuẩn xác
+          </span>
+          <span class="hero-perk-item">
+            <i class="bi bi-check2 text-orange-theme"></i> Kết nối trực tiếp
+          </span>
+        </div>
+      </div>
     </div>
 
     <!-- ==========================================================================
