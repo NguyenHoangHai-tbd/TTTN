@@ -366,19 +366,24 @@
 
     /* SEGMENTED TABS */
     .admin-tab-nav {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 50px !important;
+      padding: 4px 6px !important;
       margin-bottom: 22px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
     }
     .admin-tab-pill {
       border: none;
       background: transparent;
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-size: 0.9rem;
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: #64748B;
+      color: #334155;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -386,11 +391,23 @@
     }
     .admin-tab-pill:hover:not(.active) {
       color: #0F172A;
+      background: #F8FAFC;
     }
     .admin-tab-pill.active {
-      background: #0F172A !important;
+      background: #0B132B !important;
       color: #FFFFFF !important;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+      border-radius: 50px !important;
+      box-shadow: 0 2px 6px rgba(11, 19, 43, 0.15);
+    }
+    .studio-queue-card {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 16px !important;
+      padding: 24px 20px !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     /* ==========================================================================
@@ -796,17 +813,19 @@
           
           <!-- Cột Trái: Hàng Đợi Thẩm Định (Hàng đợi xe) -->
           <div class="col-xl-3 col-lg-4">
-            <div class="queue-title">Hàng đợi thẩm định (<span id="queue-header-count">2</span>)</div>
-            
-            <div id="studio-queue-list">
-              <!-- Render động danh sách thẻ theo JS -->
-            </div>
+            <div class="studio-queue-card">
+              <div class="queue-title">Hàng đợi thẩm định (<span id="queue-header-count">2</span>)</div>
+              
+              <div id="studio-queue-list">
+                <!-- Render động danh sách thẻ theo JS -->
+              </div>
 
-            <!-- Empty queue state -->
-            <div id="no-queue-msg" class="bg-white rounded-4 border p-4 text-center" style="display: none;">
-              <i class="bi bi-check-circle-fill text-success fs-2 mb-2 d-block"></i>
-              <h6 class="fw-bold text-dark">Hàng đợi trống!</h6>
-              <p class="text-muted small mb-0">Tất cả tin đăng xe đã được xử lý xong.</p>
+              <!-- Empty queue state -->
+              <div id="no-queue-msg" class="text-center py-4" style="display: none;">
+                <i class="bi bi-check-circle-fill text-success fs-2 mb-2 d-block"></i>
+                <h6 class="fw-bold text-dark">Hàng đợi trống!</h6>
+                <p class="text-muted small mb-0">Tất cả tin đăng xe đã được xử lý xong.</p>
+              </div>
             </div>
           </div>
 
