@@ -784,10 +784,16 @@ function isUserAdmin(user) {
     } catch (e) {}
   }
   if (!user) return false;
-  return user.role === 'admin' || 
-         user.role === 'staff' || 
-         user.name === 'Quản lý Showroom' || 
-         String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn';
+  const name = String(user.name || '').trim().toLowerCase();
+  const email = String(user.email || '').trim().toLowerCase();
+  const role = String(user.role || '').trim().toLowerCase();
+  return role === 'admin' || 
+         role === 'staff' || 
+         name === 'quản lý showroom' || 
+         name.includes('showroom') || 
+         name.includes('quản lý') ||
+         email === 'admin@otomarket.vn' ||
+         email.includes('admin');
 }
 
 function syncHeaderUserUI() {
@@ -833,22 +839,15 @@ function syncAdminLinksVisibility() {
   // 1. Quét tất cả các thanh menu chính (cả .navbar-nav, .portal-navbar-clean ul.nav, nav ul.nav)
   const allNavs = document.querySelectorAll('.navbar-nav, .portal-navbar-clean ul.nav, nav ul.nav, ul.nav');
   allNavs.forEach(nav => {
-    let aboutItem = null;
-    nav.querySelectorAll('li.nav-item').forEach(li => {
-      const link = li.querySelector('a');
-      if (link) {
-        const href = (link.getAttribute('href') || '').toLowerCase();
-        if (href.includes('about.html')) {
-          aboutItem = li;
-        }
-      }
+    // Tìm tất cả các li dẫn tới admin.html
+    const adminLis = Array.from(nav.querySelectorAll('li')).filter(li => {
+      const a = li.querySelector('a');
+      return a && (a.getAttribute('href') || '').includes('admin.html');
     });
 
-    let adminItem = nav.querySelector('li.admin-nav-item, li.admin-only');
-
     if (isAdmin) {
-      if (!adminItem) {
-        adminItem = document.createElement('li');
+      if (adminLis.length === 0) {
+        const adminItem = document.createElement('li');
         adminItem.className = 'nav-item admin-only admin-nav-item is-admin-visible';
         const isCurrentAdminPage = window.location.pathname.includes('admin.html');
         adminItem.innerHTML = `
@@ -857,35 +856,68 @@ function syncAdminLinksVisibility() {
             <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
           </a>
         `;
+        let aboutItem = null;
+        nav.querySelectorAll('li').forEach(li => {
+          const a = li.querySelector('a');
+          if (a && (a.getAttribute('href') || '').includes('about.html')) {
+            aboutItem = li;
+          }
+        });
         if (aboutItem) {
           aboutItem.insertAdjacentElement('afterend', adminItem);
         } else {
           nav.appendChild(adminItem);
         }
       } else {
-        adminItem.classList.add('is-admin-visible');
-        adminItem.style.removeProperty('display');
-        adminItem.style.display = '';
+        // Giữ lại đúng 1 mục, loại bỏ duplicate nếu có
+        adminLis.forEach((li, idx) => {
+          if (idx === 0) {
+            li.className = 'nav-item admin-only admin-nav-item is-admin-visible';
+            li.style.removeProperty('display');
+            li.style.display = 'list-item';
+            const a = li.querySelector('a');
+            if (a) {
+              a.classList.remove('d-none');
+              if (window.location.pathname.includes('admin.html')) {
+                a.classList.add('active');
+              }
+            }
+          } else {
+            li.remove();
+          }
+        });
       }
 
       // Cập nhật số lượng tin chờ duyệt vào badge
       const allCars = typeof getStoredCars === 'function' ? getStoredCars() : [];
       const pendingCount = allCars.filter(c => c && c.status === 'pending').length;
-      const badge = adminItem.querySelector('.nav-pending-count');
-      if (badge) {
-        if (pendingCount > 0) {
-          badge.textContent = pendingCount;
-          badge.style.display = 'inline-block';
-        } else {
-          badge.style.display = 'none';
+      const targetLi = nav.querySelector('li.admin-nav-item, li.admin-only');
+      if (targetLi) {
+        let badge = targetLi.querySelector('.nav-pending-count');
+        if (!badge) {
+          const a = targetLi.querySelector('a');
+          if (a) {
+            badge = document.createElement('span');
+            badge.className = 'badge bg-danger rounded-pill ms-1 nav-pending-count';
+            badge.style.fontSize = '0.72rem';
+            a.appendChild(badge);
+          }
+        }
+        if (badge) {
+          if (pendingCount > 0) {
+            badge.textContent = pendingCount;
+            badge.style.display = 'inline-block';
+          } else {
+            badge.style.display = 'none';
+          }
         }
       }
     } else {
       // Dạng người dùng thông thường hoặc khách: Ẩn hoàn toàn mục Duyệt tin
-      if (adminItem) {
-        adminItem.classList.remove('is-admin-visible');
-        adminItem.style.display = 'none';
-      }
+      adminLis.forEach(li => {
+        li.classList.remove('is-admin-visible');
+        li.style.display = 'none';
+      });
     }
   });
 
