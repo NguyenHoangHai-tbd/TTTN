@@ -131,68 +131,121 @@
     }
 
     /* Bộ chọn ngôn ngữ chuẩn text [ VI | EN ] */
-    .lang-text-switcher {
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: #64748B;
-      letter-spacing: 0.5px;
-    }
-    .lang-text-switcher .active-lang {
-      color: #FF6B00 !important;
-      font-weight: 700 !important;
-      cursor: pointer;
-    }
-    .lang-text-switcher .inactive-lang {
-      color: #64748B !important;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .lang-text-switcher .inactive-lang:hover {
-      color: #0F172A !important;
+    .topbar-divider {
+      color: #CBD5E1 !important;
+      margin: 0 4px;
     }
 
-    .topbar-user-pill {
-      color: #0F172A !important;
-      border: 1px solid #CBD5E1 !important;
+    /* Cụm Chuyển Ngôn Ngữ VI / EN Nền Sáng Chuẩn Đồng Bộ 100% */
+    .lang-switch-container {
+      display: inline-flex !important;
+      align-items: center;
       background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 20px;
+      padding: 2px;
+      gap: 2px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    }
+    .lang-pill-btn {
+      border: none;
+      background: transparent;
+      color: #475569 !important;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+    }
+    .lang-pill-btn:hover:not(.active) {
+      color: #0F172A !important;
+      background: #F1F5F9 !important;
+    }
+    .lang-pill-btn.active {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
+    }
+
+    .topbar-user-btn {
+      border: 1.5px solid #CBD5E1 !important;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      font-weight: 700 !important;
+      font-size: 0.8125rem !important;
+      padding: 5px 14px !important;
       border-radius: 20px !important;
-      padding: 4px 14px !important;
-      font-size: 0.84rem !important;
-      font-weight: 600 !important;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none !important;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      text-decoration: none;
     }
-    .topbar-user-pill:hover {
+    .topbar-user-btn:hover {
       background: #F8FAFC !important;
+      border-color: #94A3B8 !important;
+      color: #0F172A !important;
     }
 
-    /* Navbar chính */
+    /* Navbar chính chuẩn đồng bộ */
     .portal-navbar-clean {
       background: #FFFFFF !important;
       padding: 10px 0 !important;
     }
-    .portal-nav-link {
-      color: #0F172A !important;
-      font-size: 0.94rem !important;
+    .nav-link-portal {
+      color: #334155 !important;
       font-weight: 500 !important;
-      padding: 6px 0 !important;
+      font-size: 0.90rem !important;
+      padding: 8px 16px !important;
+      border-radius: 8px !important;
+      border: 1.5px solid transparent !important;
       text-decoration: none !important;
-      transition: color 0.15s ease;
+      transition: all 0.15s ease !important;
+      display: inline-block;
+      white-space: nowrap;
     }
-    .portal-nav-link:hover {
-      color: #FF6B00 !important;
+    .nav-link-portal:hover {
+      color: #0F172A !important;
+      background-color: #F1F5F9 !important;
     }
-    .portal-nav-link.active {
+    .nav-link-portal.active {
       color: #FF6B00 !important;
       font-weight: 700 !important;
-      border-bottom: 2px solid #FF6B00 !important;
-      padding-bottom: 4px !important;
+      background-color: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+    }
+
+    /* Nút Yêu Thích */
+    .btn-fav-compact {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      border-radius: 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 1px solid #CBD5E1 !important;
+      background-color: #FFFFFF !important;
+      transition: all 0.15s ease !important;
+      text-decoration: none !important;
+      padding: 0 !important;
+      position: relative !important;
+    }
+    .btn-fav-compact i {
+      font-size: 1.15rem !important;
+      color: #EF4444 !important;
+    }
+    .btn-fav-compact:hover {
+      background-color: #FEF2F2 !important;
+      border-color: #EF4444 !important;
+      transform: scale(1.04);
     }
 
     /* Nút Đăng bán xe */
-    .btn-header-post {
+    .btn-cta-orange {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
       border: none !important;
@@ -207,7 +260,7 @@
       gap: 6px;
       transition: all 0.2s ease;
     }
-    .btn-header-post:hover {
+    .btn-cta-orange:hover {
       background: #E65A00 !important;
       color: #FFFFFF !important;
       transform: translateY(-1px);
@@ -607,52 +660,80 @@
        HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR)
        ========================================================================== -->
   <header id="portal-header" class="portal-header-wrapper">
-    <!-- 1. TopBar Trên Cùng -->
+    <!-- 1. TopBar Trên Cùng (Đồng bộ chuẩn 100% với giao diện khác) -->
     <div class="portal-topbar-clean">
-      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
-        <!-- Bên trái: Địa chỉ & Giờ mở cửa -->
-        <div class="d-flex align-items-center gap-3 topbar-info-item">
-          <span><i class="bi bi-geo-alt me-1"></i>Đường Trần Phú, TP. Nha Trang</span>
-          <span><i class="bi bi-clock me-1"></i>08:00 - 18:30</span>
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
         </div>
 
-        <!-- Bên phải: [ VI | EN ] & Quản lý Showroom -->
-        <div class="d-flex align-items-center gap-3">
-          <div class="lang-text-switcher" title="Chuyển đổi ngôn ngữ">
-            [ <span class="active-lang" onclick="switchLanguage('VI', this)">VI</span> | <span class="inactive-lang" onclick="switchLanguage('EN', this)">EN</span> ]
+        <!-- Bên phải: Chuyển ngôn ngữ VI/EN dạng nút viên thuốc & Quản lý Showroom -->
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
           </div>
-          <a href="admin.html" class="topbar-user-pill">
-            <i class="bi bi-person-circle text-secondary"></i>
-            <span>Quản lý Showroom</span>
-            <i class="bi bi-chevron-down text-muted" style="font-size: 0.72rem;"></i>
-          </a>
+          <span class="topbar-divider">|</span>
+          <div id="navbar-auth-section">
+            <a href="admin.html" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Quản lý Showroom</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 2. Thanh Điều Hướng Chính -->
+    <!-- 2. Thanh Điều Hướng Chính (Đồng bộ 100% không còn 'Kho xe đang bán') -->
     <nav class="portal-navbar-clean">
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
         <!-- Logo OtoMarket -->
         <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
-          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" style="height: 38px;">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
         </a>
 
         <!-- Menu Điều Hướng Chính -->
-        <ul class="nav align-items-center gap-4 d-none d-md-flex mb-0">
-          <li class="nav-item"><a class="portal-nav-link" href="index.html">Trang chủ</a></li>
-          <li class="nav-item"><a class="portal-nav-link" href="cars.html">Kho xe đang bán</a></li>
-          <li class="nav-item"><a class="portal-nav-link" href="cars.html?condition=new">Ô tô mới</a></li>
-          <li class="nav-item"><a class="portal-nav-link" href="cars.html?condition=used">Ô tô cũ</a></li>
-          <li class="nav-item"><a class="portal-nav-link" href="news.html">Tin tức</a></li>
-          <li class="nav-item"><a class="portal-nav-link active" href="admin.html">Duyệt tin Showroom</a></li>
+        <ul class="nav align-items-center gap-1 d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link-portal" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal active" href="admin.html">
+              <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+            </a>
+          </li>
         </ul>
 
-        <!-- Nút Đăng Bán Xe -->
-        <div>
-          <a href="post-car.html" class="btn-header-post">
-            <i class="bi bi-plus-lg"></i>
-            <span>Đăng bán xe</span>
+        <!-- Nút Yêu Thích & Nút Đăng Bán Xe -->
+        <div class="d-flex align-items-center gap-2">
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
+          </a>
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>+ Đăng bán xe</span>
           </a>
         </div>
       </div>
