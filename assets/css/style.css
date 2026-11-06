@@ -1084,12 +1084,10 @@ img {
   color: #2DD4BF;
 }
 
-/* Admin / Showroom Navigation - Luôn hiển thị chuẩn xác và đồng bộ trên toàn sàn */
+/* Admin / Showroom Navigation: Ẩn mặc định cho khách/user thường, hiện khi đăng nhập nhân viên */
 .admin-only:not(.is-admin-visible) {
-  display: list-item !important;
+  display: none !important;
 }
-li.admin-only,
-li.admin-nav-item,
 li.admin-only.is-admin-visible,
 li.admin-nav-item.is-admin-visible {
   display: list-item !important;
