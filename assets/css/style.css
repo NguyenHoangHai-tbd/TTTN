@@ -3939,3 +3939,97 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
   color: #FFFFFF !important;
   box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
 }
+
+
+    /* ==========================================================================
+       BENTO STUDIO PAGINATION (RÕ NÉT, NỀN NỔI BẬT, CHUẨN OTOMARKET)
+       ========================================================================== */
+    #pagination-nav {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 36px 0 24px 0 !important;
+      width: 100% !important;
+    }
+    .pagination,
+    #pagination-container {
+      display: inline-flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      background: #FFFFFF !important;
+      padding: 8px 12px !important;
+      border-radius: 16px !important;
+      border: 1.5px solid #CBD5E1 !important;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08) !important;
+      margin: 0 auto !important;
+      list-style: none !important;
+    }
+    .pagination .page-item,
+    #pagination-container .page-item {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+      display: inline-block !important;
+    }
+    .pagination .page-item .page-link,
+    #pagination-container .page-item .page-link,
+    body.cars-bento-body .pagination .page-link,
+    body.cars-bento-body #pagination-container .page-link {
+      min-width: 44px !important;
+      height: 42px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 16px !important;
+      border-radius: 10px !important;
+      font-size: 0.92rem !important;
+      font-weight: 600 !important;
+      color: #1E293B !important;
+      background: #F8FAFC !important;
+      background-color: #F8FAFC !important;
+      border: 1.5px solid #E2E8F0 !important;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      line-height: 1 !important;
+    }
+    .pagination .page-item:not(.active):not(.disabled) .page-link:hover,
+    #pagination-container .page-item:not(.active):not(.disabled) .page-link:hover,
+    body.cars-bento-body .pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+      background-color: #FFF7ED !important;
+      color: #FF6B00 !important;
+      border-color: #FF6B00 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15) !important;
+    }
+    .pagination .page-item.active .page-link,
+    #pagination-container .page-item.active .page-link,
+    body.cars-bento-body .pagination .page-item.active .page-link,
+    body.cars-bento-body #pagination-container .page-item.active .page-link {
+      background: #FF6B00 !important;
+      background-color: #FF6B00 !important;
+      color: #FFFFFF !important;
+      border-color: #FF6B00 !important;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.38) !important;
+      cursor: default !important;
+      transform: none !important;
+    }
+    .pagination .page-item.disabled .page-link,
+    #pagination-container .page-item.disabled .page-link,
+    body.cars-bento-body .pagination .page-item.disabled .page-link,
+    body.cars-bento-body #pagination-container .page-item.disabled .page-link {
+      background: #F1F5F9 !important;
+      background-color: #F1F5F9 !important;
+      color: #94A3B8 !important;
+      border-color: #E2E8F0 !important;
+      opacity: 0.55 !important;
+      cursor: not-allowed !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
