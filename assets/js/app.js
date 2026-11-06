@@ -854,7 +854,7 @@ function syncAdminLinksVisibility() {
         adminItem.className = 'nav-item admin-only admin-nav-item is-admin-visible';
         adminItem.innerHTML = `
           <a class="nav-link-portal ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trạm Kiểm Duyệt & Quản Trị Showroom">
-            <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+            Duyệt tin Showroom
             <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
           </a>
         `;
