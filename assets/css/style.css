@@ -1088,8 +1088,9 @@ img {
 .admin-only:not(.is-admin-visible) {
   display: none !important;
 }
-li.admin-only.is-admin-visible {
-  display: list-item !important;
+li.admin-only.is-admin-visible,
+li.admin-nav-item.is-admin-visible {
+  display: inline-block !important;
 }
 .admin-only.is-admin-visible {
   display: inline-flex !important;

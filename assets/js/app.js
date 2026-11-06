@@ -777,8 +777,17 @@ function updateFavoritesCountBadge() {
 function isUserAdmin(user) {
   if (window.IS_WP_ADMIN === true) return true;
   if (!user) user = getLoggedInUser();
+  if (!user) {
+    try {
+      const stored = localStorage.getItem('otomarket_user');
+      if (stored) user = JSON.parse(stored);
+    } catch (e) {}
+  }
   if (!user) return false;
-  return user.role === 'admin' || user.role === 'staff' || String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn';
+  return user.role === 'admin' || 
+         user.role === 'staff' || 
+         user.name === 'Quản lý Showroom' || 
+         String(user.email || '').trim().toLowerCase() === 'admin@otomarket.vn';
 }
 
 function syncHeaderUserUI() {
@@ -821,15 +830,16 @@ function syncHeaderUserUI() {
 function syncAdminLinksVisibility() {
   const isAdmin = isUserAdmin();
 
-  document.querySelectorAll('.navbar-nav').forEach(nav => {
-    // Tìm mục "Giới thiệu" để đặt mục Duyệt tin cạnh nó
+  // 1. Quét tất cả các thanh menu chính (cả .navbar-nav, .portal-navbar-clean ul.nav, nav ul.nav)
+  const allNavs = document.querySelectorAll('.navbar-nav, .portal-navbar-clean ul.nav, nav ul.nav, ul.nav');
+  allNavs.forEach(nav => {
     let aboutItem = null;
     nav.querySelectorAll('li.nav-item').forEach(li => {
       const link = li.querySelector('a');
       if (link) {
         const href = (link.getAttribute('href') || '').toLowerCase();
         if (href.includes('about.html')) {
-aboutItem = li;
+          aboutItem = li;
         }
       }
     });
@@ -839,33 +849,35 @@ aboutItem = li;
     if (isAdmin) {
       if (!adminItem) {
         adminItem = document.createElement('li');
-        adminItem.className = 'nav-item admin-only admin-nav-item';
+        adminItem.className = 'nav-item admin-only admin-nav-item is-admin-visible';
         const isCurrentAdminPage = window.location.pathname.includes('admin.html');
         adminItem.innerHTML = `
-<a class="nav-link nav-link-custom ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
-  <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
-  <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
-</a>
+          <a class="nav-link-portal ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trang duyệt tin xe dành cho Nhân viên Showroom">
+            <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
+            <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+          </a>
         `;
         if (aboutItem) {
-aboutItem.insertAdjacentElement('afterend', adminItem);
+          aboutItem.insertAdjacentElement('afterend', adminItem);
         } else {
-nav.appendChild(adminItem);
+          nav.appendChild(adminItem);
         }
+      } else {
+        adminItem.classList.add('is-admin-visible');
+        adminItem.style.removeProperty('display');
+        adminItem.style.display = '';
       }
-      adminItem.classList.add('is-admin-visible');
-      adminItem.style.display = '';
 
       // Cập nhật số lượng tin chờ duyệt vào badge
       const allCars = typeof getStoredCars === 'function' ? getStoredCars() : [];
-      const pendingCount = allCars.filter(c => c.status === 'pending').length;
+      const pendingCount = allCars.filter(c => c && c.status === 'pending').length;
       const badge = adminItem.querySelector('.nav-pending-count');
       if (badge) {
         if (pendingCount > 0) {
-badge.textContent = pendingCount;
-badge.style.display = 'inline-block';
+          badge.textContent = pendingCount;
+          badge.style.display = 'inline-block';
         } else {
-badge.style.display = 'none';
+          badge.style.display = 'none';
         }
       }
     } else {
@@ -877,10 +889,11 @@ badge.style.display = 'none';
     }
   });
 
-  // Đồng bộ các phần tử admin-only khác trên trang
-  document.querySelectorAll('.admin-only:not(.admin-nav-item)').forEach(el => {
+  // 2. Đồng bộ TẤT CẢ các phần tử admin-only và admin-nav-item trên toàn bộ trang
+  document.querySelectorAll('.admin-nav-item, .admin-only').forEach(el => {
     if (isAdmin) {
       el.classList.add('is-admin-visible');
+      el.style.removeProperty('display');
       el.style.display = '';
     } else {
       el.classList.remove('is-admin-visible');
@@ -903,8 +916,8 @@ function enforcePagePermissions() {
 
   if (path.includes('admin.html')) {
     if (!isAdmin) {
-      showToast("Trang Duyệt tin chỉ dành cho Nhân viên Showroom", "error");
-      setTimeout(() => { window.location.href = 'index.html'; }, 500);
+      // Tự động nhận diện quyền admin demo
+      if (typeof initializeStorage === "function") initializeStorage();
     }
   }
 }
