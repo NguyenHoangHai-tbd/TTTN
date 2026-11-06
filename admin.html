@@ -18,7 +18,7 @@
   <link rel="shortcut icon" href="favicon.ico">
 
   <script>
-    // Đảm bảo phiên đăng nhập Admin Showroom
+    // Đảm bảo phiên đăng nhập Admin Showroom & dữ liệu mẫu chuẩn Demo
     try {
       const u = localStorage.getItem('otomarket_user');
       if (!u) {
@@ -31,7 +31,76 @@
           avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
         }));
       }
-    } catch (e) {}
+
+      // Khởi tạo danh sách tin ký gửi chuẩn Demo nếu chưa có
+      const customKey = 'otomarket_custom_listings';
+      const existing = localStorage.getItem(customKey);
+      let list = existing ? JSON.parse(existing) : [];
+      let pendingList = list.filter(c => c.status === 'pending');
+      
+      if (pendingList.length === 0) {
+        const demoPendingCars = [
+          {
+            id: 'custom-01',
+            title: 'Hyundai Creta 1.5L Cao Cấp 2023 Trắng Ngọc Trai',
+            brand: 'Hyundai',
+            model: 'Creta',
+            version: '1.5L Cao Cấp',
+            year: 2023,
+            price: 680000000,
+            priceDisplay: '680 triệu',
+            mileage: 18000,
+            mileageDisplay: '18.000 km',
+            fuel: 'Xăng',
+            transmission: 'Tự động',
+            origin: 'Nhập khẩu',
+            color: 'Trắng Ngọc Trai',
+            image: 'assets/images/cars/tucson.jpg',
+            images: [
+              'assets/images/cars/tucson.jpg',
+              'assets/images/cars/corolla_cross.jpg',
+              'assets/images/cars/cx5.jpg',
+              'assets/images/cars/crv.jpg'
+            ],
+            sellerName: 'Nguyễn Hoàng Nam',
+            sellerPhone: '0912 345 678',
+            sellerType: 'Khách cá nhân ký gửi',
+            status: 'pending',
+            postedDate: 'Hôm nay'
+          },
+          {
+            id: 'custom-02',
+            title: 'Toyota Corolla Cross 1.8V 2023',
+            brand: 'Toyota',
+            model: 'Corolla Cross',
+            version: '1.8V',
+            year: 2023,
+            price: 750000000,
+            priceDisplay: '750 triệu',
+            mileage: 22000,
+            mileageDisplay: '22.000 km',
+            fuel: 'Xăng',
+            transmission: 'Tự động',
+            origin: 'Nhập khẩu Thái Lan',
+            color: 'Trắng',
+            image: 'assets/images/cars/corolla_cross.jpg',
+            images: [
+              'assets/images/cars/corolla_cross.jpg',
+              'assets/images/cars/tucson.jpg'
+            ],
+            sellerName: 'Nguyễn Hoàng Nam',
+            sellerPhone: '0912 345 678',
+            sellerType: 'Khách cá nhân ký gửi',
+            status: 'pending',
+            postedDate: '16/10/2026'
+          }
+        ];
+        list = [...demoPendingCars, ...list.filter(c => c.id !== 'custom-01' && c.id !== 'custom-02')];
+        localStorage.setItem(customKey, JSON.stringify(list));
+      }
+    } catch (e) {
+      console.warn('Init admin storage demo:', e);
+    }
   </script>
 
   <style>
@@ -51,287 +120,497 @@
        HEADER NỀN SÁNG ĐỒNG BỘ TIÊU CHUẨN (STICKY, ZERO OVERLAP)
        ========================================================================== */
     header#portal-header,
-    .portal-header-wrapper,
-    .portal-header-wrapper:not(.is-scrolled) {
+    .portal-header-wrapper {
       position: sticky !important;
       top: 0 !important;
       left: 0 !important;
       width: 100% !important;
       z-index: 1050 !important;
       background: #FFFFFF !important;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
-      border-bottom: 1px solid #CBD5E1 !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05) !important;
+      border-bottom: 1px solid #E2E8F0 !important;
     }
 
-    .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
     .portal-topbar-clean {
       background: #FFFFFF !important;
       border-bottom: 1px solid #E2E8F0 !important;
       font-size: 0.84rem !important;
-      padding: 7px 0 !important;
-      text-shadow: none !important;
+      padding: 8px 0 !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
     .topbar-info-item {
-      color: #0F172A !important;
+      color: #475569 !important;
       font-weight: 500 !important;
       font-size: 0.84rem !important;
     }
-    .portal-header-wrapper:not(.is-scrolled) .topbar-divider,
-    .topbar-divider {
-      color: #CBD5E1 !important;
-    }
 
-    /* Pill Switcher chuyển ngôn ngữ chuẩn */
-    .lang-switch-container {
-      display: inline-flex;
-      align-items: center;
-      background: #F1F5F9;
-      border: 1px solid #CBD5E1;
-      border-radius: 20px;
-      padding: 2px;
-      gap: 2px;
-    }
-    .lang-pill-btn {
-      border: none;
-      background: transparent;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 14px;
+    /* Bộ chọn ngôn ngữ chuẩn text [ VI | EN ] */
+    .lang-text-switcher {
+      font-size: 0.84rem;
+      font-weight: 600;
       color: #64748B;
+      letter-spacing: 0.5px;
+    }
+    .lang-text-switcher .active-lang {
+      color: #FF6B00 !important;
+      font-weight: 700 !important;
       cursor: pointer;
-      transition: all 0.2s ease;
-      line-height: 1.2;
     }
-    .lang-pill-btn.active {
-      background: #FF6B00 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 1px 4px rgba(255, 107, 0, 0.35);
+    .lang-text-switcher .inactive-lang {
+      color: #64748B !important;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .lang-pill-btn:hover:not(.active) {
-      color: #0F172A;
+    .lang-text-switcher .inactive-lang:hover {
+      color: #0F172A !important;
     }
 
-    .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn,
-    .topbar-user-btn {
+    .topbar-user-pill {
       color: #0F172A !important;
-      border: 1.5px solid #CBD5E1 !important;
+      border: 1px solid #CBD5E1 !important;
       background: #FFFFFF !important;
       border-radius: 20px !important;
-      padding: 4px 12px !important;
-      font-size: 0.82rem !important;
+      padding: 4px 14px !important;
+      font-size: 0.84rem !important;
       font-weight: 600 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .topbar-user-pill:hover {
+      background: #F8FAFC !important;
     }
 
-    /* Nút CTA Cam OtoMarket */
-    .btn-cta-orange {
-      background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%) !important;
+    /* Thanh điều hướng chính */
+    .portal-navbar-clean {
+      background: #FFFFFF !important;
+      padding: 10px 0 !important;
+    }
+    .portal-nav-link {
+      color: #0F172A !important;
+      font-size: 0.94rem !important;
+      font-weight: 500 !important;
+      padding: 6px 0 !important;
+      text-decoration: none !important;
+      transition: color 0.15s ease;
+    }
+    .portal-nav-link:hover {
+      color: #FF6B00 !important;
+    }
+    .portal-nav-link.active {
+      color: #FF6B00 !important;
+      font-weight: 700 !important;
+      border-bottom: 2px solid #FF6B00 !important;
+      padding-bottom: 6px !important;
+    }
+
+    /* Nút Đăng bán xe */
+    .btn-header-post {
+      background: #FF6B00 !important;
       color: #FFFFFF !important;
       border: none !important;
       font-weight: 700 !important;
-      border-radius: 10px !important;
+      border-radius: 8px !important;
       padding: 8px 18px !important;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
-      transition: all 0.2s ease !important;
+      font-size: 0.9rem !important;
+      box-shadow: 0 2px 8px rgba(255, 107, 0, 0.25) !important;
       text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
     }
-    .btn-cta-orange:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35) !important;
+    .btn-header-post:hover {
+      background: #E65A00 !important;
       color: #FFFFFF !important;
+      transform: translateY(-1px);
     }
-
-    .text-orange-theme { color: #FF6B00 !important; }
 
     /* ==========================================================================
-       BENTO CARDS & STUDIO COMPONENTS
+       WORKSPACE TITLE BANNER (CHUẨN BENTO THEO DEMO)
        ========================================================================== */
     .bento-admin-banner {
       background: #FFFFFF !important;
       border: 1px solid #E2E8F0 !important;
       border-radius: 16px !important;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+      padding: 22px 28px !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
+    }
+    .banner-title {
+      font-size: 1.45rem !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      margin-bottom: 8px !important;
+      letter-spacing: -0.3px;
+    }
+    .badge-showroom-station {
+      background: #F1F5F9 !important;
+      color: #475569 !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 20px !important;
+      padding: 4px 12px !important;
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-banner-reset {
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      color: #0F172A !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      padding: 8px 16px !important;
+      transition: all 0.2s ease;
+    }
+    .btn-banner-reset:hover {
+      background: #F8FAFC !important;
+      border-color: #94A3B8 !important;
+    }
+    .btn-banner-import {
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+      border: none !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      padding: 8px 18px !important;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-banner-import:hover {
+      background: #1E293B !important;
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
     }
 
-    /* 4 Thẻ KPI Bento Tối Giản, Sang Trọng */
+    /* ==========================================================================
+       4 THẺ BENTO KPI TỐI GIẢN CHUẨN DEMO (KHÔNG HỘP ICON)
+       ========================================================================== */
     .admin-kpi-bento {
       background: #FFFFFF !important;
       border: 1px solid #E2E8F0 !important;
       border-radius: 14px !important;
-      padding: 18px 20px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
-      transition: all 0.2s ease;
+      padding: 18px 24px !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02) !important;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .admin-kpi-bento:hover {
-      border-color: #CBD5E1 !important;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
+    .admin-kpi-label {
+      color: #64748B !important;
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      margin-bottom: 8px !important;
     }
-
-    .admin-kpi-icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+    .admin-kpi-value {
+      font-size: 2.1rem !important;
+      font-weight: 700 !important;
+      color: #0F172A !important;
+      line-height: 1 !important;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.35rem;
-      flex-shrink: 0;
+      gap: 8px;
     }
-    .kpi-icon-amber { background: #FFF7ED; color: #EA580C; border: 1px solid #FFEDD5; }
-    .kpi-icon-red { background: #FEF2F2; color: #DC2626; border: 1px solid #FEE2E2; }
-    .kpi-icon-green { background: #F0FDF4; color: #16A34A; border: 1px solid #DCFCE7; }
-    .kpi-icon-blue { background: #EFF6FF; color: #2563EB; border: 1px solid #DBEAFE; }
+    .admin-kpi-badge-orange {
+      background: #FF6B00 !important;
+      color: #FFFFFF !important;
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      border-radius: 20px !important;
+      padding: 3px 10px !important;
+      line-height: 1.2 !important;
+    }
 
-    /* Segmented Navigation Tabs Chuẩn Bento */
-    .admin-segmented-tabs {
-      display: inline-flex;
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 4px;
-      gap: 4px;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+    /* ==========================================================================
+       SEGMENTED TABS THEO ĐÚNG DEMO
+       ========================================================================== */
+    .admin-tab-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
     }
-    .admin-tab-btn {
+    .admin-tab-pill {
       border: none;
       background: transparent;
       padding: 8px 18px;
-      border-radius: 8px;
-      font-size: 0.88rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #64748B;
       cursor: pointer;
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-      text-decoration: none;
     }
-    .admin-tab-btn:hover:not(.active) {
+    .admin-tab-pill:hover:not(.active) {
       color: #0F172A;
-      background: #F8FAFC;
     }
-    .admin-tab-btn.active {
+    .admin-tab-pill.active {
       background: #0F172A !important;
       color: #FFFFFF !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
-    }
-    .admin-tab-btn.active .badge {
-      background: #FF6B00 !important;
-      color: #FFFFFF !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
     }
 
-    /* Master-Detail Queue List */
+    /* ==========================================================================
+       HÀNG ĐỢI THẨM ĐỊNH BÊN TRÁI (LEFT QUEUE)
+       ========================================================================== */
+    .queue-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 14px;
+    }
     .studio-queue-item {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
       border-radius: 12px;
-      padding: 12px 14px;
-      margin-bottom: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    .studio-queue-item:hover {
+    .studio-queue-item:not(.is-selected) {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+    }
+    .studio-queue-item:not(.is-selected):hover {
       border-color: #CBD5E1;
       background: #F8FAFC;
     }
     .studio-queue-item.is-selected {
-      border-color: #FF6B00 !important;
       background: #FFF7ED !important;
-      box-shadow: 0 2px 10px rgba(255, 107, 0, 0.12) !important;
+      border: 1.5px solid #FF6B00 !important;
+      box-shadow: 0 2px 8px rgba(255, 107, 0, 0.08) !important;
+    }
+    .queue-car-name {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .queue-car-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FF6B00;
+      line-height: 1;
     }
 
-    /* Inspection Deck Card */
+    /* ==========================================================================
+       BÀN THẨM ĐỊNH CHI TIẾT BÊN PHẢI (RIGHT INSPECTION DECK)
+       ========================================================================== */
     .studio-deck-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+    .deck-section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 14px;
+    }
+    .deck-car-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.2px;
+    }
+    .deck-car-id-badge {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .deck-car-price {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.5px;
     }
 
-    .studio-gallery-main {
+    /* Khung ảnh chính và ảnh thumbnail góc dưới */
+    .deck-hero-wrapper {
       position: relative;
-      height: 380px;
-      border-radius: 14px;
+      height: 290px;
+      border-radius: 12px;
       overflow: hidden;
-      background: #0F172A;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
     }
-    .studio-gallery-main img {
+    .deck-hero-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .deck-hero-thumb-overlay {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .deck-thumb-box {
+      width: 48px;
+      height: 34px;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      background: #000;
+      transition: transform 0.15s ease;
+    }
+    .deck-thumb-box:hover {
+      transform: scale(1.05);
+    }
+    .deck-thumb-box.active {
+      border-color: #FF6B00 !important;
+    }
+    .deck-thumb-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .studio-gallery-thumbs {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
+    /* Huy hiệu thông số kỹ thuật (Pill badges màu xám sáng) */
+    .deck-spec-pill {
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+      display: inline-flex;
+      align-items: center;
     }
-    .studio-gallery-thumb-item {
-      width: 80px;
-      height: 56px;
-      border-radius: 8px;
+
+    /* Thẻ ảnh phụ & Thẻ người bán */
+    .deck-subcard-photo {
+      height: 84px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 2px solid #E2E8F0;
-      cursor: pointer;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+    }
+    .deck-subcard-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .deck-seller-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 84px;
+    }
+    .seller-avatar-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      font-size: 1.25rem;
       flex-shrink: 0;
+    }
+    .seller-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+    .seller-phone {
+      font-size: 0.82rem;
+      color: #475569;
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+    .seller-role {
+      font-size: 0.74rem;
+      color: #64748B;
+    }
+
+    /* Thanh nút hành động thẩm định */
+    .deck-action-bar {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 18px;
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn-deck-detail {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #0F172A;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      text-decoration: none;
       transition: all 0.2s ease;
     }
-    .studio-gallery-thumb-item:hover {
-      border-color: #94A3B8;
+    .btn-deck-detail:hover {
+      background: #F8FAFC;
+      color: #0F172A;
     }
-    .studio-gallery-thumb-item.active {
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.25);
+    .btn-deck-reject {
+      background: #FFFFFF;
+      border: 1px solid #DC2626;
+      color: #DC2626;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      transition: all 0.2s ease;
     }
-    .studio-gallery-thumb-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .btn-deck-reject:hover {
+      background: #FEF2F2;
+      color: #B91C1C;
     }
-
-    /* Spec Mini Badge */
-    .spec-mini-badge {
+    .btn-deck-approve {
+      background: #10B981;
+      border: none;
+      color: #FFFFFF;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 8px 20px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 0.8rem;
-      color: #334155;
-      font-weight: 500;
-    }
-    .spec-mini-badge i {
-      color: #FF6B00;
-    }
-
-    /* Reject Quick Chips */
-    .reject-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #F8FAFC;
-      border: 1px solid #CBD5E1;
-      border-radius: 20px;
-      padding: 5px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #475569;
-      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
       transition: all 0.2s ease;
     }
-    .reject-chip:hover {
-      background: #FEE2E2;
-      border-color: #F87171;
-      color: #DC2626;
+    .btn-deck-approve:hover {
+      background: #059669;
+      color: #FFFFFF;
+      transform: translateY(-1px);
     }
 
-    /* Footer Light Đồng Bộ */
+    /* Footer Light */
     footer.footer-light {
       background: #F8FAFC !important;
       border-top: 1px solid #E2E8F0 !important;
@@ -362,25 +641,6 @@
     .footer-links a:hover {
       color: #FF6B00;
     }
-    .social-icon-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #475569;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .social-icon-btn:hover {
-      background: #FF6B00;
-      border-color: #FF6B00;
-      color: #FFFFFF;
-      transform: translateY(-2px);
-    }
   </style>
 </head>
 <body class="admin-bento-body">
@@ -389,37 +649,25 @@
        HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR, ZERO OVERLAP)
        ========================================================================== -->
   <header id="portal-header" class="portal-header-wrapper">
-    <!-- 1. TopBar Trên Cùng (Địa chỉ, Giờ mở cửa, Chuyển ngôn ngữ VI/EN, Đăng nhập) -->
+    <!-- 1. TopBar Trên Cùng -->
     <div class="portal-topbar-clean">
-      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
-        <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
-        <div class="d-flex align-items-center gap-2 gap-md-3 small">
-          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
-            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
-          </span>
-          <span class="topbar-divider d-none d-sm-inline">|</span>
-          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
-            <i class="bi bi-clock-fill text-orange-theme"></i>
-            <span>08:00 - 18:30 (Thứ 2 - CN)</span>
-          </span>
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
+        <!-- Bên trái: Địa chỉ & Giờ mở cửa -->
+        <div class="d-flex align-items-center gap-3 topbar-info-item">
+          <span><i class="bi bi-geo-alt me-1"></i>Đường Trần Phú, TP. Nha Trang</span>
+          <span><i class="bi bi-clock me-1"></i>08:00 - 18:30</span>
         </div>
 
-        <!-- Bên phải: Chuyển ngôn ngữ VI/EN & Nút Đăng nhập / Tài khoản -->
-        <div class="d-flex align-items-center gap-2 gap-sm-3">
-          <!-- Cụm chuyển ngôn ngữ VI/EN -->
-          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
-            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
-            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+        <!-- Bên phải: [ VI | EN ] & Quản lý Showroom -->
+        <div class="d-flex align-items-center gap-3">
+          <div class="lang-text-switcher" title="Chuyển đổi ngôn ngữ">
+            [ <span class="active-lang" onclick="switchLanguage('VI', this)">VI</span> | <span class="inactive-lang" onclick="switchLanguage('EN', this)">EN</span> ]
           </div>
-          <span class="topbar-divider">|</span>
-          <!-- Nút Đăng nhập / Tài khoản (Được hydrate động bởi app.js) -->
-          <div id="navbar-auth-section">
-            <a href="admin.html" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
-              <i class="bi bi-person-fill text-orange-theme"></i>
-              <span class="user-name-label">Quản lý Showroom</span>
-            </a>
-          </div>
+          <a href="admin.html" class="topbar-user-pill">
+            <i class="bi bi-person-circle text-secondary"></i>
+            <span>Quản lý Showroom</span>
+            <i class="bi bi-chevron-down text-muted" style="font-size: 0.72rem;"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -427,48 +675,26 @@
     <!-- 2. Thanh Điều Hướng Chính -->
     <nav class="portal-navbar-clean">
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
-        <!-- Logo OtoMarket Tiêu Chuẩn Nền Sáng -->
+        <!-- Logo OtoMarket -->
         <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
-          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" style="height: 38px;">
         </a>
 
         <!-- Menu Điều Hướng Chính -->
-        <ul class="nav align-items-center gap-1 d-none d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link-portal" href="index.html">Trang chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="cars.html">Kho xe đang bán</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="cars.html?condition=new">Ô tô mới</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="cars.html?condition=used">Ô tô cũ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
-          </li>
-          <li class="nav-item admin-only admin-nav-item" style="display: block;">
-            <a class="nav-link-portal active" href="admin.html" style="color: #FF6B00; font-weight: 700;">
-              <i class="bi bi-shield-check me-1" style="color: #FF6B00;"></i>Duyệt tin Showroom
-              <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.7rem; display: none;">0</span>
-            </a>
-          </li>
+        <ul class="nav align-items-center gap-4 d-none d-md-flex mb-0">
+          <li class="nav-item"><a class="portal-nav-link" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="portal-nav-link" href="cars.html">Kho xe đang bán</a></li>
+          <li class="nav-item"><a class="portal-nav-link" href="cars.html?condition=new">Ô tô mới</a></li>
+          <li class="nav-item"><a class="portal-nav-link" href="cars.html?condition=used">Ô tô cũ</a></li>
+          <li class="nav-item"><a class="portal-nav-link" href="news.html">Tin tức</a></li>
+          <li class="nav-item"><a class="portal-nav-link active" href="admin.html">Duyệt tin Showroom</a></li>
         </ul>
 
-        <!-- Nút Yêu Thích & Nút Đăng Bán Xe -->
-        <div class="d-flex align-items-center gap-2">
-          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
-            <i class="bi bi-heart-fill text-danger"></i>
-            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
-          </a>
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
-            <i class="bi bi-plus-circle-fill"></i>
-            <span>+ Đăng bán xe</span>
+        <!-- Nút Đăng Bán Xe -->
+        <div>
+          <a href="post-car.html" class="btn-header-post">
+            <i class="bi bi-plus-lg"></i>
+            <span>Đăng bán xe</span>
           </a>
         </div>
       </div>
@@ -478,174 +704,114 @@
   <!-- ==========================================================================
        MAIN CONTENT: BENTO EXECUTIVE ADMIN STUDIO
        ========================================================================== -->
-  <main class="py-4 py-lg-5">
+  <main class="py-4 py-lg-4">
     <div class="container-fluid px-3 px-xl-5">
       
-      <!-- Workspace Header (Banner điều hành cao cấp Bento) -->
-      <div class="bento-admin-banner p-4 mb-4">
+      <!-- Workspace Header Banner Chuẩn Demo -->
+      <div class="bento-admin-banner mb-4">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
           <div>
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge bg-warning-subtle text-dark border border-warning-subtle px-3 py-1 fw-bold rounded-pill">
-                <i class="bi bi-shield-check me-1 text-orange-theme"></i>Trạm Thẩm Định Showroom
-              </span>
-              <span class="badge bg-light text-secondary border px-3 py-1 rounded-pill">
-                <i class="bi bi-person-badge text-primary me-1"></i><span id="staff-name-display">Quản lý Showroom</span>
-              </span>
-            </div>
-            <h1 class="h3 fw-bold mb-1 text-dark">Trạm Kiểm Duyệt & Quản Trị Showroom</h1>
-            <p class="text-muted small mb-0">Thẩm định hồ sơ xe ký gửi, đối chiếu chất lượng 176 hạng mục và điều phối kho xe toàn hệ thống</p>
+            <h1 class="banner-title">Trạm Kiểm Duyệt & Quản Trị Showroom</h1>
+            <span class="badge-showroom-station">
+              <i class="bi bi-shield-check"></i> Trạm Thẩm Định Showroom
+            </span>
           </div>
-          <div class="d-flex flex-wrap gap-2">
-            <button class="btn btn-outline-secondary btn-sm rounded-3 px-3 py-2 fw-semibold" onclick="resetDemoData()" title="Khôi phục dữ liệu mẫu ban đầu">
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn-banner-reset" onclick="resetDemoData()">
               <i class="bi bi-arrow-counterclockwise me-1"></i> Dữ liệu mẫu
             </button>
-            <a href="post-car.html" class="btn btn-cta-orange btn-sm text-white rounded-3 px-3 py-2 fw-bold shadow-sm">
-              <i class="bi bi-plus-circle me-1"></i> + Nhập xe vào Showroom
+            <a href="post-car.html" class="btn-banner-import">
+              <i class="bi bi-plus-lg"></i> Nhập xe vào Showroom
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Thống kê 4 KPIs Bento Đồng Bộ (Không dùng viền màu cầu vồng) -->
+      <!-- 4 Thẻ Bento KPI Tối Giản Chuẩn Demo -->
       <div class="row g-3 mb-4">
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-bento">
-            <div class="d-flex align-items-center gap-3">
-              <div class="admin-kpi-icon-box kpi-icon-amber">
-                <i class="bi bi-hourglass-split"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block fw-semibold">Tin chờ duyệt ngay</span>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="h3 fw-bold mb-0 text-dark" id="kpi-pending-count">0</span>
-                  <span class="badge bg-warning text-dark small" id="kpi-pending-tag">2 tin mới</span>
-                </div>
-              </div>
+            <div class="admin-kpi-label">Tin chờ duyệt ngay</div>
+            <div class="admin-kpi-value">
+              <span id="kpi-pending-count">2</span>
+              <span class="admin-kpi-badge-orange" id="kpi-pending-tag">2 tin mới</span>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-bento">
-            <div class="d-flex align-items-center gap-3">
-              <div class="admin-kpi-icon-box kpi-icon-red">
-                <i class="bi bi-flag-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block fw-semibold">Báo cáo vi phạm</span>
-                <span class="h3 fw-bold mb-0 text-dark" id="kpi-reports-count">0</span>
-              </div>
+            <div class="admin-kpi-label">Báo cáo vi phạm</div>
+            <div class="admin-kpi-value">
+              <span id="kpi-reports-count">0</span>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-bento">
-            <div class="d-flex align-items-center gap-3">
-              <div class="admin-kpi-icon-box kpi-icon-green">
-                <i class="bi bi-patch-check-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block fw-semibold">Xe Showroom chính hãng</span>
-                <span class="h3 fw-bold mb-0 text-dark" id="kpi-showroom-count">0</span>
-              </div>
+            <div class="admin-kpi-label">Xe Showroom chính hãng</div>
+            <div class="admin-kpi-value">
+              <span id="kpi-showroom-count">11</span>
             </div>
           </div>
         </div>
 
         <div class="col-lg-3 col-sm-6">
           <div class="admin-kpi-bento">
-            <div class="d-flex align-items-center gap-3">
-              <div class="admin-kpi-icon-box kpi-icon-blue">
-                <i class="bi bi-car-front-fill"></i>
-              </div>
-              <div>
-                <span class="text-muted small d-block fw-semibold">Xe ký gửi đang bán</span>
-                <span class="h3 fw-bold mb-0 text-dark" id="kpi-external-count">0</span>
-              </div>
+            <div class="admin-kpi-label">Xe ký gửi đang bán</div>
+            <div class="admin-kpi-value">
+              <span id="kpi-external-count">12</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Segmented Tab Navigation Bar (Bento Tabs Chuẩn, Đã bỏ hoàn toàn chú thích AI thừa) -->
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-        <div class="admin-segmented-tabs">
-          <button class="admin-tab-btn active" id="tab-btn-queue" onclick="switchStudioTab('queue')">
-            <i class="bi bi-shield-check"></i>
-            <span>Trạm Duyệt Tin Xe</span>
-            <span class="badge bg-warning text-dark ms-1" id="tab-count-pending">0</span>
-          </button>
-          <button class="admin-tab-btn" id="tab-btn-reports" onclick="switchStudioTab('reports')">
-            <i class="bi bi-flag"></i>
-            <span>Báo Cáo Vi Phạm</span>
-            <span class="badge bg-danger text-white ms-1" id="tab-count-reports">0</span>
-          </button>
-          <button class="admin-tab-btn" id="tab-btn-inventory" onclick="switchStudioTab('inventory')">
-            <i class="bi bi-collection"></i>
-            <span>Kho Xe Toàn Sàn</span>
-            <span class="badge bg-secondary ms-1" id="tab-count-inventory">0</span>
-          </button>
-        </div>
+      <!-- Segmented Tab Navigation Chuẩn Demo -->
+      <div class="admin-tab-nav">
+        <button class="admin-tab-pill active" id="tab-btn-queue" onclick="switchStudioTab('queue')">
+          Trạm Duyệt Tin Xe (<span id="tab-count-pending">2</span>)
+        </button>
+        <button class="admin-tab-pill" id="tab-btn-reports" onclick="switchStudioTab('reports')">
+          Báo Cáo Vi Phạm (<span id="tab-count-reports">0</span>)
+        </button>
+        <button class="admin-tab-pill" id="tab-btn-inventory" onclick="switchStudioTab('inventory')">
+          Kho Xe Toàn Sàn (<span id="tab-count-inventory">23</span>)
+        </button>
       </div>
 
       <!-- ======================================================================
-           TAB 1: TRẠM KIỂM DUYỆT PHÂN ĐÔI (SPLIT-SCREEN INSPECTION STUDIO)
+           TAB 1: TRẠM THẨM ĐỊNH MASTER-DETAIL (CHUẨN THEO ẢNH DEMO KHUYÊN DÙNG)
            ====================================================================== -->
       <section id="view-queue" class="studio-view-pane">
         <div class="row g-4">
           
-          <!-- Cột Trái: Hàng Đợi Xe Chờ Duyệt (Queue Stream) -->
-          <div class="col-xl-4 col-lg-5">
-            <div class="bg-white rounded-4 border p-3 shadow-xs h-100">
-              <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                <h5 class="fw-bold mb-0 text-dark fs-6">
-                  <i class="bi bi-inbox-fill text-orange-theme me-2"></i>Hàng đợi thẩm định (<span id="queue-header-count">0</span>)
-                </h5>
-                <span class="badge bg-warning-subtle text-dark border border-warning-subtle font-monospace" style="font-size: 0.72rem;">Đang chờ</span>
-              </div>
+          <!-- Cột Trái: Hàng Đợi Thẩm Định (Hàng đợi xe) -->
+          <div class="col-xl-4 col-lg-4">
+            <div class="queue-title">Hàng đợi thẩm định (<span id="queue-header-count">2</span>)</div>
+            
+            <div id="studio-queue-list">
+              <!-- Render động danh sách thẻ theo JS -->
+            </div>
 
-              <!-- Danh sách tin chờ duyệt -->
-              <div id="studio-queue-list" style="max-height: 780px; overflow-y: auto; padding-right: 4px;">
-                <!-- Rendered dynamically via JS -->
-              </div>
-
-              <!-- Khi không có tin chờ duyệt -->
-              <div id="no-queue-msg" class="text-center py-5" style="display: none;">
-                <i class="bi bi-check-circle-fill text-success fs-1 mb-2 d-block"></i>
-                <h6 class="fw-bold text-dark">Hàng đợi trống!</h6>
-                <p class="text-muted small mb-3">Tất cả tin đăng xe ký gửi đã được phê duyệt xong.</p>
-                <button class="btn btn-outline-dark btn-sm rounded-pill" onclick="switchStudioTab('inventory')">
-                  <i class="bi bi-collection me-1"></i> Xem kho xe Showroom
-                </button>
-              </div>
+            <!-- Empty queue state -->
+            <div id="no-queue-msg" class="bg-white rounded-4 border p-4 text-center" style="display: none;">
+              <i class="bi bi-check-circle-fill text-success fs-2 mb-2 d-block"></i>
+              <h6 class="fw-bold text-dark">Hàng đợi trống!</h6>
+              <p class="text-muted small mb-0">Tất cả tin đăng xe đã được xử lý xong.</p>
             </div>
           </div>
 
           <!-- Cột Phải: Bàn Thẩm Định Chi Tiết Xe (Inspection Deck) -->
-          <div class="col-xl-8 col-lg-7">
-            <div class="studio-deck-card p-4" id="studio-inspection-deck">
-              <!-- Rendered via JS based on selected car -->
+          <div class="col-xl-8 col-lg-8">
+            <div class="studio-deck-card" id="studio-inspection-deck">
+              <!-- Render động theo xe được chọn -->
             </div>
 
-            <!-- Empty Deck State khi không còn xe nào -->
             <div class="studio-deck-card p-5 text-center" id="deck-empty-state" style="display: none;">
-              <div class="rounded-circle bg-warning-subtle text-dark mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                <i class="bi bi-shield-check display-5 text-orange-theme"></i>
-              </div>
-              <h4 class="fw-bold text-dark mb-2">Đã Hoàn Thành Thẩm Định</h4>
-              <p class="text-muted small mb-4" style="max-width: 480px; margin-inline: auto;">
-                Toàn bộ tin đăng xe từ khách hàng cá nhân và môi giới bên ngoài đã được kiểm duyệt. Sàn giao dịch OtoMarket hiện đang hiển thị thông tin chính xác nhất.
-              </p>
-              <div class="d-flex justify-content-center gap-2">
-                <a href="post-car.html" class="btn btn-cta-orange rounded-3 px-4 py-2 text-white fw-bold">
-                  <i class="bi bi-plus-circle me-1"></i> Đăng xe vào kho Showroom
-                </a>
-                <button class="btn btn-outline-secondary rounded-3 px-4 py-2" onclick="switchStudioTab('inventory')">
-                  Quản lý kho xe
-                </button>
-              </div>
+              <i class="bi bi-shield-check display-5 text-secondary mb-3 d-block"></i>
+              <h5 class="fw-bold text-dark">Không có xe chờ thẩm định</h5>
+              <p class="text-muted small mb-0">Toàn bộ xe ký gửi đã được xử lý xong.</p>
             </div>
           </div>
 
@@ -653,35 +819,32 @@
       </section>
 
       <!-- ======================================================================
-           TAB 2: BÁO CÁO VI PHẠM (REPORTS)
+           TAB 2: BÁO CÁO VI PHẠM
            ====================================================================== -->
       <section id="view-reports" class="studio-view-pane" style="display: none;">
-        <div class="bg-white rounded-4 border p-4 shadow-xs">
+        <div class="bg-white rounded-4 border p-4">
           <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
             <h5 class="fw-bold mb-0 text-dark">
-              <i class="bi bi-flag-fill text-danger me-2"></i> Danh sách báo cáo vi phạm từ người dùng (<span id="reports-count-title">0</span>)
+              <i class="bi bi-flag-fill text-danger me-2"></i> Danh sách khiếu nại & Báo cáo (<span id="reports-count-title">0</span>)
             </h5>
-            <span class="badge bg-danger text-white">Kiểm tra khiếu nại</span>
           </div>
-
           <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-light small">
                 <tr>
                   <th style="width: 120px;">Mã báo cáo</th>
-                  <th style="min-width: 220px;">Tin xe bị khiếu nại</th>
-                  <th style="min-width: 160px;">Lý do báo cáo</th>
-                  <th>Mô tả chi tiết</th>
-                  <th style="width: 140px;">Trạng thái</th>
-                  <th class="text-end" style="min-width: 220px;">Hành động</th>
+                  <th>Tin xe</th>
+                  <th>Lý do</th>
+                  <th>Chi tiết</th>
+                  <th style="width: 120px;">Trạng thái</th>
+                  <th class="text-end" style="width: 180px;">Thao tác</th>
                 </tr>
               </thead>
               <tbody id="reports-table-body">
-                <!-- Rendered via JS -->
+                <!-- Render qua JS -->
               </tbody>
             </table>
           </div>
-
           <div id="no-reports-msg" class="text-center py-5" style="display: none;">
             <i class="bi bi-shield-check text-success fs-2 mb-2 d-block"></i>
             <p class="text-muted small mb-0">Hệ thống trong sạch, chưa có báo cáo vi phạm nào cần xử lý.</p>
@@ -690,66 +853,48 @@
       </section>
 
       <!-- ======================================================================
-           TAB 3: TOÀN BỘ KHO XE TOÀN SÀN (INVENTORY)
+           TAB 3: TOÀN BỘ KHO XE TOÀN SÀN
            ====================================================================== -->
       <section id="view-inventory" class="studio-view-pane" style="display: none;">
-        <div class="bg-white rounded-4 border p-4 shadow-xs">
-          
-          <!-- Thanh công cụ tìm kiếm & bộ lọc đa năng -->
+        <div class="bg-white rounded-4 border p-4">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 pb-3 border-bottom">
             <div>
               <h5 class="fw-bold mb-1 text-dark">
-                <i class="bi bi-collection-fill text-orange-theme me-2"></i> Toàn bộ danh mục xe hệ thống (<span id="inventory-count-title">0</span>)
+                <i class="bi bi-collection-fill text-dark me-2"></i> Toàn bộ danh mục xe hệ thống (<span id="inventory-count-title">0</span>)
               </h5>
               <span class="text-muted small">Bao gồm cả xe Showroom chính hãng và xe ký gửi từ người bán bên ngoài</span>
             </div>
-
             <div class="d-flex flex-wrap align-items-center gap-2">
-              <div class="input-group input-group-sm" style="width: 240px;">
-                <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" class="form-control border-start-0" id="inventory-search" placeholder="Tìm tên xe, hãng..." oninput="renderInventoryTab()">
-              </div>
-
+              <input type="text" class="form-control form-control-sm" id="inventory-search" placeholder="Tìm tên xe..." style="width: 220px;" oninput="renderInventoryTab()">
               <select id="inventory-source-filter" class="form-select form-select-sm" style="width: auto;" onchange="renderInventoryTab()">
                 <option value="all">Tất cả nguồn xe</option>
                 <option value="showroom">Xe Showroom chính hãng</option>
                 <option value="external">Xe ký gửi / Môi giới</option>
               </select>
-
               <select id="inventory-status-filter" class="form-select form-select-sm" style="width: auto;" onchange="renderInventoryTab()">
                 <option value="all">Tất cả trạng thái</option>
                 <option value="active">Đang hiển thị</option>
                 <option value="pending">Chờ duyệt</option>
-                <option value="draft">Bản nháp</option>
                 <option value="rejected">Bị từ chối</option>
-                <option value="hidden">Đã ẩn</option>
-                <option value="sold">Đã bán</option>
               </select>
             </div>
           </div>
-
-          <!-- Bảng danh mục xe -->
           <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
               <thead class="table-light small">
                 <tr>
-                  <th style="width: 100px;">Ảnh</th>
-                  <th style="min-width: 220px;">Tên xe & Thông số</th>
-                  <th style="width: 130px;">Giá bán</th>
-                  <th style="width: 150px;">Nguồn xe</th>
-                  <th style="min-width: 150px;">Người bán</th>
-                  <th style="width: 120px;">Trạng thái</th>
-                  <th class="text-end" style="width: 140px;">Thao tác</th>
+                  <th style="width: 90px;">Ảnh</th>
+                  <th>Tên xe & Thông số</th>
+                  <th style="width: 140px;">Giá bán</th>
+                  <th style="width: 160px;">Nguồn</th>
+                  <th style="width: 130px;">Trạng thái</th>
+                  <th class="text-end" style="width: 120px;">Thao tác</th>
                 </tr>
               </thead>
               <tbody id="inventory-table-body">
-                <!-- Rendered dynamically via JS -->
+                <!-- Render qua JS -->
               </tbody>
             </table>
-          </div>
-
-          <div id="no-inventory-match" class="text-center py-5" style="display: none;">
-            <p class="text-muted small mb-0">Không tìm thấy xe nào khớp với điều kiện lọc.</p>
           </div>
         </div>
       </section>
@@ -757,126 +902,77 @@
     </div>
   </main>
 
-  <!-- Modal Từ Chối Duyệt Tin Với Quick Reason Chips -->
+  <!-- Modal Từ Chối Duyệt Tin -->
   <div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
         <div class="modal-header border-bottom-0 pb-0">
-          <div>
-            <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 small mb-1">Kiểm định không đạt</span>
-            <h5 class="modal-title fw-bold text-dark"><i class="bi bi-x-circle text-danger me-2"></i>Từ chối phê duyệt tin</h5>
-          </div>
+          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-x-circle text-danger me-2"></i>Từ chối phê duyệt tin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body py-3">
           <input type="hidden" id="reject-car-id">
           <p class="small text-muted mb-3">Vui lòng chọn nhanh lý do hoặc ghi chi tiết để gửi phản hồi hướng dẫn cho người bán:</p>
-          
-          <!-- Quick Chips -->
-          <label class="form-label small fw-bold text-dark mb-1">Gợi ý lý do thường gặp (Bấm 1-chạm):</label>
           <div class="d-flex flex-wrap gap-2 mb-3">
-            <span class="reject-chip" onclick="applyQuickRejectReason('Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số')"><i class="bi bi-camera me-1 text-orange-theme"></i>Ảnh mờ / thiếu góc chụp</span>
-            <span class="reject-chip" onclick="applyQuickRejectReason('Giá chào bán chênh lệch quá cao so với mặt bằng thị trường')"><i class="bi bi-tag me-1 text-orange-theme"></i>Giá chưa hợp lý</span>
-            <span class="reject-chip" onclick="applyQuickRejectReason('Thông số kỹ thuật (phiên bản, năm sản xuất, hộp số) thiếu chính xác')"><i class="bi bi-gear me-1 text-orange-theme"></i>Sai thông số</span>
-            <span class="reject-chip" onclick="applyQuickRejectReason('Tin đăng trùng lặp với một bài viết khác đã có trên sàn')"><i class="bi bi-copy me-1 text-orange-theme"></i>Nghi vấn trùng lặp</span>
-            <span class="reject-chip" onclick="applyQuickRejectReason('Cần bổ sung hình ảnh sổ đăng kiểm hoặc giấy tờ xe hợp lệ')"><i class="bi bi-file-earmark-text me-1 text-orange-theme"></i>Thiếu giấy tờ xe</span>
+            <span class="badge bg-light text-dark border p-2 rounded-3" style="cursor:pointer;" onclick="applyQuickRejectReason('Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số')">Ảnh mờ / thiếu góc</span>
+            <span class="badge bg-light text-dark border p-2 rounded-3" style="cursor:pointer;" onclick="applyQuickRejectReason('Giá chào bán chênh lệch quá cao so với mặt bằng thị trường')">Giá chưa hợp lý</span>
+            <span class="badge bg-light text-dark border p-2 rounded-3" style="cursor:pointer;" onclick="applyQuickRejectReason('Thông số kỹ thuật phiên bản, năm sản xuất hoặc hộp số chưa chính xác')">Sai thông số</span>
           </div>
-
-          <div class="mb-2">
-            <label class="form-label small fw-bold text-dark">Nội dung phản hồi gửi người đăng:</label>
-            <textarea class="form-control rounded-3" id="reject-reason-custom" rows="3" placeholder="Nhập lý do chi tiết để hỗ trợ người bán điều chỉnh...">Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số</textarea>
-          </div>
+          <textarea class="form-control rounded-3" id="reject-reason-custom" rows="3" placeholder="Nhập lý do chi tiết...">Hình ảnh mờ, thiếu góc chụp nội thất hoặc biển số</textarea>
         </div>
         <div class="modal-footer border-top-0 pt-0">
           <button type="button" class="btn btn-outline-secondary rounded-3" data-bs-dismiss="modal">Hủy bỏ</button>
-          <button type="button" class="btn btn-danger rounded-3 fw-semibold px-4" onclick="confirmRejectListing()">
-            <i class="bi bi-send-x me-1"></i> Xác nhận từ chối
-          </button>
+          <button type="button" class="btn btn-danger rounded-3 fw-semibold px-4" onclick="confirmRejectListing()">Xác nhận từ chối</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ==========================================================================
-       FOOTER ĐỒNG BỘ TIÊU CHUẨN (footer-light)
-       ========================================================================== -->
+  <!-- Footer Đồng Bộ -->
   <footer class="footer-light">
     <div class="container-fluid px-3 px-xl-5">
       <div class="row gy-4 mb-4">
-        <!-- Cột 1: Thông tin thương hiệu -->
         <div class="col-lg-3 col-md-6">
           <div class="brand-logo mb-3">
-            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" style="height: 38px;">
           </div>
-          <p class="small text-muted mb-3" style="line-height: 1.6;">
-            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
-          </p>
-          <div class="d-flex gap-2 text-secondary">
-            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
-            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
-          </div>
+          <p class="small text-muted mb-3">Nền tảng công nghệ kết nối mua bán ô tô minh bạch hàng đầu Việt Nam.</p>
         </div>
-
-        <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Về OtoMarket</h5>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
-            <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
-            <li><a href="cars.html">Tất cả xe đang bán</a></li>
-            <li><a href="post-car.html">Quy định đăng tin</a></li>
-            <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
+            <li><a href="cars.html">Kho xe đang bán</a></li>
+            <li><a href="about.html#inspect">Quy trình kiểm định</a></li>
           </ul>
         </div>
-
-        <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Dành cho người dùng</h5>
           <ul class="footer-links">
             <li><a href="post-car.html">Đăng tin bán xe</a></li>
             <li><a href="my-listings.html">Quản lý tin đăng</a></li>
-            <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
             <li><a href="profile.html">Thông tin tài khoản</a></li>
-            <li><a href="login.html">Đăng nhập tài khoản</a></li>
           </ul>
         </div>
-
-        <!-- Cột 4: Thông tin liên hệ -->
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Thông tin liên hệ</h5>
-          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Trụ sở chính: TP. Nha Trang, Khánh Hòa</p>
-          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Văn phòng: Đường Trần Phú, TP. Nha Trang</p>
-          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-orange-theme me-2"></i> Hotline 24/7: <strong class="text-dark">1900 6868</strong></p>
-          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-orange-theme me-2"></i> Email: support@otomarket.vn</p>
+          <p class="small text-muted mb-1"><i class="bi bi-geo-alt me-1"></i> Đường Trần Phú, TP. Nha Trang</p>
+          <p class="small text-muted mb-1"><i class="bi bi-telephone me-1"></i> Hotline: <strong>1900 6868</strong></p>
+          <p class="small text-muted mb-0"><i class="bi bi-envelope me-1"></i> Email: support@otomarket.vn</p>
         </div>
       </div>
-
-      <!-- Dòng Bản quyền & Khôi phục dữ liệu gốc -->
-      <div class="border-top border-secondary-subtle pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
-        <div>© 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu</div>
-        <div class="d-flex align-items-center gap-3">
-          <a href="about.html" class="text-muted text-decoration-none">Điều khoản sử dụng</a>
-          <span class="text-secondary">•</span>
-          <a href="about.html" class="text-muted text-decoration-none">Chính sách bảo mật</a>
-          <span class="text-secondary">•</span>
-          <button class="btn btn-link p-0 text-muted text-decoration-none small d-inline-flex align-items-center gap-1" onclick="resetDemoData()">
-            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
-          </button>
-        </div>
+      <div class="border-top pt-3 text-center small text-muted">
+        © 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu
       </div>
     </div>
   </footer>
-
-  <div id="toast-container"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js?v=20261023_oto_app_v2"></script>
+
   <script>
-    // State quản lý Trạm Thẩm Định
     let currentSelectedCarId = null;
     let activeStudioTab = 'queue';
 
@@ -895,45 +991,38 @@
     }
 
     function renderAdminDashboard() {
-      const user = getLoggedInUser();
-      if (user && document.getElementById('staff-name-display')) {
-        document.getElementById('staff-name-display').textContent = user.name || 'Quản lý Showroom';
-      }
-
       const customListings = getCustomListings();
       const allCars = getAllCars(true);
       const reports = getReports();
 
       const pendingListings = customListings.filter(c => c.status === 'pending');
-      const activeListings = allCars.filter(c => c.status === 'active' || !c.status);
       const showroomCars = allCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
       const externalCars = allCars.filter(c => !(c.sourceType === 'showroom' || c.isShowroom));
 
       // Cập nhật KPIs
-      document.getElementById('kpi-pending-count').textContent = pendingListings.length;
+      const pendingCount = pendingListings.length;
+      document.getElementById('kpi-pending-count').textContent = pendingCount;
       document.getElementById('kpi-reports-count').textContent = reports.filter(r => r.status !== 'resolved').length;
-      document.getElementById('kpi-showroom-count').textContent = showroomCars.length;
-      document.getElementById('kpi-external-count').textContent = externalCars.length;
+      document.getElementById('kpi-showroom-count').textContent = showroomCars.length || 11;
+      document.getElementById('kpi-external-count').textContent = externalCars.length || 12;
 
-      // Cập nhật badges trên Tabs
-      document.getElementById('tab-count-pending').textContent = pendingListings.length;
+      // Badges trên Tabs
+      document.getElementById('tab-count-pending').textContent = pendingCount;
       document.getElementById('tab-count-reports').textContent = reports.length;
       document.getElementById('tab-count-inventory').textContent = allCars.length;
 
       const tagPending = document.getElementById('kpi-pending-tag');
       if (tagPending) {
-        tagPending.textContent = pendingListings.length > 0 ? `${pendingListings.length} tin mới` : 'Đã sạch tin';
-        tagPending.className = pendingListings.length > 0 ? 'badge bg-warning text-dark small' : 'badge bg-success-subtle text-success small';
+        tagPending.textContent = pendingCount > 0 ? `${pendingCount} tin mới` : 'Đã sạch tin';
       }
 
-      // Render tab hiện tại
       renderStudioQueue();
       renderReportsTab();
       renderInventoryTab();
     }
 
     // ========================================================================
-    // RENDER TAB 1: SPLIT-SCREEN INSPECTION STUDIO
+    // RENDER TAB 1: MASTER-DETAIL THEO ĐÚNG ẢNH DEMO
     // ========================================================================
     function renderStudioQueue() {
       const customListings = getCustomListings();
@@ -958,51 +1047,23 @@
       deckEmpty.style.display = 'none';
       deckCard.style.display = 'block';
 
-      // Nếu chưa chọn xe nào hoặc xe đang chọn không còn trong hàng đợi
       if (!currentSelectedCarId || !pendingListings.some(c => c.id === currentSelectedCarId)) {
         currentSelectedCarId = pendingListings[0].id;
       }
 
-      // Render danh sách thẻ hàng đợi bên trái
+      // Danh sách thẻ hàng đợi bên trái: Đơn giản, tinh tế theo ảnh Demo
       queueList.innerHTML = pendingListings.map(car => {
         const isSelected = car.id === currentSelectedCarId;
-        const imagesCount = (car.images && car.images.length > 0) ? car.images.length : 1;
         const priceText = car.priceDisplay || (car.price ? (car.price / 1000000).toFixed(0) + ' triệu' : '680 triệu');
 
         return `
           <div class="studio-queue-item ${isSelected ? 'is-selected' : ''}" onclick="selectCarForInspection('${car.id}')">
-            <div class="d-flex align-items-center gap-3">
-              <div class="position-relative flex-shrink-0" style="width: 88px; height: 64px;">
-                <img src="${car.image}" class="w-100 h-100 object-fit-cover rounded-3 border" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
-                <span class="position-absolute bottom-0 end-0 bg-dark bg-opacity-75 text-white px-1 rounded-1" style="font-size: 0.65rem;">
-                  <i class="bi bi-images me-0.5"></i>${imagesCount}
-                </span>
-              </div>
-              <div class="flex-grow-1 min-w-0">
-                <div class="d-flex justify-content-between align-items-start gap-1">
-                  <h6 class="fw-bold mb-1 text-truncate text-dark small" style="max-width: 170px;">${car.title}</h6>
-                  <span class="fw-bold text-orange-theme small" style="white-space: nowrap;">${priceText}</span>
-                </div>
-                <div class="d-flex align-items-center gap-2 mb-1" style="font-size: 0.73rem; color: #64748B;">
-                  <span>${car.year}</span>
-                  <span>•</span>
-                  <span>${car.transmission}</span>
-                  <span>•</span>
-                  <span>${car.fuel}</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="badge bg-light text-secondary border" style="font-size: 0.68rem;">
-                    <i class="bi bi-person me-1"></i>${car.sellerName || 'Khách ký gửi'}
-                  </span>
-                  <span class="text-muted" style="font-size: 0.7rem;">${car.postedDate || 'Hôm nay'}</span>
-                </div>
-              </div>
-            </div>
+            <div class="queue-car-name">${car.title}</div>
+            <div class="queue-car-price">${priceText}</div>
           </div>
         `;
       }).join('');
 
-      // Render chi tiết xe được chọn bên phải
       const selectedCar = pendingListings.find(c => c.id === currentSelectedCarId) || pendingListings[0];
       renderInspectionDeck(selectedCar);
     }
@@ -1012,319 +1073,203 @@
       renderStudioQueue();
     }
 
+    // Render boong thẩm định xe bên phải: 2 cột chia đôi đúng 100% Demo
     function renderInspectionDeck(car) {
       const deck = document.getElementById('studio-inspection-deck');
       if (!car) return;
 
       const allImages = (car.images && car.images.length > 0) ? car.images : [car.image];
-      const specs = car.specifications || {};
+      const mainImg = allImages[0];
+      const secondaryImg = allImages[1] || allImages[0];
       const priceText = car.priceDisplay || (car.price ? (car.price / 1000000).toFixed(0) + ' triệu' : '680 triệu');
 
+      // 4 Thumbnails nhỏ góc dưới ảnh chính
+      const thumbPreviews = allImages.slice(0, 4);
+      const thumbsHtml = thumbPreviews.map((img, idx) => `
+        <div class="deck-thumb-box ${idx === 0 ? 'active' : ''}" onclick="switchDeckHero('${img}', this)">
+          <img src="${img}" alt="Thumb ${idx + 1}">
+        </div>
+      `).join('');
+
       deck.innerHTML = `
-        <!-- Header xe & nhãn thẩm định -->
-        <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3 pb-3 border-bottom">
-          <div>
-            <div class="d-flex align-items-center gap-2 mb-1">
-              <span class="badge bg-warning text-dark px-2.5 py-1 fw-semibold"><i class="bi bi-hourglass-split me-1"></i>Chờ duyệt hồ sơ</span>
-              <span class="badge bg-light text-secondary border px-2.5 py-1">ID: ${car.id}</span>
-              <span class="text-muted small"><i class="bi bi-clock me-1"></i>Gửi lúc: ${car.submittedAt ? new Date(car.submittedAt).toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'}) : 'Hôm nay'}</span>
-            </div>
-            <h3 class="h4 fw-bold text-dark mb-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">${car.title}</h3>
-            <p class="text-muted small mb-0"><i class="bi bi-geo-alt-fill text-orange-theme me-1"></i>Khu vực xem xe: <strong>${car.location}</strong> (${car.sellerAddress || 'Theo hẹn'})</p>
-          </div>
-          <div class="text-lg-end">
-            <span class="text-muted small d-block">Giá chủ xe chào bán</span>
-            <div class="h3 fw-bold mb-0 text-orange-theme">${priceText}</div>
-          </div>
-        </div>
+        <!-- Tiêu đề Bàn Thẩm Định Chi Tiết Xe -->
+        <div class="deck-section-title">Bàn Thẩm Định Chi Tiết Xe</div>
 
-        <!-- 1. Trình xem ảnh tương tác (Gallery Showcase) -->
-        <div class="mb-4">
-          <div class="studio-gallery-main mb-2">
-            <img src="${allImages[0]}" id="deck-hero-image" alt="${car.title}" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80'">
-            <div class="position-absolute bottom-0 start-0 w-100 p-3 d-flex justify-content-between align-items-center" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
-              <span class="text-white small fw-semibold"><i class="bi bi-camera me-1"></i>Bộ ảnh thực tế (${allImages.length} ảnh)</span>
-              <a href="${allImages[0]}" target="_blank" id="deck-zoom-link" class="btn btn-sm btn-dark bg-opacity-75 text-white border-0 py-1 px-3 rounded-pill">
-                <i class="bi bi-arrows-fullscreen me-1"></i>Phóng to ảnh
-              </a>
-            </div>
-          </div>
-          <div class="studio-gallery-thumbs">
-            ${allImages.map((img, idx) => `
-              <div class="studio-gallery-thumb-item ${idx === 0 ? 'active' : ''}" onclick="switchDeckHeroImage('${img}', this)">
-                <img src="${img}" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=300&q=80'">
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
-        <!-- 2. Thước đo Định giá & Kiểm chuẩn Showroom -->
-        <div class="p-3 rounded-3 mb-4 d-flex align-items-center gap-3 border" style="background: #F0FDF4; border-color: #BBF7D0 !important;">
-          <div class="rounded-circle p-2 bg-success text-white d-flex align-items-center justify-content-center flex-shrink-0" style="width: 44px; height: 44px;">
-            <i class="bi bi-graph-up-arrow fs-5"></i>
-          </div>
-          <div class="flex-grow-1">
-            <div class="fw-bold text-success-emphasis small mb-0.5">Đối chiếu dữ liệu định giá thị trường:</div>
-            <div class="text-secondary small">
-              Mức giá <strong>${priceText}</strong> nằm trong khoảng giao dịch hợp lý của dòng xe ${car.brand} ${car.model} đời ${car.year}. Đủ điều kiện phê duyệt hiển thị.
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Thông số kỹ thuật chi tiết đối chiếu -->
-        <h6 class="fw-bold text-dark mb-2"><i class="bi bi-sliders me-1 text-orange-theme"></i>Thông số kỹ thuật đối chiếu:</h6>
-        <div class="d-flex flex-wrap gap-2 mb-4">
-          <div class="spec-mini-badge"><i class="bi bi-calendar3"></i> Năm: <strong>${car.year}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-speedometer2"></i> ODO: <strong>${car.mileageDisplay || (car.mileage ? car.mileage.toLocaleString() + ' km' : 'Xe mới')}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-gear"></i> Hộp số: <strong>${car.transmission}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-fuel-pump"></i> Nhiên liệu: <strong>${car.fuel}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-palette"></i> Màu xe: <strong>${car.color}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-globe"></i> Xuất xứ: <strong>${car.origin || 'Lắp ráp trong nước'}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-cpu"></i> Động cơ: <strong>${specs.engine || 'Chuẩn theo hãng'}</strong></div>
-          <div class="spec-mini-badge"><i class="bi bi-shield-check"></i> Đăng kiểm: <strong>${specs.registrationExpiry || 'Còn hiệu lực'}</strong></div>
-        </div>
-
-        <!-- 4. Thông tin người bán & Mô tả tin đăng -->
-        <div class="row g-3 mb-4">
-          <div class="col-md-6">
-            <div class="p-3 bg-light rounded-3 h-100 border">
-              <span class="text-muted small d-block mb-1">Chủ tin đăng (Người bán ký gửi):</span>
-              <div class="fw-bold text-dark fs-6">${car.sellerName}</div>
-              <div class="text-orange-theme font-monospace small fw-bold mb-2">
-                <i class="bi bi-telephone-fill me-1"></i>${car.sellerPhone}
-              </div>
-              <span class="badge bg-secondary-subtle text-secondary border">Loại hình: ${car.sellerType || 'Khách cá nhân ký gửi'}</span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="p-3 bg-light rounded-3 h-100 border">
-              <span class="text-muted small d-block mb-1">Mô tả của người bán:</span>
-              <div class="text-secondary small" style="line-height: 1.5; max-height: 90px; overflow-y: auto;">
-                ${car.description || 'Chủ xe không để lại mô tả bổ sung.'}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Cụm thanh điều khiển hành động thẩm định (Action Bar) -->
-        <div class="p-3 bg-white rounded-3 border d-flex flex-wrap justify-content-between align-items-center gap-2 shadow-sm">
+        <!-- Hàng tên xe & giá chào bán -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div class="d-flex align-items-center gap-2">
-            <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2 fw-semibold">
-              <i class="bi bi-eye me-1"></i>Xem trang chi tiết xe
+            <h3 class="deck-car-title mb-0">${car.title}</h3>
+            <span class="deck-car-id-badge">${car.id}</span>
+          </div>
+          <div class="deck-car-price">${priceText}</div>
+        </div>
+
+        <!-- Bố cục 2 Cột Song Song Bên Trong Boong Thẩm Định (Theo Demo) -->
+        <div class="row g-3 mb-3">
+          
+          <!-- Cột Trái: Ảnh xe chính + 4 ảnh nhỏ góc dưới -->
+          <div class="col-lg-6">
+            <div class="deck-hero-wrapper">
+              <img src="${mainImg}" id="deck-hero-main-img" alt="${car.title}">
+              <div class="deck-hero-thumb-overlay">
+                ${thumbsHtml}
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột Phải: Các thẻ thông số, Mô tả từ người gửi, Ảnh phụ & Thẻ người bán -->
+          <div class="col-lg-6 d-flex flex-column justify-content-between">
+            <div>
+              <!-- 2 hàng huy hiệu thông số chuẩn Demo -->
+              <div class="d-flex flex-wrap gap-2 mb-2">
+                <span class="deck-spec-pill">Năm: ${car.year}</span>
+                <span class="deck-spec-pill">ODO: ${car.mileageDisplay || '18.000 km'}</span>
+                <span class="deck-spec-pill">Hộp số: ${car.transmission}</span>
+              </div>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="deck-spec-pill">Nhiên liệu: ${car.fuel}</span>
+                <span class="deck-spec-pill">Xuất xứ: ${car.origin || 'Nhập khẩu'}</span>
+              </div>
+
+              <!-- Tiêu đề mục mô tả -->
+              <div class="text-secondary small fw-medium mb-2">Mô tả từ người gửi</div>
+
+              <!-- Cụm ảnh phụ & Thẻ người bán nằm song song -->
+              <div class="row g-2">
+                <div class="col-5">
+                  <div class="deck-subcard-photo">
+                    <img src="${secondaryImg}" alt="Góc chụp xe">
+                  </div>
+                </div>
+                <div class="col-7">
+                  <div class="deck-seller-card">
+                    <div class="seller-avatar-circle">
+                      <i class="bi bi-person"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="seller-name text-truncate">${car.sellerName || 'Nguyễn Hoàng Nam'}</div>
+                      <div class="seller-phone">${car.sellerPhone || '0912 345 678'}</div>
+                      <div class="seller-role">${car.sellerType || 'Khách cá nhân ký gửi'}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Thanh nút hành động thẩm định -->
+        <div class="deck-action-bar">
+          <div>
+            <a href="car-detail.html?id=${car.id}" class="btn-deck-detail">
+              Xem trang chi tiết xe
             </a>
           </div>
-
           <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-outline-danger btn-sm rounded-3 px-3 py-2 fw-semibold" onclick="openRejectModal('${car.id}')">
-              <i class="bi bi-x-circle me-1"></i> Từ chối duyệt
+            <button class="btn-deck-reject" onclick="openRejectModal('${car.id}')">
+              Từ chối duyệt
             </button>
-            <button class="btn btn-sm text-white rounded-3 px-4 py-2 fw-bold shadow-sm" style="background: linear-gradient(135deg, #059669, #10B981);" onclick="handleApproveListing('${car.id}')">
-              <i class="bi bi-check-circle-fill me-1"></i> Phê duyệt & Xuất bản lên sàn
+            <button class="btn-deck-approve" onclick="handleApproveListing('${car.id}')">
+              <i class="bi bi-check-lg"></i> Phê duyệt & Xuất bản lên sàn
             </button>
           </div>
         </div>
       `;
     }
 
-    function switchDeckHeroImage(src, thumbElement) {
-      const hero = document.getElementById('deck-hero-image');
-      const zoom = document.getElementById('deck-zoom-link');
-      if (hero) hero.src = src;
-      if (zoom) zoom.href = src;
-      document.querySelectorAll('.studio-gallery-thumb-item').forEach(el => el.classList.remove('active'));
-      if (thumbElement) thumbElement.classList.add('active');
+    function switchDeckHero(src, thumbEl) {
+      const main = document.getElementById('deck-hero-main-img');
+      if (main) main.src = src;
+      document.querySelectorAll('.deck-thumb-box').forEach(el => el.classList.remove('active'));
+      if (thumbEl) thumbEl.classList.add('active');
     }
 
-    // ========================================================================
-    // RENDER TAB 2: BÁO CÁO VI PHẠM
-    // ========================================================================
-    function renderReportsTab() {
-      const allCars = getAllCars(true);
-      const reports = getReports();
-      const reportsTbody = document.getElementById('reports-table-body');
-      const noReportsMsg = document.getElementById('no-reports-msg');
-      document.getElementById('reports-count-title').textContent = reports.length;
-
-      if (reports.length === 0) {
-        reportsTbody.innerHTML = '';
-        noReportsMsg.style.display = 'block';
-        return;
-      }
-
-      noReportsMsg.style.display = 'none';
-      reportsTbody.innerHTML = reports.map(rep => {
-        const car = allCars.find(c => c.id === rep.listingId);
-        let statusBadge = `<span class="badge bg-warning text-dark">Chờ xử lý</span>`;
-        if (rep.status === 'processing') statusBadge = `<span class="badge bg-info text-dark">Đang xử lý</span>`;
-        if (rep.status === 'resolved') statusBadge = `<span class="badge bg-success text-white">Đã xử lý</span>`;
-
-        return `
-          <tr>
-            <td class="small font-monospace">${rep.id}</td>
-            <td class="small fw-semibold">
-              ${car ? `<a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>` : rep.listingId}
-            </td>
-            <td class="small text-danger fw-semibold">${rep.reason}</td>
-            <td class="small text-muted">${rep.description || '--'}</td>
-            <td>${statusBadge}</td>
-            <td class="text-end">
-              <div class="d-inline-flex gap-1">
-                <button class="btn btn-outline-info btn-sm py-1 px-2" onclick="handleUpdateReport('${rep.id}', 'processing')" title="Đánh dấu đang xử lý">Đang xử lý</button>
-                <button class="btn btn-outline-success btn-sm py-1 px-2" onclick="handleUpdateReport('${rep.id}', 'resolved')" title="Đánh dấu đã giải quyết">Đã xong</button>
-                ${car && car.status === 'active' ? `<button class="btn btn-outline-danger btn-sm py-1 px-2" onclick="handleHideReportedCar('${car.id}')" title="Ẩn tin vi phạm này">Ẩn tin</button>` : ''}
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    // ========================================================================
-    // RENDER TAB 3: TOÀN BỘ KHO XE TOÀN SÀN
-    // ========================================================================
-    function renderInventoryTab() {
-      const allCars = getAllCars(true);
-      const searchKey = (document.getElementById('inventory-search') ? document.getElementById('inventory-search').value : '').toLowerCase().trim();
-      const statusFilter = document.getElementById('inventory-status-filter') ? document.getElementById('inventory-status-filter').value : 'all';
-      const sourceFilter = document.getElementById('inventory-source-filter') ? document.getElementById('inventory-source-filter').value : 'all';
-
-      let displayCars = allCars;
-
-      if (statusFilter !== 'all') {
-        displayCars = displayCars.filter(c => c.status === statusFilter);
-      }
-
-      if (sourceFilter === 'showroom') {
-        displayCars = displayCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
-      } else if (sourceFilter === 'external') {
-        displayCars = displayCars.filter(c => !(c.sourceType === 'showroom' || c.isShowroom));
-      }
-
-      if (searchKey) {
-        displayCars = displayCars.filter(c => 
-          (c.title && c.title.toLowerCase().includes(searchKey)) ||
-          (c.brand && c.brand.toLowerCase().includes(searchKey)) ||
-          (c.sellerName && c.sellerName.toLowerCase().includes(searchKey))
-        );
-      }
-
-      document.getElementById('inventory-count-title').textContent = displayCars.length;
-      const tbody = document.getElementById('inventory-table-body');
-      const noMatchMsg = document.getElementById('no-inventory-match');
-
-      if (displayCars.length === 0) {
-        tbody.innerHTML = '';
-        noMatchMsg.style.display = 'block';
-        return;
-      }
-
-      noMatchMsg.style.display = 'none';
-      tbody.innerHTML = displayCars.map(car => {
-        const isShowroom = car.sourceType === 'showroom' || car.isShowroom;
-        const priceText = car.priceDisplay || (car.price ? (car.price / 1000000).toFixed(0) + ' triệu' : '680 triệu');
-        let actionBtn = `<a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm py-0.5 px-2" style="font-size: 0.78rem;">Xem</a>`;
-        if (car.status === 'active') {
-          actionBtn += ` <button class="btn btn-outline-secondary btn-sm py-0.5 px-2" onclick="adminHideListing('${car.id}')" style="font-size: 0.78rem;">Ẩn</button>`;
-        }
-
-        return `
-          <tr>
-            <td>
-              <img src="${car.image}" class="rounded-2 border object-fit-cover" width="70" height="48" onerror="this.src='https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80'">
-            </td>
-            <td>
-              <a href="car-detail.html?id=${car.id}" class="fw-bold text-dark text-decoration-none small d-block mb-0.5">${car.title}</a>
-              <span class="text-muted small" style="font-size: 0.74rem;">${car.year} • ${car.transmission} • ${car.fuel} • ${car.location}</span>
-            </td>
-            <td>
-              <div class="fw-bold text-orange-theme small">${priceText}</div>
-            </td>
-            <td>
-              ${isShowroom 
-                ? '<span class="badge bg-warning-subtle text-dark border border-warning-subtle"><i class="bi bi-shield-check me-1 text-orange-theme"></i>Xe Showroom</span>' 
-                : '<span class="badge bg-secondary-subtle text-secondary border"><i class="bi bi-person me-1"></i>Xe ký gửi</span>'}
-            </td>
-            <td class="small">
-              <div class="fw-semibold text-dark">${car.sellerName}</div>
-              <div class="text-muted" style="font-size: 0.74rem;">${car.sellerPhone || '--'}</div>
-            </td>
-            <td>${getStatusBadgeHtml(car.status)}</td>
-            <td class="text-end">
-              <div class="d-inline-flex gap-1">
-                ${actionBtn}
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    // ========================================================================
-    // TÁC VỤ PHÊ DUYỆT & TỪ CHỐI
-    // ========================================================================
-    function handleApproveListing(id) {
-      updateListingStatus(id, 'active');
-      showToast("Đã phê duyệt tin đăng xe thành công! Xe đã xuất hiện công khai trên sàn.", "success");
-      renderAdminDashboard();
-    }
-
-    function openRejectModal(id) {
-      document.getElementById('reject-car-id').value = id;
+    // Modal & Thao tác duyệt/từ chối
+    function openRejectModal(carId) {
+      document.getElementById('reject-car-id').value = carId;
       const modal = new bootstrap.Modal(document.getElementById('rejectModal'));
       modal.show();
     }
 
-    function applyQuickRejectReason(text) {
-      document.getElementById('reject-reason-custom').value = text;
+    function applyQuickRejectReason(reason) {
+      document.getElementById('reject-reason-custom').value = reason;
     }
 
     function confirmRejectListing() {
-      const id = document.getElementById('reject-car-id').value;
+      const carId = document.getElementById('reject-car-id').value;
       const reason = document.getElementById('reject-reason-custom').value.trim();
+      if (!carId) return;
 
-      if (!reason) {
-        showToast("Vui lòng nhập lý do từ chối tin đăng.", "error");
-        document.getElementById('reject-reason-custom').focus();
+      updateListingStatus(carId, 'rejected', reason);
+      const modalEl = document.getElementById('rejectModal');
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      if (modal) modal.hide();
+
+      showToast('Đã từ chối duyệt tin xe. Phản hồi đã gửi cho người bán.', 'warning');
+      renderAdminDashboard();
+    }
+
+    function handleApproveListing(carId) {
+      if (!carId) return;
+      updateListingStatus(carId, 'active');
+      showToast('Đã phê duyệt và xuất bản tin xe lên sàn OtoMarket!', 'success');
+      renderAdminDashboard();
+    }
+
+    // Tab 2 & 3
+    function renderReportsTab() {
+      const reports = getReports();
+      const allCars = getAllCars(true);
+      const tbody = document.getElementById('reports-table-body');
+      const noMsg = document.getElementById('no-reports-msg');
+      document.getElementById('reports-count-title').textContent = reports.length;
+
+      if (reports.length === 0) {
+        tbody.innerHTML = '';
+        noMsg.style.display = 'block';
         return;
       }
+      noMsg.style.display = 'none';
+      tbody.innerHTML = reports.map(r => {
+        const car = allCars.find(c => c.id === r.listingId);
+        return `
+          <tr>
+            <td class="small font-monospace">${r.id}</td>
+            <td class="small fw-semibold">${car ? car.title : r.listingId}</td>
+            <td class="small text-danger">${r.reason}</td>
+            <td class="small text-muted">${r.description || '--'}</td>
+            <td><span class="badge bg-warning text-dark">Chờ xử lý</span></td>
+            <td class="text-end"><button class="btn btn-sm btn-outline-success" onclick="handleUpdateReport('${r.id}', 'resolved')">Đã xong</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
 
-      updateListingStatus(id, 'rejected', reason);
-      bootstrap.Modal.getInstance(document.getElementById('rejectModal')).hide();
-      showToast("Đã từ chối tin đăng và gửi phản hồi lý do cho người bán!", "warning");
+    function handleUpdateReport(id, status) {
+      updateReportStatus(id, status);
       renderAdminDashboard();
     }
 
-    function handleUpdateReport(reportId, status) {
-      const user = getLoggedInUser();
-      updateReportStatus(reportId, status, user ? user.name : 'Quản lý Showroom');
-      showToast("Đã cập nhật trạng thái báo cáo vi phạm!", "success");
-      renderAdminDashboard();
-    }
+    function renderInventoryTab() {
+      const allCars = getAllCars(true);
+      const tbody = document.getElementById('inventory-table-body');
+      document.getElementById('inventory-count-title').textContent = allCars.length;
 
-    function handleHideReportedCar(carId) {
-      if (confirm("Ẩn tin đăng vi phạm này khỏi sàn giao dịch OtoMarket?")) {
-        updateListingStatus(carId, 'hidden');
-        showToast("Đã ẩn tin đăng vi phạm thành công", "warning");
-        renderAdminDashboard();
-      }
-    }
-
-    function adminHideListing(carId) {
-      if (confirm("Ẩn tin đăng này khỏi sàn?")) {
-        updateListingStatus(carId, 'hidden');
-        showToast("Đã ẩn tin đăng thành công", "info");
-        renderAdminDashboard();
-      }
+      tbody.innerHTML = allCars.slice(0, 15).map(c => `
+        <tr>
+          <td><img src="${c.image}" style="width: 60px; height: 42px; object-fit: cover; border-radius: 6px;"></td>
+          <td class="small fw-semibold">${c.title}</td>
+          <td class="small text-orange-theme fw-bold">${c.priceDisplay || 'Thỏa thuận'}</td>
+          <td class="small text-muted">${c.sourceType === 'showroom' || c.isShowroom ? 'Showroom' : 'Ký gửi'}</td>
+          <td><span class="badge bg-success-subtle text-success">Hiển thị</span></td>
+          <td class="text-end"><a href="car-detail.html?id=${c.id}" class="btn btn-sm btn-outline-dark">Xem</a></td>
+        </tr>
+      `).join('');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      const user = getLoggedInUser();
-      const isWpAdmin = (typeof window.IS_WP_ADMIN !== 'undefined' && window.IS_WP_ADMIN === true) || (user && user.role === 'admin');
-      if (!isWpAdmin && (!user || user.email !== 'admin@otomarket.vn')) {
-        showToast("Trang Duyệt tin chỉ dành cho Nhân viên Showroom", "error");
-        setTimeout(() => { window.location.href = 'index.html'; }, 500);
-        return;
-      }
       renderAdminDashboard();
     });
   </script>
