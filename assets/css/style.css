@@ -4094,3 +4094,64 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       transform: translateY(-1px) !important;
     }
 
+
+
+
+
+
+
+/* ==========================================================================
+   DROPDOWN CHUYỂN ĐỔI NGÔN NGỮ (VIỆT NAM / ENGLISH / CHINA)
+   ========================================================================== */
+.topbar-lang-btn {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 9999px !important;
+  padding: 4px 12px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  line-height: 1.2 !important;
+}
+.topbar-lang-btn:hover {
+  background-color: #F8FAFC !important;
+  border-color: #94A3B8 !important;
+  color: #0F172A !important;
+}
+.topbar-lang-btn::after {
+  display: none !important;
+}
+.hero-title ~ * .topbar-lang-btn,
+.portal-header-wrapper.is-transparent-header:not(.is-scrolled) .topbar-lang-btn {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  color: #FFFFFF !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.portal-header-wrapper.is-scrolled .topbar-lang-btn {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+.lang-dropdown-container .dropdown-menu {
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
+}
+.lang-dropdown-container .dropdown-item.active,
+.lang-dropdown-container .dropdown-item:active {
+  background-color: #FFF7ED !important;
+  color: #FF6B00 !important;
+  font-weight: 700 !important;
+}
+.lang-dropdown-container .dropdown-item:hover {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
