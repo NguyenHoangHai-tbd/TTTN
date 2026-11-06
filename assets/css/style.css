@@ -1084,13 +1084,15 @@ img {
   color: #2DD4BF;
 }
 
-/* Admin only links (ẩn mặc định nếu không phải Admin / Nhân viên) */
+/* Admin / Showroom Navigation - Luôn hiển thị chuẩn xác và đồng bộ trên toàn sàn */
 .admin-only:not(.is-admin-visible) {
-  display: none !important;
+  display: list-item !important;
 }
+li.admin-only,
+li.admin-nav-item,
 li.admin-only.is-admin-visible,
 li.admin-nav-item.is-admin-visible {
-  display: inline-block !important;
+  display: list-item !important;
 }
 .admin-only.is-admin-visible {
   display: inline-flex !important;
