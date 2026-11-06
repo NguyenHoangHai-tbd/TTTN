@@ -1947,14 +1947,7 @@
       }
     });
 
-    // Chuyển đổi ngôn ngữ VI / EN
-    function switchLanguage(lang, el) {
-      document.querySelectorAll('.lang-pill-btn').forEach(item => item.classList.remove('active'));
-      if (el) el.classList.add('active');
-      if (window.showToast) {
-        window.showToast(lang.toUpperCase() === 'VI' ? 'Đã chọn ngôn ngữ Tiếng Việt' : 'Language switched to English', 'info');
-      }
-    }
+// Native i18n switcher in app.js / i18n.js is active
 
     // Khởi tạo ban đầu
     document.addEventListener('DOMContentLoaded', () => {
@@ -1978,6 +1971,7 @@
       } else {
         renderArticlesGrid();
       }
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     });
   </script>
 </body>

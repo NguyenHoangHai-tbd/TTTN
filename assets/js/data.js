@@ -746,3 +746,34 @@ const PRICE_RANGES = [
   { label: "1 - 1.5 tỷ", min: 1000000000, max: 1500000000 },
   { label: "Trên 1.5 tỷ", min: 1500000000, max: Infinity }
 ];
+
+
+// Helper function to get car by ID from SAMPLE_CARS or local storage
+function getCarById(id) {
+  if (!id) return null;
+  const cleanId = String(id).trim().toLowerCase();
+
+  // 1. Custom listings in localStorage
+  try {
+    const custom = JSON.parse(localStorage.getItem('otomarket_custom_listings') || '[]');
+    const foundCustom = custom.find(c => String(c.id).toLowerCase() === cleanId);
+    if (foundCustom) return foundCustom;
+  } catch(e) {}
+
+  // 2. SAMPLE_CARS
+  if (typeof SAMPLE_CARS !== 'undefined' && Array.isArray(SAMPLE_CARS)) {
+    const found = SAMPLE_CARS.find(c => String(c.id).toLowerCase() === cleanId);
+    if (found) return found;
+  }
+
+  // 3. CURATED_CARS
+  if (typeof CURATED_CARS !== 'undefined' && Array.isArray(CURATED_CARS)) {
+    const found = CURATED_CARS.find(c => String(c.id).toLowerCase() === cleanId);
+    if (found) return found;
+  }
+
+  return null;
+}
+if (typeof window !== 'undefined') {
+  window.getCarById = getCarById;
+}

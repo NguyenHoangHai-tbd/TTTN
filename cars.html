@@ -1274,6 +1274,7 @@
       syncHeroAndNav(cond);
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function selectBrand(brand, el) {
@@ -1282,6 +1283,7 @@
       if (el) el.classList.add('active');
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function togglePriceFilter(val, el) {
@@ -1295,6 +1297,7 @@
       }
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function toggleBodyFilter(val, el) {
@@ -1308,6 +1311,7 @@
       }
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function toggleFuelFilter(val, el) {
@@ -1321,6 +1325,7 @@
       }
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function handleLocationChange() {
@@ -1328,6 +1333,7 @@
       currentFilterState.location = select ? select.value : 'all';
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     let keywordTimer = null;
@@ -1340,6 +1346,7 @@
         currentFilterState.keyword = '';
         currentPage = 1;
         applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
       }
     }
 
@@ -1355,6 +1362,7 @@
         currentFilterState.keyword = input ? input.value.trim().toLowerCase() : '';
         currentPage = 1;
         applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
       }, 200);
     }
 
@@ -1363,6 +1371,7 @@
       currentFilterState.sort = select ? select.value : 'newest';
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     }
 
     function resetAllFilters() {
@@ -1388,6 +1397,7 @@
       syncHeroAndNav('all');
       currentPage = 1;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
 
       if (typeof showToast === 'function') {
         showToast("Đã đặt lại tất cả bộ lọc", "info");
@@ -1589,6 +1599,7 @@
     function changePage(p) {
       currentPage = p;
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
       window.scrollTo({ top: 380, behavior: 'smooth' });
     }
 
@@ -1624,6 +1635,7 @@
       loadCompleteFleet();
       initFromURL();
       applyAllFilters();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
     });
   </script>
 </body>

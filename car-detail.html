@@ -1575,6 +1575,7 @@
 
       const monthlyPaymentEl = document.getElementById('calc-monthly-payment');
       if (monthlyPaymentEl) monthlyPaymentEl.textContent = `${formatVND(firstMonthPayment)} / tháng`;
+      if (typeof applyCurrentSiteLanguage === 'function') applyCurrentSiteLanguage(document.getElementById('loan-calculator-section'));
     }
 
     function openLoanConsultModal() {
@@ -1642,6 +1643,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadCarDetails();
+      if (typeof applyCurrentSiteLanguage === "function") applyCurrentSiteLanguage();
       if (typeof syncHeaderUserUI === 'function') syncHeaderUserUI();
       if (typeof updateFavoritesCountBadge === 'function') updateFavoritesCountBadge();
       if (typeof syncAdminLinksVisibility === 'function') syncAdminLinksVisibility();
