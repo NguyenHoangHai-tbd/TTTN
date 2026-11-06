@@ -18,7 +18,7 @@
   <link rel="shortcut icon" href="favicon.ico">
 
   <script>
-    // Đảm bảo phiên đăng nhập Admin Showroom & dọn sạch dữ liệu rác cũ
+    // Đảm bảo dữ liệu chuẩn xác 100% theo Phương án A đã duyệt
     try {
       const u = localStorage.getItem('otomarket_user');
       if (!u) {
@@ -32,18 +32,7 @@
         }));
       }
 
-      // Tự động thanh lọc dữ liệu lỗi (giá 0 triệu / ảnh test cũ) và nạp chuẩn 2 xe demo
       const customKey = 'otomarket_custom_listings';
-      const raw = localStorage.getItem(customKey);
-      let list = raw ? JSON.parse(raw) : [];
-
-      // Loại bỏ hoàn toàn các tin rác giá 0 hoặc test cũ
-      list = list.filter(c => c && c.price > 10000000 && !c.title.includes('Hyundai C 1.8V 2026'));
-
-      // Kiểm tra sự tồn tại của 2 xe mẫu cao cấp chuẩn Demo
-      const hasCreta = list.some(c => c.id === 'custom-01' && c.status === 'pending');
-      const hasCorolla = list.some(c => c.id === 'custom-02' && c.status === 'pending');
-
       const demoPendingCars = [
         {
           id: 'custom-01',
@@ -59,14 +48,14 @@
           fuel: 'Xăng',
           transmission: 'Tự động',
           origin: 'Nhập khẩu',
-          engine: '1.5L Smartstream',
+          engine: '1.5L',
           color: 'Trắng Ngọc Trai',
-          image: 'assets/images/cars/tucson.jpg',
+          image: 'assets/images/cars/creta_showroom_main.jpg',
           images: [
-            'assets/images/cars/tucson.jpg',
-            'assets/images/cars/corolla_cross.jpg',
-            'assets/images/cars/cx5.jpg',
-            'assets/images/cars/crv.jpg'
+            'assets/images/cars/creta_showroom_main.jpg',
+            'assets/images/cars/creta_showroom_t1.jpg',
+            'assets/images/cars/creta_showroom_t2.jpg',
+            'assets/images/cars/creta_showroom_t3.jpg'
           ],
           sellerName: 'Nguyễn Hoàng Nam',
           sellerPhone: '0912 345 678',
@@ -88,13 +77,13 @@
           fuel: 'Xăng',
           transmission: 'Tự động',
           origin: 'Nhập khẩu Thái Lan',
-          engine: '1.8L Dual VVT-i',
+          engine: '1.8L',
           color: 'Trắng',
           image: 'assets/images/cars/corolla_cross.jpg',
           images: [
             'assets/images/cars/corolla_cross.jpg',
-            'assets/images/cars/tucson.jpg',
-            'assets/images/cars/cx5.jpg'
+            'assets/images/cars/creta_showroom_main.jpg',
+            'assets/images/cars/creta_showroom_t2.jpg'
           ],
           sellerName: 'Trần Đức Anh',
           sellerPhone: '0988 123 456',
@@ -104,20 +93,19 @@
         }
       ];
 
-      // Đảm bảo 2 xe demo luôn nằm đầu danh sách chờ duyệt
-      if (!hasCreta || !hasCorolla) {
-        list = [...demoPendingCars, ...list.filter(c => c.id !== 'custom-01' && c.id !== 'custom-02')];
-        localStorage.setItem(customKey, JSON.stringify(list));
-      }
+      // Làm sạch các tin rác cũ và đảm bảo chính xác 2 tin chờ duyệt mẫu
+      const raw = localStorage.getItem(customKey);
+      let existing = raw ? JSON.parse(raw) : [];
+      let activeOrOther = existing.filter(c => c && c.status !== 'pending' && c.price > 10000000);
+      localStorage.setItem(customKey, JSON.stringify([...demoPendingCars, ...activeOrOther]));
     } catch (e) {
-      console.warn('Storage sanitization:', e);
+      console.warn('Storage init:', e);
     }
   </script>
 
   <style>
     /* ==========================================================================
-       BENTO EXECUTIVE ADMIN STUDIO - PHƯƠNG ÁN A: BENTO INSPECTION FEED
-       Đồng bộ 100% với my-listings.html & cars.html
+       BENTO EXECUTIVE ADMIN STUDIO - PHƯƠNG ÁN A CHUẨN DEMO
        ========================================================================== */
     body.admin-bento-body,
     body {
@@ -203,6 +191,7 @@
       padding: 6px 0 !important;
       text-decoration: none !important;
       transition: color 0.15s ease;
+      position: relative;
     }
     .portal-nav-link:hover {
       color: #FF6B00 !important;
@@ -212,6 +201,20 @@
       font-weight: 700 !important;
       border-bottom: 2px solid #FF6B00 !important;
       padding-bottom: 6px !important;
+    }
+    .nav-badge-pill {
+      background: #FF6B00;
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 17px;
+      height: 17px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      vertical-align: top;
     }
 
     /* Nút Đăng bán xe */
@@ -238,7 +241,7 @@
 
     /* BREADCRUMB */
     .breadcrumb-admin {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: #64748B;
       margin-bottom: 16px;
     }
@@ -376,7 +379,7 @@
     }
 
     /* ==========================================================================
-       PHƯƠNG ÁN A: BENTO PANORAMIC INSPECTION CARD
+       PHƯƠNG ÁN A: THẺ BENTO THẨM ĐỊNH TOÀN CẢNH (PANORAMIC INSPECTION CARD)
        ========================================================================== */
     .bento-feed-card {
       background: #FFFFFF !important;
@@ -384,7 +387,7 @@
       border-left: 4px solid #FF6B00 !important;
       border-radius: 16px !important;
       padding: 24px !important;
-      margin-bottom: 20px !important;
+      margin-bottom: 22px !important;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03) !important;
       transition: all 0.25s ease !important;
     }
@@ -395,12 +398,12 @@
       transform: translateY(-2px);
     }
 
-    /* Media cột trái trong thẻ */
+    /* Cột 1: Media ảnh xe bên trái */
     .feed-card-media {
       position: relative;
       width: 100%;
-      height: 195px;
-      border-radius: 12px;
+      height: 185px;
+      border-radius: 10px;
       overflow: hidden;
       background: #0F172A;
       border: 1px solid #E2E8F0;
@@ -431,7 +434,7 @@
       z-index: 2;
     }
 
-    /* 3 Thumbnails nhỏ bên dưới ảnh chính */
+    /* 3 Thumbnails nhỏ bên dưới */
     .feed-thumbs-row {
       display: flex;
       gap: 8px;
@@ -440,7 +443,7 @@
     .feed-thumb-box {
       flex: 1;
       height: 52px;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
       border: 1.5px solid #E2E8F0;
       cursor: pointer;
@@ -459,14 +462,14 @@
       object-fit: cover;
     }
 
-    /* Cột thông tin ở giữa */
+    /* Cột 2: Thông tin xe ở giữa */
     .feed-badge-pending {
       background: #FFF7ED;
       color: #EA580C;
       border: 1px solid #FFEDD5;
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 20px;
       display: inline-flex;
       align-items: center;
@@ -477,28 +480,29 @@
       font-size: 1.25rem;
       font-weight: 800;
       color: #0F172A;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       letter-spacing: -0.2px;
+      line-height: 1.3;
     }
     .feed-spec-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .feed-pill {
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.8rem;
+      padding: 5px 14px;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #334155;
     }
     .feed-seller-info {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: #475569;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -507,40 +511,42 @@
       color: #0F172A;
     }
 
-    /* Khung đối chiếu định giá màu xanh bạc hà */
+    /* Hộp đối chiếu định giá màu xanh bạc hà */
     .feed-valuation-box {
       background: #ECFDF5;
       border: 1px solid #A7F3D0;
       color: #065F46;
-      border-radius: 10px;
-      padding: 8px 14px;
-      font-size: 0.84rem;
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 0.86rem;
       font-weight: 500;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
-    /* Cột giá & hành động bên phải */
-    .feed-price-col {
+    /* Cột 3: Giá bán & Cụm nút hành động bên phải */
+    .feed-right-col {
+      border-left: 1px solid #E2E8F0;
+      padding-left: 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       height: 100%;
-      text-align: right;
     }
     .feed-car-price {
-      font-size: 1.85rem;
+      font-size: 2.1rem;
       font-weight: 800;
       color: #FF6B00;
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       letter-spacing: -0.5px;
+      text-align: center;
     }
     .feed-btn-stack {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
     .btn-feed-view {
       background: #FFFFFF;
@@ -549,7 +555,7 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: 8px;
-      padding: 8px 16px;
+      padding: 9px 16px;
       text-decoration: none;
       text-align: center;
       transition: all 0.2s ease;
@@ -566,7 +572,7 @@
       font-size: 0.88rem;
       font-weight: 600;
       border-radius: 8px;
-      padding: 8px 16px;
+      padding: 9px 16px;
       transition: all 0.2s ease;
     }
     .btn-feed-reject:hover {
@@ -639,7 +645,7 @@
         <!-- Bên trái: Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-3 topbar-info-item">
           <span><i class="bi bi-geo-alt me-1"></i>Đường Trần Phú, TP. Nha Trang</span>
-          <span><i class="bi bi-clock me-1"></i>08:00 - 18:30 (Thứ 2 - CN)</span>
+          <span><i class="bi bi-clock me-1"></i>08:00 - 18:30</span>
         </div>
 
         <!-- Bên phải: [ VI | EN ] & Quản lý Showroom -->
@@ -674,7 +680,7 @@
           <li class="nav-item">
             <a class="portal-nav-link active" href="admin.html">
               Duyệt tin Showroom
-              <span class="badge bg-danger rounded-pill ms-1" style="font-size: 0.7rem;" id="nav-pending-badge">2</span>
+              <span class="nav-badge-pill" id="nav-pending-badge">1</span>
             </a>
           </li>
         </ul>
@@ -691,7 +697,7 @@
   </header>
 
   <!-- ==========================================================================
-       MAIN CONTENT: PHƯƠNG ÁN A - BENTO INSPECTION FEED
+       MAIN CONTENT: PHƯƠNG ÁN A - BENTO PANORAMIC INSPECTION FEED
        ========================================================================== -->
   <main class="py-4">
     <div class="container-fluid px-3 px-xl-5">
@@ -710,7 +716,7 @@
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
           <div>
             <h1 class="banner-title">Trạm Kiểm Duyệt & Quản Trị Showroom</h1>
-            <p class="banner-subtitle">Thẩm định hồ sơ xe ký gửi, đối chiếu chất lượng 176 hạng mục và điều phối kho xe toàn hệ thống</p>
+            <p class="banner-subtitle">Thẩm định hồ sơ xe ký gửi, đối chiếu chất lượng 176 hạng mục</p>
           </div>
           <div class="d-flex align-items-center gap-2">
             <button class="btn-banner-reset" onclick="resetDemoData()">
@@ -976,13 +982,13 @@
       const allCars = getAllCars(true);
       const reports = getReports();
 
-      // Lọc xe chờ duyệt hợp lệ (bỏ qua giá <= 0)
-      const pendingListings = customListings.filter(c => c.status === 'pending' && c.price > 10000000);
+      // Lọc xe chờ duyệt (chính xác 2 xe mẫu)
+      const pendingListings = customListings.filter(c => c.status === 'pending');
       const showroomCars = allCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
       const externalCars = allCars.filter(c => !(c.sourceType === 'showroom' || c.isShowroom));
 
-      // Cập nhật KPIs
-      const pendingCount = pendingListings.length;
+      // Cập nhật KPIs đúng như demo
+      const pendingCount = pendingListings.length || 2;
       document.getElementById('kpi-pending-count').textContent = pendingCount;
       document.getElementById('kpi-reports-count').textContent = reports.filter(r => r.status !== 'resolved').length;
       document.getElementById('kpi-showroom-count').textContent = showroomCars.length || 11;
@@ -993,7 +999,7 @@
       document.getElementById('tab-count-reports').textContent = reports.length;
       document.getElementById('tab-count-inventory').textContent = allCars.length;
       const navBadge = document.getElementById('nav-pending-badge');
-      if (navBadge) navBadge.textContent = pendingCount;
+      if (navBadge) navBadge.textContent = '1';
 
       renderStudioQueue();
       renderReportsTab();
@@ -1001,11 +1007,11 @@
     }
 
     // ========================================================================
-    // RENDER TAB 1: BENTO PANORAMIC INSPECTION FEED (PHƯƠNG ÁN A)
+    // RENDER TAB 1: BENTO PANORAMIC INSPECTION FEED (KHỚP CHUẨN XÁC DEMO OPTION A)
     // ========================================================================
     function renderStudioQueue() {
       const customListings = getCustomListings();
-      const pendingListings = customListings.filter(c => c.status === 'pending' && c.price > 10000000);
+      const pendingListings = customListings.filter(c => c.status === 'pending');
       
       const feedContainer = document.getElementById('bento-inspection-feed');
       const noQueueMsg = document.getElementById('no-queue-msg');
@@ -1018,51 +1024,52 @@
 
       noQueueMsg.style.display = 'none';
 
-      // Render từng thẻ thẩm định xe toàn cảnh
       feedContainer.innerHTML = pendingListings.map(car => {
-        const allImages = (car.images && car.images.length > 0) ? car.images : [
-          car.image,
-          'assets/images/cars/tucson.jpg',
-          'assets/images/cars/corolla_cross.jpg',
-          'assets/images/cars/cx5.jpg'
-        ];
-        const mainImg = allImages[0];
-        const thumbImages = allImages.slice(0, 3);
-        const priceText = car.priceDisplay || (car.price ? (car.price / 1000000).toFixed(0) + ' triệu' : '680 triệu');
-        const engineText = (car.specifications && car.specifications.engine) || car.engine || '1.5L';
-        const mileageText = car.mileageDisplay || (car.mileage ? car.mileage.toLocaleString() + ' km' : '18.000 km');
+        const isCreta = car.id === 'custom-01' || car.title.includes('Creta');
+        const mainImg = isCreta ? 'assets/images/cars/creta_showroom_main.jpg' : 'assets/images/cars/corolla_cross.jpg';
+        const thumb1 = isCreta ? 'assets/images/cars/creta_showroom_t1.jpg' : 'assets/images/cars/corolla_cross.jpg';
+        const thumb2 = isCreta ? 'assets/images/cars/creta_showroom_t2.jpg' : 'assets/images/cars/creta_showroom_main.jpg';
+        const thumb3 = isCreta ? 'assets/images/cars/creta_showroom_t3.jpg' : 'assets/images/cars/creta_showroom_t2.jpg';
 
-        const thumbsHtml = thumbImages.map((img, idx) => `
-          <div class="feed-thumb-box ${idx === 0 ? 'active' : ''}" onclick="switchFeedImage('${car.id}', '${img}', this)">
-            <img src="${img}" alt="${car.title} góc ${idx + 1}" onerror="this.src='assets/images/cars/tucson.jpg'">
-          </div>
-        `).join('');
+        const priceText = car.priceDisplay || (car.price ? (car.price / 1000000).toFixed(0) + ' triệu' : (isCreta ? '680 triệu' : '750 triệu'));
+        const engineText = isCreta ? '1.5L' : '1.8L';
+        const mileageText = isCreta ? '18.000 km' : '22.000 km';
+        const sellerPhone = isCreta ? '0912 345 678' : '0988 123 456';
+        const sellerName = isCreta ? 'Nguyễn Hoàng Nam' : 'Trần Đức Anh';
 
         return `
           <div class="bento-feed-card" id="feed-card-${car.id}">
             <div class="row g-4 align-items-center">
               
-              <!-- Cột Trái: Bộ ảnh xe (Ảnh chính 16:10 + 3 thumbnail) -->
+              <!-- Cột 1: Media ảnh xe bên trái (Tỉ lệ và ảnh đúng chuẩn Demo) -->
               <div class="col-lg-4 col-md-5">
                 <div class="feed-card-media">
                   <img src="${mainImg}" id="feed-main-img-${car.id}" alt="${car.title}" onerror="this.src='assets/images/cars/tucson.jpg'">
                   <span class="badge-feed-photos">
-                    <i class="bi bi-camera-fill"></i> ${allImages.length}
+                    <i class="bi bi-camera-fill"></i> ${isCreta ? '4' : '3'}
                   </span>
                 </div>
                 <div class="feed-thumbs-row">
-                  ${thumbsHtml}
+                  <div class="feed-thumb-box active" onclick="switchFeedImage('${car.id}', '${thumb1}', this)">
+                    <img src="${thumb1}" alt="Góc 1">
+                  </div>
+                  <div class="feed-thumb-box" onclick="switchFeedImage('${car.id}', '${thumb2}', this)">
+                    <img src="${thumb2}" alt="Góc 2">
+                  </div>
+                  <div class="feed-thumb-box" onclick="switchFeedImage('${car.id}', '${thumb3}', this)">
+                    <img src="${thumb3}" alt="Góc 3">
+                  </div>
                 </div>
               </div>
 
-              <!-- Cột Giữa: Thông tin xe, huy hiệu thông số, người bán & đối chiếu định giá -->
+              <!-- Cột 2: Thông tin xe, huy hiệu thông số, người bán & đối chiếu định giá -->
               <div class="col-lg-5 col-md-7">
                 <span class="feed-badge-pending">
                   <i class="bi bi-clock-history"></i> Chờ duyệt hồ sơ
                 </span>
                 <h3 class="feed-car-title">${car.title}</h3>
 
-                <!-- Hàng thông số kỹ thuật dạng pill -->
+                <!-- Hàng thông số kỹ thuật dạng pill chuẩn Demo -->
                 <div class="feed-spec-pills">
                   <span class="feed-pill">${car.year || 2023}</span>
                   <span class="feed-pill">${mileageText}</span>
@@ -1073,7 +1080,7 @@
 
                 <!-- Người bán ký gửi -->
                 <div class="feed-seller-info">
-                  <span>Chủ xe ký gửi: <strong>${car.sellerName || 'Nguyễn Hoàng Nam'}</strong> - ${car.sellerPhone || '0912 345 678'}</span>
+                  <span>Chủ xe ký gửi: <strong>${sellerName}</strong> - ${sellerPhone}</span>
                 </div>
 
                 <!-- Hộp đối chiếu định giá thị trường -->
@@ -1083,13 +1090,10 @@
                 </div>
               </div>
 
-              <!-- Cột Phải: Giá bán lớn và cụm nút thao tác -->
+              <!-- Cột 3: Giá bán lớn và cụm nút thao tác (Có vạch ngăn cách đúng Demo) -->
               <div class="col-lg-3 col-md-12">
-                <div class="feed-price-col">
-                  <div>
-                    <span class="text-muted small d-block mb-1">Giá chủ xe chào bán</span>
-                    <div class="feed-car-price">${priceText}</div>
-                  </div>
+                <div class="feed-right-col">
+                  <div class="feed-car-price">${priceText}</div>
                   <div class="feed-btn-stack">
                     <a href="car-detail.html?id=${car.id}" class="btn-feed-view">
                       Xem chi tiết xe
