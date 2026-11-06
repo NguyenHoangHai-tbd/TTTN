@@ -4181,12 +4181,8 @@
   }
 
   function updateDropdownUI(lang) {
-    const flagMap = { vi: '🇻🇳', en: '🇬🇧', zh: '🇨🇳' };
     const textMap = { vi: 'Tiếng Việt', en: 'English', zh: '中文' };
-
-    const flagEl = document.getElementById('current-lang-flag');
     const textEl = document.getElementById('current-lang-text');
-    if (flagEl) flagEl.textContent = flagMap[lang] || '🇻🇳';
     if (textEl) textEl.textContent = textMap[lang] || 'Tiếng Việt';
 
     document.querySelectorAll('.lang-opt').forEach(opt => {
@@ -4201,34 +4197,29 @@
     if (!container) return;
 
     const currentLang = getStoredLanguage();
-    const flagMap = { vi: '🇻🇳', en: '🇬🇧', zh: '🇨🇳' };
     const textMap = { vi: 'Tiếng Việt', en: 'English', zh: '中文' };
 
     container.className = 'dropdown lang-dropdown-container';
     container.style.display = 'inline-block';
     container.innerHTML = `
-      <button class="topbar-lang-btn dropdown-toggle d-flex align-items-center gap-1.5" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Chọn ngôn ngữ / Select language">
-        <span class="lang-flag" id="current-lang-flag" style="font-size: 1.05rem; line-height: 1;">${flagMap[currentLang] || '🇻🇳'}</span>
+      <button class="topbar-lang-btn dropdown-toggle d-flex align-items-center gap-1" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Chọn ngôn ngữ / Select language">
         <span class="lang-text fw-bold" id="current-lang-text" style="font-size: 0.8rem; letter-spacing: 0.2px;">${textMap[currentLang] || 'Tiếng Việt'}</span>
-        <i class="bi bi-chevron-down ms-0.5" style="font-size: 0.65rem;"></i>
+        <i class="bi bi-chevron-down ms-1" style="font-size: 0.65rem;"></i>
       </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-1.5 rounded-3" aria-labelledby="langDropdown" style="font-size: 0.85rem; min-width: 150px; z-index: 1060;">
+      <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-1.5 rounded-3" aria-labelledby="langDropdown" style="font-size: 0.85rem; min-width: 120px; z-index: 1060;">
         <li>
-          <a class="dropdown-item d-flex align-items-center gap-2 py-2 lang-opt lang-item-vi ${currentLang === 'vi' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('vi')">
-            <span style="font-size: 1.05rem;">🇻🇳</span>
+          <a class="dropdown-item py-2 px-3 lang-opt lang-item-vi ${currentLang === 'vi' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('vi')">
             <span class="fw-medium">Tiếng Việt</span>
           </a>
         </li>
         <li>
-          <a class="dropdown-item d-flex align-items-center gap-2 py-2 lang-opt lang-item-en ${currentLang === 'en' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('en')">
-            <span style="font-size: 1.05rem;">🇬🇧</span>
+          <a class="dropdown-item py-2 px-3 lang-opt lang-item-en ${currentLang === 'en' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('en')">
             <span class="fw-medium">English</span>
           </a>
         </li>
         <li>
-          <a class="dropdown-item d-flex align-items-center gap-2 py-2 lang-opt lang-item-zh ${currentLang === 'zh' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('zh')">
-            <span style="font-size: 1.05rem;">🇨🇳</span>
-            <span class="fw-medium">中文 (China)</span>
+          <a class="dropdown-item py-2 px-3 lang-opt lang-item-zh ${currentLang === 'zh' ? 'active' : ''}" href="javascript:void(0)" onclick="setSiteLanguage('zh')">
+            <span class="fw-medium">中文</span>
           </a>
         </li>
       </ul>
