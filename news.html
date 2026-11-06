@@ -1269,66 +1269,88 @@
   <!-- ========================================================================
        FOOTER NỀN SÁNG ĐỒNG BỘ
        ======================================================================== -->
-  <footer class="footer-editorial py-5 mt-5">
+  <footer class="footer-light">
     <div class="container-fluid px-3 px-xl-5">
       <div class="row gy-4 mb-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="mb-3">
-            <img src="assets/images/logo.png" alt="OtoMarket" style="height: 36px; width: auto;">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="col-lg-3 col-md-6">
+          <div class="brand-logo mb-3">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
           </div>
           <p class="small text-muted mb-3" style="line-height: 1.6;">
-            OtoMarket là nền tảng hỗ trợ kết nối trực tiếp người mua và người bán ô tô. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế.
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
           </p>
           <div class="d-flex gap-2 text-secondary">
-            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="btn btn-sm btn-light border rounded-circle text-muted" style="width: 34px; height: 34px;"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-3 col-md-6">
-          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Chuyên Mục Tin Tức</h5>
-          <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
-            <li><a href="javascript:void(0)" onclick="selectCategory('market')" class="text-decoration-none text-muted">Thị trường ô tô</a></li>
-            <li><a href="javascript:void(0)" onclick="selectCategory('review')" class="text-decoration-none text-muted">Đánh giá xe thực tế</a></li>
-            <li><a href="javascript:void(0)" onclick="selectCategory('tips')" class="text-decoration-none text-muted">Kinh nghiệm kiểm tra xe cũ</a></li>
-            <li><a href="javascript:void(0)" onclick="selectCategory('legal')" class="text-decoration-none text-muted">Thủ tục sang tên &amp; Pháp lý</a></li>
-          </ul>
-        </div>
-
+        <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Dòng Xe Quan Tâm</h5>
-          <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
-            <li><a href="cars.html?brand=Toyota" class="text-decoration-none text-muted">Toyota Corolla Cross</a></li>
-            <li><a href="cars.html?brand=Mazda" class="text-decoration-none text-muted">Mazda CX-5, CX-30</a></li>
-            <li><a href="cars.html?brand=VinFast" class="text-decoration-none text-muted">VinFast VF 6, VF 8</a></li>
-            <li><a href="cars.html?brand=Ford" class="text-decoration-none text-muted">Ford Everest, Ranger</a></li>
+          <h5 class="footer-title">Về OtoMarket</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">Giới thiệu công ty</a></li>
+            <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
+            <li><a href="cars.html">Tất cả xe đang bán</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
+            <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
           </ul>
         </div>
 
+        <!-- Cột 3: Dành cho người dùng -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="#tool-rolling-price">Dự tính giá lăn bánh</a></li>
+            <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Top thương hiệu -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="fw-bold mb-3" style="font-size: 0.95rem; color: #0F172A;">Trụ Sở &amp; Hỗ Trợ</h5>
-          <div class="p-3 rounded-3 bg-light border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1 text-orange-theme"></i> <strong>Trụ sở:</strong> Đường Trần Phú, TP. Nha Trang</div>
-            <div class="small text-muted mb-2"><i class="bi bi-clock-fill me-1 text-orange-theme"></i> <strong>Giờ làm việc:</strong> 08:00 - 18:30 (Thứ 2 - CN)</div>
+          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
               <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
                 <i class="bi bi-telephone-fill"></i>
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Hỗ trợ thông tin trực tuyến</span>
+                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="d-flex justify-content-between align-items-center flex-wrap pt-3 border-top small text-muted">
-        <div>&copy; 2026 OtoMarket - Nền Tảng Giao Dịch &amp; Đánh Giá Ô Tô.</div>
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
         <div class="d-flex gap-3">
-          <a href="about.html" class="text-decoration-none text-muted">Điều khoản sử dụng</a>
-          <a href="about.html" class="text-decoration-none text-muted">Chính sách bảo mật</a>
+          <a href="about.html">Điều khoản sử dụng</a>
+          <a href="about.html">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
         </div>
       </div>
     </div>

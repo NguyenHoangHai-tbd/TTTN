@@ -796,7 +796,7 @@
         </div>
 
         <!-- Cột 2: Về OtoMarket -->
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-2 col-md-6">
           <h5 class="footer-title">Về OtoMarket</h5>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
@@ -808,36 +808,54 @@
         </div>
 
         <!-- Cột 3: Dành cho người dùng -->
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Dành cho người dùng</h5>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
           <ul class="footer-links">
-            <li><a href="post-car.html">Đăng tin bán xe</a></li>
-            <li><a href="my-listings.html">Quản lý tin đăng</a></li>
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="#tool-rolling-price">Dự tính giá lăn bánh</a></li>
             <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
-            <li><a href="profile.html">Thông tin tài khoản</a></li>
-            <li><a href="login.html">Đăng nhập tài khoản</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
           </ul>
         </div>
 
-        <!-- Cột 4: Thông tin liên hệ -->
+        <!-- Cột 4: Top thương hiệu -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Thông tin liên hệ</h5>
-          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Trụ sở chính: TP. Nha Trang, Khánh Hòa</p>
-          <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-orange-theme me-2"></i> Văn phòng: Đường Trần Phú, TP. Nha Trang</p>
-          <p class="small text-muted mb-2"><i class="bi bi-telephone-fill text-orange-theme me-2"></i> Hotline 24/7: <strong class="text-dark">1900 6868</strong></p>
-          <p class="small text-muted mb-2"><i class="bi bi-envelope-fill text-orange-theme me-2"></i> Email: support@otomarket.vn</p>
+          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Dòng Bản quyền & Khôi phục dữ liệu gốc -->
-      <div class="border-top border-secondary-subtle pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
-        <div>© 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu</div>
-        <div class="d-flex align-items-center gap-3">
-          <a href="about.html" class="text-muted text-decoration-none">Điều khoản sử dụng</a>
-          <span class="text-secondary">•</span>
-          <a href="about.html" class="text-muted text-decoration-none">Chính sách bảo mật</a>
-          <span class="text-secondary">•</span>
-          <button class="btn btn-link p-0 text-muted text-decoration-none small d-inline-flex align-items-center gap-1" onclick="resetDemoData()">
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
+        <div class="d-flex gap-3">
+          <a href="about.html">Điều khoản sử dụng</a>
+          <a href="about.html">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
             <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
           </button>
         </div>
