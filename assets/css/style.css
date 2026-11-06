@@ -4033,3 +4033,64 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       transform: none !important;
     }
 
+
+
+    /* ==========================================================================
+       KHUNG NỀN BENTO PHÂN VÙNG: XE TƯƠNG TỰ CÙNG PHÂN KHÚC & TẦM GIÁ
+       ========================================================================== */
+    #related-cars-section {
+      background: #FFFFFF !important;
+      border: 1.5px solid #CBD5E1 !important;
+      border-radius: 20px !important;
+      padding: 32px 32px 36px !important;
+      margin-top: 48px !important;
+      margin-bottom: 56px !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+      transition: all 0.25s ease !important;
+    }
+    #related-cars-section:hover {
+      border-color: #94A3B8 !important;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08) !important;
+    }
+    #related-cars-section .related-car-card {
+      background: #F8FAFC !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 16px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      overflow: hidden !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+    #related-cars-section .related-car-card:hover {
+      background: #FFFFFF !important;
+      border-color: #FF6B00 !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 26px rgba(255, 107, 0, 0.12) !important;
+      color: inherit !important;
+    }
+    #related-cars-section .btn-outline-teal {
+      border: 1.5px solid #CBD5E1 !important;
+      background-color: #FFFFFF !important;
+      color: #0F172A !important;
+      font-weight: 600 !important;
+      font-size: 0.88rem !important;
+      padding: 8px 18px !important;
+      border-radius: 100px !important;
+      transition: all 0.2s ease !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      text-decoration: none !important;
+    }
+    #related-cars-section .btn-outline-teal:hover {
+      background-color: #FFF7ED !important;
+      border-color: #FF6B00 !important;
+      color: #FF6B00 !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15) !important;
+      transform: translateY(-1px) !important;
+    }
+
