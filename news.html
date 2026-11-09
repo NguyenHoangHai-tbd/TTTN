@@ -83,7 +83,7 @@
       background: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
@@ -134,17 +134,19 @@
       overflow: hidden;
     }
     .topbar-dropdown-menu .dropdown-item {
-      transition: all 0.15s ease;
+      transition: background-color 0.15s ease, color 0.15s ease;
       font-size: 0.86rem;
-      border-left: 3px solid transparent;
       color: #334155;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin: 2px 6px;
+      border: none !important;
     }
     .topbar-dropdown-menu .dropdown-item:hover,
-    .topbar-dropdown-menu .dropdown-item:focus {
+    .topbar-dropdown-menu .dropdown-item:focus,
+    .topbar-dropdown-menu .dropdown-item.active {
       background-color: #FFF7ED !important;
       color: #EA580C !important;
-      border-left-color: #FF6B00 !important;
-      padding-left: 18px !important;
     }
 
     /* Topbar Chuẩn Sắc Nét */
@@ -433,12 +435,14 @@
 
     .oto-sapo-text {
       font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1.65;
+      font-weight: 500;
+      line-height: 1.7;
       color: #334155;
       margin-bottom: 22px;
-      padding-left: 16px;
-      border-left: 4px solid #FF6B00;
+      padding: 16px 20px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
     }
 
     .oto-consult-banner {
@@ -517,9 +521,9 @@
     }
     .oto-highlight-box {
       background-color: #FFF7ED;
-      border-left: 4px solid #FF6B00;
-      padding: 16px 20px;
-      border-radius: 0 12px 12px 0;
+      border: 1px solid #FFEDD5;
+      padding: 18px 20px;
+      border-radius: 12px;
       margin: 24px 0;
       font-size: 0.94rem;
       line-height: 1.65;
@@ -818,7 +822,7 @@
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
     
   </style>

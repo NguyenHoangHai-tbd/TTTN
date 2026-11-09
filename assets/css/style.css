@@ -521,7 +521,7 @@ img {
   height: 8px;
   background-color: #2DD4BF;
   border-radius: 50%;
-  box-shadow: 0 0 10px #2DD4BF;
+  box-shadow: none;
   display: inline-block;
   animation: pulse-glow 2s infinite ease-in-out;
 }
@@ -537,7 +537,7 @@ img {
   letter-spacing: -1.2px;
 }
 .hero-highlight {
-  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 60%, #FFFFFF 100%);
+  color: #0D9488;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -1034,26 +1034,25 @@ img {
   pointer-events: none;
 }
 .custom-toast {
-  background-color: #0B132B;
+  background: #1E293B;
   color: #FFFFFF;
-  padding: 13px 18px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25), 0 8px 10px -6px rgba(15, 23, 42, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   min-width: 300px;
   max-width: 450px;
   pointer-events: auto;
-  border-left: 5px solid var(--teal-color);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #334155;
 }
-.custom-toast.toast-success { border-left-color: #10B981; }
-.custom-toast.toast-error { border-left-color: #EF4444; }
-.custom-toast.toast-warning { border-left-color: #F59E0B; }
-.custom-toast.toast-info { border-left-color: #0D9488; }
+.custom-toast.toast-success { border-color: rgba(16, 185, 129, 0.5); }
+.custom-toast.toast-error { border-color: rgba(239, 68, 68, 0.5); }
+.custom-toast.toast-warning { border-color: rgba(245, 158, 11, 0.5); }
+.custom-toast.toast-info { border-color: rgba(13, 148, 136, 0.5); }
 
 /* Footer */
 .footer-custom {
@@ -2613,10 +2612,10 @@ li.admin-nav-item.is-admin-visible {
   transition: all 0.2s ease;
 }
 .portal-subpromo-card.teal-theme {
-  border-left: 4px solid #0D9488;
+  border: 1px solid rgba(13, 148, 136, 0.35);
 }
 .portal-subpromo-card.orange-theme {
-  border-left: 4px solid #EA580C;
+  border: 1px solid rgba(234, 88, 12, 0.35);
 }
 
 /* 6. Thẻ thương hiệu phổ biến (Chuẩn hóa diện mạo cao cấp & cam Stitch) */
@@ -2949,26 +2948,8 @@ li.admin-nav-item.is-admin-visible {
 }
 
 /* 1. Eyebrow Category Headings */
-.section-eyebrow-orange {
-  color: #E06A3B !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.6px !important;
-  display: block;
-  margin-bottom: 3px;
-}
-.section-eyebrow-green {
-  color: #059669 !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.6px !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 3px;
-}
+.section-eyebrow-orange { display: none !important; }
+.section-eyebrow-green { display: none !important; }
 .link-orange-arrow {
   color: #FF6B00 !important;
   font-weight: 700 !important;
@@ -3191,10 +3172,10 @@ li.admin-nav-item.is-admin-visible {
 
 /* 7. Category Boxes & Budget Pills */
 .category-box-stitch {
-  background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  border-radius: 12px !important;
-  padding: 18px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
 }
 .budget-tier-stitch {
   border: 1px solid #E2E8F0 !important;
@@ -3227,7 +3208,7 @@ li.admin-nav-item.is-admin-visible {
 }
 .value-icon-red { background: #FEE2E2 !important; color: #DC2626 !important; }
 .value-icon-blue { background: #E0F2FE !important; color: #0284C7 !important; }
-.value-icon-purple { background: #EDE9FE !important; color: #7C3AED !important; }
+.value-icon-emerald { background: #ECFDF5 !important; color: #059669 !important; }
 .value-icon-orange { background: #FFEDD5 !important; color: #EA580C !important; }
 
 
@@ -3461,9 +3442,7 @@ li.admin-nav-item.is-admin-visible {
 }
 
 /* 5. Khử Màu Xanh Còn Sót, Đồng Bộ Sang Màu Cam Thương Hiệu */
-.section-eyebrow-green {
-  color: #E06A3B !important;
-}
+.section-eyebrow-green { display: none !important; }
 .btn-calc-orange {
   background-color: #FF6B00 !important;
   border-color: #FF6B00 !important;
@@ -3599,7 +3578,7 @@ li.admin-nav-item.is-admin-visible {
   background: #FF6B00 !important;
   border-color: #FF6B00 !important;
   color: #FFFFFF !important;
-  box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
 }
 .topbar-user-btn:hover *,
 .topbar-user-btn:focus *,
@@ -3754,7 +3733,7 @@ body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:
   color: #FF6B00 !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
   border-color: rgba(255, 107, 0, 0.65) !important;
-  box-shadow: 0 0 14px rgba(255, 107, 0, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
   text-shadow: none !important;
 }
 body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active {
@@ -3937,7 +3916,7 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
   background-color: #EA580C !important;
   border-color: #EA580C !important;
   color: #FFFFFF !important;
-  box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.4), 0 4px 18px rgba(255, 107, 0, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28) !important;
 }
 
 
@@ -4015,7 +3994,7 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       color: #FFFFFF !important;
       border-color: #FF6B00 !important;
       font-weight: 700 !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.38) !important;
+      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25) !important;
       cursor: default !important;
       transform: none !important;
     }
@@ -4154,4 +4133,11 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
 .lang-dropdown-container .dropdown-item:hover {
   background-color: #F8FAFC !important;
   color: #0F172A !important;
+}
+
+/* Focus State Polish - Impeccable No-Slop */
+.pagination .page-item .page-link:focus,
+#pagination-container .page-item .page-link:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2) !important;
 }

@@ -112,7 +112,7 @@
       background: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
     .topbar-user-btn:hover *,
     .topbar-user-btn:focus *,
@@ -160,17 +160,19 @@
       overflow: hidden;
     }
     .topbar-dropdown-menu .dropdown-item {
-      transition: all 0.15s ease;
+      transition: background-color 0.15s ease, color 0.15s ease;
       font-size: 0.86rem;
-      border-left: 3px solid transparent;
       color: #334155;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin: 2px 6px;
+      border: none !important;
     }
     .topbar-dropdown-menu .dropdown-item:hover,
-    .topbar-dropdown-menu .dropdown-item:focus {
+    .topbar-dropdown-menu .dropdown-item:focus,
+    .topbar-dropdown-menu .dropdown-item.active {
       background-color: #FFF7ED !important;
       color: #EA580C !important;
-      border-left-color: #FF6B00 !important;
-      padding-left: 18px !important;
     }
 
     /* BREADCRUMB THANH LỊCH */
@@ -286,7 +288,7 @@
     .gallery-thumb.active {
       opacity: 1;
       border-color: #FF6B00 !important;
-      box-shadow: 0 0 10px rgba(255, 107, 0, 0.35);
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08);
       transform: translateY(-2px);
     }
 
@@ -409,7 +411,7 @@
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
 
     /* CỘT PHẢI LIÊN HỆ ĐỨNG YÊN CỐ ĐỊNH TỰ NHIÊN, KHÔNG TRÔI KHI KÉO TRANG */

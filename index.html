@@ -172,7 +172,7 @@
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 10px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1) !important;
     }
 
     /* 1. NÚT TÀI KHOẢN / ĐĂNG NHẬP TRÊN TOPBAR: Đẹp, rõ nét, không mất chữ, không trùng mũi tên */
@@ -223,7 +223,7 @@
       background-color: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.5) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
@@ -263,17 +263,19 @@
       overflow: hidden;
     }
     .topbar-dropdown-menu .dropdown-item {
-      transition: all 0.15s ease;
+      transition: background-color 0.15s ease, color 0.15s ease;
       font-size: 0.86rem;
-      border-left: 3px solid transparent;
       color: #334155;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin: 2px 6px;
+      border: none !important;
     }
     .topbar-dropdown-menu .dropdown-item:hover,
-    .topbar-dropdown-menu .dropdown-item:focus {
+    .topbar-dropdown-menu .dropdown-item:focus,
+    .topbar-dropdown-menu .dropdown-item.active {
       background-color: #FFF7ED !important;
       color: #EA580C !important;
-      border-left-color: #FF6B00 !important;
-      padding-left: 18px !important;
     }
 
     /* 2. Thanh Menu Chính Nền Trong Suốt (Navbar Clean) */
@@ -311,7 +313,7 @@
       color: #FF6B00 !important;
       background-color: rgba(255, 255, 255, 0.14) !important;
       border-color: rgba(255, 107, 0, 0.6) !important;
-      box-shadow: 0 0 14px rgba(255, 107, 0, 0.3) !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
       text-shadow: none !important;
     }
     .nav-link-portal.active {
@@ -384,7 +386,7 @@
       background-color: #EA580C !important;
       border-color: #FFFFFF !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 0 3.5px rgba(255, 107, 0, 0.5), 0 4px 18px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28) !important;
     }
 
     /* Hiển thị logo tương ứng với chế độ nền */
@@ -459,7 +461,7 @@
     .portal-header-wrapper.is-scrolled .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.4) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
 
     /* Nút Đăng nhập / Tài khoản khi cuộn (is-scrolled) - Rõ nét, nền trắng tinh, chữ than chì */
@@ -515,7 +517,7 @@
       background-color: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn:hover *,
     .portal-header-wrapper.is-scrolled .topbar-user-btn:focus *,
@@ -623,7 +625,7 @@
     .btn-hero-primary:active {
       background-color: #EA580C !important;
       border-color: #FFFFFF !important;
-      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.5), 0 8px 25px rgba(255, 107, 0, 0.5) !important;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.25) !important;
       color: #FFFFFF !important;
       transform: translateY(-2px);
     }
@@ -1187,7 +1189,6 @@
     <section class="container-fluid px-3 px-xl-5 mt-5 pt-3">
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="section-eyebrow-orange">BẢNG HÃNG THÔNG DỤNG</span>
           <h2 class="h5 fw-bold text-dark mb-0">Thương Hiệu Phổ Biến</h2>
         </div>
         <a href="cars.html" class="link-orange-arrow">
@@ -1263,9 +1264,6 @@
       <div class="category-box-stitch">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div class="d-flex align-items-center gap-2">
-            <span class="badge rounded-pill" style="background-color: #FFF7ED; color: #FF6B00; font-size: 0.72rem; padding: 5px 10px;">
-              <i class="bi bi-wallet2 me-1"></i> TÀI CHÍNH
-            </span>
             <h3 class="h6 fw-bold text-dark mb-0">Tìm Xe Theo Ngân Sách Tham Khảo</h3>
           </div>
           <a href="#tool-loan-calculator" class="small text-muted text-decoration-none">
@@ -1310,7 +1308,6 @@
     <section class="container-fluid px-3 px-xl-5 mt-5">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
         <div>
-          <span class="section-eyebrow-orange">DANH MỤC ĐỀ XUẤT</span>
           <h2 class="h5 fw-bold text-dark mb-0">Kho Xe Đang Chào Bán</h2>
         </div>
 
@@ -1351,7 +1348,6 @@
          ======================================================================== -->
     <section class="container-fluid px-3 px-xl-5 mt-5">
       <div class="text-center max-w-700 mx-auto mb-4">
-        <span class="section-eyebrow-orange">CÔNG CỤ THAM KHẢO</span>
         <h2 class="h5 fw-bold text-dark mt-1">Tính Toán Chi Phí & So Sánh Nhanh</h2>
         <p class="text-muted small mb-0">Dự toán ngân sách lăn bánh tham khảo và so sánh thông số các dòng xe trước khi giao dịch.</p>
       </div>
@@ -1571,7 +1567,6 @@
     <section class="container-fluid px-3 px-xl-5 mt-5" id="guide-section">
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
-          <span class="section-eyebrow-orange">TIN TỨC &amp; ĐÁNH GIÁ CHUYÊN SÂU</span>
           <h2 class="h5 fw-bold text-dark mb-0">Tin Tức &amp; Đánh Giá Xe - Cẩm Nang Kinh Nghiệm</h2>
         </div>
         <a href="news.html" class="link-orange-arrow">
@@ -1704,7 +1699,7 @@
         <!-- 3. Hẹn gặp xem xe -->
         <div class="col">
           <div class="value-pill-card h-100">
-            <div class="rounded-circle value-icon-purple p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <div class="rounded-circle value-icon-emerald p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
               <i class="bi bi-car-front-fill fs-5"></i>
             </div>
             <div>

@@ -84,7 +84,7 @@
     .lang-pill-btn.active {
       background: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 8px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
 
     /* Nút Tài Khoản / Đăng Nhập */
@@ -124,7 +124,7 @@
       background: #FF6B00 !important;
       border-color: #FF6B00 !important;
       color: #FFFFFF !important;
-      box-shadow: 0 0 12px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover *,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus *,
@@ -575,6 +575,14 @@
     .pagination .page-item .page-link,
     #pagination-container .page-item .page-link,
     body.cars-bento-body .pagination .page-link,
+    
+    .pagination .page-item .page-link:focus,
+    #pagination-container .page-item .page-link:focus,
+    body.cars-bento-body .pagination .page-link:focus {
+      outline: none !important;
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2) !important;
+    }
+
     body.cars-bento-body #pagination-container .page-link {
       min-width: 44px !important;
       height: 42px !important;
@@ -614,7 +622,7 @@
       color: #FFFFFF !important;
       border-color: #FF6B00 !important;
       font-weight: 700 !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.38) !important;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
       cursor: default !important;
       transform: none !important;
     }
