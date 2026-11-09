@@ -19,7 +19,7 @@
 
   <style>
     /* ==========================================================================
-       PHƯƠNG ÁN 2: BENTO EXECUTIVE CENTERED - CHUẨN UI/UX PRO MAX
+       BENTO EXECUTIVE CENTERED - CHUẨN UI/UX PRO MAX (CHO NGƯỜI DÙNG MỚI)
        Hỗ trợ hoàn hảo Desktop, Tablet & Mobile (iOS / Android chuẩn hóa)
        ========================================================================== */
     html, body {
@@ -69,7 +69,7 @@
 
     /* Thẻ Bento Master */
     .bento-master-card {
-      max-width: 1000px;
+      max-width: 980px;
       width: 100%;
       background: #FFFFFF;
       border-radius: 24px;
@@ -82,7 +82,7 @@
     @media (min-width: 992px) {
       .bento-master-card {
         flex-direction: row;
-        min-height: 640px;
+        min-height: 610px;
       }
     }
 
@@ -248,7 +248,7 @@
        ========================================================================== */
     .bento-form-col {
       background: #FFFFFF;
-      padding: 32px 36px;
+      padding: 34px 38px;
       flex: 1 1 62%;
       display: flex;
       flex-direction: column;
@@ -273,7 +273,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .form-top-logo {
@@ -305,56 +305,16 @@
 
     .form-main-heading {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.48rem;
       font-weight: 800;
       color: #0F172A;
       margin-bottom: 3px;
     }
 
     .form-main-sub {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       color: #64748B;
-      margin-bottom: 16px;
-    }
-
-    /* Segmented Tabs Chọn Loại Tài Khoản */
-    .role-segmented-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      background: #F1F5F9;
-      padding: 4px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      border: 1px solid #E2E8F0;
-    }
-
-    .role-tab-item {
-      border: none;
-      background: transparent;
-      padding: 9px 12px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #64748B;
-      border-radius: 9px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-      min-height: 42px;
-    }
-
-    .role-tab-item.active {
-      background: #FFFFFF;
-      color: #0F172A;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-      font-weight: 700;
-    }
-
-    .role-tab-item.active i {
-      color: #FF6B00;
+      margin-bottom: 20px;
     }
 
     /* Nhãn & Trường nhập liệu */
@@ -362,7 +322,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: #1E293B;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -380,19 +340,19 @@
     /* Font-size 16px trên Mobile chống hiện tượng iOS Safari tự động zoom trang */
     .input-wrapper .form-control {
       border: 1px solid #CBD5E1;
-      padding: 9px 12px 9px 36px;
+      padding: 10px 12px 10px 38px;
       font-size: 0.88rem;
       border-radius: 10px;
       color: #0F172A;
       transition: all 0.2s ease;
       background: #FFFFFF;
-      min-height: 42px;
+      min-height: 44px;
     }
 
     @media (max-width: 576px) {
       .input-wrapper .form-control {
         font-size: 16px !important;
-        padding: 9px 12px 9px 36px;
+        padding: 10px 12px 10px 38px;
       }
     }
 
@@ -422,7 +382,7 @@
       background: transparent;
       color: #64748B;
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
       z-index: 10;
       display: flex;
       align-items: center;
@@ -469,8 +429,8 @@
       font-weight: 700;
       border: none;
       border-radius: 10px;
-      padding: 11px 20px;
-      font-size: 0.92rem;
+      padding: 12px 20px;
+      font-size: 0.94rem;
       box-shadow: 0 4px 14px rgba(255, 107, 0, 0.28);
       transition: all 0.2s ease;
       display: flex;
@@ -478,7 +438,7 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      min-height: 46px;
+      min-height: 48px;
       cursor: pointer;
     }
 
@@ -527,7 +487,7 @@
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
       border-radius: 8px;
-      padding: 5px 10px;
+      padding: 5px 12px;
       font-size: 0.74rem;
       font-weight: 600;
       color: #334155;
@@ -560,16 +520,16 @@
       <div class="bento-story-col">
         <div>
           <div class="story-brand-badge">
-            <i class="bi bi-shield-check"></i> Nền Tảng Uy Tín Số 1
+            <i class="bi bi-stars"></i> Đặc Quyền Thành Viên Mới
           </div>
           <h2 class="story-title">Đăng Ký & Trải Nghiệm Mua Bán Xe Đột Phá</h2>
           <p class="story-desc">
-            Tiếp cận cộng đồng mua bán ô tô chuyên nghiệp toàn quốc. Đăng tin chuẩn xác, kiểm định thực tế minh bạch cùng hệ thống OtoMarket.
+            Tham gia cộng đồng mua bán ô tô uy tín hàng đầu. Đăng tin bán xe dễ dàng, lưu xe yêu thích và trải nghiệm nền tảng minh bạch.
           </p>
 
           <div class="story-perk-list">
             <div class="story-perk-item">
-              <div class="story-perk-icon"><i class="bi bi-clock-history"></i></div>
+              <div class="story-perk-icon"><i class="bi bi-lightning-charge-fill"></i></div>
               <div>
                 <div class="fw-bold">Đăng tin siêu tốc trong 3 phút</div>
                 <div class="text-white-50" style="font-size: 0.72rem;">Tiếp cận 50.000+ người mua tiềm năng</div>
@@ -577,18 +537,18 @@
             </div>
 
             <div class="story-perk-item">
-              <div class="story-perk-icon"><i class="bi bi-patch-check-fill"></i></div>
+              <div class="story-perk-icon"><i class="bi bi-heart-fill"></i></div>
               <div>
-                <div class="fw-bold">Kiểm định 160 điểm chuẩn hãng</div>
-                <div class="text-white-50" style="font-size: 0.72rem;">Định giá AI & báo cáo kỹ thuật minh bạch</div>
+                <div class="fw-bold">Lưu xe yêu thích & Theo dõi giá</div>
+                <div class="text-white-50" style="font-size: 0.72rem;">Nhận thông báo khi xe giảm giá đúng nhu cầu</div>
               </div>
             </div>
 
             <div class="story-perk-item">
-              <div class="story-perk-icon"><i class="bi bi-shield-lock-fill"></i></div>
+              <div class="story-perk-icon"><i class="bi bi-shield-check"></i></div>
               <div>
-                <div class="fw-bold">Bảo vệ giao dịch & Pháp lý</div>
-                <div class="text-white-50" style="font-size: 0.72rem;">Hỗ trợ rút hồ sơ, sang tên đổi chủ an toàn</div>
+                <div class="fw-bold">Bảo vệ giao dịch & Kiểm định 160 điểm</div>
+                <div class="text-white-50" style="font-size: 0.72rem;">Hỗ trợ pháp lý, rút hồ sơ & sang tên an toàn</div>
               </div>
             </div>
           </div>
@@ -599,11 +559,11 @@
           <div class="story-stat-box">
             <div>
               <div class="story-stat-num">50K+</div>
-              <div class="story-stat-lbl">Khách Hàng</div>
+              <div class="story-stat-lbl">Thành Viên</div>
             </div>
             <div>
               <div class="story-stat-num">1.200+</div>
-              <div class="story-stat-lbl">Xe Giao Dịch</div>
+              <div class="story-stat-lbl">Xe Đang Bán</div>
             </div>
             <div>
               <div class="story-stat-num">99.8%</div>
@@ -631,35 +591,25 @@
 
           <!-- Tiêu đề form -->
           <h1 class="form-main-heading">Tạo Tài Khoản OtoMarket</h1>
-          <p class="form-main-sub" id="bento-sub-text">
-            Đăng ký để đăng tin bán xe, lưu xe yêu thích và nhận hỗ trợ tốt nhất
+          <p class="form-main-sub">
+            Đăng ký để đăng tin bán xe, lưu xe yêu thích và trải nghiệm dịch vụ tiện ích
           </p>
-
-          <!-- Tabs chọn đối tượng -->
-          <div class="role-segmented-tabs">
-            <button type="button" class="role-tab-item active" id="tab-opt-personal" onclick="switchBentoRole('personal')">
-              <i class="bi bi-person-fill"></i> Khách Cá Nhân
-            </button>
-            <button type="button" class="role-tab-item" id="tab-opt-showroom" onclick="switchBentoRole('showroom')">
-              <i class="bi bi-building"></i> Showroom / Đại Lý
-            </button>
-          </div>
 
           <!-- Form đăng ký -->
           <form id="register-bento-form" onsubmit="handleBentoRegisterSubmit(event)">
             
-            <!-- Họ tên / Tên Showroom -->
+            <!-- Họ và tên -->
             <div class="mb-2.5">
               <label class="form-field-label" for="bento-name">
-                <span id="bento-name-label">Họ và tên</span><span class="req-star">*</span>
+                <span>Họ và tên</span><span class="req-star">*</span>
               </label>
               <div class="input-wrapper">
-                <i class="bi bi-person field-icon" id="bento-name-icon"></i>
+                <i class="bi bi-person field-icon"></i>
                 <input type="text" class="form-control" id="bento-name" placeholder="Ví dụ: Nguyễn Văn A" required>
               </div>
             </div>
 
-            <!-- SĐT & Email (2 cột linh hoạt) -->
+            <!-- SĐT & Email (2 cột) -->
             <div class="row g-2 mb-2.5">
               <div class="col-sm-6">
                 <label class="form-field-label" for="bento-phone">
@@ -746,18 +696,13 @@
 
           <!-- Dải điền nhanh Demo Test 1-Click -->
           <div class="bento-demo-strip">
-            <div class="d-flex align-items-center justify-content-between mb-1.5 flex-wrap gap-1">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-1">
               <span class="text-muted fw-bold" style="font-size: 0.72rem;">
                 <i class="bi bi-magic text-warning me-1"></i> Điền nhanh dữ liệu mẫu (Demo):
               </span>
-              <div class="d-flex gap-1.5">
-                <button type="button" class="quick-demo-btn" onclick="fillBentoDemo('personal')">
-                  <i class="bi bi-person"></i> Mẫu Cá Nhân
-                </button>
-                <button type="button" class="quick-demo-btn" onclick="fillBentoDemo('showroom')">
-                  <i class="bi bi-building"></i> Mẫu Showroom
-                </button>
-              </div>
+              <button type="button" class="quick-demo-btn" onclick="fillBentoDemo()">
+                <i class="bi bi-person-check-fill text-orange-link"></i> Mẫu Người Dùng Mới
+              </button>
             </div>
           </div>
         </div>
@@ -780,34 +725,6 @@
   <script src="assets/js/app.js?v=20261106_v8_auth"></script>
 
   <script>
-    let bentoCurrentRole = 'personal';
-
-    function switchBentoRole(role) {
-      bentoCurrentRole = role;
-      const tabPersonal = document.getElementById('tab-opt-personal');
-      const tabShowroom = document.getElementById('tab-opt-showroom');
-      const nameLabel = document.getElementById('bento-name-label');
-      const nameInput = document.getElementById('bento-name');
-      const nameIcon = document.getElementById('bento-name-icon');
-      const subText = document.getElementById('bento-sub-text');
-
-      if (role === 'showroom') {
-        tabPersonal.classList.remove('active');
-        tabShowroom.classList.add('active');
-        nameLabel.textContent = 'Tên Showroom / Salon Doanh Nghiệp';
-        nameInput.placeholder = 'Ví dụ: Salon Ô Tô Kim Mã Nha Trang';
-        nameIcon.className = 'bi bi-building field-icon';
-        subText.textContent = 'Mở rộng kênh bán hàng, tiếp cận hàng triệu khách mua ô tô trên cả nước';
-      } else {
-        tabShowroom.classList.remove('active');
-        tabPersonal.classList.add('active');
-        nameLabel.textContent = 'Họ và tên';
-        nameInput.placeholder = 'Ví dụ: Nguyễn Văn A';
-        nameIcon.className = 'bi bi-person field-icon';
-        subText.textContent = 'Đăng ký để đăng tin bán xe, lưu xe yêu thích và nhận hỗ trợ tốt nhất';
-      }
-    }
-
     function toggleBentoPwd(inputId, btn) {
       const input = document.getElementById(inputId);
       const icon = btn.querySelector('i');
@@ -888,25 +805,16 @@
       }
     }
 
-    function fillBentoDemo(type) {
-      if (type === 'showroom') {
-        switchBentoRole('showroom');
-        document.getElementById('bento-name').value = 'Auto Star Nha Trang';
-        document.getElementById('bento-phone').value = '0905112233';
-        document.getElementById('bento-email').value = 'autostar.nhatrang@otomarket.vn';
-        document.getElementById('bento-password').value = 'Showroom@2026';
-        document.getElementById('bento-confirm-password').value = 'Showroom@2026';
-      } else {
-        switchBentoRole('personal');
-        document.getElementById('bento-name').value = 'Trần Anh Dũng';
-        document.getElementById('bento-phone').value = '0912345678';
-        document.getElementById('bento-email').value = 'anhdung.tran@gmail.com';
-        document.getElementById('bento-password').value = 'DungAuto#2026';
-        document.getElementById('bento-confirm-password').value = 'DungAuto#2026';
-      }
+    function fillBentoDemo() {
+      document.getElementById('bento-name').value = 'Trần Anh Dũng';
+      document.getElementById('bento-phone').value = '0912345678';
+      document.getElementById('bento-email').value = 'anhdung.tran@gmail.com';
+      document.getElementById('bento-password').value = 'DungAuto#2026';
+      document.getElementById('bento-confirm-password').value = 'DungAuto#2026';
+      
       checkBentoStrength(document.getElementById('bento-password').value);
       if (typeof showToast === 'function') {
-        showToast(`Đã tự động điền thông tin mẫu cho ${type === 'showroom' ? 'Showroom' : 'Khách cá nhân'}!`, 'info');
+        showToast('Đã tự động điền thông tin mẫu người dùng mới!', 'info');
       }
     }
 
@@ -940,8 +848,8 @@
 
       setTimeout(() => {
         const result = (typeof registerUser === 'function') ? registerUser({
-          name: name, email: email, phone: phone, password: password, role: bentoCurrentRole
-        }) : { success: true, user: { name: name, email: email, role: bentoCurrentRole } };
+          name: name, email: email, phone: phone, password: password, role: 'customer'
+        }) : { success: true, user: { name: name, email: email, role: 'customer' } };
 
         if (!result.success) {
           submitBtn.disabled = false;
