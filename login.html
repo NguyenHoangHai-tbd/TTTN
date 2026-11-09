@@ -2,10 +2,8 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>Đăng Nhập Tài Khoản - Sàn Giao Dịch Xe OtoMarket</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +12,6 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261106_v8_auth">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -22,517 +19,663 @@
 
   <style>
     /* ==========================================================================
-       LOGIN SPLIT-SCREEN CHUẨN DEMO PHƯƠNG ÁN 1 (TỶ LỆ VÀNG, ZERO OVERFLOW)
+       BENTO EXECUTIVE CENTERED - CHUẨN UI/UX PRO MAX (ĐỒNG BỘ 100% TRANG ĐĂNG KÝ)
+       Hỗ trợ hoàn hảo Desktop, Tablet & Mobile (iOS / Android chuẩn hóa)
        ========================================================================== */
     html, body {
-      height: 100%;
+      min-height: 100%;
       margin: 0;
       padding: 0;
     }
 
-    body.login-studio-body,
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-      background-color: #EEF2F6 !important;
-      color: #0F172A !important;
+      background: #0F172A url('assets/images/login-hero-showcase.jpg') center center / cover no-repeat fixed;
+      color: #0F172A;
+      position: relative;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    .login-viewport-wrapper {
+    /* Lớp phủ mờ Radial Vignette Ambient sang trọng */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.94) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 0;
+    }
+
+    .bento-page-container {
+      position: relative;
+      z-index: 1;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      width: 100%;
-    }
-
-    @media (min-width: 992px) {
-      .login-viewport-wrapper {
-        flex-direction: row;
-        height: 100vh;
-        overflow: hidden;
-      }
-    }
-
-    /* ==========================================================================
-       CỘT TRÁI: HERO AUTOMOTIVE SHOWCASE (ẢNH CHUẨN DEMO 100%)
-       ========================================================================== */
-    .login-hero-pane {
-      position: relative;
-      flex: 1 1 60.5%;
-      width: 60.5%;
-      background-color: #0F172A;
-      background-image: url('assets/images/login-hero-showcase.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 32px 36px;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
       box-sizing: border-box;
     }
 
-    /* Thẻ kính mờ Glassmorphism sang trọng góc trái chuẩn Demo */
-    .hero-glass-card {
-      background: rgba(15, 23, 42, 0.76);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 20px;
-      padding: 24px 28px;
-      color: #FFFFFF;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
-      max-width: 560px;
-      width: 100%;
-    }
-
-    .hero-glass-title {
-      font-size: 1.68rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 8px;
-      color: #FFFFFF;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .hero-glass-desc {
-      font-size: 0.88rem;
-      color: #CBD5E1;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .hero-perk-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #F8FAFC;
-    }
-
-    .hero-perk-item i {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #FF6B00 !important;
-    }
-
-    /* ==========================================================================
-       CỘT PHẢI: BENTO LOGIN STUDIO (ĐỒNG BỘ CHUẨN DEMO)
-       ========================================================================== */
-    .login-form-pane {
-      background-color: #EDEBE6;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 24px 28px;
-      width: 100%;
-      flex: 1 1 39.5%;
-      box-sizing: border-box;
-      overflow-y: auto;
-    }
-
-    @media (min-width: 992px) {
-      .login-form-pane {
-        flex: 0 0 39.5%;
-        width: 39.5%;
-        max-width: 39.5%;
-        padding: 24px 36px;
+    @media (max-width: 576px) {
+      .bento-page-container {
+        padding: 12px 10px;
+        justify-content: flex-start;
       }
     }
 
-    @media (min-width: 1366px) {
-      .login-form-pane {
-        padding: 32px 48px;
-      }
-    }
-
-    /* Topbar góc phải: Logo & Nút quay lại */
-    .login-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
+    /* Thẻ Bento Master */
+    .bento-master-card {
+      max-width: 960px;
       width: 100%;
-    }
-
-    .btn-back-home {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #334155;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (min-width: 992px) {
+      .bento-master-card {
+        flex-direction: row;
+        min-height: 560px;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .bento-master-card {
+        border-radius: 20px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    
+    @media (max-width: 991.98px) {
+      .bento-master-card {
+        flex-direction: column;
+      }
+      .bento-form-col {
+        order: 1;
+        padding: 26px 20px;
+      }
+      .bento-story-col {
+        order: 2;
+        padding: 24px 20px;
+      }
+      .bento-perks-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .bento-story-col {
+        order: 1;
+      }
+      .bento-form-col {
+        order: 2;
+      }
+    }
+
+    /* ==========================================================================
+       CỘT TRÁI: STORYTELLING & GIÁ TRỊ THÀNH VIÊN (DARK NAVY LUXURY)
+       ========================================================================== */
+    .bento-story-col {
+      background: linear-gradient(145deg, #1E293B 0%, #0F172A 100%);
+      color: #FFFFFF;
+      padding: 38px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 1 40%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-story-col::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.28) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .bento-trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 107, 0, 0.16);
+      border: 1px solid rgba(255, 107, 0, 0.35);
+      color: #FF8A33;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      align-self: flex-start;
+      text-transform: uppercase;
+    }
+
+    .bento-story-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.62rem;
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+
+    .bento-story-desc {
+      font-size: 0.88rem;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .bento-perks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .bento-perk-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .bento-perk-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF6B00;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .bento-perk-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 2px;
+    }
+
+    .bento-perk-sub {
+      font-size: 0.76rem;
+      color: #94A3B8;
+      line-height: 1.45;
+    }
+
+    .bento-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 23, 42, 0.4);
+      margin: 0 -12px -12px -12px;
+      padding: 16px 14px;
+      border-radius: 12px;
+    }
+
+    .bento-stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FF6B00;
+      line-height: 1.1;
+    }
+
+    .bento-stat-lbl {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #94A3B8;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       CỘT PHẢI: FORM ĐĂNG NHẬP CHÍNH (CLEAN STUDIO LIGHT)
+       ========================================================================== */
+    .bento-form-col {
+      background: #FFFFFF;
+      padding: 38px 40px;
+      flex: 1 1 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 576px) {
+      .bento-form-col {
+        padding: 24px 18px;
+      }
+    }
+
+    .bento-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .btn-return-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      color: #475569;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-      white-space: nowrap;
-      flex-shrink: 0;
     }
-    .btn-back-home:hover {
-      background: #F8FAFC;
-      border-color: #94A3B8;
+    .btn-return-home:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
       color: #0F172A;
       transform: translateX(-2px);
     }
 
-    /* Khối Trung Tâm: 2 Thẻ Bento Riêng Biệt Chuẩn Demo */
-    .bento-cards-container {
-      max-width: 440px;
-      width: 100%;
-      margin: auto;
-    }
-
-    /* Thẻ 1: Bento Form Đăng Nhập Chính */
-    .bento-login-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 18px;
-      padding: 24px 26px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-      margin-bottom: 14px;
-    }
-
-    .login-card-title {
-      font-size: 1.45rem;
+    .bento-form-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.62rem;
       font-weight: 800;
       color: #0F172A;
+      letter-spacing: -0.02em;
       margin-bottom: 4px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    .login-card-subtitle {
-      font-size: 0.82rem;
-      color: #64748B;
-      margin-bottom: 18px;
-    }
-
-    .bento-form-label {
+    .bento-form-sub {
       font-size: 0.84rem;
+      color: #64748B;
+      margin-bottom: 20px;
+    }
+
+
+
+    /* Input Fields */
+    .bento-field-label {
+      font-size: 0.82rem;
       font-weight: 700;
       color: #1E293B;
       margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .bento-input-group .form-control {
-      border-color: #CBD5E1;
-      padding: 9px 13px;
-      font-size: 0.9rem;
+    .bento-input-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .bento-input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94A3B8;
+      font-size: 0.95rem;
+      pointer-events: none;
+    }
+
+    .bento-input-control {
+      width: 100%;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 10px 14px 10px 40px;
+      font-size: 0.90rem;
       color: #0F172A;
-      border-radius: 10px !important;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      outline: none;
     }
-
-    .bento-input-group .form-control:focus {
+    .bento-input-control:focus {
       border-color: #FF6B00;
       box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
     }
 
-    .bento-input-group .btn-pwd-toggle {
-      border: none;
-      background: transparent;
-      color: #64748B;
+    .btn-toggle-eye {
       position: absolute;
       right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 10;
-      padding: 0;
-    }
-    .bento-input-group .btn-pwd-toggle:hover {
-      color: #0F172A;
-    }
-
-    /* Nút CTA Cam OtoMarket */
-    .btn-cta-orange {
-      background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%) !important;
-      color: #FFFFFF !important;
-      border: none !important;
-      font-weight: 700 !important;
-      border-radius: 10px !important;
-      padding: 10px 18px !important;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
-      transition: all 0.2s ease !important;
-      font-size: 0.92rem !important;
-    }
-    .btn-cta-orange:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35) !important;
-      color: #FFFFFF !important;
-    }
-
-    .text-orange-theme {
-      color: #FF6B00 !important;
-    }
-
-    /* Thẻ 2: Khối Đăng Nhập Nhanh 1-Click (Demo) Chuẩn Demo Nằm Riêng */
-    .bento-quick-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 14px 18px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-      margin-bottom: 12px;
-    }
-
-    .quick-card-title {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #1E293B;
-      margin-bottom: 10px;
-    }
-
-    .quick-roles-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .quick-account-btn {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 10px;
-      padding: 8px 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      background: none;
+      border: none;
+      color: #94A3B8;
       cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: left;
-      width: 100%;
-    }
-    .quick-account-btn:hover {
-      border-color: #FF6B00;
-      background: #FFF7ED;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 6px rgba(255, 107, 0, 0.12);
-    }
-
-    .quick-btn-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .quick-btn-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #F1F5F9;
-      border: 1px solid #E2E8F0;
+      padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1rem;
+      transition: color 0.15s ease;
+    }
+    .btn-toggle-eye:hover {
+      color: #FF6B00;
+    }
+
+    .forgot-pwd-link {
+      color: #FF6B00;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .forgot-pwd-link:hover {
+      color: #EA580C;
+      text-decoration: underline;
+    }
+
+    .bento-checkbox-label {
+      font-size: 0.82rem;
       color: #475569;
-      font-size: 0.95rem;
-      flex-shrink: 0;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .quick-btn-title {
-      font-size: 0.78rem;
+    /* Nút Đăng Nhập Chính */
+    .btn-submit-bento {
+      width: 100%;
+      background: #FF6B00;
+      border: 1px solid #FF6B00;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 700;
-      color: #0F172A;
-      line-height: 1.2;
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 0.95rem;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+    .btn-submit-bento:hover {
+      background: #EA580C;
+      border-color: #EA580C;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35);
     }
 
-    .quick-btn-role {
-      font-size: 0.68rem;
-      color: #64748B;
-      display: block;
-      line-height: 1.1;
-      margin-top: 1px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .login-footer-copy {
-      font-size: 0.78rem;
-      color: #64748B;
+    .register-switch-row {
       text-align: center;
-      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .register-switch-row a {
+      color: #FF6B00;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+    .register-switch-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hộp Điền Nhanh Dữ Liệu Mẫu (Demo Switcher) */
+    .demo-preset-box {
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .demo-preset-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-preset-pill {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-preset-pill:hover {
+      background: #FFF7ED;
+      border-color: #FF6B00;
+      color: #FF6B00;
+    }
+
+    .bento-copyright-footer {
+      text-align: center;
+      color: #94A3B8;
+      font-size: 0.74rem;
+      margin-top: 18px;
     }
   </style>
 </head>
-<body class="login-studio-body">
+<body>
 
-  <div class="login-viewport-wrapper">
-
-    <!-- ==========================================================================
-         CỘT TRÁI (HERO SHOWCASE XE HƠI SANG TRỌNG & CAM KẾT SÀN CHUẨN DEMO)
-         ========================================================================== -->
-    <div class="login-hero-pane d-none d-lg-flex">
-      <div class="hero-glass-card">
-        <h2 class="hero-glass-title">Khám Phá Hàng Ngàn Xe Ô Tô Chất Lượng</h2>
-        <p class="hero-glass-desc">
-          Sàn giao dịch kết nối người mua và người bán uy tín, minh bạch hàng đầu Việt Nam
-        </p>
-        <div class="d-flex flex-wrap align-items-center gap-3">
-          <span class="hero-perk-item">
-            <i class="bi bi-check2 text-orange-theme"></i> Kiểm định 160 điểm
-          </span>
-          <span class="hero-perk-item">
-            <i class="bi bi-check2 text-orange-theme"></i> Định giá chuẩn xác
-          </span>
-          <span class="hero-perk-item">
-            <i class="bi bi-check2 text-orange-theme"></i> Kết nối trực tiếp
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==========================================================================
-         CỘT PHẢI (BENTO LOGIN STUDIO ĐỒNG BỘ CHUẨN DEMO)
-         ========================================================================== -->
-    <div class="login-form-pane">
+  <div class="bento-page-container">
+    
+    <main class="bento-master-card">
       
-      <!-- Topbar: Logo OtoMarket & Nút Quay lại -->
-      <div class="login-topbar">
-        <a href="index.html" class="d-inline-flex align-items-center text-decoration-none">
-          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" style="height: 36px;">
-        </a>
-        <a href="index.html" class="btn-back-home">
-          <i class="bi bi-arrow-left"></i>
-          <span>Quay lại trang chủ</span>
-        </a>
-      </div>
+      <!-- ====================================================================
+           CỘT TRÁI: STORYTELLING & ĐẶC QUYỀN THÀNH VIÊN (DARK NAVY LUXURY)
+           ==================================================================== -->
+      <section class="bento-story-col">
+        <div>
+          <span class="bento-trust-pill">
+            <i class="bi bi-shield-lock-fill"></i> BẢO MẬT &amp; TIỆN ÍCH
+          </span>
+          
+          <h2 class="bento-story-title">
+            Quản Lý Xe &amp; Giao Dịch Dễ Dàng
+          </h2>
+          
+          <p class="bento-story-desc">
+            Đăng nhập để theo dõi tin đăng bán xe, quản lý danh sách yêu thích và liên hệ trực tiếp với người mua &amp; người bán uy tín.
+          </p>
 
-      <!-- Khối Bento Cards Trung Tâm -->
-      <div class="bento-cards-container my-auto">
-        
-        <!-- THẺ 1: FORM ĐĂNG NHẬP CHÍNH -->
-        <div class="bento-login-card">
-          <h1 class="login-card-title">Đăng nhập tài khoản</h1>
-          <p class="login-card-subtitle">Truy cập tài khoản để đăng tin và quản lý danh sách xe</p>
+          <div class="bento-perks-list">
+            <div class="bento-perk-row">
+              <div class="bento-perk-icon">
+                <i class="bi bi-bell-fill"></i>
+              </div>
+              <div>
+                <div class="bento-perk-title">Theo dõi biến động giá xe</div>
+                <div class="bento-perk-sub">Nhận thông báo tự động ngay khi mẫu xe bạn lưu giảm giá đúng nhu cầu.</div>
+              </div>
+            </div>
 
-          <!-- Thông báo phân quyền / cảnh báo (Chỉ hiển thị khi có thông điệp thực sự) -->
-          <div id="auth-alert-box" class="alert alert-warning d-none align-items-center gap-2 mb-3 py-2 px-3 small border-0" style="background-color: #FEF3C7; color: #92400E;">
-            <i class="bi bi-shield-exclamation fs-5 flex-shrink-0"></i>
-            <span id="auth-alert-text"></span>
+            <div class="bento-perk-row">
+              <div class="bento-perk-icon">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <div>
+                <div class="bento-perk-title">Đăng bán xe siêu tốc trong 3 phút</div>
+                <div class="bento-perk-sub">Quản lý kho xe, cập nhật giá bán và tiếp cận hơn 50.000 khách mua tiềm năng.</div>
+              </div>
+            </div>
+
+            <div class="bento-perk-row">
+              <div class="bento-perk-icon">
+                <i class="bi bi-patch-check-fill"></i>
+              </div>
+              <div>
+                <div class="bento-perk-title">Giao dịch an toàn &amp; Trực tiếp</div>
+                <div class="bento-perk-sub">Kết nối số điện thoại chính chủ, hồ sơ pháp lý minh bạch không qua trung gian.</div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <!-- Thống kê tin cậy phía dưới -->
+        <div class="bento-stats-grid">
+          <div>
+            <div class="bento-stat-num">50K+</div>
+            <div class="bento-stat-lbl">Thành viên</div>
+          </div>
+          <div>
+            <div class="bento-stat-num">1.200+</div>
+            <div class="bento-stat-lbl">Xe đang bán</div>
+          </div>
+          <div>
+            <div class="bento-stat-num">99.8%</div>
+            <div class="bento-stat-lbl">Hài lòng</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CỘT PHẢI: BENTO LOGIN FORM (CLEAN STUDIO LIGHT)
+           ==================================================================== -->
+      <section class="bento-form-col">
+        
+        <!-- Header bar: Logo + Nút quay lại trang chủ -->
+        <div class="bento-header-bar">
+          <a href="index.html" class="d-inline-block">
+            <img src="assets/images/logo.png" alt="OtoMarket" height="36">
+          </a>
+          <a href="index.html" class="btn-return-home">
+            <i class="bi bi-arrow-left"></i> Trang chủ
+          </a>
+        </div>
+
+        <div>
+          <h1 class="bento-form-title">Đăng Nhập Tài Khoản</h1>
+          <p class="bento-form-sub">Truy cập tài khoản để đăng tin bán xe và quản lý danh sách yêu thích</p>
+
+          
 
           <!-- Form Đăng Nhập -->
-          <form id="login-form" onsubmit="handleLoginSubmit(event)">
+          <form id="bento-login-form" onsubmit="handleBentoLogin(event)">
             
-            <!-- Địa chỉ Email -->
+            <!-- Email hoặc SĐT -->
             <div class="mb-3">
-              <label class="bento-form-label" for="login-email">Địa chỉ Email</label>
-              <div class="bento-input-group position-relative">
-                <input type="email" class="form-control" id="login-email" placeholder="name@example.com" value="nam.nguyen@otomarket.vn" required>
+              <label class="bento-field-label" for="login-account">
+                <span>Email hoặc Số điện thoại <span class="text-danger">*</span></span>
+              </label>
+              <div class="bento-input-wrapper">
+                <i class="bi bi-person-fill bento-input-icon"></i>
+                <input type="text" class="bento-input-control" id="login-account" placeholder="Ví dụ: nam.nguyen@otomarket.vn hoặc 0912..." required autocomplete="username">
               </div>
             </div>
 
             <!-- Mật khẩu -->
             <div class="mb-3">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <label class="bento-form-label mb-0" for="login-password">Mật khẩu</label>
-                <a href="#" class="small text-orange-theme fw-semibold text-decoration-none" onclick="showToast('Vui lòng liên hệ hotline 1900 6868 hoặc hỗ trợ kỹ thuật để khôi phục mật khẩu!', 'info'); return false;">
-                  Quên mật khẩu?
-                </a>
+              <div class="bento-field-label">
+                <span>Mật khẩu <span class="text-danger">*</span></span>
+                <a href="javascript:void(0)" onclick="alert('Vui lòng liên hệ Hotline 1900 6868 hoặc quản trị viên để khôi phục mật khẩu tài khoản!')" class="forgot-pwd-link">Quên mật khẩu?</a>
               </div>
-              <div class="bento-input-group position-relative">
-                <input type="password" class="form-control pe-5" id="login-password" value="12345678" required>
-                <button class="btn-pwd-toggle" type="button" onclick="togglePasswordVisibility()" title="Ẩn/hiện mật khẩu">
-                  <i class="bi bi-eye-slash" id="pwd-toggle-icon"></i>
+              <div class="bento-input-wrapper">
+                <i class="bi bi-lock-fill bento-input-icon"></i>
+                <input type="password" class="bento-input-control" id="login-password" placeholder="Nhập mật khẩu của bạn" required autocomplete="current-password" style="padding-right: 40px;">
+                <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('login-password', this)" title="Ẩn/Hiện mật khẩu">
+                  <i class="bi bi-eye"></i>
                 </button>
               </div>
             </div>
 
-            <!-- Checkbox Ghi nhớ -->
-            <div class="form-check mb-3.5">
-              <input class="form-check-input" type="checkbox" id="remember-me" checked style="accent-color: #FF6B00;">
-              <label class="form-check-label small text-muted user-select-none" for="remember-me">
-                Ghi nhớ đăng nhập
-              </label>
+            <!-- Ghi nhớ đăng nhập -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="form-check d-flex align-items-center gap-2">
+                <input class="form-check-input" type="checkbox" id="remember-me" checked style="cursor: pointer;">
+                <label class="form-check-label bento-checkbox-label" for="remember-me">
+                  Ghi nhớ đăng nhập trên thiết bị này
+                </label>
+              </div>
             </div>
 
-            <!-- Nút CTA Đăng nhập cam OtoMarket -->
-            <button type="submit" class="btn btn-cta-orange w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
-              <span>Đăng nhập ngay</span>
-              <i class="bi bi-arrow-right"></i>
+            <!-- Nút Đăng nhập -->
+            <button type="submit" class="btn-submit-bento" id="btn-login-submit">
+              Đăng nhập ngay <i class="bi bi-arrow-right"></i>
             </button>
+
+            <!-- Link chuyển sang Đăng ký -->
+            <div class="register-switch-row">
+              Chưa có tài khoản OtoMarket?
+              <a href="register.html">Đăng ký tài khoản mới</a>
+            </div>
+
           </form>
         </div>
 
-        <!-- THẺ 2: ĐĂNG NHẬP NHANH (DEMO) NẰM RIÊNG BIỆT DƯỚI DẠNG CHIP NGANG -->
-        <div class="bento-quick-card">
-          <div class="quick-card-title">Đăng nhập nhanh (Demo)</div>
-          <div class="quick-roles-grid">
-            
-            <!-- Khách bán xe -->
-            <button type="button" class="quick-account-btn" onclick="quickFillLogin('user')">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Avatar" class="quick-btn-avatar">
-              <div style="min-width: 0;">
-                <span class="quick-btn-title">Nguyễn Hoàng Nam</span>
-                <span class="quick-btn-role">- Khách cá nhân</span>
-              </div>
+        <!-- Hộp Điền Nhanh Dữ Liệu Mẫu (Demo Switcher) -->
+        <div class="demo-preset-box">
+          <div class="demo-preset-title">
+            <i class="bi bi-lightning-charge-fill text-warning"></i>
+            Điền nhanh tài khoản Demo:
+          </div>
+          <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn-preset-pill" onclick="fillDemoUser('individual')">
+              <i class="bi bi-person-fill"></i> Khách cá nhân
             </button>
-
-            <!-- Quản lý Showroom -->
-            <button type="button" class="quick-account-btn" onclick="quickFillLogin('admin')">
-              <div class="quick-btn-icon">
-                <i class="bi bi-person"></i>
-              </div>
-              <div style="min-width: 0;">
-                <span class="quick-btn-title">Quản lý</span>
-                <span class="quick-btn-role">Showroom</span>
-              </div>
+            <button type="button" class="btn-preset-pill" onclick="fillDemoUser('showroom')">
+              <i class="bi bi-shield-lock-fill"></i> Quản lý Showroom
             </button>
-
           </div>
         </div>
 
-        <!-- Chuyển hướng đăng ký -->
-        <div class="text-center small text-muted mt-2">
-          Chưa có tài khoản? <a href="register.html" class="text-orange-theme fw-bold text-decoration-none">Đăng ký tài khoản mới</a>
-        </div>
+      </section>
 
-      </div>
+    </main>
 
-      <!-- Chân trang bản quyền -->
-      <div class="login-footer-copy">
-        © 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu
-      </div>
-
-    </div>
+    <!-- Footer bản quyền -->
+    <footer class="bento-copyright-footer">
+      &copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Xe Ô Tô Uy Tín Hàng Đầu Việt Nam
+    </footer>
 
   </div>
 
-  <div id="toast-container"></div>
+  <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;"></div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js?v=20261106_v8_auth"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Xóa dữ liệu chuyển hướng trang lưu tạm
-      try {
-        localStorage.removeItem('otomarket_redirect_after_login');
-        sessionStorage.removeItem('otomarket_redirect_after_login');
-      } catch(e) {}
-
-      // Kiểm tra thông báo phân quyền được lưu từ sessionStorage
+      // Hiển thị thông báo chuyển hướng nếu có
       const authMessage = sessionStorage.getItem('otomarket_auth_message');
       if (authMessage && authMessage.trim() !== '') {
-        const alertBox = document.getElementById('auth-alert-box');
-        const alertText = document.getElementById('auth-alert-text');
-        if (alertBox && alertText) {
-          alertText.textContent = authMessage;
-          alertBox.classList.remove('d-none');
-          alertBox.classList.add('d-flex');
-        }
         if (typeof showToast === 'function') {
           showToast(authMessage, 'warning');
         }
@@ -540,81 +683,92 @@
       }
     });
 
-    function togglePasswordVisibility() {
-      const pwdInput = document.getElementById('login-password');
-      const icon = document.getElementById('pwd-toggle-icon');
-      if (pwdInput.type === 'password') {
-        pwdInput.type = 'text';
-        icon.className = 'bi bi-eye';
-      } else {
-        pwdInput.type = 'password';
+    // 1. Toggle hiển thị mật khẩu
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
         icon.className = 'bi bi-eye-slash';
-      }
-    }
-
-    function quickFillLogin(role) {
-      if (role === 'admin') {
-        document.getElementById('login-email').value = 'admin@otomarket.vn';
-        document.getElementById('login-password').value = 'admin123';
-        handleDoLogin({
-          name: "Quản lý Showroom",
-          email: "admin@otomarket.vn",
-          phone: "1900 6868",
-          role: "admin",
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-        });
       } else {
-        document.getElementById('login-email').value = 'nam.nguyen@otomarket.vn';
-        document.getElementById('login-password').value = '12345678';
-        handleDoLogin({
-          name: "Nguyễn Hoàng Nam",
-          email: "nam.nguyen@otomarket.vn",
-          phone: "0912 345 678",
-          role: "user",
-          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
-        });
+        input.type = 'password';
+        icon.className = 'bi bi-eye';
       }
     }
 
-    function handleLoginSubmit(event) {
-      event.preventDefault();
-      const email = document.getElementById('login-email').value.trim();
-      const isAdminEmail = email.toLowerCase() === 'admin@otomarket.vn' || email.toLowerCase().includes('admin');
-      const name = isAdminEmail 
-        ? "Quản lý Showroom" 
-        : (email.split('@')[0].replace('.', ' ').toUpperCase() || "Nguyễn Hoàng Nam");
+    // 2. Điền nhanh tài khoản Demo
+    function fillDemoUser(type) {
+      const accInput = document.getElementById('login-account');
+      const pwdInput = document.getElementById('login-password');
+      if (type === 'individual') {
+        accInput.value = 'nam.nguyen@otomarket.vn';
+        pwdInput.value = '12345678';
+        if (typeof showToast === 'function') {
+          showToast('Đã điền tài khoản Khách cá nhân (Nguyễn Hoàng Nam)', 'info');
+        }
+      } else if (type === 'showroom') {
+        accInput.value = 'admin@otomarket.vn';
+        pwdInput.value = 'admin123';
+        if (typeof showToast === 'function') {
+          showToast('Đã điền tài khoản Quản lý Showroom / Đối tác', 'info');
+        }
+      }
+    }
 
-      const user = {
-        name: name,
-        email: email,
-        phone: isAdminEmail ? "1900 6868" : "0912 345 678",
-        role: isAdminEmail ? "admin" : "user",
-        avatar: isAdminEmail 
-          ? "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-          : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+    // 3. Xử lý Đăng nhập
+    function handleBentoLogin(e) {
+      e.preventDefault();
+      const account = document.getElementById('login-account').value.trim();
+      const pwd = document.getElementById('login-password').value;
+
+      if (!account || !pwd) {
+        if (typeof showToast === 'function') {
+          showToast('Vui lòng nhập đầy đủ thông tin đăng nhập!', 'error');
+        } else {
+          alert('Vui lòng nhập đầy đủ thông tin đăng nhập!');
+        }
+        return;
+      }
+
+      const isAdmin = account.toLowerCase() === 'admin@otomarket.vn' || account.toLowerCase().includes('admin');
+      const userObj = {
+        name: isAdmin ? 'Quản lý Showroom' : (account.split('@')[0].replace('.', ' ').toUpperCase() || 'Nguyễn Hoàng Nam'),
+        email: account,
+        phone: isAdmin ? '1900 6868' : '0912 345 678',
+        role: isAdmin ? 'admin' : 'user',
+        avatar: isAdmin 
+          ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+          : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+        isLoggedIn: true
       };
 
-      handleDoLogin(user);
-    }
-
-    function handleDoLogin(user) {
       if (typeof setLoggedInUser === 'function') {
-        setLoggedInUser(user);
+        setLoggedInUser(userObj);
       } else {
-        localStorage.setItem('otomarket_user', JSON.stringify(user));
+        localStorage.setItem('otomarket_user', JSON.stringify(userObj));
+        localStorage.setItem('otomarket_logged_in', 'true');
       }
+
+      const submitBtn = document.getElementById('btn-login-submit');
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Đang xác thực...';
+      submitBtn.disabled = true;
 
       if (typeof showToast === 'function') {
-        showToast(`Đăng nhập thành công! Chào mừng ${user.name} (${user.role === 'admin' ? 'Nhân viên Showroom' : 'Khách cá nhân / Môi giới'})`, "success");
+        showToast(`Đăng nhập thành công! Chào mừng ${userObj.name}`, 'success');
       }
 
+      const redirectUrl = sessionStorage.getItem('otomarket_redirect_after_login') || localStorage.getItem('otomarket_redirect_after_login');
       try {
         localStorage.removeItem('otomarket_redirect_after_login');
         sessionStorage.removeItem('otomarket_redirect_after_login');
-      } catch(e) {}
+      } catch(err) {}
 
       setTimeout(() => {
-        if (user.role === 'admin') {
+        if (redirectUrl && redirectUrl.trim() !== '') {
+          window.location.href = redirectUrl;
+          return;
+        }
+        if (isAdmin) {
           window.location.href = 'admin.html';
           return;
         }
