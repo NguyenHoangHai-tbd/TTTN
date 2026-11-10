@@ -555,7 +555,7 @@
               <option value="recent">Mới lưu gần đây</option>
               <option value="price-asc">Giá: Thấp đến cao</option>
               <option value="price-desc">Giá: Cao đến thấp</option>
-              <option value="year-desc">Năm sản xuất mới nhất</option>
+              <option value="year-desc">Năm sản xuất mới</option>
             </select>
           </div>
 
@@ -840,7 +840,7 @@
         const isAvailable = (typeof LISTING_STATUS !== 'undefined' && car.status === LISTING_STATUS.ACTIVE) || !car.status || car.status === 'active';
         const isNewCar = car.condition === 'new' || car.isNew;
         const photoCount = (car.images && car.images.length > 0) ? car.images.length : (car.gallery && car.gallery.length > 0 ? car.gallery.length : 6);
-        const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
+        const mileageText = isNewCar ? "Xe mới nguyên bản" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
         const priceFormatted = car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(car.price) : `${car.price} đ`);
 
         return `
@@ -903,7 +903,7 @@
 
       container.innerHTML = suggested.map(car => {
         const isNewCar = car.condition === 'new' || car.isNew;
-        const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
+        const mileageText = isNewCar ? "Xe mới nguyên bản" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
         const priceFormatted = car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(car.price) : `${car.price} đ`);
 
         return `

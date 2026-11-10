@@ -785,7 +785,7 @@
                   <option value="Techcombank">Techcombank (Từ 8.2%/năm)</option>
                   <option value="VPBank">VPBank (Duyệt nhanh 4 giờ)</option>
                   <option value="VIB">VIB (Hỗ trợ vay 80%)</option>
-                  <option value="Showroom chọn giúp">Nhờ Showroom so sánh chọn gói tốt nhất</option>
+                  <option value="Showroom chọn giúp">Nhờ Showroom so sánh chọn gói tài chính phù hợp</option>
                 </select>
               </div>
               <div class="col-sm-6">
@@ -953,7 +953,7 @@
 
       const allImages = car.images && car.images.length > 0 ? car.images : [car.image];
       const isNewCar = car.condition === 'new' || car.isNew;
-      const mileageText = isNewCar ? "Xe mới 100%" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
+      const mileageText = isNewCar ? "Xe mới nguyên bản" : (car.mileageDisplay || `${(car.mileage || 0).toLocaleString()} km`);
 
       const isShowroom = (car.sourceType === 'showroom') || 
                          (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
@@ -1132,7 +1132,7 @@
                   <option value="24">24 tháng (2 năm)</option>
                   <option value="36">36 tháng (3 năm)</option>
                   <option value="48">48 tháng (4 năm)</option>
-                  <option value="60" selected>60 tháng (5 năm) - Phổ biến nhất</option>
+                  <option value="60" selected>60 tháng (5 năm) - Được ưa chuộng</option>
                   <option value="72">72 tháng (6 năm)</option>
                   <option value="84">84 tháng (7 năm) - Tối đa</option>
                 </select>

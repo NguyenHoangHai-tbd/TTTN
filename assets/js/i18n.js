@@ -1,6 +1,6 @@
 /**
  * OTOMARKET MULTI-LANGUAGE SYSTEM (VI / EN / ZH)
- * Bản địa hóa giao diện tức thì toàn sàn 100% (Topbar, Navbar, Nội dung, Footer, Chi tiết xe, Tin tức, Giới thiệu)
+ * Bản địa hóa giao diện toàn sàn (Topbar, Navbar, Nội dung, Footer, Chi tiết xe, Tin tức, Giới thiệu)
  */
 
 (function(window) {
@@ -81,13 +81,13 @@
     "en": "Favorite Cars",
     "zh": "心仪收藏"
   },
-  "Nền tảng công nghệ kết nối mua bán ô tô minh bạch hàng đầu Việt Nam. Cung cấp giải pháp số hóa toàn diện từ tìm kiếm, kiểm định thực tế đến kết nối liên hệ xem xe và hỗ trợ thanh toán an toàn.": {
-    "en": "Vietnam's premier transparent car trading platform. Complete digital solutions from car search and physical inspection to direct seller connection and secure payment assistance.",
-    "zh": "越南领先的透明汽车在线交易平台。提供从搜索、实车质检到直接预约看车及安全支付支持的全流程数字化解决方案。"
+  "Nền tảng giao dịch ô tô minh bạch tại Việt Nam. Cung cấp giải pháp số hóa rõ ràng từ tìm kiếm, kiểm định thực tế đến kết nối liên hệ xem xe và hỗ trợ thanh toán an toàn.": {
+    "en": "Transparent automotive trading platform in Vietnam. Complete digital solutions from car search and physical inspection to direct seller connection and secure payment assistance.",
+    "zh": "越南透明规范的汽车在线交易平台。提供从搜索、实车质检到直接预约看车及安全支付支持的全流程数字化解决方案。"
   },
-  "Nền tảng công nghệ kết nối mua bán ô tô minh bạch hàng đầu Việt Nam.": {
-    "en": "Vietnam's premier transparent car trading platform.",
-    "zh": "越南领先的透明汽车在线交易平台。"
+  "Nền tảng giao dịch ô tô minh bạch tại Việt Nam.": {
+    "en": "Transparent automotive trading platform in Vietnam.",
+    "zh": "越南透明规范的汽车在线交易平台。"
   },
   "Về OtoMarket": {
     "en": "About OtoMarket",
@@ -173,9 +173,9 @@
     "en": "Tran Phu St., Nha Trang City",
     "zh": "芽庄市陈富路"
   },
-  "2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu": {
-    "en": "2026 OtoMarket - Premier Trusted Car Trading Platform",
-    "zh": "2026 OtoMarket - 领先可信的汽车交易平台"
+  "2026 OtoMarket - Sàn Giao Dịch Ô Tô Đáng Tin Cậy": {
+    "en": "2026 OtoMarket - Trusted Car Trading Platform",
+    "zh": "2026 OtoMarket - 值得信赖的汽车交易平台"
   },
   "2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến": {
     "en": "2026 OtoMarket - Online Car Marketplace",
@@ -207,7 +207,7 @@
   },
   "Xe Mới Về Showroom - Đang Chào Bán": {
     "en": "New Arrivals - Now Available",
-    "zh": "展厅最新到店 - 火热在售"
+    "zh": "展厅新到现车 - 火热在售"
   },
   "Xe đã qua kiểm định chất lượng, cam kết không đâm đụng, thủy kích. Đầy đủ giấy tờ hợp pháp.": {
     "en": "Quality-certified vehicles, guaranteed accident-free and flood-free. Full legal documentation.",
@@ -281,9 +281,9 @@
     "en": "Brand New Official Cars",
     "zh": "官方授权正品新车"
   },
-  "Xe mới 100% nguyên bản, đầy đủ sổ bảo hành chính hãng, niêm yết giá minh bạch.": {
-    "en": "100% brand new original vehicles, full official warranty, transparent pricing.",
-    "zh": "100% 原厂全新车辆，配备完整官方质保手册，透明明码标价。"
+  "Xe mới nguyên bản (chưa qua sử dụng), đầy đủ sổ bảo hành chính hãng, niêm yết giá minh bạch.": {
+    "en": "Brand new original vehicles (unused), full official warranty, transparent pricing.",
+    "zh": "原厂全新未上路车辆，配备完整官方质保手册，透明明码标价。"
   },
   "Kho Ô Tô Đã Qua Sử Dụng Chất Lượng": {
     "en": "Certified Pre-Owned Cars",
@@ -362,8 +362,8 @@
     "zh": "排序方式："
   },
   "Mới đăng": {
-    "en": "Newest",
-    "zh": "最新发布"
+    "en": "Recently Listed",
+    "zh": "近期发布"
   },
   "Giá thấp đến cao": {
     "en": "Price: Low to High",
@@ -373,13 +373,9 @@
     "en": "Price: High to Low",
     "zh": "价格由高到低"
   },
-  "Năm sản xuất mới nhất": {
-    "en": "Year: Newest",
-    "zh": "出厂年份最新"
-  },
-  "Số km ít nhất": {
-    "en": "Mileage: Lowest",
-    "zh": "行驶里程最少"
+  "Số km thấp đến cao": {
+    "en": "Mileage: Low to High",
+    "zh": "行驶里程由少到多"
   },
   "Trước": {
     "en": "Previous",
@@ -389,9 +385,17 @@
     "en": "Next",
     "zh": "下一页"
   },
-  "Xe mới 100%": {
-    "en": "100% Brand New",
-    "zh": "全新现车 100%"
+  "Xe mới nguyên bản": {
+    "en": "Brand New Original",
+    "zh": "原厂全新未上路"
+  },
+  "Xe mới nguyên bản (chưa qua sử dụng)": {
+    "en": "Brand New Original (Unused)",
+    "zh": "原厂全新（未使用）"
+  },
+  "Xe mới nguyên bản từ đại lý": {
+    "en": "Brand new original from dealer",
+    "zh": "授权经销商原厂全新车"
   },
   "Showroom chính hãng": {
     "en": "Official Showroom",
@@ -793,13 +797,13 @@
     "en": "Sort by:",
     "zh": "排序方式："
   },
-  "Mới nhất": {
-    "en": "Newest",
-    "zh": "最新发布"
+  "Đăng gần đây": {
+    "en": "Recently Listed",
+    "zh": "近期发布"
   },
-  "Newest": {
-    "en": "Newest",
-    "zh": "最新发布"
+  "Recently Listed": {
+    "en": "Recently Listed",
+    "zh": "近期发布"
   },
   "Price: Low to High": {
     "en": "Price: Low to High",
@@ -809,17 +813,17 @@
     "en": "Price: High to Low",
     "zh": "价格由高到低"
   },
-  "Year: Newest": {
-    "en": "Year: Newest",
-    "zh": "出厂年份最新"
+  "Model Year: Recent": {
+    "en": "Model Year: Recent",
+    "zh": "出厂年份较新"
   },
-  "Odo thấp nhất": {
-    "en": "Mileage: Lowest",
-    "zh": "里程最少"
+  "Odo thấp đến cao": {
+    "en": "Mileage: Low to High",
+    "zh": "里程由低到高"
   },
-  "Mileage: Lowest": {
-    "en": "Mileage: Lowest",
-    "zh": "里程最少"
+  "Mileage: Low to High": {
+    "en": "Mileage: Low to High",
+    "zh": "里程由低到高"
   },
   "Trang trước": {
     "en": "Previous page",
@@ -889,9 +893,9 @@
     "en": "Direct Owner",
     "zh": "个人一手车主"
   },
-  "100% New": {
-    "en": "100% Brand New",
-    "zh": "100% 全新"
+  "Brand New Original": {
+    "en": "Brand New Original",
+    "zh": "原厂全新未上路"
   },
   "Xe mới": {
     "en": "New Car",
@@ -1407,7 +1411,7 @@
   },
   "Hồ sơ cần chuẩn bị, chi phí công chứng và các bước đăng ký biển định danh theo quy định hiện hành.": {
     "en": "Required documents, notary fees, and step-by-step personal identity license plate registration under current regulations.",
-    "zh": "办理要件清单、公证费用明细以及依据最新交管法规申领专属个人身份车牌的全套步骤。"
+    "zh": "办理要件清单、公证费用明细以及依据现行交管法规申领专属个人身份车牌的全套步骤。"
   },
   "So Sánh Chi Phí Nuôi SUV 7 Chỗ: Ford Everest vs Kia Carnival Sau 30.000 km": {
     "en": "7-Seater SUV Running Cost: Ford Everest vs Kia Carnival After 30,000 km",
@@ -1430,8 +1434,8 @@
     "zh": "2026年车辆档案迁出提档与专属身份号牌过户全流程指引"
   },
   "Gợi Ý Mẫu SUV Đô Thị Phù Hợp Tầm Giá 600 - 800 Triệu Đồng": {
-    "en": "Top Urban SUVs Suited for 600 - 800 Million VND Budget",
-    "zh": "600-800百万预算区间最值得购买的城市紧凑型SUV推荐"
+    "en": "Recommended Urban SUVs for 600 - 800 Million VND Budget",
+    "zh": "600-800百万预算区间热门城市紧凑型SUV推荐"
   },
   "Đánh Giá Thực Tế VinFast VF 8 Sau 1 Năm: Chi Phí Sạc Điện Và Trải Nghiệm Đường Dài": {
     "en": "Real-World Review: 1 Year with VinFast VF 8 - Charging Costs & Road Trip Experience",
@@ -1490,8 +1494,8 @@
     "zh": "可持续发展愿景"
   },
   "Xây dựng nền tảng thương mại điện tử ô tô đáng tin cậy cho cộng đồng người dùng, từng bước mở rộng trung tâm hỗ trợ kỹ thuật tại các đô thị trọng điểm, lấy sự trung thực và minh bạch dữ liệu làm kim chỉ nam vận hành.": {
-    "en": "Building the most trusted automotive e-commerce platform for motorists, progressively expanding technical support inspection hubs across major cities, guided by integrity and data transparency.",
-    "zh": "构筑深受广大车主与用户信赖的汽车电商基石，逐步在重点核心城市铺设实车检测技术中心，以数据真实与信息透明作为最高运营准则。"
+    "en": "Building a trusted automotive e-commerce platform for motorists, progressively expanding technical support inspection hubs across major cities, guided by integrity and data transparency.",
+    "zh": "构筑深受广大车主与用户信赖的汽车电商平台，逐步在重点核心城市铺设实车检测技术中心，以数据真实与信息透明作为核心运营准则。"
   },
   "Giá Trị Cốt Lõi Định Hình OtoMarket": {
     "en": "Core Values Defining OtoMarket",
@@ -1638,8 +1642,8 @@
     "zh": "在 OtoMarket 平台上发布个人卖车信息需要收费吗？"
   },
   "Hiện tại OtoMarket hỗ trợ đăng tin bán xe hoàn toàn miễn phí cho người dùng cá nhân có nhu cầu bán xe chính chủ, tiếp cận nhanh chóng đến người mua tiềm năng.": {
-    "en": "Currently, OtoMarket provides 100% free car listing for individual private owners, allowing immediate reach to thousands of potential buyers.",
-    "zh": "目前 OtoMarket 为广大个人一手真实车主提供完全免费的卖车发帖服务，助您零门槛高效触达海量意向买家。"
+    "en": "Currently, OtoMarket provides free car listing for individual private owners, allowing prompt reach to potential buyers.",
+    "zh": "目前 OtoMarket 为个人真实车主提供免费卖车发帖服务，助力快速触达意向买家。"
   },
   "Làm thế nào để người mua liên hệ và xem xe thực tế?": {
     "en": "How do buyers connect and schedule a physical vehicle viewing?",
@@ -2595,7 +2599,7 @@
   },
   "Ngân hàng ưu tiên": {
     "en": "Preferred bank",
-    "zh": "首选按揭合作银行"
+    "zh": "意向按揭合作银行"
   },
   "Hồ sơ vay được xử lý trực tiếp bởi phòng tín dụng ngân hàng đối tác. Miễn phí thẩm định, không thu phí trung gian.": {
     "en": "Loan dossiers are processed directly by partner bank credit departments. Free appraisal, zero middleman charges.",
@@ -2621,9 +2625,9 @@
     "en": "Estimated based on actual regional rate schedules",
     "zh": "依据越南各省市实际税费标准测算"
   },
-  "Nhờ Showroom so sánh chọn gói tốt nhất": {
-    "en": "Ask Showroom to pick best package",
-    "zh": "委托展厅金融顾问对比精选最优方案"
+  "Nhờ Showroom so sánh chọn gói tài chính phù hợp": {
+    "en": "Ask Showroom to compare and select a suitable financial package",
+    "zh": "请展厅协助对比并选择合适金融方案"
   },
   "Tính Toán Chi Phí & So Sánh Nhanh": {
     "en": "Calculate Cost & Quick Compare",
@@ -2765,9 +2769,9 @@
     "en": "Price: Low to High",
     "zh": "价格：低到高"
   },
-  "Cũ nhất": {
-    "en": "Oldest",
-    "zh": "发布时间最早"
+  "Đăng trước đó": {
+    "en": "Earlier Listings",
+    "zh": "早期发布"
   },
   "Gọi ngay": {
     "en": "Call Now",
@@ -2995,7 +2999,7 @@
   },
   "Mới lưu gần đây": {
     "en": "Recently saved",
-    "zh": "近期最新收藏"
+    "zh": "近期收藏"
   },
   "Mức giá mong muốn": {
     "en": "Target expected price",
@@ -3066,8 +3070,8 @@
     "zh": "出厂年份与表显里程："
   },
   "Năm sản xuất mới": {
-    "en": "Recent model year",
-    "zh": "新近出厂准新年份"
+    "en": "Model Year: Recent",
+    "zh": "出厂年份较新"
   },
   "Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.": {
     "en": "Automotive technology marketplace directly connecting buyers with sellers. Providing transparent car data and physical inspection contact. Platform does not yet support online escrow deposits.",
@@ -3137,9 +3141,13 @@
     "en": "Quick Spec Comparison",
     "zh": "核心参数快速深度对比"
   },
-  "Sàn giao dịch kết nối người mua và người bán uy tín, minh bạch hàng đầu Việt Nam": {
-    "en": "Vietnam's premier transparent car marketplace connecting buyers and sellers.",
-    "zh": "越南领先的透明诚信汽车买卖直联撮合交易平台"
+  "Sàn giao dịch ô tô đáng tin cậy, kết nối người mua và người bán minh bạch tại Việt Nam": {
+    "en": "A trusted, transparent car marketplace in Vietnam connecting buyers and sellers.",
+    "zh": "值得信赖、透明规范的越南汽车买卖直联交易平台"
+  },
+  "Tham gia cộng đồng mua bán ô tô đáng tin cậy tại Việt Nam. Đăng tin bán xe dễ dàng, lưu xe yêu thích và trải nghiệm nền tảng minh bạch.": {
+    "en": "Join a trusted automotive trading community in Vietnam. List cars easily, save favorites, and experience a transparent platform.",
+    "zh": "加入越南值得信赖的汽车买卖社区。轻松发布售车信息、收藏心仪车型，畅享透明交易平台。"
   },
   "Số km đã đi (ODO)": {
     "en": "Mileage (ODO)",
@@ -3513,9 +3521,9 @@
     "en": "Register New Account",
     "zh": "注册新用户账号"
   },
-  "Đăng ký để đăng tin bán xe, lưu xe yêu thích và nhận hỗ trợ tốt nhất": {
-    "en": "Register to list cars, save favorites, and receive premium assistance.",
-    "zh": "立即注册即可免费发帖卖车、收藏心仪车源并尊享专业服务。"
+  "Đăng ký để đăng tin bán xe, lưu xe yêu thích và nhận hỗ trợ tận tâm": {
+    "en": "Register to list cars, save favorites, and receive dedicated assistance.",
+    "zh": "立即注册即可免费发帖卖车、收藏心仪车源并获得贴心服务。"
   },
   "Đăng nhập nhanh (Demo)": {
     "en": "Quick Demo Login",
@@ -3573,9 +3581,13 @@
     "en": "© 2026 OtoMarket - Online Automotive Trading Platform.",
     "zh": "© 2026 OtoMarket - 越南在线汽车交易优选平台。"
   },
-  "© 2026 OtoMarket - Sàn Giao Dịch Xe Uy Tín Hàng Đầu": {
-    "en": "© 2026 OtoMarket - Premier Trusted Car Marketplace",
-    "zh": "© 2026 OtoMarket - 越南领先的诚信汽车交易平台"
+  "© 2026 OtoMarket - Sàn Giao Dịch Ô Tô Đáng Tin Cậy": {
+    "en": "© 2026 OtoMarket - Trusted Car Marketplace",
+    "zh": "© 2026 OtoMarket - 值得信赖的汽车交易平台"
+  },
+  "© 2026 OtoMarket - Nền Tảng Giao Dịch Ô Tô Minh Bạch Tại Việt Nam": {
+    "en": "© 2026 OtoMarket - Transparent Automotive Trading Platform in Vietnam",
+    "zh": "© 2026 OtoMarket - 越南透明规范的汽车交易平台"
   },
   "(3)": {
     "en": "(3)",
@@ -3781,9 +3793,9 @@
     "en": "48 months (4 years)",
     "zh": "48个月（4年）"
   },
-  "60 tháng (5 năm) - Phổ biến nhất": {
-    "en": "60 months (5 years) - Most Popular",
-    "zh": "60个月（5年）- 最热门"
+  "60 tháng (5 năm) - Được ưa chuộng": {
+    "en": "60 months (5 years) - Recommended",
+    "zh": "60个月（5年）- 常见选择"
   },
   "72 tháng (6 năm)": {
     "en": "72 months (6 years)",

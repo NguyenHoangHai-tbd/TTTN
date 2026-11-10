@@ -983,7 +983,7 @@
         priceText: "860 triệu",
         prepay: "258 tr",
         condition: "new",
-        statusBadge: "Xe mới 100%",
+        statusBadge: "Xe mới nguyên bản",
         statusType: "new",
         mileage: "0 km",
         fuel: "Xăng",
@@ -1004,7 +1004,7 @@
         priceText: "1,199 tỷ",
         prepay: "360 tr",
         condition: "new",
-        statusBadge: "Xe mới 100%",
+        statusBadge: "Xe mới nguyên bản",
         statusType: "new",
         mileage: "0 km",
         fuel: "Điện",
@@ -1025,7 +1025,7 @@
         priceText: "1,259 tỷ",
         prepay: "378 tr",
         condition: "new",
-        statusBadge: "Xe mới 100%",
+        statusBadge: "Xe mới nguyên bản",
         statusType: "new",
         mileage: "0 km",
         fuel: "Hybrid",
@@ -1179,7 +1179,7 @@
         priceText: c.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(price) : `${price.toLocaleString('vi-VN')} đ`),
         prepay: price ? `${Math.round((price * 0.3) / 1000000)} tr` : 'Liên hệ',
         condition: isNew ? 'new' : 'used',
-        statusBadge: isNew ? 'Xe mới 100%' : (isShowroom ? 'Showroom chính hãng' : 'Chính chủ bán'),
+        statusBadge: isNew ? 'Xe mới nguyên bản' : (isShowroom ? 'Showroom chính hãng' : 'Chính chủ bán'),
         statusType: isNew ? 'new' : (isShowroom ? 'used-dealer' : 'used-owner'),
         mileage: isNew ? '0 km' : (c.mileageDisplay || `${Number(c.mileage || 0).toLocaleString()} km`),
         fuel: c.fuel || 'Xăng',
@@ -1280,7 +1280,7 @@
 
       if (cond === 'new') {
         if (titleEl) titleEl.textContent = 'Kho Ô Tô Mới Chính Hãng';
-        if (subEl) subEl.textContent = 'Xe mới 100% nguyên bản, đầy đủ sổ bảo hành chính hãng, niêm yết giá minh bạch.';
+        if (subEl) subEl.textContent = 'Xe mới nguyên bản (chưa qua sử dụng), đầy đủ sổ bảo hành chính hãng, niêm yết giá minh bạch.';
         if (linkNew) linkNew.classList.add('active');
       } else if (cond === 'used') {
         if (titleEl) titleEl.textContent = 'Kho Ô Tô Đã Qua Sử Dụng Chất Lượng';
@@ -1535,7 +1535,7 @@
 
       container.innerHTML = paginatedList.map(car => {
         let dotClass = 'dot-new';
-        let badgeText = 'Xe mới 100%';
+        let badgeText = 'Xe mới nguyên bản';
         if (car.statusType === 'used-dealer') {
           dotClass = 'dot-dealer';
           badgeText = 'Showroom chính hãng';

@@ -34,7 +34,7 @@ const SAMPLE_CARS = [
     condition: "new",
     postedDate: "11/10/2026",
     viewCount: 96,
-    description: "Xe mới 100%, thông tin giá và chương trình bán hàng do đại lý đăng tải. Người mua vui lòng liên hệ trực tiếp để xác nhận phiên bản, màu xe và chi phí lăn bánh.",
+    description: "Xe mới nguyên bản (chưa qua sử dụng), thông tin giá và chương trình bán hàng do đại lý đăng tải. Người mua vui lòng liên hệ trực tiếp để xác nhận phiên bản, màu xe và chi phí lăn bánh.",
     specifications: { engine: "Hybrid 1.5L", power: "110 mã lực", drivetrain: "FWD", warranty: "Theo chính sách hãng" }
   },
   {
@@ -67,7 +67,7 @@ const SAMPLE_CARS = [
     condition: "new",
     postedDate: "10/10/2026",
     viewCount: 184,
-    description: "Xe điện mới 100%, cấu hình Plus dành cho khách hàng cần không gian đô thị linh hoạt. Giá hiển thị là giá tham khảo từ người bán.",
+    description: "Xe điện mới nguyên bản (chưa qua sử dụng), cấu hình Plus dành cho khách hàng cần không gian đô thị linh hoạt. Giá hiển thị là giá tham khảo từ người bán.",
     specifications: { engine: "Động cơ điện", power: "201 mã lực", drivetrain: "FWD", warranty: "Theo chính sách hãng" }
   },
   {
@@ -100,7 +100,7 @@ const SAMPLE_CARS = [
     condition: "new",
     postedDate: "09/10/2026",
     viewCount: 121,
-    description: "Xe mới 100%, phiên bản RS. Vui lòng liên hệ đại lý đăng tin để kiểm tra xe sẵn có và báo giá tại thời điểm giao dịch.",
+    description: "Xe mới nguyên bản (chưa qua sử dụng), phiên bản RS. Vui lòng liên hệ đại lý đăng tin để kiểm tra xe sẵn có và báo giá tại thời điểm giao dịch.",
     specifications: { engine: "1.5L i-VTEC", power: "119 mã lực", drivetrain: "FWD", warranty: "Theo chính sách hãng" }
   },
   {
@@ -182,7 +182,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "07/10/2026",
     viewCount: 512,
-    description: "Xe gia đình đi giữ gìn rất cẩn thận, phiên bản máy dầu cao cấp nhất chạy cực bốc và tiết kiệm (chỉ 6L dầu/100km). Đầy đủ option: cần số nút bấm, màn hình kỹ thuật số 12.3 inch, âm thanh 10 loa Harman Kardon, sấy sưởi thông gió ghế trước, HUD hiển thị kính lái. Lên sẵn dàn lốp Michelin mới tinh, dán phim 3M Crystalline chính hãng.",
+    description: "Xe gia đình đi giữ gìn rất cẩn thận, phiên bản máy dầu cao cấp chạy mượt mà và tiết kiệm (chỉ 6L dầu/100km). Đầy đủ option: cần số nút bấm, màn hình kỹ thuật số 12.3 inch, âm thanh 10 loa Harman Kardon, sấy sưởi thông gió ghế trước, HUD hiển thị kính lái. Lên sẵn dàn lốp Michelin mới tinh, dán phim 3M Crystalline chính hãng.",
     specifications: {
       engine: "Smartstream D2.2 CRDi",
       power: "202 mã lực / 3.800 rpm",
@@ -356,7 +356,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "08/10/2026",
     viewCount: 440,
-    description: "Xe điện thông minh D-SUV cao cấp thế hệ pin CATL mới nhất, tầm di chuyển thực tế 471 km mỗi lần sạc đầy. Đã mua đứt pin kèm xe, miễn phí sạc công cộng trạm sạc V-GREEN đến hết 2027. Gói hỗ trợ lái nâng cao ADAS cấp độ 2: tự hành giữ làn đường, tự đỗ xe thông minh, trợ lý ảo thông minh tiếng Việt Vivi, màn hình 15.6 inch giải trí đỉnh cao.",
+    description: "Xe điện thông minh D-SUV cao cấp trang bị pin CATL thế hệ mới, tầm di chuyển thực tế 471 km mỗi lần sạc đầy. Đã mua đứt pin kèm xe, miễn phí sạc công cộng trạm sạc V-GREEN đến hết 2027. Gói hỗ trợ lái nâng cao ADAS cấp độ 2: tự hành giữ làn đường, tự đỗ xe thông minh, trợ lý ảo thông minh tiếng Việt Vivi, màn hình 15.6 inch giải trí đỉnh cao.",
     specifications: {
       engine: "2 Động cơ điện Dual Motor AWD",
       power: "349 mã lực",
@@ -399,7 +399,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "06/10/2026",
     viewCount: 310,
-    description: "Bản RS thể thao trang bị gói an toàn Honda SENSING: phanh giảm thiểu va chạm, kiểm soát hành trình thích ứng, đèn pha thích ứng tự động. Động cơ 1.5L i-VTEC vận hành mạnh mẽ nhất phân khúc B, lẫy chuyển số vô lăng thể thao. Xe gia đình đi giữ gìn không xước xát.",
+    description: "Bản RS thể thao trang bị gói an toàn Honda SENSING: phanh giảm thiểu va chạm, kiểm soát hành trình thích ứng, đèn pha thích ứng tự động. Động cơ 1.5L i-VTEC vận hành mạnh mẽ trong phân khúc B, lẫy chuyển số vô lăng thể thao. Xe gia đình đi giữ gìn không xước xát.",
     specifications: {
       engine: "1.5L DOHC i-VTEC",
       power: "119 mã lực / 6.600 rpm",
@@ -614,7 +614,7 @@ const SAMPLE_CARS = [
     isNew: false,
     postedDate: "03/10/2026",
     viewCount: 220,
-    description: "Sedan thể thao thiết kế đạt giải Thiết kế xe thế giới của năm. Phiên bản Premium cao cấp nhất trang bị gói an toàn chủ động i-Activsense, màn hình HUD kính lái, cửa sổ trời, gương chiếu hậu chống chói tự động tràn viền, âm thanh 8 loa sống động.",
+    description: "Sedan thể thao thiết kế đạt giải Thiết kế xe thế giới của năm. Phiên bản Premium cao cấp trang bị gói an toàn chủ động i-Activsense, màn hình HUD kính lái, cửa sổ trời, gương chiếu hậu chống chói tự động tràn viền, âm thanh 8 loa sống động.",
     specifications: {
       engine: "SkyActiv-G 1.5L",
       power: "110 mã lực / 6.000 rpm",
