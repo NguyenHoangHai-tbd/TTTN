@@ -23,7 +23,7 @@
   <link rel="shortcut icon" href="favicon.ico">
   
   <!-- Tệp định dạng CSS tùy biến (Stitch Palette) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110_ds_v3">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_compare_v1">
 
   <!-- Critical CSS for Header, Topbar, Orange Nav & Clean Hero (Bypass Browser Cache) -->
   <!-- Essential CSS for Dark Luxury Hero & Clean Navbar (Zero Cache Failure) -->
@@ -628,8 +628,8 @@
             </div>
 
             <div>
-              <a href="cars.html" class="btn btn-sm w-100 fw-bold rounded-2 py-2" style="background-color: #FFF7ED; color: #9A3412; border: 1px solid #FFEDD5;">
-                <i class="bi bi-search me-1"></i> Khám phá kho so sánh xe chi tiết
+              <a id="btn-open-full-compare" href="compare.html" class="btn btn-sm w-100 fw-bold rounded-2 py-2" style="background-color: #FFF7ED; color: #9A3412; border: 1px solid #FFEDD5;">
+                <i class="bi bi-columns-gap me-1"></i> Mở bảng so sánh xe chi tiết
               </a>
             </div>
           </div>
@@ -972,7 +972,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261106_v8_auth"></script>
+  <script src="assets/js/app.js?v=20261110_compare_v1"></script>
   <script>
     // Dữ liệu xe hiển thị trên trang chủ (ưu tiên đồng bộ từ WordPress WP_CARS / getPublicCars)
     const DEFAULT_PORTAL_CARS = [
@@ -1219,6 +1219,7 @@
 
       container.innerHTML = filtered.map(car => {
         const isFav = isFavorite(car.id);
+        const isCompared = typeof isInCompare === 'function' ? isInCompare(car.id) : false;
         const heartClass = isFav ? 'bi-heart-fill text-danger' : 'bi-heart';
 
         return `
@@ -1267,11 +1268,14 @@
                       <span class="text-muted" style="font-size: 0.75rem;">Góp: ${car.monthly}</span>
                     </div>
                   </div>
-                  <!-- Nút Xem xe & Nút liên hệ nhanh (Không bảng đặt lịch) -->
+                  <!-- Nút Xem xe, So sánh & Nút liên hệ nhanh -->
                   <div class="d-flex align-items-center gap-1.5">
                     <a href="car-detail.html?id=${car.id}" class="btn-view-car-stitch flex-grow-1 text-center">
                       Xem xe
                     </a>
+                    <button type="button" class="btn-compare-stitch ${isCompared ? 'is-active' : ''}" data-compare-id="${car.id}" onclick="handleCompareToggleClick(event, '${car.id}')" aria-pressed="${isCompared}" title="Thêm vào danh sách so sánh (tối đa 3 xe)">
+                      ${isCompared ? '<i class="bi bi-check2"></i><span>Đã chọn</span>' : '<span>+ So sánh</span>'}
+                    </button>
                     <button type="button" class="btn-phone-call-stitch" onclick="openContactModal('${car.title.replace(/'/g, "\\'")}', '${car.sellerName.replace(/'/g, "\\'")}', '${car.sellerPhone}')" title="Liên hệ người bán: ${car.sellerPhone}">
                       <i class="bi bi-telephone-fill"></i>
                     </button>
@@ -1515,6 +1519,12 @@
 
       const locEl = document.getElementById('cmp-location');
       if (locEl) locEl.textContent = `${car1.location || '--'} vs ${car2.location || '--'}`;
+
+      const fullCompareBtn = document.getElementById('btn-open-full-compare');
+      if (fullCompareBtn) {
+        const idsParam = [car1.id, car2.id].filter(Boolean).join(',');
+        fullCompareBtn.href = idsParam ? `compare.html?ids=${encodeURIComponent(idsParam)}` : 'compare.html';
+      }
     }
 
     // Dữ liệu chi tiết các bài viết cẩm nang & kinh nghiệm

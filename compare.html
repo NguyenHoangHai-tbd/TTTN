@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Sánh Xe Ô Tô Trực Quan - OtoMarket</title>
+  <meta name="description" content="Đối chiếu trực quan thông số kỹ thuật, giá bán, ODO, động cơ và nguồn gốc giữa tối đa 3 mẫu xe trên OtoMarket." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_compare_v1">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body class="cars-bento-body compare-bento-body">
+
+  <!-- ==========================================================================
+       HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR)
+       ========================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <!-- 1. TopBar Trên Cùng -->
+    <div class="portal-topbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+          </div>
+          <span class="topbar-divider">|</span>
+          <div id="navbar-auth-section">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Đăng nhập</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Thanh Điều Hướng Chính -->
+    <nav class="portal-navbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
+        <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
+        </a>
+
+        <ul class="nav align-items-center gap-1 d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link-portal" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item admin-only admin-nav-item">
+            <a class="nav-link-portal" href="admin.html">Duyệt tin Showroom</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
+          </a>
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>+ Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN COMPARE WORKSPACE
+       ========================================================================== -->
+  <main class="py-4">
+    <div class="container-fluid px-3 px-xl-5">
+
+      <!-- 1. Hero Header & Điều Khiển Nhanh -->
+      <div class="compare-hero-card mb-4">
+        <nav aria-label="Breadcrumb" class="mb-2">
+          <ol class="breadcrumb mb-0 small">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="cars.html" class="text-decoration-none">Kho xe đang bán</a></li>
+            <li class="breadcrumb-item active fw-semibold text-dark" aria-current="page">So sánh xe</li>
+          </ol>
+        </nav>
+
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+              <span class="badge fw-bold px-2.5 py-1" style="background-color: #FFF7ED; color: #9A3412; border: 1px solid #FED7AA;">
+                <i class="bi bi-columns-gap me-1"></i> BẢNG ĐỐI CHIẾU THÔNG SỐ
+              </span>
+              <span class="badge bg-light text-dark border fw-semibold" id="compare-count-badge">0/3 xe đang chọn</span>
+            </div>
+            <h1 class="compare-hero-title fw-bold text-dark mb-1">So Sánh Thông Số &amp; Giá Bán Xe</h1>
+            <p class="text-muted small mb-0">
+              Chọn tối đa 3 mẫu xe từ kho xe để đối chiếu song song giá niêm yết, số ODO, động cơ và tình trạng pháp lý.
+            </p>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="form-check form-switch mb-0 me-2 py-1 d-flex align-items-center gap-2">
+              <input class="form-check-input ms-0" type="checkbox" role="switch" id="toggle-diff-only" onchange="renderCompareMatrix()">
+              <label class="form-check-label small fw-semibold text-dark" for="toggle-diff-only" style="cursor: pointer;">
+                Chỉ hiện điểm khác biệt
+              </label>
+            </div>
+
+            <button type="button" class="btn btn-outline-dark btn-sm fw-semibold rounded-3 px-3 py-2" id="btn-preset-compare" onclick="applySampleComparePreset()">
+              <i class="bi bi-lightning-charge me-1"></i> Gợi ý cặp xe phổ biến
+            </button>
+
+            <a href="cars.html" class="btn btn-light border btn-sm fw-semibold rounded-3 px-3 py-2 text-dark">
+              <i class="bi bi-plus-circle me-1"></i> Chọn thêm từ kho xe
+            </a>
+
+            <button type="button" class="btn btn-outline-danger btn-sm fw-semibold rounded-3 px-3 py-2" onclick="handleClearAllCompare()">
+              <i class="bi bi-trash3 me-1"></i> Xóa tất cả
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Thông báo hướng dẫn khi chọn chưa đủ 2 xe -->
+      <div id="compare-notice-banner" class="alert alert-light border d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2 mb-4 rounded-4 shadow-xs" style="display: none !important;">
+        <div class="d-flex align-items-center gap-2 small text-dark">
+          <i class="bi bi-info-circle-fill fs-5" style="color: #0F766E;"></i>
+          <span id="compare-notice-text">Vui lòng chọn ít nhất 2 mẫu xe ở các cột bên dưới để so sánh thông số trực quan.</span>
+        </div>
+        <button type="button" class="btn btn-sm btn-cta-orange fw-bold px-3 rounded-3 text-nowrap" onclick="applySampleComparePreset()">
+          Nạp nhanh 2 xe mẫu
+        </button>
+      </div>
+
+      <!-- 3. Bảng Ma Trận Đối Chiếu 3 Xe -->
+      <section class="compare-matrix-card mb-4" aria-label="Bảng đối chiếu thông số xe">
+        <div class="compare-table-scroll">
+          <table class="compare-matrix-table">
+            <thead>
+              <tr>
+                <th scope="col" class="compare-col-label align-middle">
+                  <div class="fw-bold text-dark mb-1">Danh mục so sánh</div>
+                  <div class="small text-muted fw-normal">Đổi xe trực tiếp tại từng cột bên cạnh</div>
+                </th>
+                <th scope="col" class="compare-col-slot" id="compare-slot-head-0"></th>
+                <th scope="col" class="compare-col-slot" id="compare-slot-head-1"></th>
+                <th scope="col" class="compare-col-slot" id="compare-slot-head-2"></th>
+              </tr>
+            </thead>
+            <tbody id="compare-matrix-body">
+              <!-- Rendered dynamically by compare.html JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. Lưu ý minh bạch thông tin -->
+      <div class="cars-bento-card p-3 p-md-4 mb-2">
+        <div class="d-flex align-items-start gap-2 small text-secondary">
+          <i class="bi bi-shield-check fs-5 flex-shrink-0" style="color: #0F766E;"></i>
+          <div>
+            <strong class="text-dark">Lưu ý đối chiếu:</strong> Thông số kỹ thuật và giá niêm yết được tổng hợp từ thông tin do Showroom và người bán đăng tải trên OtoMarket. Người mua vui lòng liên hệ trực tiếp người bán để xác nhận tình trạng thực tế và chi phí lăn bánh tại thời điểm giao dịch.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER ĐỒNG BỘ TIÊU CHUẨN (NỀN SÁNG)
+       ========================================================================== -->
+  <footer class="footer-light">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="brand-logo mb-3">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
+          </div>
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
+          </p>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Về OtoMarket</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">Giới thiệu công ty</a></li>
+            <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
+            <li><a href="cars.html">Tất cả xe đang bán</a></li>
+            <li><a href="post-car.html">Quy định đăng tin</a></li>
+            <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Dành Cho Khách Hàng</h2>
+          <ul class="footer-links">
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="index.html#tool-rolling-price">Dự tính giá lăn bánh</a></li>
+            <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Các Dòng Xe Tiêu Biểu</h2>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2 class="footer-title">Văn Phòng &amp; Hotline</h2>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
+        <div class="d-flex gap-3">
+          <a href="about.html">Điều khoản sử dụng</a>
+          <a href="about.html">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js?v=20261110_compare_v1"></script>
+
+  <script>
+    const SLOT_COUNT = 3;
+    let slotCarIds = ['', '', ''];
+
+    function getAllComparableCars() {
+      if (typeof getPublicCars === 'function') return getPublicCars();
+      return typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS.filter(c => !c.status || c.status === 'active') : [];
+    }
+
+    function resolveCanonicalCar(rawId, pool) {
+      const target = String(rawId || '').trim();
+      if (!target) return null;
+      return pool.find(c =>
+        String(c.id) === target ||
+        (c.wp_id && String(c.wp_id) === target) ||
+        (c.wp_id && `wp-${c.wp_id}` === target)
+      ) || null;
+    }
+
+    function initCompareSelection() {
+      const pool = getAllComparableCars();
+      const params = new URLSearchParams(window.location.search);
+      const urlIdsParam = params.get('ids');
+
+      let initialIds = [];
+      if (urlIdsParam) {
+        const parsed = urlIdsParam.split(',').map(s => s.trim()).filter(Boolean);
+        for (const id of parsed) {
+          const matched = resolveCanonicalCar(id, pool);
+          if (matched && !initialIds.includes(String(matched.id))) {
+            initialIds.push(String(matched.id));
+          }
+          if (initialIds.length >= SLOT_COUNT) break;
+        }
+        if (initialIds.length > 0 && typeof saveCompareList === 'function') {
+          saveCompareList(initialIds);
+        }
+      } else if (typeof getCompareList === 'function') {
+        initialIds = getCompareList();
+      }
+
+      slotCarIds = [0, 1, 2].map(idx => initialIds[idx] || '');
+    }
+
+    function syncSlotsToStorageAndUrl() {
+      const compactIds = [];
+      const seen = new Set();
+      for (const id of slotCarIds) {
+        if (id && !seen.has(id)) {
+          seen.add(id);
+          compactIds.push(id);
+        }
+      }
+      if (typeof saveCompareList === 'function') {
+        saveCompareList(compactIds);
+      }
+      if (typeof window !== 'undefined' && window.history && typeof window.history.replaceState === 'function') {
+        const nextUrl = compactIds.length > 0
+          ? `${window.location.pathname}?ids=${encodeURIComponent(compactIds.join(','))}`
+          : window.location.pathname;
+        window.history.replaceState(null, '', nextUrl);
+      }
+    }
+
+    function handleSlotCarChange(slotIdx, newCarId) {
+      const val = String(newCarId || '').trim();
+      if (val) {
+        const existingIdx = slotCarIds.findIndex((id, i) => i !== slotIdx && id === val);
+        if (existingIdx !== -1) {
+          // Hoán đổi vị trí nếu xe đã được chọn ở cột khác
+          const previous = slotCarIds[slotIdx];
+          slotCarIds[existingIdx] = previous;
+        }
+      }
+      slotCarIds[slotIdx] = val;
+      syncSlotsToStorageAndUrl();
+      renderCompareMatrix();
+    }
+
+    function handleRemoveSlotCar(slotIdx) {
+      slotCarIds[slotIdx] = '';
+      syncSlotsToStorageAndUrl();
+      renderCompareMatrix();
+      if (typeof showToast === 'function') {
+        showToast('Đã bỏ xe khỏi cột so sánh', 'info');
+      }
+    }
+
+    function handleClearAllCompare() {
+      slotCarIds = ['', '', ''];
+      if (typeof clearCompareList === 'function') {
+        clearCompareList();
+      }
+      syncSlotsToStorageAndUrl();
+      renderCompareMatrix();
+    }
+
+    function applySampleComparePreset() {
+      const pool = getAllComparableCars();
+      if (pool.length === 0) return;
+      const preset = pool.slice(0, 3).map(c => String(c.id));
+      slotCarIds = [preset[0] || '', preset[1] || '', preset[2] || ''];
+      syncSlotsToStorageAndUrl();
+      renderCompareMatrix();
+      if (typeof showToast === 'function') {
+        showToast('Đã nạp danh sách xe mẫu vào bảng so sánh', 'success');
+      }
+    }
+
+    function formatCarPrice(car) {
+      if (!car) return '--';
+      if (car.priceDisplay) return car.priceDisplay;
+      if (typeof formatCurrency === 'function' && car.price > 0) return formatCurrency(car.price);
+      return car.price > 0 ? `${Number(car.price).toLocaleString('vi-VN')} đ` : 'Thỏa thuận';
+    }
+
+    function formatCarOdo(car) {
+      if (!car) return '--';
+      const isNew = car.condition === 'new' || car.isNew;
+      if (isNew) return '0 km (Xe mới nguyên bản)';
+      return car.mileageDisplay || `${Number(car.mileage || 0).toLocaleString('vi-VN')} km`;
+    }
+
+    function getSourceLabel(car) {
+      if (!car) return '--';
+      const isShowroom = car.sourceType === 'showroom' || car.isShowroom ||
+        (car.sellerType && (car.sellerType.includes('Showroom') || car.sellerType.includes('Salon') || car.sellerType.includes('Đại lý')));
+      return isShowroom ? 'Showroom chính hãng' : 'Chính chủ bán';
+    }
+
+    function renderSlotHeaders(pool, slotCars) {
+      for (let i = 0; i < SLOT_COUNT; i++) {
+        const th = document.getElementById(`compare-slot-head-${i}`);
+        if (!th) continue;
+        const currentCar = slotCars[i];
+        const currentId = currentCar ? String(currentCar.id) : '';
+
+        const optionsHtml = [
+          `<option value="">-- Chọn xe thứ ${i + 1} --</option>`,
+          ...pool.map(c => {
+            const cid = String(c.id);
+            const selected = cid === currentId ? 'selected' : '';
+            return `<option value="${cid}" ${selected}>${c.title} (${formatCarPrice(c)})</option>`;
+          })
+        ].join('');
+
+        const previewHtml = currentCar ? `
+          <div class="compare-slot-thumb-wrap">
+            <img src="${currentCar.image}" alt="${currentCar.title}" class="compare-slot-thumb" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+            <button type="button" class="compare-slot-remove" onclick="handleRemoveSlotCar(${i})" title="Xóa xe này khỏi cột so sánh" aria-label="Xóa ${currentCar.title}">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+          <div class="flex-grow-1">
+            <a href="car-detail.html?id=${currentCar.id}" class="compare-slot-title">${currentCar.title}</a>
+            <div class="compare-slot-price mt-1">${formatCarPrice(currentCar)}</div>
+            <div class="small text-muted mt-0.5">${getSourceLabel(currentCar)} &bull; ${currentCar.location || 'Toàn quốc'}</div>
+          </div>
+          <div class="d-flex gap-1.5 mt-2">
+            <a href="car-detail.html?id=${currentCar.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2">Xem chi tiết</a>
+            <a href="tel:${(currentCar.sellerPhone || '19006868').replace(/\s+/g, '')}" class="btn btn-outline-orange btn-sm px-2.5 rounded-2" title="Gọi ${currentCar.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
+          </div>
+        ` : `
+          <div class="compare-slot-empty-box">
+            <i class="bi bi-car-front fs-3 text-secondary"></i>
+            <div class="fw-semibold small text-dark">Chưa chọn xe cột ${i + 1}</div>
+            <div class="small text-muted">Chọn từ danh sách phía trên để thêm vào bảng</div>
+          </div>
+        `;
+
+        th.innerHTML = `
+          <div class="compare-slot-header h-100">
+            <select class="form-select form-select-sm fw-semibold" id="compare-slot-select-${i}" aria-label="Chọn mẫu xe cho cột ${i + 1}" onchange="handleSlotCarChange(${i}, this.value)">
+              ${optionsHtml}
+            </select>
+            ${previewHtml}
+          </div>
+        `;
+      }
+    }
+
+    function renderCompareMatrix() {
+      const pool = getAllComparableCars();
+      const slotCars = slotCarIds.map(id => resolveCanonicalCar(id, pool));
+      const activeCars = slotCars.filter(Boolean);
+      const diffOnly = Boolean(document.getElementById('toggle-diff-only')?.checked);
+
+      const countBadge = document.getElementById('compare-count-badge');
+      if (countBadge) {
+        countBadge.textContent = `${activeCars.length}/${SLOT_COUNT} xe đang chọn`;
+      }
+
+      const noticeBanner = document.getElementById('compare-notice-banner');
+      const noticeText = document.getElementById('compare-notice-text');
+      if (noticeBanner) {
+        if (activeCars.length < 2) {
+          noticeBanner.style.removeProperty('display');
+          if (noticeText) {
+            noticeText.textContent = activeCars.length === 0
+              ? 'Chưa có xe nào trong danh sách so sánh. Chọn ít nhất 2 xe ở các cột bên dưới hoặc nạp cặp xe mẫu.'
+              : 'Bạn mới chọn 1 xe. Hãy chọn thêm ít nhất 1 xe nữa ở cột bên cạnh để đối chiếu trực quan.';
+          }
+        } else {
+          noticeBanner.style.setProperty('display', 'none', 'important');
+        }
+      }
+
+      renderSlotHeaders(pool, slotCars);
+
+      // Tính toán chỉ số nổi bật khi có >= 2 xe
+      const validPrices = activeCars.map(c => Number(c.price) || 0).filter(p => p > 0);
+      const minPrice = validPrices.length >= 2 && new Set(validPrices).size > 1 ? Math.min(...validPrices) : null;
+
+      const validYears = activeCars.map(c => Number(c.year) || 0).filter(y => y > 0);
+      const maxYear = validYears.length >= 2 && new Set(validYears).size > 1 ? Math.max(...validYears) : null;
+
+      const validOdos = activeCars.map(c => (c.condition === 'new' || c.isNew) ? 0 : (Number(c.mileage) || 0));
+      const minOdo = activeCars.length >= 2 && new Set(validOdos).size > 1 ? Math.min(...validOdos) : null;
+
+      const sections = [
+        {
+          title: 'Tổng Quan & Giá Bán',
+          rows: [
+            {
+              label: 'Giá bán niêm yết',
+              getValue: c => formatCarPrice(c),
+              renderCell: c => {
+                const p = Number(c.price) || 0;
+                const badge = (minPrice !== null && p === minPrice) ? '<span class="compare-metric-badge">Thấp hơn</span>' : '';
+                return `<span class="fw-bold" style="color: #C2410C;">${formatCarPrice(c)}</span>${badge}`;
+              }
+            },
+            {
+              label: 'Trả trước dự kiến (30%)',
+              getValue: c => {
+                const p = Number(c.price) || 0;
+                return p > 0 ? `Khoảng ${Math.round((p * 0.3) / 1000000).toLocaleString('vi-VN')} triệu` : 'Theo thỏa thuận';
+              }
+            },
+            {
+              label: 'Tình trạng xe',
+              getValue: c => (c.condition === 'new' || c.isNew) ? 'Xe mới nguyên bản' : 'Đã qua sử dụng'
+            },
+            {
+              label: 'Nguồn tin bán',
+              getValue: c => getSourceLabel(c)
+            },
+            {
+              label: 'Khu vực xem xe',
+              getValue: c => c.location || '--'
+            }
+          ]
+        },
+        {
+          title: 'Thông Số Cơ Bản & ODO',
+          rows: [
+            {
+              label: 'Hãng sản xuất',
+              getValue: c => c.brand || '--'
+            },
+            {
+              label: 'Dòng xe & Phiên bản',
+              getValue: c => `${c.model || '--'}${c.version ? ` (${c.version})` : ''}`
+            },
+            {
+              label: 'Năm sản xuất',
+              getValue: c => c.year ? String(c.year) : '--',
+              renderCell: c => {
+                const y = Number(c.year) || 0;
+                const badge = (maxYear !== null && y === maxYear) ? '<span class="compare-metric-badge">Đời cao hơn</span>' : '';
+                return `<strong class="text-dark">${c.year || '--'}</strong>${badge}`;
+              }
+            },
+            {
+              label: 'Số km đã đi (ODO)',
+              getValue: c => formatCarOdo(c),
+              renderCell: c => {
+                const odo = (c.condition === 'new' || c.isNew) ? 0 : (Number(c.mileage) || 0);
+                const badge = (minOdo !== null && odo === minOdo) ? '<span class="compare-metric-badge">Ít km hơn</span>' : '';
+                return `<span class="fw-semibold text-dark">${formatCarOdo(c)}</span>${badge}`;
+              }
+            },
+            {
+              label: 'Kiểu dáng (Body)',
+              getValue: c => c.bodyType || '--'
+            },
+            {
+              label: 'Số chỗ ngồi',
+              getValue: c => c.seats ? `${c.seats} chỗ` : '--'
+            },
+            {
+              label: 'Xuất xứ',
+              getValue: c => c.origin || '--'
+            }
+          ]
+        },
+        {
+          title: 'Động Cơ & Vận Hành',
+          rows: [
+            {
+              label: 'Động cơ',
+              getValue: c => (c.specifications && c.specifications.engine) || (c.fuel === 'Điện' ? 'Động cơ điện đồng bộ' : '--')
+            },
+            {
+              label: 'Công suất cực đại',
+              getValue: c => (c.specifications && c.specifications.power) || '--'
+            },
+            {
+              label: 'Mô-men xoắn',
+              getValue: c => (c.specifications && c.specifications.torque) || '--'
+            },
+            {
+              label: 'Hộp số',
+              getValue: c => c.transmission || '--'
+            },
+            {
+              label: 'Nhiên liệu',
+              getValue: c => c.fuel || '--'
+            },
+            {
+              label: 'Hệ dẫn động',
+              getValue: c => (c.specifications && c.specifications.drivetrain) || '--'
+            },
+            {
+              label: 'Mức tiêu hao nhiên liệu',
+              getValue: c => (c.specifications && c.specifications.fuelConsumption) || '--'
+            }
+          ]
+        },
+        {
+          title: 'Nội / Ngoại Thất & Pháp Lý',
+          rows: [
+            {
+              label: 'Màu ngoại thất',
+              getValue: c => c.color || '--'
+            },
+            {
+              label: 'Màu nội thất',
+              getValue: c => c.interiorColor || '--'
+            },
+            {
+              label: 'Hạn đăng kiểm',
+              getValue: c => (c.specifications && c.specifications.registrationExpiry) || 'Theo thực tế xe'
+            },
+            {
+              label: 'Chế độ bảo hành',
+              getValue: c => (c.specifications && c.specifications.warranty) || 'Theo chính sách người bán'
+            }
+          ]
+        }
+      ];
+
+      const tbody = document.getElementById('compare-matrix-body');
+      if (!tbody) return;
+
+      const bodyHtml = sections.map(section => {
+        const rowHtmls = [];
+        for (const row of section.rows) {
+          const activeValues = activeCars.map(c => String(row.getValue(c) || '--').trim());
+          const isDifferent = activeCars.length >= 2 && new Set(activeValues).size > 1;
+          if (diffOnly && activeCars.length >= 2 && !isDifferent) {
+            continue;
+          }
+
+          const cellsHtml = slotCars.map(c => {
+            if (!c) return '<td class="text-muted">--</td>';
+            return `<td>${row.renderCell ? row.renderCell(c) : row.getValue(c)}</td>`;
+          }).join('');
+
+          rowHtmls.push(`
+            <tr class="${isDifferent ? 'compare-row-diff' : ''}">
+              <th scope="row" class="compare-col-label">${row.label}</th>
+              ${cellsHtml}
+            </tr>
+          `);
+        }
+
+        if (rowHtmls.length === 0) return '';
+        return `
+          <tr class="compare-section-row">
+            <th colspan="4"><h2 class="h6 mb-0 text-white fw-bold">${section.title}</h2></th>
+          </tr>
+          ${rowHtmls.join('')}
+        `;
+      }).join('');
+
+      tbody.innerHTML = bodyHtml || `
+        <tr>
+          <td colspan="4" class="text-center py-5 text-muted">
+            Các xe đang chọn có cùng thông số ở các tiêu chí hiện tại. Hãy tắt bộ lọc "Chỉ hiện điểm khác biệt" để xem toàn bộ bảng thông số.
+          </td>
+        </tr>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCompareSelection();
+      renderCompareMatrix();
+      if (typeof syncHeaderUserUI === 'function') syncHeaderUserUI();
+      if (typeof updateFavoritesCountBadge === 'function') updateFavoritesCountBadge();
+      if (typeof syncAdminLinksVisibility === 'function') syncAdminLinksVisibility();
+      if (typeof applyCurrentSiteLanguage === 'function') applyCurrentSiteLanguage();
+    });
+  </script>
+</body>
+</html>

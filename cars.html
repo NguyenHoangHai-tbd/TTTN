@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110_ds_v3">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_compare_v1">
 
 </head>
 <body class="cars-bento-body">
@@ -341,7 +341,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261106_v8_auth"></script>
+  <script src="assets/js/app.js?v=20261110_compare_v1"></script>
 
   <script>
     /* ==========================================================================
@@ -920,6 +920,7 @@
         }
 
         const isFav = favs.includes(car.id);
+        const isCompared = typeof isInCompare === 'function' ? isInCompare(car.id) : false;
 
         let specChipsHTML = '';
         if (car.condition === 'new') {
@@ -964,10 +965,13 @@
                     ${specChipsHTML}
                   </div>
                 </div>
-                <div class="pt-2 border-top d-flex align-items-center justify-content-between">
-                  <span class="small text-secondary" style="font-size: 0.76rem;"><i class="bi bi-geo-alt me-1 text-danger"></i>${car.location}</span>
-                  <div class="d-flex gap-1">
-                    <a href="car-detail.html?id=${car.id}" class="btn-detail-car">Chi tiết</a>
+                <div class="pt-2 border-top">
+                  <div class="small text-secondary mb-2 text-truncate" style="font-size: 0.76rem;"><i class="bi bi-geo-alt me-1 text-danger"></i>${car.location}</div>
+                  <div class="d-flex align-items-center gap-1.5">
+                    <a href="car-detail.html?id=${car.id}" class="btn-detail-car flex-grow-1 text-center">Chi tiết</a>
+                    <button type="button" class="btn-compare-card ${isCompared ? 'is-active' : ''}" data-compare-id="${car.id}" onclick="handleCompareToggleClick(event, '${car.id}')" aria-pressed="${isCompared}" title="Thêm vào danh sách so sánh (tối đa 3 xe)">
+                      ${isCompared ? '<i class="bi bi-check2"></i><span>Đã chọn</span>' : '<span>+ So sánh</span>'}
+                    </button>
                     <a href="tel:${car.sellerPhone || '19006868'}" class="btn-call-car" title="Gọi tư vấn: ${car.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
                   </div>
                 </div>

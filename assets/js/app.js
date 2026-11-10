@@ -8,7 +8,8 @@ const STORAGE_KEYS = {
   CUSTOM_LISTINGS: 'otomarket_custom_listings',
   AUTH_USER: 'otomarket_user',
   REGISTERED_USERS: 'otomarket_registered_users',
-  REPORTS: 'otomarket_reports'
+  REPORTS: 'otomarket_reports',
+  COMPARE_LIST: 'otomarket_compare_list'
 };
 
 // Chuẩn hóa trạng thái tin đăng
@@ -544,6 +545,275 @@ function toggleFavorite(carId) {
   saveFavorites(favs);
   updateFavoritesCountBadge();
   return added;
+}
+
+// ============================================================================
+// QUẢN LÝ DANH SÁCH SO SÁNH XE (LOCALSTORAGE - TỐI ĐA 3 XE) + FLOATING BAR
+// ============================================================================
+const MAX_COMPARE_CARS = 3;
+let isCompareFloatCollapsed = false;
+
+function getCompareList() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPARE_LIST) || '[]');
+    if (!Array.isArray(raw)) return [];
+    const seen = new Set();
+    const cleaned = [];
+    const publicCars = typeof getPublicCars === 'function' ? getPublicCars() : [];
+    for (const rawId of raw) {
+      const idStr = String(rawId || '').trim();
+      if (!idStr) continue;
+      if (publicCars.length > 0) {
+        const matched = publicCars.find(c =>
+          String(c.id) === idStr ||
+          (c.wp_id && String(c.wp_id) === idStr) ||
+          (c.wp_id && `wp-${c.wp_id}` === idStr)
+        );
+        if (!matched) continue;
+        const canonical = String(matched.id);
+        if (!seen.has(canonical)) {
+          seen.add(canonical);
+          cleaned.push(canonical);
+        }
+      } else if (!seen.has(idStr)) {
+        seen.add(idStr);
+        cleaned.push(idStr);
+      }
+      if (cleaned.length >= MAX_COMPARE_CARS) break;
+    }
+    return cleaned;
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCompareList(ids) {
+  const unique = [];
+  const seen = new Set();
+  for (const id of (Array.isArray(ids) ? ids : [])) {
+    const s = String(id || '').trim();
+    if (s && !seen.has(s)) {
+      seen.add(s);
+      unique.push(s);
+      if (unique.length >= MAX_COMPARE_CARS) break;
+    }
+  }
+  try {
+    localStorage.setItem(STORAGE_KEYS.COMPARE_LIST, JSON.stringify(unique));
+  } catch (e) {}
+  syncCompareButtonsUI();
+  renderCompareFloatingBar();
+  if (typeof window !== 'undefined' && typeof CustomEvent === 'function') {
+    window.dispatchEvent(new CustomEvent('otomarket:compareChanged', { detail: { ids: unique } }));
+  }
+  return unique;
+}
+
+function isInCompare(carId) {
+  const target = String(carId || '').trim();
+  if (!target) return false;
+  const list = getCompareList();
+  if (list.includes(target)) return true;
+  const car = typeof getCarById === 'function' ? getCarById(target) : null;
+  return car ? list.includes(String(car.id)) : false;
+}
+
+function toggleCompareCar(carId) {
+  const targetId = String(carId || '').trim();
+  if (!targetId) return false;
+
+  const publicCars = typeof getPublicCars === 'function' ? getPublicCars() : [];
+  const matched = publicCars.find(c =>
+    String(c.id) === targetId ||
+    (c.wp_id && String(c.wp_id) === targetId) ||
+    (c.wp_id && `wp-${c.wp_id}` === targetId)
+  );
+  if (!matched) {
+    showToast("Chỉ có thể so sánh các tin xe đang hiển thị công khai", "warning");
+    return false;
+  }
+
+  const canonicalId = String(matched.id);
+  const list = getCompareList();
+  const idx = list.indexOf(canonicalId);
+
+  if (idx > -1) {
+    list.splice(idx, 1);
+    saveCompareList(list);
+    showToast(`Đã bỏ "${matched.title}" khỏi danh sách so sánh (${list.length}/${MAX_COMPARE_CARS})`, "info");
+    return false;
+  }
+
+  if (list.length >= MAX_COMPARE_CARS) {
+    showToast(`Chỉ có thể chọn tối đa ${MAX_COMPARE_CARS} xe để so sánh cùng lúc!`, "warning");
+    return false;
+  }
+
+  list.push(canonicalId);
+  saveCompareList(list);
+  showToast(`Đã thêm "${matched.title}" vào danh sách so sánh (${list.length}/${MAX_COMPARE_CARS})`, "success");
+  return true;
+}
+
+function removeFromCompare(carId) {
+  const targetId = String(carId || '').trim();
+  const list = getCompareList().filter(id => id !== targetId);
+  saveCompareList(list);
+}
+
+function clearCompareList() {
+  saveCompareList([]);
+  showToast("Đã xóa toàn bộ danh sách xe so sánh", "info");
+}
+
+function syncCompareButtonsUI() {
+  const compareIds = getCompareList();
+  document.querySelectorAll('[data-compare-id]').forEach(btn => {
+    const id = String(btn.getAttribute('data-compare-id') || '').trim();
+    const car = typeof getCarById === 'function' ? getCarById(id) : null;
+    const canonical = car ? String(car.id) : id;
+    const active = compareIds.includes(canonical) || compareIds.includes(id);
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    const isDetail = btn.id === 'btn-toggle-compare';
+    if (active) {
+      btn.innerHTML = isDetail
+        ? '<i class="bi bi-check2-circle"></i><span>Đã chọn so sánh</span>'
+        : '<i class="bi bi-check2"></i><span>Đã chọn</span>';
+      btn.title = 'Nhấn để bỏ khỏi danh sách so sánh';
+    } else {
+      btn.innerHTML = '<span>+ So sánh</span>';
+      btn.title = 'Thêm vào danh sách so sánh (tối đa 3 xe)';
+    }
+  });
+}
+
+function handleCompareToggleClick(event, carId) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  toggleCompareCar(carId);
+}
+
+function toggleCompareFloatCollapse() {
+  isCompareFloatCollapsed = !isCompareFloatCollapsed;
+  const bar = document.getElementById('oto-compare-floatbar');
+  if (bar) {
+    bar.classList.toggle('is-collapsed', isCompareFloatCollapsed);
+    const icon = bar.querySelector('.oto-compare-collapse-icon');
+    if (icon) {
+      icon.className = `bi ${isCompareFloatCollapsed ? 'bi-chevron-up' : 'bi-chevron-down'} oto-compare-collapse-icon`;
+    }
+  }
+}
+
+function renderCompareFloatingBar() {
+  if (typeof document === 'undefined' || !document.body) return;
+  const slug = getCurrentPageSlug();
+  const hiddenPages = ['login', 'register', 'admin', 'compare'];
+  let bar = document.getElementById('oto-compare-floatbar');
+
+  const ids = getCompareList();
+  if (hiddenPages.includes(slug) || ids.length === 0) {
+    if (bar) bar.remove();
+    document.body.classList.remove('has-compare-floatbar');
+    return;
+  }
+
+  const publicCars = typeof getPublicCars === 'function' ? getPublicCars() : [];
+  const selectedCars = ids
+    .map(id => publicCars.find(c => String(c.id) === String(id)))
+    .filter(Boolean);
+
+  if (selectedCars.length === 0) {
+    if (bar) bar.remove();
+    document.body.classList.remove('has-compare-floatbar');
+    return;
+  }
+
+  document.body.classList.add('has-compare-floatbar');
+
+  if (!bar) {
+    bar = document.createElement('aside');
+    bar.id = 'oto-compare-floatbar';
+    bar.className = 'oto-compare-floatbar';
+    bar.setAttribute('aria-label', 'Danh sách xe đang chọn để so sánh');
+    document.body.appendChild(bar);
+  }
+  bar.classList.toggle('is-collapsed', isCompareFloatCollapsed);
+
+  const compareUrl = `compare.html?ids=${encodeURIComponent(selectedCars.map(c => c.id).join(','))}`;
+
+  const chipsHtml = selectedCars.map(car => `
+    <div class="oto-compare-chip">
+      <img src="${car.image}" alt="${car.title}" class="oto-compare-chip-img" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
+      <div class="oto-compare-chip-info">
+        <div class="oto-compare-chip-title" title="${car.title}">${car.title}</div>
+        <div class="oto-compare-chip-price">${car.priceDisplay || formatCurrency(car.price)}</div>
+      </div>
+      <button type="button" class="oto-compare-chip-remove" onclick="removeFromCompare('${car.id}')" title="Bỏ khỏi so sánh" aria-label="Bỏ ${car.title}">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  `).join('');
+
+  const emptySlotsCount = Math.max(0, MAX_COMPARE_CARS - selectedCars.length);
+  const emptySlotsHtml = Array.from({ length: emptySlotsCount }).map(() => `
+    <div class="oto-compare-chip oto-compare-chip-empty">
+      <span class="small text-muted"><i class="bi bi-plus-circle me-1"></i>Chọn thêm xe (tối đa ${MAX_COMPARE_CARS})</span>
+    </div>
+  `).join('');
+
+  bar.innerHTML = `
+    <div class="oto-compare-floatbar-head">
+      <div class="d-flex align-items-center gap-2">
+        <span class="oto-compare-count-pill">${selectedCars.length}/${MAX_COMPARE_CARS}</span>
+        <span class="fw-bold small text-white">So sánh xe đang chọn</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button type="button" class="oto-compare-head-btn" onclick="clearCompareList()" title="Xóa tất cả xe so sánh">Xóa hết</button>
+        <button type="button" class="oto-compare-head-btn" onclick="toggleCompareFloatCollapse()" title="Thu gọn hoặc mở rộng" aria-label="Thu gọn hoặc mở rộng">
+          <i class="bi ${isCompareFloatCollapsed ? 'bi-chevron-up' : 'bi-chevron-down'} oto-compare-collapse-icon"></i>
+        </button>
+      </div>
+    </div>
+    <div class="oto-compare-floatbar-body">
+      <div class="oto-compare-chips-list">
+        ${chipsHtml}
+        ${emptySlotsHtml}
+      </div>
+      <div class="oto-compare-floatbar-actions">
+        <span class="oto-compare-hint">
+          ${selectedCars.length < 2 ? 'Chọn thêm 1 xe nữa hoặc mở bảng đối chiếu' : `Đã chọn ${selectedCars.length} mẫu xe`}
+        </span>
+        <a href="${compareUrl}" class="btn btn-cta-orange btn-sm fw-bold rounded-3 px-3 py-2 text-nowrap d-inline-flex align-items-center gap-1">
+          <span>So sánh ngay</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+if (typeof window !== 'undefined') {
+  window.MAX_COMPARE_CARS = MAX_COMPARE_CARS;
+  window.getCompareList = getCompareList;
+  window.saveCompareList = saveCompareList;
+  window.isInCompare = isInCompare;
+  window.toggleCompareCar = toggleCompareCar;
+  window.removeFromCompare = removeFromCompare;
+  window.clearCompareList = clearCompareList;
+  window.syncCompareButtonsUI = syncCompareButtonsUI;
+  window.handleCompareToggleClick = handleCompareToggleClick;
+  window.renderCompareFloatingBar = renderCompareFloatingBar;
+  window.toggleCompareFloatCollapse = toggleCompareFloatCollapse;
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEYS.COMPARE_LIST) {
+      syncCompareButtonsUI();
+      renderCompareFloatingBar();
+    }
+  });
 }
 
 // Báo cáo vi phạm
@@ -1216,6 +1486,7 @@ function formatCurrency(amount) {
 
 function createCarCardHTML(car) {
   const isFav = isFavorite(car.id);
+  const isCompared = isInCompare(car.id);
   const heartClass = isFav ? 'bi-heart-fill active' : 'bi-heart';
   const isNewCar = car.condition === 'new' || car.isNew;
   const isShowroom = car.sourceType === 'showroom' || car.isShowroom || (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
@@ -1290,6 +1561,9 @@ ${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 p
   <a href="car-detail.html?id=${car.id}" class="btn btn-outline-dark btn-sm flex-grow-1 fw-semibold rounded-2 py-1.5" style="font-size: 0.82rem;">
     Xem xe <i class="bi bi-arrow-right ms-0.5" style="font-size: 0.7rem;"></i>
   </a>
+  <button type="button" class="btn-compare-card ${isCompared ? 'is-active' : ''}" data-compare-id="${car.id}" onclick="handleCompareToggleClick(event, '${car.id}')" aria-pressed="${isCompared}">
+    ${isCompared ? '<i class="bi bi-check2"></i><span>Đã chọn</span>' : '<span>+ So sánh</span>'}
+  </button>
   <a href="tel:${car.sellerPhone || '0901202626'}" class="btn btn-outline-orange btn-sm px-2.5 rounded-2 py-1.5" title="Gọi tư vấn: ${car.sellerPhone || '0901 202 626'}" onclick="event.stopPropagation();">
     <i class="bi bi-telephone-fill"></i>
   </a>
@@ -1325,6 +1599,7 @@ function resetDemoData() {
     localStorage.removeItem(STORAGE_KEYS.CUSTOM_LISTINGS);
     localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
     localStorage.removeItem(STORAGE_KEYS.REPORTS);
+    localStorage.removeItem(STORAGE_KEYS.COMPARE_LIST);
     initializeStorage();
     showToast("Đã khôi phục dữ liệu mẫu ban đầu thành công!", "success");
     setTimeout(() => {
@@ -1354,6 +1629,8 @@ document.addEventListener('DOMContentLoaded', () => {
   syncHeaderUserUI();
   syncAdminLinksVisibility();
   enforcePagePermissions();
+  syncCompareButtonsUI();
+  renderCompareFloatingBar();
 });
 
 // Khởi tạo và đồng bộ trạng thái thanh điều hướng

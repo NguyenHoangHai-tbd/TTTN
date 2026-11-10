@@ -9202,6 +9202,469 @@ body.favorites-bento-body .fav-stat-box.external {
   border-bottom-color: #1D4ED8 !important;
 }
 
+/* ==========================================================================
+   VEHICLE COMPARISON SYSTEM (Card Buttons, Floating Bar & compare.html)
+   WCAG AA Compliant | Uses Automotive Design Tokens | Responsive 390px / 1280px
+   ========================================================================== */
+.btn-compare-stitch,
+.btn-compare-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--oto-slate-50);
+  color: var(--oto-slate-700);
+  border: 1px solid var(--oto-border-strong);
+  font-weight: 700;
+  font-size: 0.76rem;
+  line-height: 1.25;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--oto-transition-fast), color var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+body.cars-bento-body .btn-compare-card {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 10px;
+}
+
+.btn-compare-stitch:hover,
+.btn-compare-card:hover {
+  background: var(--oto-copper-50);
+  color: var(--oto-copper-700);
+  border-color: var(--oto-copper-300);
+}
+
+.btn-compare-stitch.is-active,
+.btn-compare-card.is-active {
+  background: var(--oto-teal-600);
+  color: var(--oto-white);
+  border-color: var(--oto-teal-700);
+}
+
+.btn-compare-stitch.is-active:hover,
+.btn-compare-card.is-active:hover {
+  background: var(--oto-teal-700);
+  color: var(--oto-white);
+  border-color: var(--oto-teal-700);
+}
+
+.btn-compare-detail {
+  background: var(--oto-slate-50);
+  color: var(--oto-navy-800);
+  border: 1px solid var(--oto-border-strong);
+  font-weight: 600;
+  transition: background var(--oto-transition-fast), color var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+.btn-compare-detail:hover {
+  background: var(--oto-copper-50);
+  color: var(--oto-copper-700);
+  border-color: var(--oto-copper-300);
+}
+
+.btn-compare-detail.is-active {
+  background: var(--oto-teal-600);
+  color: var(--oto-white);
+  border-color: var(--oto-teal-700);
+}
+
+.btn-compare-detail.is-active:hover {
+  background: var(--oto-teal-700);
+  color: var(--oto-white);
+}
+
+/* Floating Compare Bar (Bottom-Right Desktop / Bottom Docked Mobile) */
+.oto-compare-floatbar {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1045;
+  width: 400px;
+  max-width: calc(100vw - 24px);
+  background: var(--oto-white);
+  border: 1px solid var(--oto-border-strong);
+  border-radius: var(--oto-radius-lg);
+  box-shadow: var(--oto-shadow-lg);
+  overflow: hidden;
+}
+
+.oto-compare-floatbar-head {
+  background: var(--oto-navy-900);
+  color: var(--oto-white);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.oto-compare-count-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--oto-copper-600);
+  color: var(--oto-white);
+  font-family: var(--oto-font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  min-width: 34px;
+  padding: 2px 8px;
+  border-radius: var(--oto-radius-full);
+}
+
+.oto-compare-head-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--oto-white);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--oto-radius-xs);
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.oto-compare-head-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.oto-compare-floatbar-body {
+  padding: 12px 14px;
+}
+
+.oto-compare-chips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.oto-compare-floatbar.is-collapsed .oto-compare-chips-list {
+  display: none;
+}
+
+.oto-compare-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--oto-slate-50);
+  border: 1px solid var(--oto-border-default);
+  border-radius: var(--oto-radius-sm);
+  padding: 6px 8px;
+}
+
+.oto-compare-chip-empty {
+  justify-content: center;
+  border-style: dashed;
+  background: var(--oto-white);
+  min-height: 44px;
+}
+
+.oto-compare-chip-img {
+  width: 48px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.oto-compare-chip-info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.oto-compare-chip-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--oto-navy-800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oto-compare-chip-price {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--oto-copper-600);
+  font-variant-numeric: tabular-nums;
+}
+
+.oto-compare-chip-remove {
+  background: var(--oto-white);
+  color: var(--oto-slate-600);
+  border: 1px solid var(--oto-border-default);
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.oto-compare-chip-remove:hover {
+  background: var(--oto-rose-50);
+  color: var(--oto-rose-800);
+  border-color: var(--oto-rose-200);
+}
+
+.oto-compare-floatbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.oto-compare-hint {
+  font-size: 0.76rem;
+  color: var(--oto-slate-600);
+  line-height: 1.35;
+}
+
+/* Compare Page Layout & Matrix Table */
+.compare-hero-card {
+  background: var(--oto-bg-surface);
+  border: 1px solid var(--oto-border-default);
+  border-radius: var(--oto-radius-lg);
+  box-shadow: var(--oto-shadow-sm);
+  padding: var(--oto-space-5);
+}
+
+.compare-hero-title {
+  font-size: 1.75rem;
+  letter-spacing: -0.4px;
+  line-height: 1.25;
+}
+
+.compare-matrix-card {
+  background: var(--oto-bg-surface);
+  border: 1px solid var(--oto-border-default);
+  border-radius: var(--oto-radius-lg);
+  box-shadow: var(--oto-shadow-sm);
+  padding: 16px;
+}
+
+.compare-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-matrix-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 0;
+}
+
+.compare-matrix-table th,
+.compare-matrix-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--oto-border-default);
+  border-right: 1px solid var(--oto-border-subtle);
+  vertical-align: top;
+  font-size: 0.875rem;
+}
+
+.compare-matrix-table th:last-child,
+.compare-matrix-table td:last-child {
+  border-right: none;
+}
+
+.compare-col-label {
+  width: 210px;
+  background: var(--oto-slate-50);
+  color: var(--oto-slate-700);
+  font-weight: 600;
+  text-align: left;
+}
+
+.compare-col-slot {
+  background: var(--oto-white);
+  vertical-align: top;
+  height: 1px;
+}
+
+.compare-section-row th {
+  background: var(--oto-navy-900);
+  color: var(--oto-white);
+  font-family: var(--oto-font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+}
+
+.compare-slot-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compare-slot-thumb-wrap {
+  position: relative;
+  height: 150px;
+  border-radius: var(--oto-radius-sm);
+  overflow: hidden;
+  background: var(--oto-slate-100);
+  border: 1px solid var(--oto-border-default);
+}
+
+.compare-slot-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.compare-slot-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--oto-radius-full);
+  background: rgba(15, 23, 42, 0.82);
+  color: var(--oto-white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.compare-slot-remove:hover {
+  background: #B91C1C;
+}
+
+.compare-slot-empty-box {
+  height: 150px;
+  border-radius: var(--oto-radius-sm);
+  border: 1.5px dashed var(--oto-border-strong);
+  background: var(--oto-slate-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--oto-slate-600);
+  text-align: center;
+  padding: 12px;
+}
+
+.compare-slot-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--oto-navy-900);
+  text-decoration: none;
+  line-height: 1.35;
+  display: block;
+}
+
+.compare-slot-title:hover {
+  color: var(--oto-copper-600);
+}
+
+.compare-slot-price {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--oto-copper-600);
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-row-diff {
+  background-color: #FFFAF5;
+}
+
+.compare-row-diff .compare-col-label {
+  background-color: var(--oto-copper-50);
+  color: var(--oto-copper-800);
+}
+
+.compare-metric-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 7px;
+  border-radius: var(--oto-radius-full);
+  background: var(--oto-teal-50);
+  color: var(--oto-teal-700);
+  border: 1px solid var(--oto-teal-200);
+  font-size: 0.72rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+body.has-compare-floatbar #toast-container,
+body:has(#oto-compare-floatbar) #toast-container {
+  top: 92px;
+  bottom: auto;
+  right: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .compare-matrix-table {
+    min-width: 660px;
+  }
+  .compare-col-label {
+    width: 132px;
+    padding: 10px 10px;
+    font-size: 0.78rem;
+  }
+  .compare-matrix-table th,
+  .compare-matrix-table td {
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .oto-compare-floatbar {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    max-width: none;
+  }
+  .oto-compare-floatbar-head {
+    padding: 8px 12px;
+  }
+  .oto-compare-floatbar-body {
+    padding: 8px 12px;
+  }
+  .oto-compare-chips-list {
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .oto-compare-chip {
+    padding: 4px 8px;
+    gap: 8px;
+  }
+  .oto-compare-chip-empty {
+    min-height: 32px;
+  }
+  .oto-compare-chip-img {
+    width: 38px;
+    height: 28px;
+  }
+  body.has-compare-floatbar #toast-container,
+  body:has(#oto-compare-floatbar) #toast-container {
+    top: 76px;
+    left: 12px;
+    right: 12px;
+  }
+  .compare-hero-card {
+    padding: var(--oto-space-4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
