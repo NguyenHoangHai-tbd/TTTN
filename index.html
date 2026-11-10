@@ -1897,8 +1897,8 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/app.js?v=20261106_v8_auth"></script>
   <script>
-    // Dữ liệu 8 mẫu xe hiển thị trên trang chủ
-    const PORTAL_CARS = [
+    // Dữ liệu xe hiển thị trên trang chủ (ưu tiên đồng bộ từ WordPress WP_CARS / getPublicCars)
+    const DEFAULT_PORTAL_CARS = [
       {
         id: "car-1",
         title: "Hyundai Tucson 2.0 AT Đặc Biệt 2022",
@@ -2061,11 +2061,73 @@
       }
     ];
 
+    function mapPublicCarToPortalItem(car) {
+      const isNew = car.condition === 'new' || car.isNew;
+      const isElectric = String(car.fuel || '').toLowerCase() === 'điện' || car.category === 'electric';
+      const isShowroom = car.sourceType === 'showroom' || car.isShowroom ||
+        (car.sellerType && (car.sellerType.includes('Đại lý') || car.sellerType.includes('Showroom') || car.sellerType.includes('Salon')));
+
+      let badge = 'Xe lướt';
+      let badgeClass = 'bg-light text-dark border';
+      if (isNew) {
+        badge = 'Xe mới 100%';
+        badgeClass = 'badge-tag-new';
+      } else if (isElectric) {
+        badge = 'Xe điện';
+        badgeClass = 'bg-info-subtle text-info-emphasis';
+      } else if (!isShowroom) {
+        badge = 'Chính chủ bán';
+        badgeClass = 'bg-secondary-subtle text-dark';
+      } else if (car.bodyType === 'SUV' && Number(car.seats) >= 7) {
+        badge = 'Xe 7 chỗ';
+        badgeClass = 'bg-primary text-white';
+      }
+
+      const price = Number(car.price) || 0;
+      const priceDisplay = car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(price) : `${price.toLocaleString('vi-VN')} đ`);
+      const monthly = car.monthly || (price > 0 ? `${(Math.round(price / 10000000) / 10).toFixed(1)} tr/tháng` : 'Liên hệ');
+
+      return {
+        id: car.id,
+        title: car.title,
+        brand: car.brand || 'Khác',
+        category: isElectric ? 'electric' : (isNew ? 'new' : 'used'),
+        badge: car.badge || badge,
+        badgeClass: car.badgeClass || badgeClass,
+        sellerTag: car.sellerTag || (isShowroom ? (car.sellerName || 'Showroom chính hãng') : 'Chính chủ'),
+        image: car.image || 'assets/images/cars/corolla_cross.jpg',
+        year: car.year || 2024,
+        mileage: isNew ? '0 km' : (car.mileageDisplay || `${Number(car.mileage || 0).toLocaleString()} km`),
+        transmission: car.transmission || 'Tự động',
+        fuel: car.fuel || 'Xăng',
+        location: car.location || 'Toàn quốc',
+        price: price,
+        priceDisplay: priceDisplay,
+        monthly: monthly,
+        sellerPhone: car.sellerPhone || '0901 202 626',
+        sellerName: car.sellerName || 'Showroom OtoMarket'
+      };
+    }
+
+    function getSyncedPortalCars() {
+      const publicCars = (typeof getPublicCars === 'function')
+        ? getPublicCars()
+        : ((window.WP_CARS && Array.isArray(window.WP_CARS) && window.WP_CARS.length > 0) ? window.WP_CARS : []);
+
+      if (Array.isArray(publicCars) && publicCars.length > 0) {
+        return publicCars.map(mapPublicCarToPortalItem);
+      }
+      return DEFAULT_PORTAL_CARS;
+    }
+
+    let PORTAL_CARS = getSyncedPortalCars();
+
     // Kết xuất 8 thẻ xe ra lưới (Nút Xem xe xanh dương nhạt & Gọi điện thoại)
     function renderPortalCars(category = 'all') {
       const container = document.getElementById('portal-cars-container');
       if (!container) return;
 
+      PORTAL_CARS = getSyncedPortalCars();
       let filtered = PORTAL_CARS;
       if (category === 'electric') {
         filtered = PORTAL_CARS.filter(c => c.fuel === 'Điện' || c.category === 'electric');
@@ -2076,6 +2138,7 @@
       } else if (category === 'used') {
         filtered = PORTAL_CARS.filter(c => c.category === 'used');
       }
+      filtered = filtered.slice(0, 8);
 
       container.innerHTML = filtered.map(car => {
         const isFav = isFavorite(car.id);
@@ -2432,8 +2495,29 @@
       window.location.href = 'news.html?id=' + id;
     }
 
+    // Đồng bộ danh sách xe trong công cụ So Sánh từ PORTAL_CARS (hỗ trợ cả WP_CARS)
+    function syncCompareDropdownOptions() {
+      const sel1 = document.getElementById('compare-car-1');
+      const sel2 = document.getElementById('compare-car-2');
+      if (!sel1 || !sel2 || !PORTAL_CARS || PORTAL_CARS.length === 0) return;
+
+      const formatShort = (p) => p >= 1000000000 ? `${(p / 1000000000).toFixed(2)} Tỷ` : `${Math.round(p / 1000000)} Tr`;
+      const optionsHtml = PORTAL_CARS.slice(0, 8).map(c =>
+        `<option value="${c.id}">${c.title} (${formatShort(c.price)})</option>`
+      ).join('');
+
+      sel1.innerHTML = optionsHtml;
+      sel2.innerHTML = optionsHtml;
+      if (PORTAL_CARS.length > 1) {
+        sel1.value = PORTAL_CARS[0].id;
+        sel2.value = PORTAL_CARS[1].id;
+      }
+    }
+
     // Tự động khởi tạo khi tải trang
     document.addEventListener('DOMContentLoaded', () => {
+      PORTAL_CARS = getSyncedPortalCars();
+      syncCompareDropdownOptions();
       renderPortalCars('all');
       calculateRollingPrice();
       updateCarComparison();

@@ -18,20 +18,8 @@
   <link rel="shortcut icon" href="favicon.ico">
 
   <script>
-    // Đảm bảo dữ liệu chuẩn 100% theo bản vẽ Demo đã duyệt
+    // Khởi tạo tin chờ duyệt mẫu nếu bộ nhớ đang trống (không tự cấp quyền Admin cho khách)
     try {
-      const u = localStorage.getItem('otomarket_user');
-      if (!u) {
-        localStorage.setItem('otomarket_user', JSON.stringify({
-          id: 'admin-1',
-          name: 'Quản lý Showroom',
-          email: 'admin@otomarket.vn',
-          phone: '1900 6868',
-          role: 'admin',
-          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
-        }));
-      }
-
       const customKey = 'otomarket_custom_listings';
       const demoPendingCars = [
         {
@@ -82,11 +70,11 @@
         }
       ];
 
-      // Đặt chính xác 2 tin chờ duyệt mẫu để giao diện giống 100% demo
       const raw = localStorage.getItem(customKey);
-      let existing = raw ? JSON.parse(raw) : [];
-      let nonPending = existing.filter(c => c && c.status !== 'pending' && c.price > 10000000);
-      localStorage.setItem(customKey, JSON.stringify([...demoPendingCars, ...nonPending]));
+      const existing = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(existing) || existing.length === 0) {
+        localStorage.setItem(customKey, JSON.stringify(demoPendingCars));
+      }
     } catch (e) {
       console.warn('Storage sync:', e);
     }
@@ -1390,6 +1378,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      if (typeof isUserAdmin === 'function' && !isUserAdmin()) return;
       renderAdminDashboard();
     });
   </script>

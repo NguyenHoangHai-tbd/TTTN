@@ -16,22 +16,6 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
 
-  <script>
-    // Đảm bảo có tài khoản demo khi truy cập trang Quản lý tin đăng
-    try {
-      const _cur = localStorage.getItem('otomarket_user'); if (!_cur || (!_cur.includes('Showroom') && !_cur.includes('admin'))) {
-        localStorage.setItem('otomarket_user', JSON.stringify({
-          id: 'user-demo-1',
-          name: 'NAM NGUYEN',
-          email: 'nam.nguyen@otomarket.vn',
-          phone: '0912 345 678',
-          role: 'user',
-          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
-        }));
-      }
-    } catch (e) {}
-  </script>
-
   <style>
     /* ==========================================================================
        BENTO STUDIO: QUẢN LÝ TIN ĐĂNG (NỀN SLATE #EEF2F6 ĐỒNG BỘ TOÀN SÀN)

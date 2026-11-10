@@ -295,6 +295,15 @@ function getAllCars(includePending = false) {
   return [...normalizedSamples, ...availableCustom];
 }
 
+// Trả về danh sách xe lưu trữ (bao gồm xe từ WordPress / mẫu và tin người dùng, kể cả chờ duyệt)
+function getStoredCars(includePending = true) {
+  return getAllCars(includePending);
+}
+
+if (typeof window !== 'undefined') {
+  window.getStoredCars = getStoredCars;
+}
+
 function getCarById(id) {
   const all = getAllCars(true);
   return all.find(c => c.id === id || String(c.wp_id) === String(id) || String(c.id) === `wp-${id}`) || null;
@@ -636,7 +645,8 @@ function updateUserProfile(profileData) {
   const updatedUser = {
     ...currentUser,
     name: String(profileData.name || currentUser.name || '').trim(),
-    phone: String(profileData.phone || currentUser.phone || '').trim()
+    phone: String(profileData.phone || currentUser.phone || '').trim(),
+    city: profileData.city !== undefined ? String(profileData.city).trim() : currentUser.city
   };
   setLoggedInUser(updatedUser);
 
@@ -646,10 +656,150 @@ function updateUserProfile(profileData) {
     String(user.email).toLowerCase() === String(currentUser.email).toLowerCase()
   );
   if (index >= 0) {
-    users[index] = { ...users[index], name: updatedUser.name, phone: updatedUser.phone };
+    users[index] = {
+      ...users[index],
+      name: updatedUser.name,
+      phone: updatedUser.phone,
+      city: updatedUser.city
+    };
     localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
   }
   return true;
+}
+
+const DEMO_PASSWORDS_KEY = 'otomarket_demo_passwords';
+
+function getBuiltInDemoAccounts() {
+  return [
+    {
+      id: 'user-demo-1',
+      name: 'Nguyễn Hoàng Nam',
+      email: 'nam.nguyen@otomarket.vn',
+      phone: '0912 345 678',
+      defaultPassword: '12345678',
+      role: 'user',
+      city: 'TP. Nha Trang, Khánh Hòa',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+    },
+    {
+      id: 'admin-1',
+      name: 'Quản lý Showroom',
+      email: 'admin@otomarket.vn',
+      phone: '1900 6868',
+      defaultPassword: 'admin123',
+      role: 'admin',
+      city: 'TP. Nha Trang, Khánh Hòa',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+    }
+  ];
+}
+
+function getDemoPasswordsMap() {
+  try {
+    return JSON.parse(localStorage.getItem(DEMO_PASSWORDS_KEY) || '{}') || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function findAccountMatch(accountInput) {
+  const normalized = String(accountInput || '').trim().toLowerCase();
+  const cleanPhone = normalized.replace(/\D/g, '');
+  if (!normalized) return null;
+
+  const registered = getRegisteredUsers();
+  const regIndex = registered.findIndex(u => {
+    const uEmail = String(u.email || '').trim().toLowerCase();
+    const uPhone = String(u.phone || '').replace(/\D/g, '');
+    return uEmail === normalized || (cleanPhone.length >= 9 && uPhone === cleanPhone);
+  });
+  if (regIndex >= 0) {
+    return { source: 'registered', index: regIndex, record: registered[regIndex] };
+  }
+
+  const demos = getBuiltInDemoAccounts();
+  const demoMatch = demos.find(d => {
+    const dEmail = d.email.toLowerCase();
+    const dPhone = d.phone.replace(/\D/g, '');
+    return dEmail === normalized || (cleanPhone.length >= 9 && dPhone === cleanPhone);
+  });
+  if (demoMatch) {
+    const overrides = getDemoPasswordsMap();
+    const activePassword = overrides[demoMatch.email] || demoMatch.defaultPassword;
+    return { source: 'demo', record: { ...demoMatch, password: activePassword } };
+  }
+
+  return null;
+}
+
+function authenticateUserAccount(accountInput, passwordInput) {
+  const match = findAccountMatch(accountInput);
+  if (!match) {
+    return {
+      success: false,
+      code: 'not_found',
+      message: 'Tài khoản hoặc email chưa được đăng ký trên hệ thống!'
+    };
+  }
+
+  const pwd = String(passwordInput || '');
+  if (match.record.password !== pwd) {
+    return {
+      success: false,
+      code: 'wrong_password',
+      message: 'Mật khẩu không chính xác. Vui lòng kiểm tra lại!'
+    };
+  }
+
+  const { password, defaultPassword, ...safeUser } = match.record;
+  return { success: true, user: safeUser };
+}
+
+function changeAccountPassword(currentPassword, newPassword) {
+  const currentUser = getLoggedInUser();
+  if (!currentUser) {
+    return { success: false, message: 'Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại!' };
+  }
+
+  const match = findAccountMatch(currentUser.email);
+  if (!match) {
+    return { success: false, message: 'Không tìm thấy thông tin tài khoản để cập nhật mật khẩu!' };
+  }
+
+  if (match.record.password !== String(currentPassword || '')) {
+    return { success: false, message: 'Mật khẩu hiện tại không chính xác!' };
+  }
+
+  if (match.source === 'registered') {
+    const users = getRegisteredUsers();
+    users[match.index].password = String(newPassword);
+    localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
+  } else {
+    const overrides = getDemoPasswordsMap();
+    overrides[match.record.email] = String(newPassword);
+    localStorage.setItem(DEMO_PASSWORDS_KEY, JSON.stringify(overrides));
+  }
+
+  return { success: true, message: 'Đã thay đổi mật khẩu tài khoản thành công!' };
+}
+
+function resetAccountPassword(emailInput, newPassword) {
+  const match = findAccountMatch(emailInput);
+  if (!match) {
+    return { success: false, message: 'Email này chưa được đăng ký trên hệ thống OtoMarket!' };
+  }
+
+  if (match.source === 'registered') {
+    const users = getRegisteredUsers();
+    users[match.index].password = String(newPassword);
+    localStorage.setItem(STORAGE_KEYS.REGISTERED_USERS, JSON.stringify(users));
+  } else {
+    const overrides = getDemoPasswordsMap();
+    overrides[match.record.email] = String(newPassword);
+    localStorage.setItem(DEMO_PASSWORDS_KEY, JSON.stringify(overrides));
+  }
+
+  return { success: true, email: match.record.email, message: 'Khôi phục mật khẩu thành công! Bạn có thể đăng nhập bằng mật khẩu mới.' };
 }
 
 function getLoggedInUser() {
@@ -784,16 +934,11 @@ function isUserAdmin(user) {
     } catch (e) {}
   }
   if (!user) return false;
-  const name = String(user.name || '').trim().toLowerCase();
   const email = String(user.email || '').trim().toLowerCase();
   const role = String(user.role || '').trim().toLowerCase();
-  return role === 'admin' || 
-         role === 'staff' || 
-         name === 'quản lý showroom' || 
-         name.includes('showroom') || 
-         name.includes('quản lý') ||
-         email === 'admin@otomarket.vn' ||
-         email.includes('admin');
+  return role === 'admin' ||
+         role === 'staff' ||
+         email === 'admin@otomarket.vn';
 }
 
 function syncHeaderUserUI() {
@@ -845,7 +990,7 @@ function syncAdminLinksVisibility() {
       return a && (a.getAttribute('href') || '').includes('admin.html');
     });
 
-    const isCurrentAdminPage = window.location.pathname.includes('admin.html');
+    const isCurrentAdminPage = getCurrentPageSlug() === 'admin';
 
     if (isAdmin) {
       // 1. KHI ĐĂNG NHẬP NHÂN VIÊN SHOWROOM / ADMIN: HIỂN THỊ ĐẦY ĐỦ DUYỆT TIN SHOWROOM
@@ -934,32 +1079,49 @@ function syncAdminLinksVisibility() {
   });
 }
 
+function getCurrentPageSlug() {
+  const cleanPath = (window.location.pathname || '').replace(/\/+$/, '');
+  const lastSeg = cleanPath.split('/').pop() || '';
+  return lastSeg.replace(/\.html$/i, '').toLowerCase();
+}
+
 function enforcePagePermissions() {
-  const path = window.location.pathname;
+  const pageSlug = getCurrentPageSlug();
   const user = getLoggedInUser();
   const isAdmin = isUserAdmin(user);
 
-  if (path.includes('post-car.html') || path.includes('my-listings.html')) {
+  const protectedUserPages = ['post-car', 'my-listings', 'profile'];
+  if (protectedUserPages.includes(pageSlug)) {
     if (!user) {
-      showToast("Vui lòng đăng nhập để tiếp tục", "warning");
-      setTimeout(() => { window.location.href = 'login.html'; }, 500);
+      try {
+        sessionStorage.setItem('otomarket_auth_message', 'Vui lòng đăng nhập để truy cập trang này!');
+        sessionStorage.setItem('otomarket_redirect_after_login', window.location.href);
+      } catch (e) {}
+      if (typeof showToast === 'function') {
+        showToast("Vui lòng đăng nhập để tiếp tục", "warning");
+      }
+      setTimeout(() => { window.location.href = 'login.html'; }, 400);
+      return;
     }
   }
 
-  if (path.includes('admin.html')) {
+  if (pageSlug === 'admin') {
     if (!isAdmin) {
-      // Tự động cấp quyền admin demo khi người dùng truy cập trực tiếp trang Trạm kiểm duyệt
-      const demoAdmin = {
-        id: 'admin-1',
-        name: 'Quản lý Showroom',
-        email: 'admin@otomarket.vn',
-        phone: '1900 6868',
-        role: 'admin',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
-      };
-      localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(demoAdmin));
-      syncHeaderUserUI();
-      syncAdminLinksVisibility();
+      if (!user) {
+        try {
+          sessionStorage.setItem('otomarket_auth_message', 'Vui lòng đăng nhập bằng tài khoản Quản lý Showroom để vào Trạm kiểm duyệt!');
+          sessionStorage.setItem('otomarket_redirect_after_login', window.location.href);
+        } catch (e) {}
+        if (typeof showToast === 'function') {
+          showToast("Yêu cầu đăng nhập tài khoản Quản lý Showroom!", "error");
+        }
+        setTimeout(() => { window.location.href = 'login.html'; }, 500);
+      } else {
+        if (typeof showToast === 'function') {
+          showToast("Tài khoản của bạn không có quyền truy cập trang Quản trị Showroom!", "error");
+        }
+        setTimeout(() => { window.location.href = 'index.html'; }, 700);
+      }
     }
   }
 }

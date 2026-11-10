@@ -584,6 +584,12 @@
 
           
 
+          <!-- Thông báo lỗi đăng nhập -->
+          <div id="login-error-alert" class="alert alert-danger py-2 px-3 small d-none align-items-center gap-2 mb-3" role="alert">
+            <i class="bi bi-exclamation-circle-fill flex-shrink-0"></i>
+            <span id="login-error-text"></span>
+          </div>
+
           <!-- Form Đăng Nhập -->
           <form id="bento-login-form" onsubmit="handleBentoLogin(event)">
             
@@ -602,7 +608,7 @@
             <div class="mb-3">
               <div class="bento-field-label">
                 <span>Mật khẩu <span class="text-danger">*</span></span>
-                <a href="javascript:void(0)" onclick="alert('Vui lòng liên hệ Hotline 1900 6868 hoặc quản trị viên để khôi phục mật khẩu tài khoản!')" class="forgot-pwd-link">Quên mật khẩu?</a>
+                <a href="javascript:void(0)" onclick="openForgotPasswordModal()" class="forgot-pwd-link">Quên mật khẩu?</a>
               </div>
               <div class="bento-input-wrapper">
                 <i class="bi bi-lock-fill bento-input-icon"></i>
@@ -664,6 +670,65 @@
 
   </div>
 
+  <!-- Modal Quên mật khẩu -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header border-bottom px-4 py-3">
+          <h2 class="modal-title h6 fw-bold text-dark mb-0 d-flex align-items-center gap-2" id="forgotPasswordModalLabel">
+            <i class="bi bi-key-fill" style="color: #FF6B00;"></i>
+            <span>Khôi phục mật khẩu tài khoản</span>
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <form id="forgot-password-form" onsubmit="handleForgotPasswordSubmit(event)">
+          <div class="modal-body p-4">
+            <p class="small text-muted mb-3">
+              Nhập địa chỉ Email hoặc Số điện thoại đã đăng ký trên OtoMarket để đặt lại mật khẩu mới.
+            </p>
+            <div id="forgot-error-alert" class="alert alert-danger py-2 px-3 small d-none mb-3" role="alert"></div>
+
+            <div class="mb-3">
+              <label class="bento-field-label" for="forgot-account">Email hoặc Số điện thoại đã đăng ký <span class="text-danger">*</span></label>
+              <div class="bento-input-wrapper">
+                <i class="bi bi-envelope-fill bento-input-icon"></i>
+                <input type="text" class="bento-input-control" id="forgot-account" placeholder="Ví dụ: nam.nguyen@otomarket.vn" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="bento-field-label" for="forgot-new-password">Mật khẩu mới <span class="text-danger">*</span></label>
+              <div class="bento-input-wrapper">
+                <i class="bi bi-lock-fill bento-input-icon"></i>
+                <input type="password" class="bento-input-control" id="forgot-new-password" placeholder="Tối thiểu 6 ký tự" minlength="6" required style="padding-right: 40px;">
+                <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-new-password', this)" title="Ẩn/Hiện mật khẩu">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mb-1">
+              <label class="bento-field-label" for="forgot-confirm-password">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
+              <div class="bento-input-wrapper">
+                <i class="bi bi-shield-check bento-input-icon"></i>
+                <input type="password" class="bento-input-control" id="forgot-confirm-password" placeholder="Nhập lại mật khẩu mới" minlength="6" required style="padding-right: 40px;">
+                <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-confirm-password', this)" title="Ẩn/Hiện mật khẩu">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top bg-light px-4 py-3">
+            <button type="button" class="btn btn-light border btn-sm px-3 fw-semibold" data-bs-dismiss="modal">Hủy</button>
+            <button type="submit" class="btn btn-sm px-4 fw-bold text-white" style="background: #FF6B00; border-color: #FF6B00;">
+              Đặt lại mật khẩu
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;"></div>
 
   <!-- Scripts -->
@@ -683,6 +748,27 @@
       }
     });
 
+    function showLoginError(message) {
+      const alertBox = document.getElementById('login-error-alert');
+      const alertText = document.getElementById('login-error-text');
+      if (alertBox && alertText) {
+        alertText.textContent = message;
+        alertBox.classList.remove('d-none');
+        alertBox.classList.add('d-flex');
+      }
+      if (typeof showToast === 'function') {
+        showToast(message, 'error');
+      }
+    }
+
+    function hideLoginError() {
+      const alertBox = document.getElementById('login-error-alert');
+      if (alertBox) {
+        alertBox.classList.add('d-none');
+        alertBox.classList.remove('d-flex');
+      }
+    }
+
     // 1. Toggle hiển thị mật khẩu
     function togglePasswordVisibility(inputId, btn) {
       const input = document.getElementById(inputId);
@@ -698,56 +784,137 @@
 
     // 2. Điền nhanh tài khoản Demo
     function fillDemoUser(type) {
+      hideLoginError();
       const accInput = document.getElementById('login-account');
       const pwdInput = document.getElementById('login-password');
+      const overrides = typeof getDemoPasswordsMap === 'function' ? getDemoPasswordsMap() : {};
+
       if (type === 'individual') {
         accInput.value = 'nam.nguyen@otomarket.vn';
-        pwdInput.value = '12345678';
+        pwdInput.value = overrides['nam.nguyen@otomarket.vn'] || '12345678';
         if (typeof showToast === 'function') {
           showToast('Đã điền tài khoản Khách cá nhân (Nguyễn Hoàng Nam)', 'info');
         }
       } else if (type === 'showroom') {
         accInput.value = 'admin@otomarket.vn';
-        pwdInput.value = 'admin123';
+        pwdInput.value = overrides['admin@otomarket.vn'] || 'admin123';
         if (typeof showToast === 'function') {
           showToast('Đã điền tài khoản Quản lý Showroom / Đối tác', 'info');
         }
       }
     }
 
-    // 3. Xử lý Đăng nhập
+    // 3. Mở & xử lý Modal Quên mật khẩu
+    function openForgotPasswordModal() {
+      const errBox = document.getElementById('forgot-error-alert');
+      if (errBox) errBox.classList.add('d-none');
+
+      const loginAcc = document.getElementById('login-account').value.trim();
+      const forgotAcc = document.getElementById('forgot-account');
+      if (forgotAcc && loginAcc) {
+        forgotAcc.value = loginAcc;
+      }
+
+      const modalEl = document.getElementById('forgotPasswordModal');
+      if (modalEl && typeof bootstrap !== 'undefined') {
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        modal.show();
+      }
+    }
+
+    function handleForgotPasswordSubmit(e) {
+      e.preventDefault();
+      const errBox = document.getElementById('forgot-error-alert');
+      const showForgotErr = (msg) => {
+        if (errBox) {
+          errBox.textContent = msg;
+          errBox.classList.remove('d-none');
+        }
+        if (typeof showToast === 'function') showToast(msg, 'error');
+      };
+
+      const account = document.getElementById('forgot-account').value.trim();
+      const newPwd = document.getElementById('forgot-new-password').value;
+      const confirmPwd = document.getElementById('forgot-confirm-password').value;
+
+      if (!account || !newPwd || !confirmPwd) {
+        showForgotErr('Vui lòng điền đầy đủ thông tin!');
+        return;
+      }
+      if (newPwd.length < 6) {
+        showForgotErr('Mật khẩu mới phải có tối thiểu 6 ký tự!');
+        return;
+      }
+      if (newPwd !== confirmPwd) {
+        showForgotErr('Mật khẩu mới và xác nhận mật khẩu không trùng khớp!');
+        return;
+      }
+
+      if (typeof resetAccountPassword !== 'function') {
+        showForgotErr('Không thể kết nối dữ liệu tài khoản. Vui lòng tải lại trang!');
+        return;
+      }
+
+      const res = resetAccountPassword(account, newPwd);
+      if (!res.success) {
+        showForgotErr(res.message);
+        return;
+      }
+
+      if (errBox) errBox.classList.add('d-none');
+      document.getElementById('forgot-password-form').reset();
+
+      const accInput = document.getElementById('login-account');
+      const pwdInput = document.getElementById('login-password');
+      if (accInput) accInput.value = res.email || account;
+      if (pwdInput) pwdInput.value = '';
+
+      const modalEl = document.getElementById('forgotPasswordModal');
+      const modal = modalEl ? bootstrap.Modal.getInstance(modalEl) : null;
+      if (modal) modal.hide();
+
+      if (typeof showToast === 'function') {
+        showToast(res.message, 'success');
+      }
+    }
+
+    // 4. Xử lý Đăng nhập (Kiểm tra chính xác email & mật khẩu trong REGISTERED_USERS)
     function handleBentoLogin(e) {
       e.preventDefault();
+      hideLoginError();
+
       const account = document.getElementById('login-account').value.trim();
       const pwd = document.getElementById('login-password').value;
 
       if (!account || !pwd) {
-        if (typeof showToast === 'function') {
-          showToast('Vui lòng nhập đầy đủ thông tin đăng nhập!', 'error');
+        showLoginError('Vui lòng nhập đầy đủ Email/Số điện thoại và Mật khẩu!');
+        return;
+      }
+
+      const authResult = typeof authenticateUserAccount === 'function'
+        ? authenticateUserAccount(account, pwd)
+        : { success: false, message: 'Hệ thống xác thực chưa sẵn sàng.' };
+
+      if (!authResult.success) {
+        showLoginError(authResult.message);
+        if (authResult.code === 'wrong_password') {
+          document.getElementById('login-password').focus();
         } else {
-          alert('Vui lòng nhập đầy đủ thông tin đăng nhập!');
+          document.getElementById('login-account').focus();
         }
         return;
       }
 
-      const isAdmin = account.toLowerCase() === 'admin@otomarket.vn' || account.toLowerCase().includes('admin');
-      const userObj = {
-        name: isAdmin ? 'Quản lý Showroom' : (account.split('@')[0].replace('.', ' ').toUpperCase() || 'Nguyễn Hoàng Nam'),
-        email: account,
-        phone: isAdmin ? '1900 6868' : '0912 345 678',
-        role: isAdmin ? 'admin' : 'user',
-        avatar: isAdmin 
-          ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
-          : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
-        isLoggedIn: true
-      };
-
+      const userObj = authResult.user;
       if (typeof setLoggedInUser === 'function') {
         setLoggedInUser(userObj);
       } else {
         localStorage.setItem('otomarket_user', JSON.stringify(userObj));
-        localStorage.setItem('otomarket_logged_in', 'true');
       }
+
+      const isAdmin = typeof isUserAdmin === 'function'
+        ? isUserAdmin(userObj)
+        : (String(userObj.role).toLowerCase() === 'admin' || String(userObj.email).toLowerCase() === 'admin@otomarket.vn');
 
       const submitBtn = document.getElementById('btn-login-submit');
       submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Đang xác thực...';
@@ -757,7 +924,11 @@
         showToast(`Đăng nhập thành công! Chào mừng ${userObj.name}`, 'success');
       }
 
-      const redirectUrl = sessionStorage.getItem('otomarket_redirect_after_login') || localStorage.getItem('otomarket_redirect_after_login');
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramRedirect = urlParams.get('redirect');
+      const storedRedirect = sessionStorage.getItem('otomarket_redirect_after_login') || localStorage.getItem('otomarket_redirect_after_login');
+      const redirectUrl = paramRedirect || storedRedirect;
+
       try {
         localStorage.removeItem('otomarket_redirect_after_login');
         sessionStorage.removeItem('otomarket_redirect_after_login');

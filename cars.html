@@ -975,7 +975,7 @@
     /* ==========================================================================
        BENTO STUDIO CATALOG CONTROLLER (THƯƠNG MẠI TINH GỌN, CHUẨN XÁC)
        ========================================================================== */
-    const CURATED_CARS = [
+    const DEFAULT_CURATED_CARS = [
       {
         id: "new-1",
         title: "Toyota Corolla Cross 1.8V 2026",
@@ -1167,6 +1167,49 @@
       }
     ];
 
+    function mapPublicCarToFleetItem(c) {
+      const isNew = c.condition === 'new' || c.isNew;
+      const isShowroom = c.sourceType === 'showroom' || c.isShowroom ||
+        (c.sellerType && (c.sellerType.includes('Đại lý') || c.sellerType.includes('Showroom') || c.sellerType.includes('Salon')));
+      const price = Number(c.price) || 0;
+      return {
+        id: c.id,
+        title: c.title,
+        brand: c.brand || 'Khác',
+        model: c.model || '',
+        year: Number(c.year) || 2024,
+        price: price,
+        priceText: c.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(price) : `${price.toLocaleString('vi-VN')} đ`),
+        prepay: price ? `${Math.round((price * 0.3) / 1000000)} tr` : 'Liên hệ',
+        condition: isNew ? 'new' : 'used',
+        statusBadge: isNew ? 'Xe mới 100%' : (isShowroom ? 'Showroom chính hãng' : 'Chính chủ bán'),
+        statusType: isNew ? 'new' : (isShowroom ? 'used-dealer' : 'used-owner'),
+        mileage: isNew ? '0 km' : (c.mileageDisplay || `${Number(c.mileage || 0).toLocaleString()} km`),
+        fuel: c.fuel || 'Xăng',
+        trans: c.transmission || 'Tự động',
+        body: c.bodyType || 'SUV',
+        location: c.location || 'Nha Trang',
+        seller: c.sellerName || 'Người bán cá nhân',
+        sellerPhone: c.sellerPhone || '19006868',
+        image: c.image || 'assets/images/cars/corolla_cross.jpg'
+      };
+    }
+
+    function getSyncedCuratedCars() {
+      if (typeof getPublicCars === 'function') {
+        const publicCars = getPublicCars();
+        if (Array.isArray(publicCars) && publicCars.length > 0) {
+          return publicCars.map(mapPublicCarToFleetItem);
+        }
+      }
+      if (window.WP_CARS && Array.isArray(window.WP_CARS) && window.WP_CARS.length > 0) {
+        return window.WP_CARS.map(mapPublicCarToFleetItem);
+      }
+      return [...DEFAULT_CURATED_CARS];
+    }
+
+    let CURATED_CARS = getSyncedCuratedCars();
+
     // State Variables
     let currentFilterState = {
       condition: 'all',
@@ -1183,36 +1226,16 @@
     const pageSize = 6;
     let allCarsList = [];
 
-    // 2. Tải toàn bộ kho xe
+    // 2. Tải toàn bộ kho xe (ưu tiên window.WP_CARS / getPublicCars)
     function loadCompleteFleet() {
+      CURATED_CARS = getSyncedCuratedCars();
       const fleet = [...CURATED_CARS];
 
-      if (typeof getCustomListings === 'function') {
-        const customListings = getCustomListings().filter(c => c.status === 'active');
-        customListings.forEach(c => {
-          const isNew = c.condition === 'new' || c.isNew;
-          fleet.push({
-            id: c.id,
-            title: c.title,
-            brand: c.brand,
-            model: c.model || '',
-            year: c.year,
-            price: c.price || 0,
-            priceText: c.priceDisplay || formatCurrency(c.price),
-            prepay: c.price ? `${Math.round((c.price * 0.3) / 1000000)} tr` : 'Liên hệ',
-            condition: isNew ? 'new' : 'used',
-            statusBadge: isNew ? 'Xe mới 100%' : (c.sourceType === 'showroom' ? 'Showroom chính hãng' : 'Chính chủ bán'),
-            statusType: isNew ? 'new' : (c.sourceType === 'showroom' ? 'used-dealer' : 'used-owner'),
-            mileage: isNew ? '0 km' : (c.mileageDisplay || `${(c.mileage || 0).toLocaleString()} km`),
-            fuel: c.fuel || 'Xăng',
-            trans: c.transmission || 'Tự động',
-            body: c.bodyType || 'SUV',
-            location: c.location || 'Nha Trang',
-            seller: c.sellerName || 'Người bán cá nhân',
-            sellerPhone: c.sellerPhone || '19006868',
-            image: c.image || 'assets/images/cars/corolla_cross.jpg'
-          });
-        });
+      // Nếu không dùng getPublicCars() (trường hợp fallback tĩnh), mới gộp thêm active custom listings
+      if (typeof getPublicCars !== 'function' && typeof getCustomListings === 'function') {
+        const existingIds = new Set(fleet.map(item => item.id));
+        const customListings = getCustomListings().filter(c => c.status === 'active' && !existingIds.has(c.id));
+        customListings.forEach(c => fleet.push(mapPublicCarToFleetItem(c)));
       }
 
       allCarsList = fleet;

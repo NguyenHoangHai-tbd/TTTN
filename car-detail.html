@@ -1381,9 +1381,11 @@
       const container = document.getElementById('related-cars-grid');
       if (!container) return;
       
-      const allCars = typeof getStoredCars === 'function' ? getStoredCars() : (typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS : []);
-      
-      let related = allCars.filter(c => c.id !== currentCar.id && c.status !== 'rejected');
+      const allCars = typeof getPublicCars === 'function'
+        ? getPublicCars()
+        : (typeof getStoredCars === 'function' ? getStoredCars(false) : (typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS : []));
+
+      let related = allCars.filter(c => c.id !== currentCar.id && (!c.status || c.status === 'active'));
       let filtered = related.filter(c => c.bodyType === currentCar.bodyType || c.brand === currentCar.brand);
       if (filtered.length < 3) {
         filtered = related;
