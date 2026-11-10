@@ -12,7 +12,7 @@
   <!-- Phông chữ Google: Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Bootstrap 5 & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     .portal-filter-tab {
       border: 1px solid transparent !important;
       background: transparent !important;
-      color: #64748B !important;
+      color: #475569 !important;
       font-weight: 600 !important;
       font-size: 0.84rem !important;
       padding: 7px 16px !important;
@@ -67,13 +67,13 @@
     }
     .portal-filter-tab.active {
       background: #FFFFFF !important;
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 700 !important;
-      border-color: rgba(255, 107, 0, 0.2) !important;
+      border-color: rgba(194, 65, 12, 0.3) !important;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
     }
     .portal-filter-tab.active i {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .portal-filter-tab i {
       font-size: 0.92rem !important;
@@ -82,32 +82,31 @@
     /* ==========================================================================
        PORTAL HEADER WRAPPER: TRANSPARENT OVER HERO -> STICKY PROMINENT ON SCROLL
        ========================================================================== */
-    .portal-header-wrapper {
+    .portal-header-wrapper:not(.is-scrolled) {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1050;
-      background: transparent !important;
-      border-bottom: none !important;
+      background: rgba(11, 19, 43, 0.88) !important;
+      backdrop-filter: blur(12px) saturate(150%) !important;
+      -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
       box-shadow: none !important;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
-    /* GIỮ NỀN 100% TRONG SUỐT KHI RÊ CHUỘT (HOVER), KHÔNG LÀM MỜ THANH TOPBAR VÀ HEADER */
     body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover,
     .portal-header-wrapper:not(.is-scrolled):hover {
-      background: transparent !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border-bottom: none !important;
+      background: rgba(11, 19, 43, 0.92) !important;
+      backdrop-filter: blur(12px) saturate(150%) !important;
+      -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
       box-shadow: none !important;
     }
     body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean,
     .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
       background: transparent !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
     }
 
     /* 1. Topbar ở trạng thái ban đầu: Nền Trong Suốt Trên Ảnh Nền Xe */
@@ -157,7 +156,7 @@
       border: none;
       background: transparent;
       color: #F1F5F9;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 3px 9px;
       border-radius: 16px;
@@ -170,7 +169,7 @@
       background: rgba(255, 255, 255, 0.18);
     }
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1) !important;
     }
@@ -206,7 +205,7 @@
       max-width: none !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-person-fill:not(.user-avatar-dot i) {
-      color: #FF6B00 !important;
+      color: #FB923C !important;
     }
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn i.bi-chevron-down {
       color: rgba(255, 255, 255, 0.75) !important;
@@ -219,9 +218,9 @@
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:focus,
     .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
-      background: #FF6B00 !important;
-      background-color: #FF6B00 !important;
-      border-color: #FF6B00 !important;
+      background: #C2410C !important;
+      background-color: #C2410C !important;
+      border-color: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
@@ -240,14 +239,14 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       flex-shrink: 0;
     }
     .user-avatar-dot i,
     .topbar-user-btn .user-avatar-dot i {
       color: #FFFFFF !important;
-      font-size: 0.74rem !important;
+      font-size: 0.75rem !important;
       line-height: 1;
     }
     .topbar-dropdown-menu,
@@ -275,7 +274,7 @@
     .topbar-dropdown-menu .dropdown-item:focus,
     .topbar-dropdown-menu .dropdown-item.active {
       background-color: #FFF7ED !important;
-      color: #EA580C !important;
+      color: #9A3412 !important;
     }
 
     /* 2. Thanh Menu Chính Nền Trong Suốt (Navbar Clean) */
@@ -310,18 +309,18 @@
     .nav-link-portal:hover,
     .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover,
     .portal-navbar-clean .nav-link-portal:hover {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       background-color: rgba(255, 255, 255, 0.14) !important;
-      border-color: rgba(255, 107, 0, 0.6) !important;
+      border-color: rgba(194, 65, 12, 0.45) !important;
       box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
       text-shadow: none !important;
     }
     .nav-link-portal.active {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 700 !important;
       background-color: rgba(255, 107, 0, 0.22) !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.4) !important;
+      border-color: #C2410C !important;
+      box-shadow: none !important;
       text-shadow: none !important;
     }
 
@@ -352,7 +351,7 @@
     .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important;
+      box-shadow: none !important;
       transform: scale(1.05);
     }
     .btn-fav-compact:hover i {
@@ -365,7 +364,7 @@
       min-width: 17px;
       height: 17px;
       padding: 0 4px;
-      font-size: 0.65rem !important;
+      font-size: 0.75rem !important;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -373,20 +372,20 @@
     }
 
     .btn-cta-orange {
-      background-color: #FF6B00 !important;
-      border: 1.5px solid #FF6B00 !important;
+      background-color: #C2410C !important;
+      border: 1.5px solid #C2410C !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
       transition: all 0.2s ease !important;
-      box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
     }
     .btn-cta-orange:hover,
     .btn-cta-orange:focus,
     .btn-cta-orange:active {
-      background-color: #EA580C !important;
+      background-color: #9A3412 !important;
       border-color: #FFFFFF !important;
       color: #FFFFFF !important;
-      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.28) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
     }
 
     /* Hiển thị logo tương ứng với chế độ nền */
@@ -413,7 +412,7 @@
       left: 0 !important;
       width: 100% !important;
       z-index: 1050 !important;
-      background: rgba(255, 255, 255, 0.72) !important;
+      background: rgba(255, 255, 255, 0.94) !important;
       backdrop-filter: blur(20px) saturate(180%) !important;
       -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
       box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08) !important;
@@ -421,7 +420,7 @@
       transition: background 0.3s ease, box-shadow 0.3s ease !important;
     }
     .portal-header-wrapper.is-scrolled:hover {
-      background: rgba(255, 255, 255, 0.72) !important;
+      background: rgba(255, 255, 255, 0.94) !important;
       box-shadow: 0 8px 36px rgba(0, 0, 0, 0.12) !important;
     }
 
@@ -459,7 +458,7 @@
       background: #E2E8F0 !important;
     }
     .portal-header-wrapper.is-scrolled .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
@@ -490,13 +489,13 @@
       font-weight: 700 !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn i {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .portal-header-wrapper.is-scrolled .topbar-user-btn .bi-chevron-down {
-      color: #64748B !important;
+      color: #475569 !important;
     }
     .portal-header-wrapper.is-scrolled .user-avatar-dot {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
     }
     .portal-header-wrapper.is-scrolled .user-avatar-dot i {
@@ -513,9 +512,9 @@
     .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:hover,
     .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn:focus,
     .portal-header-wrapper.is-scrolled #navbar-auth-section .topbar-user-btn.show {
-      background: #FF6B00 !important;
-      background-color: #FF6B00 !important;
-      border-color: #FF6B00 !important;
+      background: #C2410C !important;
+      background-color: #C2410C !important;
+      border-color: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
@@ -548,16 +547,16 @@
       font-weight: 700;
     }
     .portal-header-wrapper.is-scrolled .nav-link-portal:hover {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       background-color: rgba(255, 107, 0, 0.12) !important;
-      border-color: rgba(255, 107, 0, 0.35) !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15) !important;
+      border-color: rgba(194, 65, 12, 0.35) !important;
+      box-shadow: none !important;
     }
     .portal-header-wrapper.is-scrolled .nav-link-portal.active {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       background-color: rgba(255, 107, 0, 0.15) !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2.5px rgba(255, 107, 0, 0.25) !important;
+      border-color: #C2410C !important;
+      box-shadow: none !important;
     }
     .portal-header-wrapper.is-scrolled .btn-fav-compact {
       border: 1.5px solid rgba(203, 213, 225, 0.85) !important;
@@ -567,7 +566,7 @@
     .portal-header-wrapper.is-scrolled .btn-fav-compact:hover {
       background-color: #FEF2F2 !important;
       border-color: #EF4444 !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25) !important;
+      box-shadow: none !important;
     }
 
     /* 4. HERO SECTION KÉO DÀI ĐỦ MÀN HÌNH MÁY (100VH) - SÁNG RỰC RỠ, NỀN TỐI SANG TRỌNG */
@@ -584,7 +583,7 @@
       display: flex !important;
       flex-direction: column !important;
       justify-content: center !important;
-      padding: 120px 0 80px !important;
+      padding: 120px 16px 80px !important;
       position: relative;
     }
     .hero-title {
@@ -607,25 +606,34 @@
       }
       .portal-hero-section {
         min-height: 90vh !important;
-        padding: 110px 0 60px !important;
+        padding: 110px 16px 60px !important;
+      }
+    }
+    @media (max-width: 576px) {
+      .brand-logo .site-logo {
+        max-height: 34px !important;
+      }
+      .portal-navbar-clean .btn-cta-orange {
+        padding: 7px 10px !important;
+        font-size: 0.82rem !important;
       }
     }
 
     /* Nút Thao Tác Trong Hero */
     .btn-hero-primary {
-      background-color: #FF6B00 !important;
-      border: 2px solid #FF6B00 !important;
+      background-color: #C2410C !important;
+      border: 2px solid #C2410C !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
       transition: all 0.25s ease !important;
-      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
     }
     .btn-hero-primary:hover,
     .btn-hero-primary:focus,
     .btn-hero-primary:active {
-      background-color: #EA580C !important;
+      background-color: #9A3412 !important;
       border-color: #FFFFFF !important;
-      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
       color: #FFFFFF !important;
       transform: translateY(-2px);
     }
@@ -646,19 +654,18 @@
       pointer-events: none !important;
       transform: translate(-50%, 15px) !important;
     }
-    @keyframes bounceSlow {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(6px); }
-      60% { transform: translateY(3px); }
+    @keyframes hintFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
     .animate-bounce-slow {
-      animation: bounceSlow 2s infinite ease-in-out;
+      animation: hintFloat 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
     .scroll-hint-link {
       transition: all 0.2s ease;
     }
     .scroll-hint-link:hover {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
 
     /* 4. KHỐI TÌM KIẾM NHANH: BAN ĐẦU ẨN, HIỆN LÊN KHI CUỘN XUỐNG VỚI HIỆU ỨNG MƯỢT MÀ */
@@ -688,7 +695,7 @@
     .portal-tab-pill {
       border: 2px solid transparent !important;
       background: #F1F5F9 !important;
-      color: #64748B !important;
+      color: #475569 !important;
       font-weight: 700 !important;
       font-size: 0.85rem !important;
       padding: 8px 18px !important;
@@ -698,15 +705,15 @@
     }
     .portal-tab-pill:hover {
       background: #FFF7ED !important;
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       border-color: #FED7AA !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15) !important;
+      box-shadow: none !important;
     }
     .portal-tab-pill.active {
       background: #FFF7ED !important;
-      color: #FF6B00 !important;
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25) !important;
+      color: #C2410C !important;
+      border-color: #C2410C !important;
+      box-shadow: none !important;
     }
     .portal-field-label {
       font-size: 0.76rem !important;
@@ -727,8 +734,8 @@
       transition: all 0.2s ease;
     }
     .portal-field-select:focus {
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25) !important;
+      border-color: #C2410C !important;
+      box-shadow: none !important;
       background-color: #FFFFFF !important;
     }
     .trend-tag-pill {
@@ -745,31 +752,28 @@
     }
     .trend-tag-pill:hover {
       background: #FFF7ED;
-      color: #FF6B00;
+      color: #C2410C;
       border-color: #FED7AA;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.15);
+      box-shadow: none;
     }
     /* Brand Utilities */
     .text-orange-theme {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .badge-showroom-check {
       background-color: #FFF7ED !important;
-      color: #EA580C !important;
+      color: #9A3412 !important;
       border: 1px solid #FED7AA !important;
     }
   
     /* ==========================================================================
        STUDIO BENTO KIẾN TRÚC: CHUẨN HÓA TRANG CHỦ (TƯƠNG PHẢN ĐỒNG BỘ 100%)
        ========================================================================== */
-    body.index-bento-body,
-    body.index-bento-body button,
-    body.index-bento-body input,
-    body.index-bento-body select,
-    body.index-bento-body textarea {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    body.index-bento-body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       background-color: #EEF2F6 !important;
-      color: #0F172A !important;
+      color: #0F172A;
+      overflow-x: clip;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -790,7 +794,7 @@
     .portal-tab-pill:hover {
       background: #EEF2F6 !important;
       color: #0F172A !important;
-      border-color: #94A3B8 !important;
+      border-color: #64748B !important;
     }
     .portal-tab-pill.active {
       background: #0F172A !important;
@@ -815,11 +819,11 @@
 
     /* Khối Tìm Theo Ngân Sách (Budget Panel) */
     .category-box-stitch {
-      background: #FFFFFF !important;
-      border: 1px solid #CBD5E1 !important;
-      border-radius: 18px !important;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
-      padding: 24px 28px !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
     }
     .trend-tag-pill {
       background: #F8FAFC !important;
@@ -872,7 +876,7 @@
     }
     .portal-car-card:hover, 
     .car-card:hover {
-      border-color: #94A3B8 !important;
+      border-color: #64748B !important;
       transform: translateY(-4px) !important;
       box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09) !important;
     }
@@ -917,6 +921,7 @@
       border: 1px solid #CBD5E1 !important;
       border-radius: 18px !important;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+      padding: 12px !important;
       overflow: hidden !important;
       transition: all 0.2s ease !important;
     }
@@ -954,6 +959,7 @@
       text-shadow: none !important;
     }
 
+    .text-white { color: #FFFFFF !important; }
   </style>
 </head>
 <body class="index-bento-body">
@@ -1038,7 +1044,7 @@
             <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
           <!-- Nút Đăng Bán Xe duy nhất trên Header -->
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
           </a>
@@ -1079,8 +1085,8 @@
       <!-- Gợi ý cuộn trang xuống (Scroll Hint) -->
       <div class="hero-scroll-hint position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center">
         <a href="#quick-search-section" class="text-white-50 text-decoration-none small d-flex flex-column align-items-center gap-1 scroll-hint-link">
-          <span style="font-size: 0.74rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.75);">Cuộn để tìm xe</span>
-          <i class="bi bi-chevron-down animate-bounce-slow" style="font-size: 1.15rem; color: #FF6B00;"></i>
+          <span style="font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: rgba(255,255,255,0.75);">Cuộn để tìm xe</span>
+          <i class="bi bi-chevron-down animate-bounce-slow" style="font-size: 1.15rem; color: #FB923C;"></i>
         </a>
       </div>
     </section>
@@ -1093,7 +1099,7 @@
         <!-- 3 Tab phân loại xe -->
         <div class="d-flex align-items-center gap-2 mb-3">
           <button type="button" class="portal-tab-pill active" onclick="setSearchCondition('all', this)">
-            <i class="bi bi-car-front-fill me-1" style="color: #FF6B00;"></i> Tất cả xe
+            <i class="bi bi-car-front-fill me-1" style="color: #C2410C;"></i> Tất cả xe
           </button>
           <button type="button" class="portal-tab-pill" onclick="setSearchCondition('used', this)">
             <i class="bi bi-clock-history me-1"></i> Ô tô cũ (Lướt tuyển chọn)
@@ -1174,7 +1180,7 @@
 
             <!-- Nút gửi tìm kiếm (Cam Stitch rực rỡ) -->
             <div class="col-12 col-md-6 col-lg-2">
-              <button type="submit" class="btn btn-cta-orange w-100 py-2.5 fw-bold text-uppercase rounded-3 shadow-sm" style="font-size: 0.84rem;">
+              <button type="submit" class="btn btn-cta-orange w-100 py-2 fw-bold text-uppercase rounded-3 shadow-sm" style="font-size: 0.84rem;">
                 <i class="bi bi-search me-1"></i> TÌM XE PHÙ HỢP
               </button>
             </div>
@@ -1197,7 +1203,7 @@
       </div>
 
       <!-- 8 Khối hãng xe nổi bật -->
-      <div class="row row-cols-2 row-cols-sm-4 row-cols-lg-8 g-2.5">
+      <div class="row row-cols-2 row-cols-sm-4 row-cols-lg-8 g-3">
         <div class="col">
           <a href="cars.html?brand=Toyota" class="portal-brand-card">
             <img src="assets/images/brands/toyota.svg" alt="Toyota" class="brand-svg">
@@ -1270,7 +1276,7 @@
             Công cụ tính dự toán chi phí &amp; trả góp <i class="bi bi-chevron-right ms-1"></i>
           </a>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-2.5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
           <div class="col">
             <a href="cars.html?priceRange=under500" class="budget-tier-stitch">
               <div class="fw-bold text-dark small">&lt; 500 triệu</div>
@@ -1281,7 +1287,7 @@
             <a href="cars.html?priceRange=500-800" class="budget-tier-stitch" style="border-color: #FED7AA; background-color: #FFFDFB !important;">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="fw-bold text-dark small">500 - 800 triệu</div>
-                <span class="badge" style="background-color: #FFF7ED; color: #FF6B00; font-size: 0.62rem;">Nhiều lựa chọn</span>
+                <span class="badge" style="background-color: #FFF7ED; color: #9A3412; font-size: 0.75rem;">Nhiều lựa chọn</span>
               </div>
               <div class="budget-tier-installment">Góp từ 6.8 tr/th</div>
             </a>
@@ -1358,12 +1364,12 @@
           <div class="portal-tool-card">
             <div>
               <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #9A3412; width: 36px; height: 36px;">
                   <i class="bi bi-calculator-fill"></i>
                 </div>
                 <div>
-                  <h4 class="h6 fw-bold text-dark mb-0">Dự Tính Giá Lăn Bánh</h4>
-                  <span class="text-muted" style="font-size: 0.72rem;">Ước tính theo biểu phí thực tế các tỉnh thành</span>
+                  <h3 class="h6 fw-bold text-dark mb-0">Dự Tính Giá Lăn Bánh</h3>
+                  <span class="text-muted" style="font-size: 0.75rem;">Ước tính theo biểu phí thực tế các tỉnh thành</span>
                 </div>
               </div>
 
@@ -1375,10 +1381,10 @@
               <!-- Nút chọn nhanh mức giá phổ biến -->
               <div class="d-flex align-items-center gap-1.5 mb-2.5 flex-wrap">
                 <span class="text-muted" style="font-size: 0.7rem;">Mức giá nhanh:</span>
-                <button type="button" class="btn btn-xs py-0.5 px-2 rounded border bg-white small" onclick="setCalcPrice(650000000)" style="font-size: 0.7rem;">650 Tr</button>
-                <button type="button" class="btn btn-xs py-0.5 px-2 rounded border bg-white small" onclick="setCalcPrice(799000000)" style="font-size: 0.7rem;">799 Tr</button>
-                <button type="button" class="btn btn-xs py-0.5 px-2 rounded border bg-white small" onclick="setCalcPrice(1150000000)" style="font-size: 0.7rem;">1.15 Tỷ</button>
-                <button type="button" class="btn btn-xs py-0.5 px-2 rounded border bg-white small" onclick="setCalcPrice(1375000000)" style="font-size: 0.7rem;">1.37 Tỷ</button>
+                <button type="button" class="btn btn-xs py-1 px-2 rounded border bg-white small" onclick="setCalcPrice(650000000)" style="font-size: 0.7rem;">650 Tr</button>
+                <button type="button" class="btn btn-xs py-1 px-2 rounded border bg-white small" onclick="setCalcPrice(799000000)" style="font-size: 0.7rem;">799 Tr</button>
+                <button type="button" class="btn btn-xs py-1 px-2 rounded border bg-white small" onclick="setCalcPrice(1150000000)" style="font-size: 0.7rem;">1.15 Tỷ</button>
+                <button type="button" class="btn btn-xs py-1 px-2 rounded border bg-white small" onclick="setCalcPrice(1375000000)" style="font-size: 0.7rem;">1.37 Tỷ</button>
               </div>
 
               <div class="mb-3">
@@ -1391,7 +1397,7 @@
               </div>
 
               <!-- Chi tiết biểu phí tính toán (Nền xanh nhạt đúng Stitch) -->
-              <div class="p-2.5 rounded-3 small border mb-3" style="background-color: #F8FAFC;">
+              <div class="pt-3 mt-1 small border-top mb-3">
                 <div class="d-flex justify-content-between mb-1">
                   <span class="text-muted">Lệ phí trước bạ (10%):</span>
                   <strong id="fee-registration">79.900.000 đ</strong>
@@ -1414,7 +1420,7 @@
             <div>
               <div class="d-flex justify-content-between align-items-baseline mb-2">
                 <span class="small fw-semibold text-secondary">Tổng lăn bánh dự tính:</span>
-                <span class="h5 fw-bold mb-0" id="total-rolling-price" style="color: #FF5500;">901.520.000 đ</span>
+                <span class="h5 fw-bold mb-0" id="total-rolling-price" style="color: #C2410C;">901.520.000 đ</span>
               </div>
               <button class="btn btn-dark btn-sm w-100 fw-semibold rounded-2 py-2" onclick="calculateRollingPrice()">
                 Tính lại
@@ -1428,12 +1434,12 @@
           <div class="portal-tool-card">
             <div>
               <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #9A3412; width: 36px; height: 36px;">
                   <i class="bi bi-cash-stack"></i>
                 </div>
                 <div>
-                  <h4 class="h6 fw-bold text-dark mb-0">Ước Tính Vay Trả Góp</h4>
-                  <span class="text-muted" style="font-size: 0.72rem;">Bảng tính tham khảo với mức lãi suất ước tính</span>
+                  <h3 class="h6 fw-bold text-dark mb-0">Ước Tính Vay Trả Góp</h3>
+                  <span class="text-muted" style="font-size: 0.75rem;">Bảng tính tham khảo với mức lãi suất ước tính</span>
                 </div>
               </div>
 
@@ -1441,7 +1447,7 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between small mb-1">
                   <span class="text-muted">Tỷ lệ vay:</span>
-                  <strong id="loan-percent-text" style="color: #FF6B00;">70% (559 triệu)</strong>
+                  <strong id="loan-percent-text" style="color: #C2410C;">70% (559 triệu)</strong>
                 </div>
                 <input type="range" class="form-range" id="loan-percent-range" min="30" max="80" step="10" value="70" oninput="calculateLoanEstimate()">
               </div>
@@ -1450,12 +1456,12 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between small mb-1">
                   <span class="text-muted">Thời hạn vay:</span>
-                  <strong id="loan-years-text" style="color: #FF6B00;">5 năm (60 tháng)</strong>
+                  <strong id="loan-years-text" style="color: #C2410C;">5 năm (60 tháng)</strong>
                 </div>
                 <input type="range" class="form-range" id="loan-years-range" min="1" max="8" step="1" value="5" oninput="calculateLoanEstimate()">
               </div>
 
-              <div class="p-2.5 rounded-3 small border mb-3" style="background-color: #F8FAFC;">
+              <div class="pt-3 mt-1 small border-top mb-3">
                 <div class="d-flex justify-content-between mb-1">
                   <span class="text-muted">Vốn tự có cần chuẩn bị:</span>
                   <strong id="loan-downpayment">240.000.000 đ</strong>
@@ -1470,9 +1476,9 @@
             <div>
               <div class="d-flex justify-content-between align-items-baseline mb-2">
                 <span class="small fw-semibold text-secondary">Trả góp tháng đầu:</span>
-                <span class="h5 fw-bold mb-0" id="loan-monthly" style="color: #FF6B00;">12.804.000 đ</span>
+                <span class="h5 fw-bold mb-0" id="loan-monthly" style="color: #C2410C;">12.804.000 đ</span>
               </div>
-              <button class="btn btn-sm w-100 fw-bold rounded-2 py-2 text-white" style="background-color: #FF6B00;" onclick="calculateLoanEstimate()">
+              <button class="btn btn-sm w-100 fw-bold rounded-2 py-2 text-white" style="background-color: #C2410C; color: #FFFFFF !important;" onclick="calculateLoanEstimate()">
                 Cập nhật
               </button>
             </div>
@@ -1484,19 +1490,19 @@
           <div class="portal-tool-card">
             <div>
               <div class="d-flex align-items-center gap-2 mb-3">
-                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #9A3412; width: 36px; height: 36px;">
                   <i class="bi bi-arrow-left-right"></i>
                 </div>
                 <div>
-                  <h4 class="h6 fw-bold text-dark mb-0">So Sánh Nhanh Thông Số</h4>
-                  <span class="text-muted" style="font-size: 0.72rem;">Chọn 2 mẫu xe để đối chiếu trực quan</span>
+                  <h3 class="h6 fw-bold text-dark mb-0">So Sánh Nhanh Thông Số</h3>
+                  <span class="text-muted" style="font-size: 0.75rem;">Chọn 2 mẫu xe để đối chiếu trực quan</span>
                 </div>
               </div>
 
               <!-- Dropdown chọn xe 1 và xe 2 -->
               <div class="row g-2 mb-2.5">
                 <div class="col-6">
-                  <label class="portal-field-label" style="font-size: 0.68rem;">Mẫu xe A</label>
+                  <label class="portal-field-label" style="font-size: 0.75rem;">Mẫu xe A</label>
                   <select class="form-select form-select-sm portal-field-select" id="compare-car-1" onchange="updateCarComparison()" style="font-size: 0.76rem;">
                     <option value="car-2" selected>Mazda CX-5 (799 Tr)</option>
                     <option value="car-1">Hyundai Tucson (765 Tr)</option>
@@ -1507,7 +1513,7 @@
                   </select>
                 </div>
                 <div class="col-6">
-                  <label class="portal-field-label" style="font-size: 0.68rem;">Mẫu xe B</label>
+                  <label class="portal-field-label" style="font-size: 0.75rem;">Mẫu xe B</label>
                   <select class="form-select form-select-sm portal-field-select" id="compare-car-2" onchange="updateCarComparison()" style="font-size: 0.76rem;">
                     <option value="car-1" selected>Hyundai Tucson (765 Tr)</option>
                     <option value="car-2">Mazda CX-5 (799 Tr)</option>
@@ -1520,20 +1526,20 @@
               </div>
 
               <!-- Bảng đối chiếu thông số thời gian thực -->
-              <div class="p-2.5 rounded-3 border mb-3" style="background-color: #F8FAFC;">
+              <div class="pt-3 mt-1 border-top mb-3">
                 <div class="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom">
                   <div>
                     <div class="fw-bold small text-dark" id="cmp-name-1">Mazda CX-5</div>
-                    <span class="small fw-bold" id="cmp-price-1" style="color: #FF6B00;">799 Triệu</span>
+                    <span class="small fw-bold" id="cmp-price-1" style="color: #C2410C;">799 Triệu</span>
                   </div>
-                  <span class="badge rounded-pill bg-secondary-subtle text-dark px-2 py-1" style="font-size: 0.68rem;">VS</span>
+                  <span class="badge rounded-pill bg-secondary-subtle text-dark px-2 py-1" style="font-size: 0.75rem;">VS</span>
                   <div class="text-end">
                     <div class="fw-bold small text-dark" id="cmp-name-2">Hyundai Tucson</div>
-                    <span class="small fw-bold" id="cmp-price-2" style="color: #FF6B00;">765 Triệu</span>
+                    <span class="small fw-bold" id="cmp-price-2" style="color: #C2410C;">765 Triệu</span>
                   </div>
                 </div>
 
-                <div class="small" style="font-size: 0.74rem;">
+                <div class="small" style="font-size: 0.75rem;">
                   <div class="d-flex justify-content-between py-1 border-bottom">
                     <span class="text-muted">Năm SX &amp; ODO:</span>
                     <span class="fw-medium text-end" id="cmp-year-odo">2023 (12k km) vs 2022 (18k km)</span>
@@ -1551,7 +1557,7 @@
             </div>
 
             <div>
-              <a href="cars.html" class="btn btn-sm w-100 fw-bold rounded-2 py-2" style="background-color: #FFF7ED; color: #FF6B00; border: 1px solid #FFEDD5;">
+              <a href="cars.html" class="btn btn-sm w-100 fw-bold rounded-2 py-2" style="background-color: #FFF7ED; color: #9A3412; border: 1px solid #FFEDD5;">
                 <i class="bi bi-search me-1"></i> Khám phá kho so sánh xe chi tiết
               </a>
             </div>
@@ -1578,20 +1584,20 @@
         <!-- Bài 1 -->
         <div class="col">
           <div class="portal-article-card h-100" onclick="openArticleModal(1)" title="Nhấn để đọc chi tiết bài viết">
-            <div class="position-relative overflow-hidden" style="height: 160px;">
+            <div class="position-relative overflow-hidden rounded-3" style="height: 160px;">
               <img src="assets/images/cars/tucson.jpg" class="w-100 h-100 object-fit-cover portal-article-img" alt="Kiểm tra xe cũ">
-              <span class="badge position-absolute top-0 start-0 m-2 fw-semibold px-2 py-1 shadow-xs" style="background-color: #FFF7ED; color: #EA580C; font-size: 0.68rem;">KINH NGHIỆM MUA XE</span>
             </div>
             <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h4 class="portal-article-title mb-2">Các Bước Kiểm Tra Ô Tô Cũ Tránh Mua Phải Xe Bị Thủy Kích</h4>
+                <span class="badge fw-semibold px-2 py-1 mb-2" style="background-color: #FFF7ED; color: #9A3412; font-size: 0.75rem;">KINH NGHIỆM MUA XE</span>
+                <h3 class="portal-article-title mb-2">Các Bước Kiểm Tra Ô Tô Cũ Tránh Mua Phải Xe Bị Thủy Kích</h3>
                 <p class="text-muted small mb-0" style="font-size: 0.78rem; line-height: 1.5;">
                   Hướng dẫn chi tiết cách soi ốc giàn đầu, dây an toàn, mùi ẩm mốc gầm sàn và check lịch sử bảo dưỡng xe.
                 </p>
               </div>
-              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.72rem;">
+              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.75rem;">
                 <span><i class="bi bi-calendar3 me-1"></i>14/10/2026</span>
-                <span class="text-orange fw-semibold" style="color: #FF6B00;">Đọc tiếp &rarr;</span>
+                <span class="text-orange fw-semibold" style="color: #C2410C;">Đọc tiếp &rarr;</span>
               </div>
             </div>
           </div>
@@ -1600,20 +1606,20 @@
         <!-- Bài 2 -->
         <div class="col">
           <div class="portal-article-card h-100" onclick="openArticleModal(2)" title="Nhấn để đọc chi tiết bài viết">
-            <div class="position-relative overflow-hidden" style="height: 160px;">
+            <div class="position-relative overflow-hidden rounded-3" style="height: 160px;">
               <img src="assets/images/cars/vf8.jpg" class="w-100 h-100 object-fit-cover portal-article-img" alt="VinFast VF 8">
-              <span class="badge position-absolute top-0 start-0 m-2 fw-semibold px-2 py-1 shadow-xs" style="background-color: #E0F2FE; color: #0284C7; font-size: 0.68rem;">ĐÁNH GIÁ XE ĐIỆN</span>
             </div>
             <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h4 class="portal-article-title mb-2">Trải Nghiệm Thực Tế VinFast VF 8 Sau Quãng Đường Dài</h4>
+                <span class="badge fw-semibold px-2 py-1 mb-2" style="background-color: #E0F2FE; color: #0369A1; font-size: 0.75rem;">ĐÁNH GIÁ XE ĐIỆN</span>
+                <h3 class="portal-article-title mb-2">Trải Nghiệm Thực Tế VinFast VF 8 Sau Quãng Đường Dài</h3>
                 <p class="text-muted small mb-0" style="font-size: 0.78rem; line-height: 1.5;">
                   Chi phí sạc điện so với xăng, hiệu quả trạm sạc trên các tuyến quốc lộ và cảm giác lái trên đường trường.
                 </p>
               </div>
-              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.72rem;">
+              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.75rem;">
                 <span><i class="bi bi-calendar3 me-1"></i>11/10/2026</span>
-                <span class="text-orange fw-semibold" style="color: #FF6B00;">Đọc tiếp &rarr;</span>
+                <span class="text-orange fw-semibold" style="color: #C2410C;">Đọc tiếp &rarr;</span>
               </div>
             </div>
           </div>
@@ -1622,20 +1628,20 @@
         <!-- Bài 3 -->
         <div class="col">
           <div class="portal-article-card h-100" onclick="openArticleModal(3)" title="Nhấn để đọc chi tiết bài viết">
-            <div class="position-relative overflow-hidden" style="height: 160px;">
+            <div class="position-relative overflow-hidden rounded-3" style="height: 160px;">
               <img src="assets/images/cars/cx5.jpg" class="w-100 h-100 object-fit-cover portal-article-img" alt="SUV gia đình">
-              <span class="badge position-absolute top-0 start-0 m-2 fw-semibold px-2 py-1 shadow-xs" style="background-color: #FEF3C7; color: #D97706; font-size: 0.68rem;">TƯ VẤN CHỌN XE</span>
             </div>
             <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h4 class="portal-article-title mb-2">Gợi Ý Mẫu SUV Đô Thị Tầm Giá 600 - 800 Triệu Phổ Biến</h4>
+                <span class="badge fw-semibold px-2 py-1 mb-2" style="background-color: #FEF3C7; color: #92400E; font-size: 0.75rem;">TƯ VẤN CHỌN XE</span>
+                <h3 class="portal-article-title mb-2">Gợi Ý Mẫu SUV Đô Thị Tầm Giá 600 - 800 Triệu Phổ Biến</h3>
                 <p class="text-muted small mb-0" style="font-size: 0.78rem; line-height: 1.5;">
                   So sánh chi phí sử dụng và độ bền bỉ giữa Toyota Corolla Cross, Mazda CX-5, Hyundai Creta và Kia Seltos.
                 </p>
               </div>
-              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.72rem;">
+              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.75rem;">
                 <span><i class="bi bi-calendar3 me-1"></i>08/10/2026</span>
-                <span class="text-orange fw-semibold" style="color: #FF6B00;">Đọc tiếp &rarr;</span>
+                <span class="text-orange fw-semibold" style="color: #C2410C;">Đọc tiếp &rarr;</span>
               </div>
             </div>
           </div>
@@ -1644,20 +1650,20 @@
         <!-- Bài 4 -->
         <div class="col">
           <div class="portal-article-card h-100" onclick="openArticleModal(4)" title="Nhấn để đọc chi tiết bài viết">
-            <div class="position-relative overflow-hidden" style="height: 160px;">
+            <div class="position-relative overflow-hidden rounded-3" style="height: 160px;">
               <img src="assets/images/cars/c200.jpg" class="w-100 h-100 object-fit-cover portal-article-img" alt="Thủ tục sang tên">
-              <span class="badge position-absolute top-0 start-0 m-2 fw-semibold px-2 py-1 shadow-xs" style="background-color: #FFF7ED; color: #EA580C; font-size: 0.68rem;">THỦ TỤC PHÁP LÝ</span>
             </div>
             <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
               <div>
-                <h4 class="portal-article-title mb-2">Quy Trình Sang Tên Đổi Chủ Và Kiểm Tra Phạt Nguội Ô Tô</h4>
+                <span class="badge fw-semibold px-2 py-1 mb-2" style="background-color: #FFF7ED; color: #9A3412; font-size: 0.75rem;">THỦ TỤC PHÁP LÝ</span>
+                <h3 class="portal-article-title mb-2">Quy Trình Sang Tên Đổi Chủ Và Kiểm Tra Phạt Nguội Ô Tô</h3>
                 <p class="text-muted small mb-0" style="font-size: 0.78rem; line-height: 1.5;">
                   Hồ sơ cần chuẩn bị, chi phí công chứng và các bước đăng ký biển định danh theo quy định hiện hành.
                 </p>
               </div>
-              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.72rem;">
+              <div class="pt-2 mt-3 border-top d-flex justify-content-between align-items-center text-muted" style="font-size: 0.75rem;">
                 <span><i class="bi bi-calendar3 me-1"></i>05/10/2026</span>
-                <span class="text-orange fw-semibold" style="color: #FF6B00;">Đọc tiếp &rarr;</span>
+                <span class="text-orange fw-semibold" style="color: #C2410C;">Đọc tiếp &rarr;</span>
               </div>
             </div>
           </div>
@@ -1673,12 +1679,12 @@
         <!-- 1. Thông tin rõ ràng -->
         <div class="col">
           <div class="value-pill-card h-100">
-            <div class="rounded-circle value-icon-red p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <div class="rounded-circle value-icon-red p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
               <i class="bi bi-card-text fs-5"></i>
             </div>
             <div>
               <div class="fw-bold text-dark small">Thông Tin Rõ Ràng</div>
-              <span class="text-muted" style="font-size: 0.74rem;">Mô tả thông số, hình ảnh thực tế và giá bán do người đăng cung cấp công khai.</span>
+              <span class="text-muted" style="font-size: 0.75rem;">Mô tả thông số, hình ảnh thực tế và giá bán do người đăng cung cấp công khai.</span>
             </div>
           </div>
         </div>
@@ -1686,12 +1692,12 @@
         <!-- 2. Liên hệ trực tiếp -->
         <div class="col">
           <div class="value-pill-card h-100">
-            <div class="rounded-circle value-icon-blue p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <div class="rounded-circle value-icon-blue p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
               <i class="bi bi-telephone-inbound-fill fs-5"></i>
             </div>
             <div>
               <div class="fw-bold text-dark small">Liên Hệ Trực Tiếp</div>
-              <span class="text-muted" style="font-size: 0.74rem;">Người mua gọi điện hoặc nhắn tin trực tiếp với người bán, không qua trung gian.</span>
+              <span class="text-muted" style="font-size: 0.75rem;">Người mua gọi điện hoặc nhắn tin trực tiếp với người bán, không qua trung gian.</span>
             </div>
           </div>
         </div>
@@ -1699,12 +1705,12 @@
         <!-- 3. Hẹn gặp xem xe -->
         <div class="col">
           <div class="value-pill-card h-100">
-            <div class="rounded-circle value-icon-emerald p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <div class="rounded-circle value-icon-emerald p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
               <i class="bi bi-car-front-fill fs-5"></i>
             </div>
             <div>
               <div class="fw-bold text-dark small">Hẹn Gặp Xem Xe</div>
-              <span class="text-muted" style="font-size: 0.74rem;">Khuyến khích người mua gặp mặt trực tiếp để kiểm tra xe và trao đổi cụ thể.</span>
+              <span class="text-muted" style="font-size: 0.75rem;">Khuyến khích người mua gặp mặt trực tiếp để kiểm tra xe và trao đổi cụ thể.</span>
             </div>
           </div>
         </div>
@@ -1712,12 +1718,12 @@
         <!-- 4. Minh bạch thủ tục -->
         <div class="col">
           <div class="value-pill-card h-100">
-            <div class="rounded-circle value-icon-orange p-2.5 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+            <div class="rounded-circle value-icon-orange p-2 d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
               <i class="bi bi-shield-check fs-5"></i>
             </div>
             <div>
               <div class="fw-bold text-dark small">Minh Bạch Thủ Tục</div>
-              <span class="text-muted" style="font-size: 0.74rem;">Hai bên chủ động kiểm tra giấy tờ gốc và thực hiện công chứng theo đúng quy định.</span>
+              <span class="text-muted" style="font-size: 0.75rem;">Hai bên chủ động kiểm tra giấy tờ gốc và thực hiện công chứng theo đúng quy định.</span>
             </div>
           </div>
         </div>
@@ -1749,7 +1755,7 @@
 
         <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Về OtoMarket</h5>
+          <h4 class="footer-title">Về OtoMarket</h4>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
@@ -1761,7 +1767,7 @@
 
         <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <h4 class="footer-title">Dành Cho Khách Hàng</h4>
           <ul class="footer-links">
             <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
             <li><a href="#tool-loan-calculator">Ước tính vay trả góp</a></li>
@@ -1773,7 +1779,7 @@
 
         <!-- Cột 4: Top thương hiệu -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <h4 class="footer-title">Các Dòng Xe Tiêu Biểu</h4>
           <ul class="footer-links">
             <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
             <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
@@ -1785,17 +1791,17 @@
 
         <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <h4 class="footer-title">Văn Phòng & Hotline</h4>
           <div class="p-3 rounded-3 bg-white border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
-              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #FF6B00; width: 36px; height: 36px;">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #FFF7ED; color: #9A3412; width: 36px; height: 36px;">
                 <i class="bi bi-telephone-fill"></i>
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>
@@ -1822,31 +1828,31 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
         <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-telephone-outbound me-2" style="color: #FF6B00;"></i>Thông tin liên hệ người bán</h5>
+          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-telephone-outbound me-2" style="color: #C2410C;"></i>Thông tin liên hệ người bán</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center py-4">
-          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 64px; height: 64px; background-color: #FF6B00;">
+          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 64px; height: 64px; background-color: #C2410C;">
             <i class="bi bi-person-lines-fill fs-2"></i>
           </div>
           <h5 class="fw-bold mb-1" id="contact-car-title">Xe ô tô</h5>
           <p class="text-muted small mb-2" id="contact-seller-name">Người bán</p>
-          <div class="h3 fw-bold text-dark py-2 px-4 bg-light rounded-3 d-inline-block border mb-3" id="contact-phone-display">
+          <div class="h3 fw-bold text-dark py-2 px-4 mb-3" id="contact-phone-display">
             0901 202 626
           </div>
           <div class="d-flex flex-column gap-2 mx-auto" style="max-width: 340px;">
-            <a href="tel:0901202626" id="contact-call-link" class="btn btn-cta-orange py-2.5 fw-bold d-flex align-items-center justify-content-center gap-2">
+            <a href="tel:0901202626" id="contact-call-link" class="btn btn-cta-orange py-2 fw-bold d-flex align-items-center justify-content-center gap-2">
               <i class="bi bi-telephone-fill"></i> Gọi điện thoại ngay
             </a>
-            <a href="https://zalo.me/0901202626" id="contact-zalo-link" target="_blank" class="btn btn-outline-primary py-2.5 fw-bold d-flex align-items-center justify-content-center gap-2">
+            <a href="https://zalo.me/0901202626" id="contact-zalo-link" target="_blank" class="btn btn-outline-primary py-2 fw-bold d-flex align-items-center justify-content-center gap-2">
               <i class="bi bi-chat-dots-fill"></i> Nhắn tin trao đổi qua Zalo
             </a>
             <button class="btn btn-light border py-2" onclick="copyContactPhone()">
               <i class="bi bi-clipboard me-1"></i> Sao chép số điện thoại
             </button>
           </div>
-          <div class="p-2.5 rounded-3 bg-light border small text-muted mt-3 text-start">
-            <i class="bi bi-info-circle-fill me-1" style="color: #FF6B00;"></i> <strong>Lưu ý giao dịch:</strong> OtoMarket là sàn kết nối trực tiếp Người Mua và Người Bán. Quý khách liên hệ xem xe thực tế và giao dịch trực tiếp. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
+          <div class="pt-3 border-top small text-secondary mt-3 text-start">
+            <i class="bi bi-info-circle-fill me-1" style="color: #C2410C;"></i> <strong>Lưu ý giao dịch:</strong> OtoMarket là sàn kết nối trực tiếp Người Mua và Người Bán. Quý khách liên hệ xem xe thực tế và giao dịch trực tiếp. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
           </div>
         </div>
       </div>
@@ -1861,24 +1867,24 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content rounded-4 border-0 shadow-lg overflow-hidden">
         <div class="position-relative" style="height: 220px; background-color: #0F172A;">
-          <img id="art-modal-img" src="assets/images/cars/tucson.jpg" class="w-100 h-100 object-fit-cover opacity-75" alt="Ảnh bài viết">
-          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3 bg-dark bg-opacity-50 p-2 rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
-          <div class="position-absolute bottom-0 start-0 p-4 text-white">
-            <span class="badge fw-semibold px-2.5 py-1 mb-2 shadow-xs" id="art-modal-cat" style="background-color: #FF6B00; font-size: 0.72rem;">KINH NGHIỆM</span>
-            <h3 class="h5 fw-bold mb-0 text-white" id="art-modal-title">Tiêu đề bài viết</h3>
-          </div>
+          <img id="art-modal-img" src="assets/images/cars/tucson.jpg" class="w-100 h-100 object-fit-cover" alt="Ảnh bài viết">
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3 bg-dark bg-opacity-75 p-2 rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
+          <div class="mb-3">
+            <span class="badge fw-semibold px-2 py-1 mb-2" id="art-modal-cat" style="background-color: #C2410C; color: #FFFFFF; font-size: 0.75rem;">KINH NGHIỆM</span>
+            <h3 class="h5 fw-bold mb-0 text-dark" id="art-modal-title">Tiêu đề bài viết</h3>
+          </div>
           <div class="d-flex align-items-center gap-3 text-muted small pb-3 mb-3 border-bottom">
-            <span><i class="bi bi-calendar3 me-1" style="color: #FF6B00;"></i> <span id="art-modal-date">14/10/2026</span></span>
-            <span><i class="bi bi-clock me-1" style="color: #FF6B00;"></i> <span id="art-modal-readtime">5 phút đọc</span></span>
+            <span><i class="bi bi-calendar3 me-1" style="color: #C2410C;"></i> <span id="art-modal-date">14/10/2026</span></span>
+            <span><i class="bi bi-clock me-1" style="color: #C2410C;"></i> <span id="art-modal-readtime">5 phút đọc</span></span>
             <span><i class="bi bi-shield-check me-1 text-success"></i> Thẩm định &amp; Biên soạn bởi OtoMarket</span>
           </div>
           <div id="art-modal-content" class="article-body-text">
             <!-- Nội dung bài viết được nạp động từ JS -->
           </div>
           <div class="pt-3 mt-4 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <span class="text-muted small"><i class="bi bi-info-circle me-1" style="color: #FF6B00;"></i> Bạn đang tìm chiếc xe ưng ý hoặc cần tư vấn trực tiếp?</span>
+            <span class="text-muted small"><i class="bi bi-info-circle me-1" style="color: #C2410C;"></i> Bạn đang tìm chiếc xe ưng ý hoặc cần tư vấn trực tiếp?</span>
             <div class="d-flex gap-2">
               <a href="cars.html" class="btn btn-outline-secondary btn-sm px-3 fw-semibold rounded-2">Khám phá kho xe đang bán</a>
               <button type="button" class="btn btn-cta-orange btn-sm px-3 fw-semibold rounded-2" data-bs-dismiss="modal">Đã hiểu</button>
@@ -2153,7 +2159,7 @@
                   <img src="${car.image}" alt="${car.title}" loading="lazy">
                 </a>
                 <span class="portal-car-badge ${car.badgeClass}">${car.badge}</span>
-                <span class="badge bg-dark bg-opacity-75 text-white position-absolute bottom-0 start-0 m-2 px-2 py-0.5" style="font-size: 0.65rem; z-index: 2;"><i class="bi bi-camera me-1"></i>4 ảnh</span>
+                <span class="badge bg-dark bg-opacity-75 text-white position-absolute bottom-0 start-0 m-2 px-2 py-1" style="font-size: 0.75rem; z-index: 2;"><i class="bi bi-camera me-1"></i>4 ảnh</span>
                 <button class="portal-car-fav ${isFav ? 'active' : ''}" onclick="toggleCarFav(event, '${car.id}')" title="Lưu tin">
                   <i class="bi ${heartClass}"></i>
                 </button>
@@ -2162,7 +2168,7 @@
               <!-- Nội dung thẻ xe -->
               <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
                 <div>
-                  <div class="d-flex align-items-center gap-1.5 mb-1" style="font-size: 0.72rem; color: #0284C7; font-weight: 600;">
+                  <div class="d-flex align-items-center gap-1.5 mb-1" style="font-size: 0.75rem; color: #0369A1; font-weight: 600;">
                     <i class="bi bi-person-check-fill"></i>
                     <span>${car.sellerTag}</span>
                   </div>
@@ -2171,14 +2177,14 @@
                     <h3 class="fw-bold fs-6 text-dark mb-1 text-truncate" title="${car.title}">${car.title}</h3>
                   </a>
 
-                  <div class="d-flex align-items-center gap-1.5 text-muted small mb-2" style="font-size: 0.74rem;">
+                  <div class="d-flex align-items-center gap-1.5 text-muted small mb-2" style="font-size: 0.75rem;">
                     <span>${car.year}</span> &bull;
                     <span>${car.mileage}</span> &bull;
                     <span>${car.transmission}</span> &bull;
                     <span>${car.fuel}</span>
                   </div>
 
-                  <div class="small text-muted mb-2 text-truncate" style="font-size: 0.72rem;">
+                  <div class="small text-muted mb-2 text-truncate" style="font-size: 0.75rem;">
                     <i class="bi bi-geo-alt me-1"></i>${car.location}
                   </div>
                 </div>
@@ -2435,11 +2441,11 @@
         image: "assets/images/cars/tucson.jpg",
         content: `
           <p class="lead text-secondary">Thủy kích và tai nạn đâm đụng là hai nỗi lo lớn nhất của người mua xe đã qua sử dụng. Dưới đây là các kỹ thuật thực tế giúp bạn phát hiện xe ngập nước chỉ trong 15 phút:</p>
-          <h6 class="fw-bold text-dark mt-3">1. Soi kỹ ngấn bùn và ốc vít gầm ghế</h6>
+          <h4 class="fw-bold text-dark mt-3">1. Soi kỹ ngấn bùn và ốc vít gầm ghế</h4>
           <p class="text-muted small">Kéo hết cỡ dây an toàn ra phía ngoài: Nếu phần cuối dây có vết ố vàng, ngấn nước loang lổ hoặc mùi ẩm mốc, xe từng ngập nước. Tiếp tục kiểm tra các bu-lông chân ghế xem có dấu hiệu mở ốc hoặc rỉ sét chân ren hay không.</p>
-          <h6 class="fw-bold text-dark mt-3">2. Kiểm tra khoang máy và ống hút gió</h6>
+          <h4 class="fw-bold text-dark mt-3">2. Kiểm tra khoang máy và ống hút gió</h4>
           <p class="text-muted small">Quan sát keo chỉ nắp capo, giắc cắm điện động cơ và các kẹp kim loại. Xe từng tháo máy đại tu do thủy kích sẽ để lại vết trầy cờ-lê rõ rệt trên ốc mặt máy và ốc chân hộp số.</p>
-          <h6 class="fw-bold text-dark mt-3">3. Khuyến nghị an toàn từ OtoMarket</h6>
+          <h4 class="fw-bold text-dark mt-3">3. Khuyến nghị an toàn từ OtoMarket</h4>
           <p class="text-muted small">Hãy luôn hẹn xem xe ban ngày, lái thử qua các đoạn đường xóc và nhờ gara uy tín nâng cầu kiểm tra khung gầm trước khi chuyển tiền giao dịch.</p>
         `
       },
@@ -2451,9 +2457,9 @@
         image: "assets/images/cars/vf8.jpg",
         content: `
           <p class="lead text-secondary">VinFast VF 8 đang là mẫu D-SUV thuần điện nổi bật tại thị trường Việt Nam. Sau các hành trình thực tế xuyên tỉnh, đây là những đánh giá chi tiết:</p>
-          <h6 class="fw-bold text-dark mt-3">1. Chi phí vận hành tối ưu</h6>
+          <h4 class="fw-bold text-dark mt-3">1. Chi phí vận hành tối ưu</h4>
           <p class="text-muted small">Chi phí sạc điện trạm công cộng trung bình chỉ khoảng 500 - 650 đ/km, tiết kiệm đáng kể so với xe xăng cùng phân khúc 2.0L Turbo. Mạng lưới trạm sạc dày đặc trên các tuyến quốc lộ giúp việc sạc nhanh 20-80% trong khoảng 25 phút rất thuận tiện.</p>
-          <h6 class="fw-bold text-dark mt-3">2. Cảm giác lái và công nghệ an toàn</h6>
+          <h4 class="fw-bold text-dark mt-3">2. Cảm giác lái và công nghệ an toàn</h4>
           <p class="text-muted small">Công suất hơn 400 mã lực cùng hệ dẫn động 4 bánh toàn thời gian (AWD) cho lực kéo tức thì. Gói tính năng hỗ trợ lái nâng cao ADAS hoạt động chuẩn xác, giữ làn và giữ khoảng cách thông minh trên đường cao tốc.</p>
         `
       },
@@ -2465,11 +2471,11 @@
         image: "assets/images/cars/cx5.jpg",
         content: `
           <p class="lead text-secondary">Tầm giá 600 - 800 triệu là phân khúc được quan tâm nhiều nhất, phù hợp cho nhu cầu gia đình và di chuyển đô thị linh hoạt:</p>
-          <h6 class="fw-bold text-dark mt-3">1. Mazda CX-5 (Lướt 2022 - 2023)</h6>
+          <h4 class="fw-bold text-dark mt-3">1. Mazda CX-5 (Lướt 2022 - 2023)</h4>
           <p class="text-muted small">Thiết kế KODO thanh lịch, nội thất hoàn thiện chỉn chu và khả năng giữ giá vượt trội trên thị trường xe đã qua sử dụng.</p>
-          <h6 class="fw-bold text-dark mt-3">2. Toyota Corolla Cross 1.8V</h6>
+          <h4 class="fw-bold text-dark mt-3">2. Toyota Corolla Cross 1.8V</h4>
           <p class="text-muted small">Thương hiệu bền bỉ, không gian ngồi rộng rãi, gói an toàn TSS tiên tiến và phụ tùng thay thế cực kỳ sẵn có với chi phí hợp lý.</p>
-          <h6 class="fw-bold text-dark mt-3">3. Hyundai Tucson</h6>
+          <h4 class="fw-bold text-dark mt-3">3. Hyundai Tucson</h4>
           <p class="text-muted small">Kiểu dáng phá cách hiện đại, nhiều tính năng tiện nghi giải trí cao cấp, vận hành êm ái thích hợp cho gia đình trẻ.</p>
         `
       },
@@ -2481,11 +2487,11 @@
         image: "assets/images/cars/c200.jpg",
         content: `
           <p class="lead text-secondary">Theo quy định về biển số định danh hiện hành, quy trình mua bán ô tô cũ giữa hai cá nhân cần thực hiện các bước sau:</p>
-          <h6 class="fw-bold text-dark mt-3">1. Tra cứu lỗi phạt nguội trước ngày công chứng</h6>
+          <h4 class="fw-bold text-dark mt-3">1. Tra cứu lỗi phạt nguội trước ngày công chứng</h4>
           <p class="text-muted small">Kiểm tra trực tuyến trên Cổng thông tin Cục CSGT hoặc ứng dụng VNeID để xác nhận xe không còn lỗi vi phạm chưa nộp phạt.</p>
-          <h6 class="fw-bold text-dark mt-3">2. Ký hợp đồng mua bán công chứng</h6>
+          <h4 class="fw-bold text-dark mt-3">2. Ký hợp đồng mua bán công chứng</h4>
           <p class="text-muted small">Người mua và người bán xuất trình CCCD gắn chip, giấy tờ xe bản gốc tại văn phòng công chứng để hoàn tất hợp đồng có giá trị pháp lý.</p>
-          <h6 class="fw-bold text-dark mt-3">3. Thu hồi biển cũ và bấm biển số mới</h6>
+          <h4 class="fw-bold text-dark mt-3">3. Thu hồi biển cũ và bấm biển số mới</h4>
           <p class="text-muted small">Người bán thực hiện thủ tục thu hồi đăng ký biển số tại địa phương. Sau đó người mua nộp lệ phí trước bạ 2% và làm thủ tục đăng ký, bấm biển định danh mới.</p>
         `
       }

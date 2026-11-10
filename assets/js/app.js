@@ -961,7 +961,7 @@ function syncHeaderUserUI() {
   <div class="text-muted" style="font-size: 0.74rem;">${user.email}</div>
 </li>
 <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person-badge me-2 text-primary"></i>Hồ sơ cá nhân</a></li>
-<li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2" style="color: #FF6B00;"></i>Quản lý tin đăng</a></li>
+<li><a class="dropdown-item py-2" href="my-listings.html"><i class="bi bi-card-checklist me-2" style="color: #C2410C;"></i>Quản lý tin đăng</a></li>
 <li><a class="dropdown-item py-2" href="favorites.html"><i class="bi bi-heart me-2 text-danger"></i>Xe yêu thích</a></li>
 <li><hr class="dropdown-divider my-1"></li>
 <li><button class="dropdown-item py-2 text-danger" onclick="logoutUser()"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</button></li>
@@ -971,7 +971,7 @@ function syncHeaderUserUI() {
   } else {
     authSection.innerHTML = `
       <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
-        <i class="bi bi-person-fill" style="color: #FF6B00;"></i>
+        <i class="bi bi-person-fill"></i>
         <span class="user-name-label">Đăng nhập</span>
       </a>
     `;

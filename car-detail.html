@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -22,7 +22,7 @@
        ========================================================================== */
     body.detail-bento-body,
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       background-color: #EEF2F6 !important;
       color: #0F172A !important;
       -webkit-font-smoothing: antialiased;
@@ -74,10 +74,10 @@
       border-color: #CBD5E1 !important;
     }
     .nav-link-portal.active {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 700 !important;
       background-color: #FFF7ED !important;
-      border-color: #FF6B00 !important;
+      border-color: #C2410C !important;
     }
 
     /* USER DROPDOWN TRÊN TOPBAR */
@@ -109,8 +109,8 @@
     .topbar-user-btn:hover,
     .topbar-user-btn:focus,
     .topbar-user-btn.show {
-      background: #FF6B00 !important;
-      border-color: #FF6B00 !important;
+      background: #C2410C !important;
+      border-color: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
@@ -127,7 +127,7 @@
       width: 22px !important;
       height: 22px !important;
       border-radius: 50% !important;
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       flex-shrink: 0 !important;
       transition: all 0.2s ease !important;
@@ -135,17 +135,17 @@
     .user-avatar-dot i,
     .topbar-user-btn .user-avatar-dot i {
       color: #FFFFFF !important;
-      font-size: 0.74rem !important;
+      font-size: 0.75rem !important;
       line-height: 1 !important;
     }
     .topbar-user-btn:hover .user-avatar-dot,
     .topbar-user-btn.show .user-avatar-dot {
       background: #FFFFFF !important;
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .topbar-user-btn:hover .user-avatar-dot i,
     .topbar-user-btn.show .user-avatar-dot i {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .topbar-dropdown-menu,
     #navbar-auth-section .dropdown-menu {
@@ -172,13 +172,13 @@
     .topbar-dropdown-menu .dropdown-item:focus,
     .topbar-dropdown-menu .dropdown-item.active {
       background-color: #FFF7ED !important;
-      color: #EA580C !important;
+      color: #9A3412 !important;
     }
 
     /* BREADCRUMB THANH LỊCH */
     .bento-breadcrumb {
       font-size: 0.86rem;
-      color: #64748B;
+      color: #475569;
       margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
@@ -186,12 +186,12 @@
       flex-wrap: wrap;
     }
     .bento-breadcrumb a {
-      color: #64748B;
+      color: #475569;
       text-decoration: none;
       transition: color 0.15s ease;
     }
     .bento-breadcrumb a:hover {
-      color: #FF6B00;
+      color: #C2410C;
     }
     .bento-breadcrumb .active-crumb {
       color: #0F172A;
@@ -254,7 +254,7 @@
       font-size: 0.80rem;
       font-weight: 700;
       letter-spacing: 0.2px;
-      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
     }
     .gallery-thumb-row {
       display: flex;
@@ -282,12 +282,12 @@
     }
     .gallery-thumb:hover {
       opacity: 0.95;
-      border-color: #94A3B8;
+      border-color: #475569;
       transform: translateY(-2px);
     }
     .gallery-thumb.active {
       opacity: 1;
-      border-color: #FF6B00 !important;
+      border-color: #C2410C !important;
       box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08);
       transform: translateY(-2px);
     }
@@ -310,28 +310,26 @@
       }
     }
     .bento-spec-item {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 12px 10px;
+      background: transparent;
+      border: none;
+      border-top: 1px solid #E2E8F0;
+      border-radius: 0;
+      padding: 12px 8px;
       text-align: center;
       transition: all 0.2s ease;
     }
     .bento-spec-item:hover {
-      background: #FFFFFF;
-      border-color: #CBD5E1;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+      background: #F8FAFC;
     }
     .bento-spec-icon {
       font-size: 1.25rem;
-      color: #0D9488;
+      color: #0F766E;
       margin-bottom: 4px;
       display: inline-block;
     }
     .bento-spec-label {
-      font-size: 0.72rem;
-      color: #64748B;
+      font-size: 0.75rem;
+      color: #475569;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: 600;
@@ -368,9 +366,9 @@
       transition: all 0.2s ease;
     }
     .inspection-pillar-card:hover {
-      border-color: #0D9488;
+      border-color: #0F766E;
       background: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.08);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
     }
     .inspection-pillar-title {
       font-size: 0.92rem;
@@ -395,8 +393,8 @@
     .lang-pill-btn {
       border: none;
       background: transparent;
-      color: #64748B;
-      font-size: 0.74rem;
+      color: #475569;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 16px;
@@ -409,7 +407,7 @@
       background: #E2E8F0;
     }
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
@@ -419,14 +417,14 @@
       position: static !important;
     }
     .btn-hotline-call {
-      background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%) !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
       font-size: 1.02rem !important;
       border: none !important;
       border-radius: 12px !important;
       padding: 12px 18px !important;
-      box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transition: all 0.25s ease !important;
       display: flex;
       align-items: center;
@@ -436,18 +434,18 @@
     }
     .btn-hotline-call:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255, 107, 0, 0.45) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: #FFFFFF !important;
     }
     .btn-zalo-chat {
-      background-color: #0D9488 !important;
+      background-color: #0F766E !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
       font-size: 0.95rem !important;
       border: none !important;
       border-radius: 12px !important;
       padding: 11px 18px !important;
-      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transition: all 0.2s ease !important;
       display: flex;
       align-items: center;
@@ -457,7 +455,7 @@
     .btn-zalo-chat:hover {
       background-color: #0F766E !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(13, 148, 136, 0.35) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: #FFFFFF !important;
     }
 
@@ -491,7 +489,7 @@
     /* BADGE KIỂU DÁNG MỚI */
     .badge-showroom-certified {
       background-color: #F0FDFA;
-      color: #0D9488;
+      color: #0F766E;
       border: 1px solid #99F6E4;
       font-weight: 700;
       font-size: 0.80rem;
@@ -530,7 +528,7 @@
       transition: all 0.25s ease !important;
     }
     #related-cars-section:hover {
-      border-color: #94A3B8 !important;
+      border-color: #475569 !important;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08) !important;
     }
     #related-cars-section .related-car-card {
@@ -548,9 +546,9 @@
     }
     #related-cars-section .related-car-card:hover {
       background: #FFFFFF !important;
-      border-color: #FF6B00 !important;
+      border-color: #C2410C !important;
       transform: translateY(-4px) !important;
-      box-shadow: 0 12px 26px rgba(255, 107, 0, 0.12) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: inherit !important;
     }
     #related-cars-section .btn-outline-teal {
@@ -569,12 +567,16 @@
     }
     #related-cars-section .btn-outline-teal:hover {
       background-color: #FFF7ED !important;
-      border-color: #FF6B00 !important;
-      color: #FF6B00 !important;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15) !important;
+      border-color: #C2410C !important;
+      color: #C2410C !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transform: translateY(-1px) !important;
     }
 
+      .bg-teal-subtle { background-color: #CCFBF1 !important; color: #115E59 !important; }
+    .text-teal { color: #115E59 !important; }
+    .border-teal, .border-teal-subtle { border-color: #99F6E4 !important; }
+    .text-white { color: #FFFFFF !important; }
   </style>
 </head>
 <body class="detail-bento-body">
@@ -588,12 +590,12 @@
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
-          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-geo-alt-fill text-orange-theme"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
-          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-clock-fill text-orange-theme"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
@@ -609,7 +611,7 @@
           <span class="topbar-divider">|</span>
           <!-- Nút Đăng nhập / Tài khoản (Được hydrate động bởi app.js) -->
           <div id="navbar-auth-section">
-            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
               <i class="bi bi-person-fill text-orange-theme"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
@@ -656,7 +658,7 @@
             <i class="bi bi-heart-fill text-danger"></i>
             <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
           </a>
@@ -684,26 +686,26 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center py-4">
-          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 64px; height: 64px; background-color: var(--teal-color, #0D9488);">
+          <div class="rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center text-white" style="width: 64px; height: 64px; background-color: var(--teal-color, #0F766E);">
             <i class="bi bi-person-lines-fill fs-2"></i>
           </div>
           <h5 class="fw-bold mb-1" id="modal-seller-name">Người bán</h5>
           <p class="text-muted small mb-2">Số điện thoại liên hệ trực tiếp:</p>
-          <div class="h2 fw-bold text-dark py-2 px-4 bg-light rounded-3 d-inline-block border mb-3" id="modal-seller-phone">
+          <div class="h2 fw-bold text-dark py-2 mb-3" id="modal-seller-phone">
             0901 202 626
           </div>
           <div class="d-flex flex-column gap-2 mx-auto" style="max-width: 340px;">
             <a href="tel:0901202626" id="modal-call-link" class="btn-hotline-call">
               <i class="bi bi-telephone-fill"></i> Gọi điện thoại ngay
             </a>
-            <button class="btn btn-zalo-chat py-2.5 fw-bold" onclick="triggerZaloDemo()">
+            <button class="btn btn-zalo-chat py-2 fw-bold" onclick="triggerZaloDemo()">
               <i class="bi bi-chat-dots-fill"></i> Nhắn tin trao đổi qua Zalo
             </button>
             <button class="btn btn-light border py-2" onclick="copyPhoneToClipboard()">
               <i class="bi bi-clipboard me-1"></i> Sao chép số điện thoại
             </button>
           </div>
-          <div class="p-2.5 rounded-3 bg-light border small text-muted mt-3 text-start">
+          <div class="pt-2 border-top small text-secondary mt-3 text-start">
             <i class="bi bi-info-circle-fill text-teal me-1"></i> <strong>Lưu ý giao dịch:</strong> OtoMarket là sàn kết nối trực tiếp Người Mua và Người Bán. Quý khách liên hệ xem xe thực tế và giao dịch trực tiếp. Nền tảng không thu phí môi giới trung gian.
           </div>
         </div>
@@ -762,7 +764,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body py-3">
-          <div class="p-2.5 rounded-3 bg-teal-subtle text-teal border border-teal-subtle small mb-3" id="loan-modal-summary">
+          <div class="p-2 bg-teal-subtle text-teal small mb-3" id="loan-modal-summary">
             Đang tính toán gói vay...
           </div>
           <form id="loan-form" onsubmit="handleLoanConsultSubmit(event)">
@@ -795,11 +797,11 @@
                 </select>
               </div>
             </div>
-            <div class="p-2.5 rounded-3 bg-light border small text-muted mb-3">
+            <div class="pt-2 border-top small text-secondary mb-3">
               <i class="bi bi-shield-check text-teal me-1"></i> Hồ sơ vay được xử lý trực tiếp bởi phòng tín dụng ngân hàng đối tác. Miễn phí thẩm định, không thu phí trung gian.
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-teal py-2.5 fw-bold" style="background-color: #0D9488; color: #fff;">
+              <button type="submit" class="btn btn-teal py-2 fw-bold" style="background-color: #0F766E; color: #fff;">
                 <i class="bi bi-send-check me-1"></i> Gửi thông tin - Nhận kết quả duyệt sơ bộ
               </button>
             </div>
@@ -870,7 +872,7 @@
         <div class="col-lg-3 col-md-6">
           <h5 class="footer-title">Văn Phòng & Hotline</h5>
           <div class="p-3 rounded-3 bg-white border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
               <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
@@ -878,7 +880,7 @@
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>
@@ -963,11 +965,11 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-building me-1.5 text-secondary"></i>Showroom chính hãng</h6>
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-building me-1 text-secondary"></i>Showroom chính hãng</h6>
                 <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-4 flex-shrink-0" style="width: 58px; height: 58px; background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-4 flex-shrink-0" style="width: 58px; height: 58px; background: #0F766E;">
                   <i class="bi bi-building"></i>
                 </div>
                 <div>
@@ -989,9 +991,9 @@
                 </button>
               </div>
 
-              <div class="p-3 bg-light rounded-3 small text-muted border">
+              <div class="pt-3 border-top small text-secondary">
                 <div class="fw-bold text-dark mb-2"><i class="bi bi-shield-check text-teal me-1"></i> Lưu ý giao dịch an toàn:</div>
-                <ul class="list-unstyled mb-0 ps-1 d-flex flex-column gap-1.5">
+                <ul class="list-unstyled mb-0 ps-1 d-flex flex-column gap-1">
                   <li><i class="bi bi-geo-alt-fill text-teal me-1"></i> Hẹn gặp trực tiếp tại Showroom/địa chỉ thực tế để xem xe</li>
                   <li><i class="bi bi-file-earmark-text-fill text-teal me-1"></i> Đối chiếu kỹ giấy đăng ký, đăng kiểm và số khung/số máy gốc</li>
                   <li><i class="bi bi-speedometer2 text-teal me-1"></i> Yêu cầu lái thử thực tế và kiểm tra xe tại garage uy tín</li>
@@ -1010,7 +1012,7 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-person-fill me-1.5 text-secondary"></i>Người bán cá nhân</h6>
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-person-fill me-1 text-secondary"></i>Người bán cá nhân</h6>
                 <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực SĐT</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
@@ -1036,9 +1038,9 @@
                 </button>
               </div>
 
-              <div class="p-3 bg-light rounded-3 small text-muted border">
+              <div class="pt-3 border-top small text-secondary">
                 <div class="fw-bold text-dark mb-2"><i class="bi bi-shield-check text-teal me-1"></i> Lưu ý giao dịch an toàn:</div>
-                <ul class="list-unstyled mb-0 ps-1 d-flex flex-column gap-1.5">
+                <ul class="list-unstyled mb-0 ps-1 d-flex flex-column gap-1">
                   <li><i class="bi bi-geo-alt-fill text-teal me-1"></i> Hẹn gặp người bán tại địa điểm công cộng hoặc garage uy tín</li>
                   <li><i class="bi bi-file-earmark-text-fill text-teal me-1"></i> Đối chiếu giấy đăng ký, đăng kiểm và số khung/số máy gốc</li>
                   <li><i class="bi bi-speedometer2 text-teal me-1"></i> Trực tiếp lái thử xe để kiểm tra máy móc, khung gầm và hệ thống lái</li>
@@ -1081,7 +1083,7 @@
                 <span class="text-muted small">Ước tính hạn mức vay và số tiền gốc + lãi trả hàng tháng</span>
               </div>
             </div>
-            <span class="badge bg-teal-subtle text-teal border border-teal px-2.5 py-1.5 rounded-pill">
+            <span class="badge bg-teal-subtle text-teal border border-teal px-2 py-1 rounded-pill">
               <i class="bi bi-bank2 me-1"></i>Hỗ trợ vay đến 80%
             </span>
           </div>
@@ -1091,7 +1093,7 @@
               <div class="mb-3">
                 <label class="form-label small fw-bold text-dark d-flex justify-content-between">
                   <span>Giá trị xe</span>
-                  <span class="fw-bold" style="color: #FF6B00;" id="calc-car-price-display">${car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(car.price) : '')}</span>
+                  <span class="fw-bold" style="color: #C2410C;" id="calc-car-price-display">${car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(car.price) : '')}</span>
                 </label>
                 <input type="text" class="form-control bg-light fw-bold text-dark" id="calc-car-price-input" readonly value="${car.price ? car.price.toLocaleString('vi-VN') + ' đ' : ''}">
               </div>
@@ -1099,7 +1101,7 @@
               <div class="mb-3">
                 <div class="d-flex justify-content-between align-items-center mb-1">
                   <label class="form-label small fw-bold text-dark mb-0">Tỷ lệ trả trước (Vốn tự có)</label>
-                  <span class="badge bg-teal text-white" id="calc-downpayment-pct-badge" style="background-color: #0D9488;">30%</span>
+                  <span class="badge bg-teal text-white" id="calc-downpayment-pct-badge" style="background-color: #0F766E;">30%</span>
                 </div>
                 <div class="btn-group w-100 mb-2" role="group">
                   <input type="radio" class="btn-check" name="downPaymentOption" id="dp20" value="20" onchange="updateLoanCalculation()">
@@ -1145,10 +1147,10 @@
             </div>
 
             <div class="col-md-6">
-              <div class="p-3 rounded-4 bg-light border h-100 d-flex flex-column justify-content-between">
+              <div class="pt-3 border-top border-md-0 pt-md-0 h-100 d-flex flex-column justify-content-between">
                 <div>
                   <div class="text-muted small mb-1">Ước tính trả góp tháng đầu (Gốc + Lãi)</div>
-                  <div class="h3 fw-extrabold mb-3" id="calc-monthly-payment" style="color: #FF6B00; font-weight: 800;">
+                  <div class="h3 fw-extrabold mb-3" id="calc-monthly-payment" style="color: #C2410C; font-weight: 800;">
                     0 đ / tháng
                   </div>
 
@@ -1167,14 +1169,14 @@
                     </div>
                   </div>
 
-                  <div class="p-2.5 rounded-3 bg-white border mt-3 small text-secondary">
+                  <div class="pt-2 border-top mt-3 small text-secondary">
                     <i class="bi bi-info-circle-fill text-teal me-1"></i>
                     <span>Tính theo phương thức dư nợ giảm dần. Tiền lãi các tháng sau sẽ giảm dần theo số nợ gốc đã trả.</span>
                   </div>
                 </div>
 
                 <div class="mt-3">
-                  <button class="btn btn-teal w-100 fw-bold py-2.5 shadow-sm text-white" style="background-color: #0D9488;" onclick="openLoanConsultModal()">
+                  <button class="btn btn-teal w-100 fw-bold py-2 shadow-sm text-white" style="background-color: #0F766E;" onclick="openLoanConsultModal()">
                     <i class="bi bi-file-earmark-check-fill me-1"></i> Nhận tư vấn hồ sơ vay ngân hàng
                   </button>
                 </div>
@@ -1224,21 +1226,21 @@
                     </div>
                   </div>
                   <div class="d-flex gap-2">
-                    <button class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1.5 rounded-3 px-3 py-2" id="btn-toggle-fav" onclick="handleDetailFavClick()">
+                    <button class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1 rounded-3 px-3 py-2" id="btn-toggle-fav" onclick="handleDetailFavClick()">
                       <i class="bi bi-heart" id="fav-icon"></i>
                       <span id="fav-text">Lưu tin</span>
                     </button>
-                    <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1.5 rounded-3 px-3 py-2" onclick="shareCarListing()">
+                    <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1 rounded-3 px-3 py-2" onclick="shareCarListing()">
                       <i class="bi bi-share"></i> Chia sẻ
                     </button>
                   </div>
                 </div>
 
                 <!-- Khối Giá Bán Công Khai Nổi Bật -->
-                <div class="p-3 bg-light rounded-3 d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3 border">
+                <div class="pt-3 border-top d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
                   <div>
                     <span class="text-muted small d-block">Giá niêm yết công khai</span>
-                    <span class="h2 fw-extrabold mb-0" style="color: #FF6B00; font-weight: 800;">
+                    <span class="h2 fw-extrabold mb-0" style="color: #C2410C; font-weight: 800;">
                       ${car.priceDisplay || (typeof formatCurrency === 'function' ? formatCurrency(car.price) : '')}
                     </span>
                   </div>
@@ -1341,7 +1343,7 @@
                 <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
                   <i class="bi bi-file-text text-teal me-2"></i>Mô tả chi tiết &amp; Tuyên bố sàn
                 </h5>
-                <div class="p-3 bg-light rounded-3 border mb-3 small text-secondary">
+                <div class="pt-3 border-top mb-3 small text-secondary">
                   <i class="bi bi-info-circle-fill text-teal me-1"></i> <strong>Lưu ý giao dịch:</strong> ${window.OTOMARKET_DISCLAIMER || 'OtoMarket là sàn giao dịch ô tô kết nối người mua và người bán. Tất cả thông tin xe đã được rà soát hồ sơ và kiểm định thực tế.'}
                 </div>
                 <p class="text-secondary" style="white-space: pre-line; line-height: 1.7;" id="detail-description">${car.description || 'Xe nguyên bản đẹp xuất sắc, máy móc êm ru, nội thất thơm mùi xe mới. Hỗ trợ giao xe tận nhà và lái thử trải nghiệm.'}</p>
@@ -1361,7 +1363,7 @@
                 <h4 class="fw-bold mb-1 text-dark">Xe Tương Tự Cùng Phân Khúc &amp; Tầm Giá</h4>
                 <p class="text-muted small mb-0">Các mẫu xe đang chào bán sẵn tại showroom để bạn tham khảo thêm</p>
               </div>
-              <a href="cars.html" class="btn btn-outline-teal btn-sm fw-bold px-3 py-1.5 rounded-pill">
+              <a href="cars.html" class="btn btn-outline-teal btn-sm fw-bold px-3 py-1 rounded-pill">
                 Xem toàn bộ kho xe <i class="bi bi-arrow-right ms-1"></i>
               </a>
             </div>
@@ -1403,10 +1405,10 @@
           <a href="car-detail.html?id=${c.id}" class="related-car-card">
             <div class="position-relative">
               <img src="${c.image}" alt="${c.title}" class="related-car-thumb" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
-              <span class="position-absolute top-0 start-0 m-2 badge bg-dark bg-opacity-75 text-white" style="font-size: 0.72rem;">
+              <span class="position-absolute top-0 start-0 m-2 badge bg-dark bg-opacity-75 text-white" style="font-size: 0.75rem;">
                 ${c.year || 2024}
               </span>
-              <span class="position-absolute top-0 end-0 m-2 badge ${c.condition === 'new' ? 'bg-success' : 'bg-primary'}" style="font-size: 0.72rem;">
+              <span class="position-absolute top-0 end-0 m-2 badge ${c.condition === 'new' ? 'bg-success' : 'bg-primary'}" style="font-size: 0.75rem;">
                 ${c.condition === 'new' ? 'Xe mới' : 'Xe lướt'}
               </span>
             </div>
@@ -1418,10 +1420,10 @@
                 <span><i class="bi bi-geo-alt text-teal"></i> ${c.location || 'Nha Trang'}</span>
               </div>
               <div class="mt-auto d-flex align-items-center justify-content-between pt-2 border-top">
-                <span class="fw-extrabold" style="color: #FF6B00; font-size: 1.05rem;">
+                <span class="fw-extrabold" style="color: #C2410C; font-size: 1.05rem;">
                   ${c.priceDisplay || (c.price ? (c.price / 1000000000).toFixed(2) + ' tỷ' : 'Liên hệ')}
                 </span>
-                <span class="btn btn-sm btn-outline-teal py-1 px-2.5 rounded-pill" style="font-size: 0.78rem;">
+                <span class="btn btn-sm btn-outline-teal py-1 px-2 rounded-pill" style="font-size: 0.78rem;">
                   Xem chi tiết →
                 </span>
               </div>
@@ -1438,7 +1440,7 @@
           <div class="display-1 text-muted mb-3"><i class="bi bi-exclamation-circle"></i></div>
           <h2 class="fw-bold mb-2">Tin không tồn tại hoặc đã ngừng hiển thị</h2>
           <p class="text-muted mb-4">Xe bạn đang tìm kiếm không có trong hệ thống hoặc đã được bán/ẩn.</p>
-          <a href="cars.html" class="btn btn-teal px-4 py-2 text-white" style="background-color: #0D9488;">Khám phá kho xe có sẵn</a>
+          <a href="cars.html" class="btn btn-teal px-4 py-2 text-white" style="background-color: #0F766E;">Khám phá kho xe có sẵn</a>
         </div>
       `;
     }

@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -22,7 +22,7 @@
        ========================================================================== */
     body.seller-bento-body,
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       background-color: #EEF2F6 !important;
       color: #0F172A !important;
       -webkit-font-smoothing: antialiased;
@@ -79,19 +79,19 @@
     .lang-pill-btn {
       border: none;
       background: transparent;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 3px 9px;
       border-radius: 14px;
-      color: #64748B;
+      color: #475569;
       cursor: pointer;
       transition: all 0.2s ease;
       line-height: 1.2;
     }
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
-      box-shadow: 0 1px 4px rgba(255, 107, 0, 0.35);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
     }
     .lang-pill-btn:hover:not(.active) {
       color: #0F172A;
@@ -112,7 +112,7 @@
     }
     .topbar-user-btn:hover {
       background: #F8FAFC !important;
-      border-color: #94A3B8 !important;
+      border-color: #475569 !important;
     }
 
     /* Navbar Clean Links */
@@ -128,7 +128,7 @@
     }
     .nav-link-item:hover,
     .nav-link-item.active {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       background: #FFF7ED !important;
     }
 
@@ -142,18 +142,18 @@
 
     /* Nút CTA Đăng bán xe */
     .btn-cta-orange {
-      background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%) !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       border: none !important;
       font-weight: 700 !important;
       border-radius: 10px !important;
       padding: 8px 18px !important;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transition: all 0.2s ease !important;
     }
     .btn-cta-orange:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: #FFFFFF !important;
     }
 
@@ -171,12 +171,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
-      border-radius: 12px;
+      padding: 6px 10px;
+      border-radius: 0;
       font-size: 0.82rem;
       font-weight: 600;
-      border: 1px solid #E2E8F0;
-      background: #F8FAFC;
+      border: none;
+      border-bottom: 2px solid #E2E8F0;
+      background: transparent;
       color: #334155;
       transition: all 0.2s ease;
     }
@@ -185,18 +186,18 @@
       border-color: #CBD5E1;
     }
     .kpi-metric-pill.pill-active {
-      background: #F0FDF4;
-      border-color: #BBF7D0;
+      background: transparent;
+      border-color: #16A34A;
       color: #166534;
     }
     .kpi-metric-pill.pill-pending {
-      background: #FFFBEB;
-      border-color: #FDE68A;
+      background: transparent;
+      border-color: #D97706;
       color: #92400E;
     }
     .kpi-metric-pill.pill-rejected {
-      background: #FEF2F2;
-      border-color: #FECACA;
+      background: transparent;
+      border-color: #DC2626;
       color: #991B1B;
     }
 
@@ -204,16 +205,16 @@
        TOOLBAR FILTER & SEARCH BOX
        ========================================================================== */
     .filter-toolbar-bento {
-      background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 14px !important;
-      padding: 12px 16px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
     }
     .filter-tab-pill {
       border: 1px solid transparent;
       background: transparent;
-      color: #64748B;
+      color: #475569;
       font-weight: 600;
       font-size: 0.86rem;
       padding: 6px 14px;
@@ -228,7 +229,7 @@
     }
     .filter-tab-pill.active {
       background: #FFF7ED !important;
-      color: #FF6B00 !important;
+      color: #9A3412 !important;
       border-color: #FED7AA !important;
     }
 
@@ -273,7 +274,7 @@
       background: rgba(15, 23, 42, 0.75);
       backdrop-filter: blur(4px);
       color: #FFFFFF;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 8px;
       border-radius: 6px;
@@ -315,7 +316,7 @@
     }
     .status-badge-pill.hidden {
       background: #F1F5F9;
-      color: #64748B;
+      color: #475569;
       border: 1px solid #CBD5E1;
     }
 
@@ -335,7 +336,7 @@
 
     /* Action Buttons in Card */
     .btn-action-primary {
-      background: #0D9488 !important;
+      background: #0F766E !important;
       color: #FFFFFF !important;
       border: none !important;
       font-weight: 600 !important;
@@ -367,7 +368,7 @@
     }
     .btn-action-secondary:hover {
       background: #F8FAFC !important;
-      border-color: #94A3B8 !important;
+      border-color: #475569 !important;
       color: #0F172A !important;
     }
     .btn-action-danger-outline {
@@ -387,10 +388,10 @@
 
     /* Text Colors */
     .text-orange-theme {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .price-orange-bold {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 800 !important;
       font-size: 1.25rem !important;
       line-height: 1.2;
@@ -400,7 +401,7 @@
     footer.footer-light {
       background: #F8FAFC !important;
       border-top: 1px solid #E2E8F0 !important;
-      color: #64748B !important;
+      color: #475569 !important;
     }
   </style>
 </head>
@@ -415,12 +416,12 @@
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
-          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-geo-alt-fill text-orange-theme"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
-          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-clock-fill text-orange-theme"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
@@ -436,7 +437,7 @@
           <span class="topbar-divider">|</span>
           <!-- Nút Đăng nhập / Tài khoản (Được hydrate động bởi app.js) -->
           <div id="navbar-auth-section">
-            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
               <i class="bi bi-person-fill text-orange-theme"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
@@ -483,7 +484,7 @@
             <i class="bi bi-heart-fill text-danger"></i>
             <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
           </a>
@@ -502,14 +503,14 @@
       <div class="dashboard-header-bento mb-4">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
           <div>
-            <h1 class="h3 fw-bold text-dark mb-1">
+            <h1 class="fw-bold text-dark mb-1" style="font-size: 1.75rem !important; line-height: 1.25;">
               <i class="bi bi-collection-fill text-orange-theme me-2"></i>Quản Lý Tin Đăng Xe
             </h1>
             <p class="text-muted small mb-0">Theo dõi tiến độ duyệt tin, lượt xem và cập nhật thông tin xe bán của bạn</p>
           </div>
           
           <div class="d-flex align-items-center gap-2 flex-wrap">
-            <a href="post-car.html" class="btn btn-cta-orange px-3.5 py-2 rounded-3 text-nowrap fw-bold shadow-sm text-decoration-none">
+            <a href="post-car.html" class="btn btn-cta-orange px-3 py-2 rounded-3 text-nowrap fw-bold shadow-sm text-decoration-none">
               <i class="bi bi-plus-lg me-1"></i>
               <span>+ Đăng bán xe mới</span>
             </a>
@@ -546,7 +547,7 @@
         <div class="row g-3 align-items-center justify-content-between">
           <div class="col-xl-7 col-lg-8">
             <!-- Filter Pills with Badge Counters -->
-            <div class="d-flex align-items-center gap-1.5 overflow-x-auto pb-1 pb-lg-0" id="listing-status-tabs">
+            <div class="d-flex align-items-center gap-1 overflow-x-auto pb-1 pb-lg-0" id="listing-status-tabs">
               <button class="filter-tab-pill active" onclick="filterByStatus('all', this)">
                 Tất cả (<span id="tab-count-all">0</span>)
               </button>
@@ -573,7 +574,7 @@
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
               <!-- Search box -->
               <div class="input-group input-group-sm flex-grow-1" style="max-width: 260px;">
-                <span class="input-group-text bg-white border-end-0 text-muted ps-2.5">
+                <span class="input-group-text bg-white border-end-0 text-muted ps-2">
                   <i class="bi bi-search"></i>
                 </span>
                 <input type="text" class="form-control border-start-0 ps-1" id="listing-search-input" placeholder="Tìm theo tên xe..." onkeyup="handleSearchInput(this.value)">
@@ -602,11 +603,11 @@
         <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-orange-subtle text-orange-theme mb-3" style="width: 72px; height: 72px; font-size: 2rem;">
           <i class="bi bi-car-front"></i>
         </div>
-        <h4 class="h5 fw-bold text-dark mb-2">Không tìm thấy tin đăng phù hợp</h4>
+        <h2 class="h5 fw-bold text-dark mb-2">Không tìm thấy tin đăng phù hợp</h2>
         <p class="text-muted small mb-4 mx-auto" style="max-width: 440px;">
           Bạn chưa có tin đăng nào trong danh mục này hoặc không khớp với từ khóa tìm kiếm.
         </p>
-        <a href="post-car.html" class="btn btn-cta-orange px-4 py-2.5 rounded-3 fw-bold text-decoration-none">
+        <a href="post-car.html" class="btn btn-cta-orange px-4 py-2 rounded-3 fw-bold text-decoration-none">
           <i class="bi bi-plus-lg me-1"></i> Tạo tin bán xe ngay
         </a>
       </div>
@@ -620,13 +621,13 @@
   <div class="modal fade" id="editListingModal" tabindex="-1" aria-labelledby="editListingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg rounded-4">
-        <div class="modal-header border-bottom px-4 py-3 bg-light rounded-top-4">
+        <div class="modal-header border-bottom px-4 py-3">
           <div class="d-flex align-items-center gap-2">
             <span class="d-inline-flex p-2 bg-orange-subtle text-orange-theme rounded-3">
               <i class="bi bi-pencil-square"></i>
             </span>
             <div>
-              <h5 class="modal-title fw-bold text-dark mb-0" id="editListingModalLabel">Chỉnh Sửa Thông Tin Tin Đăng</h5>
+              <h2 class="modal-title fs-5 fw-bold text-dark mb-0" id="editListingModalLabel">Chỉnh Sửa Thông Tin Tin Đăng</h2>
               <small class="text-muted">Cập nhật giá bán, số km lăn bánh và mô tả xe</small>
             </div>
           </div>
@@ -665,8 +666,8 @@
             <textarea class="form-control" id="edit-listing-desc" rows="4" placeholder="Mô tả chi tiết về lịch sử bảo dưỡng, trang bị phụ kiện đi kèm..."></textarea>
           </div>
         </div>
-        <div class="modal-footer border-top px-4 py-3 bg-light rounded-bottom-4">
-          <button type="button" class="btn btn-secondary px-3.5 py-2 rounded-3" data-bs-dismiss="modal">Hủy bỏ</button>
+        <div class="modal-footer border-top px-4 py-3">
+          <button type="button" class="btn btn-secondary px-3 py-2 rounded-3" data-bs-dismiss="modal">Hủy bỏ</button>
           <button type="button" class="btn btn-cta-orange px-4 py-2 rounded-3 fw-bold" onclick="saveEditedListing()">
             <i class="bi bi-check2-circle me-1"></i> Lưu thay đổi
           </button>
@@ -699,7 +700,7 @@
 
         <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Về OtoMarket</h5>
+          <h2 class="footer-title">Về OtoMarket</h2>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
@@ -711,7 +712,7 @@
 
         <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <h2 class="footer-title">Dành Cho Khách Hàng</h2>
           <ul class="footer-links">
             <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
             <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
@@ -723,7 +724,7 @@
 
         <!-- Cột 4: Top thương hiệu -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <h2 class="footer-title">Các Dòng Xe Tiêu Biểu</h2>
           <ul class="footer-links">
             <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
             <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
@@ -735,9 +736,9 @@
 
         <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <h2 class="footer-title">Văn Phòng & Hotline</h2>
           <div class="p-3 rounded-3 bg-white border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
               <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
@@ -745,7 +746,7 @@
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>
@@ -966,7 +967,7 @@
 
         // Rejection Reason Callout
         const rejectReasonHtml = st === 'rejected'
-          ? `<div class="p-2.5 rounded-3 bg-danger-subtle border border-danger-subtle small text-danger mt-2 mb-1">
+          ? `<div class="pt-2 border-top small text-danger mt-2 mb-1">
                <i class="bi bi-exclamation-triangle-fill me-1"></i> <strong>Lý do từ chối:</strong> ${car.rejectReason || 'Hình ảnh mờ hoặc thiếu thông tin giấy tờ xe. Vui lòng cập nhật hình ảnh rõ nét và gửi duyệt lại.'}
              </div>`
           : '';
@@ -982,13 +983,13 @@
         if (st === 'active') {
           actionsHtml = `
             <a href="car-detail.html?id=${car.id}" class="btn-action-primary text-center">
-              <i class="bi bi-eye me-1.5"></i> Xem tin trên sàn
+              <i class="bi bi-eye me-1"></i> Xem tin trên sàn
             </a>
             <button class="btn-action-secondary" onclick="openEditModal('${car.id}')">
-              <i class="bi bi-pencil-square me-1.5 text-primary"></i> Sửa giá &amp; mô tả
+              <i class="bi bi-pencil-square me-1 text-primary"></i> Sửa giá &amp; mô tả
             </button>
-            <div class="d-flex gap-1.5 mt-1">
-              <button class="btn btn-light border btn-sm flex-fill rounded-3 py-1.5 small text-secondary" title="Ẩn tin khỏi sàn" onclick="hideListing('${car.id}')">
+            <div class="d-flex gap-1 mt-1">
+              <button class="btn btn-light border btn-sm flex-fill rounded-3 py-1 small text-secondary" title="Ẩn tin khỏi sàn" onclick="hideListing('${car.id}')">
                 <i class="bi bi-eye-slash me-1"></i> Tạm ẩn tin
               </button>
               <button class="btn-action-danger-outline" title="Xóa tin này" onclick="handleDeleteListing('${car.id}')">
@@ -998,11 +999,11 @@
           `;
         } else if (st === 'pending') {
           actionsHtml = `
-            <a href="car-detail.html?id=${car.id}" class="btn-action-primary text-center" style="background-color: #0284C7 !important;">
-              <i class="bi bi-eye me-1.5"></i> Xem trước tin đăng
+            <a href="car-detail.html?id=${car.id}" class="btn-action-primary text-center" style="background-color: #0369A1 !important;">
+              <i class="bi bi-eye me-1"></i> Xem trước tin đăng
             </a>
             <button class="btn-action-secondary" onclick="openEditModal('${car.id}')">
-              <i class="bi bi-pencil-square me-1.5 text-primary"></i> Chỉnh sửa thông tin
+              <i class="bi bi-pencil-square me-1 text-primary"></i> Chỉnh sửa thông tin
             </button>
             <button class="btn-action-danger-outline mt-1 text-center" onclick="cancelPendingReview('${car.id}')">
               <i class="bi bi-x-circle me-1"></i> Rút lại yêu cầu
@@ -1010,8 +1011,8 @@
           `;
         } else if (st === 'rejected') {
           actionsHtml = `
-            <button class="btn-action-primary text-center shadow-xs" onclick="openEditModal('${car.id}')" style="background-color: #FF6B00 !important;">
-              <i class="bi bi-pencil-square me-1.5"></i> Sửa &amp; Gửi duyệt lại
+            <button class="btn-action-primary text-center shadow-xs" onclick="openEditModal('${car.id}')" style="background-color: #C2410C !important;">
+              <i class="bi bi-pencil-square me-1"></i> Sửa &amp; Gửi duyệt lại
             </button>
             <button class="btn-action-danger-outline mt-1 text-center" onclick="handleDeleteListing('${car.id}')">
               <i class="bi bi-trash3 me-1"></i> Xóa tin này
@@ -1019,11 +1020,11 @@
           `;
         } else if (st === 'draft') {
           actionsHtml = `
-            <button class="btn-action-primary text-center" onclick="submitForReview('${car.id}')" style="background-color: #FF6B00 !important;">
-              <i class="bi bi-send me-1.5"></i> Gửi xét duyệt tin
+            <button class="btn-action-primary text-center" onclick="submitForReview('${car.id}')" style="background-color: #C2410C !important;">
+              <i class="bi bi-send me-1"></i> Gửi xét duyệt tin
             </button>
             <button class="btn-action-secondary" onclick="openEditModal('${car.id}')">
-              <i class="bi bi-pencil-square me-1.5 text-primary"></i> Tiếp tục soạn tin
+              <i class="bi bi-pencil-square me-1 text-primary"></i> Tiếp tục soạn tin
             </button>
             <button class="btn-action-danger-outline mt-1 text-center" onclick="handleDeleteListing('${car.id}')">
               <i class="bi bi-trash3 me-1"></i> Xóa bản nháp
@@ -1033,10 +1034,10 @@
           // Hidden / Sold
           actionsHtml = `
             <button class="btn-action-primary text-center" onclick="reopenListing('${car.id}')">
-              <i class="bi bi-arrow-counterclockwise me-1.5"></i> Mở bán lại
+              <i class="bi bi-arrow-counterclockwise me-1"></i> Mở bán lại
             </button>
             <button class="btn-action-secondary" onclick="openEditModal('${car.id}')">
-              <i class="bi bi-pencil-square me-1.5 text-primary"></i> Sửa thông tin
+              <i class="bi bi-pencil-square me-1 text-primary"></i> Sửa thông tin
             </button>
             <button class="btn-action-danger-outline mt-1 text-center" onclick="handleDeleteListing('${car.id}')">
               <i class="bi bi-trash3 me-1"></i> Xóa tin
@@ -1070,7 +1071,7 @@
                   </div>
 
                   <!-- Tên xe -->
-                  <h3 class="h5 fw-bold text-dark mb-1">
+                  <h2 class="h5 fw-bold text-dark mb-1">
                     <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none hover-primary">
                       ${car.title}
                     </a>
@@ -1082,7 +1083,7 @@
                   </div>
 
                   <!-- Chip thông số kỹ thuật -->
-                  <div class="d-flex flex-wrap gap-1.5">
+                  <div class="d-flex flex-wrap gap-1">
                     <span class="spec-pill-item"><i class="bi bi-calendar3"></i> ${car.year || 2023}</span>
                     <span class="spec-pill-item"><i class="bi bi-speedometer2"></i> ${mileageText}</span>
                     <span class="spec-pill-item"><i class="bi bi-gear"></i> ${car.transmission || 'Tự động'}</span>

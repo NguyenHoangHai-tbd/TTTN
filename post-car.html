@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,7 +20,7 @@
   <style>
     body.post-car-bento-body,
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       background-color: #EEF2F6 !important;
       color: #0F172A !important;
       -webkit-font-smoothing: antialiased;
@@ -65,16 +65,16 @@
     .lang-pill-btn {
       border: none;
       background: transparent;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 3px 9px;
       border-radius: 14px;
-      color: #64748B;
+      color: #475569;
       cursor: pointer;
       line-height: 1.2;
     }
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
     }
     .topbar-user-btn {
@@ -87,18 +87,18 @@
       font-weight: 600 !important;
     }
     .btn-cta-orange {
-      background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%) !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       border: none !important;
       font-weight: 700 !important;
       border-radius: 10px !important;
       padding: 9px 20px !important;
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transition: all 0.2s ease !important;
     }
     .btn-cta-orange:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: #FFFFFF !important;
     }
 
@@ -150,7 +150,7 @@
       padding: 10px 14px;
       font-size: 0.84rem;
       font-weight: 600;
-      color: #64748B;
+      color: #475569;
       background: #FFFFFF;
       border: none;
       position: relative;
@@ -168,7 +168,7 @@
       color: #0F172A;
     }
     .chevron-ribbon-item.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
     }
@@ -187,7 +187,7 @@
       height: 0;
       border-top: 20px solid transparent;
       border-bottom: 20px solid transparent;
-      border-left: 9px solid #FF6B00;
+      border-left: 9px solid #C2410C;
       z-index: 5;
     }
 
@@ -220,8 +220,8 @@
     }
     .bento-form-input:focus,
     .bento-form-select:focus {
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15) !important;
+      border-color: #C2410C !important;
+      box-shadow: none !important;
       outline: none !important;
     }
 
@@ -241,7 +241,7 @@
     .quick-pill-opt:hover {
       background: #FFF7ED;
       border-color: #FED7AA;
-      color: #FF6B00;
+      color: #C2410C;
     }
 
     /* Feature pills */
@@ -266,14 +266,14 @@
     }
     .feature-pill-chip.active {
       background: #FFF7ED !important;
-      border-color: #FF6B00 !important;
-      color: #FF6B00 !important;
+      border-color: #C2410C !important;
+      color: #C2410C !important;
     }
 
     /* Photo Dropzone & Thumbnails */
     .bento-photo-dropzone {
       border: 2px dashed #CBD5E1;
-      border-radius: 12px;
+      border-radius: 0;
       padding: 24px;
       text-align: center;
       background: #F8FAFC;
@@ -282,7 +282,7 @@
       margin-bottom: 16px;
     }
     .bento-photo-dropzone:hover {
-      border-color: #FF6B00;
+      border-color: #C2410C;
       background: #FFF7ED;
     }
 
@@ -301,8 +301,8 @@
       object-fit: cover;
     }
     .bento-photo-thumb.is-primary {
-      border-color: #FF6B00 !important;
-      box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.35);
+      border-color: #C2410C !important;
+      box-shadow: none;
     }
     .bento-photo-thumb-badge {
       position: absolute;
@@ -310,7 +310,7 @@
       left: 3px;
       background: rgba(15, 23, 42, 0.85);
       color: #FFFFFF;
-      font-size: 0.62rem;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 1px 5px;
       border-radius: 4px;
@@ -328,7 +328,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.65rem;
+      font-size: 0.75rem;
       cursor: pointer;
     }
     .bento-photo-thumb-del:hover {
@@ -344,7 +344,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #64748B;
+      color: #475569;
       font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
@@ -352,8 +352,8 @@
     }
     .bento-photo-add-slot:hover {
       background: #FFF7ED;
-      border-color: #FF6B00;
-      color: #FF6B00;
+      border-color: #C2410C;
+      color: #C2410C;
     }
 
     /* ==========================================================================
@@ -377,7 +377,7 @@
       height: 200px;
       border-radius: 12px;
       overflow: hidden;
-      background: #0F172A;
+      background: transparent;
     }
     .preview-media-box img {
       width: 100%;
@@ -392,7 +392,7 @@
       background: rgba(15, 23, 42, 0.82);
       backdrop-filter: blur(4px);
       color: #FFFFFF;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 8px;
       border-radius: 5px;
@@ -404,13 +404,13 @@
       background: rgba(15, 23, 42, 0.82);
       backdrop-filter: blur(4px);
       color: #FFFFFF;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 8px;
       border-radius: 5px;
     }
     .preview-price-text {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 800 !important;
       font-size: 1.35rem !important;
       line-height: 1.2;
@@ -431,10 +431,11 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
-      background: #F8FAFC;
-      border-radius: 10px;
-      border: 1px solid #E2E8F0;
+      padding: 10px 0 0;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid #E2E8F0;
       font-size: 0.8rem;
       color: #334155;
       font-weight: 600;
@@ -446,12 +447,12 @@
       object-fit: cover;
     }
 
-    .text-orange-theme { color: #FF6B00 !important; }
+    .text-orange-theme { color: #C2410C !important; }
 
     footer.footer-light {
       background: #F8FAFC !important;
       border-top: 1px solid #E2E8F0 !important;
-      color: #64748B !important;
+      color: #475569 !important;
     }
   </style>
 </head>
@@ -466,12 +467,12 @@
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
-          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-geo-alt-fill text-orange-theme"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
-          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-clock-fill text-orange-theme"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
@@ -487,7 +488,7 @@
           <span class="topbar-divider">|</span>
           <!-- Nút Đăng nhập / Tài khoản (Được hydrate động bởi app.js) -->
           <div id="navbar-auth-section">
-            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
               <i class="bi bi-person-fill text-orange-theme"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
@@ -534,7 +535,7 @@
             <i class="bi bi-heart-fill text-danger"></i>
             <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
           </a>
@@ -561,7 +562,7 @@
                 <i class="bi bi-car-front"></i>
               </div>
               <div>
-                <h1 class="h4 fw-bold text-dark mb-1">Đăng Tin Bán Xe Ô Tô</h1>
+                <h1 class="fw-bold text-dark mb-1" style="font-size: 1.75rem !important; line-height: 1.25;">Đăng Tin Bán Xe Ô Tô</h1>
                 <p class="text-muted small mb-0">Điền thông tin và hình ảnh thực tế để tiếp cận hàng triệu người mua xe trên toàn quốc</p>
               </div>
             </div>
@@ -591,7 +592,7 @@
               <div class="form-step-pane" id="pane-step-1">
                 
                 <!-- Hãng xe & Dòng xe -->
-                <div class="row g-3 mb-2.5">
+                <div class="row g-3 mb-2">
                   <div class="col-md-5">
                     <label class="bento-form-label">Hãng xe <span class="text-danger">*</span></label>
                     <select class="form-select bento-form-select" id="car-brand" onchange="handleBrandChange(this.value)">
@@ -615,7 +616,7 @@
                 </div>
 
                 <!-- Gợi ý Model xe nhanh -->
-                <div class="d-flex align-items-center gap-1.5 flex-wrap mb-3" id="quick-model-chips">
+                <div class="d-flex align-items-center gap-1 flex-wrap mb-3" id="quick-model-chips">
                   <span class="quick-pill-opt" onclick="selectQuickModel('Corolla Cross')">+ Corolla Cross</span>
                   <span class="quick-pill-opt" onclick="selectQuickModel('Vios')">+ Vios</span>
                   <span class="quick-pill-opt" onclick="selectQuickModel('Camry')">+ Camry</span>
@@ -716,7 +717,7 @@
                       <span class="input-group-text bg-light text-muted">km</span>
                     </div>
                     <!-- Chọn nhanh ODO -->
-                    <div class="d-flex align-items-center gap-1.5 mt-1.5 flex-wrap">
+                    <div class="d-flex align-items-center gap-1 mt-1 flex-wrap">
                       <span class="quick-pill-opt" onclick="setQuickOdo('5.000 km')">&lt; 10.000 km</span>
                       <span class="quick-pill-opt" onclick="setQuickOdo('18.000 km')">10.000 - 30.000 km</span>
                       <span class="quick-pill-opt" onclick="setQuickOdo('50.000 km')">&gt; 50.000 km</span>
@@ -759,11 +760,11 @@
                 
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
                   <label class="bento-form-label mb-0">Bộ ảnh xe thực tế (Chọn gói mẫu hoặc tải ảnh mới)</label>
-                  <div class="d-flex gap-1.5">
-                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2.5 small" onclick="applyPreset('suv-white')">
+                  <div class="d-flex gap-1">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2 small" onclick="applyPreset('suv-white')">
                       <i class="bi bi-images me-1"></i> Mẫu Corolla Cross
                     </button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2.5 small" onclick="applyPreset('sedan-red')">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill py-0.5 px-2 small" onclick="applyPreset('sedan-red')">
                       <i class="bi bi-images me-1"></i> Mẫu Sedan
                     </button>
                   </div>
@@ -827,7 +828,7 @@
                 </div>
 
                 <!-- Thông tin người bán -->
-                <div class="p-3 bg-light border rounded-3 mb-2">
+                <div class="pt-3 border-top mb-2">
                   <div class="row g-2">
                     <div class="col-md-6">
                       <label class="bento-form-label">Họ và tên người bán <span class="text-danger">*</span></label>
@@ -844,12 +845,12 @@
 
               <!-- Thanh Nút Thao Tác Đáy Form (Linh hoạt theo bước) -->
               <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top">
-                <button type="button" class="btn btn-outline-secondary px-3.5 py-2 rounded-3 fw-semibold bg-white" id="btn-action-prev" style="display: none;" onclick="prevStep()">
+                <button type="button" class="btn btn-outline-secondary px-3 py-2 rounded-3 fw-semibold bg-white" id="btn-action-prev" style="display: none;" onclick="prevStep()">
                   <i class="bi bi-arrow-left me-1"></i> Quay lại
                 </button>
 
                 <div class="d-flex align-items-center gap-2 ms-auto">
-                  <button type="button" class="btn btn-outline-secondary px-3.5 py-2 rounded-3 fw-semibold bg-white" onclick="submitCarForm('draft')">
+                  <button type="button" class="btn btn-outline-secondary px-3 py-2 rounded-3 fw-semibold bg-white" onclick="submitCarForm('draft')">
                     Lưu nháp
                   </button>
                   <button type="button" class="btn btn-cta-orange px-4 py-2 rounded-3 fw-bold text-white shadow-xs" id="btn-action-next" onclick="nextStep()">
@@ -872,25 +873,27 @@
           <div class="sticky-preview-wrapper">
             <div class="bento-preview-card">
               
-              <div class="small fw-bold text-dark mb-2.5">
+              <div class="small fw-bold text-dark mb-2">
                 Xem trước tin đăng trên sàn OtoMarket
               </div>
 
               <!-- Preview Card Media -->
-              <div class="preview-media-box mb-3">
+              <div class="preview-media-box mb-2">
                 <img id="preview-card-img" src="assets/images/cars/corolla_cross.jpg" alt="Preview xe" onerror="this.src='assets/images/cars/corolla_cross.jpg'">
-                <span class="badge-preview-count">
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-dark text-white" style="font-size: 0.75rem;">
                   <i class="bi bi-camera me-1"></i><span id="preview-photo-num">5 ảnh</span>
                 </span>
-                <span class="badge-preview-source" id="preview-role-tag">
+                <span class="badge bg-light text-dark border" id="preview-role-tag" style="font-size: 0.75rem;">
                   Chính chủ bán
                 </span>
               </div>
 
               <!-- Vehicle Title (2 dòng tự nhiên) -->
-              <h3 class="h6 fw-bold text-dark mb-1" id="preview-card-title" style="line-height: 1.35;">
+              <h2 class="h6 fw-bold text-dark mb-1" id="preview-card-title" style="line-height: 1.35;">
                 Toyota Corolla Cross 2023
-              </h3>
+              </h2>
 
               <!-- Price & ODO -->
               <div class="d-flex align-items-baseline gap-2 mb-2">
@@ -898,12 +901,12 @@
               </div>
 
               <!-- Spec pills row (2023, 18.000 km, Tự động, Xăng, Nha Trang) -->
-              <div class="d-flex flex-wrap gap-1.5 mb-3" id="preview-card-specs">
+              <div class="d-flex flex-wrap gap-1 mb-3" id="preview-card-specs">
                 <span class="preview-pill-chip" id="preview-tag-year">2023</span>
                 <span class="preview-pill-chip" id="preview-tag-odo">18.000 km</span>
                 <span class="preview-pill-chip" id="preview-tag-trans">Tự động</span>
                 <span class="preview-pill-chip" id="preview-tag-fuel">Xăng</span>
-                <span class="preview-pill-chip"><i class="bi bi-geo-alt text-danger me-0.5"></i> <span id="preview-tag-loc">Nha Trang</span></span>
+                <span class="preview-pill-chip"><i class="bi bi-geo-alt text-danger me-1"></i> <span id="preview-tag-loc">Nha Trang</span></span>
               </div>
 
               <!-- Seller Pill at bottom -->
@@ -945,7 +948,7 @@
 
         <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Về OtoMarket</h5>
+          <h2 class="footer-title">Về OtoMarket</h2>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
@@ -957,7 +960,7 @@
 
         <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <h2 class="footer-title">Dành Cho Khách Hàng</h2>
           <ul class="footer-links">
             <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
             <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
@@ -969,7 +972,7 @@
 
         <!-- Cột 4: Top thương hiệu -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <h2 class="footer-title">Các Dòng Xe Tiêu Biểu</h2>
           <ul class="footer-links">
             <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
             <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
@@ -981,9 +984,9 @@
 
         <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <h2 class="footer-title">Văn Phòng & Hotline</h2>
           <div class="p-3 rounded-3 bg-white border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
               <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
@@ -991,7 +994,7 @@
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>

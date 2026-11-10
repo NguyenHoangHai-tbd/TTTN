@@ -8,7 +8,7 @@
   <!-- Chuẩn hoá Typography: Inter hỗ trợ 100% tiếng Việt chuẩn, không lỗi dấu hay nhảy font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/style.css?v=20261106_v8_auth">
@@ -17,12 +17,8 @@
     /* ==========================================================================
        TYPOGRAPHY & GLOBAL RESET: FONT INTER 100% TIẾNG VIỆT CHUẨN XÁC
        ========================================================================== */
-    body.cars-bento-body,
-    body.cars-bento-body button,
-    body.cars-bento-body input,
-    body.cars-bento-body select,
-    body.cars-bento-body textarea {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    body.cars-bento-body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       background-color: #EEF2F6 !important; /* Tone nền Slate Kiến Trúc đậm nét, chống lóa, phân định rõ khu vực */
       color: #0F172A !important;
       -webkit-font-smoothing: antialiased;
@@ -72,7 +68,7 @@
       border: none;
       background: transparent;
       color: #475569 !important;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 9px;
       border-radius: 16px;
@@ -82,7 +78,7 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn.active,
     .lang-pill-btn.active {
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
@@ -121,8 +117,8 @@
     .topbar-user-btn:hover,
     .topbar-user-btn:focus,
     .topbar-user-btn.show {
-      background: #FF6B00 !important;
-      border-color: #FF6B00 !important;
+      background: #C2410C !important;
+      border-color: #C2410C !important;
       color: #FFFFFF !important;
       box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
     }
@@ -142,7 +138,7 @@
       width: 22px !important;
       height: 22px !important;
       border-radius: 50% !important;
-      background: #FF6B00 !important;
+      background: #C2410C !important;
       color: #FFFFFF !important;
       flex-shrink: 0 !important;
       transition: all 0.2s ease !important;
@@ -150,17 +146,17 @@
     .user-avatar-dot i,
     .topbar-user-btn .user-avatar-dot i {
       color: #FFFFFF !important;
-      font-size: 0.74rem !important;
+      font-size: 0.75rem !important;
       line-height: 1 !important;
     }
     .topbar-user-btn:hover .user-avatar-dot,
     .topbar-user-btn.show .user-avatar-dot {
       background: #FFFFFF !important;
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
     .topbar-user-btn:hover .user-avatar-dot i,
     .topbar-user-btn.show .user-avatar-dot i {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
     }
 
     /* 2. Navbar Chính */
@@ -191,10 +187,10 @@
     }
     .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active,
     .nav-link-portal.active {
-      color: #FF6B00 !important;
+      color: #C2410C !important;
       font-weight: 700 !important;
       background-color: #FFF7ED !important;
-      border-color: #FF6B00 !important;
+      border-color: #C2410C !important;
     }
 
     /* Nút Yêu Thích */
@@ -230,7 +226,7 @@
       min-width: 17px;
       height: 17px;
       padding: 0 4px;
-      font-size: 0.65rem !important;
+      font-size: 0.75rem !important;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -239,16 +235,16 @@
 
     /* Nút CTA Cam */
     .btn-cta-orange {
-      background-color: #FF6B00 !important;
-      border: 1px solid #FF6B00 !important;
+      background-color: #C2410C !important;
+      border: 1px solid #C2410C !important;
       color: #FFFFFF !important;
       font-weight: 600 !important;
       transition: all 0.15s ease !important;
-      box-shadow: 0 2px 8px rgba(255, 107, 0, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
     }
     .btn-cta-orange:hover {
-      background-color: #EA580C !important;
-      border-color: #EA580C !important;
+      background-color: #9A3412 !important;
+      border-color: #9A3412 !important;
       color: #FFFFFF !important;
     }
 
@@ -258,8 +254,9 @@
     .cars-bento-card {
       background: #FFFFFF !important;
       border-radius: 18px !important;
-      border: 1px solid #CBD5E1 !important; /* Viền xám trung tính đậm rõ rệt */
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important; /* Đổ bóng tách lớp */
+      border: 1px solid #CBD5E1 !important;
+      padding: 24px !important;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
     }
 
     /* Bộ Chuyển Đổi Segmented Pill */
@@ -314,7 +311,7 @@
     }
     .brand-chip:hover:not(.active) {
       background: #FFFFFF !important;
-      border-color: #94A3B8 !important;
+      border-color: #475569 !important;
       color: #0F172A !important;
       transform: translateY(-1px);
     }
@@ -330,7 +327,7 @@
       color: #FFFFFF !important;
     }
     .brand-chip .badge-count {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       opacity: 0.75;
       font-weight: 500;
     }
@@ -378,7 +375,7 @@
     }
     .filter-chip-btn:hover:not(.active) {
       background: #FFFFFF !important;
-      border-color: #94A3B8 !important;
+      border-color: #475569 !important;
       color: #0F172A !important;
     }
     .filter-chip-btn.active {
@@ -403,7 +400,7 @@
     }
     .car-bento-item:hover {
       transform: translateY(-4px);
-      border-color: #94A3B8;
+      border-color: #475569;
       box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
     }
     .car-img-wrap {
@@ -427,7 +424,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      font-size: 0.73rem;
+      font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 9px;
       border-radius: 6px;
@@ -464,7 +461,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #64748B;
+      color: #475569;
       transition: all 0.15s ease;
       cursor: pointer;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -490,7 +487,7 @@
       border: 1px solid #CBD5E1;
       border-radius: 6px;
       padding: 3px 8px;
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: #475569;
       font-weight: 500;
     }
@@ -515,7 +512,7 @@
     .btn-call-car {
       background: #FFFFFF;
       border: 1px solid #CBD5E1;
-      color: #EA580C;
+      color: #C2410C;
       font-size: 0.8rem;
       font-weight: 600;
       padding: 6px 10px;
@@ -525,8 +522,8 @@
     }
     .btn-call-car:hover {
       background: #FFF7ED;
-      border-color: #EA580C;
-      color: #EA580C;
+      border-color: #C2410C;
+      color: #C2410C;
     }
   
     /* Chữ TopBar Sắc Nét, Không Nhòe Chữ */
@@ -538,7 +535,7 @@
     }
     .topbar-info-item { color: #0F172A !important; font-weight: 500 !important; font-size: 0.84rem !important; text-shadow: none !important; }
 
-    .text-orange-theme { color: #FF6B00 !important; }
+    .text-orange-theme { color: #C2410C !important; }
   
     /* ==========================================================================
        BENTO STUDIO PAGINATION (RÕ NÉT, NỀN NỔI BẬT, CHUẨN OTOMARKET)
@@ -580,7 +577,7 @@
     #pagination-container .page-item .page-link:focus,
     body.cars-bento-body .pagination .page-link:focus {
       outline: none !important;
-      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2) !important;
+      box-shadow: none !important;
     }
 
     body.cars-bento-body #pagination-container .page-link {
@@ -608,21 +605,21 @@
     #pagination-container .page-item:not(.active):not(.disabled) .page-link:hover,
     body.cars-bento-body .pagination .page-item:not(.active):not(.disabled) .page-link:hover {
       background-color: #FFF7ED !important;
-      color: #FF6B00 !important;
-      border-color: #FF6B00 !important;
+      color: #9A3412 !important;
+      border-color: #C2410C !important;
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 10px rgba(255, 107, 0, 0.15) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
     }
     .pagination .page-item.active .page-link,
     #pagination-container .page-item.active .page-link,
     body.cars-bento-body .pagination .page-item.active .page-link,
     body.cars-bento-body #pagination-container .page-item.active .page-link {
-      background: #FF6B00 !important;
-      background-color: #FF6B00 !important;
+      background: #C2410C !important;
+      background-color: #C2410C !important;
       color: #FFFFFF !important;
-      border-color: #FF6B00 !important;
+      border-color: #C2410C !important;
       font-weight: 700 !important;
-      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.25) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       cursor: default !important;
       transform: none !important;
     }
@@ -632,7 +629,7 @@
     body.cars-bento-body #pagination-container .page-item.disabled .page-link {
       background: #F1F5F9 !important;
       background-color: #F1F5F9 !important;
-      color: #94A3B8 !important;
+      color: #475569 !important;
       border-color: #E2E8F0 !important;
       opacity: 0.55 !important;
       cursor: not-allowed !important;
@@ -653,12 +650,12 @@
       <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <!-- Bên trái: Chú thích Địa chỉ & Giờ mở cửa -->
         <div class="d-flex align-items-center gap-2 gap-md-3 small">
-          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-geo-alt-fill text-orange-theme"></i>
             <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
           </span>
           <span class="topbar-divider d-none d-sm-inline">|</span>
-          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
             <i class="bi bi-clock-fill text-orange-theme"></i>
             <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
           </span>
@@ -672,7 +669,7 @@
           </div>
           <span class="topbar-divider">|</span>
           <div id="navbar-auth-section">
-            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
               <i class="bi bi-person-fill text-orange-theme"></i>
               <span class="user-name-label">Đăng nhập</span>
             </a>
@@ -719,7 +716,7 @@
             <i class="bi bi-heart-fill text-danger"></i>
             <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
           </a>
-          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1.5 shadow-sm text-nowrap">
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
             <i class="bi bi-plus-circle-fill"></i>
             <span>+ Đăng bán xe</span>
           </a>
@@ -738,7 +735,7 @@
       <div class="cars-bento-card p-4 mb-4">
         <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-3">
           <div>
-            <h1 class="h4 fw-bold text-dark mb-1" id="bento-page-title" style="letter-spacing: -0.3px;">Kho Xe Ô Tô Đang Bán</h1>
+            <h1 class="fw-bold text-dark mb-1" id="bento-page-title" style="font-size: 1.75rem !important; letter-spacing: -0.4px; line-height: 1.25;">Kho Xe Ô Tô Đang Bán</h1>
             <p class="text-secondary small mb-0" id="bento-page-subtitle">Danh sách xe ô tô mới và đã qua sử dụng, thông tin rõ ràng, liên hệ trực tiếp người bán.</p>
           </div>
           <!-- Segmented Condition Switcher (Thanh Lịch, Không Dùng Emoji) -->
@@ -792,7 +789,7 @@
               <!-- Khoảng giá bán -->
               <div class="mb-3">
                 <label class="filter-section-title">Khoảng giá bán</label>
-                <div class="d-flex flex-wrap gap-1.5" id="price-chips-group">
+                <div class="d-flex flex-wrap gap-1" id="price-chips-group">
                   <button type="button" class="filter-chip-btn" data-price="under600" onclick="togglePriceFilter('under600', this)">Dưới 600tr</button>
                   <button type="button" class="filter-chip-btn" data-price="600-900" onclick="togglePriceFilter('600-900', this)">600 - 900tr</button>
                   <button type="button" class="filter-chip-btn" data-price="900-1200" onclick="togglePriceFilter('900-1200', this)">900tr - 1.2 tỷ</button>
@@ -803,7 +800,7 @@
               <!-- Kiểu dáng xe -->
               <div class="mb-3">
                 <label class="filter-section-title">Kiểu dáng xe</label>
-                <div class="d-flex flex-wrap gap-1.5" id="body-chips-group">
+                <div class="d-flex flex-wrap gap-1" id="body-chips-group">
                   <button type="button" class="filter-chip-btn" data-body="SUV" onclick="toggleBodyFilter('SUV', this)">SUV</button>
                   <button type="button" class="filter-chip-btn" data-body="Sedan" onclick="toggleBodyFilter('Sedan', this)">Sedan</button>
                   <button type="button" class="filter-chip-btn" data-body="MPV" onclick="toggleBodyFilter('MPV', this)">MPV</button>
@@ -826,7 +823,7 @@
               <!-- Loại nhiên liệu -->
               <div>
                 <label class="filter-section-title">Loại nhiên liệu</label>
-                <div class="d-flex flex-wrap gap-1.5" id="fuel-chips-group">
+                <div class="d-flex flex-wrap gap-1" id="fuel-chips-group">
                   <button type="button" class="filter-chip-btn" data-fuel="Xăng" onclick="toggleFuelFilter('Xăng', this)">Xăng</button>
                   <button type="button" class="filter-chip-btn" data-fuel="Dầu" onclick="toggleFuelFilter('Dầu', this)">Dầu</button>
                   <button type="button" class="filter-chip-btn" data-fuel="Hybrid" onclick="toggleFuelFilter('Hybrid', this)">Hybrid</button>
@@ -861,9 +858,9 @@
           <!-- Empty State -->
           <div id="cars-empty-state" class="cars-bento-card p-5 text-center my-4" style="display: none;">
             <i class="bi bi-car-front text-muted" style="font-size: 3rem;"></i>
-            <h5 class="fw-bold mt-3 mb-1">Không tìm thấy xe phù hợp</h5>
+            <h2 class="h5 fw-bold mt-3 mb-1">Không tìm thấy xe phù hợp</h2>
             <p class="text-muted small mb-3">Vui lòng điều chỉnh hoặc xóa bớt tiêu chí lọc để xem thêm xe trong kho.</p>
-            <button class="btn btn-sm btn-outline-dark fw-semibold px-3 py-1.5" onclick="resetAllFilters()">Đặt lại tất cả bộ lọc</button>
+            <button class="btn btn-sm btn-outline-dark fw-semibold px-3 py-1" onclick="resetAllFilters()">Đặt lại tất cả bộ lọc</button>
           </div>
 
           <!-- Pagination -->
@@ -900,7 +897,7 @@
 
         <!-- Cột 2: Về OtoMarket -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Về OtoMarket</h5>
+          <h2 class="footer-title">Về OtoMarket</h2>
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu công ty</a></li>
             <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
@@ -912,7 +909,7 @@
 
         <!-- Cột 3: Dành cho người dùng -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Dành Cho Khách Hàng</h5>
+          <h2 class="footer-title">Dành Cho Khách Hàng</h2>
           <ul class="footer-links">
             <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
             <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
@@ -924,7 +921,7 @@
 
         <!-- Cột 4: Top thương hiệu -->
         <div class="col-lg-2 col-md-6">
-          <h5 class="footer-title">Các Dòng Xe Tiêu Biểu</h5>
+          <h2 class="footer-title">Các Dòng Xe Tiêu Biểu</h2>
           <ul class="footer-links">
             <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
             <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
@@ -936,9 +933,9 @@
 
         <!-- Cột 5: Văn phòng & Hotline -->
         <div class="col-lg-3 col-md-6">
-          <h5 class="footer-title">Văn Phòng & Hotline</h5>
+          <h2 class="footer-title">Văn Phòng & Hotline</h2>
           <div class="p-3 rounded-3 bg-white border">
-            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #FF6B00;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
             <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
             <div class="d-flex align-items-center gap-2 pt-2 border-top">
               <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
@@ -946,7 +943,7 @@
               </div>
               <div>
                 <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
-                <span class="text-muted" style="font-size: 0.72rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
               </div>
             </div>
           </div>
@@ -1581,12 +1578,12 @@
               </div>
               <div class="p-3 d-flex flex-column flex-grow-1 justify-content-between">
                 <div>
-                  <h3 class="h6 fw-bold text-dark mb-1 text-truncate" title="${car.title}">
+                  <h2 class="h6 fw-bold text-dark mb-1 text-truncate" title="${car.title}">
                     <a href="car-detail.html?id=${car.id}" class="text-dark text-decoration-none">${car.title}</a>
-                  </h3>
+                  </h2>
                   <div class="d-flex align-items-baseline justify-content-between mb-2">
-                    <span class="fs-5 fw-bold" style="color: #EA580C; letter-spacing: -0.3px;">${car.priceText}</span>
-                    <span class="small text-muted" style="font-size: 0.74rem;">Trả trước: <strong>${car.prepay}</strong></span>
+                    <span class="fs-5 fw-bold" style="color: #C2410C; letter-spacing: -0.3px;">${car.priceText}</span>
+                    <span class="small text-muted" style="font-size: 0.75rem;">Trả trước: <strong>${car.prepay}</strong></span>
                   </div>
                   <div class="d-flex flex-wrap gap-1 mb-3">
                     ${specChipsHTML}
@@ -1594,7 +1591,7 @@
                 </div>
                 <div class="pt-2 border-top d-flex align-items-center justify-content-between">
                   <span class="small text-secondary" style="font-size: 0.76rem;"><i class="bi bi-geo-alt me-1 text-danger"></i>${car.location}</span>
-                  <div class="d-flex gap-1.5">
+                  <div class="d-flex gap-1">
                     <a href="car-detail.html?id=${car.id}" class="btn-detail-car">Chi tiết</a>
                     <a href="tel:${car.sellerPhone || '19006868'}" class="btn-call-car" title="Gọi tư vấn: ${car.sellerPhone || '1900 6868'}"><i class="bi bi-telephone-fill"></i></a>
                   </div>
