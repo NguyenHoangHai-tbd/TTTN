@@ -1000,7 +1000,7 @@ function syncAdminLinksVisibility() {
         adminItem.innerHTML = `
           <a class="nav-link-portal ${isCurrentAdminPage ? 'active' : ''}" href="admin.html" title="Trạm Kiểm Duyệt & Quản Trị Showroom">
             Duyệt tin Showroom
-            <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.72rem; display: none;">0</span>
+            <span class="badge bg-danger rounded-pill ms-1 nav-pending-count" style="font-size: 0.75rem; display: none;">0</span>
           </a>
         `;
         let aboutItem = null;
@@ -1254,7 +1254,7 @@ ${photoBadgeHtml}
   ${car.price >= 200000000 ? `<span class="small text-muted" style="font-size: 0.75rem;">Trả trước từ: <strong>${Math.round((car.price * 0.3) / 1000000)} tr</strong></span>` : ''}
 </div>
 
-${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 py-0.5" style="font-size: 0.71rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
+${isShowroom ? `<div class="mb-2"><span class="badge badge-showroom-check px-2 py-0.5" style="font-size: 0.75rem;"><i class="bi bi-shield-check me-1"></i>Đã thẩm định 176 hạng mục • Bảo hành chính hãng</span></div>` : ''}
 
 <div class="car-spec-grid">
   <div class="car-spec-item" title="Năm sản xuất">

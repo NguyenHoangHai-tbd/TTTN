@@ -1,81 +1,228 @@
 /* ==========================================================================
-   OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến
-   Design System & Professional Stylesheet
-   Modern, Spacious, Harmonious Design for Guest, User & Admin
+   OtoMarket - Automotive Design System & Consolidated Theme Stylesheet
+   Three-Layer Architecture: Primitive -> Semantic -> Component Tokens
+   Typography: Barlow (Display) + Be Vietnam Pro (Body/UI)
+   WCAG AA Compliant | Responsive: Mobile (390px) -> Desktop (1280px+)
    ========================================================================== */
 
 :root {
-  /* Core Brand Palette */
-  --primary-color: #0B132B;
-  --primary-light: #1C2541;
-  --primary-dark: #070B19;
-  
-  --teal-color: #C2410C;
-  --teal-hover: #9A3412;
-  --teal-active: #7C2D12;
-  --teal-light: #FFF7ED;
-  --teal-border: #FED7AA;
+  /* ------------------------------------------------------------------------
+     LAYER 1: PRIMITIVE TOKENS (Raw Automotive Palette, Space, Type, Elevation)
+     ------------------------------------------------------------------------ */
+  /* Midnight Obsidian & Cockpit Navy */
+  --oto-navy-950: #070B19;
+  --oto-navy-900: #0B132B;
+  --oto-navy-850: #0A1128;
+  --oto-navy-800: #0F172A;
+  --oto-navy-700: #1E293B;
+
+  /* Metallic Neutral Slate */
+  --oto-white: #FFFFFF;
+  --oto-slate-50: #F8FAFC;
+  --oto-slate-100: #F1F5F9;
+  --oto-slate-150: #EEF2F6;
+  --oto-slate-200: #E2E8F0;
+  --oto-slate-300: #CBD5E1;
+  --oto-slate-400: #94A3B8;
+  --oto-slate-500: #64748B;
+  --oto-slate-600: #475569;
+  --oto-slate-700: #334155;
+
+  /* Heritage Copper / Burnt Amber (WCAG AA >= 5.1:1 on White) */
+  --oto-copper-50: #FFF7ED;
+  --oto-copper-100: #FFEDD5;
+  --oto-copper-200: #FED7AA;
+  --oto-copper-300: #FDBA74;
+  --oto-copper-400: #FB923C;
+  --oto-copper-600: #C2410C;
+  --oto-copper-700: #9A3412;
+  --oto-copper-800: #7C2D12;
+
+  /* Precision Verification Teal */
+  --oto-teal-50: #F0FDFA;
+  --oto-teal-100: #CCFBF1;
+  --oto-teal-200: #99F6E4;
+  --oto-teal-600: #0F766E;
+  --oto-teal-700: #115E59;
+
+  /* Semantic Status Primitives */
+  --oto-emerald-50: #ECFDF5;
+  --oto-emerald-200: #A7F3D0;
+  --oto-emerald-500: #10B981;
+  --oto-emerald-800: #065F46;
+
+  --oto-amber-50: #FFFBEB;
+  --oto-amber-200: #FDE68A;
+  --oto-amber-500: #F59E0B;
+  --oto-amber-800: #92400E;
+
+  --oto-rose-50: #FEF2F2;
+  --oto-rose-200: #FECACA;
+  --oto-rose-500: #EF4444;
+  --oto-rose-800: #991B1B;
+
+  --oto-blue-50: #EFF6FF;
+  --oto-blue-200: #BFDBFE;
+  --oto-blue-500: #3B82F6;
+  --oto-blue-800: #1E40AF;
+
+  /* Typography Families & Weights */
+  --oto-font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --oto-font-display: 'Barlow', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* 4px Spacing Scale */
+  --oto-space-1: 0.25rem;  /* 4px */
+  --oto-space-2: 0.5rem;   /* 8px */
+  --oto-space-3: 0.75rem;  /* 12px */
+  --oto-space-4: 1rem;     /* 16px */
+  --oto-space-5: 1.25rem;  /* 20px */
+  --oto-space-6: 1.5rem;   /* 24px */
+  --oto-space-8: 2rem;     /* 32px */
+  --oto-space-10: 2.5rem;  /* 40px */
+  --oto-space-12: 3rem;    /* 48px */
+  --oto-space-14: 3.5rem;  /* 56px */
+
+  /* Border Radius Scale */
+  --oto-radius-xs: 4px;
+  --oto-radius-sm: 8px;
+  --oto-radius-md: 12px;
+  --oto-radius-lg: 16px;
+  --oto-radius-xl: 20px;
+  --oto-radius-2xl: 24px;
+  --oto-radius-full: 9999px;
+
+  /* Natural Architectural Elevation Shadows (Zero Neon Glow) */
+  --oto-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --oto-shadow-sm: 0 2px 6px 0 rgba(15, 23, 42, 0.06);
+  --oto-shadow-md: 0 6px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --oto-shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.10), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --oto-shadow-xl: 0 24px 56px -14px rgba(15, 23, 42, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  --oto-shadow-hover: 0 18px 34px -6px rgba(15, 23, 42, 0.13), 0 6px 14px -4px rgba(15, 23, 42, 0.05);
+
+  /* Motion Timing */
+  --oto-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --oto-transition-fast: 0.16s var(--oto-ease-out);
+  --oto-transition-base: 0.22s var(--oto-ease-out);
+
+  /* ------------------------------------------------------------------------
+     LAYER 2: SEMANTIC TOKENS
+     ------------------------------------------------------------------------ */
+  --oto-bg-page: var(--oto-slate-50);
+  --oto-bg-catalog: var(--oto-slate-150);
+  --oto-bg-surface: var(--oto-white);
+  --oto-bg-subtle: var(--oto-slate-100);
+  --oto-bg-hero: var(--oto-navy-800);
+
+  --oto-text-primary: var(--oto-navy-800);
+  --oto-text-secondary: var(--oto-slate-700);
+  --oto-text-muted: var(--oto-slate-600);
+  --oto-text-on-dark: var(--oto-white);
+  --oto-text-on-dark-muted: var(--oto-slate-300);
+
+  --oto-brand-primary: var(--oto-navy-900);
+  --oto-brand-primary-light: var(--oto-navy-700);
+  --oto-brand-accent: var(--oto-copper-600);
+  --oto-brand-accent-hover: var(--oto-copper-700);
+  --oto-brand-accent-active: var(--oto-copper-800);
+  --oto-brand-accent-soft: var(--oto-copper-50);
+  --oto-brand-accent-border: var(--oto-copper-200);
+  --oto-brand-accent-on-dark: var(--oto-copper-400);
+  --oto-brand-teal: var(--oto-teal-600);
+  --oto-brand-teal-hover: var(--oto-teal-700);
+
+  --oto-border-default: var(--oto-slate-200);
+  --oto-border-subtle: var(--oto-slate-100);
+  --oto-border-strong: var(--oto-slate-300);
+  --oto-border-focus: var(--oto-teal-600);
+
+  /* ------------------------------------------------------------------------
+     LAYER 3: COMPONENT TOKENS + LEGACY ALIASES (Full Backward Compatibility)
+     ------------------------------------------------------------------------ */
+  --oto-card-bg: var(--oto-bg-surface);
+  --oto-card-border: var(--oto-border-strong);
+  --oto-card-radius: var(--oto-radius-lg);
+  --oto-card-shadow: var(--oto-shadow-sm);
+  --oto-input-bg: var(--oto-bg-surface);
+  --oto-input-border: var(--oto-border-strong);
+  --oto-input-focus: var(--oto-brand-accent);
+  --oto-input-radius: var(--oto-radius-md);
+
+  /* Bootstrap 5 Theme Variable Integration */
+  --bs-body-font-family: var(--oto-font-sans);
+  --bs-body-color: var(--oto-text-primary);
+  --bs-body-bg: var(--oto-bg-page);
+  --bs-secondary-color: var(--oto-slate-600);
+  --bs-secondary-rgb: 71, 85, 105;
+  --bs-link-color: var(--oto-brand-accent);
+  --bs-link-hover-color: var(--oto-brand-accent-hover);
+
+  /* Legacy Variable Aliases */
+  --primary-color: var(--oto-navy-900);
+  --primary-light: var(--oto-navy-700);
+  --primary-dark: var(--oto-navy-950);
+
+  --teal-color: var(--oto-brand-accent);
+  --teal-hover: var(--oto-brand-accent-hover);
+  --teal-active: var(--oto-brand-accent-active);
+  --teal-light: var(--oto-brand-accent-soft);
+  --teal-border: var(--oto-brand-accent-border);
   --teal-glow: rgba(15, 23, 42, 0.14);
 
-  --orange-color: #C2410C;
-  --orange-hover: #9A3412;
-  --orange-light: #FFF7ED;
-  --orange-border: #FED7AA;
+  --orange-color: var(--oto-brand-accent);
+  --orange-hover: var(--oto-brand-accent-hover);
+  --orange-light: var(--oto-brand-accent-soft);
+  --orange-border: var(--oto-brand-accent-border);
   --orange-glow: rgba(15, 23, 42, 0.14);
 
-  /* Neutrals & Surfaces */
-  --bg-main: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --bg-card-alt: #F1F5F9;
-  --bg-elevated: #FFFFFF;
+  --bg-main: var(--oto-bg-page);
+  --bg-card: var(--oto-bg-surface);
+  --bg-card-alt: var(--oto-bg-subtle);
+  --bg-elevated: var(--oto-bg-surface);
 
-  --border-color: #E2E8F0;
-  --border-subtle: #F1F5F9;
-  --border-focus: #0F766E;
+  --border-color: var(--oto-border-default);
+  --border-subtle: var(--oto-border-subtle);
+  --border-focus: var(--oto-border-focus);
 
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-  --text-light: #64748B;
+  --text-main: var(--oto-text-primary);
+  --text-muted: var(--oto-slate-600);
+  --text-light: var(--oto-slate-600);
 
-  /* Semantic Feedback */
-  --success-color: #10B981;
-  --success-bg: #ECFDF5;
-  --success-border: #A7F3D0;
-  --success-text: #065F46;
+  --success-color: var(--oto-emerald-500);
+  --success-bg: var(--oto-emerald-50);
+  --success-border: var(--oto-emerald-200);
+  --success-text: var(--oto-emerald-800);
 
-  --warning-color: #F59E0B;
-  --warning-bg: #FFFBEB;
-  --warning-border: #FDE68A;
-  --warning-text: #92400E;
+  --warning-color: var(--oto-amber-500);
+  --warning-bg: var(--oto-amber-50);
+  --warning-border: var(--oto-amber-200);
+  --warning-text: var(--oto-amber-800);
 
-  --danger-color: #EF4444;
-  --danger-bg: #FEF2F2;
-  --danger-border: #FECACA;
-  --danger-text: #991B1B;
+  --danger-color: var(--oto-rose-500);
+  --danger-bg: var(--oto-rose-50);
+  --danger-border: var(--oto-rose-200);
+  --danger-text: var(--oto-rose-800);
 
-  --info-color: #3B82F6;
-  --info-bg: #EFF6FF;
-  --info-border: #BFDBFE;
-  --info-text: #1E40AF;
+  --info-color: var(--oto-blue-500);
+  --info-bg: var(--oto-blue-50);
+  --info-border: var(--oto-blue-200);
+  --info-text: var(--oto-blue-800);
 
-  /* Shadows (Multi-layered smooth elevation) */
-  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
-  --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 6px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.1), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 20px 36px -6px rgba(15, 23, 42, 0.14), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+  --shadow-xs: var(--oto-shadow-xs);
+  --shadow-sm: var(--oto-shadow-sm);
+  --shadow-md: var(--oto-shadow-md);
+  --shadow-lg: var(--oto-shadow-lg);
+  --shadow-hover: var(--oto-shadow-hover);
 
-  /* Radius Scale */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  --radius-xs: var(--oto-radius-xs);
+  --radius-sm: var(--oto-radius-sm);
+  --radius-md: var(--oto-radius-md);
+  --radius-lg: var(--oto-radius-lg);
+  --radius-xl: var(--oto-radius-2xl);
+  --radius-full: var(--oto-radius-full);
 }
 
 /* ==========================================================================
-   Base Reset & Typography
+   Base Reset, Automotive Display Typography & Tabular Metrics
    ========================================================================== */
 * {
   box-sizing: border-box;
@@ -88,9 +235,9 @@ html {
 }
 
 body {
-  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  font-family: var(--oto-font-sans);
+  background-color: var(--oto-bg-page);
+  color: var(--oto-text-primary);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -99,42 +246,39 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4,
+.hero-title,
+.hero-clean-title,
+.bento-story-title,
+.bento-form-title,
+.story-title,
+.form-main-heading,
+.opt2-hero-title,
+.workspace-title,
+.about-hero-title {
+  font-family: var(--oto-font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+p,
+.story-desc,
+.bento-story-desc,
+.hero-subtitle,
+.about-hero-subtitle {
+  text-wrap: pretty;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.car-card-price,
+.car-price-text,
+.bento-stat-num,
+.story-stat-num,
+.opt2-stat-val,
+.admin-kpi-val,
+.kpi-value {
+  font-variant-numeric: tabular-nums;
 }
-
-::selection {
-  background-color: rgba(13, 148, 136, 0.2);
-  color: var(--primary-color);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #F1F5F9;
-}
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
-}
-
 /* ==========================================================================
    Thanh thông báo đầu trang (Top Header Bar)
    ========================================================================== */
@@ -418,10 +562,10 @@ img {
 }
 
 .btn-outline-custom {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(15, 23, 42, 0.78);
   backdrop-filter: blur(6px);
-  color: #E2E8F0 !important;
+  color: #FFFFFF !important;
   font-weight: 600;
   font-size: 0.88rem;
   padding: 7px 13px;
@@ -3357,7 +3501,7 @@ li.admin-nav-item.is-admin-visible {
   min-height: 420px;
 }
 .hero-clean-title {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
+  font-family: var(--oto-font-display) !important;
   font-size: 3.35rem !important;
   font-weight: 700 !important;
   color: #0F172A !important;
@@ -3365,7 +3509,7 @@ li.admin-nav-item.is-admin-visible {
   letter-spacing: -0.5px;
 }
 .hero-clean-amp {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: var(--oto-font-display) !important;
   font-style: italic !important;
   font-weight: 400 !important;
   color: #C2410C !important;
@@ -3467,82 +3611,132 @@ li.admin-nav-item.is-admin-visible {
 
 
 /* ==========================================================================
-   PORTAL HEADER WRAPPER: TRANSPARENT OVER HERO -> STICKY PROMINENT ON SCROLL
+/* ==========================================================================
+   SECTION A: UNIFIED PORTAL HEADER, TOPBAR, NAVBAR & LANGUAGE SWITCHER
+   Default: Crisp Architectural Light Sticky Header on All Internal Pages
+   Hero Override: Scoped Dark Translucent Glass ONLY on body.index-bento-body
    ========================================================================== */
 .portal-header-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1050;
-  background: rgba(11, 19, 43, 0.88);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1050 !important;
+  background: var(--oto-bg-surface) !important;
+  border-bottom: 1px solid var(--oto-border-strong) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
+  transition: background 0.3s var(--oto-ease-out), box-shadow 0.3s var(--oto-ease-out), backdrop-filter 0.3s var(--oto-ease-out) !important;
 }
 
+/* Unified TopBar */
 .portal-topbar-clean {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-  font-size: 0.8125rem !important;
-  color: #E2E8F0 !important;
-  padding: 8px 0 !important;
-  transition: all 0.25s ease;
-}
-
-/* ==========================================================================
-   PORTAL HEADER ARCHITECTURE: SCOPED DARK HERO vs UNIVERSAL LIGHT PAGES
-   ========================================================================== */
-
-/* A. UNIVERSAL TOPBAR (APPLIED TO ALL PAGES: cars.html, about.html, etc.) */
-.portal-topbar-clean {
-  background: #FFFFFF !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background: var(--oto-bg-surface) !important;
+  border-bottom: 1px solid var(--oto-border-default) !important;
   font-size: 0.84rem !important;
   line-height: 1.45 !important;
   letter-spacing: 0.01em !important;
-  padding: 8px 0 !important;
+  padding: var(--oto-space-2) 0 !important;
   text-shadow: none !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   text-rendering: optimizeLegibility !important;
+  transition: all 0.25s ease !important;
 }
+
+.portal-topbar-clean .small {
+  font-size: 0.8125rem !important;
+}
+
+.portal-topbar-clean *,
+.topbar-info-item,
+.topbar-info-item * {
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
 .portal-topbar-clean .topbar-info-item,
 .portal-topbar-clean .topbar-info-item *,
 .topbar-info-item,
 .topbar-info-item * {
-  color: #0F172A !important;
+  color: var(--oto-text-primary) !important;
   font-weight: 500 !important;
-  text-shadow: none !important;
-  opacity: 1 !important;
 }
+
 .portal-topbar-clean .topbar-info-item i,
 .topbar-info-item i {
-  color: #C2410C !important;
+  color: var(--oto-brand-accent) !important;
 }
+
 .portal-topbar-clean .topbar-divider,
 .topbar-divider {
-  color: #CBD5E1 !important;
+  color: var(--oto-border-strong) !important;
+  margin: 0 var(--oto-space-2);
 }
+
+/* Unified Pill Language Switcher */
+.lang-switch-container,
+.lang-pill-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: var(--oto-bg-subtle) !important;
+  border: 1px solid var(--oto-border-strong) !important;
+  border-radius: var(--oto-radius-full) !important;
+  padding: 2px !important;
+  gap: 2px !important;
+  line-height: 1 !important;
+  transition: all 0.25s ease !important;
+}
+
+.lang-pill-btn {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: var(--oto-text-muted) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: var(--oto-radius-full) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+}
+
+.lang-pill-btn:hover:not(.active) {
+  color: var(--oto-text-primary) !important;
+  background: rgba(15, 23, 42, 0.08) !important;
+}
+
+.lang-pill-btn.active {
+  background: var(--oto-brand-accent) !important;
+  color: var(--oto-white) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
+}
+
+/* Account / User Dropdown Button */
+.topbar-user-btn.dropdown-toggle::after {
+  display: none !important;
+}
+
 .portal-topbar-clean .topbar-user-btn,
 .topbar-user-btn {
-  color: #0F172A !important;
-  border: 1.5px solid #CBD5E1 !important;
-  background: #FFFFFF !important;
+  color: var(--oto-text-primary) !important;
+  border: 1.5px solid var(--oto-border-strong) !important;
+  background: var(--oto-bg-surface) !important;
   font-weight: 600 !important;
   font-size: 0.8125rem !important;
   padding: 5px 14px !important;
-  border-radius: 20px !important;
+  border-radius: var(--oto-radius-full) !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 7px !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
   text-decoration: none !important;
   text-shadow: none !important;
 }
+
 .portal-topbar-clean .topbar-user-btn .user-name-label,
 .topbar-user-btn .user-name-label {
   color: inherit !important;
@@ -3555,299 +3749,129 @@ li.admin-nav-item.is-admin-visible {
   padding: 0 !important;
   margin: 0 !important;
   box-shadow: none !important;
+  text-shadow: none !important;
 }
+
 .topbar-user-btn:hover,
 .topbar-user-btn:focus,
 .topbar-user-btn.show {
-  background: #C2410C !important;
-  border-color: #C2410C !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+  background: var(--oto-brand-accent) !important;
+  border-color: var(--oto-brand-accent) !important;
+  color: var(--oto-white) !important;
+  box-shadow: var(--oto-shadow-sm) !important;
 }
+
 .topbar-user-btn:hover *,
 .topbar-user-btn:focus *,
 .topbar-user-btn.show * {
-  color: #FFFFFF !important;
+  color: var(--oto-white) !important;
   background: transparent !important;
 }
+
+.topbar-user-btn i.bi-chevron-down {
+  transition: transform 0.2s ease;
+}
+
+.topbar-user-btn.show i.bi-chevron-down {
+  transform: rotate(180deg);
+}
+
 .user-avatar-dot {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 20px !important;
-  height: 20px !important;
+  width: 22px !important;
+  height: 22px !important;
   border-radius: 50% !important;
-  background: #C2410C !important;
-  color: #FFFFFF !important;
+  background: var(--oto-brand-accent) !important;
+  color: var(--oto-white) !important;
   flex-shrink: 0 !important;
   transition: all 0.2s ease !important;
 }
+
 .user-avatar-dot i,
 .topbar-user-btn .user-avatar-dot i {
-  color: #FFFFFF !important;
+  color: var(--oto-white) !important;
   font-size: 0.75rem !important;
   line-height: 1 !important;
 }
+
 .topbar-user-btn:hover .user-avatar-dot,
 .topbar-user-btn.show .user-avatar-dot {
-  background: #FFFFFF !important;
-  color: #C2410C !important;
-}
-.topbar-user-btn:hover .user-avatar-dot i,
-.topbar-user-btn.show .user-avatar-dot i {
-  color: #C2410C !important;
+  background: var(--oto-white) !important;
+  color: var(--oto-brand-accent) !important;
 }
 
-/* B. UNIVERSAL NAVBAR ON LIGHT PAGES (cars.html, about.html, or scrolled index) */
+.topbar-user-btn:hover .user-avatar-dot i,
+.topbar-user-btn.show .user-avatar-dot i {
+  color: var(--oto-brand-accent) !important;
+}
+
+.topbar-dropdown-menu,
+#navbar-auth-section .dropdown-menu {
+  border-radius: var(--oto-radius-md) !important;
+  border: 1px solid var(--oto-border-default) !important;
+  box-shadow: var(--oto-shadow-lg) !important;
+  padding: 6px !important;
+  min-width: 220px !important;
+  background: var(--oto-bg-surface) !important;
+  z-index: 1090 !important;
+}
+
+.topbar-dropdown-menu .dropdown-item {
+  border-radius: var(--oto-radius-sm) !important;
+  padding: 8px 12px !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: var(--oto-text-secondary) !important;
+  transition: all 0.15s ease !important;
+}
+
+.topbar-dropdown-menu .dropdown-item:hover,
+.topbar-dropdown-menu .dropdown-item:focus {
+  background-color: var(--oto-brand-accent-soft) !important;
+  color: var(--oto-brand-accent) !important;
+}
+
+/* Unified Navbar & Links */
 .portal-navbar-clean {
-  background: #FFFFFF !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background: var(--oto-bg-surface) !important;
+  border-bottom: 1px solid var(--oto-border-default) !important;
   padding: 10px 0 !important;
 }
+
 .portal-navbar-clean .nav-link-portal,
 .nav-link-portal {
-  color: #1E293B !important;
+  color: var(--oto-navy-700) !important;
   font-weight: 500 !important;
   font-size: 0.90rem !important;
   padding: 8px 16px !important;
-  border-radius: 8px !important;
+  border-radius: var(--oto-radius-sm) !important;
   border: 1.5px solid transparent !important;
   text-decoration: none !important;
   text-shadow: none !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.2s var(--oto-ease-out) !important;
 }
+
 .portal-navbar-clean .nav-link-portal:hover,
 .nav-link-portal:hover {
-  color: #0F172A !important;
-  background-color: #F1F5F9 !important;
-  border-color: #CBD5E1 !important;
+  color: var(--oto-text-primary) !important;
+  background-color: var(--oto-bg-subtle) !important;
+  border-color: var(--oto-border-strong) !important;
   text-shadow: none !important;
 }
+
 .portal-navbar-clean .nav-link-portal.active,
 .nav-link-portal.active {
-  color: #C2410C !important;
+  color: var(--oto-brand-accent) !important;
   font-weight: 700 !important;
-  background-color: #FFF7ED !important;
-  border-color: #C2410C !important;
+  background-color: var(--oto-brand-accent-soft) !important;
+  border-color: var(--oto-brand-accent) !important;
   box-shadow: none !important;
   text-shadow: none !important;
 }
 
-/* C. SPECIFIC ONLY TO TRANG CHỦ (body.index-bento-body) OVER DARK HERO */
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1050 !important;
-  background: rgba(11, 19, 43, 0.88) !important;
-  backdrop-filter: blur(12px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: none !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
-  transition: all 0.35s ease !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-navbar-clean {
-  background: transparent !important;
-  border-bottom: none !important;
-  transition: all 0.35s ease !important;
-}
-
-/* TRANG CHỦ: GIỮ LỚP NỀN KÍNH TỐI ĐẠT CHUẨN TƯƠNG PHẢN KHI RÊ CHUỘT */
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover,
-.portal-header-wrapper:not(.is-scrolled):hover {
-  background: rgba(11, 19, 43, 0.92) !important;
-  backdrop-filter: blur(12px) saturate(150%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
-  box-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean,
-.portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item *,
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item span {
-  color: #FFFFFF !important;
-  font-weight: 500 !important;
-  text-shadow: none !important;
-  opacity: 1 !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item i {
-  color: #FB923C !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-divider {
-  color: rgba(255, 255, 255, 0.3) !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
-  color: #FFFFFF !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
-  color: #FFFFFF !important;
-  background: transparent !important;
-  border: none !important;
-  text-shadow: none !important;
-}
-
-/* NAVBAR ON DARK HERO (TRANG CHỦ) */
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-navbar-clean {
-  background: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal {
-  color: #FFFFFF !important;
-  font-weight: 600 !important;
-  text-shadow: none !important;
-  border: 1.5px solid transparent !important;
-  background: transparent !important;
-}
-/* Navbar links over dark hero backdrop: high WCAG AA contrast */
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover {
-  color: #FDBA74 !important;
-  background-color: rgba(255, 255, 255, 0.14) !important;
-  border-color: rgba(253, 186, 116, 0.5) !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.14) !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active {
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  background-color: #C2410C !important;
-  border-color: #C2410C !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18) !important;
-  text-shadow: none !important;
-}
-
-/* D. TRANG CHỦ KHI CUỘN XUỐNG (.is-scrolled) - KÍNH MỜ TRONG SUỐT SÁNG (FROSTED GLASS) THẤY NỘI DUNG SAU */
-body.index-bento-body .portal-header-wrapper.is-scrolled {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 1050 !important;
-  background: rgba(255, 255, 255, 0.94) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
-  transition: background 0.3s ease, box-shadow 0.3s ease !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .portal-topbar-clean,
-.portal-header-wrapper.is-scrolled .portal-topbar-clean {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  padding: 6px 0 !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .portal-navbar-clean {
-  background: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item,
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item * {
-  color: #0F172A !important;
-  font-weight: 600 !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item i {
-  color: #C2410C !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn {
-  color: #0F172A !important;
-  border: 1.5px solid #CBD5E1 !important;
-  background: #FFFFFF !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
-  color: #0F172A !important;
-  background: transparent !important;
-  border: none !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal {
-  color: #1E293B !important;
-  text-shadow: none !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal:hover {
-  color: #0F172A !important;
-  background-color: #F1F5F9 !important;
-  border-color: #CBD5E1 !important;
-}
-body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active {
-  color: #C2410C !important;
-  background-color: #FFF7ED !important;
-  border-color: #C2410C !important;
-}
-
-
-/* ==========================================================================
-   HOMEPAGE CAR TABS (BỘ LỌC TAB KHO XE ĐANG CHÀO BÁN)
-   ========================================================================== */
-#portal-car-tabs {
-  background: #F1F5F9 !important;
-  padding: 4px !important;
-  border-radius: 12px !important;
-  border: 1px solid #E2E8F0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 4px !important;
-  flex-wrap: wrap !important;
-}
-.portal-filter-tab {
-  border: 1px solid transparent !important;
-  background: transparent !important;
-  color: #475569 !important;
-  font-weight: 600 !important;
-  font-size: 0.84rem !important;
-  padding: 7px 16px !important;
-  border-radius: 8px !important;
-  cursor: pointer !important;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  white-space: nowrap !important;
-  line-height: 1.3 !important;
-  text-decoration: none !important;
-  outline: none !important;
-}
-.portal-filter-tab:hover:not(.active) {
-  color: #0F172A !important;
-  background: rgba(255, 255, 255, 0.75) !important;
-  border-color: #E2E8F0 !important;
-}
-.portal-filter-tab.active {
-  background: #FFFFFF !important;
-  color: #C2410C !important;
-  font-weight: 700 !important;
-  border-color: rgba(255, 107, 0, 0.2) !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
-}
-.portal-filter-tab.active i {
-  color: #C2410C !important;
-}
-.portal-filter-tab i {
-  font-size: 0.92rem !important;
-}
-
-/* ==========================================================================
-   UNIVERSAL HEADER ELEMENTS (BUTTON FAVORITES & POST CAR)
-   ========================================================================== */
+/* Header Action Buttons (Favorites + Post Car CTA) */
 .btn-fav-compact {
   width: 40px !important;
   height: 40px !important;
@@ -3856,25 +3880,32 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 1.5px solid #E2E8F0 !important;
-  background-color: #FFFFFF !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  border: 1.5px solid var(--oto-border-default) !important;
+  background-color: var(--oto-bg-surface) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
   transition: all 0.2s ease !important;
   text-decoration: none !important;
   padding: 0 !important;
   position: relative !important;
 }
+
 .btn-fav-compact i {
   font-size: 1.15rem !important;
-  color: #EF4444 !important;
+  color: var(--oto-rose-500) !important;
   transition: transform 0.2s ease;
 }
+
 .btn-fav-compact:hover {
-  background-color: #FEF2F2 !important;
-  border-color: #EF4444 !important;
+  background-color: var(--oto-rose-50) !important;
+  border-color: var(--oto-rose-500) !important;
   box-shadow: none !important;
   transform: scale(1.05);
 }
+
+.btn-fav-compact:hover i {
+  transform: scale(1.12);
+}
+
 .btn-fav-compact .favorites-badge-count {
   position: absolute;
   top: -4px;
@@ -3886,62 +3917,1862 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #FFFFFF;
+  border: 2px solid var(--oto-white);
 }
+
 .btn-cta-orange {
-  background-color: #C2410C !important;
-  border: 1.5px solid #C2410C !important;
-  color: #FFFFFF !important;
+  background-color: var(--oto-brand-accent) !important;
+  border: 1.5px solid var(--oto-brand-accent) !important;
+  color: var(--oto-white) !important;
   font-weight: 700 !important;
+  border-radius: var(--oto-radius-sm) !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18) !important;
+  box-shadow: var(--oto-shadow-sm) !important;
 }
+
 .btn-cta-orange:hover,
 .btn-cta-orange:focus,
 .btn-cta-orange:active {
-  background-color: #9A3412 !important;
-  border-color: #9A3412 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18) !important;
+  background-color: var(--oto-brand-accent-hover) !important;
+  border-color: var(--oto-brand-accent-hover) !important;
+  color: var(--oto-white) !important;
+  box-shadow: var(--oto-shadow-md) !important;
 }
 
+/* Hero Transparent Mode Logo Switching (index.html) */
+.portal-header-wrapper:not(.is-scrolled) .logo-transparent-mode {
+  display: none !important;
+}
+.portal-header-wrapper:not(.is-scrolled) .logo-scrolled-mode {
+  display: inline-block !important;
+}
 
-    /* ==========================================================================
+/* ==========================================================================
+   SCOPED HOME HERO HEADER (ONLY body.index-bento-body)
+   ========================================================================== */
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .logo-transparent-mode {
+  display: inline-block !important;
+}
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .logo-scrolled-mode {
+  display: none !important;
+}
+body.index-bento-body .portal-header-wrapper.is-scrolled .logo-transparent-mode {
+  display: none !important;
+}
+body.index-bento-body .portal-header-wrapper.is-scrolled .logo-scrolled-mode {
+  display: inline-block !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled),
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1050 !important;
+  background: rgba(11, 19, 43, 0.88) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-topbar-clean,
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled):hover .portal-topbar-clean {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .portal-navbar-clean {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item,
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item *,
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item span {
+  color: var(--oto-white) !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-info-item i {
+  color: var(--oto-brand-accent-on-dark) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-divider {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .lang-switch-container,
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .lang-pill-group {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.26) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn {
+  color: var(--oto-white) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .lang-pill-btn:hover:not(.active) {
+  color: var(--oto-white) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn {
+  color: var(--oto-white) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn .user-name-label {
+  color: var(--oto-white) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn:hover,
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-user-btn.show {
+  background: var(--oto-brand-accent) !important;
+  border-color: var(--oto-brand-accent) !important;
+  color: var(--oto-white) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal {
+  color: var(--oto-white) !important;
+  font-weight: 600 !important;
+  border: 1.5px solid transparent !important;
+  background: transparent !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal:hover {
+  color: var(--oto-copper-300) !important;
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(253, 186, 116, 0.5) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .nav-link-portal.active {
+  color: var(--oto-white) !important;
+  font-weight: 700 !important;
+  background-color: var(--oto-brand-accent) !important;
+  border-color: var(--oto-brand-accent) !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .btn-fav-compact {
+  border-color: rgba(255, 255, 255, 0.38) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Home Scrolled Acrylic State */
+body.index-bento-body .portal-header-wrapper.is-scrolled {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1050 !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .portal-topbar-clean {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5) !important;
+  padding: 6px 0 !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .portal-navbar-clean {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item,
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item * {
+  color: var(--oto-text-primary) !important;
+  font-weight: 600 !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-info-item i {
+  color: var(--oto-brand-accent) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn {
+  color: var(--oto-text-primary) !important;
+  border: 1.5px solid var(--oto-border-strong) !important;
+  background: var(--oto-bg-surface) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .topbar-user-btn .user-name-label {
+  color: var(--oto-text-primary) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal {
+  color: var(--oto-navy-700) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal:hover {
+  color: var(--oto-text-primary) !important;
+  background-color: var(--oto-bg-subtle) !important;
+  border-color: var(--oto-border-strong) !important;
+}
+
+body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active {
+  color: var(--oto-brand-accent) !important;
+  background-color: var(--oto-brand-accent-soft) !important;
+  border-color: var(--oto-brand-accent) !important;
+}
+
+/* ==========================================================================
+   SECTION B: UNIFIED PORTAL FOOTER, BRAND UTILITIES & LANGUAGE SWITCHER BUTTONS
+   ========================================================================== */
+footer.footer-light,
+.footer-light {
+  background-color: var(--oto-bg-page) !important;
+  border-top: 1px solid var(--oto-border-default) !important;
+  color: var(--oto-text-muted) !important;
+  margin-top: 60px;
+  padding: 48px 0 24px;
+}
+
+.footer-title {
+  color: var(--oto-text-primary) !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  margin-bottom: 14px !important;
+  font-family: var(--oto-font-display) !important;
+}
+
+.footer-links {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-links li {
+  margin-bottom: 8px !important;
+}
+
+.footer-links a {
+  color: var(--oto-text-muted) !important;
+  text-decoration: none !important;
+  font-size: 0.85rem !important;
+  transition: color 0.15s ease !important;
+}
+
+.footer-links a:hover {
+  color: var(--oto-brand-accent) !important;
+}
+
+.text-orange-theme {
+  color: var(--oto-brand-accent) !important;
+}
+
+.bg-teal-subtle {
+  background-color: var(--oto-teal-100) !important;
+  color: var(--oto-teal-700) !important;
+}
+
+.text-teal {
+  color: var(--oto-brand-teal) !important;
+}
+
+.border-teal,
+.border-teal-subtle {
+  border-color: var(--oto-teal-200) !important;
+}
+
+.badge-showroom-check {
+  background-color: var(--oto-brand-accent-soft) !important;
+  color: var(--oto-brand-accent-hover) !important;
+  border: 1px solid var(--oto-brand-accent-border) !important;
+}
+
+.bg-success-subtle,
+.bg-success-subtle.text-success {
+  background-color: var(--oto-emerald-50) !important;
+  color: var(--oto-emerald-800) !important;
+}
+
+.bg-danger-subtle,
+.bg-danger-subtle.text-danger,
+.badge.text-danger,
+.oto-sidebar-wrap .text-danger,
+.article-summary .text-danger {
+  color: #B91C1C !important;
+}
+
+.badge.text-primary,
+.text-primary {
+  color: #1D4ED8 !important;
+}
+
+.text-white {
+  color: var(--oto-white) !important;
+}
+
+/* Global Filter Tabs & Language Switcher Button */
+#portal-car-tabs {
+  background: var(--oto-bg-subtle) !important;
+  padding: 4px !important;
+  border-radius: var(--oto-radius-md) !important;
+  border: 1px solid var(--oto-border-default) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+}
+
+.portal-filter-tab {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: var(--oto-text-muted) !important;
+  font-weight: 600 !important;
+  font-size: 0.84rem !important;
+  padding: 7px 16px !important;
+  border-radius: var(--oto-radius-sm) !important;
+  cursor: pointer !important;
+  transition: all 0.2s var(--oto-ease-out) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.portal-filter-tab:hover:not(.active) {
+  color: var(--oto-text-primary) !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-color: var(--oto-border-default) !important;
+}
+
+.portal-filter-tab.active {
+  background: var(--oto-bg-surface) !important;
+  color: var(--oto-brand-accent) !important;
+  font-weight: 700 !important;
+  border-color: var(--oto-copper-glow-border, rgba(194, 65, 12, 0.22)) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
+}
+
+.portal-filter-tab.active i {
+  color: var(--oto-brand-accent) !important;
+}
+
+.topbar-lang-btn {
+  background: var(--oto-bg-surface) !important;
+  border: 1px solid var(--oto-border-strong) !important;
+  border-radius: var(--oto-radius-full) !important;
+  padding: 4px 12px !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: var(--oto-text-primary) !important;
+  box-shadow: var(--oto-shadow-xs) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  line-height: 1.2 !important;
+}
+
+.topbar-lang-btn:hover {
+  background-color: var(--oto-bg-page) !important;
+  border-color: var(--oto-text-muted) !important;
+  color: var(--oto-text-primary) !important;
+}
+
+.topbar-lang-btn::after {
+  display: none !important;
+}
+
+body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .topbar-lang-btn {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  color: var(--oto-white) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.portal-header-wrapper.is-scrolled .topbar-lang-btn {
+  background: var(--oto-bg-surface) !important;
+  border: 1px solid var(--oto-border-strong) !important;
+  color: var(--oto-text-primary) !important;
+}
+
+.lang-dropdown-container .dropdown-menu {
+  border: 1px solid var(--oto-border-default) !important;
+  border-radius: var(--oto-radius-md) !important;
+  box-shadow: var(--oto-shadow-lg) !important;
+}
+
+.lang-dropdown-container .dropdown-item.active,
+.lang-dropdown-container .dropdown-item:active {
+  background-color: var(--oto-brand-accent-soft) !important;
+  color: var(--oto-brand-accent) !important;
+  font-weight: 700 !important;
+}
+
+.lang-dropdown-container .dropdown-item:hover {
+  background-color: var(--oto-bg-page) !important;
+  color: var(--oto-text-primary) !important;
+}
+
+.pagination .page-item .page-link:focus,
+#pagination-container .page-item .page-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   SECTION C: UNIFIED AUTH SPLIT BENTO SYSTEM (login.html & register.html)
+   Shared Design Tokens, Typography & Mobile-First Ordering (Form Top / Perks Bottom)
+   ========================================================================== */
+body.auth-bento-body {
+  font-family: var(--oto-font-sans) !important;
+  background: var(--oto-bg-hero) url('../images/login-hero-showcase.jpg') center center / cover no-repeat fixed !important;
+  color: var(--oto-text-primary);
+  position: relative;
+  min-height: 100vh;
+}
+
+body.auth-bento-body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.94) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+body.auth-bento-body .bento-page-container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--oto-space-6) var(--oto-space-4);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body.auth-bento-body .bento-master-card {
+  max-width: 960px;
+  width: 100%;
+  background: var(--oto-bg-surface);
+  border-radius: var(--oto-radius-2xl);
+  box-shadow: var(--oto-shadow-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body.auth-register-page .bento-master-card {
+  max-width: 980px;
+}
+
+body.auth-bento-body .bento-story-col {
+  background: linear-gradient(145deg, var(--oto-navy-700) 0%, var(--oto-navy-800) 100%);
+  color: var(--oto-white);
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 40%;
+  position: relative;
+  overflow: hidden;
+}
+
+body.auth-register-page .bento-story-col {
+  flex: 1 1 38%;
+  padding: 36px 32px;
+}
+
+body.auth-bento-body .bento-story-col::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+body.auth-bento-body .bento-trust-pill,
+body.auth-bento-body .story-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(251, 146, 60, 0.16);
+  border: 1px solid rgba(251, 146, 60, 0.38);
+  color: var(--oto-copper-300);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: var(--oto-radius-full);
+  margin-bottom: 18px;
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+
+body.auth-bento-body .bento-story-title,
+body.auth-bento-body .story-title {
+  font-family: var(--oto-font-display);
+  font-size: 1.58rem;
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--oto-white);
+}
+
+body.auth-bento-body .bento-story-desc,
+body.auth-bento-body .story-desc {
+  font-size: 0.86rem;
+  color: var(--oto-slate-300);
+  line-height: 1.58;
+  margin-bottom: 24px;
+}
+
+body.auth-bento-body .bento-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+body.auth-bento-body .bento-perk-row,
+body.auth-bento-body .story-perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: var(--oto-slate-200);
+}
+
+body.auth-bento-body .story-perk-item {
+  margin-bottom: 14px;
+}
+
+body.auth-bento-body .bento-perk-icon,
+body.auth-bento-body .story-perk-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--oto-radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--oto-copper-400);
+  font-size: 0.92rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+body.auth-bento-body .bento-perk-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--oto-slate-50);
+  margin-bottom: 2px;
+}
+
+body.auth-bento-body .bento-perk-sub {
+  font-size: 0.76rem;
+  color: var(--oto-slate-300);
+  line-height: 1.45;
+}
+
+body.auth-bento-body .bento-stats-grid,
+body.auth-bento-body .story-stat-box {
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0;
+  padding: 16px 0 0;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+body.auth-bento-body .bento-stat-num,
+body.auth-bento-body .story-stat-num {
+  font-family: var(--oto-font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--oto-copper-400);
+  line-height: 1.1;
+}
+
+body.auth-bento-body .bento-stat-lbl,
+body.auth-bento-body .story-stat-lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--oto-slate-300);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+body.auth-bento-body .bento-form-col {
+  background: var(--oto-bg-surface);
+  padding: 36px 40px;
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.auth-register-page .bento-form-col {
+  flex: 1 1 62%;
+  padding: 34px 38px;
+}
+
+body.auth-bento-body .bento-header-bar,
+body.auth-bento-body .form-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+body.auth-bento-body .form-top-logo {
+  height: 36px;
+  object-fit: contain;
+}
+
+body.auth-bento-body .btn-return-home,
+body.auth-bento-body .btn-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--oto-bg-page);
+  border: 1px solid var(--oto-border-default);
+  color: var(--oto-text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--oto-radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+body.auth-bento-body .btn-return-home:hover,
+body.auth-bento-body .btn-back-link:hover {
+  background: var(--oto-bg-surface);
+  border-color: var(--oto-border-strong);
+  color: var(--oto-text-primary);
+  transform: translateX(-2px);
+}
+
+body.auth-bento-body .bento-form-title,
+body.auth-bento-body .form-main-heading {
+  font-family: var(--oto-font-display);
+  font-size: 1.56rem;
+  font-weight: 800;
+  color: var(--oto-text-primary);
+  margin-bottom: 4px;
+}
+
+body.auth-bento-body .bento-form-sub,
+body.auth-bento-body .form-main-sub {
+  font-size: 0.84rem;
+  color: var(--oto-text-muted);
+  margin-bottom: 20px;
+}
+
+body.auth-bento-body .bento-field-label,
+body.auth-bento-body .form-field-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--oto-navy-700);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.auth-bento-body .form-field-label .req-star {
+  color: var(--oto-rose-500);
+  margin-left: 2px;
+}
+
+body.auth-bento-body .bento-input-wrapper,
+body.auth-bento-body .input-wrapper {
+  position: relative;
+}
+
+body.auth-bento-body .bento-input-wrapper {
+  margin-bottom: 16px;
+}
+
+body.auth-bento-body .bento-input-icon,
+body.auth-bento-body .input-wrapper .field-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--oto-text-muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+body.auth-bento-body .bento-input-control,
+body.auth-bento-body .input-wrapper .form-control {
+  width: 100%;
+  border: 1px solid var(--oto-input-border);
+  border-radius: var(--oto-input-radius);
+  padding: 10px 14px 10px 40px;
+  font-size: 0.90rem;
+  color: var(--oto-text-primary);
+  background: var(--oto-input-bg);
+  min-height: 44px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+body.auth-bento-body .bento-input-control:focus,
+body.auth-bento-body .input-wrapper .form-control:focus {
+  border-color: var(--oto-input-focus);
+  box-shadow: none;
+  outline: none;
+}
+
+body.auth-bento-body .btn-toggle-eye,
+body.auth-bento-body .input-wrapper .toggle-pwd-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--oto-text-muted);
+  cursor: pointer;
+  padding: 6px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: color 0.15s ease;
+}
+
+body.auth-bento-body .btn-toggle-eye:hover,
+body.auth-bento-body .input-wrapper .toggle-pwd-btn:hover {
+  color: var(--oto-brand-accent);
+}
+
+body.auth-bento-body .forgot-pwd-link,
+body.auth-bento-body .text-orange-link {
+  color: var(--oto-brand-accent) !important;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+body.auth-bento-body .forgot-pwd-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+body.auth-bento-body .forgot-pwd-link:hover,
+body.auth-bento-body .text-orange-link:hover {
+  color: var(--oto-brand-accent-hover) !important;
+  text-decoration: underline;
+}
+
+body.auth-bento-body .bento-checkbox-label {
+  font-size: 0.82rem;
+  color: var(--oto-text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+body.auth-bento-body .form-check-input:checked {
+  background-color: var(--oto-brand-accent);
+  border-color: var(--oto-brand-accent);
+}
+
+body.auth-bento-body .form-check-input:focus {
+  border-color: var(--oto-brand-accent);
+  box-shadow: none;
+}
+
+body.auth-bento-body .strength-meter-box {
+  margin-top: 6px;
+}
+
+body.auth-bento-body .strength-bar-track {
+  height: 4px;
+  background: var(--oto-border-default);
+  border-radius: 4px;
+  display: flex;
+  gap: 3px;
+  overflow: hidden;
+}
+
+body.auth-bento-body .strength-bar-seg {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border-radius: 2px;
+  transition: background-color 0.25s ease;
+}
+
+body.auth-bento-body .strength-status-text {
+  font-size: 0.75rem;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--oto-text-muted);
+}
+
+body.auth-bento-body .btn-submit-bento,
+body.auth-bento-body .btn-register-action {
+  width: 100%;
+  min-height: 48px;
+  background: var(--oto-brand-accent);
+  border: 1px solid var(--oto-brand-accent);
+  color: var(--oto-white) !important;
+  font-family: var(--oto-font-sans);
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 12px 20px;
+  border-radius: var(--oto-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: var(--oto-shadow-sm);
+  transition: all 0.2s var(--oto-ease-out);
+}
+
+body.auth-bento-body .btn-submit-bento {
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+body.auth-bento-body .btn-submit-bento:hover,
+body.auth-bento-body .btn-register-action:hover {
+  background: var(--oto-brand-accent-hover);
+  border-color: var(--oto-brand-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--oto-shadow-md);
+  color: var(--oto-white) !important;
+}
+
+body.auth-bento-body .register-switch-row {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--oto-text-muted);
+  margin-bottom: 20px;
+}
+
+body.auth-bento-body .register-switch-row a {
+  color: var(--oto-brand-accent);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+body.auth-bento-body .register-switch-row a:hover {
+  text-decoration: underline;
+}
+
+body.auth-bento-body .demo-preset-box,
+body.auth-bento-body .bento-demo-strip {
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--oto-border-default);
+  border-radius: 0;
+  padding: 14px 0 0;
+}
+
+body.auth-bento-body .demo-preset-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+body.auth-bento-body .bento-demo-strip {
+  margin-top: 12px;
+}
+
+body.auth-bento-body .demo-preset-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--oto-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.auth-bento-body .btn-preset-pill,
+body.auth-bento-body .quick-demo-btn {
+  background: var(--oto-bg-surface);
+  border: 1px solid var(--oto-border-strong);
+  color: var(--oto-text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--oto-radius-full);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+body.auth-bento-body .btn-preset-pill:hover,
+body.auth-bento-body .quick-demo-btn:hover {
+  background: var(--oto-brand-accent-soft);
+  border-color: var(--oto-brand-accent);
+  color: var(--oto-brand-accent);
+}
+
+body.auth-bento-body .bento-copyright-footer,
+body.auth-bento-body .bento-footer-copy {
+  text-align: center;
+  color: var(--oto-slate-300);
+  font-size: 0.75rem;
+  margin-top: 18px;
+}
+
+@media (min-width: 992px) {
+  body.auth-bento-body .bento-master-card {
+    flex-direction: row;
+    min-height: 560px;
+  }
+  body.auth-register-page .bento-master-card {
+    min-height: 610px;
+  }
+  body.auth-bento-body .bento-story-col {
+    order: 1;
+  }
+  body.auth-bento-body .bento-form-col {
+    order: 2;
+  }
+}
+
+@media (max-width: 991.98px) {
+  body.auth-bento-body .bento-master-card {
+    flex-direction: column;
+    border-radius: var(--oto-radius-xl);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+  body.auth-bento-body .bento-form-col {
+    order: 1;
+    flex: none;
+    width: 100%;
+    padding: 26px 20px;
+  }
+  body.auth-bento-body .bento-story-col {
+    order: 2;
+    flex: none;
+    width: 100%;
+    padding: 24px 20px;
+  }
+  body.auth-bento-body .bento-perks-list,
+  body.auth-bento-body .story-perk-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  body.auth-bento-body .story-perk-item {
+    margin-bottom: 0;
+  }
+  body.auth-bento-body .story-title {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  body.auth-bento-body .bento-page-container {
+    padding: 12px 10px;
+    justify-content: flex-start;
+  }
+  body.auth-bento-body .bento-form-col,
+  body.auth-bento-body .bento-story-col {
+    padding: 22px 16px;
+  }
+  body.auth-bento-body .bento-input-control,
+  body.auth-bento-body .input-wrapper .form-control {
+    font-size: 16px !important;
+  }
+}
+body.index-bento-body,
+body.cars-bento-body,
+body.detail-bento-body,
+body.post-car-bento-body,
+body.seller-bento-body,
+body.news-bento-body,
+body.profile-bento-body,
+body.favorites-bento-body,
+body.opt2-body,
+body.admin-bento-body {
+  font-family: var(--oto-font-sans) !important;
+  background-color: var(--oto-bg-catalog) !important;
+  color: var(--oto-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body.index-bento-body {
+  overflow-x: clip;
+}
+/* ==========================================================================
+   PAGE MODULE: INDEX.HTML (body.index-bento-body)
+   ========================================================================== */
+/* 4. HERO SECTION KÉO DÀI ĐỦ MÀN HÌNH MÁY (100VH) - SÁNG RỰC RỠ, NỀN TỐI SANG TRỌNG */
+body.index-bento-body .portal-hero-section {
+
+      background-color: #0A1128 !important;
+      background-image: 
+        linear-gradient(to right, rgba(10, 17, 40, 0.78) 0%, rgba(10, 17, 40, 0.55) 42%, rgba(10, 17, 40, 0.10) 75%, transparent 100%),
+        url('../images/hero-car-bg-bright.jpg?v=20261021_luminous_v2') !important;
+      background-position: right center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      color: var(--oto-white) !important;
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      padding: 120px 16px 80px !important;
+      position: relative;
+}
+
+body.index-bento-body .hero-title {
+
+      font-size: 3.2rem !important;
+      font-weight: 800 !important;
+      line-height: 1.15 !important;
+      color: var(--oto-white) !important;
+      text-shadow: none !important;
+}
+
+body.index-bento-body .hero-subtitle {
+
+      font-size: 1.12rem !important;
+      color: var(--oto-slate-100) !important;
+      max-width: 640px;
+      line-height: 1.65 !important;
+      text-shadow: none !important;
+}
+
+@media (max-width: 991px) {
+  body.index-bento-body .hero-title {
+
+        font-size: 2.3rem !important;
+  }
+
+  body.index-bento-body .portal-hero-section {
+
+        min-height: 90vh !important;
+        padding: 110px 16px 60px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  body.index-bento-body .brand-logo .site-logo {
+
+        max-height: 34px !important;
+  }
+
+  body.index-bento-body .portal-navbar-clean .btn-cta-orange {
+
+        padding: 7px 10px !important;
+        font-size: 0.82rem !important;
+  }
+}
+
+/* Nút Thao Tác Trong Hero */
+body.index-bento-body .btn-hero-primary {
+
+      background-color: var(--oto-brand-accent) !important;
+      border: 2px solid var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+      transition: all 0.25s ease !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
+}
+
+body.index-bento-body .btn-hero-primary:hover, body.index-bento-body .btn-hero-primary:focus, body.index-bento-body .btn-hero-primary:active {
+
+      background-color: var(--oto-brand-accent-hover) !important;
+      border-color: var(--oto-white) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16) !important;
+      color: var(--oto-white) !important;
+      transform: translateY(-2px);
+}
+
+/* 2. FIX TRIỆT ĐỂ LỖI CHỮ CUỘN: Tự động biến mất hoàn toàn ngay khi cuộn chuột */
+body.index-bento-body .hero-scroll-hint {
+
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      pointer-events: auto;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.index-bento-body .hero-scroll-hint.is-hidden {
+
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translate(-50%, 15px) !important;
+}
+
+@keyframes hintFloat {
+0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+}
+
+body.index-bento-body .scroll-hint-icon {
+
+      animation: hintFloat 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+body.index-bento-body .scroll-hint-link {
+
+      transition: all 0.2s ease;
+}
+
+body.index-bento-body .scroll-hint-link:hover {
+
+      color: var(--oto-brand-accent) !important;
+}
+
+/* 4. KHỐI TÌM KIẾM NHANH: BAN ĐẦU ẨN, HIỆN LÊN KHI CUỘN XUỐNG VỚI HIỆU ỨNG MƯỢT MÀ */
+body.index-bento-body .portal-search-wrapper {
+
+      position: relative;
+      z-index: 30;
+      margin-top: -65px;
+      opacity: 0;
+      transform: translateY(45px);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+}
+
+body.index-bento-body .portal-search-wrapper.is-visible {
+
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+}
+
+body.index-bento-body .portal-search-card {
+
+      background: var(--oto-white) !important;
+      border-radius: 16px !important;
+      padding: 22px 24px !important;
+      box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.18) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      position: relative !important;
+}
+
+body.index-bento-body .portal-tab-pill {
+
+      border: 2px solid transparent !important;
+      background: var(--oto-bg-subtle) !important;
+      color: var(--oto-slate-600) !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease;
+      cursor: pointer;
+}
+
+body.index-bento-body .portal-tab-pill:hover {
+
+      background: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent) !important;
+      border-color: var(--oto-brand-accent-border) !important;
+      box-shadow: none !important;
+}
+
+body.index-bento-body .portal-tab-pill.active {
+
+      background: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent) !important;
+      border-color: var(--oto-brand-accent) !important;
+      box-shadow: none !important;
+}
+
+body.index-bento-body .portal-field-label {
+
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      color: var(--oto-slate-600) !important;
+      text-transform: uppercase !important;
+      margin-bottom: 4px;
+      display: block;
+}
+
+body.index-bento-body .portal-field-select {
+
+      font-size: 0.86rem !important;
+      font-weight: 600 !important;
+      color: var(--oto-navy-700) !important;
+      border: 1.5px solid var(--oto-border-strong) !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      background-color: var(--oto-bg-page) !important;
+      transition: all 0.2s ease;
+}
+
+body.index-bento-body .portal-field-select:focus {
+
+      border-color: var(--oto-brand-accent) !important;
+      box-shadow: none !important;
+      background-color: var(--oto-white) !important;
+}
+
+body.index-bento-body .trend-tag-pill {
+
+      display: inline-block;
+      background: var(--oto-bg-subtle);
+      color: var(--oto-slate-600);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+}
+
+body.index-bento-body .trend-tag-pill:hover {
+
+      background: var(--oto-brand-accent-soft);
+      color: var(--oto-brand-accent);
+      border-color: var(--oto-brand-accent-border);
+      box-shadow: none;
+}
+
+body.index-bento-body .badge-showroom-check {
+
+      background-color: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent-hover) !important;
+      border: 1px solid var(--oto-brand-accent-border) !important;
+}
+
+/* ==========================================================================
+       STUDIO BENTO KIẾN TRÚC: CHUẨN HÓA TRANG CHỦ (TƯƠNG PHẢN ĐỒNG BỘ 100%)
+       ========================================================================== */
+body.index-bento-body {
+
+      font-family: var(--oto-font-sans) !important;
+      background-color: var(--oto-bg-catalog) !important;
+      color: var(--oto-navy-800);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+}
+
+/* Khối Tìm Kiếm Nổi (Search Card Overlay) */
+body.index-bento-body .portal-search-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.10) !important;
+}
+
+body.index-bento-body .portal-tab-pill {
+
+      background: var(--oto-bg-page) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      color: var(--oto-slate-600) !important;
+      font-weight: 600 !important;
+}
+
+body.index-bento-body .portal-tab-pill:hover {
+
+      background: var(--oto-bg-catalog) !important;
+      color: var(--oto-navy-800) !important;
+      border-color: var(--oto-slate-500) !important;
+}
+
+body.index-bento-body .portal-tab-pill.active {
+
+      background: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25) !important;
+}
+
+/* Khối Thương Hiệu Phổ Biến (Brand Bento Cards) */
+body.index-bento-body .portal-brand-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.index-bento-body .portal-brand-card:hover {
+
+      border-color: var(--oto-navy-800) !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Khối Tìm Theo Ngân Sách (Budget Panel) */
+body.index-bento-body .category-box-stitch {
+
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+}
+
+body.index-bento-body .trend-tag-pill {
+
+      background: var(--oto-bg-page) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      color: var(--oto-slate-700) !important;
+      font-weight: 600 !important;
+      border-radius: 12px !important;
+      padding: 12px 16px !important;
+      transition: all 0.2s ease !important;
+      display: block !important;
+}
+
+body.index-bento-body .trend-tag-pill:hover {
+
+      background: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Tabs Phân Loại Xe Đang Chào Bán */
+body.index-bento-body .nav-pills-custom .nav-link, body.index-bento-body .portal-catalog-tabs .nav-link, body.index-bento-body .btn-filter-tab {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      color: var(--oto-slate-600) !important;
+      font-weight: 600 !important;
+      border-radius: 20px !important;
+      padding: 7px 18px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.index-bento-body .nav-pills-custom .nav-link.active, body.index-bento-body .portal-catalog-tabs .nav-link.active, body.index-bento-body .btn-filter-tab.active {
+
+      background: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Thẻ Xe Ô Tô (Car Bento Cards) */
+body.index-bento-body .portal-car-card, body.index-bento-body .car-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+      overflow: hidden !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.index-bento-body .portal-car-card:hover, body.index-bento-body .car-card:hover {
+
+      border-color: var(--oto-slate-500) !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09) !important;
+}
+
+body.index-bento-body .car-card .btn-outline-primary, body.index-bento-body .portal-car-card .btn-outline-primary, body.index-bento-body .btn-view-car-clean {
+
+      background-color: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      font-weight: 600 !important;
+      border-radius: 10px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.index-bento-body .car-card .btn-outline-primary:hover, body.index-bento-body .portal-car-card .btn-outline-primary:hover, body.index-bento-body .btn-view-car-clean:hover {
+
+      background-color: var(--oto-navy-700) !important;
+      border-color: var(--oto-navy-700) !important;
+      color: var(--oto-white) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Khối Công Cụ Tính Toán & So Sánh (Tool Bento Cards) */
+body.index-bento-body .portal-tool-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+      padding: 24px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.index-bento-body .portal-tool-card:hover {
+
+      border-color: var(--oto-navy-800) !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Khối Tin Tức & Cẩm Nang (Article Bento Cards) */
+body.index-bento-body .portal-article-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+      padding: 12px !important;
+      overflow: hidden !important;
+      transition: all 0.2s ease !important;
+}
+
+body.index-bento-body .portal-article-card:hover {
+
+      border-color: var(--oto-navy-800) !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* 4 Thẻ Cam Kết Chân Trang (Pillar Bento Cards) */
+body.index-bento-body .value-pill-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+      padding: 20px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.index-bento-body .value-pill-card:hover {
+
+      border-color: var(--oto-navy-800) !important;
+      transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   PAGE MODULE: CARS.HTML (body.cars-bento-body)
+   ========================================================================== */
+body.cars-bento-body PHƯƠNG ÁN A: STUDIO BENTO KIẾN TRÚC & PHÂN VÙNG TƯƠNG PHẢN ĐẬM RÕ NÉT ========================================================================== */ .cars-bento-card {
+
+      background: var(--oto-white) !important;
+      border-radius: 18px !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      padding: 24px !important;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Bộ Chuyển Đổi Segmented Pill */
+body.cars-bento-body .switcher-pill {
+
+      display: inline-flex;
+      background: var(--oto-bg-subtle);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--oto-border-strong);
+      gap: 3px;
+}
+
+body.cars-bento-body .switcher-btn {
+
+      border: none;
+      background: transparent;
+      padding: 7px 18px;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--oto-slate-600) !important;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1.3;
+}
+
+body.cars-bento-body .switcher-btn:hover:not(.active) {
+
+      color: var(--oto-navy-800) !important;
+      background: rgba(255, 255, 255, 0.7);
+}
+
+body.cars-bento-body .switcher-btn.active {
+
+      background: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+      font-weight: 700;
+}
+
+/* Chip Hãng Xe Tinh Giản, Chữ Rõ Ràng, Tương Phản Đen-Trắng */
+body.cars-bento-body .brand-chip {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--oto-border-strong) !important;
+      background: var(--oto-bg-page) !important;
+      color: var(--oto-slate-700) !important;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      user-select: none;
+}
+
+body.cars-bento-body .brand-chip:hover:not(.active) {
+
+      background: var(--oto-white) !important;
+      border-color: var(--oto-slate-600) !important;
+      color: var(--oto-navy-800) !important;
+      transform: translateY(-1px);
+}
+
+body.cars-bento-body .brand-chip.active {
+
+      background: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+      font-weight: 700 !important;
+}
+
+body.cars-bento-body .brand-chip.active span, body.cars-bento-body .brand-chip.active strong {
+
+      color: var(--oto-white) !important;
+}
+
+body.cars-bento-body .brand-chip .badge-count {
+
+      font-size: 0.75rem;
+      opacity: 0.75;
+      font-weight: 500;
+}
+
+/* ==========================================================================
+       SIDEBAR BỘ LỌC CẢI TIẾN: CÓ KHUNG ĐỊNH HÌNH & KHÔNG BỊ HEADER CHE
+       ========================================================================== */
+body.cars-bento-body .filter-sidebar-sticky {
+
+      position: sticky;
+      top: 92px; /* Cách mép dưới header 16px, không bao giờ bị cắt chữ */
+      z-index: 10;
+      background: var(--oto-white) !important;
+      border-radius: 18px !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06) !important;
+      overflow: hidden;
+}
+
+body.cars-bento-body .filter-header-bar {
+
+      background: var(--oto-bg-page);
+      border-bottom: 1px solid var(--oto-border-strong);
+      padding: 14px 18px;
+}
+
+body.cars-bento-body .filter-body-content {
+
+      padding: 18px;
+}
+
+body.cars-bento-body .filter-section-title {
+
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--oto-slate-700);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: block;
+}
+
+body.cars-bento-body .filter-chip-btn {
+
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--oto-border-strong) !important;
+      background: var(--oto-bg-page) !important;
+      color: var(--oto-slate-700) !important;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+}
+
+body.cars-bento-body .filter-chip-btn:hover:not(.active) {
+
+      background: var(--oto-white) !important;
+      border-color: var(--oto-slate-600) !important;
+      color: var(--oto-navy-800) !important;
+}
+
+body.cars-bento-body .filter-chip-btn.active {
+
+      background: var(--oto-navy-800) !important;
+      border-color: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Thẻ Xe (Car Card Bento Nổi Bật Trên Nền Xám Slate) */
+body.cars-bento-body .car-bento-item {
+
+      background: var(--oto-white);
+      border-radius: 16px;
+      border: 1px solid var(--oto-border-strong);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+body.cars-bento-body .car-bento-item:hover {
+
+      transform: translateY(-4px);
+      border-color: var(--oto-slate-600);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
+}
+
+body.cars-bento-body .car-img-wrap {
+
+      position: relative;
+      height: 205px;
+      overflow: hidden;
+      background: var(--oto-bg-subtle);
+}
+
+body.cars-bento-body .car-img-wrap img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+}
+
+body.cars-bento-body .car-bento-item:hover .car-img-wrap img {
+
+      transform: scale(1.03);
+}
+
+/* Huy hiệu trạng thái kính mờ thanh lịch */
+body.cars-bento-body .car-status-badge {
+
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      color: var(--oto-navy-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+}
+
+body.cars-bento-body .badge-dot {
+
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+}
+
+body.cars-bento-body .dot-new {
+ background-color: var(--oto-emerald-500);
+}
+
+body.cars-bento-body .dot-dealer {
+ background-color: #F59E0B;
+}
+
+body.cars-bento-body .dot-owner {
+ background-color: #3B82F6;
+}
+
+/* Nút Yêu Thích Trên Ảnh */
+body.cars-bento-body .car-fav-btn {
+
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--oto-border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--oto-slate-600);
+      transition: all 0.15s ease;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      z-index: 2;
+}
+
+body.cars-bento-body .car-fav-btn:hover {
+
+      background: var(--oto-white);
+      color: var(--oto-rose-500);
+      transform: scale(1.08);
+}
+
+body.cars-bento-body .car-fav-btn.active {
+
+      color: var(--oto-rose-500);
+      background: var(--oto-white);
+      border-color: #FECACA;
+}
+
+body.cars-bento-body .car-fav-btn.active i::before {
+
+      content: "\F415"; /* bi-heart-fill */
+}
+
+/* Thông Số Xe (Gọn gàng, không lặp lại chữ) */
+body.cars-bento-body .spec-chip {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.75rem;
+      color: var(--oto-slate-600);
+      font-weight: 500;
+}
+
+/* Nút Thao Tác Thẻ Xe */
+body.cars-bento-body .btn-detail-car {
+
+      background: var(--oto-navy-800);
+      border: 1px solid var(--oto-navy-800);
+      color: var(--oto-white);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+}
+
+body.cars-bento-body .btn-detail-car:hover {
+
+      background: var(--oto-navy-700);
+      border-color: var(--oto-navy-700);
+      color: var(--oto-white);
+}
+
+body.cars-bento-body .btn-call-car {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      color: var(--oto-brand-accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+}
+
+body.cars-bento-body .btn-call-car:hover {
+
+      background: var(--oto-brand-accent-soft);
+      border-color: var(--oto-brand-accent);
+      color: var(--oto-brand-accent);
+}
+
+/* ==========================================================================
        BENTO STUDIO PAGINATION (RÕ NÉT, NỀN NỔI BẬT, CHUẨN OTOMARKET)
        ========================================================================== */
-    #pagination-nav {
+body.cars-bento-body #pagination-nav {
+
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
       margin: 36px 0 24px 0 !important;
       width: 100% !important;
-    }
-    .pagination,
-    #pagination-container {
+}
+
+body.cars-bento-body .pagination, body.cars-bento-body #pagination-container {
+
       display: inline-flex !important;
       flex-wrap: nowrap !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      background: #FFFFFF !important;
+      background: var(--oto-white) !important;
       padding: 8px 12px !important;
       border-radius: 16px !important;
-      border: 1.5px solid #CBD5E1 !important;
+      border: 1.5px solid var(--oto-border-strong) !important;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08) !important;
       margin: 0 auto !important;
       list-style: none !important;
-    }
-    .pagination .page-item,
-    #pagination-container .page-item {
+}
+
+body.cars-bento-body .pagination .page-item, body.cars-bento-body #pagination-container .page-item {
+
       margin: 0 !important;
       padding: 0 !important;
       list-style: none !important;
       display: inline-block !important;
-    }
-    .pagination .page-item .page-link,
-    #pagination-container .page-item .page-link,
-    body.cars-bento-body .pagination .page-link,
-    body.cars-bento-body #pagination-container .page-link {
+}
+
+body.cars-bento-body .pagination .page-item .page-link, body.cars-bento-body #pagination-container .page-item .page-link, body.cars-bento-body .pagination .page-link, body.cars-bento-body .pagination .page-item .page-link:focus, body.cars-bento-body #pagination-container .page-item .page-link:focus, body.cars-bento-body .pagination .page-link:focus {
+
+      outline: none !important;
+      box-shadow: none !important;
+}
+
+body.cars-bento-body #pagination-container .page-link {
+
       min-width: 44px !important;
       height: 42px !important;
       display: inline-flex !important;
@@ -3951,75 +5782,446 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       border-radius: 10px !important;
       font-size: 0.92rem !important;
       font-weight: 600 !important;
-      color: #1E293B !important;
-      background: #F8FAFC !important;
-      background-color: #F8FAFC !important;
-      border: 1.5px solid #E2E8F0 !important;
+      color: var(--oto-navy-700) !important;
+      background: var(--oto-bg-page) !important;
+      background-color: var(--oto-bg-page) !important;
+      border: 1.5px solid var(--oto-border-default) !important;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
       cursor: pointer !important;
       text-decoration: none !important;
       outline: none !important;
       box-shadow: none !important;
       line-height: 1 !important;
-    }
-    .pagination .page-item:not(.active):not(.disabled) .page-link:hover,
-    #pagination-container .page-item:not(.active):not(.disabled) .page-link:hover,
-    body.cars-bento-body .pagination .page-item:not(.active):not(.disabled) .page-link:hover {
-      background-color: #FFF7ED !important;
-      color: #C2410C !important;
-      border-color: #C2410C !important;
+}
+
+body.cars-bento-body .pagination .page-item:not(.active):not(.disabled) .page-link:hover, body.cars-bento-body #pagination-container .page-item:not(.active):not(.disabled) .page-link:hover, body.cars-bento-body .pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+
+      background-color: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent-hover) !important;
+      border-color: var(--oto-brand-accent) !important;
       transform: translateY(-2px) !important;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15) !important;
-    }
-    .pagination .page-item.active .page-link,
-    #pagination-container .page-item.active .page-link,
-    body.cars-bento-body .pagination .page-item.active .page-link,
-    body.cars-bento-body #pagination-container .page-item.active .page-link {
-      background: #C2410C !important;
-      background-color: #C2410C !important;
-      color: #FFFFFF !important;
-      border-color: #C2410C !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+}
+
+body.cars-bento-body .pagination .page-item.active .page-link, body.cars-bento-body #pagination-container .page-item.active .page-link, body.cars-bento-body .pagination .page-item.active .page-link, body.cars-bento-body #pagination-container .page-item.active .page-link {
+
+      background: var(--oto-brand-accent) !important;
+      background-color: var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+      border-color: var(--oto-brand-accent) !important;
       font-weight: 700 !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       cursor: default !important;
       transform: none !important;
-    }
-    .pagination .page-item.disabled .page-link,
-    #pagination-container .page-item.disabled .page-link,
-    body.cars-bento-body .pagination .page-item.disabled .page-link,
-    body.cars-bento-body #pagination-container .page-item.disabled .page-link {
-      background: #F1F5F9 !important;
-      background-color: #F1F5F9 !important;
-      color: #475569 !important;
-      border-color: #E2E8F0 !important;
-      opacity: 0.55 !important;
+}
+
+body.cars-bento-body .pagination .page-item.disabled .page-link, body.cars-bento-body #pagination-container .page-item.disabled .page-link, body.cars-bento-body .pagination .page-item.disabled .page-link, body.cars-bento-body #pagination-container .page-item.disabled .page-link {
+
+      background: var(--oto-bg-subtle) !important;
+      background-color: var(--oto-bg-subtle) !important;
+      color: var(--oto-slate-600) !important;
+      border-color: var(--oto-border-default) !important;
+      opacity: 1 !important;
       cursor: not-allowed !important;
       box-shadow: none !important;
       transform: none !important;
-    }
+}
 
+/* ==========================================================================
+   PAGE MODULE: CAR-DETAIL.HTML (body.detail-bento-body)
+   ========================================================================== */
+/* BREADCRUMB THANH LỊCH */
+body.detail-bento-body .bento-breadcrumb {
 
+      font-size: 0.86rem;
+      color: var(--oto-slate-600);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+}
 
-    /* ==========================================================================
+body.detail-bento-body .bento-breadcrumb a {
+
+      color: var(--oto-slate-600);
+      text-decoration: none;
+      transition: color 0.15s ease;
+}
+
+body.detail-bento-body .bento-breadcrumb a:hover {
+
+      color: var(--oto-brand-accent);
+}
+
+body.detail-bento-body .bento-breadcrumb .active-crumb {
+
+      color: var(--oto-navy-800);
+      font-weight: 600;
+}
+
+/* THẺ BENTO CHUNG */
+body.detail-bento-body .bento-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.detail-bento-body .bento-card:hover {
+
+      border-color: var(--oto-border-strong);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* THƯ VIỆN ẢNH BENTO */
+body.detail-bento-body .detail-gallery-main {
+
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 14px;
+      overflow: hidden;
+      background-color: var(--oto-navy-800);
+}
+
+body.detail-bento-body .detail-gallery-main img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+}
+
+body.detail-bento-body .gallery-counter-badge {
+
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      color: var(--oto-white);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+body.detail-bento-body .gallery-verified-badge {
+
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(13, 148, 136, 0.95);
+      backdrop-filter: blur(8px);
+      color: var(--oto-white);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.80rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+}
+
+body.detail-bento-body .gallery-thumb-row {
+
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+}
+
+body.detail-bento-body .gallery-thumb {
+
+      width: 100px;
+      height: 72px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+      opacity: 0.65;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      background-color: var(--oto-border-default);
+}
+
+body.detail-bento-body .gallery-thumb img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+body.detail-bento-body .gallery-thumb:hover {
+
+      opacity: 0.95;
+      border-color: var(--oto-slate-600);
+      transform: translateY(-2px);
+}
+
+body.detail-bento-body .gallery-thumb.active {
+
+      opacity: 1;
+      border-color: var(--oto-brand-accent) !important;
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08);
+      transform: translateY(-2px);
+}
+
+/* 6 THẺ THÔNG SỐ NHANH BENTO */
+body.detail-bento-body .bento-spec-grid {
+
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin-top: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  body.detail-bento-body .bento-spec-grid {
+
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  body.detail-bento-body .bento-spec-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body.detail-bento-body .bento-spec-item {
+
+      background: transparent;
+      border: none;
+      border-top: 1px solid var(--oto-border-default);
+      border-radius: 0;
+      padding: 12px 8px;
+      text-align: center;
+      transition: all 0.2s ease;
+}
+
+body.detail-bento-body .bento-spec-item:hover {
+
+      background: var(--oto-bg-page);
+}
+
+body.detail-bento-body .bento-spec-icon {
+
+      font-size: 1.25rem;
+      color: var(--oto-brand-teal);
+      margin-bottom: 4px;
+      display: inline-block;
+}
+
+body.detail-bento-body .bento-spec-label {
+
+      font-size: 0.75rem;
+      color: var(--oto-slate-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-bottom: 2px;
+}
+
+body.detail-bento-body .bento-spec-value {
+
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+}
+
+/* BẢNG CHỨNG NHẬN 176 HẠNG MỤC */
+body.detail-bento-body .inspection-header-box {
+
+      background: linear-gradient(135deg, var(--oto-navy-800) 0%, var(--oto-navy-700) 100%);
+      color: var(--oto-white);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+}
+
+body.detail-bento-body .inspection-pillar-card {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      height: 100%;
+      transition: all 0.2s ease;
+}
+
+body.detail-bento-body .inspection-pillar-card:hover {
+
+      border-color: var(--oto-brand-teal);
+      background: var(--oto-white);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+}
+
+body.detail-bento-body .inspection-pillar-title {
+
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+}
+
+/* CỘT PHẢI LIÊN HỆ ĐỨNG YÊN CỐ ĐỊNH TỰ NHIÊN, KHÔNG TRÔI KHI KÉO TRANG */
+body.detail-bento-body .sticky-seller-column {
+
+      position: static !important;
+}
+
+body.detail-bento-body .btn-hotline-call {
+
+      background: var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+      font-size: 1.02rem !important;
+      border: none !important;
+      border-radius: 12px !important;
+      padding: 12px 18px !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      transition: all 0.25s ease !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none !important;
+}
+
+body.detail-bento-body .btn-hotline-call:hover {
+
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      color: var(--oto-white) !important;
+}
+
+body.detail-bento-body .btn-zalo-chat {
+
+      background-color: var(--oto-brand-teal) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      border: none !important;
+      border-radius: 12px !important;
+      padding: 11px 18px !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      transition: all 0.2s ease !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+}
+
+body.detail-bento-body .btn-zalo-chat:hover {
+
+      background-color: var(--oto-brand-teal) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      color: var(--oto-white) !important;
+}
+
+/* THẺ XE TƯƠNG TỰ CÙNG PHÂN KHÚC */
+body.detail-bento-body .related-car-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+}
+
+body.detail-bento-body .related-car-card:hover {
+
+      transform: translateY(-3px);
+      border-color: var(--oto-border-strong);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      color: inherit;
+}
+
+body.detail-bento-body .related-car-thumb {
+
+      height: 170px;
+      width: 100%;
+      object-fit: cover;
+      background-color: var(--oto-navy-800);
+}
+
+/* BADGE KIỂU DÁNG MỚI */
+body.detail-bento-body .badge-showroom-certified {
+
+      background-color: #F0FDFA;
+      color: var(--oto-brand-teal);
+      border: 1px solid var(--oto-teal-200);
+      font-weight: 700;
+      font-size: 0.80rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+}
+
+body.detail-bento-body .badge-condition-pill {
+
+      background-color: var(--oto-emerald-50);
+      color: #059669;
+      border: 1px solid #A7F3D0;
+      font-weight: 700;
+      font-size: 0.80rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+}
+
+/* ==========================================================================
        KHUNG NỀN BENTO PHÂN VÙNG: XE TƯƠNG TỰ CÙNG PHÂN KHÚC & TẦM GIÁ
        ========================================================================== */
-    #related-cars-section {
-      background: transparent !important;
-      border: none !important;
-      border-radius: 0 !important;
-      padding: 8px 0 16px !important;
-      margin-top: 40px !important;
-      margin-bottom: 48px !important;
-      box-shadow: none !important;
+body.detail-bento-body #related-cars-section {
+
+      background: var(--oto-white) !important;
+      border: 1.5px solid var(--oto-border-strong) !important;
+      border-radius: 20px !important;
+      padding: 32px 32px 36px !important;
+      margin-top: 48px !important;
+      margin-bottom: 56px !important;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
       transition: all 0.25s ease !important;
-    }
-    #related-cars-section:hover {
-      border-color: #475569 !important;
+}
+
+body.detail-bento-body #related-cars-section:hover {
+
+      border-color: var(--oto-slate-600) !important;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08) !important;
-    }
-    #related-cars-section .related-car-card {
-      background: #F8FAFC !important;
-      border: 1.5px solid #E2E8F0 !important;
+}
+
+body.detail-bento-body #related-cars-section .related-car-card {
+
+      background: var(--oto-bg-page) !important;
+      border: 1.5px solid var(--oto-border-default) !important;
       border-radius: 16px !important;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -4029,18 +6231,22 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       flex-direction: column !important;
       text-decoration: none !important;
       color: inherit !important;
-    }
-    #related-cars-section .related-car-card:hover {
-      background: #FFFFFF !important;
-      border-color: #C2410C !important;
+}
+
+body.detail-bento-body #related-cars-section .related-car-card:hover {
+
+      background: var(--oto-white) !important;
+      border-color: var(--oto-brand-accent) !important;
       transform: translateY(-4px) !important;
-      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       color: inherit !important;
-    }
-    #related-cars-section .btn-outline-teal {
-      border: 1.5px solid #CBD5E1 !important;
-      background-color: #FFFFFF !important;
-      color: #0F172A !important;
+}
+
+body.detail-bento-body #related-cars-section .btn-outline-teal {
+
+      border: 1.5px solid var(--oto-border-strong) !important;
+      background-color: var(--oto-white) !important;
+      color: var(--oto-navy-800) !important;
       font-weight: 600 !important;
       font-size: 0.88rem !important;
       padding: 8px 18px !important;
@@ -4050,80 +6256,2957 @@ body.index-bento-body .portal-header-wrapper.is-scrolled .nav-link-portal.active
       align-items: center !important;
       gap: 6px !important;
       text-decoration: none !important;
-    }
-    #related-cars-section .btn-outline-teal:hover {
-      background-color: #FFF7ED !important;
-      border-color: #C2410C !important;
-      color: #C2410C !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
+}
+
+body.detail-bento-body #related-cars-section .btn-outline-teal:hover {
+
+      background-color: var(--oto-brand-accent-soft) !important;
+      border-color: var(--oto-brand-accent) !important;
+      color: var(--oto-brand-accent) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
       transform: translateY(-1px) !important;
-    }
-
-
-
-
-
-
+}
 
 /* ==========================================================================
-   DROPDOWN CHUYỂN ĐỔI NGÔN NGỮ (VIỆT NAM / ENGLISH / CHINA)
+   PAGE MODULE: POST-CAR.HTML (body.post-car-bento-body)
    ========================================================================== */
-.topbar-lang-btn {
-  background: #FFFFFF !important;
-  border: 1px solid #CBD5E1 !important;
-  border-radius: 9999px !important;
-  padding: 4px 12px !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  color: #0F172A !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  text-decoration: none !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  line-height: 1.2 !important;
-}
-.topbar-lang-btn:hover {
-  background-color: #F8FAFC !important;
-  border-color: #475569 !important;
-  color: #0F172A !important;
-}
-.topbar-lang-btn::after {
-  display: none !important;
-}
-.hero-title ~ * .topbar-lang-btn,
-.portal-header-wrapper.is-transparent-header:not(.is-scrolled) .topbar-lang-btn {
-  background: rgba(255, 255, 255, 0.18) !important;
-  border: 1px solid rgba(255, 255, 255, 0.38) !important;
-  color: #FFFFFF !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.portal-header-wrapper.is-scrolled .topbar-lang-btn {
-  background: #FFFFFF !important;
-  border: 1px solid #CBD5E1 !important;
-  color: #0F172A !important;
-}
-.lang-dropdown-container .dropdown-menu {
-  border: 1px solid #E2E8F0 !important;
-  border-radius: 12px !important;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
-}
-.lang-dropdown-container .dropdown-item.active,
-.lang-dropdown-container .dropdown-item:active {
-  background-color: #FFF7ED !important;
-  color: #C2410C !important;
-  font-weight: 700 !important;
-}
-.lang-dropdown-container .dropdown-item:hover {
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+/* Container */
+body.post-car-bento-body .bento-main-container {
+
+      max-width: 1240px;
+      margin: 0 auto;
 }
 
-/* Focus State Polish - Impeccable No-Slop */
-.pagination .page-item .page-link:focus,
-#pagination-container .page-item .page-link:focus {
-  outline: none !important;
-  box-shadow: none !important;
+body.post-car-bento-body .bento-studio-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 26px 28px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Icon tiêu đề xe góc trái */
+body.post-car-bento-body .bento-title-icon-box {
+
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--oto-bg-subtle);
+      border: 1px solid var(--oto-border-default);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      color: var(--oto-navy-800);
+      flex-shrink: 0;
+}
+
+/* Chevron Ribbon Stepper Bar chuẩn Demo */
+body.post-car-bento-body .chevron-stepper-ribbon {
+
+      display: flex;
+      align-items: stretch;
+      border: 1px solid var(--oto-border-default);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--oto-white);
+      margin-top: 16px;
+      margin-bottom: 22px;
+}
+
+body.post-car-bento-body .chevron-ribbon-item {
+
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--oto-slate-600);
+      background: var(--oto-white);
+      border: none;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+      border-right: 1px solid var(--oto-border-default);
+}
+
+body.post-car-bento-body .chevron-ribbon-item:last-child {
+
+      border-right: none;
+}
+
+body.post-car-bento-body .chevron-ribbon-item:hover:not(.active) {
+
+      background: var(--oto-bg-page);
+      color: var(--oto-navy-800);
+}
+
+body.post-car-bento-body .chevron-ribbon-item.active {
+
+      background: var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+}
+
+body.post-car-bento-body .chevron-ribbon-item.completed {
+
+      color: #166534;
+      background: #F0FDF4;
+}
+
+/* Chevron arrow effect */
+body.post-car-bento-body .chevron-ribbon-item.active::after {
+
+      content: '';
+      position: absolute;
+      right: -9px;
+      top: 0;
+      bottom: 0;
+      width: 9px;
+      height: 100%;
+      background: var(--oto-brand-accent);
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      z-index: 5;
+}
+
+/* Form Step Animation */
+body.post-car-bento-body .form-step-pane {
+
+      animation: fadeInStep 0.25s ease-in-out;
+}
+
+@keyframes fadeInStep {
+from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Labels & Inputs */
+body.post-car-bento-body .bento-form-label {
+
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--oto-slate-700);
+      margin-bottom: 5px;
+      display: block;
+}
+
+body.post-car-bento-body .bento-form-input, body.post-car-bento-body .bento-form-select {
+
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      font-size: 0.88rem !important;
+      color: var(--oto-navy-800) !important;
+      background-color: var(--oto-white) !important;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body.post-car-bento-body .bento-form-input:focus, body.post-car-bento-body .bento-form-select:focus {
+
+      border-color: var(--oto-brand-accent) !important;
+      box-shadow: none !important;
+      outline: none !important;
+}
+
+/* Quick Pills (Models, ODO) */
+body.post-car-bento-body .quick-pill-opt {
+
+      background: var(--oto-bg-subtle);
+      border: 1px solid var(--oto-border-default);
+      padding: 4px 10px;
+      border-radius: 7px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--oto-slate-600);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+}
+
+body.post-car-bento-body .quick-pill-opt:hover {
+
+      background: var(--oto-brand-accent-soft);
+      border-color: var(--oto-brand-accent-border);
+      color: var(--oto-brand-accent);
+}
+
+/* Feature pills */
+body.post-car-bento-body .feature-pill-chip {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--oto-border-default);
+      background: var(--oto-bg-page);
+      color: var(--oto-slate-700);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+}
+
+body.post-car-bento-body .feature-pill-chip:hover {
+
+      background: var(--oto-bg-subtle);
+      border-color: var(--oto-border-strong);
+}
+
+body.post-car-bento-body .feature-pill-chip.active {
+
+      background: var(--oto-brand-accent-soft) !important;
+      border-color: var(--oto-brand-accent) !important;
+      color: var(--oto-brand-accent) !important;
+}
+
+/* Photo Dropzone & Thumbnails */
+body.post-car-bento-body .bento-photo-dropzone {
+
+      border: 2px dashed var(--oto-border-strong);
+      border-radius: 0;
+      padding: 24px;
+      text-align: center;
+      background: var(--oto-bg-page);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 16px;
+}
+
+body.post-car-bento-body .bento-photo-dropzone:hover {
+
+      border-color: var(--oto-brand-accent);
+      background: var(--oto-brand-accent-soft);
+}
+
+body.post-car-bento-body .bento-photo-thumb {
+
+      position: relative;
+      height: 76px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid var(--oto-border-default);
+      background: var(--oto-navy-800);
+      cursor: pointer;
+}
+
+body.post-car-bento-body .bento-photo-thumb img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+body.post-car-bento-body .bento-photo-thumb.is-primary {
+
+      border-color: var(--oto-brand-accent) !important;
+      box-shadow: none;
+}
+
+body.post-car-bento-body .bento-photo-thumb-badge {
+
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--oto-white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+}
+
+body.post-car-bento-body .bento-photo-thumb-del {
+
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--oto-white);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+}
+
+body.post-car-bento-body .bento-photo-thumb-del:hover {
+
+      background: #DC2626;
+}
+
+body.post-car-bento-body .bento-photo-add-slot {
+
+      height: 76px;
+      border: 1.5px dashed var(--oto-border-strong);
+      border-radius: 8px;
+      background: var(--oto-bg-page);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--oto-slate-600);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+}
+
+body.post-car-bento-body .bento-photo-add-slot:hover {
+
+      background: var(--oto-brand-accent-soft);
+      border-color: var(--oto-brand-accent);
+      color: var(--oto-brand-accent);
+}
+
+/* ==========================================================================
+       RIGHT COLUMN: LIVE PREVIEW CARD (STICKY, ZERO JITTER)
+       ========================================================================== */
+body.post-car-bento-body .sticky-preview-wrapper {
+
+      position: sticky !important;
+      top: 90px !important;
+      z-index: 20;
+}
+
+body.post-car-bento-body .bento-preview-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 18px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.post-car-bento-body .preview-media-box {
+
+      position: relative;
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: transparent;
+}
+
+body.post-car-bento-body .preview-media-box img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+}
+
+body.post-car-bento-body .badge-preview-count {
+
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(4px);
+      color: var(--oto-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 5px;
+}
+
+body.post-car-bento-body .badge-preview-source {
+
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(4px);
+      color: var(--oto-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 5px;
+}
+
+body.post-car-bento-body .preview-price-text {
+
+      color: var(--oto-brand-accent) !important;
+      font-weight: 800 !important;
+      font-size: 1.35rem !important;
+      line-height: 1.2;
+}
+
+body.post-car-bento-body .preview-pill-chip {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      font-size: 0.76rem;
+      color: var(--oto-slate-600);
+      font-weight: 500;
+}
+
+body.post-car-bento-body .preview-seller-pill {
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0 0;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid var(--oto-border-default);
+      font-size: 0.8rem;
+      color: var(--oto-slate-700);
+      font-weight: 600;
+}
+
+body.post-car-bento-body .preview-seller-avatar {
+
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+}
+
+/* ==========================================================================
+   PAGE MODULE: MY-LISTINGS.HTML (body.seller-bento-body)
+   ========================================================================== */
+body.seller-bento-body DASHBOARD HEADER BENTO CARD (TITLE + 4 KPIS) ========================================================================== */ .dashboard-header-bento {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 24px 28px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.seller-bento-body .kpi-metric-pill {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: none;
+      border-bottom: 2px solid var(--oto-border-default);
+      background: transparent;
+      color: var(--oto-slate-700);
+      transition: all 0.2s ease;
+}
+
+body.seller-bento-body .kpi-metric-pill:hover {
+
+      background: var(--oto-bg-subtle);
+      border-color: var(--oto-border-strong);
+}
+
+body.seller-bento-body .kpi-metric-pill.pill-active {
+
+      background: transparent;
+      border-color: #16A34A;
+      color: #166534;
+}
+
+body.seller-bento-body .kpi-metric-pill.pill-pending {
+
+      background: transparent;
+      border-color: #D97706;
+      color: #92400E;
+}
+
+body.seller-bento-body .kpi-metric-pill.pill-rejected {
+
+      background: transparent;
+      border-color: #DC2626;
+      color: #991B1B;
+}
+
+/* ==========================================================================
+       TOOLBAR FILTER & SEARCH BOX
+       ========================================================================== */
+body.seller-bento-body .filter-toolbar-bento {
+
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+}
+
+body.seller-bento-body .filter-tab-pill {
+
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--oto-slate-600);
+      font-weight: 600;
+      font-size: 0.86rem;
+      padding: 6px 14px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      cursor: pointer;
+}
+
+body.seller-bento-body .filter-tab-pill:hover {
+
+      color: var(--oto-navy-800);
+      background: var(--oto-bg-subtle);
+}
+
+body.seller-bento-body .filter-tab-pill.active {
+
+      background: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent-hover) !important;
+      border-color: var(--oto-brand-accent-border) !important;
+}
+
+/* ==========================================================================
+       LISTING STREAM CARDS (BENTO STYLE)
+       ========================================================================== */
+body.seller-bento-body .listing-item-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.seller-bento-body .listing-item-card:hover {
+
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important;
+      border-color: var(--oto-border-strong) !important;
+}
+
+body.seller-bento-body .listing-card-media {
+
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 190px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--oto-navy-800);
+}
+
+body.seller-bento-body .listing-card-media img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+}
+
+body.seller-bento-body .listing-item-card:hover .listing-card-media img {
+
+      transform: scale(1.04);
+}
+
+body.seller-bento-body .badge-photo-count {
+
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      color: var(--oto-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+}
+
+/* Badges trạng thái chuẩn */
+body.seller-bento-body .status-badge-pill {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      line-height: 1.2;
+}
+
+body.seller-bento-body .status-badge-pill.active {
+
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
+}
+
+body.seller-bento-body .status-badge-pill.pending {
+
+      background: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+}
+
+body.seller-bento-body .status-badge-pill.rejected {
+
+      background: #FEE2E2;
+      color: #B91C1C;
+      border: 1px solid #FECACA;
+}
+
+body.seller-bento-body .status-badge-pill.draft {
+
+      background: var(--oto-bg-subtle);
+      color: var(--oto-slate-600);
+      border: 1px solid var(--oto-border-default);
+}
+
+body.seller-bento-body .status-badge-pill.hidden {
+
+      background: var(--oto-bg-subtle);
+      color: var(--oto-slate-600);
+      border: 1px solid var(--oto-border-strong);
+}
+
+/* Spec Chips */
+body.seller-bento-body .spec-pill-item {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      font-size: 0.78rem;
+      color: var(--oto-slate-600);
+      font-weight: 500;
+}
+
+/* Action Buttons in Card */
+body.seller-bento-body .btn-action-primary {
+
+      background: var(--oto-brand-teal) !important;
+      color: var(--oto-white) !important;
+      border: none !important;
+      font-weight: 600 !important;
+      font-size: 0.84rem !important;
+      padding: 7px 14px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none !important;
+}
+
+body.seller-bento-body .btn-action-primary:hover {
+
+      background: var(--oto-brand-teal) !important;
+      color: var(--oto-white) !important;
+}
+
+body.seller-bento-body .btn-action-secondary {
+
+      background: var(--oto-white) !important;
+      color: var(--oto-navy-800) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      font-weight: 600 !important;
+      font-size: 0.84rem !important;
+      padding: 6px 14px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+}
+
+body.seller-bento-body .btn-action-secondary:hover {
+
+      background: var(--oto-bg-page) !important;
+      border-color: var(--oto-slate-600) !important;
+      color: var(--oto-navy-800) !important;
+}
+
+body.seller-bento-body .btn-action-danger-outline {
+
+      background: transparent !important;
+      color: #DC2626 !important;
+      border: 1px solid #FECACA !important;
+      font-weight: 600 !important;
+      font-size: 0.82rem !important;
+      padding: 6px 12px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.seller-bento-body .btn-action-danger-outline:hover {
+
+      background: var(--oto-rose-50) !important;
+      border-color: #F87171 !important;
+}
+
+body.seller-bento-body .price-orange-bold {
+
+      color: var(--oto-brand-accent) !important;
+      font-weight: 800 !important;
+      font-size: 1.25rem !important;
+      line-height: 1.2;
+}
+
+/* ==========================================================================
+   PAGE MODULE: NEWS.HTML (body.news-bento-body)
+   ========================================================================== */
+/* Hộp Bento Header & Thẻ Bài Viết Danh Sách */
+body.news-bento-body .news-bento-hero {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 16px;
+      padding: 24px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+body.news-bento-body .bento-article-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 16px;
+      padding: 14px !important;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      cursor: pointer;
+}
+
+body.news-bento-body .bento-article-card:hover {
+
+      transform: translateY(-3px);
+      border-color: var(--oto-slate-600);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+/* Khối Feature Chính (Editorial Lead) */
+body.news-bento-body .hero-lead-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 16px;
+      padding: 16px !important;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+      transition: all 0.25s ease;
+      cursor: pointer;
+}
+
+body.news-bento-body .hero-lead-card:hover {
+
+      border-color: var(--oto-slate-600);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+/* Thumbnail ảnh danh sách */
+body.news-bento-body .article-thumb-container {
+
+      position: relative;
+      width: 100%;
+      height: 190px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: var(--oto-bg-subtle);
+}
+
+body.news-bento-body .article-thumb-img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+}
+
+body.news-bento-body .bento-article-card:hover .article-thumb-img, body.news-bento-body .hero-lead-card:hover .article-thumb-img {
+
+      transform: scale(1.04);
+}
+
+body.news-bento-body .badge-editorial-category {
+
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      color: var(--oto-white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+}
+
+body.news-bento-body .news-category-pill {
+
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--oto-border-strong);
+      background: var(--oto-white);
+      color: var(--oto-slate-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+}
+
+body.news-bento-body .news-category-pill:hover {
+
+      background: var(--oto-bg-subtle);
+      color: var(--oto-navy-800);
+      border-color: var(--oto-slate-600);
+}
+
+body.news-bento-body .news-category-pill.active {
+
+      background: var(--oto-navy-800);
+      color: var(--oto-white);
+      border-color: var(--oto-navy-800);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+}
+
+body.news-bento-body .btn-read-bento {
+
+      color: var(--oto-brand-accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s ease;
+}
+
+body.news-bento-body .bento-article-card:hover .btn-read-bento, body.news-bento-body .hero-lead-card:hover .btn-read-bento {
+
+      gap: 8px;
+}
+
+body.news-bento-body .article-title-link {
+
+      color: var(--oto-navy-800);
+      text-decoration: none;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.2s ease;
+}
+
+body.news-bento-body .bento-article-card:hover .article-title-link, body.news-bento-body .hero-lead-card:hover .article-title-link {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .search-alert-bar {
+
+      background-color: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 12px;
+      padding: 12px 18px;
+}
+
+/* ==========================================================================
+       BỐ CỤC 2 CỘT CHUẨN OTO.COM.VN KHI ĐỌC CHI TIẾT BÀI VIẾT
+       ========================================================================== */
+body.news-bento-body .oto-breadcrumb {
+
+      font-size: 0.84rem;
+      color: var(--oto-slate-600);
+      margin-bottom: 16px;
+}
+
+body.news-bento-body .oto-breadcrumb a {
+
+      color: var(--oto-slate-600);
+      text-decoration: none;
+      transition: color 0.2s;
+}
+
+body.news-bento-body .oto-breadcrumb a:hover {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .oto-breadcrumb .separator {
+
+      margin: 0 8px;
+      color: var(--oto-border-strong);
+}
+
+body.news-bento-body .oto-breadcrumb .current {
+
+      color: var(--oto-navy-800);
+      font-weight: 600;
+}
+
+body.news-bento-body .article-main-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+@media (max-width: 768px) {
+  body.news-bento-body .article-main-card {
+
+        padding: 20px;
+  }
+}
+
+body.news-bento-body .oto-article-title {
+ font-size: 1.75rem !important;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      line-height: 1.35;
+      letter-spacing: -0.4px;
+      margin-bottom: 14px;
+}
+
+body.news-bento-body .oto-meta-bar {
+
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--oto-border-default);
+      font-size: 0.82rem;
+      color: var(--oto-slate-600);
+}
+
+body.news-bento-body .oto-meta-left {
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+}
+
+body.news-bento-body .oto-cat-pill {
+
+      background: var(--oto-brand-accent-soft);
+      color: var(--oto-brand-accent-hover);
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      border: 1px solid #FFEDD5;
+      text-decoration: none;
+}
+
+body.news-bento-body .oto-sapo-text {
+
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: var(--oto-slate-700);
+      margin-bottom: 22px;
+      padding: 16px 20px;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 12px;
+}
+
+body.news-bento-body .oto-consult-banner {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+}
+
+body.news-bento-body .oto-consult-title {
+
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: var(--oto-slate-600);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+}
+
+body.news-bento-body .oto-consult-hotline {
+
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--oto-brand-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+}
+
+body.news-bento-body .oto-article-content {
+
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--oto-navy-700);
+}
+
+body.news-bento-body .oto-article-content p {
+
+      margin-bottom: 20px;
+}
+
+body.news-bento-body .oto-article-content h2 {
+
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-top: 34px;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+}
+
+body.news-bento-body .oto-article-content h3 {
+
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-top: 26px;
+      margin-bottom: 12px;
+}
+
+body.news-bento-body .oto-image-figure {
+
+      margin: 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+}
+
+body.news-bento-body .oto-image-figure img {
+
+      width: 100%;
+      height: auto;
+      display: block;
+}
+
+body.news-bento-body .oto-image-caption {
+
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--oto-slate-600);
+      text-align: center;
+      padding: 10px 16px;
+      background: var(--oto-bg-page);
+      border-top: 1px solid var(--oto-bg-subtle);
+      margin-bottom: 0;
+}
+
+body.news-bento-body .oto-highlight-box {
+
+      background-color: var(--oto-brand-accent-soft);
+      border: 1px solid #FFEDD5;
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin: 24px 0;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--oto-brand-accent-hover);
+}
+
+body.news-bento-body .oto-data-table {
+
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.88rem;
+}
+
+body.news-bento-body .oto-data-table th {
+
+      background: var(--oto-navy-800);
+      color: var(--oto-white);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+}
+
+body.news-bento-body .oto-data-table td {
+
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--oto-border-default);
+      background: var(--oto-white);
+}
+
+body.news-bento-body .oto-data-table tr:nth-child(even) td {
+
+      background: var(--oto-bg-page);
+}
+
+body.news-bento-body .oto-tags-box {
+
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding-top: 20px;
+      margin-top: 30px;
+      border-top: 1px solid var(--oto-border-default);
+}
+
+body.news-bento-body .oto-tag-chip {
+
+      background: var(--oto-bg-subtle);
+      color: var(--oto-slate-600);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--oto-border-default);
+}
+
+body.news-bento-body .oto-tag-chip:hover {
+
+      background: var(--oto-border-default);
+      color: var(--oto-navy-800);
+}
+
+body.news-bento-body .oto-author-footer {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+}
+
+body.news-bento-body .oto-related-section {
+
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 2px solid var(--oto-border-default);
+}
+
+body.news-bento-body .oto-section-heading {
+
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+}
+
+body.news-bento-body .oto-section-heading::before {
+
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--oto-brand-accent);
+      border-radius: 2px;
+}
+
+body.news-bento-body .related-news-row {
+
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--oto-border-strong);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+}
+
+body.news-bento-body .related-news-row:hover .related-news-title {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .related-news-thumb {
+
+      width: 130px;
+      height: 85px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--oto-bg-subtle);
+}
+
+body.news-bento-body .related-news-thumb img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+body.news-bento-body .related-news-title {
+
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      line-height: 1.45;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+}
+
+/* SIDEBAR CỘT PHẢI CHUẨN OTO.COM.VN */
+body.news-bento-body .oto-sidebar-wrap {
+
+      position: relative;
+}
+
+body.news-bento-body .oto-sidebar-widget {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+body.news-bento-body .oto-sidebar-title {
+
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1.5px solid var(--oto-bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+}
+
+body.news-bento-body .rank-news-item {
+
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--oto-bg-subtle);
+      text-decoration: none;
+      color: inherit;
+      align-items: flex-start;
+}
+
+body.news-bento-body .rank-news-item:last-child {
+
+      border-bottom: none;
+      padding-bottom: 0;
+}
+
+body.news-bento-body .rank-news-number {
+
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--oto-slate-600);
+      width: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+}
+
+body.news-bento-body .rank-news-item:nth-child(1) .rank-news-number {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .rank-news-item:nth-child(2) .rank-news-number {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .rank-news-item:nth-child(3) .rank-news-number {
+
+      color: #F59E0B;
+}
+
+body.news-bento-body .rank-news-title {
+
+      font-size: 0.85rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--oto-navy-700);
+      transition: color 0.2s;
+}
+
+body.news-bento-body .rank-news-item:hover .rank-news-title {
+
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .sidebar-car-card {
+
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+}
+
+body.news-bento-body .sidebar-car-card:hover {
+
+      border-color: var(--oto-brand-accent);
+      background: var(--oto-brand-accent-soft);
+      transform: translateY(-2px);
+}
+
+body.news-bento-body .sidebar-car-thumb {
+
+      width: 90px;
+      height: 65px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+}
+
+body.news-bento-body .sidebar-car-thumb img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+body.news-bento-body .sidebar-car-title {
+
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      line-height: 1.35;
+      margin-bottom: 4px;
+}
+
+body.news-bento-body .sidebar-car-price {
+
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--oto-brand-accent);
+}
+
+body.news-bento-body .sidebar-calc-banner {
+
+      background: linear-gradient(135deg, var(--oto-navy-800) 0%, var(--oto-navy-700) 100%);
+      color: var(--oto-white);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+}
+
+body.news-bento-body .footer-editorial {
+
+      background-color: var(--oto-white);
+      border-top: 1px solid var(--oto-border-strong);
+      color: var(--oto-slate-700);
+}
+
+/* ========================================================================
+       BANNER ẢNH QUẢNG CÁO XE Ô TÔ CHUẨN OTO.COM.VN (THUẦN HÌNH ẢNH)
+       ======================================================================== */
+body.news-bento-body .oto-ad-slot {
+
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--oto-border-strong);
+      background: #0B132B;
+}
+
+body.news-bento-body .oto-ad-slot img {
+
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+}
+
+/* ==========================================================================
+   PAGE MODULE: PROFILE.HTML (body.profile-bento-body)
+   ========================================================================== */
+/* ==========================================================================
+       BENTO CARDS LAYOUT
+       ========================================================================== */
+body.profile-bento-body .bento-main-container {
+
+      max-width: 1200px;
+      margin: 0 auto;
+}
+
+body.profile-bento-body .bento-profile-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 28px 24px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.profile-bento-body .bento-profile-hub {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 32px 36px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+@media (max-width: 768px) {
+  body.profile-bento-body .bento-profile-hub {
+
+        padding: 24px 18px !important;
+  }
+}
+
+/* Avatar Component */
+body.profile-bento-body .profile-avatar-wrapper {
+
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+}
+
+body.profile-bento-body .profile-avatar-img {
+
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3.5px solid var(--oto-brand-accent);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+      background-color: var(--oto-bg-page);
+}
+
+body.profile-bento-body .profile-avatar-camera-btn {
+
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--oto-white);
+      border: 1.5px solid var(--oto-border-strong);
+      color: var(--oto-slate-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+      transition: all 0.2s ease;
+}
+
+body.profile-bento-body .profile-avatar-camera-btn:hover {
+
+      background: var(--oto-brand-accent);
+      color: var(--oto-white);
+      border-color: var(--oto-brand-accent);
+      transform: scale(1.06);
+}
+
+/* KPI Metrics Box */
+body.profile-bento-body .bento-kpi-box {
+
+      background: transparent;
+      border: none;
+      border-top: 1px solid var(--oto-border-default);
+      border-radius: 0;
+      padding: 12px 6px;
+      text-align: center;
+      transition: all 0.2s ease;
+}
+
+body.profile-bento-body .bento-kpi-box:hover {
+
+      background: var(--oto-bg-page);
+}
+
+body.profile-bento-body .bento-kpi-val {
+
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      line-height: 1.2;
+}
+
+body.profile-bento-body .bento-kpi-label {
+
+      font-size: 0.78rem;
+      color: var(--oto-slate-600);
+      font-weight: 600;
+      margin-top: 3px;
+}
+
+/* Member Navigation Buttons */
+body.profile-bento-body .member-nav-btn {
+
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+}
+
+body.profile-bento-body .member-nav-btn-outline {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      color: var(--oto-navy-700);
+}
+
+body.profile-bento-body .member-nav-btn-outline:hover {
+
+      background: var(--oto-bg-page);
+      border-color: var(--oto-slate-600);
+      color: var(--oto-navy-800);
+}
+
+body.profile-bento-body .member-nav-btn-logout {
+
+      background: var(--oto-rose-50);
+      border: 1px solid #FECACA;
+      color: #B91C1C;
+}
+
+body.profile-bento-body .member-nav-btn-logout:hover {
+
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+      color: #B91C1C;
+}
+
+/* Bento Tabs */
+body.profile-bento-body .bento-tab-nav {
+
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--oto-bg-subtle);
+      margin-bottom: 28px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+}
+
+body.profile-bento-body .bento-tab-nav::-webkit-scrollbar {
+
+      display: none;
+}
+
+body.profile-bento-body .bento-tab-btn {
+
+      background: transparent;
+      border: none;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--oto-slate-600);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 8px 8px 0 0;
+}
+
+body.profile-bento-body .bento-tab-btn:hover {
+
+      color: var(--oto-navy-800);
+}
+
+body.profile-bento-body .bento-tab-btn.active {
+
+      color: var(--oto-brand-accent) !important;
+      font-weight: 700 !important;
+}
+
+body.profile-bento-body .bento-tab-btn.active::after {
+
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: var(--oto-brand-accent);
+      border-radius: 2px;
+}
+
+/* Form Inputs */
+body.profile-bento-body .bento-form-label {
+
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--oto-navy-700);
+      margin-bottom: 6px;
+}
+
+body.profile-bento-body .bento-input-group .input-group-text {
+
+      background-color: var(--oto-bg-page);
+      border-color: var(--oto-border-strong);
+      color: var(--oto-slate-600);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      padding-left: 14px;
+      padding-right: 14px;
+}
+
+body.profile-bento-body .bento-input-group .form-control, body.profile-bento-body .bento-input-group .form-select {
+
+      border-color: var(--oto-border-strong);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.92rem;
+      color: var(--oto-navy-800);
+}
+
+body.profile-bento-body .bento-input-group .form-control:focus, body.profile-bento-body .bento-input-group .form-select:focus {
+
+      border-color: var(--oto-brand-accent);
+      box-shadow: none;
+}
+
+body.profile-bento-body .bento-input-group .form-control[readonly] {
+
+      background-color: var(--oto-bg-page);
+      color: var(--oto-slate-600);
+}
+
+body.profile-bento-body .social-icon-btn {
+
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--oto-slate-600);
+      text-decoration: none;
+      transition: all 0.2s ease;
+}
+
+body.profile-bento-body .social-icon-btn:hover {
+
+      background: var(--oto-brand-accent);
+      border-color: var(--oto-brand-accent);
+      color: var(--oto-white);
+      transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   PAGE MODULE: FAVORITES.HTML (body.favorites-bento-body)
+   ========================================================================== */
+body.favorites-bento-body BENTO FAVORITES HEADER CARD ========================================================================== */ .fav-header-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 24px 28px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04) !important;
+}
+
+body.favorites-bento-body .fav-stat-box {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 12px;
+      padding: 8px 16px;
+      text-align: center;
+      min-width: 95px;
+      transition: all 0.2s ease;
+}
+
+body.favorites-bento-body .fav-stat-box:hover {
+
+      background: var(--oto-bg-subtle);
+      border-color: var(--oto-border-strong);
+}
+
+body.favorites-bento-body .fav-stat-box.showroom {
+
+      background: #F0FDFA;
+      border-color: var(--oto-teal-100);
+}
+
+body.favorites-bento-body .fav-stat-box.external {
+
+      background: #EFF6FF;
+      border-color: #DBEAFE;
+}
+
+/* ==========================================================================
+       CONTROLS & TABS BAR
+       ========================================================================== */
+body.favorites-bento-body .fav-controls-bar {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 14px !important;
+      padding: 14px 18px !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+}
+
+body.favorites-bento-body .fav-tab-btn {
+
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--oto-slate-600);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 6px 14px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+}
+
+body.favorites-bento-body .fav-tab-btn:hover {
+
+      color: var(--oto-navy-800);
+      background: var(--oto-bg-subtle);
+}
+
+body.favorites-bento-body .fav-tab-btn.active {
+
+      background: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent-hover) !important;
+      border-color: var(--oto-brand-accent-border) !important;
+}
+
+/* ==========================================================================
+       BENTO CARDS
+       ========================================================================== */
+body.favorites-bento-body .car-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+}
+
+body.favorites-bento-body .car-card:hover {
+
+      transform: translateY(-4px) !important;
+      border-color: var(--oto-border-strong) !important;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.favorites-bento-body .car-card-img-wrapper {
+
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background-color: var(--oto-navy-800);
+}
+
+body.favorites-bento-body .car-card-img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+}
+
+body.favorites-bento-body .car-card:hover .car-card-img {
+
+      transform: scale(1.04);
+}
+
+body.favorites-bento-body .car-fav-btn {
+
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      transition: all 0.2s ease;
+      z-index: 5;
+}
+
+body.favorites-bento-body .car-fav-btn:hover {
+
+      transform: scale(1.1);
+      background: var(--oto-white);
+}
+
+body.favorites-bento-body .car-fav-btn i {
+
+      font-size: 1.1rem;
+}
+
+body.favorites-bento-body .car-card-body {
+
+      padding: 18px 20px 20px !important;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+}
+
+body.favorites-bento-body .car-card-title {
+
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: var(--oto-navy-800) !important;
+      text-decoration: none !important;
+      margin-bottom: 6px !important;
+      display: block;
+}
+
+body.favorites-bento-body .car-card-title:hover {
+
+      color: var(--oto-brand-accent) !important;
+}
+
+body.favorites-bento-body .car-card-price {
+
+      font-size: 1.35rem !important;
+      font-weight: 800 !important;
+      color: var(--oto-brand-accent) !important;
+      margin-bottom: 12px !important;
+      letter-spacing: -0.02em;
+}
+
+body.favorites-bento-body .car-spec-grid {
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--oto-bg-page);
+      border-radius: 10px;
+      border: 1px solid var(--oto-border-default);
+      margin-bottom: 16px;
+}
+
+body.favorites-bento-body .car-spec-item {
+
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.80rem;
+      color: var(--oto-slate-600);
+      font-weight: 500;
+}
+
+body.favorites-bento-body .car-spec-item i {
+
+      color: var(--oto-brand-teal);
+      font-size: 0.9rem;
+}
+
+body.favorites-bento-body .spec-pill-badge {
+
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+}
+
+/* ==========================================================================
+       EMPTY STATE BENTO BOX
+       ========================================================================== */
+body.favorites-bento-body .bento-empty-box {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 56px 24px !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+      margin-bottom: 32px !important;
+}
+
+body.favorites-bento-body .empty-heart-circle {
+
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #FFF1F2;
+      border: 1px solid #FFE4E6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+}
+
+/* ==========================================================================
+   PAGE MODULE: ABOUT.HTML (body.opt2-body)
+   ========================================================================== */
+body.opt2-body SECTION 1: HERO GIỚI THIỆU DOANH NGHIỆP & NỀN TẢNG (EDITORIAL NỀN SÁNG) ========================================================================== */ .about-hero-section {
+
+      background: linear-gradient(180deg, var(--oto-white) 0%, var(--oto-bg-page) 60%, var(--oto-bg-subtle) 100%) !important;
+      border-bottom: 1px solid var(--oto-border-default) !important;
+      padding: 56px 0 60px !important;
+      position: relative;
+}
+
+body.opt2-body .about-hero-title {
+
+      font-size: 2.7rem !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      color: var(--oto-navy-800) !important;
+}
+
+body.opt2-body .about-hero-subtitle {
+
+      font-size: 1.05rem !important;
+      color: var(--oto-slate-600) !important;
+      max-width: 660px;
+      line-height: 1.7 !important;
+}
+
+@media (max-width: 991px) {
+  body.opt2-body .about-hero-title {
+
+        font-size: 2.0rem !important;
+  }
+
+  body.opt2-body .about-hero-section {
+
+        padding: 40px 0 45px !important;
+  }
+}
+
+/* Thẻ Hồ sơ nền tảng (Profile Card) */
+body.opt2-body .platform-profile-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.07);
+      position: relative;
+}
+
+body.opt2-body .profile-item {
+
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--oto-border-default);
+}
+
+body.opt2-body .profile-item:last-child {
+
+      border-bottom: none;
+      padding-bottom: 0;
+}
+
+body.opt2-body .profile-icon-box {
+
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--oto-brand-accent-soft);
+      color: var(--oto-brand-accent-hover);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+}
+
+/* Thẻ chỉ số thành tựu */
+body.opt2-body .about-kpi-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s ease;
+}
+
+body.opt2-body .about-kpi-card:hover {
+
+      transform: translateY(-3px);
+      border-color: var(--oto-brand-accent);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+}
+
+/* Thẻ giá trị cốt lõi */
+body.opt2-body .core-value-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 18px;
+      padding: 28px 24px;
+      height: 100%;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+body.opt2-body .core-value-card:hover {
+
+      transform: translateY(-3px);
+      border-color: var(--oto-brand-accent);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+}
+
+/* Thẻ tiêu chuẩn duyệt tin */
+body.opt2-body .standard-pill-card {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+body.opt2-body .standard-pill-card:hover {
+
+      border-color: var(--oto-brand-accent);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+      transform: translateY(-2px);
+}
+
+body.opt2-body .section-eyebrow-orange {
+
+      color: var(--oto-brand-accent) !important;
+      font-size: 0.75rem !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.8px !important;
+      display: block;
+      margin-bottom: 4px;
+}
+
+/* ==========================================================================
+
+/* ==========================================================================
+   PAGE MODULE: ABOUT.HTML (body.opt2-body)
+   ========================================================================== */
+/* --- NEXT BLOCK --- */
+/* OPTION 2: WARM ARCHITECTURAL BENTO STYLES */
+body.opt2-body {
+
+      background-color: var(--oto-bg-catalog) !important;
+      color: var(--oto-navy-800) !important;
+}
+
+body.opt2-body .opt2-hero-wrap {
+
+      padding: 36px 0 24px 0 !important;
+}
+
+body.opt2-body .opt2-hero-card {
+
+      background: var(--oto-white) !important;
+      border-radius: 24px !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06) !important;
+      padding: 40px !important;
+}
+
+body.opt2-body .opt2-hero-title {
+
+      font-size: 2.4rem !important;
+      font-weight: 800 !important;
+      color: var(--oto-navy-800) !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.5px !important;
+}
+
+body.opt2-body .opt2-stat-card {
+
+      background: transparent !important;
+      border: none !important;
+      border-top: 2px solid var(--oto-border-default) !important;
+      border-radius: 0 !important;
+      padding: 16px 8px !important;
+      text-align: center !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-stat-card:hover {
+
+      transform: translateY(-2px) !important;
+      background: var(--oto-brand-accent-soft) !important;
+      border-color: var(--oto-brand-accent) !important;
+}
+
+body.opt2-body .opt2-stat-val {
+
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      color: var(--oto-brand-accent) !important;
+      line-height: 1.1 !important;
+      margin-bottom: 4px !important;
+}
+
+body.opt2-body .opt2-stat-lbl {
+
+      font-size: 0.75rem !important;
+      color: var(--oto-slate-600) !important;
+      font-weight: 600 !important;
+      line-height: 1.3 !important;
+}
+
+body.opt2-body .opt2-hq-frame {
+
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      border: none !important;
+      box-shadow: none !important;
+}
+
+body.opt2-body .opt2-hq-img {
+
+      width: 100% !important;
+      height: 310px !important;
+      object-fit: cover !important;
+      display: block !important;
+}
+
+body.opt2-body .opt2-hq-bar {
+
+      padding: 14px 18px !important;
+      background: var(--oto-bg-page) !important;
+      border-top: 1px solid var(--oto-border-default) !important;
+}
+
+body.opt2-body .opt2-info-item {
+
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-size: 0.85rem !important;
+      color: var(--oto-slate-700) !important;
+      margin-bottom: 6px !important;
+}
+
+body.opt2-body .opt2-info-item:last-child {
+
+      margin-bottom: 0 !important;
+}
+
+body.opt2-body .opt2-info-icon {
+
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 6px !important;
+      background: var(--oto-brand-accent-soft) !important;
+      color: var(--oto-brand-accent-hover) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 0.9rem !important;
+      flex-shrink: 0 !important;
+}
+
+/* Bento values dark container */
+body.opt2-body .opt2-dark-bento {
+
+      background: var(--oto-navy-800) !important;
+      border-radius: 24px !important;
+      padding: 44px !important;
+      color: var(--oto-white) !important;
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.16) !important;
+      border: 1px solid var(--oto-navy-700) !important;
+}
+
+body.opt2-body .opt2-dark-card {
+
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 16px !important;
+      padding: 24px !important;
+      height: 100% !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-dark-card:hover {
+
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: var(--oto-brand-accent) !important;
+      transform: translateY(-3px) !important;
+}
+
+body.opt2-body .opt2-white-bento {
+
+      background: var(--oto-white) !important;
+      border-radius: 24px !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      padding: 40px !important;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* ==========================================================================
+       STUDIO BENTO KIẾN TRÚC: CHUẨN HÓA TRANG GIỚI THIỆU (ĐỒNG BỘ 100%)
+       ========================================================================== */
+body.opt2-body {
+
+      font-family: var(--oto-font-sans) !important;
+      background-color: var(--oto-bg-catalog) !important;
+      color: var(--oto-navy-800) !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+}
+
+/* Khối Hero Banner Giới Thiệu */
+body.opt2-body .opt2-hero-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+}
+
+body.opt2-body .opt2-stat-card {
+
+      background: transparent !important;
+      border: none !important;
+      border-top: 2px solid var(--oto-border-strong) !important;
+      border-radius: 0 !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-stat-card:hover {
+
+      background: var(--oto-bg-page) !important;
+      border-top-color: var(--oto-navy-800) !important;
+      box-shadow: none !important;
+}
+
+/* 3 Cột Bento: Vì sao ra đời, Sứ mệnh, Định hướng */
+body.opt2-body .opt2-pillar-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-pillar-card:hover {
+
+      border-color: var(--oto-navy-800) !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Chuẩn Hóa Khối Giá Trị Cốt Lõi (Loại Bỏ Khối Đen Lạc Tone) */
+body.opt2-body .opt2-dark-bento {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 24px !important;
+      padding: 40px !important;
+      color: var(--oto-navy-800) !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+}
+
+body.opt2-body .opt2-dark-bento h2, body.opt2-body .opt2-dark-bento .text-white {
+
+      color: var(--oto-navy-800) !important;
+}
+
+body.opt2-body .opt2-dark-bento p, body.opt2-body .opt2-dark-bento .text-light {
+
+      color: var(--oto-slate-600) !important;
+      opacity: 1 !important;
+}
+
+body.opt2-body .opt2-dark-card {
+
+      background: transparent !important;
+      border: none !important;
+      border-top: 1px solid var(--oto-border-default) !important;
+      border-radius: 0 !important;
+      padding: 20px 8px 8px !important;
+      height: 100% !important;
+      color: var(--oto-navy-800) !important;
+      box-shadow: none !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-dark-card:hover {
+
+      background: var(--oto-bg-page) !important;
+      border-top-color: var(--oto-navy-800) !important;
+      box-shadow: none !important;
+}
+
+body.opt2-body .opt2-dark-card h4, body.opt2-body .opt2-dark-card .fs-5, body.opt2-body .opt2-dark-card .text-white {
+
+      color: var(--oto-navy-800) !important;
+      font-weight: 700 !important;
+}
+
+body.opt2-body .opt2-dark-card p, body.opt2-body .opt2-dark-card .text-light, body.opt2-body .opt2-dark-card .small {
+
+      color: var(--oto-slate-600) !important;
+      opacity: 1 !important;
+}
+
+/* Quy Trình Kiểm Duyệt Kỹ Thuật Thực Tế */
+body.opt2-body .opt2-step-card {
+
+      background: var(--oto-bg-page) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      border-radius: 14px !important;
+      transition: all 0.2s ease !important;
+}
+
+body.opt2-body .opt2-step-card:hover {
+
+      background: var(--oto-white) !important;
+      border-color: var(--oto-navy-800) !important;
+}
+
+/* FAQ Accordion (flattened inside parent card) */
+body.opt2-body .accordion-item {
+
+      border: none !important;
+      border-bottom: 1px solid var(--oto-border-default) !important;
+      border-radius: 0 !important;
+      margin-bottom: 8px !important;
+      box-shadow: none !important;
+}
+
+body.opt2-body .accordion-button {
+
+      background-color: var(--oto-bg-page) !important;
+      color: var(--oto-navy-800) !important;
+      font-weight: 600 !important;
+      padding: 18px 22px !important;
+}
+
+body.opt2-body .accordion-button:not(.collapsed) {
+
+      background-color: var(--oto-bg-catalog) !important;
+      color: var(--oto-brand-accent) !important;
+      box-shadow: none !important;
+}
+
+body.opt2-body .accordion-body {
+
+      background-color: var(--oto-white) !important;
+      color: var(--oto-slate-700) !important;
+      line-height: 1.65 !important;
+      padding: 20px 22px !important;
+}
+
+/* ==========================================================================
+   PAGE MODULE: ADMIN.HTML (body.admin-bento-body)
+   ========================================================================== */
+/* WORKSPACE BANNER CHUẨN DEMO */
+body.admin-bento-body .bento-admin-banner {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 22px 28px !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+}
+
+body.admin-bento-body .banner-title {
+
+      font-size: 1.55rem !important;
+      font-weight: 800 !important;
+      color: var(--oto-navy-800) !important;
+      margin-bottom: 8px !important;
+      letter-spacing: -0.3px;
+}
+
+body.admin-bento-body .badge-showroom-station {
+
+      background: var(--oto-bg-subtle) !important;
+      color: var(--oto-slate-600) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 20px !important;
+      padding: 4px 12px !important;
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+}
+
+body.admin-bento-body .btn-banner-reset {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-strong) !important;
+      color: var(--oto-navy-800) !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      padding: 8px 16px !important;
+      transition: all 0.2s ease;
+}
+
+body.admin-bento-body .btn-banner-reset:hover {
+
+      background: var(--oto-bg-page) !important;
+      border-color: var(--oto-slate-600) !important;
+}
+
+body.admin-bento-body .btn-banner-import {
+
+      background: var(--oto-navy-800) !important;
+      color: var(--oto-white) !important;
+      border: none !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+      padding: 8px 18px !important;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+}
+
+body.admin-bento-body .btn-banner-import:hover {
+
+      background: var(--oto-navy-700) !important;
+      color: var(--oto-white) !important;
+      transform: translateY(-1px);
+}
+
+/* 4 THẺ BENTO KPI TỐI GIẢN CHUẨN DEMO */
+body.admin-bento-body .admin-kpi-bento {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 14px !important;
+      padding: 18px 24px !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+}
+
+body.admin-bento-body .admin-kpi-label {
+
+      color: var(--oto-slate-600) !important;
+      font-size: 0.88rem !important;
+      font-weight: 500 !important;
+      margin-bottom: 8px !important;
+}
+
+body.admin-bento-body .admin-kpi-value {
+
+      font-size: 2.1rem !important;
+      font-weight: 700 !important;
+      color: var(--oto-navy-800) !important;
+      line-height: 1 !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+}
+
+body.admin-bento-body .admin-kpi-badge-orange {
+
+      background: var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      border-radius: 20px !important;
+      padding: 3px 10px !important;
+      line-height: 1.2 !important;
+}
+
+/* SEGMENTED TABS */
+body.admin-bento-body .admin-tab-nav {
+
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 50px !important;
+      padding: 4px 6px !important;
+      margin-bottom: 22px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+body.admin-bento-body .admin-tab-pill {
+
+      border: none;
+      background: transparent;
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--oto-slate-700);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+}
+
+body.admin-bento-body .admin-tab-pill:hover:not(.active) {
+
+      color: var(--oto-navy-800);
+      background: var(--oto-bg-page);
+}
+
+body.admin-bento-body .admin-tab-pill.active {
+
+      background: #0B132B !important;
+      color: var(--oto-white) !important;
+      border-radius: 50px !important;
+      box-shadow: 0 2px 6px rgba(11, 19, 43, 0.15);
+}
+
+body.admin-bento-body .studio-queue-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 24px 20px !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+}
+
+/* ==========================================================================
+       BỐ CỤC 2 CỘT CHUẨN XÁC DEMO: HÀNG ĐỢI BÊN TRÁI & BOONG THẨM ĐỊNH BÊN PHẢI
+       ========================================================================== */
+body.admin-bento-body .queue-title {
+
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-bottom: 14px;
+}
+
+body.admin-bento-body .studio-queue-item {
+
+      border-radius: 12px !important;
+      padding: 16px 20px !important;
+      margin-bottom: 14px !important;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+}
+
+body.admin-bento-body .studio-queue-item:not(.is-selected) {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      box-shadow: none !important;
+}
+
+body.admin-bento-body .studio-queue-item:not(.is-selected):hover {
+
+      border-color: var(--oto-border-strong) !important;
+      background: var(--oto-bg-page) !important;
+}
+
+body.admin-bento-body .studio-queue-item.is-selected {
+
+      background: var(--oto-brand-accent-soft) !important;
+      border: 1.5px solid var(--oto-brand-accent) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+}
+
+body.admin-bento-body .queue-car-name {
+
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-bottom: 8px;
+      line-height: 1.35;
+}
+
+body.admin-bento-body .queue-car-price {
+
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--oto-brand-accent);
+      line-height: 1;
+}
+
+/* BOONG THẨM ĐỊNH CHI TIẾT XE BÊN PHẢI */
+body.admin-bento-body .studio-deck-card {
+
+      background: var(--oto-white) !important;
+      border: 1px solid var(--oto-border-default) !important;
+      border-radius: 16px !important;
+      padding: 24px 28px !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03) !important;
+}
+
+body.admin-bento-body .deck-section-title {
+
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-bottom: 14px;
+}
+
+body.admin-bento-body .deck-car-title {
+
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      letter-spacing: -0.2px;
+}
+
+body.admin-bento-body .deck-car-id-badge {
+
+      background: var(--oto-bg-subtle);
+      color: var(--oto-slate-600);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 14px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+}
+
+body.admin-bento-body .deck-car-price {
+
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--oto-navy-800);
+      letter-spacing: -0.5px;
+}
+
+/* Khung ảnh chính chuẩn demo */
+body.admin-bento-body .deck-hero-wrapper {
+
+      position: relative;
+      height: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+}
+
+body.admin-bento-body .deck-hero-wrapper img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+/* Huy hiệu thông số kỹ thuật (Pill badges màu xám sáng) */
+body.admin-bento-body .deck-spec-pill {
+
+      background: var(--oto-bg-subtle);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--oto-slate-700);
+      display: inline-flex;
+      align-items: center;
+}
+
+/* Thẻ ảnh phụ & Thẻ người bán */
+body.admin-bento-body .deck-subcard-photo {
+
+      height: 80px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--oto-border-default);
+      background: var(--oto-bg-page);
+}
+
+body.admin-bento-body .deck-subcard-photo img {
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+
+body.admin-bento-body .deck-seller-card {
+
+      background: var(--oto-bg-page);
+      border: 1px solid var(--oto-border-default);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 80px;
+}
+
+body.admin-bento-body .seller-avatar-circle {
+
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--oto-border-default);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--oto-slate-600);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+}
+
+body.admin-bento-body .seller-name {
+
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--oto-navy-800);
+      margin-bottom: 2px;
+}
+
+body.admin-bento-body .seller-phone {
+
+      font-size: 0.82rem;
+      color: var(--oto-slate-600);
+      margin-bottom: 2px;
+      font-weight: 500;
+}
+
+body.admin-bento-body .seller-role {
+
+      font-size: 0.75rem;
+      color: var(--oto-slate-600);
+}
+
+/* Thanh nút hành động thẩm định */
+body.admin-bento-body .deck-action-bar {
+
+      border-top: 1px solid var(--oto-border-default);
+      padding-top: 18px;
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+}
+
+body.admin-bento-body .btn-deck-detail {
+
+      background: var(--oto-white);
+      border: 1px solid var(--oto-border-strong);
+      color: var(--oto-navy-800);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+}
+
+body.admin-bento-body .btn-deck-detail:hover {
+
+      background: var(--oto-bg-page);
+      color: var(--oto-navy-800);
+}
+
+body.admin-bento-body .btn-deck-reject {
+
+      background: var(--oto-white);
+      border: 1px solid #DC2626;
+      color: #DC2626;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      transition: all 0.2s ease;
+}
+
+body.admin-bento-body .btn-deck-reject:hover {
+
+      background: var(--oto-rose-50);
+      color: #B91C1C;
+}
+
+body.admin-bento-body .btn-deck-approve {
+
+      background: var(--oto-emerald-500);
+      border: none;
+      color: var(--oto-white);
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 8px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+      transition: all 0.2s ease;
+}
+
+body.admin-bento-body .btn-deck-approve:hover {
+
+      background: #059669;
+      color: var(--oto-white);
+      transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   SECTION E: AUTOMOTIVE RESPONSIVE & ACCESSIBILITY POLISH (390px & 1280px)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  body.index-bento-body .portal-header-wrapper:not(.is-scrolled) .navbar-collapse {
+    background: rgba(11, 19, 43, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--oto-radius-md);
+    padding: var(--oto-space-3);
+    margin-top: var(--oto-space-2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  body.cars-bento-body .filter-sidebar {
+    position: static !important;
+    top: auto !important;
+    margin-bottom: var(--oto-space-4);
+  }
+  body.detail-bento-body .sticky-seller-column {
+    position: static !important;
+    top: auto !important;
+  }
+  body.admin-bento-body .admin-master-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body.index-bento-body .portal-search-wrapper {
+    margin-top: -28px !important;
+  }
+  body.index-bento-body .portal-search-card {
+    padding: var(--oto-space-4) !important;
+  }
+  body.opt2-body .opt2-hero-card,
+  body.opt2-body .opt2-dark-bento,
+  body.opt2-body .opt2-white-bento {
+    padding: 24px 18px !important;
+  }
+  body.opt2-body .opt2-hero-title {
+    font-size: 1.7rem !important;
+  }
+  body.detail-bento-body #related-cars-section {
+    padding: 20px 16px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .portal-topbar-clean {
+    font-size: 0.78rem !important;
+  }
+  .portal-topbar-clean .topbar-user-btn,
+  .topbar-user-btn {
+    padding: 4px 10px !important;
+    font-size: 0.78rem !important;
+  }
+  .lang-pill-btn {
+    padding: 3px 8px !important;
+  }
+  body.post-car-bento-body .step-indicator-track,
+  body.post-car-bento-body .chevron-stepper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+body.detail-bento-body #detail-description,
+body.detail-bento-body .bento-card p,
+body.news-bento-body .article-summary,
+body.news-bento-body .oto-article-summary,
+body.news-bento-body p {
+  max-width: 72ch;
+}
+
+body.favorites-bento-body .fav-stat-box,
+body.favorites-bento-body .fav-stat-box.showroom,
+body.favorites-bento-body .fav-stat-box.external {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid var(--oto-border-default) !important;
+  border-radius: 0 !important;
+  padding: 6px 10px !important;
+}
+
+body.favorites-bento-body .fav-stat-box.showroom {
+  border-bottom-color: var(--oto-brand-teal) !important;
+}
+
+body.favorites-bento-body .fav-stat-box.external {
+  border-bottom-color: #1D4ED8 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

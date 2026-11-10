@@ -7,577 +7,15 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261106_v8_auth">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_ds_v3">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
 
-  <style>
-    /* ==========================================================================
-       BENTO STUDIO: CHI TIẾT XE Ô TÔ (NỀN SLATE #EEF2F6 ĐỒNG BỘ TOÀN SÀN)
-       ========================================================================== */
-    body.detail-bento-body,
-    body {
-      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-      background-color: #EEF2F6 !important;
-      color: #0F172A !important;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* HEADER TIÊU CHUẨN ĐỒNG BỘ */
-    #portal-header,
-    .portal-header-wrapper {
-      position: sticky !important;
-      top: 0 !important;
-      width: 100% !important;
-      z-index: 1050 !important;
-      background: #FFFFFF !important;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
-      border-bottom: 1px solid #CBD5E1 !important;
-    }
-    .portal-topbar-clean {
-      background: #FFFFFF !important;
-      border-bottom: 1px solid #E2E8F0 !important;
-      font-size: 0.84rem !important;
-      padding: 8px 0 !important;
-    }
-    .topbar-info-item {
-      color: #0F172A !important;
-      font-weight: 500 !important;
-    }
-    .topbar-divider {
-      color: #CBD5E1 !important;
-      margin: 0 8px;
-    }
-    .portal-navbar-clean {
-      background: #FFFFFF !important;
-      padding: 10px 0 !important;
-    }
-    .nav-link-portal {
-      color: #1E293B !important;
-      font-weight: 500 !important;
-      font-size: 0.90rem !important;
-      padding: 8px 16px !important;
-      border-radius: 8px !important;
-      border: 1.5px solid transparent !important;
-      text-decoration: none !important;
-      transition: all 0.2s ease !important;
-    }
-    .nav-link-portal:hover {
-      color: #0F172A !important;
-      background-color: #F1F5F9 !important;
-      border-color: #CBD5E1 !important;
-    }
-    .nav-link-portal.active {
-      color: #C2410C !important;
-      font-weight: 700 !important;
-      background-color: #FFF7ED !important;
-      border-color: #C2410C !important;
-    }
-
-    /* USER DROPDOWN TRÊN TOPBAR */
-    .topbar-user-btn.dropdown-toggle::after {
-      display: none !important;
-    }
-    .topbar-user-btn {
-      border: 1px solid #CBD5E1 !important;
-      background: #FFFFFF !important;
-      color: #0F172A !important;
-      font-weight: 600 !important;
-      font-size: 0.8125rem !important;
-      padding: 5px 12px !important;
-      border-radius: 20px !important;
-      cursor: pointer;
-      transition: all 0.2s ease !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .topbar-user-btn .user-name-label {
-      background: transparent !important;
-      border: none !important;
-      color: #0F172A !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.2px;
-      text-shadow: none !important;
-    }
-    .topbar-user-btn:hover,
-    .topbar-user-btn:focus,
-    .topbar-user-btn.show {
-      background: #C2410C !important;
-      border-color: #C2410C !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
-    }
-    .topbar-user-btn:hover *,
-    .topbar-user-btn:focus *,
-    .topbar-user-btn.show * {
-      color: #FFFFFF !important;
-      background: transparent !important;
-    }
-    .user-avatar-dot {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 22px !important;
-      height: 22px !important;
-      border-radius: 50% !important;
-      background: #C2410C !important;
-      color: #FFFFFF !important;
-      flex-shrink: 0 !important;
-      transition: all 0.2s ease !important;
-    }
-    .user-avatar-dot i,
-    .topbar-user-btn .user-avatar-dot i {
-      color: #FFFFFF !important;
-      font-size: 0.75rem !important;
-      line-height: 1 !important;
-    }
-    .topbar-user-btn:hover .user-avatar-dot,
-    .topbar-user-btn.show .user-avatar-dot {
-      background: #FFFFFF !important;
-      color: #C2410C !important;
-    }
-    .topbar-user-btn:hover .user-avatar-dot i,
-    .topbar-user-btn.show .user-avatar-dot i {
-      color: #C2410C !important;
-    }
-    .topbar-dropdown-menu,
-    #navbar-auth-section .dropdown-menu {
-      position: absolute !important;
-      z-index: 99999 !important;
-      margin-top: 10px !important;
-      border-radius: 14px !important;
-      border: 1px solid rgba(226, 232, 240, 0.9) !important;
-      box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.25), 0 0 1px 1px rgba(0, 0, 0, 0.05) !important;
-      background: #FFFFFF !important;
-      min-width: 240px !important;
-      overflow: hidden;
-    }
-    .topbar-dropdown-menu .dropdown-item {
-      transition: background-color 0.15s ease, color 0.15s ease;
-      font-size: 0.86rem;
-      color: #334155;
-      padding: 8px 16px;
-      border-radius: 8px;
-      margin: 2px 6px;
-      border: none !important;
-    }
-    .topbar-dropdown-menu .dropdown-item:hover,
-    .topbar-dropdown-menu .dropdown-item:focus,
-    .topbar-dropdown-menu .dropdown-item.active {
-      background-color: #FFF7ED !important;
-      color: #9A3412 !important;
-    }
-
-    /* BREADCRUMB THANH LỊCH */
-    .bento-breadcrumb {
-      font-size: 0.86rem;
-      color: #475569;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .bento-breadcrumb a {
-      color: #475569;
-      text-decoration: none;
-      transition: color 0.15s ease;
-    }
-    .bento-breadcrumb a:hover {
-      color: #C2410C;
-    }
-    .bento-breadcrumb .active-crumb {
-      color: #0F172A;
-      font-weight: 600;
-    }
-
-    /* THẺ BENTO CHUNG */
-    .bento-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-    .bento-card:hover {
-      border-color: #CBD5E1;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-    }
-
-    /* THƯ VIỆN ẢNH BENTO */
-    .detail-gallery-main {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      border-radius: 14px;
-      overflow: hidden;
-      background-color: #0F172A;
-    }
-    .detail-gallery-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .gallery-counter-badge {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(8px);
-      color: #FFFFFF;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-    .gallery-verified-badge {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: rgba(13, 148, 136, 0.95);
-      backdrop-filter: blur(8px);
-      color: #FFFFFF;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.80rem;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
-    }
-    .gallery-thumb-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 14px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .gallery-thumb {
-      width: 100px;
-      height: 72px;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      flex-shrink: 0;
-      opacity: 0.65;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      background-color: #E2E8F0;
-    }
-    .gallery-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .gallery-thumb:hover {
-      opacity: 0.95;
-      border-color: #475569;
-      transform: translateY(-2px);
-    }
-    .gallery-thumb.active {
-      opacity: 1;
-      border-color: #C2410C !important;
-      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08);
-      transform: translateY(-2px);
-    }
-
-    /* 6 THẺ THÔNG SỐ NHANH BENTO */
-    .bento-spec-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      margin-top: 1.25rem;
-    }
-    @media (max-width: 992px) {
-      .bento-spec-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 576px) {
-      .bento-spec-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .bento-spec-item {
-      background: transparent;
-      border: none;
-      border-top: 1px solid #E2E8F0;
-      border-radius: 0;
-      padding: 12px 8px;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-    .bento-spec-item:hover {
-      background: #F8FAFC;
-    }
-    .bento-spec-icon {
-      font-size: 1.25rem;
-      color: #0F766E;
-      margin-bottom: 4px;
-      display: inline-block;
-    }
-    .bento-spec-label {
-      font-size: 0.75rem;
-      color: #475569;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .bento-spec-value {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #0F172A;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* BẢNG CHỨNG NHẬN 176 HẠNG MỤC */
-    .inspection-header-box {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-      color: #FFFFFF;
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .inspection-pillar-card {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      height: 100%;
-      transition: all 0.2s ease;
-    }
-    .inspection-pillar-card:hover {
-      border-color: #0F766E;
-      background: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
-    }
-    .inspection-pillar-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #0F172A;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    /* KHỐI CHUYỂN ĐỔI NGÔN NGỮ VI / EN VIÊN THUỐC ĐỒNG BỘ */
-    .lang-switch-container {
-      display: inline-flex;
-      align-items: center;
-      background: #F1F5F9;
-      border: 1px solid #CBD5E1;
-      border-radius: 20px;
-      padding: 2px;
-      gap: 2px;
-    }
-    .lang-pill-btn {
-      border: none;
-      background: transparent;
-      color: #475569;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 16px;
-      cursor: pointer;
-      line-height: 1.2;
-      transition: all 0.2s ease;
-    }
-    .lang-pill-btn:hover:not(.active) {
-      color: #0F172A;
-      background: #E2E8F0;
-    }
-    .lang-pill-btn.active {
-      background: #C2410C !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
-    }
-
-    /* CỘT PHẢI LIÊN HỆ ĐỨNG YÊN CỐ ĐỊNH TỰ NHIÊN, KHÔNG TRÔI KHI KÉO TRANG */
-    .sticky-seller-column {
-      position: static !important;
-    }
-    .btn-hotline-call {
-      background: #C2410C !important;
-      color: #FFFFFF !important;
-      font-weight: 700 !important;
-      font-size: 1.02rem !important;
-      border: none !important;
-      border-radius: 12px !important;
-      padding: 12px 18px !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      transition: all 0.25s ease !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none !important;
-    }
-    .btn-hotline-call:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      color: #FFFFFF !important;
-    }
-    .btn-zalo-chat {
-      background-color: #0F766E !important;
-      color: #FFFFFF !important;
-      font-weight: 700 !important;
-      font-size: 0.95rem !important;
-      border: none !important;
-      border-radius: 12px !important;
-      padding: 11px 18px !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      transition: all 0.2s ease !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .btn-zalo-chat:hover {
-      background-color: #0F766E !important;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      color: #FFFFFF !important;
-    }
-
-    /* THẺ XE TƯƠNG TỰ CÙNG PHÂN KHÚC */
-    .related-car-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      text-decoration: none;
-      color: inherit;
-    }
-    .related-car-card:hover {
-      transform: translateY(-3px);
-      border-color: #CBD5E1;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-      color: inherit;
-    }
-    .related-car-thumb {
-      height: 170px;
-      width: 100%;
-      object-fit: cover;
-      background-color: #0F172A;
-    }
-
-    /* BADGE KIỂU DÁNG MỚI */
-    .badge-showroom-certified {
-      background-color: #F0FDFA;
-      color: #0F766E;
-      border: 1px solid #99F6E4;
-      font-weight: 700;
-      font-size: 0.80rem;
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .badge-condition-pill {
-      background-color: #ECFDF5;
-      color: #059669;
-      border: 1px solid #A7F3D0;
-      font-weight: 700;
-      font-size: 0.80rem;
-      padding: 6px 12px;
-      border-radius: 20px;
-    }
-    .footer-light {
-      background-color: #F8FAFC !important;
-      border-top: 1px solid #E2E8F0 !important;
-      margin-top: 60px !important;
-      padding: 56px 0 24px !important;
-    }
-  
-    /* ==========================================================================
-       KHUNG NỀN BENTO PHÂN VÙNG: XE TƯƠNG TỰ CÙNG PHÂN KHÚC & TẦM GIÁ
-       ========================================================================== */
-    #related-cars-section {
-      background: #FFFFFF !important;
-      border: 1.5px solid #CBD5E1 !important;
-      border-radius: 20px !important;
-      padding: 32px 32px 36px !important;
-      margin-top: 48px !important;
-      margin-bottom: 56px !important;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
-      transition: all 0.25s ease !important;
-    }
-    #related-cars-section:hover {
-      border-color: #475569 !important;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08) !important;
-    }
-    #related-cars-section .related-car-card {
-      background: #F8FAFC !important;
-      border: 1.5px solid #E2E8F0 !important;
-      border-radius: 16px !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      overflow: hidden !important;
-      height: 100% !important;
-      display: flex !important;
-      flex-direction: column !important;
-      text-decoration: none !important;
-      color: inherit !important;
-    }
-    #related-cars-section .related-car-card:hover {
-      background: #FFFFFF !important;
-      border-color: #C2410C !important;
-      transform: translateY(-4px) !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      color: inherit !important;
-    }
-    #related-cars-section .btn-outline-teal {
-      border: 1.5px solid #CBD5E1 !important;
-      background-color: #FFFFFF !important;
-      color: #0F172A !important;
-      font-weight: 600 !important;
-      font-size: 0.88rem !important;
-      padding: 8px 18px !important;
-      border-radius: 100px !important;
-      transition: all 0.2s ease !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      text-decoration: none !important;
-    }
-    #related-cars-section .btn-outline-teal:hover {
-      background-color: #FFF7ED !important;
-      border-color: #C2410C !important;
-      color: #C2410C !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
-      transform: translateY(-1px) !important;
-    }
-
-      .bg-teal-subtle { background-color: #CCFBF1 !important; color: #115E59 !important; }
-    .text-teal { color: #115E59 !important; }
-    .border-teal, .border-teal-subtle { border-color: #99F6E4 !important; }
-    .text-white { color: #FFFFFF !important; }
-  </style>
 </head>
 <body class="detail-bento-body">
 
@@ -965,7 +403,7 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-building me-1 text-secondary"></i>Showroom chính hãng</h6>
+                <h2 class="h6 fw-bold mb-0 text-dark"><i class="bi bi-building me-1 text-secondary"></i>Showroom chính hãng</h2>
                 <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
@@ -973,7 +411,7 @@
                   <i class="bi bi-building"></i>
                 </div>
                 <div>
-                  <h6 class="fw-bold mb-1 text-dark" id="seller-name">${car.sellerName || 'Showroom OtoMarket Nha Trang'}</h6>
+                  <h3 class="h6 fw-bold mb-1 text-dark" id="seller-name">${car.sellerName || 'Showroom OtoMarket Nha Trang'}</h3>
                   <span class="text-muted small d-block"><i class="bi bi-clock-history text-teal me-1"></i>08:00 - 18:30 (Thứ 2 - CN)</span>
                 </div>
               </div>
@@ -1012,7 +450,7 @@
           sellerCardHtml = `
             <div class="bento-card sticky-seller-column">
               <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-person-fill me-1 text-secondary"></i>Người bán cá nhân</h6>
+                <h2 class="h6 fw-bold mb-0 text-dark"><i class="bi bi-person-fill me-1 text-secondary"></i>Người bán cá nhân</h2>
                 <span class="text-muted small"><i class="bi bi-patch-check text-primary me-1"></i>Đã xác thực SĐT</span>
               </div>
               <div class="d-flex align-items-center gap-3 mb-3">
@@ -1020,7 +458,7 @@
                   ${(car.sellerName || 'C')[0].toUpperCase()}
                 </div>
                 <div>
-                  <h6 class="fw-bold mb-1 text-dark" id="seller-name">${car.sellerName || 'Người bán cá nhân'}</h6>
+                  <h3 class="h6 fw-bold mb-1 text-dark" id="seller-name">${car.sellerName || 'Người bán cá nhân'}</h3>
                   <span class="badge bg-light text-dark border small"><i class="bi bi-shield-check text-success me-1"></i>SĐT chính chủ đã xác thực</span>
                 </div>
               </div>
@@ -1060,7 +498,7 @@
         sellerCardHtml = `
           <div class="bento-card sticky-seller-column text-center py-5">
             <div class="text-muted fs-1 mb-2"><i class="bi bi-lock-fill"></i></div>
-            <h5 class="fw-bold mb-2">Tin đăng chưa công khai</h5>
+            <h2 class="h5 fw-bold mb-2">Tin đăng chưa công khai</h2>
             <p class="text-muted small mb-3">Nút liên hệ mua xe chỉ hiển thị khi tin đăng ở trạng thái Đang hiển thị (Active).</p>
             <div>${typeof getStatusBadgeHtml === 'function' ? getStatusBadgeHtml(car.status) : car.status}</div>
           </div>
@@ -1079,7 +517,7 @@
                 <i class="bi bi-calculator-fill fs-5"></i>
               </div>
               <div>
-                <h5 class="fw-bold mb-0 text-dark">Dự toán vay trả góp ngân hàng</h5>
+                <h2 class="h5 fw-bold mb-0 text-dark">Dự toán vay trả góp ngân hàng</h2>
                 <span class="text-muted small">Ước tính hạn mức vay và số tiền gốc + lãi trả hàng tháng</span>
               </div>
             </div>
@@ -1286,9 +724,9 @@
 
               <!-- Thông Số Kỹ Thuật Chi Tiết -->
               <div class="bento-card mb-4">
-                <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <h2 class="h5 fw-bold mb-3 border-bottom pb-2 text-dark">
                   <i class="bi bi-card-list text-teal me-2"></i>Thông số kỹ thuật chi tiết
-                </h5>
+                </h2>
                 <div class="row row-cols-1 row-cols-sm-2 g-3 small">
                   <div class="col d-flex justify-content-between border-bottom pb-2">
                     <span class="text-muted">Hãng sản xuất:</span>
@@ -1340,9 +778,9 @@
 
               <!-- Mô tả chi tiết & Tuyên bố kiểm duyệt -->
               <div class="bento-card mb-4">
-                <h5 class="fw-bold mb-3 border-bottom pb-2 text-dark">
+                <h2 class="h5 fw-bold mb-3 border-bottom pb-2 text-dark">
                   <i class="bi bi-file-text text-teal me-2"></i>Mô tả chi tiết &amp; Tuyên bố sàn
-                </h5>
+                </h2>
                 <div class="pt-3 border-top mb-3 small text-secondary">
                   <i class="bi bi-info-circle-fill text-teal me-1"></i> <strong>Lưu ý giao dịch:</strong> ${window.OTOMARKET_DISCLAIMER || 'OtoMarket là sàn giao dịch ô tô kết nối người mua và người bán. Tất cả thông tin xe đã được rà soát hồ sơ và kiểm định thực tế.'}
                 </div>
@@ -1360,7 +798,7 @@
           <div class="mt-5 pt-3" id="related-cars-section">
             <div class="d-flex align-items-center justify-content-between mb-4">
               <div>
-                <h4 class="fw-bold mb-1 text-dark">Xe Tương Tự Cùng Phân Khúc &amp; Tầm Giá</h4>
+                <h2 class="h4 fw-bold mb-1 text-dark">Xe Tương Tự Cùng Phân Khúc &amp; Tầm Giá</h2>
                 <p class="text-muted small mb-0">Các mẫu xe đang chào bán sẵn tại showroom để bạn tham khảo thêm</p>
               </div>
               <a href="cars.html" class="btn btn-outline-teal btn-sm fw-bold px-3 py-1 rounded-pill">
@@ -1413,7 +851,7 @@
               </span>
             </div>
             <div class="p-3 d-flex flex-column flex-grow-1">
-              <h6 class="fw-bold text-dark mb-1 text-truncate" title="${c.title}">${c.title}</h6>
+              <h3 class="h6 fw-bold text-dark mb-1 text-truncate" title="${c.title}">${c.title}</h3>
               <div class="text-muted small mb-2 d-flex align-items-center gap-2">
                 <span><i class="bi bi-speedometer2 text-teal"></i> ${c.condition === 'new' ? '0 km' : (c.mileageDisplay || `${(c.mileage || 0).toLocaleString()} km`)}</span>
                 <span>•</span>
