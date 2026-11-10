@@ -520,8 +520,13 @@
       const container = document.getElementById('suggested-favorites-grid');
       if (!container) return;
 
-      const allCars = typeof getAllCars === 'function' ? getAllCars(true) : (typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS : []);
-      const suggested = allCars.slice(0, 3);
+      const favIds = typeof getFavorites === 'function' ? getFavorites().map(id => String(id)) : [];
+      const publicCars = typeof getPublicCars === 'function'
+        ? getPublicCars()
+        : (typeof SAMPLE_CARS !== 'undefined' ? SAMPLE_CARS.filter(car => !car.status || car.status === 'active') : []);
+      const suggested = publicCars
+        .filter(car => !favIds.includes(String(car.id)) && (!car.wp_id || !favIds.includes(String(car.wp_id))))
+        .slice(0, 3);
 
       container.innerHTML = suggested.map(car => {
         const isNewCar = car.condition === 'new' || car.isNew;

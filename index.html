@@ -571,23 +571,27 @@
                 <div class="col-6">
                   <label class="portal-field-label" style="font-size: 0.75rem;">Mẫu xe A</label>
                   <select class="form-select form-select-sm portal-field-select" id="compare-car-1" onchange="updateCarComparison()" style="font-size: 0.76rem;">
-                    <option value="car-2" selected>Mazda CX-5 (799 Tr)</option>
-                    <option value="car-1">Hyundai Tucson (765 Tr)</option>
-                    <option value="car-3">VinFast VF 8 (815 Tr)</option>
-                    <option value="car-4">Ford Everest (1.15 Tỷ)</option>
-                    <option value="car-5">Toyota Cross (735 Tr)</option>
-                    <option value="car-8">Mercedes C200 (1.37 Tỷ)</option>
+                    <option value="new-1" selected>Toyota Corolla Cross 1.8V 2026 (860 Tr)</option>
+                    <option value="new-2">VinFast VF 8 Plus 2026 (1.20 Tỷ)</option>
+                    <option value="new-3">Honda CR-V e:HEV RS 2026 (1.26 Tỷ)</option>
+                    <option value="car-1">Toyota Corolla Cross 1.8V 2023 (735 Tr)</option>
+                    <option value="car-2">Hyundai Santa Fe Premium 2022 (969 Tr)</option>
+                    <option value="car-3">Mazda CX-5 Luxury 2021 (695 Tr)</option>
+                    <option value="car-4">Ford Everest Titanium 2024 (1.39 Tỷ)</option>
+                    <option value="car-8">Mercedes-Benz C200 Avantgarde Plus 2022 (1.40 Tỷ)</option>
                   </select>
                 </div>
                 <div class="col-6">
                   <label class="portal-field-label" style="font-size: 0.75rem;">Mẫu xe B</label>
                   <select class="form-select form-select-sm portal-field-select" id="compare-car-2" onchange="updateCarComparison()" style="font-size: 0.76rem;">
-                    <option value="car-1" selected>Hyundai Tucson (765 Tr)</option>
-                    <option value="car-2">Mazda CX-5 (799 Tr)</option>
-                    <option value="car-3">VinFast VF 8 (815 Tr)</option>
-                    <option value="car-4">Ford Everest (1.15 Tỷ)</option>
-                    <option value="car-5">Toyota Cross (735 Tr)</option>
-                    <option value="car-8">Mercedes C200 (1.37 Tỷ)</option>
+                    <option value="new-2" selected>VinFast VF 8 Plus 2026 (1.20 Tỷ)</option>
+                    <option value="new-1">Toyota Corolla Cross 1.8V 2026 (860 Tr)</option>
+                    <option value="new-3">Honda CR-V e:HEV RS 2026 (1.26 Tỷ)</option>
+                    <option value="car-1">Toyota Corolla Cross 1.8V 2023 (735 Tr)</option>
+                    <option value="car-2">Hyundai Santa Fe Premium 2022 (969 Tr)</option>
+                    <option value="car-3">Mazda CX-5 Luxury 2021 (695 Tr)</option>
+                    <option value="car-4">Ford Everest Titanium 2024 (1.39 Tỷ)</option>
+                    <option value="car-8">Mercedes-Benz C200 Avantgarde Plus 2022 (1.40 Tỷ)</option>
                   </select>
                 </div>
               </div>
@@ -596,20 +600,20 @@
               <div class="pt-3 mt-1 border-top mb-3">
                 <div class="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom">
                   <div>
-                    <div class="fw-bold small text-dark" id="cmp-name-1">Mazda CX-5</div>
-                    <span class="small fw-bold" id="cmp-price-1" style="color: #C2410C;">799 Triệu</span>
+                    <div class="fw-bold small text-dark" id="cmp-name-1">Toyota Corolla Cross 1.8V 2026</div>
+                    <span class="small fw-bold" id="cmp-price-1" style="color: #C2410C;">860 Triệu</span>
                   </div>
                   <span class="badge rounded-pill bg-secondary-subtle text-dark px-2 py-1" style="font-size: 0.75rem;">VS</span>
                   <div class="text-end">
-                    <div class="fw-bold small text-dark" id="cmp-name-2">Hyundai Tucson</div>
-                    <span class="small fw-bold" id="cmp-price-2" style="color: #C2410C;">765 Triệu</span>
+                    <div class="fw-bold small text-dark" id="cmp-name-2">VinFast VF 8 Plus 2026</div>
+                    <span class="small fw-bold" id="cmp-price-2" style="color: #C2410C;">1.20 Tỷ</span>
                   </div>
                 </div>
 
                 <div class="small" style="font-size: 0.75rem;">
                   <div class="d-flex justify-content-between py-1 border-bottom">
                     <span class="text-muted">Năm SX &amp; ODO:</span>
-                    <span class="fw-medium text-end" id="cmp-year-odo">2023 (12k km) vs 2022 (18k km)</span>
+                    <span class="fw-medium text-end" id="cmp-year-odo">2026 (0 km) vs 2026 (0 km)</span>
                   </div>
                   <div class="d-flex justify-content-between py-1 border-bottom">
                     <span class="text-muted">Hộp số &amp; Nhiên liệu:</span>
@@ -1471,31 +1475,46 @@
       const sel2 = document.getElementById('compare-car-2');
       if (!sel1 || !sel2) return;
 
-      const id1 = sel1.value;
-      const id2 = sel2.value;
-      const car1 = PORTAL_CARS.find(c => c.id === id1) || PORTAL_CARS[1];
-      const car2 = PORTAL_CARS.find(c => c.id === id2) || PORTAL_CARS[0];
+      const sourceCars = getSyncedPortalCars();
+      if (!sourceCars || sourceCars.length === 0) return;
+
+      const id1 = String(sel1.value || '');
+      const id2 = String(sel2.value || '');
+      const findCompareCar = (targetId, fallbackIdx) =>
+        sourceCars.find(c =>
+          String(c.id) === targetId ||
+          (c.wp_id && String(c.wp_id) === targetId) ||
+          (c.wp_id && `wp-${c.wp_id}` === targetId)
+        ) || sourceCars[fallbackIdx] || sourceCars[0];
+
+      const car1 = findCompareCar(id1, 0);
+      const car2 = findCompareCar(id2, sourceCars.length > 1 ? 1 : 0);
+      if (!car1 || !car2) return;
 
       const name1El = document.getElementById('cmp-name-1');
       const name2El = document.getElementById('cmp-name-2');
       const price1El = document.getElementById('cmp-price-1');
       const price2El = document.getElementById('cmp-price-2');
 
-      if (name1El) name1El.textContent = car1.brand + ' ' + (car1.title.split(' ')[1] || '');
-      if (name2El) name2El.textContent = car2.brand + ' ' + (car2.title.split(' ')[1] || '');
+      if (name1El) name1El.textContent = car1.title || `${car1.brand || ''} ${car1.model || ''}`.trim();
+      if (name2El) name2El.textContent = car2.title || `${car2.brand || ''} ${car2.model || ''}`.trim();
 
-      const formatP = (p) => p >= 1000000000 ? (p / 1000000000).toFixed(2) + ' Tỷ' : Math.round(p / 1000000) + ' Triệu';
-      if (price1El) price1El.textContent = formatP(car1.price);
-      if (price2El) price2El.textContent = formatP(car2.price);
+      const formatP = (c) => {
+        const p = Number(c.price) || 0;
+        if (p <= 0) return c.priceDisplay || 'Thỏa thuận';
+        return p >= 1000000000 ? (p / 1000000000).toFixed(2) + ' Tỷ' : Math.round(p / 1000000) + ' Triệu';
+      };
+      if (price1El) price1El.textContent = formatP(car1);
+      if (price2El) price2El.textContent = formatP(car2);
 
       const yrOdoEl = document.getElementById('cmp-year-odo');
-      if (yrOdoEl) yrOdoEl.textContent = `${car1.year} (${car1.mileage}) vs ${car2.year} (${car2.mileage})`;
+      if (yrOdoEl) yrOdoEl.textContent = `${car1.year || '--'} (${car1.mileage || '0 km'}) vs ${car2.year || '--'} (${car2.mileage || '0 km'})`;
 
       const tfEl = document.getElementById('cmp-trans-fuel');
-      if (tfEl) tfEl.textContent = `${car1.transmission} (${car1.fuel}) vs ${car2.transmission} (${car2.fuel})`;
+      if (tfEl) tfEl.textContent = `${car1.transmission || '--'} (${car1.fuel || '--'}) vs ${car2.transmission || '--'} (${car2.fuel || '--'})`;
 
       const locEl = document.getElementById('cmp-location');
-      if (locEl) locEl.textContent = `${car1.location} vs ${car2.location}`;
+      if (locEl) locEl.textContent = `${car1.location || '--'} vs ${car2.location || '--'}`;
     }
 
     // Dữ liệu chi tiết các bài viết cẩm nang & kinh nghiệm
@@ -1568,23 +1587,33 @@
       window.location.href = 'news.html?id=' + id;
     }
 
-    // Đồng bộ danh sách xe trong công cụ So Sánh từ PORTAL_CARS (hỗ trợ cả WP_CARS)
+    // Đồng bộ danh sách xe trong công cụ So Sánh từ nguồn xe thống nhất (getPublicCars / WP_CARS)
     function syncCompareDropdownOptions() {
       const sel1 = document.getElementById('compare-car-1');
       const sel2 = document.getElementById('compare-car-2');
+      PORTAL_CARS = getSyncedPortalCars();
       if (!sel1 || !sel2 || !PORTAL_CARS || PORTAL_CARS.length === 0) return;
 
-      const formatShort = (p) => p >= 1000000000 ? `${(p / 1000000000).toFixed(2)} Tỷ` : `${Math.round(p / 1000000)} Tr`;
-      const optionsHtml = PORTAL_CARS.slice(0, 8).map(c =>
-        `<option value="${c.id}">${c.title} (${formatShort(c.price)})</option>`
+      const formatShort = (c) => {
+        const p = Number(c.price) || 0;
+        if (p <= 0) return c.priceDisplay || 'Thỏa thuận';
+        return p >= 1000000000 ? `${(p / 1000000000).toFixed(2)} Tỷ` : `${Math.round(p / 1000000)} Tr`;
+      };
+      const optionsHtml = PORTAL_CARS.map(c =>
+        `<option value="${String(c.id)}">${c.title} (${formatShort(c)})</option>`
       ).join('');
 
+      const prev1 = String(sel1.value || '');
+      const prev2 = String(sel2.value || '');
       sel1.innerHTML = optionsHtml;
       sel2.innerHTML = optionsHtml;
-      if (PORTAL_CARS.length > 1) {
-        sel1.value = PORTAL_CARS[0].id;
-        sel2.value = PORTAL_CARS[1].id;
-      }
+
+      const hasPrev1 = PORTAL_CARS.some(c => String(c.id) === prev1);
+      const hasPrev2 = PORTAL_CARS.some(c => String(c.id) === prev2);
+      sel1.value = hasPrev1 ? prev1 : String(PORTAL_CARS[0].id);
+      sel2.value = hasPrev2 && (prev2 !== sel1.value || PORTAL_CARS.length === 1)
+        ? prev2
+        : String((PORTAL_CARS[1] || PORTAL_CARS[0]).id);
     }
 
     // Tự động khởi tạo khi tải trang

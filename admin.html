@@ -578,16 +578,20 @@
       const showroomCars = allCars.filter(c => c.sourceType === 'showroom' || c.isShowroom);
 
       // Cập nhật KPIs khớp chính xác 100% bản vẽ demo đã duyệt
+      const allInventoryCars = getAllCars(true);
       const pendingCount = pendingListings.length;
+      const pendingReportsCount = reports.filter(r => r.status !== 'resolved').length;
+      const showroomCount = allInventoryCars.filter(c => c.sourceType === 'showroom' || c.isShowroom).length;
+      const externalCount = allInventoryCars.length - showroomCount;
       document.getElementById('kpi-pending-count').textContent = pendingCount;
-      document.getElementById('kpi-reports-count').textContent = reports.filter(r => r.status !== 'resolved').length;
-      document.getElementById('kpi-showroom-count').textContent = '11';
-      document.getElementById('kpi-external-count').textContent = '12';
+      document.getElementById('kpi-reports-count').textContent = pendingReportsCount;
+      document.getElementById('kpi-showroom-count').textContent = showroomCount;
+      document.getElementById('kpi-external-count').textContent = externalCount;
 
       // Badges trên Tabs
       document.getElementById('tab-count-pending').textContent = pendingCount;
-      document.getElementById('tab-count-reports').textContent = '0';
-      document.getElementById('tab-count-inventory').textContent = '23';
+      document.getElementById('tab-count-reports').textContent = pendingReportsCount;
+      document.getElementById('tab-count-inventory').textContent = allInventoryCars.length;
 
       const tagPending = document.getElementById('kpi-pending-tag');
       if (tagPending) {
@@ -794,15 +798,22 @@
       }
       noMsg.style.display = 'none';
       tbody.innerHTML = reports.map(r => {
-        const car = allCars.find(c => c.id === r.listingId);
+        const car = allCars.find(c => String(c.id) === String(r.listingId) || (c.wp_id && String(c.wp_id) === String(r.listingId)));
+        const isResolved = r.status === 'resolved';
+        const statusBadge = isResolved
+          ? '<span class="badge bg-success-subtle text-success border border-success-subtle">Đã xử lý</span>'
+          : '<span class="badge bg-warning text-dark">Chờ xử lý</span>';
+        const actionBtn = isResolved
+          ? '<button type="button" class="btn btn-sm btn-light text-muted border" disabled aria-disabled="true"><i class="bi bi-check2-circle me-1"></i>Đã xử lý</button>'
+          : `<button type="button" class="btn btn-sm btn-outline-success" onclick="handleUpdateReport('${r.id}', 'resolved')">Đã xong</button>`;
         return `
           <tr>
             <td class="small font-monospace">${r.id}</td>
             <td class="small fw-semibold">${car ? car.title : r.listingId}</td>
             <td class="small text-danger">${r.reason}</td>
             <td class="small text-muted">${r.description || '--'}</td>
-            <td><span class="badge bg-warning text-dark">Chờ xử lý</span></td>
-            <td class="text-end"><button class="btn btn-sm btn-outline-success" onclick="handleUpdateReport('${r.id}', 'resolved')">Đã xong</button></td>
+            <td>${statusBadge}</td>
+            <td class="text-end">${actionBtn}</td>
           </tr>
         `;
       }).join('');
@@ -816,18 +827,25 @@
     function renderInventoryTab() {
       const allCars = getAllCars(true);
       const tbody = document.getElementById('inventory-table-body');
-      document.getElementById('inventory-count-title').textContent = '23';
+      document.getElementById('inventory-count-title').textContent = allCars.length;
+      const tabInvCount = document.getElementById('tab-count-inventory');
+      if (tabInvCount) tabInvCount.textContent = allCars.length;
 
-      tbody.innerHTML = allCars.slice(0, 15).map(c => `
+      tbody.innerHTML = allCars.map(c => {
+        const statusBadge = typeof getStatusBadgeHtml === 'function'
+          ? getStatusBadgeHtml(c.status || 'active')
+          : `<span class="badge bg-secondary">${c.status || 'active'}</span>`;
+        return `
         <tr>
           <td><img src="${c.image}" style="width: 60px; height: 42px; object-fit: cover; border-radius: 6px;"></td>
           <td class="small fw-semibold">${c.title}</td>
           <td class="small text-orange-theme fw-bold">${c.priceDisplay || 'Thỏa thuận'}</td>
           <td class="small text-muted">${c.sourceType === 'showroom' || c.isShowroom ? 'Showroom' : 'Ký gửi'}</td>
-          <td><span class="badge bg-success-subtle text-success">Hiển thị</span></td>
+          <td>${statusBadge}</td>
           <td class="text-end"><a href="car-detail.html?id=${c.id}" class="btn btn-sm btn-outline-dark">Xem</a></td>
         </tr>
-      `).join('');
+      `;
+      }).join('');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
