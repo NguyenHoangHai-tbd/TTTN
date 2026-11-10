@@ -5566,6 +5566,314 @@ window.addEventListener('load', cleanupNavbarNavigation);
   "1.8HV": {
     "en": "1.8HV (Hybrid)",
     "zh": "1.8HV 油电混动"
+  },
+  "+ So sánh": {
+    "en": "+ Compare",
+    "zh": "+ 对比"
+  },
+  "Đã chọn": {
+    "en": "Selected",
+    "zh": "已选"
+  },
+  "Đã chọn so sánh": {
+    "en": "Added to compare",
+    "zh": "已加入对比"
+  },
+  "So sánh xe đang chọn": {
+    "en": "Selected Cars to Compare",
+    "zh": "已选对比车辆"
+  },
+  "So sánh ngay": {
+    "en": "Compare Now",
+    "zh": "立即对比"
+  },
+  "Xóa hết": {
+    "en": "Clear All",
+    "zh": "清空"
+  },
+  "Xóa tất cả": {
+    "en": "Clear All",
+    "zh": "全部清除"
+  },
+  "Chọn thêm 1 xe nữa hoặc mở bảng đối chiếu": {
+    "en": "Select 1 more car or open comparison table",
+    "zh": "再选 1 辆车或直接打开对比表"
+  },
+  "Chọn thêm xe (tối đa 3)": {
+    "en": "Select another car (max 3)",
+    "zh": "继续选车（最多3辆）"
+  },
+  "So Sánh Xe Ô Tô Trực Quan - OtoMarket": {
+    "en": "Visual Car Comparison - OtoMarket",
+    "zh": "直观车型参数对比 - OtoMarket"
+  },
+  "So sánh xe": {
+    "en": "Compare Cars",
+    "zh": "车型对比"
+  },
+  "Kho xe đang bán": {
+    "en": "Available Inventory",
+    "zh": "在售车库"
+  },
+  "BẢNG ĐỐI CHIẾU THÔNG SỐ": {
+    "en": "SPECIFICATION COMPARISON MATRIX",
+    "zh": "车辆规格参数对比表"
+  },
+  "So Sánh Thông Số & Giá Bán Xe": {
+    "en": "Compare Car Specs & Prices",
+    "zh": "对比车型参数与售价"
+  },
+  "Chọn tối đa 3 mẫu xe từ kho xe để đối chiếu song song giá niêm yết, số ODO, động cơ và tình trạng pháp lý.": {
+    "en": "Select up to 3 vehicles from inventory to compare listed prices, ODO, engine specs, and legal status side by side.",
+    "zh": "最多可选 3 款车源，直观横向对比挂牌价、里程、动力参数及合法证件状态。"
+  },
+  "Chỉ hiện điểm khác biệt": {
+    "en": "Differences only",
+    "zh": "仅显示差异项"
+  },
+  "Gợi ý cặp xe phổ biến": {
+    "en": "Suggest Popular Pair",
+    "zh": "推荐热门对比"
+  },
+  "Chọn thêm từ kho xe": {
+    "en": "Pick from Inventory",
+    "zh": "从车库添加"
+  },
+  "Nạp nhanh 2 xe mẫu": {
+    "en": "Load Sample Cars",
+    "zh": "快速载入示例车型"
+  },
+  "Vui lòng chọn ít nhất 2 mẫu xe ở các cột bên dưới để so sánh thông số trực quan.": {
+    "en": "Please select at least 2 models in the columns below to compare specs.",
+    "zh": "请在下方栏目中至少选择 2 款车型以进行直观对比。"
+  },
+  "Danh mục so sánh": {
+    "en": "Comparison Criteria",
+    "zh": "对比项目"
+  },
+  "Đổi xe trực tiếp tại từng cột bên cạnh": {
+    "en": "Switch vehicles directly in each column",
+    "zh": "可在各列直接切换对比车型"
+  },
+  "Tổng Quan & Giá Bán": {
+    "en": "Overview & Pricing",
+    "zh": "概览与价格"
+  },
+  "Thông Số Cơ Bản & ODO": {
+    "en": "Core Specs & ODO",
+    "zh": "基础参数与里程"
+  },
+  "Động Cơ & Vận Hành": {
+    "en": "Engine & Drivetrain",
+    "zh": "动力与驾驶系统"
+  },
+  "Nội / Ngoại Thất & Pháp Lý": {
+    "en": "Interior, Exterior & Legal",
+    "zh": "外观内饰与法规有效期"
+  },
+  "Giá bán niêm yết": {
+    "en": "Listed Price",
+    "zh": "挂牌售价"
+  },
+  "Trả trước dự kiến (30%)": {
+    "en": "Estimated Down Payment (30%)",
+    "zh": "预计首付（30%）"
+  },
+  "Tình trạng xe": {
+    "en": "Condition",
+    "zh": "车况状态"
+  },
+  "Nguồn tin bán": {
+    "en": "Listing Source",
+    "zh": "车源渠道"
+  },
+  "Khu vực xem xe": {
+    "en": "Inspection Location",
+    "zh": "看车地区"
+  },
+  "Dòng xe & Phiên bản": {
+    "en": "Model & Trim",
+    "zh": "车型与配置版本"
+  },
+  "Mức tiêu hao nhiên liệu": {
+    "en": "Fuel Consumption",
+    "zh": "综合油耗"
+  },
+  "Thấp hơn": {
+    "en": "Lower Price",
+    "zh": "价格更低"
+  },
+  "Đời cao hơn": {
+    "en": "Newer Year",
+    "zh": "年份更新"
+  },
+  "Ít km hơn": {
+    "en": "Lower Mileage",
+    "zh": "里程更少"
+  },
+  "Lưu ý đối chiếu:": {
+    "en": "Comparison Note:",
+    "zh": "对比参考说明："
+  },
+  "Thông số kỹ thuật và giá niêm yết được tổng hợp từ thông tin do Showroom và người bán đăng tải trên OtoMarket. Người mua vui lòng liên hệ trực tiếp người bán để xác nhận tình trạng thực tế và chi phí lăn bánh tại thời điểm giao dịch.": {
+    "en": "Technical specs and listed prices are compiled from Showroom and seller submissions on OtoMarket. Buyers should contact sellers directly to verify actual condition and on-the-road costs.",
+    "zh": "以上技术参数与售价均汇总自展厅及卖家在 OtoMarket 发布的信息，购买前请直接联系卖家核实实车车况与实际落地费用。"
+  },
+  "Danh Bạ Showroom Đối Tác - OtoMarket": {
+    "en": "Partner Showroom Directory - OtoMarket",
+    "zh": "合作展厅名录 - OtoMarket"
+  },
+  "Danh Bạ Showroom Đối Tác": {
+    "en": "Partner Showroom Directory",
+    "zh": "合作展厅名录"
+  },
+  "Tra cứu thông tin đại lý chính hãng và showroom đối tác theo khu vực, hãng xe phân phối để liên hệ trực tiếp hoặc xem kho xe.": {
+    "en": "Browse official dealerships and partner showrooms by region and distributed brand to call directly or view inventory.",
+    "zh": "按地区与经销品牌查询官方授权经销商及合作展厅信息，直接致电或浏览该展厅车源。"
+  },
+  "Tìm tên Showroom hoặc địa chỉ": {
+    "en": "Search Showroom name or address",
+    "zh": "搜索展厅名称或地址"
+  },
+  "Khu vực / Tỉnh thành": {
+    "en": "Region / Province",
+    "zh": "地区 / 省市"
+  },
+  "Hãng xe phân phối": {
+    "en": "Distributed Brand",
+    "zh": "经销品牌"
+  },
+  "Đặt lại lọc": {
+    "en": "Reset Filters",
+    "zh": "重置筛选"
+  },
+  "Hiển thị": {
+    "en": "Showing",
+    "zh": "当前显示"
+  },
+  "Showroom phù hợp": {
+    "en": "matching Showrooms",
+    "zh": "家符合条件的展厅"
+  },
+  "Xem tất cả kho xe": {
+    "en": "View all inventory",
+    "zh": "查看全部车库"
+  },
+  "Gọi hotline": {
+    "en": "Call Hotline",
+    "zh": "拨打热线"
+  },
+  "Showroom đối tác": {
+    "en": "Partner Showroom",
+    "zh": "合作展厅"
+  },
+  "Đại lý ủy quyền": {
+    "en": "Authorized Dealer",
+    "zh": "官方授权经销商"
+  },
+  "Không tìm thấy Showroom phù hợp": {
+    "en": "No matching Showroom found",
+    "zh": "未找到匹配的合作展厅"
+  },
+  "Không có Showroom nào khớp với khu vực, hãng xe hoặc từ khóa bạn đang chọn. Hãy thử điều chỉnh bộ lọc hoặc quay lại toàn bộ danh sách.": {
+    "en": "No Showroom matches your selected region, brand, or keyword. Try adjusting filters or resetting to view all partners.",
+    "zh": "没有符合当前地区、品牌或关键词的展厅，请尝试修改筛选条件或重置查看全部展厅。"
+  },
+  "Xem tất cả Showroom": {
+    "en": "View All Showrooms",
+    "zh": "查看全部展厅"
+  },
+  "Đặt lịch xem xe / Lái thử": {
+    "en": "Book Viewing / Test Drive",
+    "zh": "预约看车 / 试驾"
+  },
+  "Hẹn xem xe trực tiếp cùng nhân viên hoặc chủ xe": {
+    "en": "Schedule an in-person viewing with showroom staff or the owner",
+    "zh": "预约展厅顾问或车主面对面实车看车"
+  },
+  "Tên xe quan tâm": {
+    "en": "Selected Vehicle",
+    "zh": "预约车型"
+  },
+  "Ngày hẹn": {
+    "en": "Appointment Date",
+    "zh": "预约日期"
+  },
+  "Khung giờ": {
+    "en": "Time Slot",
+    "zh": "预约时段"
+  },
+  "Sáng (08:00 - 11:30)": {
+    "en": "Morning (08:00 - 11:30)",
+    "zh": "上午 (08:00 - 11:30)"
+  },
+  "Chiều (13:30 - 17:30)": {
+    "en": "Afternoon (13:30 - 17:30)",
+    "zh": "下午 (13:30 - 17:30)"
+  },
+  "Ghi chú thêm": {
+    "en": "Additional Notes",
+    "zh": "补充备注"
+  },
+  "Xác nhận đặt lịch xem xe": {
+    "en": "Confirm Appointment",
+    "zh": "确认预约看车"
+  },
+  "Quên mật khẩu tài khoản": {
+    "en": "Recover Account Password",
+    "zh": "找回账户密码"
+  },
+  "Kiểm tra email đã đăng ký & nhận hướng dẫn khôi phục": {
+    "en": "Verify registered email and receive recovery instructions",
+    "zh": "验证已注册邮箱并获取密码重置指引"
+  },
+  "Email đã đăng ký": {
+    "en": "Registered Email",
+    "zh": "已注册邮箱"
+  },
+  "Đặt lại mật khẩu mới trực tiếp ngay (chế độ Demo)": {
+    "en": "Reset password immediately right here (Demo mode)",
+    "zh": "立即直接设置新密码（演示模式）"
+  },
+  "Gửi hướng dẫn đặt lại mật khẩu": {
+    "en": "Send Reset Instructions",
+    "zh": "发送密码重置指引"
+  },
+  "Quy Định, Điều Khoản & Bảo Mật": {
+    "en": "Trading Rules, Terms & Privacy",
+    "zh": "交易规则、使用条款与隐私政策"
+  },
+  "Quy định & Chính sách": {
+    "en": "Rules & Policies",
+    "zh": "平台规则与政策"
+  },
+  "Quy định giao dịch": {
+    "en": "Trading Rules",
+    "zh": "交易规范"
+  },
+  "Quy Định Giao Dịch, Điều Khoản & Bảo Mật": {
+    "en": "Trading Rules, Terms of Use & Privacy Policy",
+    "zh": "交易规范、使用条款与隐私保护政策"
+  },
+  "1. Quy Định Giao Dịch & Đăng Tin": {
+    "en": "1. Trading & Listing Rules",
+    "zh": "一、交易与车源发布规范"
+  },
+  "2. Điều Khoản Sử Dụng Nền Tảng": {
+    "en": "2. Terms of Use",
+    "zh": "二、平台使用条款"
+  },
+  "3. Chính Sách Bảo Mật Thông Tin": {
+    "en": "3. Privacy Policy",
+    "zh": "三、个人信息保护政策"
+  },
+  "Điều khoản sử dụng": {
+    "en": "Terms of Use",
+    "zh": "使用条款"
+  },
+  "Chính sách bảo mật": {
+    "en": "Privacy Policy",
+    "zh": "隐私政策"
   }
 };
 
@@ -5672,6 +5980,56 @@ window.addEventListener('load', cleanupNavbarNavigation);
       regex: /^([\d\.,]+)\s*lượt\s*xem$/i,
       en: '$1 views',
       zh: '$1 次浏览'
+    },
+    {
+      regex: /^(\d+)\/3\s*xe\s*đang\s*chọn$/i,
+      en: '$1/3 cars selected',
+      zh: '已选 $1/3 辆车'
+    },
+    {
+      regex: /^Đã\s*chọn\s*(\d+)\s*mẫu\s*xe$/i,
+      en: '$1 vehicles selected',
+      zh: '已选择 $1 款车型'
+    },
+    {
+      regex: /^(\d+)\s*đối\s*tác\s*đang\s*hoạt\s*động$/i,
+      en: '$1 active partner showrooms',
+      zh: '$1 家合作展厅营业中'
+    },
+    {
+      regex: /^(\d+)\s*xe\s*đang\s*bán$/i,
+      en: '$1 listed cars',
+      zh: '$1 辆在售'
+    },
+    {
+      regex: /^(\d+)\/3\s*cars selected$/i,
+      vi: '$1/3 xe đang chọn',
+      zh: '已选 $1/3 辆车'
+    },
+    {
+      regex: /^(\d+)\s*active partner showrooms$/i,
+      vi: '$1 đối tác đang hoạt động',
+      zh: '$1 家合作展厅营业中'
+    },
+    {
+      regex: /^(\d+)\s*listed cars$/i,
+      vi: '$1 xe đang bán',
+      zh: '$1 辆在售'
+    },
+    {
+      regex: /^(\d+)\s*tin\s*lưu$/i,
+      en: '$1 saved',
+      zh: '已收藏 $1 辆'
+    },
+    {
+      regex: /^(\d+)\s*xe\s*đại\s*lý$/i,
+      en: '$1 showroom cars',
+      zh: '$1 辆展厅车'
+    },
+    {
+      regex: /^(\d+)\s*xe\s*cá\s*nhân$/i,
+      en: '$1 private cars',
+      zh: '$1 辆个人车'
     },
     {
       regex: /^([\d\.,]+)\s*views$/i,
