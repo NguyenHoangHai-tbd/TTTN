@@ -747,6 +747,144 @@ const PRICE_RANGES = [
   { label: "Trên 1.5 tỷ", min: 1500000000, max: Infinity }
 ];
 
+// Danh bạ Showroom / Đại lý đối tác mẫu trên toàn quốc
+const SAMPLE_SHOWROOMS = [
+  {
+    id: "sh-1",
+    name: "Toyota Nha Trang",
+    brands: ["Toyota"],
+    primaryBrand: "Toyota",
+    badge: "Đại lý chính hãng",
+    region: "Nha Trang",
+    address: "Đường Trần Phú, TP. Nha Trang, Khánh Hòa",
+    hotline: "0901 202 626",
+    openHours: "08:00 - 18:30 (Thứ 2 - CN)",
+    image: "assets/images/nhatrang-hq-showroom.jpg",
+    description: "Đại lý phân phối các dòng xe Toyota mới nguyên bản và xe đã qua kiểm định kỹ thuật tại khu vực Khánh Hòa."
+  },
+  {
+    id: "sh-2",
+    name: "VinFast Central",
+    brands: ["VinFast"],
+    primaryBrand: "VinFast",
+    badge: "Đại lý ủy quyền",
+    region: "TP. Hồ Chí Minh",
+    address: "Quận 1, TP. Hồ Chí Minh",
+    hotline: "0906 202 626",
+    openHours: "08:00 - 19:00 (Thứ 2 - CN)",
+    image: "assets/images/cars/vf8.jpg",
+    description: "Trung tâm trưng bày và bàn giao ô tô điện VinFast khu vực trung tâm TP. Hồ Chí Minh, hỗ trợ lái thử thực tế."
+  },
+  {
+    id: "sh-3",
+    name: "Honda Mỹ Đình",
+    brands: ["Honda"],
+    primaryBrand: "Honda",
+    badge: "Đại lý chính hãng",
+    region: "Hà Nội",
+    address: "Nam Từ Liêm, Hà Nội",
+    hotline: "0905 202 626",
+    openHours: "08:00 - 18:00 (Thứ 2 - CN)",
+    image: "assets/images/cars/crv.jpg",
+    description: "Showroom Honda tiêu chuẩn 5S tại phía Tây Hà Nội, cung cấp xe mới cùng dịch vụ bảo dưỡng định kỳ chính hãng."
+  },
+  {
+    id: "sh-4",
+    name: "Salon Auto Hoàng Gia",
+    brands: ["Toyota"],
+    primaryBrand: "Toyota",
+    badge: "Showroom đối tác",
+    region: "Hà Nội",
+    address: "Số 68 Phạm Hùng, Nam Từ Liêm, Hà Nội",
+    hotline: "0988 123 456",
+    openHours: "08:00 - 18:30 (Thứ 2 - CN)",
+    image: "assets/images/cars/corolla_cross.jpg",
+    description: "Chuyên kinh doanh xe gầm cao đô thị đã qua sử dụng, hồ sơ pháp lý rõ ràng và hỗ trợ kiểm tra garage."
+  },
+  {
+    id: "sh-5",
+    name: "Việt Hàn Auto",
+    brands: ["Mazda", "Hyundai"],
+    primaryBrand: "Mazda",
+    badge: "Showroom đối tác",
+    region: "Hà Nội",
+    address: "Khuất Duy Tiến, Thanh Xuân, Hà Nội",
+    hotline: "0977 456 789",
+    openHours: "08:30 - 18:30 (Thứ 2 - CN)",
+    image: "assets/images/cars/cx5.jpg",
+    description: "Showroom xe lướt chuyên các dòng Mazda và Hyundai phổ biến, minh bạch chỉ số ODO và lịch sử bảo dưỡng."
+  },
+  {
+    id: "sh-6",
+    name: "Sài Gòn Ford Used Cars",
+    brands: ["Ford"],
+    primaryBrand: "Ford",
+    badge: "Showroom đối tác",
+    region: "TP. Hồ Chí Minh",
+    address: "Quốc lộ 13, Hiệp Bình Phước, TP. Thủ Đức, TP.HCM",
+    hotline: "0918 999 111",
+    openHours: "08:00 - 18:00 (Thứ 2 - Thứ 7)",
+    image: "assets/images/cars/everest.jpg",
+    description: "Đơn vị chuyên dòng SUV 7 chỗ và bán tải Ford đã qua sử dụng, hỗ trợ sang tên và tư vấn trả góp ngân hàng."
+  },
+  {
+    id: "sh-7",
+    name: "Haxaco Mercedes",
+    brands: ["Mercedes-Benz"],
+    primaryBrand: "Mercedes-Benz",
+    badge: "Đại lý ủy quyền",
+    region: "Hà Nội",
+    address: "Láng Hạ, Đống Đa, Hà Nội",
+    hotline: "0968 888 999",
+    openHours: "08:00 - 18:30 (Thứ 2 - CN)",
+    image: "assets/images/cars/c200.jpg",
+    description: "Trung tâm xe Mercedes-Benz đã qua sử dụng chính hãng, xuất hóa đơn công ty đầy đủ và kiểm định tiêu chuẩn hãng."
+  },
+  {
+    id: "sh-8",
+    name: "Minh Sáng Auto",
+    brands: ["Kia"],
+    primaryBrand: "Kia",
+    badge: "Showroom đối tác",
+    region: "TP. Hồ Chí Minh",
+    address: "An Dương Vương, Quận 5, TP. Hồ Chí Minh",
+    hotline: "0908 777 999",
+    openHours: "08:00 - 18:30 (Thứ 2 - CN)",
+    image: "assets/images/cars/carnival.jpg",
+    description: "Showroom chuyên xe MPV gia đình Kia Carnival và dòng xe đô thị khu vực Quận 5, TP. Hồ Chí Minh."
+  },
+  {
+    id: "sh-9",
+    name: "Thế Giới Bán Tải Auto",
+    brands: ["Ford"],
+    primaryBrand: "Ford",
+    badge: "Showroom đối tác",
+    region: "Bình Dương",
+    address: "Đại lộ Bình Dương, TP. Thủ Dầu Một, Bình Dương",
+    hotline: "0938 123 789",
+    openHours: "08:00 - 18:00 (Thứ 2 - CN)",
+    image: "assets/images/cars/creta_showroom_main.jpg",
+    description: "Chuyên phân phối các dòng bán tải và SUV máy dầu phục vụ nhu cầu đi lại linh hoạt tại Bình Dương."
+  },
+  {
+    id: "sh-10",
+    name: "Đà Nẵng Auto Center",
+    brands: ["Kia", "Hyundai"],
+    primaryBrand: "Kia",
+    badge: "Showroom đối tác",
+    region: "Đà Nẵng",
+    address: "Đường Nguyễn Văn Linh, Hải Châu, Đà Nẵng",
+    hotline: "0935 222 333",
+    openHours: "08:00 - 18:00 (Thứ 2 - CN)",
+    image: "assets/images/cars/tucson.jpg",
+    description: "Điểm hẹn xem xe và lái thử khu vực miền Trung với nhiều lựa chọn SUV cỡ B/C dành cho gia đình."
+  }
+];
+
+if (typeof window !== 'undefined') {
+  window.SAMPLE_SHOWROOMS = SAMPLE_SHOWROOMS;
+}
+
 
 // Helper function to get car by ID from SAMPLE_CARS or local storage
 function getCarById(id) {

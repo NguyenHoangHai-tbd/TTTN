@@ -9703,6 +9703,188 @@ body:has(#oto-compare-floatbar) #toast-container {
   }
 }
 
+/* ==========================================================================
+   DEALERS DIRECTORY PAGE (dealers.html) - Partner Showrooms Grid & Filters
+   ========================================================================== */
+.dealer-hero-title {
+  font-size: 1.75rem;
+  letter-spacing: -0.4px;
+  line-height: 1.25;
+}
+
+.dealer-card {
+  background: var(--oto-bg-surface);
+  border: 1px solid var(--oto-border-default);
+  border-radius: var(--oto-radius-lg);
+  box-shadow: var(--oto-shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform var(--oto-transition-fast), box-shadow var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+.dealer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--oto-shadow-md);
+  border-color: var(--oto-border-strong);
+}
+
+.dealer-thumb-wrap {
+  position: relative;
+  height: 190px;
+  background: var(--oto-slate-100);
+  overflow: hidden;
+}
+
+.dealer-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--oto-transition-base);
+}
+
+.dealer-card:hover .dealer-thumb-img {
+  transform: scale(1.03);
+}
+
+.dealer-type-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.86);
+  color: var(--oto-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--oto-radius-full);
+  z-index: 2;
+}
+
+.dealer-region-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: var(--oto-white);
+  color: var(--oto-navy-900);
+  border: 1px solid var(--oto-border-default);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--oto-radius-full);
+  box-shadow: var(--oto-shadow-xs);
+  z-index: 2;
+}
+
+.dealer-card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.dealer-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--oto-navy-900);
+  line-height: 1.35;
+}
+
+.dealer-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--oto-copper-50);
+  color: var(--oto-copper-700);
+  border: 1px solid var(--oto-copper-200);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+}
+
+.dealer-count-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--oto-teal-50);
+  color: var(--oto-teal-700);
+  border: 1px solid var(--oto-teal-200);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+}
+
+.dealer-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--oto-slate-600);
+}
+
+.dealer-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.45;
+}
+
+.btn-dealer-hotline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--oto-slate-50);
+  color: var(--oto-navy-900);
+  border: 1px solid var(--oto-border-strong);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--oto-transition-fast), color var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+.btn-dealer-hotline:hover {
+  background: var(--oto-copper-50);
+  color: var(--oto-copper-700);
+  border-color: var(--oto-copper-300);
+}
+
+.btn-dealer-cars {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--oto-navy-900);
+  color: var(--oto-white);
+  border: 1px solid var(--oto-navy-900);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+.btn-dealer-cars:hover {
+  background: var(--oto-brand-accent);
+  border-color: var(--oto-brand-accent);
+  color: var(--oto-white);
+}
+
+.dealers-empty-card {
+  background: var(--oto-bg-surface);
+  border: 1px solid var(--oto-border-default);
+  border-radius: var(--oto-radius-lg);
+  box-shadow: var(--oto-shadow-sm);
+  padding: 48px 24px;
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -1736,6 +1736,18 @@ window.addEventListener('load', cleanupNavbarNavigation);
     "en": "Home",
     "zh": "首页"
   },
+  "Danh bạ": {
+    "en": "Dealers",
+    "zh": "展厅名录"
+  },
+  "Danh bạ Showroom": {
+    "en": "Showroom Directory",
+    "zh": "合作展厅名录"
+  },
+  "Xem xe của showroom": {
+    "en": "View Showroom Inventory",
+    "zh": "查看展厅车源"
+  },
   "Ô tô mới": {
     "en": "New Cars",
     "zh": "新车"
