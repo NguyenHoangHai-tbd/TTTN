@@ -1112,6 +1112,13 @@ function resetAccountPassword(emailInput, newPassword) {
   return { success: true, email: match.record.email, message: 'Khôi phục mật khẩu thành công! Bạn có thể đăng nhập bằng mật khẩu mới.' };
 }
 
+if (typeof window !== 'undefined') {
+  window.findAccountMatch = findAccountMatch;
+  window.getRegisteredUsers = getRegisteredUsers;
+  window.resetAccountPassword = resetAccountPassword;
+  window.authenticateUserAccount = authenticateUserAccount;
+}
+
 function getLoggedInUser() {
   try {
     const data = localStorage.getItem(STORAGE_KEYS.AUTH_USER);

@@ -12,7 +12,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110_compare_v1">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_policies_v1">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -202,55 +202,67 @@
   <!-- Modal Quên mật khẩu -->
   <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-white text-dark border-0 shadow-lg rounded-4 overflow-hidden" style="background: #FFFFFF; color: #0F172A; padding: 12px;">
+      <div class="modal-content bg-white text-dark border-0 shadow-lg rounded-4 overflow-hidden">
         <div class="modal-header border-bottom px-4 py-3">
-          <h2 class="modal-title h6 fw-bold text-dark mb-0 d-flex align-items-center gap-2" id="forgotPasswordModalLabel">
-            <i class="bi bi-key-fill" style="color: #C2410C;"></i>
-            <span>Khôi phục mật khẩu tài khoản</span>
-          </h2>
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" style="background: #FFF7ED; color: #C2410C; width: 38px; height: 38px;">
+              <i class="bi bi-key-fill fs-5"></i>
+            </div>
+            <div>
+              <h2 class="modal-title h6 fw-bold text-dark mb-0" id="forgotPasswordModalLabel">Quên mật khẩu tài khoản</h2>
+              <span class="text-muted small">Kiểm tra email đã đăng ký &amp; nhận hướng dẫn khôi phục</span>
+            </div>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
         </div>
-        <form id="forgot-password-form" onsubmit="handleForgotPasswordSubmit(event)">
-          <div class="modal-body p-4 bg-white" style="background: #FFFFFF;">
-            <p class="small text-muted mb-3">
-              Nhập địa chỉ Email hoặc Số điện thoại đã đăng ký trên OtoMarket để đặt lại mật khẩu mới.
-            </p>
+        <form id="forgot-password-form" onsubmit="handleForgotPasswordSubmit(event)" novalidate>
+          <div class="modal-body p-4 bg-white">
             <div id="forgot-error-alert" class="alert alert-danger py-2 px-3 small d-none mb-3" role="alert"></div>
 
             <div class="mb-3">
-              <label class="bento-field-label" for="forgot-account">Email hoặc Số điện thoại đã đăng ký <span class="text-danger">*</span></label>
+              <label class="bento-field-label" for="forgot-account">Email đã đăng ký <span class="text-danger">*</span></label>
               <div class="bento-input-wrapper">
                 <i class="bi bi-envelope-fill bento-input-icon"></i>
-                <input type="text" class="bento-input-control" id="forgot-account" placeholder="Ví dụ: nam.nguyen@otomarket.vn" required>
+                <input type="email" class="bento-input-control" id="forgot-account" placeholder="Ví dụ: nam.nguyen@otomarket.vn" required>
               </div>
+              <div class="small text-muted mt-1">Hệ thống sẽ kiểm tra địa chỉ Email trong danh sách tài khoản đã đăng ký.</div>
             </div>
 
-            <div class="mb-3">
-              <label class="bento-field-label" for="forgot-new-password">Mật khẩu mới <span class="text-danger">*</span></label>
-              <div class="bento-input-wrapper">
-                <i class="bi bi-lock-fill bento-input-icon"></i>
-                <input type="password" class="bento-input-control" id="forgot-new-password" placeholder="Tối thiểu 6 ký tự" minlength="6" required style="padding-right: 40px;">
-                <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-new-password', this)" title="Ẩn/Hiện mật khẩu">
-                  <i class="bi bi-eye"></i>
-                </button>
-              </div>
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" type="checkbox" role="switch" id="forgot-instant-mode" onchange="toggleForgotInstantMode(this.checked)">
+              <label class="form-check-label small fw-semibold text-dark" for="forgot-instant-mode" style="cursor: pointer;">
+                Đặt lại mật khẩu mới trực tiếp ngay (chế độ Demo)
+              </label>
             </div>
 
-            <div class="mb-1">
-              <label class="bento-field-label" for="forgot-confirm-password">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
-              <div class="bento-input-wrapper">
-                <i class="bi bi-shield-check bento-input-icon"></i>
-                <input type="password" class="bento-input-control" id="forgot-confirm-password" placeholder="Nhập lại mật khẩu mới" minlength="6" required style="padding-right: 40px;">
-                <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-confirm-password', this)" title="Ẩn/Hiện mật khẩu">
-                  <i class="bi bi-eye"></i>
-                </button>
+            <div id="forgot-reset-fields" class="d-none pt-3 mt-2 border-top">
+              <div class="mb-3">
+                <label class="bento-field-label" for="forgot-new-password">Mật khẩu mới <span class="text-danger">*</span></label>
+                <div class="bento-input-wrapper">
+                  <i class="bi bi-lock-fill bento-input-icon"></i>
+                  <input type="password" class="bento-input-control" id="forgot-new-password" placeholder="Tối thiểu 6 ký tự" minlength="6" style="padding-right: 40px;">
+                  <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-new-password', this)" title="Ẩn/Hiện mật khẩu">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mb-1">
+                <label class="bento-field-label" for="forgot-confirm-password">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
+                <div class="bento-input-wrapper">
+                  <i class="bi bi-shield-check bento-input-icon"></i>
+                  <input type="password" class="bento-input-control" id="forgot-confirm-password" placeholder="Nhập lại mật khẩu mới" minlength="6" style="padding-right: 40px;">
+                  <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('forgot-confirm-password', this)" title="Ẩn/Hiện mật khẩu">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer border-top bg-light px-4 py-3">
             <button type="button" class="btn btn-light border btn-sm px-3 fw-semibold" data-bs-dismiss="modal">Hủy</button>
-            <button type="submit" class="btn btn-sm px-4 fw-bold text-white" style="background: #C2410C; border-color: #C2410C; color: #FFFFFF !important;">
-              Đặt lại mật khẩu
+            <button type="submit" id="forgot-submit-btn" class="btn btn-sm px-4 fw-bold text-white" style="background: #C2410C; border-color: #C2410C; color: #FFFFFF !important;">
+              Gửi hướng dẫn đặt lại mật khẩu
             </button>
           </div>
         </form>
@@ -263,7 +275,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/data.js"></script>
-  <script src="assets/js/app.js?v=20261110_compare_v1"></script>
+  <script src="assets/js/app.js?v=20261110_policies_v1"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -334,9 +346,24 @@
     }
 
     // 3. Mở & xử lý Modal Quên mật khẩu
+    function toggleForgotInstantMode(enabled) {
+      const box = document.getElementById('forgot-reset-fields');
+      const submitBtn = document.getElementById('forgot-submit-btn');
+      const errBox = document.getElementById('forgot-error-alert');
+      if (errBox) errBox.classList.add('d-none');
+      if (box) box.classList.toggle('d-none', !enabled);
+      if (submitBtn) {
+        submitBtn.textContent = enabled ? 'Đặt lại mật khẩu ngay' : 'Gửi hướng dẫn đặt lại mật khẩu';
+      }
+    }
+
     function openForgotPasswordModal() {
       const errBox = document.getElementById('forgot-error-alert');
       if (errBox) errBox.classList.add('d-none');
+
+      const instantSwitch = document.getElementById('forgot-instant-mode');
+      if (instantSwitch) instantSwitch.checked = false;
+      toggleForgotInstantMode(false);
 
       const loginAcc = document.getElementById('login-account').value.trim();
       const forgotAcc = document.getElementById('forgot-account');
@@ -363,39 +390,64 @@
       };
 
       const account = document.getElementById('forgot-account').value.trim();
+      const instantMode = Boolean(document.getElementById('forgot-instant-mode')?.checked);
       const newPwd = document.getElementById('forgot-new-password').value;
       const confirmPwd = document.getElementById('forgot-confirm-password').value;
 
-      if (!account || !newPwd || !confirmPwd) {
-        showForgotErr('Vui lòng điền đầy đủ thông tin!');
-        return;
-      }
-      if (newPwd.length < 6) {
-        showForgotErr('Mật khẩu mới phải có tối thiểu 6 ký tự!');
-        return;
-      }
-      if (newPwd !== confirmPwd) {
-        showForgotErr('Mật khẩu mới và xác nhận mật khẩu không trùng khớp!');
+      if (!account) {
+        showForgotErr('Vui lòng nhập Email đã đăng ký!');
         return;
       }
 
-      if (typeof resetAccountPassword !== 'function') {
-        showForgotErr('Không thể kết nối dữ liệu tài khoản. Vui lòng tải lại trang!');
+      // Kiểm tra tồn tại trong REGISTERED_USERS (và tài khoản demo tích hợp)
+      let matchedUser = null;
+      if (typeof findAccountMatch === 'function') {
+        matchedUser = findAccountMatch(account);
+      } else if (typeof getRegisteredUsers === 'function') {
+        const norm = account.toLowerCase();
+        const found = getRegisteredUsers().find(u => String(u.email || '').trim().toLowerCase() === norm);
+        if (found) matchedUser = { source: 'registered', record: found };
+      }
+
+      if (!matchedUser) {
+        showForgotErr('Email này chưa được đăng ký trên hệ thống OtoMarket!');
         return;
       }
 
-      const res = resetAccountPassword(account, newPwd);
-      if (!res.success) {
-        showForgotErr(res.message);
-        return;
+      let successMessage = `Đã gửi hướng dẫn đặt lại mật khẩu đến email ${matchedUser.record.email || account}. Vui lòng kiểm tra hộp thư!`;
+
+      if (instantMode) {
+        if (!newPwd || !confirmPwd) {
+          showForgotErr('Vui lòng điền đầy đủ mật khẩu mới và xác nhận mật khẩu!');
+          return;
+        }
+        if (newPwd.length < 6) {
+          showForgotErr('Mật khẩu mới phải có tối thiểu 6 ký tự!');
+          return;
+        }
+        if (newPwd !== confirmPwd) {
+          showForgotErr('Mật khẩu mới và xác nhận mật khẩu không trùng khớp!');
+          return;
+        }
+        if (typeof resetAccountPassword !== 'function') {
+          showForgotErr('Không thể kết nối dữ liệu tài khoản. Vui lòng tải lại trang!');
+          return;
+        }
+        const res = resetAccountPassword(account, newPwd);
+        if (!res.success) {
+          showForgotErr(res.message);
+          return;
+        }
+        successMessage = res.message;
       }
 
       if (errBox) errBox.classList.add('d-none');
       document.getElementById('forgot-password-form').reset();
+      toggleForgotInstantMode(false);
 
       const accInput = document.getElementById('login-account');
       const pwdInput = document.getElementById('login-password');
-      if (accInput) accInput.value = res.email || account;
+      if (accInput) accInput.value = matchedUser.record.email || account;
       if (pwdInput) pwdInput.value = '';
 
       const modalEl = document.getElementById('forgotPasswordModal');
@@ -403,7 +455,7 @@
       if (modal) modal.hide();
 
       if (typeof showToast === 'function') {
-        showToast(res.message, 'success');
+        showToast(successMessage, 'success');
       }
     }
 

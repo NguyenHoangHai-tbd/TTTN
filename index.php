@@ -1,7 +1,7 @@
 <?php
 /**
  * Entry point cho theme OtoMarket.
- * Tự động điều hướng các trang của hệ thống: index, admin, cars, car-detail, compare, dealers, post-car, news, about, favorites, my-listings, login, register, profile
+ * Tự động điều hướng các trang của hệ thống: index, admin, cars, car-detail, compare, dealers, policies, post-car, news, about, favorites, my-listings, login, register, profile
  *
  * @package OtoMarket
  */
@@ -24,6 +24,7 @@ $page_map = array(
     'car-detail'  => 'car-detail.html',
     'compare'     => 'compare.html',
     'dealers'     => 'dealers.html',
+    'policies'    => 'policies.html',
     'post-car'    => 'post-car.html',
     'news'        => 'news.html',
     'about'       => 'about.html',

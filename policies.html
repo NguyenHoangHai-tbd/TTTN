@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quy Định, Điều Khoản &amp; Chính Sách Bảo Mật - OtoMarket</title>
+  <meta name="description" content="Quy định giao dịch trực tiếp, Điều khoản sử dụng nền tảng và Chính sách bảo mật thông tin người dùng trên OtoMarket." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_policies_v1">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body class="cars-bento-body policies-bento-body">
+
+  <!-- ==========================================================================
+       HEADER ĐỒNG BỘ TIÊU CHUẨN (TOPBAR + NAVBAR)
+       ========================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <div class="portal-topbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+          </div>
+          <span class="topbar-divider">|</span>
+          <div id="navbar-auth-section">
+            <a href="login.html?v=20261021_login" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Đăng nhập</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="portal-navbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center">
+        <a class="brand-logo d-flex align-items-center text-decoration-none" href="index.html">
+          <img src="assets/images/logo.png?v=20261022_brand_orange_v7" alt="OtoMarket" class="site-logo" style="height: 40px; display: inline-block !important;">
+        </a>
+
+        <ul class="nav align-items-center gap-1 d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link-portal" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-new" href="cars.html?condition=new">Ô tô mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal nav-link-car-used" href="cars.html?condition=used">Ô tô cũ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="dealers.html">Danh bạ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="news.html">Tin tức &amp; Đánh giá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-portal" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item admin-only admin-nav-item">
+            <a class="nav-link-portal" href="admin.html">Duyệt tin Showroom</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2">
+          <a href="favorites.html" class="btn btn-fav-compact position-relative" title="Danh sách xe yêu thích" aria-label="Xe yêu thích">
+            <i class="bi bi-heart-fill text-danger"></i>
+            <span class="badge-fav-count favorites-badge-count badge bg-danger rounded-pill" style="display:none;">0</span>
+          </a>
+          <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 px-3 fw-bold rounded-3 d-flex align-items-center gap-1 shadow-sm text-nowrap">
+            <i class="bi bi-plus-circle-fill"></i>
+            <span>+ Đăng bán xe</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN POLICIES WORKSPACE
+       ========================================================================== -->
+  <main class="py-4">
+    <div class="container-fluid px-3 px-xl-5">
+
+      <!-- 1. Hero & Mục lục nhanh -->
+      <div class="cars-bento-card p-4 mb-4">
+        <nav aria-label="Breadcrumb" class="mb-2">
+          <ol class="breadcrumb mb-0 small">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="about.html" class="text-decoration-none">Về OtoMarket</a></li>
+            <li class="breadcrumb-item active fw-semibold text-dark" aria-current="page">Quy định &amp; Chính sách</li>
+          </ol>
+        </nav>
+
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+          <div>
+            <span class="badge fw-bold px-2.5 py-1 mb-2" style="background-color: #FFF7ED; color: #9A3412; border: 1px solid #FED7AA;">
+              <i class="bi bi-file-earmark-check-fill me-1"></i> MINH BẠCH PHÁP LÝ &amp; VẬN HÀNH
+            </span>
+            <h1 class="dealer-hero-title fw-bold text-dark mb-1">Quy Định Giao Dịch, Điều Khoản &amp; Bảo Mật</h1>
+            <p class="text-secondary small mb-0">
+              Các quy tắc chuẩn giúp người mua và người bán kết nối an toàn, đúng pháp luật khi sử dụng nền tảng OtoMarket.
+            </p>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#trading-rules" class="btn btn-outline-dark btn-sm fw-semibold rounded-3 px-3 py-2">
+              <i class="bi bi-shield-check me-1"></i> Quy định giao dịch
+            </a>
+            <a href="#terms" class="btn btn-outline-dark btn-sm fw-semibold rounded-3 px-3 py-2">
+              <i class="bi bi-journal-text me-1"></i> Điều khoản sử dụng
+            </a>
+            <a href="#privacy" class="btn btn-outline-dark btn-sm fw-semibold rounded-3 px-3 py-2">
+              <i class="bi bi-lock-fill me-1"></i> Chính sách bảo mật
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Cột nội dung chính -->
+        <div class="col-lg-8">
+
+          <!-- MỤC 1: QUY ĐỊNH GIAO DỊCH -->
+          <section id="trading-rules" class="cars-bento-card p-4 mb-4">
+            <div class="d-flex align-items-center gap-2 pb-3 mb-3 border-bottom">
+              <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" style="background: #FFF7ED; color: #C2410C; width: 42px; height: 42px;">
+                <i class="bi bi-shield-check fs-5"></i>
+              </div>
+              <div>
+                <h2 class="h4 fw-bold text-dark mb-0">1. Quy Định Giao Dịch &amp; Đăng Tin</h2>
+                <span class="small text-muted">Áp dụng cho người bán cá nhân, Showroom đối tác và người mua xe</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3 small text-secondary" style="line-height: 1.7; max-width: 72ch;">
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">1.1. Nguyên tắc kết nối trực tiếp (Không giữ tiền đặt cọc)</h3>
+                <p class="mb-0">
+                  OtoMarket là nền tảng trung gian công nghệ hiển thị thông tin xe đang bán. Sàn <strong>không nhận thanh toán trực tuyến, không giữ tiền đặt cọc và không thu phí môi giới</strong> giữa người mua và người bán. Mọi thỏa thuận về giá và bàn giao phương tiện được thực hiện trực tiếp giữa hai bên.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">1.2. Tiêu chuẩn tin đăng bán xe hợp lệ</h3>
+                <ul class="mb-0 ps-3 d-flex flex-column gap-1">
+                  <li>Thông số kỹ thuật (hãng, đời xe, ODO, tình trạng máy móc, hộp số) và hình ảnh đính kèm phải phản ánh đúng xe thực tế đang rao bán.</li>
+                  <li>Giá bán phải là mức giá mong muốn thực tế (bằng VNĐ); nghiêm cấm niêm yết giá ảo (0 đồng, 1 triệu đồng) hoặc dùng ngôn từ quảng cáo sai quy định tại Điều 8 Khoản 11 Luật Quảng cáo.</li>
+                  <li>Số điện thoại liên hệ phải đang hoạt động và thuộc quyền sử dụng hợp pháp của chủ xe hoặc đại diện Showroom đăng tin.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">1.3. Quy trình khuyến nghị khi xem xe &amp; ký hợp đồng</h3>
+                <ul class="mb-0 ps-3 d-flex flex-column gap-1">
+                  <li>Hẹn xem xe trực tiếp tại Showroom đối tác, garage uy tín hoặc địa điểm công cộng vào ban ngày.</li>
+                  <li>Kiểm tra đối chiếu bản gốc Giấy đăng ký xe (Cà-vẹt), Giấy chứng nhận đăng kiểm, số khung/số máy và tra cứu phạt nguội trên cổng thông tin Cục CSGT.</li>
+                  <li>Thực hiện công chứng hợp đồng mua bán và thủ tục thu hồi biển số định danh theo đúng quy định pháp luật hiện hành trước khi hoàn tất thanh toán.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- MỤC 2: ĐIỀU KHOẢN SỬ DỤNG -->
+          <section id="terms" class="cars-bento-card p-4 mb-4">
+            <div class="d-flex align-items-center gap-2 pb-3 mb-3 border-bottom">
+              <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" style="background: #F0FDFA; color: #0F766E; width: 42px; height: 42px;">
+                <i class="bi bi-journal-text fs-5"></i>
+              </div>
+              <div>
+                <h2 class="h4 fw-bold text-dark mb-0">2. Điều Khoản Sử Dụng Nền Tảng</h2>
+                <span class="small text-muted">Quyền lợi, trách nhiệm và quy tắc ứng xử của thành viên</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3 small text-secondary" style="line-height: 1.7; max-width: 72ch;">
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">2.1. Tài khoản và trách nhiệm thông tin</h3>
+                <p class="mb-0">
+                  Khi đăng ký tài khoản và đăng tin trên OtoMarket, người dùng cam kết cung cấp thông tin cá nhân chính xác, tự chịu trách nhiệm về tính xác thực, quyền sở hữu hợp pháp hoặc quyền phân phối đối với phương tiện mình đăng tải.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">2.2. Các hành vi bị nghiêm cấm</h3>
+                <ul class="mb-0 ps-3 d-flex flex-column gap-1">
+                  <li>Đăng tin xe giả mạo, sử dụng hình ảnh không có bản quyền hoặc thông tin của bên thứ ba chưa được ủy quyền.</li>
+                  <li>Đăng trùng lặp nhiều tin cho cùng một xe nhằm gây nhiễu kết quả tìm kiếm hoặc gửi thư rác (spam).</li>
+                  <li>Lợi dụng nền tảng để yêu cầu người mua chuyển khoản tiền đặt cọc trước khi cho xem xe và giấy tờ thực tế.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">2.3. Quyền kiểm duyệt và xử lý vi phạm</h3>
+                <p class="mb-0">
+                  Bộ phận kiểm duyệt OtoMarket có quyền từ chối duyệt, tạm ẩn hoặc gỡ bỏ các tin đăng vi phạm quy định mà không cần báo trước, đồng thời tiếp nhận xử lý các báo cáo vi phạm do cộng đồng người dùng gửi lên qua tính năng báo cáo trên trang chi tiết xe.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- MỤC 3: CHÍNH SÁCH BẢO MẬT -->
+          <section id="privacy" class="cars-bento-card p-4">
+            <div class="d-flex align-items-center gap-2 pb-3 mb-3 border-bottom">
+              <div class="rounded-3 p-2 d-flex align-items-center justify-content-center" style="background: #EFF6FF; color: #1E40AF; width: 42px; height: 42px;">
+                <i class="bi bi-lock-fill fs-5"></i>
+              </div>
+              <div>
+                <h2 class="h4 fw-bold text-dark mb-0">3. Chính Sách Bảo Mật Thông Tin</h2>
+                <span class="small text-muted">Cam kết thu thập minh bạch và bảo vệ dữ liệu cá nhân</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3 small text-secondary" style="line-height: 1.7; max-width: 72ch;">
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">3.1. Mục đích và phạm vi thu thập dữ liệu</h3>
+                <p class="mb-0">
+                  OtoMarket thu thập họ tên, địa chỉ Email, số điện thoại và thông tin xe người dùng tự nguyện cung cấp khi đăng ký tài khoản, đăng tin bán xe, đặt lịch xem xe hoặc lưu xe yêu thích, nhằm phục vụ trực tiếp việc hiển thị thông tin giao dịch và kết nối người mua – người bán.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">3.2. Bảo vệ và không chia sẻ trái phép</h3>
+                <p class="mb-0">
+                  Số điện thoại công khai trên tin đăng chỉ dùng để người có nhu cầu mua xe liên hệ trực tiếp. OtoMarket không bán, trao đổi hoặc chia sẻ dữ liệu tài khoản riêng tư cho bên thứ ba phục vụ mục đích thương mại khi chưa có sự đồng ý của chủ tài khoản (trừ trường hợp có yêu cầu hợp pháp từ cơ quan nhà nước có thẩm quyền).
+                </p>
+              </div>
+
+              <div>
+                <h3 class="h6 fw-bold text-dark mb-1">3.3. Quyền kiểm soát dữ liệu của người dùng</h3>
+                <p class="mb-0">
+                  Thành viên có thể chủ động cập nhật thông tin cá nhân, đổi mật khẩu tại trang <a href="profile.html" class="fw-semibold text-decoration-none" style="color: #C2410C;">Hồ sơ cá nhân</a>, ẩn/xóa tin đăng tại <a href="my-listings.html" class="fw-semibold text-decoration-none" style="color: #C2410C;">Quản lý tin đăng</a>, hoặc liên hệ tổng đài hỗ trợ <strong>1900 6868</strong> để được trợ giúp.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Cột hỗ trợ bên phải -->
+        <aside class="col-lg-4">
+          <div class="cars-bento-card p-4 mb-4">
+            <h2 class="h6 fw-bold text-dark mb-3">Truy Cập Nhanh Hệ Thống</h2>
+            <div class="d-grid gap-2">
+              <a href="post-car.html" class="btn btn-cta-orange btn-sm py-2 fw-bold rounded-3">
+                <i class="bi bi-plus-circle-fill me-1"></i> Đăng tin bán xe đúng quy định
+              </a>
+              <a href="about.html#inspect" class="btn btn-outline-dark btn-sm py-2 fw-semibold rounded-3">
+                <i class="bi bi-patch-check me-1"></i> Xem quy trình kiểm duyệt tin
+              </a>
+              <a href="dealers.html" class="btn btn-light border btn-sm py-2 fw-semibold rounded-3 text-dark">
+                <i class="bi bi-building me-1"></i> Tra cứu danh bạ Showroom đối tác
+              </a>
+            </div>
+          </div>
+
+          <div class="cars-bento-card p-4">
+            <h2 class="h6 fw-bold text-dark mb-2">Kênh Tiếp Nhận Khiếu Nại</h2>
+            <p class="small text-muted mb-3">
+              Nếu phát hiện tin đăng vi phạm quy chế hoặc cần hỗ trợ xác minh thông tin, vui lòng liên hệ tổng đài hoặc dùng nút Báo cáo tại trang chi tiết xe.
+            </p>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <i class="bi bi-telephone-fill fs-5" style="color: #C2410C;"></i>
+              <div>
+                <div class="fw-bold text-dark">1900 6868</div>
+                <div class="small text-muted">08:00 - 18:30 (Thứ 2 - CN)</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER ĐỒNG BỘ TIÊU CHUẨN (NỀN SÁNG)
+       ========================================================================== -->
+  <footer class="footer-light">
+    <div class="container-fluid px-3 px-xl-5">
+      <div class="row gy-4 mb-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="brand-logo mb-3">
+            <img src="assets/images/logo.png?v=20261021_brand_orange_v5" alt="OtoMarket" class="site-logo" style="height: 38px;">
+          </div>
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            Nền tảng công nghệ kết nối mua bán ô tô trực tiếp giữa người mua và người bán. Cung cấp thông tin xe rõ ràng, hỗ trợ kết nối liên hệ xem xe thực tế. Nền tảng chưa hỗ trợ thanh toán hoặc đặt cọc trực tuyến.
+          </p>
+          <div class="d-flex gap-2 text-secondary">
+            <a href="#" class="social-icon-btn" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon-btn" title="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="social-icon-btn" title="Telegram"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Về OtoMarket</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">Giới thiệu công ty</a></li>
+            <li><a href="about.html#inspect">Quy trình duyệt tin</a></li>
+            <li><a href="cars.html">Tất cả xe đang bán</a></li>
+            <li><a href="dealers.html">Danh bạ Showroom</a></li>
+            <li><a href="policies.html#trading-rules">Quy định giao dịch</a></li>
+            <li><a href="about.html#faq">Câu hỏi thường gặp</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Dành Cho Khách Hàng</h2>
+          <ul class="footer-links">
+            <li><a href="cars.html">Tìm kiếm xe đang bán</a></li>
+            <li><a href="index.html#tool-loan-calculator">Ước tính vay trả góp</a></li>
+            <li><a href="index.html#tool-rolling-price">Dự tính giá lăn bánh</a></li>
+            <li><a href="favorites.html">Danh sách xe yêu thích</a></li>
+            <li><a href="my-listings.html">Quản lý tin đăng bán</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h2 class="footer-title">Các Dòng Xe Tiêu Biểu</h2>
+          <ul class="footer-links">
+            <li><a href="cars.html?brand=Toyota">Toyota Vios, Cross</a></li>
+            <li><a href="cars.html?brand=Hyundai">Hyundai Accent, Creta</a></li>
+            <li><a href="cars.html?brand=Ford">Ford Ranger, Everest</a></li>
+            <li><a href="cars.html?brand=VinFast">VinFast VF 6, VF 8</a></li>
+            <li><a href="cars.html?brand=Mazda">Mazda CX-5, Mazda 3</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2 class="footer-title">Văn Phòng &amp; Hotline</h2>
+          <div class="p-3 rounded-3 bg-white border">
+            <div class="small text-muted mb-1"><i class="bi bi-geo-alt-fill me-1" style="color: #C2410C;"></i> <strong>Trụ sở:</strong> TP. Nha Trang, Khánh Hòa</div>
+            <div class="small text-muted mb-2"><i class="bi bi-geo-alt me-1 text-muted"></i> <strong>Văn phòng:</strong> Đường Trần Phú, TP. Nha Trang</div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="background-color: #F8FAFC; color: #0F172A; width: 36px; height: 36px;">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <div class="fw-bold text-dark lh-1" style="font-size: 1.05rem;">1900 6868</div>
+                <span class="text-muted" style="font-size: 0.75rem;">Tổng đài hỗ trợ (08:00 - 18:30)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>&copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Ô Tô Trực Tuyến.</div>
+        <div class="d-flex gap-3">
+          <a href="policies.html#terms">Điều khoản sử dụng</a>
+          <a href="policies.html#privacy">Chính sách bảo mật</a>
+          <button class="btn btn-link p-0 text-muted text-decoration-none small" onclick="resetDemoData()">
+            <i class="bi bi-arrow-counterclockwise"></i> Khôi phục dữ liệu gốc
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js?v=20261110_policies_v1"></script>
+</body>
+</html>
