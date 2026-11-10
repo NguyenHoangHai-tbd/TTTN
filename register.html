@@ -88,6 +88,7 @@
 
     @media (max-width: 991.98px) {
       .bento-master-card {
+        flex-direction: column;
         border-radius: 20px;
         box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
       }
@@ -202,10 +203,16 @@
       letter-spacing: 0.3px;
     }
 
-    /* Tối ưu Cột Trái trên Mobile (< 992px) */
+    /* Tối ưu Cột Trái trên Mobile (< 992px): đưa xuống dưới form giống trang đăng nhập */
     @media (max-width: 991.98px) {
+      .bento-master-card {
+        flex-direction: column;
+      }
       .bento-story-col {
-        padding: 22px 20px 18px;
+        order: 2;
+        flex: none;
+        width: 100%;
+        padding: 24px 20px;
       }
       .story-title {
         font-size: 1.25rem;
@@ -217,8 +224,9 @@
       }
       .story-perk-list {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
       }
       .story-perk-item {
         margin-bottom: 0;
@@ -226,7 +234,7 @@
       }
       .story-stat-box {
         margin-top: 14px;
-        padding: 10px;
+        padding: 12px 14px;
       }
       .story-stat-num {
         font-size: 1.05rem;
@@ -236,10 +244,10 @@
     @media (max-width: 576px) {
       .story-perk-list {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 10px;
       }
       .bento-story-col {
-        padding: 18px 16px 14px;
+        padding: 22px 18px;
       }
     }
 
@@ -258,13 +266,26 @@
 
     @media (max-width: 991.98px) {
       .bento-form-col {
-        padding: 24px 20px;
+        order: 1;
+        flex: none;
+        width: 100%;
+        overflow-y: visible;
+        padding: 26px 20px;
       }
     }
 
     @media (max-width: 576px) {
       .bento-form-col {
-        padding: 20px 14px;
+        padding: 24px 18px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .bento-story-col {
+        order: 1;
+      }
+      .bento-form-col {
+        order: 2;
       }
     }
 
@@ -502,9 +523,9 @@
 
     .bento-footer-copy {
       text-align: center;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: #94A3B8;
-      padding-top: 12px;
+      margin-top: 18px;
     }
   </style>
 </head>
@@ -706,14 +727,14 @@
             </div>
           </div>
         </div>
-
-        <!-- Footer -->
-        <div class="bento-footer-copy">
-          &copy; 2026 OtoMarket - Sàn Giao Dịch Xe Ô Tô Uy Tín Hàng Đầu
-        </div>
       </div>
 
     </div>
+
+    <!-- Footer bản quyền -->
+    <footer class="bento-footer-copy">
+      &copy; 2026 OtoMarket - Sàn Giao Dịch Mua Bán Xe Ô Tô Uy Tín Hàng Đầu Việt Nam
+    </footer>
 
   </div>
 
