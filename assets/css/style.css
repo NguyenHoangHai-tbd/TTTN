@@ -6140,6 +6140,44 @@ body.detail-bento-body .btn-zalo-chat:hover {
       color: var(--oto-white) !important;
 }
 
+body.detail-bento-body .btn-schedule-view {
+      background-color: var(--oto-navy-900) !important;
+      color: var(--oto-white) !important;
+      font-weight: 700 !important;
+      font-size: 0.95rem !important;
+      border: 1px solid var(--oto-navy-900) !important;
+      border-radius: 12px !important;
+      padding: 11px 18px !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      transition: all 0.2s ease !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+}
+
+body.detail-bento-body .btn-schedule-view:hover {
+      background-color: var(--oto-navy-700) !important;
+      border-color: var(--oto-navy-700) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14) !important;
+      color: var(--oto-white) !important;
+}
+
+.btn-schedule-modal-submit {
+      background-color: var(--oto-navy-900) !important;
+      color: var(--oto-white) !important;
+      border: 1px solid var(--oto-navy-900) !important;
+      border-radius: 10px !important;
+      transition: background var(--oto-transition-fast), border-color var(--oto-transition-fast);
+}
+
+.btn-schedule-modal-submit:hover {
+      background-color: var(--oto-brand-accent) !important;
+      border-color: var(--oto-brand-accent) !important;
+      color: var(--oto-white) !important;
+}
+
 /* THẺ XE TƯƠNG TỰ CÙNG PHÂN KHÚC */
 body.detail-bento-body .related-car-card {
 

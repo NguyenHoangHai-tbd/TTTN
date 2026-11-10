@@ -9,7 +9,8 @@ const STORAGE_KEYS = {
   AUTH_USER: 'otomarket_user',
   REGISTERED_USERS: 'otomarket_registered_users',
   REPORTS: 'otomarket_reports',
-  COMPARE_LIST: 'otomarket_compare_list'
+  COMPARE_LIST: 'otomarket_compare_list',
+  BOOKINGS: 'otomarket_test_drive_bookings'
 };
 
 // Chuẩn hóa trạng thái tin đăng
@@ -857,6 +858,45 @@ function updateReportStatus(reportId, status, adminName = 'Quản lý Showroom')
   }
 }
 
+// Đặt lịch xem xe / lái thử
+function getTestDriveBookings() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEYS.BOOKINGS);
+    const parsed = data ? JSON.parse(data) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveTestDriveBooking(bookingData) {
+  const bookings = getTestDriveBookings();
+  const user = typeof getLoggedInUser === 'function' ? getLoggedInUser() : null;
+  const newBooking = {
+    id: `bk-${Date.now()}`,
+    userId: user ? (user.id || user.email) : 'guest',
+    carId: bookingData.carId || '',
+    carTitle: bookingData.carTitle || '',
+    sellerName: bookingData.sellerName || '',
+    sellerPhone: bookingData.sellerPhone || '',
+    customerName: bookingData.customerName || '',
+    customerPhone: bookingData.customerPhone || '',
+    appointmentDate: bookingData.appointmentDate || '',
+    timeSlot: bookingData.timeSlot || '',
+    note: bookingData.note || '',
+    status: 'pending',
+    createdAt: new Date().toISOString()
+  };
+  bookings.unshift(newBooking);
+  localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(bookings));
+  return newBooking;
+}
+
+if (typeof window !== 'undefined') {
+  window.getTestDriveBookings = getTestDriveBookings;
+  window.saveTestDriveBooking = saveTestDriveBooking;
+}
+
 // Chuẩn hóa hiển thị trạng thái
 function getStatusBadgeHtml(status) {
   switch(status) {
@@ -1142,7 +1182,12 @@ function logoutUser() {
 
 // Toast thông báo
 function showToast(message, type = 'success') {
-  const container = document.getElementById('toast-container');
+  let container = document.getElementById('toast-container');
+  if (!container && document.body) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    document.body.appendChild(container);
+  }
   if (!container) return;
 
   const toastId = 'toast-' + Date.now();
@@ -1600,6 +1645,7 @@ function resetDemoData() {
     localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
     localStorage.removeItem(STORAGE_KEYS.REPORTS);
     localStorage.removeItem(STORAGE_KEYS.COMPARE_LIST);
+    localStorage.removeItem(STORAGE_KEYS.BOOKINGS);
     initializeStorage();
     showToast("Đã khôi phục dữ liệu mẫu ban đầu thành công!", "success");
     setTimeout(() => {
