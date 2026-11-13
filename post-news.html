@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biên Tập & Xuất Bản Tin Tức - OtoMarket Studio</title>
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_sync_v2">
+  <!-- Favicon (Brand Orange) -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=20261113_orange_v1">
+  <link rel="shortcut icon" href="favicon.ico?v=20261113_orange_v1">
+  <link rel="apple-touch-icon" href="assets/images/logo-icon.png?v=20261113_orange_v1"><style>
+    :root {
+      --news-primary: #EA580C;
+      --news-primary-hover: #C2410C;
+      --news-dark: #0F172A;
+      --news-slate: #334155;
+      --news-muted: #64748B;
+      --news-border: #E2E8F0;
+      --news-bg-soft: #F8FAFC;
+    }
+
+    body.post-news-body {
+      background-color: #F1F5F9;
+      color: var(--news-slate);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Sticky Control Bar */
+    .editor-command-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--news-border);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+      padding: 0.75rem 1.25rem;
+    }
+
+    .editor-page-wrapper {
+      max-width: 1360px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* News Paper Container (Simulating real news page) */
+    .news-paper-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid var(--news-border);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .news-paper-card {
+        padding: 1.25rem;
+      }
+    }
+
+    /* Category Pill Selector */
+    .category-selector-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .category-radio-btn {
+      display: none;
+    }
+
+    .category-pill-label {
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      border: 1.5px solid var(--news-border);
+      color: var(--news-muted);
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .category-radio-btn:checked + .category-pill-label {
+      background: #FFF7ED;
+      color: var(--news-primary);
+      border-color: #FDBA74;
+      box-shadow: 0 2px 8px rgba(234, 88, 12, 0.15);
+    }
+
+    /* Headline Input */
+    .news-headline-input {
+      font-family: 'Barlow', 'Be Vietnam Pro', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      color: var(--news-dark);
+      border: 1.5px dashed transparent;
+      border-radius: 12px;
+      padding: 0.5rem 0.75rem;
+      width: 100%;
+      line-height: 1.3;
+      transition: all 0.2s;
+      background: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .news-headline-input:hover {
+      border-color: #CBD5E1;
+      background: #F8FAFC;
+    }
+
+    .news-headline-input:focus {
+      outline: none;
+      border-color: var(--news-primary);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .news-headline-input {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Meta Bar on Article */
+    .article-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #F1F5F9;
+      font-size: 0.88rem;
+      color: var(--news-muted);
+    }
+
+    /* Hero Cover Box */
+    .hero-cover-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0F172A;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-cover-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s;
+    }
+
+    .hero-cover-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Sapo Lead Box */
+    .sapo-lead-box {
+      background: #F8FAFC;
+      border-left: 4px solid var(--news-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 1.15rem 1.4rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .sapo-lead-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #1E293B;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .sapo-lead-textarea:focus {
+      outline: none;
+    }
+
+    /* Sticky Formatting Toolbar */
+    .editor-sticky-toolbar {
+      position: sticky;
+      top: 68px;
+      z-index: 1010;
+      background: #FFFFFF;
+      border: 1px solid var(--news-border);
+      border-radius: 12px;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    .btn-toolbar-tool {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #475569;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-toolbar-tool:hover {
+      background: #F1F5F9;
+      color: var(--news-dark);
+      border-color: #CBD5E1;
+    }
+
+    .btn-toolbar-tool.active {
+      background: #FFF7ED;
+      color: var(--news-primary);
+      border-color: #FED7AA;
+    }
+
+    /* Content Area */
+    .article-content-textarea {
+      width: 100%;
+      min-height: 480px;
+      border: 1.5px solid transparent;
+      border-radius: 12px;
+      padding: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #334155;
+      font-family: inherit;
+      background: transparent;
+      resize: vertical;
+      transition: all 0.2s;
+    }
+
+    .article-content-textarea:hover {
+      border-color: #E2E8F0;
+      background: #FAFBFD;
+    }
+
+    .article-content-textarea:focus {
+      outline: none;
+      border-color: var(--news-primary);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.08);
+    }
+
+    /* Live Preview Mode Styling */
+    .preview-rendered-content {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #334155;
+    }
+
+    .preview-rendered-content h2, .preview-rendered-content h3 {
+      font-family: 'Barlow', 'Be Vietnam Pro', sans-serif;
+      font-weight: 700;
+      color: #0F172A;
+      margin-top: 1.75rem;
+      margin-bottom: 0.85rem;
+      position: relative;
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--news-primary);
+    }
+
+    .preview-rendered-content p {
+      margin-bottom: 1.25rem;
+    }
+
+    .preview-rendered-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .preview-rendered-content .callout-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 4px solid #F59E0B;
+      padding: 1.25rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      color: #78350F;
+    }
+
+    /* Sidebar Bento Cards */
+    .bento-sidebar-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid var(--news-border);
+      padding: 1.4rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+    }
+
+    .bento-sidebar-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--news-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Vehicle Thumbnail Picker */
+    .vehicle-preset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .preset-img-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .preset-img-item:hover {
+      border-color: var(--news-primary);
+      transform: translateY(-2px);
+    }
+
+    .preset-img-item.active {
+      border-color: var(--news-primary);
+      box-shadow: 0 0 0 2px #FFEDD5;
+    }
+
+    .preset-img-item img {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preset-img-item span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.8);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      padding: 1px 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+    }
+
+    /* CTA Box inside Article */
+    .article-cta-box {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin: 2.5rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .article-cta-box {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body class="post-news-body">
+
+  <!-- ========================================================================
+       TOPBAR CỐ ĐỊNH CHUẨN OTOMARKET
+       ======================================================================== -->
+  <header id="portal-header" class="portal-header-wrapper">
+    <div class="portal-topbar-clean">
+      <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2 gap-md-3 small">
+          <span class="d-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-geo-alt-fill text-orange-theme"></i>
+            <span>Đường Trần Phú, TP. Nha Trang, Khánh Hòa</span>
+          </span>
+          <span class="topbar-divider d-none d-sm-inline">|</span>
+          <span class="d-none d-sm-inline-flex align-items-center gap-1.5 topbar-info-item">
+            <i class="bi bi-clock-fill text-orange-theme"></i>
+            <span>Giờ mở cửa: 08:00 - 18:30 (Thứ 2 - CN)</span>
+          </span>
+        </div>
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <div class="lang-switch-container" title="Chuyển đổi ngôn ngữ">
+            <button type="button" class="lang-pill-btn active" onclick="switchLanguage('VI', this)">VI</button>
+            <button type="button" class="lang-pill-btn" onclick="switchLanguage('EN', this)">EN</button>
+          </div>
+          <span class="topbar-divider">|</span>
+          <div id="navbar-auth-section">
+            <a href="login.html" class="topbar-user-btn text-decoration-none d-inline-flex align-items-center gap-1.5">
+              <i class="bi bi-person-fill text-orange-theme"></i>
+              <span class="user-name-label">Đăng nhập</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       THANH ĐIỀU KHIỂN BIÊN TẬP TÒA SOẠN (STICKY COMMAND BAR)
+       ======================================================================== -->
+  <div class="editor-command-bar">
+    <div class="container-fluid px-2 px-md-4 d-flex align-items-center justify-content-between flex-wrap gap-2">
+      <!-- Trái: Điều hướng về Admin & Trạng thái -->
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <a href="admin.html#tab-news" class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-inline-flex align-items-center gap-1">
+          <i class="bi bi-arrow-left"></i>
+          <span>Trở về Admin</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-dark text-white rounded-pill px-3 py-2 fw-semibold d-none d-sm-inline-flex align-items-center gap-1">
+            <i class="bi bi-newspaper text-warning"></i>
+            <span id="editor-mode-badge">Đăng Bài Viết Mới</span>
+          </span>
+          <span id="auto-save-status" class="small text-muted d-none d-md-inline-flex align-items-center gap-1">
+            <i class="bi bi-check-circle-fill text-success"></i> Sẵn sàng biên tập
+          </span>
+        </div>
+      </div>
+
+      <!-- Giữa / Phải: Bộ nút chuyển đổi View, Nạp Mẫu, Lưu & Xuất bản -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- Chuyển đổi Soạn thảo vs Xem trước -->
+        <div class="btn-group btn-group-sm rounded-pill p-1 bg-light border" role="group">
+          <button type="button" class="btn btn-sm rounded-pill active fw-semibold" id="btn-tab-edit" onclick="switchEditorTab('edit')">
+            <i class="bi bi-pencil-square me-1"></i>Soạn thảo
+          </button>
+          <button type="button" class="btn btn-sm rounded-pill fw-semibold text-muted" id="btn-tab-preview" onclick="switchEditorTab('preview')">
+            <i class="bi bi-eye me-1"></i>Xem trước bạn đọc
+          </button>
+        </div>
+
+        <!-- Nút Nạp Mẫu Template Dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 dropdown-toggle d-inline-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-magic text-warning"></i>
+            <span class="d-none d-sm-inline">Nạp bài mẫu</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 small">
+            <li><h6 class="dropdown-header text-uppercase" style="font-size: 0.72rem;">Dàn ý bài viết chuẩn SEO</h6></li>
+            <li><a class="dropdown-item py-2" href="javascript:void(0)" onclick="loadNewsTemplate('review')"><i class="bi bi-stars text-primary me-2"></i>Mẫu Đánh giá xe thực tế (Review)</a></li>
+            <li><a class="dropdown-item py-2" href="javascript:void(0)" onclick="loadNewsTemplate('experience')"><i class="bi bi-shield-check text-success me-2"></i>Mẫu Kinh nghiệm xem xe cũ</a></li>
+            <li><a class="dropdown-item py-2" href="javascript:void(0)" onclick="loadNewsTemplate('market')"><i class="bi bi-graph-up-arrow text-warning me-2"></i>Mẫu Tin tức thị trường xe</a></li>
+          </ul>
+        </div>
+
+        <!-- Nút Lưu Nháp -->
+        <button type="button" class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-semibold" onclick="handleSaveNews(false)">
+          <i class="bi bi-file-earmark me-1"></i>Lưu nháp
+        </button>
+
+        <!-- Nút Xuất Bản Bài Viết -->
+        <button type="button" class="btn btn-sm btn-cta-orange rounded-pill px-3 py-1 fw-bold shadow-sm d-inline-flex align-items-center gap-1" onclick="handleSaveNews(true)">
+          <i class="bi bi-send-check-fill"></i>
+          <span>Xuất bản ngay</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       KHUNG SOẠN THẢO CHÍNH (THEO PHONG CÁCH TRANG BÁO TIN TỨC)
+       ======================================================================== -->
+  <main class="editor-page-wrapper">
+    <div class="row g-4">
+
+      <!-- ====================================================================
+           CỘT TRÁI (8 PHẦN): TRANG BÀO TIN TỨC THỰC TẾ
+           ==================================================================== -->
+      <div class="col-lg-8 col-xl-8">
+        <div class="news-paper-card">
+
+          <!-- Hidden Input lưu ID nếu là chỉnh sửa -->
+          <input type="hidden" id="news-id" value="">
+
+          <!-- 1. Chọn Chuyên Mục Trực Quan Dạng Pills -->
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted text-uppercase mb-2">Chuyên mục bài viết <span class="text-danger">*</span></label>
+            <div class="category-selector-group">
+              <input type="radio" class="category-radio-btn" name="news-cat" id="cat-market" value="market" checked onchange="updateCategoryPillUI()">
+              <label class="category-pill-label" for="cat-market">
+                <i class="bi bi-graph-up"></i> Thị trường ô tô
+              </label>
+
+              <input type="radio" class="category-radio-btn" name="news-cat" id="cat-review" value="review" onchange="updateCategoryPillUI()">
+              <label class="category-pill-label" for="cat-review">
+                <i class="bi bi-star-fill text-warning"></i> Đánh giá xe thực tế
+              </label>
+
+              <input type="radio" class="category-radio-btn" name="news-cat" id="cat-experience" value="experience" onchange="updateCategoryPillUI()">
+              <label class="category-pill-label" for="cat-experience">
+                <i class="bi bi-wrench-adjustable"></i> Kinh nghiệm xem xe cũ
+              </label>
+
+              <input type="radio" class="category-radio-btn" name="news-cat" id="cat-legal" value="legal" onchange="updateCategoryPillUI()">
+              <label class="category-pill-label" for="cat-legal">
+                <i class="bi bi-file-earmark-text"></i> Thủ tục &amp; Pháp lý
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. Tiêu Đề Bài Viết H1 Trực Quan -->
+          <div class="mb-3">
+            <textarea id="news-title" class="news-headline-input" rows="2" placeholder="Nhập tiêu đề bài viết tin tức tại đây..."></textarea>
+          </div>
+
+          <!-- 3. Meta Bar (Tác giả, Ngày đăng, Thời lượng đọc, Lượt xem) -->
+          <div class="article-meta-row">
+            <div class="d-flex align-items-center gap-2">
+              <div class="rounded-circle bg-orange-subtle text-orange-theme d-flex align-items-center justify-content-center" style="width: 28px; height: 28px; font-size: 0.85rem;">
+                <i class="bi bi-person-fill"></i>
+              </div>
+              <span class="fw-semibold text-dark">Ban Biên Tập OtoMarket</span>
+            </div>
+            <span>&bull;</span>
+            <div class="d-inline-flex align-items-center gap-1">
+              <i class="bi bi-calendar3"></i>
+              <span id="meta-display-date">13/11/2026</span>
+            </div>
+            <span>&bull;</span>
+            <div class="d-inline-flex align-items-center gap-1">
+              <i class="bi bi-clock"></i>
+              <input type="text" id="news-readtime" class="form-control form-control-sm py-0 px-2 d-inline-block text-center border-0 bg-light rounded" value="5 phút đọc" style="width: 95px; font-size: 0.82rem;">
+            </div>
+            <span>&bull;</span>
+            <div class="d-inline-flex align-items-center gap-1">
+              <i class="bi bi-eye"></i>
+              <input type="text" id="news-views" class="form-control form-control-sm py-0 px-2 d-inline-block text-center border-0 bg-light rounded" value="1.250 lượt xem" style="width: 105px; font-size: 0.82rem;">
+            </div>
+          </div>
+
+          <!-- 4. Ảnh Bìa Bài Viết (Hero Cover Image) -->
+          <div class="hero-cover-container">
+            <img id="news-cover-img" src="assets/images/cars/vf8.jpg" alt="Ảnh bìa bài viết" class="hero-cover-img">
+            <div class="hero-cover-overlay">
+              <div class="d-flex align-items-center gap-2 flex-grow-1 me-2">
+                <i class="bi bi-image text-white fs-5"></i>
+                <input type="text" id="news-image-url" class="form-control form-control-sm bg-dark text-white border-secondary rounded-pill px-3" value="assets/images/cars/vf8.jpg" placeholder="Đường dẫn ảnh bìa bài viết..." oninput="updateCoverImageFromInput()">
+              </div>
+              <button type="button" class="btn btn-sm btn-light rounded-pill px-3 fw-semibold text-nowrap" onclick="document.getElementById('quick-image-library').scrollIntoView({behavior: 'smooth'})">
+                <i class="bi bi-grid-fill text-orange-theme me-1"></i>Chọn ảnh từ kho xe
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Đoạn Sapo Tóm Tắt Mở Đầu (Lead Sapo) -->
+          <div class="sapo-lead-box">
+            <div class="small fw-bold text-muted mb-1 text-uppercase" style="letter-spacing: 0.5px;">Tóm tắt ngắn mở đầu (Sapo) *</div>
+            <textarea id="news-summary" class="sapo-lead-textarea" placeholder="Tóm tắt ngắn gọn 2 - 3 câu nêu bật nội dung cốt lõi của bài viết..."></textarea>
+          </div>
+
+          <!-- ================================================================
+               CHẾ ĐỘ SOẠN THẢO (EDITOR VIEW)
+               ================================================================ -->
+          <div id="pane-editor-view">
+            <!-- Thanh Công Cụ Soạn Thảo Nổi (Sticky Formatting Toolbar) -->
+            <div class="editor-sticky-toolbar">
+              <button type="button" class="btn-toolbar-tool" onclick="insertArticleSnippet('h2')" title="Tiêu đề mục lớn">
+                <i class="bi bi-type-h2"></i> H2 Mục lớn
+              </button>
+              <button type="button" class="btn-toolbar-tool" onclick="insertArticleSnippet('h3')" title="Tiêu đề phụ">
+                <i class="bi bi-type-h3"></i> H3 Tiêu đề phụ
+              </button>
+              <span class="text-muted opacity-50">|</span>
+              <button type="button" class="btn-toolbar-tool" onclick="insertArticleSnippet('bold')" title="Chữ in đậm">
+                <i class="bi bi-type-bold"></i> Đậm
+              </button>
+              <button type="button" class="btn-toolbar-tool" onclick="insertArticleSnippet('italic')" title="Chữ in nghiêng">
+                <i class="bi bi-type-italic"></i> Nghiêng
+              </button>
+              <button type="button" class="btn-toolbar-tool" onclick="insertArticleSnippet('list')" title="Danh sách gạch đầu dòng">
+                <i class="bi bi-list-ul"></i> Danh sách
+              </button>
+              <span class="text-muted opacity-50">|</span>
+              <button type="button" class="btn-toolbar-tool text-warning-emphasis" onclick="insertArticleSnippet('callout')" title="Hộp lưu ý / Lời khuyên chuyên gia">
+                <i class="bi bi-lightbulb-fill text-warning"></i> Hộp lưu ý
+              </button>
+              <button type="button" class="btn-toolbar-tool text-primary" onclick="insertArticleSnippet('image')" title="Chèn ảnh minh họa kèm chú thích">
+                <i class="bi bi-card-image"></i> Chèn ảnh xe
+              </button>
+              <button type="button" class="btn-toolbar-tool text-success" onclick="insertArticleSnippet('proscons')" title="Khung đánh giá Ưu / Nhược điểm">
+                <i class="bi bi-check2-all"></i> Ưu/Nhược điểm
+              </button>
+            </div>
+
+            <!-- Khung Nhập Nội Dung Chi Tiết -->
+            <div class="mb-4">
+              <label class="form-label small fw-bold text-muted text-uppercase mb-2">Nội dung chi tiết bài viết (Hỗ trợ định dạng văn bản &amp; hình ảnh)</label>
+              <textarea id="news-content" class="article-content-textarea" placeholder="Bắt đầu viết nội dung chi tiết bài viết tại đây..."></textarea>
+            </div>
+          </div>
+
+          <!-- ================================================================
+               CHẾ ĐỘ XEM TRƯỚC BẠN ĐỌC (PREVIEW VIEW)
+               ================================================================ -->
+          <div id="pane-preview-view" class="d-none">
+            <div class="alert alert-warning py-2 px-3 small rounded-3 mb-3 d-flex align-items-center justify-content-between">
+              <span><i class="bi bi-info-circle me-1"></i> Đây là bản xem trước hiển thị đúng 100% như bạn đọc sẽ thấy trên trang Tin tức.</span>
+              <button type="button" class="btn btn-sm btn-dark py-0 px-2 rounded" onclick="switchEditorTab('edit')">Quay lại sửa tiếp</button>
+            </div>
+            <div id="preview-container" class="preview-rendered-content py-2">
+              <!-- Render động -->
+            </div>
+          </div>
+
+          <!-- 6. Khối Thẻ Tags Từ Khóa (Bên dưới bài viết) -->
+          <div class="pt-3 border-top mt-4">
+            <label class="form-label small fw-bold text-muted text-uppercase mb-2">Thẻ từ khóa tìm kiếm (Tags, cách nhau bằng dấu phẩy)</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light border-end-0"><i class="bi bi-tags-fill text-muted"></i></span>
+              <input type="text" id="news-tags" class="form-control border-start-0" placeholder="Ví dụ: VinFast, VF 8, Xe điện, Đánh giá xe, Kinh nghiệm mua xe..." value="Thị trường xe, VinFast">
+            </div>
+            <div class="d-flex flex-wrap gap-1 mt-2">
+              <span class="small text-muted me-1">Gợi ý tag nhanh:</span>
+              <a href="javascript:void(0)" class="badge bg-light text-dark border text-decoration-none" onclick="addTagQuick('VinFast')">+ VinFast</a>
+              <a href="javascript:void(0)" class="badge bg-light text-dark border text-decoration-none" onclick="addTagQuick('Toyota')">+ Toyota</a>
+              <a href="javascript:void(0)" class="badge bg-light text-dark border text-decoration-none" onclick="addTagQuick('Hyundai')">+ Hyundai</a>
+              <a href="javascript:void(0)" class="badge bg-light text-dark border text-decoration-none" onclick="addTagQuick('Xe cũ')">+ Xe cũ</a>
+              <a href="javascript:void(0)" class="badge bg-light text-dark border text-decoration-none" onclick="addTagQuick('Định giá xe')">+ Định giá xe</a>
+            </div>
+          </div>
+
+          <!-- 7. Khối Banner Chuyển Đổi Mua Xe (Bento CTA Box) -->
+          <div class="article-cta-box">
+            <div>
+              <div class="fw-bold text-dark fs-5 mb-1">Bạn đang tìm mua dòng xe phù hợp với nhu cầu?</div>
+              <div class="small text-muted">Khám phá ngay hàng trăm xe mới chính hãng và xe cũ đã qua kiểm định chất lượng tại sàn OtoMarket.</div>
+            </div>
+            <a href="cars.html" target="_blank" class="btn btn-cta-orange px-4 py-2 rounded-pill fw-bold text-nowrap">
+              Xem kho xe đang bán <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           CỘT PHẢI (4 PHẦN): TRỢ LÝ BIÊN TẬP & KHO ẢNH XE NHANH
+           ==================================================================== -->
+      <div class="col-lg-4 col-xl-4">
+
+        <!-- Card 1: Trạng Thái Xuất Bản & Cài Đặt Bài Viết -->
+        <div class="bento-sidebar-card">
+          <div class="bento-sidebar-title">
+            <i class="bi bi-gear-wide-connected text-orange-theme"></i> Cấu hình xuất bản
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-muted">Trạng thái bài viết:</label>
+            <select id="news-status" class="form-select form-select-sm">
+              <option value="active">Hiển thị công khai (Active)</option>
+              <option value="hidden">Lưu nháp / Tạm ẩn (Draft)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-semibold text-muted">Nhãn hiển thị nổi bật (Badge):</label>
+            <input type="text" id="news-badge-text" class="form-control form-control-sm" placeholder="Ví dụ: TIN NÓNG, ĐÁNH GIÁ SÂU, TƯ VẤN" value="TIN NÓNG">
+          </div>
+
+          <div class="d-grid gap-2 pt-2 border-top">
+            <button type="button" class="btn btn-cta-orange fw-bold py-2 rounded-3 shadow-sm" onclick="handleSaveNews(true)">
+              <i class="bi bi-send-check-fill me-1"></i> Xuất bản bài viết
+            </button>
+            <button type="button" class="btn btn-outline-dark fw-semibold py-2 rounded-3" onclick="handleSaveNews(false)">
+              <i class="bi bi-file-earmark-check me-1"></i> Lưu bản nháp
+            </button>
+            <a id="btn-view-customer-live" href="news.html" target="_blank" class="btn btn-light border py-2 rounded-3 text-muted small d-none">
+              <i class="bi bi-box-arrow-up-right me-1"></i> Mở bài viết trên sàn
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Kho Ảnh Xe Sẵn Có (Quick Media Library) -->
+        <div class="bento-sidebar-card" id="quick-image-library">
+          <div class="bento-sidebar-title">
+            <i class="bi bi-images text-primary"></i> Kho ảnh xe mẫu nhanh
+          </div>
+          <p class="small text-muted mb-2">Click vào xe bên dưới để đặt làm ảnh bìa ngay lập tức:</p>
+
+          <div class="vehicle-preset-grid">
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/vf8.jpg', this)">
+              <img src="assets/images/cars/vf8.jpg" alt="VinFast VF 8">
+              <span>VinFast VF 8</span>
+            </div>
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/corolla_cross.jpg', this)">
+              <img src="assets/images/cars/corolla_cross.jpg" alt="Corolla Cross">
+              <span>Corolla Cross</span>
+            </div>
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/tucson.jpg', this)">
+              <img src="assets/images/cars/tucson.jpg" alt="Hyundai Tucson">
+              <span>Hyundai Tucson</span>
+            </div>
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/everest.jpg', this)">
+              <img src="assets/images/cars/everest.jpg" alt="Ford Everest">
+              <span>Ford Everest</span>
+            </div>
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/creta.jpg', this)">
+              <img src="assets/images/cars/creta.jpg" alt="Hyundai Creta">
+              <span>Hyundai Creta</span>
+            </div>
+            <div class="preset-img-item" onclick="selectPresetCover('assets/images/cars/carnival.jpg', this)">
+              <img src="assets/images/cars/carnival.jpg" alt="Kia Carnival">
+              <span>Kia Carnival</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Nạp Bài Mẫu Nhanh (Templates) -->
+        <div class="bento-sidebar-card">
+          <div class="bento-sidebar-title">
+            <i class="bi bi-journal-text text-success"></i> Nạp nhanh khung bài mẫu
+          </div>
+          <p class="small text-muted mb-3">Tự động điền tiêu đề, chuyên mục, ảnh và cấu trúc bài viết chuẩn báo chí chuyên ngành ô tô:</p>
+
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary text-start py-2 px-3 rounded-3" onclick="loadNewsTemplate('review')">
+              <div class="fw-bold text-dark"><i class="bi bi-star-fill text-warning me-1"></i> Mẫu Đánh giá xe thực tế</div>
+              <div class="text-muted" style="font-size: 0.75rem;">Thiết kế, vận hành, chi phí nuôi xe, ưu nhược điểm.</div>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary text-start py-2 px-3 rounded-3" onclick="loadNewsTemplate('experience')">
+              <div class="fw-bold text-dark"><i class="bi bi-shield-check text-success me-1"></i> Mẫu Kinh nghiệm mua xe cũ</div>
+              <div class="text-muted" style="font-size: 0.75rem;">Check khung gầm, máy móc, thủy kích, định giá chuẩn.</div>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary text-start py-2 px-3 rounded-3" onclick="loadNewsTemplate('market')">
+              <div class="fw-bold text-dark"><i class="bi bi-graph-up-arrow text-primary me-1"></i> Mẫu Tin thị trường &amp; Giá xe</div>
+              <div class="text-muted" style="font-size: 0.75rem;">Doanh số xe, biến động giá bán, chính sách ưu đãi.</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Xóa bài viết nếu đang chỉnh sửa -->
+        <div id="danger-zone-card" class="bento-sidebar-card border-danger-subtle d-none">
+          <div class="bento-sidebar-title text-danger">
+            <i class="bi bi-trash3-fill"></i> Quản lý bài viết
+          </div>
+          <p class="small text-muted mb-3">Hành động xóa bài viết sẽ xóa vĩnh viễn khỏi danh sách tin tức trên sàn.</p>
+          <button type="button" class="btn btn-outline-danger btn-sm w-100 fw-semibold" onclick="handleDeleteCurrentArticle()">
+            <i class="bi bi-trash3 me-1"></i> Xóa bài viết này
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+    <div id="editorToast" class="toast align-items-center text-white bg-dark border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2" id="editorToastMessage">
+          <!-- Message -->
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/data.js?v=20261110_sync_v2"></script>
+  <script src="assets/js/app.js?v=20261110_sync_v2"></script>
+
+  <script>
+    // Templates sẵn có
+    const NEWS_TEMPLATES = {
+      review: {
+        categoryTag: 'review',
+        badgeText: 'ĐÁNH GIÁ SÂU',
+        title: 'Đánh Giá Thực Tế VinFast VF 8 Sau 1 Năm Sử Dụng: Chi Phí Nuôi Xe & Trải Nghiệm Đường Dài',
+        image: 'assets/images/cars/vf8.jpg',
+        readTime: '6 phút đọc',
+        summary: 'Sau hơn 25.000 km lăn bánh trên đủ cung đường từ đô thị đến đèo núi Tây Bắc, VinFast VF 8 để lại nhiều ấn tượng về khả năng vận hành mạnh mẽ, tiết kiệm nhiên liệu và không gian rộng rãi.',
+        tags: 'VinFast, VF 8, Xe điện, Đánh giá thực tế, Chi phí vận hành',
+        content: `<h3>1. Thiết kế tổng thể và cảm giác không gian</h3>
+VinFast VF 8 sở hữu ngoại hình đậm chất SUV hiện đại do studio Pininfarina danh tiếng của Ý thiết kế. Phần đầu xe với dải đèn LED cánh chim đặc trưng tạo nên độ nhận diện thương hiệu tuyệt vời khi di chuyển vào ban đêm.
+
+Không gian hàng ghế thứ hai cực kỳ rộng rãi nhờ chiều dài cơ sở lên tới 2.950 mm, giúp người ngồi sau có khoảng để chân thoải mái trên những hành trình dài.
+
+<div class="callout-box">
+  <strong>💡 Lời khuyên vận hành:</strong> Khi di chuyển mùa hè tại Việt Nam, nên dán phim cách nhiệt cao cấp cho phần cửa sổ trời toàn cảnh để giữ nhiệt độ khoang lái mát mẻ tối đa và tiết kiệm pin cho điều hòa.
+</div>
+
+<h3>2. Khả năng vận hành và thời lượng sạc pin</h3>
+Với công suất hơn 400 mã lực trên bản Plus và hệ dẫn động 4 bánh toàn thời gian AWD, VF 8 mang lại cảm giác đạp ga dính lưng mà các dòng xe xăng cùng tầm giá 1 tỷ đồng khó có thể đạt được.
+
+Hệ thống trạm sạc công cộng dày đặc trên khắp 63 tỉnh thành giúp việc di chuyển xuyên Việt trở nên thuận tiện và yên tâm hơn bao giờ hết.`
+      },
+      experience: {
+        categoryTag: 'experience',
+        badgeText: 'KINH NGHIỆM',
+        title: 'Quy Trình Kiểm Tra Ô Tô Cũ Tránh Mua Phải Xe Bị Thủy Kích, Đâm Đụng Nặng',
+        image: 'assets/images/cars/corolla_cross.jpg',
+        readTime: '5 phút đọc',
+        summary: 'Kinh nghiệm thực chiến từ chuyên gia kiểm định sàn OtoMarket giúp người mua nhận biết các dấu hiệu xe từng ngập nước, tháo dỡ máy móc hoặc làm lại khung sườn.',
+        tags: 'Kinh nghiệm xe cũ, Thủy kích, Kiểm tra xe cũ, Pháp lý xe',
+        content: `<h3>1. Soi kỹ các ốc giàn đầu và keo chỉ nắp capo</h3>
+Ốc giàn đầu và ốc tai xe là những vị trí đầu tiên bị tác động khi xe xảy ra va chạm phía trước. Hãy quan sát xem đầu ốc có vết toét cạnh kim loại do vặn cờ-lê hay không.
+
+Lớp keo chỉ mép nắp capo của nhà máy luôn có độ đàn hồi dẻo dai đặc trưng. Nếu bấm móng tay thấy giòn gãy hoặc lớp keo méo mó không đều, rất có thể nắp capo đã được thay mới hoặc bả matit lại.
+
+<h3>2. Dấu hiệu nhận biết xe từng bị ngập nước, thủy kích</h3>
+Xe từng bị ngập nước thường để lại các dấu vết rất khó tẩy xóa hoàn toàn:
+- Mùi ẩm mốc đặc trưng trong khoang nội thất khi bật điều hòa nóng.
+- Vệt ố vàng hoặc rỉ sét ở chân ray trượt ghế, chân phanh và các giắc cắm điện dưới gầm ghế.
+- Cát bùn bám đọng trong các khe hốc loa cánh cửa hoặc dưới lớp nỉ trải sàn.`
+      },
+      market: {
+        categoryTag: 'market',
+        badgeText: 'THỊ TRƯỜNG',
+        title: 'Thị Trường Ô Tô Quý II/2026: Xe Điện Tăng Trưởng Đột Biến, Phân Khúc SUV Đô Thị Giữ Vững Ngôi Vương',
+        image: 'assets/images/cars/tucson.jpg',
+        readTime: '4 phút đọc',
+        summary: 'Báo cáo toàn cảnh doanh số ô tô tại Việt Nam trong nửa đầu năm 2026 cho thấy xu hướng dịch chuyển mạnh mẽ sang xe năng lượng xanh và xe gầm cao đô thị cỡ nhỏ.',
+        tags: 'Thị trường ô tô, Doanh số xe, Xe điện, SUV đô thị',
+        content: `<h3>1. Xu hướng tiêu dùng dịch chuyển sang SUV gầm cao</h3>
+Người tiêu dùng Việt ngày càng ưu tiên các mẫu SUV đô thị cỡ B và C nhờ gầm cao linh hoạt khi mưa ngập và tầm quan sát thoáng đãng.
+
+Các mẫu xe như Toyota Corolla Cross, Hyundai Creta và VinFast VF 6 liên tục nằm trong danh sách bán chạy nhất các tháng vừa qua.
+
+<h3>2. Chính sách ưu đãi kích cầu tiêu dùng</h3>
+Hạ tầng trạm sạc đồng bộ kết hợp các gói miễn lệ phí trước bạ và hỗ trợ lãi suất vay mua xe ưu đãi đang là đòn bẩy quan trọng thúc đẩy sức mua của khách hàng cá nhân lẫn doanh nghiệp vận tải.`
+      }
+    };
+
+    // Helper: Toast
+    function showEditorToast(message, type = 'success') {
+      const toastEl = document.getElementById('editorToast');
+      const msgEl = document.getElementById('editorToastMessage');
+      if (!toastEl || !msgEl) return;
+      toastEl.className = `toast align-items-center text-white border-0 shadow ${type === 'success' ? 'bg-success' : (type === 'error' ? 'bg-danger' : 'bg-dark')}`;
+      msgEl.innerHTML = `<i class="bi ${type === 'success' ? 'bi-check-circle-fill' : 'bi-info-circle-fill'} fs-5"></i><span>${message}</span>`;
+      const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+      toast.show();
+    }
+
+    // Cập nhật UI Radio Chuyên mục
+    function updateCategoryPillUI() {
+      const checkedCat = document.querySelector('input[name="news-cat"]:checked')?.value || 'market';
+      console.log('Selected category:', checkedCat);
+    }
+
+    // Cập nhật ảnh bìa từ ô nhập
+    function updateCoverImageFromInput() {
+      const url = document.getElementById('news-image-url').value.trim();
+      const imgEl = document.getElementById('news-cover-img');
+      if (imgEl && url) {
+        imgEl.src = url;
+      }
+    }
+
+    // Chọn ảnh mẫu xe có sẵn
+    function selectPresetCover(imgPath, el) {
+      document.querySelectorAll('.preset-img-item').forEach(item => item.classList.remove('active'));
+      if (el) el.classList.add('active');
+      document.getElementById('news-image-url').value = imgPath;
+      const imgEl = document.getElementById('news-cover-img');
+      if (imgEl) imgEl.src = imgPath;
+      showEditorToast(`Đã chọn ảnh bìa: ${imgPath.split('/').pop()}`, 'info');
+    }
+
+    // Thêm tag nhanh
+    function addTagQuick(tagName) {
+      const tagsInput = document.getElementById('news-tags');
+      let current = tagsInput.value.trim();
+      const tagsList = current ? current.split(',').map(t => t.trim()) : [];
+      if (!tagsList.includes(tagName)) {
+        tagsList.push(tagName);
+        tagsInput.value = tagsList.join(', ');
+        showEditorToast(`Đã thêm thẻ tag: #${tagName}`, 'info');
+      }
+    }
+
+    // Chèn đoạn mã định dạng bài viết
+    function insertArticleSnippet(type) {
+      const contentArea = document.getElementById('news-content');
+      if (!contentArea) return;
+      const start = contentArea.selectionStart;
+      const end = contentArea.selectionEnd;
+      const sel = contentArea.value.substring(start, end);
+      let snippet = '';
+
+      switch (type) {
+        case 'h2':
+          snippet = `\n\n<h2>${sel || 'Tiêu đề mục lớn'}</h2>\n`;
+          break;
+        case 'h3':
+          snippet = `\n\n<h3>${sel || 'Tiêu đề mục phụ'}</h3>\n`;
+          break;
+        case 'bold':
+          snippet = `<strong>${sel || 'nội dung in đậm'}</strong>`;
+          break;
+        case 'italic':
+          snippet = `<em>${sel || 'nội dung in nghiêng'}</em>`;
+          break;
+        case 'list':
+          snippet = `\n- Ý quan trọng thứ nhất\n- Ý quan trọng thứ hai\n- Ý quan trọng thứ ba\n`;
+          break;
+        case 'callout':
+          snippet = `\n<div class="callout-box">\n  <strong>💡 Lời khuyên từ OtoMarket:</strong> ${sel || 'Nhập nội dung lưu ý quan trọng dành cho người mua xe tại đây...'}\n</div>\n`;
+          break;
+        case 'image':
+          snippet = `\n<img src="assets/images/cars/corolla_cross.jpg" alt="Ảnh minh họa chi tiết xe">\n<div class="text-center text-muted small mt-1"><em>Ảnh minh họa: Khoang lái rộng rãi và tiện nghi thực tế của xe.</em></div>\n`;
+          break;
+        case 'proscons':
+          snippet = `\n<div class="row g-3 my-3">
+  <div class="col-md-6">
+    <div class="p-3 bg-success-subtle rounded-3 border border-success-subtle">
+      <div class="fw-bold text-success mb-2"><i class="bi bi-hand-thumbs-up-fill me-1"></i> Ưu điểm nổi bật</div>
+      <ul class="mb-0 ps-3 small text-dark">
+        <li>Vận hành đầm chắc, cách âm tốt</li>
+        <li>Tiết kiệm nhiên liệu vượt trội</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="p-3 bg-danger-subtle rounded-3 border border-danger-subtle">
+      <div class="fw-bold text-danger mb-2"><i class="bi bi-hand-thumbs-down-fill me-1"></i> Điểm cần lưu ý</div>
+      <ul class="mb-0 ps-3 small text-dark">
+        <li>Giá bán còn tương đối cao</li>
+        <li>Hàng ghế sau gập chưa hoàn toàn phẳng</li>
+      </ul>
+    </div>
+  </div>
+</div>\n`;
+          break;
+      }
+
+      contentArea.setRangeText(snippet, start, end, 'end');
+      contentArea.focus();
+    }
+
+    // Chuyển đổi tab Soạn thảo và Xem trước
+    function switchEditorTab(tab) {
+      const editBtn = document.getElementById('btn-tab-edit');
+      const prevBtn = document.getElementById('btn-tab-preview');
+      const editPane = document.getElementById('pane-editor-view');
+      const prevPane = document.getElementById('pane-preview-view');
+      const prevContainer = document.getElementById('preview-container');
+
+      if (tab === 'preview') {
+        editBtn.classList.remove('active', 'bg-white', 'shadow-sm');
+        editBtn.classList.add('text-muted');
+        prevBtn.classList.add('active', 'bg-white', 'shadow-sm');
+        prevBtn.classList.remove('text-muted');
+
+        editPane.classList.add('d-none');
+        prevPane.classList.remove('d-none');
+
+        // Render nội dung xem trước
+        const rawContent = document.getElementById('news-content').value;
+        const formatted = typeof formatPlainTextToArticleHtml === 'function' 
+          ? formatPlainTextToArticleHtml(rawContent) 
+          : rawContent.replace(/\n\n/g, '<br><br>');
+        prevContainer.innerHTML = formatted || '<p class="text-muted fst-italic">Chưa có nội dung bài viết để xem trước.</p>';
+      } else {
+        prevBtn.classList.remove('active', 'bg-white', 'shadow-sm');
+        prevBtn.classList.add('text-muted');
+        editBtn.classList.add('active', 'bg-white', 'shadow-sm');
+        editBtn.classList.remove('text-muted');
+
+        prevPane.classList.add('d-none');
+        editPane.classList.remove('d-none');
+      }
+    }
+
+    // Nạp Template
+    function loadNewsTemplate(key) {
+      const tpl = NEWS_TEMPLATES[key];
+      if (!tpl) return;
+
+      const radio = document.querySelector(`input[name="news-cat"][value="${tpl.categoryTag}"]`);
+      if (radio) radio.checked = true;
+
+      document.getElementById('news-title').value = tpl.title;
+      document.getElementById('news-badge-text').value = tpl.badgeText || 'TIN NÓNG';
+      document.getElementById('news-image-url').value = tpl.image;
+      document.getElementById('news-cover-img').src = tpl.image;
+      document.getElementById('news-readtime').value = tpl.readTime || '5 phút đọc';
+      document.getElementById('news-summary').value = tpl.summary;
+      document.getElementById('news-tags').value = tpl.tags;
+      document.getElementById('news-content').value = tpl.content;
+
+      showEditorToast(`Đã nạp khung bài mẫu: ${tpl.title.substring(0, 35)}...`, 'success');
+      switchEditorTab('edit');
+    }
+
+    // Khởi tạo bài viết từ ID (nếu có ?id=xxx trên URL)
+    function initArticleFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const idParam = params.get('id');
+
+      if (!idParam) {
+        // Mặc định nạp mẫu đánh giá xe
+        loadNewsTemplate('review');
+        return;
+      }
+
+      const allNews = typeof getManagedNews === 'function' ? getManagedNews(true) : [];
+      const article = allNews.find(a => String(a.id) === String(idParam));
+
+      if (!article) {
+        showEditorToast('Không tìm thấy bài viết cần sửa! Bắt đầu tạo bài mới.', 'warning');
+        loadNewsTemplate('review');
+        return;
+      }
+
+      // Đưa dữ liệu bài cũ vào form
+      document.getElementById('news-id').value = article.id;
+      document.getElementById('editor-mode-badge').textContent = `Chỉnh Sửa Bài Viết #${article.id}`;
+      document.getElementById('news-title').value = article.title || '';
+      document.getElementById('news-summary').value = article.summary || '';
+      document.getElementById('news-badge-text').value = article.badgeText || '';
+      document.getElementById('news-readtime').value = article.readTime || '5 phút đọc';
+      document.getElementById('news-views').value = article.views || '1.000 lượt xem';
+      document.getElementById('meta-display-date').textContent = article.date || 'Hôm nay';
+      document.getElementById('news-status').value = article.status || 'active';
+
+      if (article.image) {
+        document.getElementById('news-image-url').value = article.image;
+        document.getElementById('news-cover-img').src = article.image;
+      }
+
+      const catRadio = document.querySelector(`input[name="news-cat"][value="${article.categoryTag}"]`);
+      if (catRadio) catRadio.checked = true;
+
+      const tagsVal = Array.isArray(article.tags) ? article.tags.join(', ') : (article.tag || '');
+      document.getElementById('news-tags').value = tagsVal;
+
+      document.getElementById('news-content').value = article.content || '';
+
+      // Hiển thị nút xóa bài viết và nút xem live
+      document.getElementById('danger-zone-card').classList.remove('d-none');
+      const viewLiveBtn = document.getElementById('btn-view-customer-live');
+      if (viewLiveBtn) {
+        viewLiveBtn.href = `news.html?id=${encodeURIComponent(article.id)}`;
+        viewLiveBtn.classList.remove('d-none');
+      }
+
+      showEditorToast(`Đang chỉnh sửa: "${article.title.substring(0, 30)}..."`, 'info');
+    }
+
+    // Xử lý Lưu bài viết (Xuất bản hoặc Lưu nháp)
+    function handleSaveNews(isPublish = true) {
+      const id = document.getElementById('news-id').value.trim();
+      const title = document.getElementById('news-title').value.trim();
+      const summary = document.getElementById('news-summary').value.trim();
+      const content = document.getElementById('news-content').value.trim();
+      const catTag = document.querySelector('input[name="news-cat"]:checked')?.value || 'market';
+      const image = document.getElementById('news-image-url').value.trim() || 'assets/images/cars/vf8.jpg';
+      const readTime = document.getElementById('news-readtime').value.trim() || '5 phút đọc';
+      const views = document.getElementById('news-views').value.trim() || '1.200 lượt xem';
+      const badgeText = document.getElementById('news-badge-text').value.trim();
+      const tagsStr = document.getElementById('news-tags').value.trim();
+      const statusSelect = document.getElementById('news-status').value;
+
+      if (!title) {
+        showEditorToast('Vui lòng nhập Tiêu đề bài viết!', 'error');
+        document.getElementById('news-title').focus();
+        return;
+      }
+
+      if (!summary) {
+        showEditorToast('Vui lòng nhập Đoạn tóm tắt (Sapo) mở đầu!', 'error');
+        document.getElementById('news-summary').focus();
+        return;
+      }
+
+      if (!content) {
+        showEditorToast('Vui lòng nhập Nội dung chi tiết bài viết!', 'error');
+        document.getElementById('news-content').focus();
+        return;
+      }
+
+      const finalStatus = isPublish ? 'active' : (statusSelect || 'hidden');
+
+      const articlePayload = {
+        id: id || undefined,
+        categoryTag: catTag,
+        title: title,
+        summary: summary,
+        content: content,
+        image: image,
+        readTime: readTime,
+        views: views,
+        badgeText: badgeText,
+        tags: tagsStr.split(',').map(t => t.trim()).filter(Boolean),
+        status: finalStatus
+      };
+
+      if (typeof saveManagedNews === 'function') {
+        const saved = saveManagedNews(articlePayload);
+        const savedId = saved && saved.id ? saved.id : (id || Date.now());
+
+        showEditorToast(isPublish ? '🎉 Xuất bản bài viết thành công!' : '📁 Đã lưu bản nháp bài viết!', 'success');
+
+        // Cập nhật lại ID nếu vừa tạo bài mới
+        document.getElementById('news-id').value = savedId;
+        document.getElementById('editor-mode-badge').textContent = `Đã lưu Bài Viết #${savedId}`;
+
+        // Cập nhật nút xem live
+        const viewLiveBtn = document.getElementById('btn-view-customer-live');
+        if (viewLiveBtn) {
+          viewLiveBtn.href = `news.html?id=${encodeURIComponent(savedId)}`;
+          viewLiveBtn.classList.remove('d-none');
+        }
+
+        // Sau 1.2s chuyển hướng sang bài viết thật trên sàn để người dùng chiêm ngưỡng
+        setTimeout(() => {
+          window.location.href = `news.html?id=${encodeURIComponent(savedId)}`;
+        }, 1200);
+      } else {
+        showEditorToast('Lỗi kết nối cơ sở dữ liệu tin tức!', 'error');
+      }
+    }
+
+    // Xử lý Xóa bài viết
+    function handleDeleteCurrentArticle() {
+      const id = document.getElementById('news-id').value;
+      if (!id) return;
+      if (!confirm('Bạn có chắc chắn muốn xóa bài viết này không? Hành động không thể hoàn tác.')) return;
+
+      if (typeof deleteManagedNews === 'function') {
+        deleteManagedNews(id);
+        showEditorToast('Đã xóa bài viết thành công!', 'success');
+        setTimeout(() => {
+          window.location.href = 'admin.html#tab-news';
+        }, 800);
+      }
+    }
+
+    // Khởi tạo trang
+    document.addEventListener('DOMContentLoaded', () => {
+      // Đồng bộ thông tin người dùng
+      if (typeof syncHeaderUserUI === 'function') syncHeaderUserUI();
+      if (typeof updateFavoritesCountBadge === 'function') updateFavoritesCountBadge();
+
+      // Kiểm tra quyền hạn: chỉ nhân viên/admin mới được truy cập
+      const currentUser = typeof getLoggedInUser === 'function' ? getLoggedInUser() : null;
+      const isAdmin = currentUser && (currentUser.role === 'admin' || currentUser.role === 'staff' || currentUser.email === 'admin@otomarket.vn');
+
+      if (!isAdmin) {
+        console.warn('Truy cập trang biên tập tin tức ở chế độ khách');
+      }
+
+      initArticleFromUrl();
+    });
+  </script>
+</body>
+</html>

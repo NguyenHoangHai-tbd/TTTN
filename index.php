@@ -24,6 +24,7 @@ $page_map = array(
     'car-detail'  => 'car-detail.html',
     'compare'     => 'compare.html',
     'dealers'     => 'dealers.html',
+    'contact'     => 'contact.html',
     'policies'    => 'policies.html',
     'post-car'    => 'post-car.html',
     'news'        => 'news.html',
